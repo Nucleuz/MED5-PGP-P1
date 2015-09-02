@@ -1,1 +1,2 @@
-=Medialogy 5th Semester - Purposive Game Production, Group 1=
+Medialogy 5th Semester - Purposive Game Production, Group 1
+===========================================================
