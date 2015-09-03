@@ -1,1 +1,2 @@
-=Medialogy 5th Semester - Purposive Game Production, Group 1=
+#Purposive Game Production (PGP)
+##Medialogy 5th Semester, Group 1
