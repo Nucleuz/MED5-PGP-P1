@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using System.Collections;
 
 //First thing that is needed is to get access to the DarkRift namespace.
 using DarkRift;
@@ -11,6 +12,9 @@ public class EmbeddedCubeMove : MonoBehaviour
 	public int cubeID;
 
 	Vector3 lastPos = Vector3.zero;
+	Vector3 newestPos = Vector3.zero;
+
+	float lastTime = 0;
 
 	void Start()
 	{
@@ -21,7 +25,11 @@ public class EmbeddedCubeMove : MonoBehaviour
 	{
 		//Check it's our's
 		if( subject == cubeID ){
-			transform.position = (Vector3)data;
+			lastPos = newestPos;
+			newestPos = (Vector3)data;
+			StopAllCoroutines();
+			StartCoroutine(lerpBetween(lastPos,newestPos,Time.time - lastTime));
+			lastTime = Time.time;
 		}
 	}
 
@@ -36,12 +44,15 @@ public class EmbeddedCubeMove : MonoBehaviour
 			//Move it to that position on our screen
 			transform.position = new Vector3(pos.x, pos.y, 0f);
 
-			//Then send it to the others if we've moved enough
-			if( Vector3.Distance(lastPos, pos) > 0.05f )
-			{
 				DarkRiftAPI.SendMessageToServer(0, (ushort)cubeID, new Vector3(pos.x, pos.y, 0f));
-				lastPos = pos;
-			}
+		}
+	}
+
+	IEnumerator lerpBetween(Vector3 from, Vector3 to, float length){
+		while(true){
+			float step = (Time.time - lastTime)/length;
+			transform.position = Vector3.Lerp(from,to,step);
+			yield return null;
 		}
 	}
 }

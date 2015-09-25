@@ -19,6 +19,8 @@ public class EmbeddedCubeManager : MonoBehaviour
 		//Broadcast all positions to all clients constantly
 		foreach (ConnectionService cs in DarkRiftServer.GetAllConnections())
 		{
+
+			
 			for (int i=0; i<cubes.Length; i++)
 			{
 				cs.SendReply(0, (ushort)i, (Vector3Carrier)cubes[i].position);
