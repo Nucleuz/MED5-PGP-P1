@@ -4,7 +4,7 @@ using System.Collections;
 public class LevelManager : MonoBehaviour {
 
 	public int numberOfEvents;
-	public GameObject[] orderOfEvents;
+	public GameObject[] events;
 	public int[] eventOrder; 
 	//public int currentLevelNumber; //might not need this if only 1 scene
 
