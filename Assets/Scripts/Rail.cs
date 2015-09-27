@@ -30,6 +30,8 @@ public class Rail : MonoBehaviour {
 				transform.rotation = Quaternion.LookRotation(transform.position - PreviousRail.transform.position);
 			}
 
+			
+
 			/*Visual debugging (shows direction vector)*/
 			if(NextRail != null){
 				Debug.DrawLine(transform.position, NextRail.transform.position, Color.red);
