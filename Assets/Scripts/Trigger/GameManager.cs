@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour {
 	void Start () {
 		LM = GameObject.Find("LevelManagerObject").GetComponent<LevelManager>(); //accessing the LevelManager script on the LevelManagerObject
 		for(int k = 0; k < LM.eventOrder[0]; k++){ //makes the first events in the scene triggerable
-			LM.events[k].GetComponent<Trigger>().isReadyToBeTriggered = true;
+			LM.events[k].isReadyToBeTriggered = true;
 		}
 	}
 	
@@ -25,8 +25,8 @@ public class GameManager : MonoBehaviour {
 		for(int j = 0; j < LM.eventOrder[index]; j++){ //Runs the objects in the current sequence
 			//Checks if the current object is triggered, and if they are ready to be triggered
 			//Used in order to not get double values
-			if(LM.events[j + numberOfTriggeredEvents].GetComponent<Trigger>().isTriggered == true && LM.events[j + numberOfTriggeredEvents].GetComponent<Trigger>().isReadyToBeTriggered == true){ 
-				LM.events[j + numberOfTriggeredEvents].GetComponent<Trigger>().isReadyToBeTriggered = false; //sets the event untriggerable
+			if(LM.events[j + numberOfTriggeredEvents].isTriggered == true && LM.events[j + numberOfTriggeredEvents].isReadyToBeTriggered == true){ 
+				LM.events[j + numberOfTriggeredEvents].isReadyToBeTriggered = false; //sets the event untriggerable
 				currentNumberOfEventsTriggered++; //counts up the events in sequence by 1
 			} 
 		}
@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour {
 				numberOfTriggeredEvents += LM.eventOrder[index]; //Increase the total number of events by the amount of events that was in the current sequence
 				index++; //Goes to the next sequence
 				for(int i = numberOfTriggeredEvents; i < numberOfTriggeredEvents + LM.eventOrder[index]; ++i){ //Goes through the next sequence of events
-					LM.events[i].GetComponent<Trigger>().isReadyToBeTriggered = true; //Makes the next sequence ready to be triggered 
+					LM.events[i].isReadyToBeTriggered = true; //Makes the next sequence ready to be triggered 
 				}
 			}
 			Debug.Log("Door is open! :D"); //Should write code here for what is to happen with the next sequence of objects
