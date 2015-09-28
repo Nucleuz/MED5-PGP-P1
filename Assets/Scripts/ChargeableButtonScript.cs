@@ -9,8 +9,7 @@ public class ChargeableButtonScript : MonoBehaviour {
     public float decreaseRate;
     public float increaseRate;
 
-    // A more simple boolean instead writing GetComponent<Trigger>().... each time.
-    private bool isTriggered;
+    private bool isCharging;
 
 	// Use this for initialization
 	void Start () {
@@ -18,10 +17,6 @@ public class ChargeableButtonScript : MonoBehaviour {
         energy = 0;
         increaseRate = 1.75f;
         decreaseRate = 0.25f;
-
-        // Set isTriggered to the same as the isTrigger bool in the Trigger script.
-        isTriggered = GetComponent<Trigger>().isTriggered;
-
     }
 	
 	// Update is called once per frame
@@ -30,17 +25,17 @@ public class ChargeableButtonScript : MonoBehaviour {
         // Checks if left mouse button is pressed. (This needs to be removed when we finally use it)
         if (Input.GetMouseButton(0))
         {
-            // Sets isTriggered to true if mouse button is pressed.
-            isTriggered = true;
+            // Sets isCharging to true if mouse button is pressed.
+            isCharging = true;
         }
         else
         {
-            // Sets isTriggered to false if mouse button is not pressed.
-            isTriggered = false;
+            // Sets isCharging to false if mouse button is not pressed.
+            isCharging = false;
         }
 
-        // Checks if isTrigger is true
-        if (isTriggered)
+        // Checks if isCharging is true
+        if (isCharging)
         {
             // Checks if we have less than 100 energy.
             if (energy < 100)
@@ -51,17 +46,17 @@ public class ChargeableButtonScript : MonoBehaviour {
                 // Checks if energy is bigger than 100
                 if(energy > 100)
                 {
-                    // Set isTriggered to false if we've reached full energy.
-                    isTriggered = false;
+                    // Set isCharging to false if we've reached full energy.
+                    isCharging = false;
                 }
 
                 // Makes sure that we have to keep the button triggered in order to charge it.
-                isTriggered = false;
+                isCharging = false;
             }
         }
 
-        // Checks if isTriggered is false
-        if (!isTriggered)
+        // Checks if isCharging is false
+        if (!isCharging)
         {
             // Checks if energy is higher than 0
             if(energy > 0)
@@ -70,5 +65,18 @@ public class ChargeableButtonScript : MonoBehaviour {
                 energy -= decreaseRate;
             }
         }
+
+        // Checks of enery is equal to or higher than 100
+        if(energy >= 100)
+        {
+            // Set isTrigger in Trigger script to true
+            GetComponent<Trigger>().isTriggered = true;
+        }
+        else
+        {
+            // Set isTrigger in Trigger script to false
+            GetComponent<Trigger>().isTriggered = false;
+        }
+        
 	}
 }
