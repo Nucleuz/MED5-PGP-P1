@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class HelmetLightScript : MonoBehaviour {
 
@@ -14,13 +15,22 @@ public class HelmetLightScript : MonoBehaviour {
     private float startTime;                        // Used for lerping the focus light angle and intensity
     private bool timeSaved = false;                 // Used for lerping the focus light angle and intensity
 
+    private LineRenderer linRend;
+    private List<Vector3> rayHitPoints = new List<Vector3>();
+
     void Start () {
+
+        //Adding component for visual placeholder for light
+        linRend = gameObject.AddComponent<LineRenderer>();
+        linRend.SetWidth(0.1f, 0.1f);
 
         helmetLight = GetComponent<Light>();        //Calls the light component on the spotlight
         
     }
 	
 	void Update () {
+
+        linRend.enabled = helmetLightFocused;
 
         //Checks if the focus button is pressed (Default = space)
         if (Input.GetKey("space")) {
@@ -42,6 +52,7 @@ public class HelmetLightScript : MonoBehaviour {
             // Lerps the intensity from normal to focused intensity.
             helmetLight.intensity = Mathf.Lerp(intensityNormal, intensityFocus, (Time.time - startTime) / (fadeTime * 5));
         } else {
+
             // Sets timeSaved to false
             timeSaved = false;
 
@@ -62,27 +73,23 @@ public class HelmetLightScript : MonoBehaviour {
         }
 
         // Checks if the headlight is being focused
-        if (helmetLightFocused) { 
-            RaycastHit hit;
+        if (helmetLightFocused) {
+
+            //for
+
+            RaycastHit hit = new RaycastHit();
 
             // Sets the to point from the main camera to the mouse position (This needs to be changed later).
             Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
             // If we want to use the mouses position as a ray point, then comment out the above line and used this: Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             // Casts a ray against all colliders
-            if (Physics.Raycast(ray, out hit)) {
-                // Declaring objectHit to be the object that the ray hits
-                Transform objectHit = hit.transform;
+            int ind = 0;
 
-                // Checks if we hit an object with the "Button" tag.
-                if (objectHit.tag == "Button") {
-                    // Activates the isActivated boolean in the script. (I've just used a test script, so this needs to be corrected when we have the right objects with the right scripts)
-                    objectHit.GetComponent<TestButtonScript>().isActivated = true;
+            Vector3 hitPoint = Utilities.RayChecker(ray, hit, linRend, ind);
 
-                    // Draws the ray (nice to have as a visual representation)
-                    Debug.DrawRay(ray.origin, ray.direction * 10, Color.cyan);
-                }
-            }
+            linRend.SetPosition(ind, ray.origin);
+            linRend.SetPosition(ind+1, hitPoint);
         }
     }
 }
