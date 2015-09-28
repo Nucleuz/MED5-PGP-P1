@@ -3,30 +3,17 @@ using System.Collections;
 
 public class LevelManager : MonoBehaviour {
 
-	public int numberOfEvents; //IS NOT USED!!!
 	public GameObject[] events; // Events which are dragged into the levelmanager - Should be specified in the unity editor!!
 	public int[] eventOrder; //The event order in which you want things triggered - Should be specified in the unity editor!!
 	//public int currentLevelNumber; //might not need this if only 1 scene
 
 	// Use this for initialization
 	void Start () {
-		countEventsInScene();
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
-	}
-
-
-	void countEventsInScene() { //Was made for recounting if there is several scenes
-		//Should count the number of events that is going to happen in each level
-		numberOfEvents = GameObject.FindGameObjectsWithTag("Test Tag").Length; //counts how many events should be triggered
-	}
-
-	void newLevel() {
-		numberOfEvents = 0;
-		//Should reset the values for how many events etc. there is in the level
-		//should call the method "countEventsInScene"
 	}
 }
