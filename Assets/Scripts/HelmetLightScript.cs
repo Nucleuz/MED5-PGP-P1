@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
+[ExecuteInEditMode]
 public class HelmetLightScript : MonoBehaviour {
 
     public float angleNormal = 45;                  // Angle of the spotlight without focus
@@ -15,8 +16,7 @@ public class HelmetLightScript : MonoBehaviour {
     private float startTime;                        // Used for lerping the focus light angle and intensity
     private bool timeSaved = false;                 // Used for lerping the focus light angle and intensity
 
-    private LineRenderer linRend;
-    private List<Vector3> rayHitPoints = new List<Vector3>();
+    private LineRenderer linRend;					// Used for drawing the ray from the helmet
 
     void Start () {
 
@@ -72,24 +72,21 @@ public class HelmetLightScript : MonoBehaviour {
             helmetLight.intensity -= 0.2f;
         }
 
+		if(Application.isEditor) // Run in editor for debug and level design
+			helmetLightFocused = true;
+		
         // Checks if the headlight is being focused
         if (helmetLightFocused) {
 
-            //for
+            // Makes a ray from slightly above the gameobject going in its forward direction
+            Ray ray = new Ray(gameObject.transform.position + gameObject.transform.up/3, gameObject.transform.forward);
+            // If we want to use the mouses position as a ray direction, then use Camera.main.ScreenPointToRay(Input.mousePosition) instead of gameobject.transform.forward.
 
-            RaycastHit hit = new RaycastHit();
-
-            // Sets the to point from the main camera to the mouse position (This needs to be changed later).
-            Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-            // If we want to use the mouses position as a ray point, then comment out the above line and used this: Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            // Casts a ray against all colliders
-            int ind = 0;
-
-            Vector3 hitPoint = Utilities.RayChecker(ray, hit, linRend, ind);
-
-            linRend.SetPosition(ind, ray.origin);
-            linRend.SetPosition(ind+1, hitPoint);
+            
+			int i = 1;
+			linRend.SetVertexCount(i);				// resets the number of vertecies of the line renderer to 1
+			linRend.SetPosition(i-1, ray.origin);	// sets the line origin to the same as that of the ray (gameobject position)
+            Utilities.RayChecker(ray, linRend, i);	// starts recursive function to draw ray and see if it hits anything
         }
     }
 }
