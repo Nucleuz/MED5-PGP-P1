@@ -10,7 +10,7 @@ public class ChargeableLightSource : MonoBehaviour {
 
     public ParticleSystem particles;
 
-    public Renderer render;
+    private Renderer render;
 
 	void Start () {
 
@@ -19,16 +19,16 @@ public class ChargeableLightSource : MonoBehaviour {
         timeToFullyCharge = 3.0f;
 
         particles = GetComponent<ParticleSystem>();
-        particles.Pause();
+        particles.enableEmission = false;
     }
 	
 	void Update () {
 
         if(isActivated) {
-            particles.Play();
+            particles.enableEmission = true;
             render.material.color = Color.green;
         } else {
-            particles.Pause();                                                  //Gotta find a proper way to clear particles. This is not pretty
+            particles.enableEmission = false;
             render.material.color = Color.grey;
         }
 	    
