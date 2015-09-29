@@ -352,7 +352,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11446688, guid: 70151ed3ac12c9e4fa758a406ca38de6, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 70151ed3ac12c9e4fa758a406ca38de6, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &928352157
@@ -514,6 +515,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1750654960}
   m_RootOrder: 2
+--- !u!1 &1636972956 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 121040, guid: 70151ed3ac12c9e4fa758a406ca38de6, type: 2}
+  m_PrefabInternal: {fileID: 789413982}
+--- !u!114 &1636972958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1636972956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c026b3ba315ff7d4d946534cfd5c77e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energy: 0
+  decreaseRate: 0
+  increaseRate: 0
+  isCharging: 0
+  readyForCharge: 0
 --- !u!1 &1641668500
 GameObject:
   m_ObjectHideFlags: 0
