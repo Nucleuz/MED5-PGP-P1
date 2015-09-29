@@ -24,8 +24,9 @@ public class Utilities : MonoBehaviour {
                 objectHit.GetComponent<TestButtonScript>().isActivated = true;
             } 
 			else if(objectHit.tag == "Mirror"){
-				Ray newRay = new Ray(hit.point, Vector3.Reflect(ray.direction, hit.normal)); 	// makes new reflection ray from mirror
-				Utilities.RayChecker(newRay, linRend, i); 										// loops function to check if if the ray hits something
+				Ray newRay = new Ray(hit.point, Vector3.Reflect(ray.direction, hit.normal));	// makes new reflection ray from mirror
+				if(i < 20)
+					Utilities.RayChecker(newRay, linRend, i); 										// loops function to check if if the ray hits something
             }
         }
 		else{

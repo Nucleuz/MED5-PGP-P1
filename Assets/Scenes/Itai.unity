@@ -156,7 +156,6 @@ GameObject:
   - 33: {fileID: 472923197}
   - 64: {fileID: 472923196}
   - 23: {fileID: 472923195}
-  - 114: {fileID: 472923194}
   m_Layer: 0
   m_Name: Quad (2)
   m_TagString: Mirror
@@ -164,17 +163,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &472923194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 472923193}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd9987d296689a14a8d263ed56b31e14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &472923195
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -241,7 +229,6 @@ GameObject:
   - 33: {fileID: 529048698}
   - 64: {fileID: 529048697}
   - 23: {fileID: 529048696}
-  - 114: {fileID: 529048695}
   m_Layer: 0
   m_Name: Quad (3)
   m_TagString: Mirror
@@ -249,17 +236,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &529048695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 529048694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd9987d296689a14a8d263ed56b31e14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &529048696
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -309,7 +285,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 529048694}
-  m_LocalRotation: {x: .409797579, y: -.694503486, z: .0462567024, w: -.589568615}
+  m_LocalRotation: {x: -.768384099, y: -.475537241, z: -.427967817, w: .0171361547}
   m_LocalPosition: {x: 4.71999979, y: 4.15500021, z: -3.71000004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -326,7 +302,6 @@ GameObject:
   - 33: {fileID: 624801526}
   - 64: {fileID: 624801525}
   - 23: {fileID: 624801524}
-  - 114: {fileID: 624801523}
   m_Layer: 0
   m_Name: Quad (1)
   m_TagString: Mirror
@@ -334,17 +309,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &624801523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 624801522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd9987d296689a14a8d263ed56b31e14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &624801524
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -394,7 +358,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 624801522}
-  m_LocalRotation: {x: -.142360568, y: -.461736888, z: -.0425092801, w: .87448591}
+  m_LocalRotation: {x: -.141714111, y: -.461320043, z: -.0425946712, w: .874806583}
   m_LocalPosition: {x: -2.49000001, y: 1.74000001, z: .189999998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -411,7 +375,6 @@ GameObject:
   - 33: {fileID: 709580999}
   - 64: {fileID: 709580998}
   - 23: {fileID: 709580997}
-  - 114: {fileID: 709580996}
   m_Layer: 0
   m_Name: Quad
   m_TagString: Mirror
@@ -419,17 +382,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &709580996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 709580995}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd9987d296689a14a8d263ed56b31e14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &709580997
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -569,7 +521,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1529553248}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -2}
+  m_LocalPosition: {x: 0, y: -.119999997, z: -1.99000001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -646,12 +598,12 @@ LineRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 0, y: .333333343, z: -2}
-  - {x: -1.19674951e-07, y: .333333373, z: .0174420252}
-  - {x: -2.51264238, y: 1.80229962, z: .122525208}
-  - {x: -1.30000496, y: 1.83653021, z: -2.02896142}
-  - {x: 4.72517252, y: 4.20418787, z: -3.62668371}
-  - {x: -3.28979349, y: -.582320213, z: -.0420413017}
+  - {x: 0, y: .213333338, z: -1.99000001}
+  - {x: 2.60770321e-07, y: .213333309, z: -.0453491881}
+  - {x: -2.58181787, y: 1.72274148, z: .0626265556}
+  - {x: -1.50982392, y: 1.75785899, z: -1.84933746}
+  - {x: 4.82215405, y: 4.26941872, z: -3.52818751}
+  - {x: 2.48829699, y: .174278259, z: 5.29127598}
   m_Parameters:
     startWidth: .100000001
     endWidth: .100000001

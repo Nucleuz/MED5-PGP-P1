@@ -21,7 +21,11 @@ public class HelmetLightScript : MonoBehaviour {
     void Start () {
 
         //Adding component for visual placeholder for light
-        linRend = gameObject.AddComponent<LineRenderer>();
+        if(gameObject.GetComponent<LineRenderer>() == null)
+			linRend = gameObject.AddComponent<LineRenderer>();
+		else
+			linRend = gameObject.GetComponent<LineRenderer>();
+
         linRend.SetWidth(0.1f, 0.1f);
 
         helmetLight = GetComponent<Light>();        //Calls the light component on the spotlight
