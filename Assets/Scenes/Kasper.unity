@@ -262,7 +262,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Debug Text:'
+  m_Text: 'Debug Text:
+
+'
 --- !u!222 &564146932
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -281,10 +283,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1847023039}
   m_RootOrder: 0
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -262, y: 227}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!1 &572854979 stripped
 GameObject:
@@ -351,6 +353,10 @@ Prefab:
     - target: {fileID: 11477150, guid: 24fb40156af6d49d6a86222d9e13ba1f, type: 2}
       propertyPath: strafeSpeed
       value: 1250
+      objectReference: {fileID: 0}
+    - target: {fileID: 190560, guid: 24fb40156af6d49d6a86222d9e13ba1f, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 24fb40156af6d49d6a86222d9e13ba1f, type: 2}

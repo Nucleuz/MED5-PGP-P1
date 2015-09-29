@@ -2,6 +2,13 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 
+/*
+By KasperHdL
+
+	Serialized version of Quaternion
+
+*/
+	
 [Serializable]
 public struct SQuaternion{
 	public float x,y,z,w;

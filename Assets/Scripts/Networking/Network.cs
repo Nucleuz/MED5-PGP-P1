@@ -1,20 +1,20 @@
-
-
 /*
 By KasperHdL
 used to categories network messages
 
-note:
-cannot use enums because that would require non stop casting to byte
+//@NOTE: cannot use enums because that would require non stop casting to byte and ushort
 */
 
 public class Network{
 	
+	//used as the receiver 
+	//TODO should then be called receiver..
 	public class Tag{
 		public const byte Manager 	= 1;
 		public const byte Player 	= 2;
 	}
 
+	//what is the message about
 	public class Subject{
 		public const ushort HasJoined 			= 1;
 		public const ushort SpawnPlayer 		= 2;
