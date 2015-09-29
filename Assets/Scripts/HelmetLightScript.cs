@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
+[ExecuteInEditMode]
 public class HelmetLightScript : MonoBehaviour {
 
     public float angleNormal = 45;                  // Angle of the spotlight without focus
@@ -14,13 +16,25 @@ public class HelmetLightScript : MonoBehaviour {
     private float startTime;                        // Used for lerping the focus light angle and intensity
     private bool timeSaved = false;                 // Used for lerping the focus light angle and intensity
 
+    private LineRenderer linRend;					// Used for drawing the ray from the helmet
+
     void Start () {
+
+        //Adding component for visual placeholder for light
+        if(gameObject.GetComponent<LineRenderer>() == null)
+			linRend = gameObject.AddComponent<LineRenderer>();
+		else
+			linRend = gameObject.GetComponent<LineRenderer>();
+
+        linRend.SetWidth(0.1f, 0.1f);
 
         helmetLight = GetComponent<Light>();        //Calls the light component on the spotlight
         
     }
 	
 	void Update () {
+
+        linRend.enabled = helmetLightFocused;
 
         //Checks if the focus button is pressed (Default = space)
         if (Input.GetKey("space")) {
@@ -42,6 +56,7 @@ public class HelmetLightScript : MonoBehaviour {
             // Lerps the intensity from normal to focused intensity.
             helmetLight.intensity = Mathf.Lerp(intensityNormal, intensityFocus, (Time.time - startTime) / (fadeTime * 5));
         } else {
+
             // Sets timeSaved to false
             timeSaved = false;
 
@@ -61,28 +76,21 @@ public class HelmetLightScript : MonoBehaviour {
             helmetLight.intensity -= 0.2f;
         }
 
+		if(Application.isEditor) // Run in editor for debug and level design
+			helmetLightFocused = true;
+		
         // Checks if the headlight is being focused
-        if (helmetLightFocused) { 
-            RaycastHit hit;
+        if (helmetLightFocused) {
 
-            // Sets the to point from the main camera to the mouse position (This needs to be changed later).
-            Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-            // If we want to use the mouses position as a ray point, then comment out the above line and used this: Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            // Makes a ray from slightly above the gameobject going in its forward direction
+            Ray ray = new Ray(gameObject.transform.position + gameObject.transform.up/3, gameObject.transform.forward);
+            // If we want to use the mouses position as a ray direction, then use Camera.main.ScreenPointToRay(Input.mousePosition) instead of gameobject.transform.forward.
 
-            // Casts a ray against all colliders
-            if (Physics.Raycast(ray, out hit)) {
-                // Declaring objectHit to be the object that the ray hits
-                Transform objectHit = hit.transform;
-
-                // Checks if we hit an object with the "Button" tag.
-                if (objectHit.tag == "Button") {
-                    // Activates the isActivated boolean in the script. (I've just used a test script, so this needs to be corrected when we have the right objects with the right scripts)
-                    objectHit.GetComponent<TestButtonScript>().isActivated = true;
-
-                    // Draws the ray (nice to have as a visual representation)
-                    Debug.DrawRay(ray.origin, ray.direction * 10, Color.cyan);
-                }
-            }
+            
+			int i = 1;
+			linRend.SetVertexCount(i);				// resets the number of vertecies of the line renderer to 1
+			linRend.SetPosition(i-1, ray.origin);	// sets the line origin to the same as that of the ray (gameobject position)
+            Utilities.RayChecker(ray, linRend, i);	// starts recursive function to draw ray and see if it hits anything
         }
     }
 }
