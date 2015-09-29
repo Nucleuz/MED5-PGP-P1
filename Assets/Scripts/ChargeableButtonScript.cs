@@ -38,65 +38,67 @@ public class ChargeableButtonScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (readyForCharge) { 
-            // Checks if left mouse button is pressed. (This needs to be removed when we finally use it)
-            if (Input.GetMouseButton(0))
-            {
-                // Sets isCharging to true if mouse button is pressed.
-                isCharging = true;
-            }
-            else
-            {
-                // Sets isCharging to false if mouse button is not pressed.
-                isCharging = false;
-            }
-        }
-
-        // Checks if isCharging is true
-        if (isCharging)
-        {
-            // Checks if we have less than 100 energy.
-            if (energy < 100)
-            {
-                // Increase energy while the Chargeable Button is being triggered.
-                energy += increaseRate;
-
-                // Checks if energy is bigger than 100
-                if (energy >= 100)
+        if (isReadyToBeTriggered) { 
+            if (readyForCharge) { 
+                // Checks if left mouse button is pressed. (This needs to be removed when we finally use it)
+                if (Input.GetMouseButton(0))
                 {
-                    // Set isCharging to false if we've reached full energy.
-                    isCharging = false;
-
-                    // Set isTrigger in Trigger script to true
-                    GetComponent<Trigger>().isTriggered = true;
-
-                    // Make sure that we cannot charge it again right away
-                    readyForCharge = false;
+                    // Sets isCharging to true if mouse button is pressed.
+                    isCharging = true;
                 }
-
-                // Makes sure that we have to keep the button triggered in order to charge it.
-                isCharging = false;
+                else
+                {
+                    // Sets isCharging to false if mouse button is not pressed.
+                    isCharging = false;
+                }
             }
-        }
 
-        // Checks if energy is less than or equal than 0.
-        if(energy <= 0)
-        {
-            // Makes sure that we can charge the button.
-            readyForCharge = true;
-
-            // Set isTrigger in Trigger script to false
-            GetComponent<Trigger>().isTriggered = false;
-        }
-
-        // Checks if isCharging is false
-        if (!isCharging)
-        {
-            // Checks if energy is higher than 0
-            if (energy > 0)
+            // Checks if isCharging is true
+            if (isCharging)
             {
-                // Decrease energy
-                energy -= decreaseRate;
+                // Checks if we have less than 100 energy.
+                if (energy < 100)
+                {
+                    // Increase energy while the Chargeable Button is being triggered.
+                    energy += increaseRate;
+
+                    // Checks if energy is bigger than 100
+                    if (energy >= 100)
+                    {
+                        // Set isCharging to false if we've reached full energy.
+                        isCharging = false;
+
+                        // Set isTrigger in Trigger script to true
+                        GetComponent<Trigger>().isTriggered = true;
+
+                        // Make sure that we cannot charge it again right away
+                        readyForCharge = false;
+                    }
+
+                    // Makes sure that we have to keep the button triggered in order to charge it.
+                    isCharging = false;
+                }
+            }
+
+            // Checks if energy is less than or equal than 0.
+            if(energy <= 0)
+            {
+                // Makes sure that we can charge the button.
+                readyForCharge = true;
+
+                // Set isTrigger in Trigger script to false
+                GetComponent<Trigger>().isTriggered = false;
+            }
+
+            // Checks if isCharging is false
+            if (!isCharging)
+            {
+                // Checks if energy is higher than 0
+                if (energy > 0)
+                {
+                    // Decrease energy
+                    energy -= decreaseRate;
+                }
             }
         }
     }
