@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class InteractableButton : MonoBehaviour{
+public class InteractableButton : Interactable{
 	Trigger trigger;
 	// Use this for initialization
 	void Start () {
@@ -13,7 +13,7 @@ public class InteractableButton : MonoBehaviour{
 	
 	}
 
-	public void RayCastEvent(){
+	public override void OnRayReceived(int playerIndex, Ray ray, RaycastHit hit){
 		if (trigger.isReadyToBeTriggered) {
 			trigger.isTriggered = true;
 		}

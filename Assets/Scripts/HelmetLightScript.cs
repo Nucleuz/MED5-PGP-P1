@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-[ExecuteInEditMode]
+[RequireComponent (typeof (Light))]
+[RequireComponent (typeof (LineRenderer))]
 public class HelmetLightScript : MonoBehaviour {
 
     public float angleNormal = 45;                  // Angle of the spotlight without focus
@@ -20,18 +21,12 @@ public class HelmetLightScript : MonoBehaviour {
 	public int playerIndex;							// index for the player.
 	public Transform objectHit;
 	public Ray ray;
+
     void Start () {
-
-        //Adding component for visual placeholder for light
-        if(gameObject.GetComponent<LineRenderer>() == null)
-			linRend = gameObject.AddComponent<LineRenderer>();
-		else
-			linRend = gameObject.GetComponent<LineRenderer>();
-
+		linRend = gameObject.GetComponent<LineRenderer>();
         linRend.SetWidth(0.1f, 0.1f);
 
-        helmetLight = GetComponent<Light>();        //Calls the light component on the spotlight
-        
+        helmetLight = GetComponent<Light>();        //Calls the light component on the spotlight  
     }
 	
 	void Update () {
@@ -77,9 +72,6 @@ public class HelmetLightScript : MonoBehaviour {
         if (helmetLight.intensity >= intensityNormal) {
             helmetLight.intensity -= 0.2f;
         }
-
-		if(Application.isEditor) // Run in editor for debug and level design
-			helmetLightFocused = true;
 		
         // Checks if the headlight is being focused
         if (helmetLightFocused) {
@@ -100,11 +92,10 @@ public class HelmetLightScript : MonoBehaviour {
 				linRend.SetPosition(i-1, hit.point);
 				Debug.DrawLine(ray.origin, hit.point, Color.cyan);// for debug and see direction of ray
             // If we want to use the mouses position as a ray direction, then use Camera.main.ScreenPointToRay(Input.mousePosition) instead of gameobject.transform.forward.
-				if (objectHit.tag == "Interactable"){
-				objectHit.GetComponent<RaycastReceiver>().OnRayReceived(playerIndex);
-				}
-				else if (objectHit.tag == "Mirror"){
-					objectHit.GetComponent<Mirror>().Reflect(ray, hit, playerIndex);
+
+                Interactable interactable = objectHit.GetComponent<Interactable>();
+				if (interactable != null){
+				    interactable.OnRayReceived(playerIndex,ray, hit);
 				}
 			}
 

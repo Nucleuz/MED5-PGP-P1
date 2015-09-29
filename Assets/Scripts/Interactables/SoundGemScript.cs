@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SoundGemScript : MonoBehaviour
+public class SoundGemScript : Interactable
 {
     // Initialize an Audio Source in order to  play sounds
-    AudioSource audio;
+    AudioSource audioSource;
 
     // Array for the audio clips we choose to use.
     public AudioClip[] audioClips;
@@ -27,7 +27,7 @@ public class SoundGemScript : MonoBehaviour
     void Start()
     {
         // Set audio to the AudioSource component
-        audio = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
 
         // Make sure the timer is a 0 when we start.
         timer = 0f;
@@ -78,10 +78,10 @@ public class SoundGemScript : MonoBehaviour
                 if(currentSound <= audioClips.Length-1)
                 {
                     // Set the audio clip to current sound
-                    audio.clip = audioClips[currentSound];
+                    audioSource.clip = audioClips[currentSound];
 
                     // Play the current audio clip
-                    audio.Play();
+                    audioSource.Play();
 
                     // Increment currentSound to get to the next sound in the array.
                     currentSound++;
@@ -101,14 +101,14 @@ public class SoundGemScript : MonoBehaviour
 	IEnumerator PlaySounds(){
 		audioPlaying = true;
 		for (int i = 0; i < audioClips.Length; i++) {
-			audio.clip = audioClips[i];
-			audio.Play ();
+			audioSource.clip = audioClips[i];
+			audioSource.Play ();
 			yield return new WaitForSeconds(audioClips[i].length + timeBetweenSounds);
 		}
 		audioPlaying = false;
 	}
 
-	public void RayCastEvent(int playerIndex){
+    public override void OnRayReceived(int playerIndex, Ray ray, RaycastHit hit){
 		if (!audioPlaying){
 			StartCoroutine(PlaySounds());
 		}

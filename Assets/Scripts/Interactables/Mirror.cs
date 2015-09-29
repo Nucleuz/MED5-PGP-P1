@@ -1,28 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Mirror : MonoBehaviour {
+public class Mirror : Interactable {
+	[HideInInspector]
 	public GameObject triggeredPlayer;
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
-	public void Reflect(Ray ray, RaycastHit hit, int playerIndex){
+	public override void OnRayReceived(int playerIndex, Ray ray, RaycastHit hit){
 
 		Ray newRay = new Ray (hit.point, Vector3.Reflect (ray.direction, hit.normal));
-		RaycastHit rayhit;
+		RaycastHit rayhit;            
+		Debug.DrawRay(hit.point, newRay.direction * 10, Color.cyan);
 		if (Physics.Raycast (newRay, out rayhit)) {
-			Transform newHit = rayhit.transform;
-			if (newHit.tag == "Interactable") {
-				newHit.GetComponent<RaycastReceiver> ().OnRayReceived (playerIndex);
-			} else if (newHit.tag == "Mirror") {
-				newHit.GetComponent<Mirror> ().Reflect (newRay, rayhit, playerIndex);
+			Interactable interactable = rayhit.transform.GetComponent<Interactable>();
+			if (interactable != null) {
+				interactable.OnRayReceived (playerIndex,newRay, rayhit);
 			}
 		}
 	}

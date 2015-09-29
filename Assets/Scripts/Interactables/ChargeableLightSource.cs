@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ChargeableLightSource : MonoBehaviour {
+public class ChargeableLightSource : Interactable {
 
     public Transform chargedBeamTargetPosition;
 
@@ -11,14 +11,14 @@ public class ChargeableLightSource : MonoBehaviour {
 
     public ParticleSystem particles;
 
-    private Renderer render;
-
     private float energy;
     public float increaseRate;
     public float decreaseRate;
     public Transform beamPos;
-	float lastInteracted;
-	public float maxInterval;
+
+
+	float endInteractTime;
+	public float minInteractLength;
 	int playerIndex;
 
 
@@ -30,8 +30,6 @@ public class ChargeableLightSource : MonoBehaviour {
 
         increaseRate = 1.0f;
         decreaseRate = 2.0f;
-
-        render = GetComponent<Renderer>();
 
         particles = GetComponent<ParticleSystem>();
         particles.enableEmission = false;
@@ -50,7 +48,7 @@ public class ChargeableLightSource : MonoBehaviour {
 	
 
         // Checks if isHitByRay is true and whether readyForCharge is true
-		if (lastInteracted > Time.time && readyForCharge)
+		if (endInteractTime > Time.time && readyForCharge)
         {
             // Checks if we have less than 100 energy.
             if (energy < 100)
@@ -111,13 +109,10 @@ public class ChargeableLightSource : MonoBehaviour {
             // Casts a ray against all colliders
             if (Physics.Raycast(ray, out hit)) {
                 // Declaring objectHit to be the object that the ray hits
-                Transform objectHit = hit.transform;
-				if (objectHit.tag == "Interactable"){
-					objectHit.GetComponent<RaycastReceiver>().OnRayReceived(playerIndex);
-				}
-				else if (objectHit.tag == "Mirror"){
-					objectHit.GetComponent<Mirror>().Reflect(ray, hit, playerIndex);
-				}
+                Interactable interactable = hit.transform.GetComponent<Interactable>();
+				if (interactable != null)
+					interactable.OnRayReceived(playerIndex,ray,hit);
+				
             }
 
             // Draws the ray (nice to have as a visual representation)
@@ -125,9 +120,9 @@ public class ChargeableLightSource : MonoBehaviour {
         }
 
 	}
-	public void RayCastEvent(int playerIndex){
-		playerIndex = playerIndex;
-		lastInteracted = Time.time + maxInterval;
+    public override void OnRayReceived(int playerIndex, Ray ray, RaycastHit hit){
+		this.playerIndex = playerIndex;
+        endInteractTime = Time.time + minInteractLength;
 
 	}
 }

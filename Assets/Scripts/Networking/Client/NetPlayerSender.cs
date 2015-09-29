@@ -20,29 +20,31 @@ public class NetPlayerSender : MonoBehaviour {
 	public float strafeSpeed;
 
 	//ref
-	Rigidbody rigidbody;
+	Rigidbody body;
 
 
 	void Start(){
 		DarkRiftAPI.onPlayerDisconnected += PlayerDisconnected;
-		rigidbody = GetComponent<Rigidbody>();
+		body = GetComponent<Rigidbody>();
 	}
 
 	void Update () {
+		/*
 		//get the mouse position in the world
 		Vector3 c = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		//set y to be on the some level as the player
 		c.y = transform.position.y;
 		//look at the position
 		transform.LookAt(c);
+		*/
 
 		//get input
 		float v = Input.GetAxis("Vertical");
 		float h = Input.GetAxis("Horizontal");
 
 		//apply forces
-		rigidbody.AddForce(transform.forward * v * Time.deltaTime * speed);
-		rigidbody.AddForce(transform.right * h * Time.deltaTime * strafeSpeed);
+		body.AddForce(Vector3.forward * v * Time.deltaTime * speed);
+		body.AddForce(Vector3.right * h * Time.deltaTime * strafeSpeed);
 
 		if( DarkRiftAPI.isConnected){
 			//has the rotation or position changed since last sent message
