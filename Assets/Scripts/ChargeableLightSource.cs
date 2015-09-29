@@ -5,8 +5,9 @@ public class ChargeableLightSource : MonoBehaviour {
 
     public Transform chargedBeamTargetPosition;
 
-    public bool isHitByRay;
-    private bool readyForCharge;
+    public bool isHitByRay; // Bool for checking whether crystal is hit by ray
+    private bool readyForCharge; // Bool for checking whether crystal is ready to charge
+    private bool readyToShoot; // Bool for checking whether crystal is ready to shoot
 
     public ParticleSystem particles;
 
@@ -15,9 +16,12 @@ public class ChargeableLightSource : MonoBehaviour {
     private float energy;
     public float increaseRate;
     public float decreaseRate;
+    public Transform beamPos;
+
 
 	void Start () {
 
+        readyToShoot = false;
         readyForCharge = true;
         energy = 0;
 
@@ -66,6 +70,8 @@ public class ChargeableLightSource : MonoBehaviour {
 
                     // Make sure that we cannot charge it again right away
                     readyForCharge = false;
+
+                    readyToShoot = true;
                 }
             }
         }
@@ -73,6 +79,8 @@ public class ChargeableLightSource : MonoBehaviour {
         // Checks if energy is less than or equal than 0.
         if(energy <= 0)
         {
+            readyToShoot = false;
+
             // Makes sure that we can charge the button.
             readyForCharge = true;
 
@@ -96,5 +104,23 @@ public class ChargeableLightSource : MonoBehaviour {
             }
         }
 	    
+        // Checks whether crystal is ready to shoot
+        if(readyToShoot){
+            RaycastHit hit;
+
+            // Sets the to point from the main camera to the mouse position (This needs to be changed later).
+            Ray ray = new Ray(transform.position, beamPos.position - transform.position);
+            // If we want to use the mouses position as a ray point, then comment out the above line and used this: Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            // Casts a ray against all colliders
+            if (Physics.Raycast(ray, out hit)) {
+                // Declaring objectHit to be the object that the ray hits
+                Transform objectHit = hit.transform;
+            }
+
+            // Draws the ray (nice to have as a visual representation)
+            Debug.DrawRay(ray.origin, ray.direction * 10, Color.cyan);
+        }
+
 	}
 }
