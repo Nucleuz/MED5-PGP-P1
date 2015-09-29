@@ -38,7 +38,7 @@ public class ChargeableButtonScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isReadyToBeTriggered) { 
+        if (GetComponent<Trigger>().isReadyToBeTriggered) { 
             if (readyForCharge) { 
                 // Checks if left mouse button is pressed. (This needs to be removed when we finally use it)
                 if (Input.GetMouseButton(0))
