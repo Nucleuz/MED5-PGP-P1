@@ -17,6 +17,9 @@ public class ChargeableLightSource : MonoBehaviour {
     public float increaseRate;
     public float decreaseRate;
     public Transform beamPos;
+	float lastInteracted;
+	public float maxInterval;
+	int playerIndex;
 
 
 	void Start () {
@@ -44,14 +47,10 @@ public class ChargeableLightSource : MonoBehaviour {
             particles.enableEmission = false;
         }
 
-        if(Input.GetMouseButton(0) && readyForCharge){
-            isHitByRay = true;
-        } else {
-            isHitByRay = false;
-        }
+	
 
         // Checks if isHitByRay is true and whether readyForCharge is true
-        if (isHitByRay && readyForCharge)
+		if (lastInteracted > Time.time && readyForCharge)
         {
             // Checks if we have less than 100 energy.
             if (energy < 100)
@@ -62,9 +61,6 @@ public class ChargeableLightSource : MonoBehaviour {
                 // Checks if energy is bigger than 100
                 if (energy >= 100)
                 {
-                    // Set isHitByRay to false if we've reached full energy.
-                    isHitByRay = false;
-
                     // Set isTrigger in Trigger script to true
                     GetComponent<Trigger>().isTriggered = true;
 
@@ -75,6 +71,15 @@ public class ChargeableLightSource : MonoBehaviour {
                 }
             }
         }
+		else  
+		{
+			// Checks if energy is higher than 0
+			if (energy > 0)
+			{
+				// Decrease energy
+				energy -= decreaseRate;
+			}
+		}
 
         // Checks if energy is less than or equal than 0.
         if(energy <= 0)
@@ -93,16 +98,7 @@ public class ChargeableLightSource : MonoBehaviour {
             GetComponent<Trigger>().isTriggered = false;
         }
 
-        // Checks if isHitByRay is false
-        if (!isHitByRay)
-        {
-            // Checks if energy is higher than 0
-            if (energy > 0)
-            {
-                // Decrease energy
-                energy -= decreaseRate;
-            }
-        }
+    
 	    
         // Checks whether crystal is ready to shoot
         if(readyToShoot){
@@ -116,11 +112,22 @@ public class ChargeableLightSource : MonoBehaviour {
             if (Physics.Raycast(ray, out hit)) {
                 // Declaring objectHit to be the object that the ray hits
                 Transform objectHit = hit.transform;
+				if (objectHit.tag == "Interactable"){
+					objectHit.GetComponent<RaycastReceiver>().OnRayReceived(playerIndex);
+				}
+				else if (objectHit.tag == "Mirror"){
+					objectHit.GetComponent<Mirror>().Reflect(ray, hit, playerIndex);
+				}
             }
 
             // Draws the ray (nice to have as a visual representation)
             Debug.DrawRay(ray.origin, ray.direction * 10, Color.cyan);
         }
+
+	}
+	public void RayCastEvent(int playerIndex){
+		playerIndex = playerIndex;
+		lastInteracted = Time.time + maxInterval;
 
 	}
 }

@@ -21,6 +21,8 @@ public class SoundGemScript : MonoBehaviour
     // Used to loop through the sounds in the array
     int currentSound;
 
+	bool audioPlaying = false;
+
     // Use this for initialization
     void Start()
     {
@@ -95,4 +97,20 @@ public class SoundGemScript : MonoBehaviour
             }
         }
     }
+
+	IEnumerator PlaySounds(){
+		audioPlaying = true;
+		for (int i = 0; i < audioClips.Length; i++) {
+			audio.clip = audioClips[i];
+			audio.Play ();
+			yield return new WaitForSeconds(audioClips[i].length + timeBetweenSounds);
+		}
+		audioPlaying = false;
+	}
+
+	public void RayCastEvent(int playerIndex){
+		if (!audioPlaying){
+			StartCoroutine(PlaySounds());
+		}
+	}
 }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ChargeableButtonScript : MonoBehaviour
+public class ChargeableButtonScript : MonoBehaviour, IRaycastEvents
 {
 
     // Float to hold the total charged energy
@@ -19,6 +19,8 @@ public class ChargeableButtonScript : MonoBehaviour
     // Used to check if we can charge the button
     public bool readyForCharge;
 
+	public float lastInteracted;
+	public float maxInterval;
     // Use this for initialization
     void Start()
     {
@@ -41,7 +43,7 @@ public class ChargeableButtonScript : MonoBehaviour
         if (GetComponent<Trigger>().isReadyToBeTriggered) { 
             if (readyForCharge) { 
                 // Checks if left mouse button is pressed. (This needs to be removed when we finally use it)
-                if (Input.GetMouseButton(0))
+                if (lastInteracted < Time.time + maxInterval)
                 {
                     // Sets isCharging to true if mouse button is pressed.
                     isCharging = true;
@@ -102,4 +104,7 @@ public class ChargeableButtonScript : MonoBehaviour
             }
         }
     }
+	public void RayCastEvent(int playerIndex){
+		lastInteracted = Time.time;
+	}
 }
