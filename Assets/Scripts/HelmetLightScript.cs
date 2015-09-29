@@ -17,21 +17,21 @@ public class HelmetLightScript : MonoBehaviour {
     private float startTime;                        // Used for lerping the focus light angle and intensity
     private bool timeSaved = false;                 // Used for lerping the focus light angle and intensity
 
-    private LineRenderer linRend;					// Used for drawing the ray from the helmet
+    private LineRenderer lineRenderer;					// Used for drawing the ray from the helmet
 	public int playerIndex;							// index for the player.
 	public Transform objectHit;
 	public Ray ray;
 
     void Start () {
-		linRend = gameObject.GetComponent<LineRenderer>();
-        linRend.SetWidth(0.1f, 0.1f);
+		lineRenderer = gameObject.GetComponent<LineRenderer>();
+        lineRenderer.SetWidth(0.1f, 0.1f);
 
         helmetLight = GetComponent<Light>();        //Calls the light component on the spotlight  
     }
 	
 	void Update () {
 
-        linRend.enabled = helmetLightFocused;
+        lineRenderer.enabled = helmetLightFocused;
 
         //Checks if the focus button is pressed (Default = space)
         if (Input.GetKey("space")) {
@@ -80,18 +80,16 @@ public class HelmetLightScript : MonoBehaviour {
             ray = new Ray(gameObject.transform.position + gameObject.transform.up/3, gameObject.transform.forward);
 			RaycastHit hit;
 			int i = 1;
-			linRend.SetVertexCount(i);				// resets the number of vertecies of the line renderer to 1
-			linRend.SetPosition(i-1, ray.origin);	// sets the line origin to the same as that of the ray (gameobject position)
+			lineRenderer.SetVertexCount(i);				// resets the number of vertecies of the line renderer to 1
+			lineRenderer.SetPosition(i-1, ray.origin);	// sets the line origin to the same as that of the ray (gameobject position)
 
 			if (Physics.Raycast(ray, out hit)) {
 				// Declaring objectHit to be the object that the ray hits
 				objectHit = hit.transform;
 				
 				// Updates the line renderer vertecies
-				linRend.SetVertexCount(++i);
-				linRend.SetPosition(i-1, hit.point);
-				Debug.DrawLine(ray.origin, hit.point, Color.cyan);// for debug and see direction of ray
-            // If we want to use the mouses position as a ray direction, then use Camera.main.ScreenPointToRay(Input.mousePosition) instead of gameobject.transform.forward.
+				lineRenderer.SetVertexCount(++i);
+				lineRenderer.SetPosition(i-1, hit.point);
 
                 Interactable interactable = objectHit.GetComponent<Interactable>();
 				if (interactable != null){
