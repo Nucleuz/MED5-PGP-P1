@@ -471,13 +471,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1597933200}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d84884c0cb985bb4580f6e34f0aebf1a, type: 3}
+  m_Script: {fileID: 11500000, guid: ced3f0e122c1f4bf8894b33a226da394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubes:
-  - {fileID: 70736714}
-  - {fileID: 507103831}
-  - {fileID: 2103890321}
+  nextID: 0
 --- !u!114 &1597933208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -490,6 +487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   port: 4296
+  maxConnections: 20
   logData: 0
   callEventsFrom: 0
 --- !u!1 &2103890316
