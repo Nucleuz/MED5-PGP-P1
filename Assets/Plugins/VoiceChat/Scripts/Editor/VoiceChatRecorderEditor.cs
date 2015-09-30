@@ -1,8 +1,8 @@
+#if UNITY_EDITOR
 using System;
 using System.Linq;
-using UnityEditor;
 using UnityEngine;
-
+using UnityEditor;
 namespace VoiceChat
 {
     [CustomEditor(typeof(VoiceChatRecorder))]
@@ -59,3 +59,4 @@ namespace VoiceChat
         }
     } 
 }
+#endif

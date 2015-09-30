@@ -27,11 +27,9 @@ public class ClientManager : MonoBehaviour {
 	//@TODO - create a kind of console instead if this..
 	public Text debugText;
 
-	//prefab for the other players
-	public GameObject prefabOtherPlayer;
-
-	//the player
-	public Transform player; 
+	//prefab for the players
+	public GameObject prefabPlayer;
+	public Transform player;
 
 	void Start(){
 		//Connect to the server
@@ -61,20 +59,34 @@ public class ClientManager : MonoBehaviour {
 					//when the server sends the spawn position
 
 					Write("ServerSentSpawnPos");
-					//set the player position
-					player.gameObject.SetActive(true);
-					player.position = ((SVector3) data).get();
 
 					//pack the information
 					PlayerInfo info = new PlayerInfo();
-					info.position = new SVector3(player.position);
-					info.rotation = new SQuaternion(player.rotation);
+					info.position = new SVector3(((SVector3) data).get());
+					info.rotation = new SQuaternion(Quaternion.identity);
+
+					//spawn the object
+					GameObject g = Instantiate(prefabPlayer,info.position.get(),Quaternion.identity) as GameObject;
+					player = g.transform;
+					//set the network id so it will sync with the player
+					NetPlayerSync netPlayer = 	g.GetComponent<NetPlayerSync>();
+
+					netPlayer.networkID = senderID;
+					netPlayer.SetAsSender();
+					netPlayer.head.rotation = info.rotation.get();
+
 
 					//send it to everyone else
 					DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager,Network.Subject.SpawnPlayer,info);
 				}break;
 				case Network.Subject.ServerSentNetID:{
 					networkID = (ushort)data;
+					if(player != null)
+						player.GetComponent<NetPlayerSync>().networkID = (ushort)data;
+					else
+						Write("ServerSentNetID was received before player was instantiated");
+
+
 				}break;
 				case Network.Subject.SpawnPlayer:{
 					//spawn other player
@@ -84,10 +96,14 @@ public class ClientManager : MonoBehaviour {
 					PlayerInfo info = (PlayerInfo)data;
 
 					//spawn the object
-					GameObject other = Instantiate(prefabOtherPlayer,info.position.get(),info.rotation.get()) as GameObject;
+					GameObject g = Instantiate(prefabPlayer,info.position.get(),Quaternion.identity) as GameObject;
 
 					//set the network id so it will sync with the player
-					other.GetComponent<NetPlayerReceiver>().networkID = senderID;
+					NetPlayerSync netPlayer = 	g.GetComponent<NetPlayerSync>();
+
+					netPlayer.networkID = senderID;
+					netPlayer.SetAsReceiver();
+					netPlayer.head.rotation = info.rotation.get();
 
 				}break;
 				case Network.Subject.HasJoined:{
@@ -109,6 +125,7 @@ public class ClientManager : MonoBehaviour {
 	//for debugging 
 	//@TODO - replace with console
 	void Write(string mess){
-		debugText.text += mess + "\n";
+		if(debugText != null)
+			debugText.text += mess + "\n";
 	}
 }

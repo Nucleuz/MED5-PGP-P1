@@ -11,7 +11,7 @@ Receiver for another player
 
 public class NetPlayerReceiver : MonoBehaviour {
 
-	//is by the client manager
+	//network id for the object
 	[HideInInspector]
 	public ushort networkID;
 

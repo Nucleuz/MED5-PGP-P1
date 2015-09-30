@@ -49,8 +49,8 @@ GameObject:
   - 92: {fileID: 9268044}
   - 81: {fileID: 8140868}
   m_Layer: 0
-  m_Name: Main Camera
-  m_TagString: MainCamera
+  m_Name: Camera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,6 +84,7 @@ GameObject:
   - 23: {fileID: 2302708}
   - 95: {fileID: 9505746}
   - 114: {fileID: 11465930}
+  - 114: {fileID: 11417614}
   m_Layer: 0
   m_Name: Non-VR Player
   m_TagString: Untagged
@@ -344,6 +345,21 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
+--- !u!114 &11417614
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 055d0bc1875a74acaa52a6811315853f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  head: {fileID: 447438}
+  cam: {fileID: 2027462}
+  headControl: {fileID: 11490494}
+  networkID: 0
 --- !u!114 &11433986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -384,7 +400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14fce854a4c2445969471c7a72f2660a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 1
+  cam: {fileID: 2027462}
 --- !u!120 &12034002
 LineRenderer:
   m_ObjectHideFlags: 1
