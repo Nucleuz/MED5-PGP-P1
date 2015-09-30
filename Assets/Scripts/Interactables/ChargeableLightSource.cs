@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ChargeableLightSource : MonoBehaviour {
+
+[RequireComponent(typeof(LineRenderer))]
+public class ChargeableLightSource : Interactable {
 
     public Transform chargedBeamTargetPosition;
 
@@ -11,13 +13,19 @@ public class ChargeableLightSource : MonoBehaviour {
 
     public ParticleSystem particles;
 
-    private Renderer render;
-
     private float energy;
     public float increaseRate;
     public float decreaseRate;
     public Transform beamPos;
 
+    public LineRenderer lineRenderer;
+
+
+	float endInteractTime;
+	public float minInteractLength;
+	int playerIndex;
+
+    Trigger trigger;
 
 	void Start () {
 
@@ -28,7 +36,10 @@ public class ChargeableLightSource : MonoBehaviour {
         increaseRate = 1.0f;
         decreaseRate = 2.0f;
 
-        render = GetComponent<Renderer>();
+        trigger = GetComponent<Trigger>();
+
+        lineRenderer = GetComponent<LineRenderer>();
+        lineRenderer.SetWidth(0.1f, 0.1f);
 
         particles = GetComponent<ParticleSystem>();
         particles.enableEmission = false;
@@ -44,14 +55,10 @@ public class ChargeableLightSource : MonoBehaviour {
             particles.enableEmission = false;
         }
 
-        if(Input.GetMouseButton(0) && readyForCharge){
-            isHitByRay = true;
-        } else {
-            isHitByRay = false;
-        }
+	
 
         // Checks if isHitByRay is true and whether readyForCharge is true
-        if (isHitByRay && readyForCharge)
+		if (endInteractTime > Time.time && readyForCharge)
         {
             // Checks if we have less than 100 energy.
             if (energy < 100)
@@ -62,11 +69,8 @@ public class ChargeableLightSource : MonoBehaviour {
                 // Checks if energy is bigger than 100
                 if (energy >= 100)
                 {
-                    // Set isHitByRay to false if we've reached full energy.
-                    isHitByRay = false;
-
                     // Set isTrigger in Trigger script to true
-                    GetComponent<Trigger>().isTriggered = true;
+                    trigger.isTriggered = true;
 
                     // Make sure that we cannot charge it again right away
                     readyForCharge = false;
@@ -75,6 +79,15 @@ public class ChargeableLightSource : MonoBehaviour {
                 }
             }
         }
+		else  
+		{
+			// Checks if energy is higher than 0
+			if (energy > 0)
+			{
+				// Decrease energy
+				energy -= decreaseRate;
+			}
+		}
 
         // Checks if energy is less than or equal than 0.
         if(energy <= 0)
@@ -90,19 +103,12 @@ public class ChargeableLightSource : MonoBehaviour {
             }
 
             // Set isTrigger in Trigger script to false
-            GetComponent<Trigger>().isTriggered = false;
+            trigger.isTriggered = false;
+            trigger.canReset = true;
+
         }
 
-        // Checks if isHitByRay is false
-        if (!isHitByRay)
-        {
-            // Checks if energy is higher than 0
-            if (energy > 0)
-            {
-                // Decrease energy
-                energy -= decreaseRate;
-            }
-        }
+    
 	    
         // Checks whether crystal is ready to shoot
         if(readyToShoot){
@@ -114,13 +120,27 @@ public class ChargeableLightSource : MonoBehaviour {
 
             // Casts a ray against all colliders
             if (Physics.Raycast(ray, out hit)) {
+
+                //setting up the lineRenderer (only if we have actually hit something)
+                lineRenderer.SetVertexCount(2);
+                lineRenderer.SetPosition(0, transform.position);
+                lineRenderer.SetPosition(1, hit.point);
                 // Declaring objectHit to be the object that the ray hits
-                Transform objectHit = hit.transform;
+                Interactable interactable = hit.transform.GetComponent<Interactable>();
+				if (interactable != null)
+                    //@Optimize - The mirror is the only one who the ray, hit, lineRenderer, and count
+					interactable.OnRayReceived(playerIndex,ray,hit,ref lineRenderer,2);
+				
             }
 
             // Draws the ray (nice to have as a visual representation)
             Debug.DrawRay(ray.origin, ray.direction * 10, Color.cyan);
         }
+
+	}
+    public override void OnRayReceived(int playerIndex, Ray ray, RaycastHit hit,ref LineRenderer lineRenderer,int nextLineVertex){
+		this.playerIndex = playerIndex;
+        endInteractTime = Time.time + minInteractLength;
 
 	}
 }
