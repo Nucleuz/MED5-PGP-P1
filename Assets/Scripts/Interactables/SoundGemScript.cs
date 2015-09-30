@@ -42,7 +42,7 @@ public class SoundGemScript : Interactable
 		audioPlaying = false;
 	}
 
-    public override void OnRayReceived(int playerIndex, Ray ray, RaycastHit hit){
+    public override void OnRayReceived(int playerIndex, Ray ray, RaycastHit hit, ref LineRenderer lineRenderer,int nextLineVertex){
 		if (!audioPlaying && trigger.isReadyToBeTriggered){
 			StartCoroutine(PlaySounds());
 		}

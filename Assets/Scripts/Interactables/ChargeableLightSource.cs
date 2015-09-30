@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+[RequireComponent(typeof(LineRenderer))]
 public class ChargeableLightSource : Interactable {
 
     public Transform chargedBeamTargetPosition;
@@ -15,6 +17,8 @@ public class ChargeableLightSource : Interactable {
     public float increaseRate;
     public float decreaseRate;
     public Transform beamPos;
+
+    public LineRenderer lineRenderer;
 
 
 	float endInteractTime;
@@ -33,6 +37,9 @@ public class ChargeableLightSource : Interactable {
         decreaseRate = 2.0f;
 
         trigger = GetComponent<Trigger>();
+
+        lineRenderer = GetComponent<LineRenderer>();
+        lineRenderer.SetWidth(0.1f, 0.1f);
 
         particles = GetComponent<ParticleSystem>();
         particles.enableEmission = false;
@@ -113,10 +120,16 @@ public class ChargeableLightSource : Interactable {
 
             // Casts a ray against all colliders
             if (Physics.Raycast(ray, out hit)) {
+
+                //setting up the lineRenderer (only if we have actually hit something)
+                lineRenderer.SetVertexCount(2);
+                lineRenderer.SetPosition(0, transform.position);
+                lineRenderer.SetPosition(1, hit.point);
                 // Declaring objectHit to be the object that the ray hits
                 Interactable interactable = hit.transform.GetComponent<Interactable>();
 				if (interactable != null)
-					interactable.OnRayReceived(playerIndex,ray,hit);
+                    //@Optimize - The mirror is the only one who the ray, hit, lineRenderer, and count
+					interactable.OnRayReceived(playerIndex,ray,hit,ref lineRenderer,2);
 				
             }
 
@@ -125,7 +138,7 @@ public class ChargeableLightSource : Interactable {
         }
 
 	}
-    public override void OnRayReceived(int playerIndex, Ray ray, RaycastHit hit){
+    public override void OnRayReceived(int playerIndex, Ray ray, RaycastHit hit,ref LineRenderer lineRenderer,int nextLineVertex){
 		this.playerIndex = playerIndex;
         endInteractTime = Time.time + minInteractLength;
 

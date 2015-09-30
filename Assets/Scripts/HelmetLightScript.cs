@@ -23,8 +23,9 @@ public class HelmetLightScript : MonoBehaviour {
 	public Ray ray;
 
     void Start () {
-		lineRenderer = gameObject.GetComponent<LineRenderer>();
+		lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.SetWidth(0.1f, 0.1f);
+
 
         helmetLight = GetComponent<Light>();        //Calls the light component on the spotlight  
     }
@@ -76,24 +77,25 @@ public class HelmetLightScript : MonoBehaviour {
         // Checks if the headlight is being focused
         if (helmetLightFocused) {
 
-            // Makes a ray from slightly above the gameobject going in its forward direction
-            ray = new Ray(gameObject.transform.position + gameObject.transform.up/3, gameObject.transform.forward);
+            // Make a ray from the transforms pos and forward
+            ray = new Ray(transform.position, transform.forward);
 			RaycastHit hit;
-			int i = 1;
-			lineRenderer.SetVertexCount(i);				// resets the number of vertecies of the line renderer to 1
-			lineRenderer.SetPosition(i-1, ray.origin);	// sets the line origin to the same as that of the ray (gameobject position)
 
+            
 			if (Physics.Raycast(ray, out hit)) {
 				// Declaring objectHit to be the object that the ray hits
 				objectHit = hit.transform;
 				
-				// Updates the line renderer vertecies
-				lineRenderer.SetVertexCount(++i);
-				lineRenderer.SetPosition(i-1, hit.point);
+                //setting up the lineRenderer (only if we have actually hit something)
+                lineRenderer.SetVertexCount(2);             
+                lineRenderer.SetPosition(0, transform.position);  // sets the line origin to the 
+				lineRenderer.SetPosition(1, hit.point);
 
                 Interactable interactable = objectHit.GetComponent<Interactable>();
 				if (interactable != null){
-				    interactable.OnRayReceived(playerIndex,ray, hit);
+                    //@Optimize - The mirror is the only one who the ray, hit, lineRenderer, and count
+                    interactable.OnRayReceived(playerIndex,ray, hit,ref lineRenderer,2);
+
 				}
 			}
 
