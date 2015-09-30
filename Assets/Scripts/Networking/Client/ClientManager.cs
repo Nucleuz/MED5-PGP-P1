@@ -21,6 +21,8 @@ public class ClientManager : MonoBehaviour {
 	//@TODO - client should be able to change the ip when the client starts up, for easier use
 	public string IP = "127.0.0.1";
 
+	public ushort networkID;
+
 	//debug text
 	//@TODO - create a kind of console instead if this..
 	public Text debugText;
@@ -70,6 +72,9 @@ public class ClientManager : MonoBehaviour {
 
 					//send it to everyone else
 					DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager,Network.Subject.SpawnPlayer,info);
+				}break;
+				case Network.Subject.ServerSentNetID:{
+					networkID = (ushort)data;
 				}break;
 				case Network.Subject.SpawnPlayer:{
 					//spawn other player

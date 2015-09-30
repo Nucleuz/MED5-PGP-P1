@@ -57,6 +57,7 @@ public class ServerManager : MonoBehaviour {
 				
 				//send back the spawnpos to the client
 				con.SendReply(Network.Tag.Manager,Network.Subject.ServerSentSpawnPos,spawnPos[nextPos++]);
+				con.SendReply(Network.Tag.Manager,Network.Subject.ServerSentNetID,con.id);
 			}
 		}else if(data.tag == Network.Tag.Player){
 
