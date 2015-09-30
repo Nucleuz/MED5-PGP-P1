@@ -41,7 +41,6 @@ public class GameManager : MonoBehaviour {
 				if(LM.events[h + numberOfTriggeredEvents].isTriggered == true && LM.events[h + numberOfTriggeredEvents].isReadyToBeTriggered == true){ 
 				LM.events[h + numberOfTriggeredEvents].isReadyToBeTriggered = false; //sets the event untriggerable
 				currentNumberOfEventsTriggered++; //counts up the events in sequence by 1
-				Debug.Log("Hello");
 				}
 				if(LM.events[h + numberOfTriggeredEvents].canReset == true && LM.events[h + numberOfTriggeredEvents].isReadyToBeTriggered == false){
 					LM.events[h + numberOfTriggeredEvents].isReadyToBeTriggered = true;
@@ -50,9 +49,9 @@ public class GameManager : MonoBehaviour {
 			}
 			for(int g = LM.eventOrder[index] + currentNumberOfEventsTriggered; g < LM.eventsInSequence[index]; g++){
 				if(LM.events[g + numberOfTriggeredEvents].isTriggered == true && LM.events[g + numberOfTriggeredEvents].isReadyToBeTriggered == true){
-					for(int f = numberOfTriggeredEvents; f < numberOfTriggeredEvents + LM.eventsInSequence[index] - 1; f++){
-						LM.events[f].isTriggered = false;
-						currentNumberOfEventsTriggered -= 1;
+					currentNumberOfEventsTriggered = 0;
+					for(int f = 0; f < LM.eventsInSequence[index]; f++){
+						LM.events[f + numberOfTriggeredEvents].isTriggered = false;
 					}
 					for(int u = 0; u < LM.eventOrder[index]; u++){
 						LM.events[u+ numberOfTriggeredEvents].isReadyToBeTriggered = true;
