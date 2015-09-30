@@ -19,7 +19,8 @@ public class Network{
 		public const ushort HasJoined 			= 1;
 		public const ushort SpawnPlayer 		= 2;
 		public const ushort ServerSentSpawnPos 	= 3;
-		public const ushort PlayerUpdate 		= 4;
+		public const ushort ServerSentNetID 	= 4;
+		public const ushort PlayerUpdate 		= 5;
 	}
 
 
