@@ -43,7 +43,7 @@ public class SoundGemScript : Interactable
 	}
 
     public override void OnRayReceived(int playerIndex, Ray ray, RaycastHit hit){
-		if (!audioPlaying && trigger.readyToBeTriggered){
+		if (!audioPlaying && trigger.isReadyToBeTriggered){
 			StartCoroutine(PlaySounds());
 		}
 	}
