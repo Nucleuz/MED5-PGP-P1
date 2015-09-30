@@ -28,7 +28,11 @@ public class GameManager : MonoBehaviour {
 			if(LM.events[j + numberOfTriggeredEvents].isTriggered == true && LM.events[j + numberOfTriggeredEvents].isReadyToBeTriggered == true){ 
 				LM.events[j + numberOfTriggeredEvents].isReadyToBeTriggered = false; //sets the event untriggerable
 				currentNumberOfEventsTriggered++; //counts up the events in sequence by 1
-			} 
+			}
+			if(LM.events[j + numberOfTriggeredEvents].canReset == true && LM.events[j + numberOfTriggeredEvents].isReadyToBeTriggered == false){
+				LM.events[j + numberOfTriggeredEvents].isReadyToBeTriggered = true;
+				LM.events[j + numberOfTriggeredEvents].canReset = false;
+			}
 		}
 
 		if(currentNumberOfEventsTriggered == LM.eventOrder[index]){ //Checks if the right amount of events are triggered in the current sequence
