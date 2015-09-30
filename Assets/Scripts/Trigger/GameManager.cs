@@ -23,37 +23,42 @@ public class GameManager : MonoBehaviour {
 	void FixedUpdate () {
 
 		//Checks if the current object is triggered, and if they are ready to be triggered
-		if(LM.eventOrder[index] == 0){
-			for(int j = 0; j < LM.eventsInSequence[index]; j++){
+		if(LM.eventOrder[index] == 0){ //Checks if there is a desired order in the sequence, runs if there isn't
+			for(int j = 0; j < LM.eventsInSequence[index]; j++){ //Goes through the events in the sequence
 				//Used in order to not get double values
-				if(LM.events[j + numberOfTriggeredEvents].isTriggered == true && LM.events[j + numberOfTriggeredEvents].isReadyToBeTriggered == true){ 
+				if(LM.events[j + numberOfTriggeredEvents].isTriggered == true && LM.events[j + numberOfTriggeredEvents].isReadyToBeTriggered == true){ //Checks if they are triggered
 					LM.events[j + numberOfTriggeredEvents].isReadyToBeTriggered = false; //sets the event untriggerable
 					currentNumberOfEventsTriggered++; //counts up the events in sequence by 1
 				}
+				//This if statement is used in order to reset interactables if they require it
 				if(LM.events[j + numberOfTriggeredEvents].canReset == true && LM.events[j + numberOfTriggeredEvents].isReadyToBeTriggered == false){
 					LM.events[j + numberOfTriggeredEvents].isReadyToBeTriggered = true;
 					LM.events[j + numberOfTriggeredEvents].canReset = false;
 				}
 			} 
 		}
-		else {
-			for(int h = 0; h < LM.eventOrder[index]; h++){
-				if(LM.events[h + numberOfTriggeredEvents].isTriggered == true && LM.events[h + numberOfTriggeredEvents].isReadyToBeTriggered == true){ 
+		else { //Checks if there is a desired order in the sequence. Only checks the objects that should be interacted with in the sequence 
+			for(int h = 0; h < LM.eventOrder[index]; h++){  
+				if(LM.events[h + numberOfTriggeredEvents].isTriggered == true && LM.events[h + numberOfTriggeredEvents].isReadyToBeTriggered == true){ //Checks if they are triggered 
 				LM.events[h + numberOfTriggeredEvents].isReadyToBeTriggered = false; //sets the event untriggerable
 				currentNumberOfEventsTriggered++; //counts up the events in sequence by 1
 				}
+				//This if statement is used in order to reset interactables if they require it
 				if(LM.events[h + numberOfTriggeredEvents].canReset == true && LM.events[h + numberOfTriggeredEvents].isReadyToBeTriggered == false){
 					LM.events[h + numberOfTriggeredEvents].isReadyToBeTriggered = true;
 					LM.events[h + numberOfTriggeredEvents].canReset = false;
 				}
 			}
+			//This loop goes through the objects, which is not part of the current order, but is still in the sequence
 			for(int g = LM.eventOrder[index] + currentNumberOfEventsTriggered; g < LM.eventsInSequence[index]; g++){
+				//It then checks if they are triggered
 				if(LM.events[g + numberOfTriggeredEvents].isTriggered == true && LM.events[g + numberOfTriggeredEvents].isReadyToBeTriggered == true){
+					//If they are triggered which they shouldn't be, then we reset the sequence
 					currentNumberOfEventsTriggered = 0;
-					for(int f = 0; f < LM.eventsInSequence[index]; f++){
+					for(int f = 0; f < LM.eventsInSequence[index]; f++){ //goes through all the objects in the sequence and untrigger them
 						LM.events[f + numberOfTriggeredEvents].isTriggered = false;
 					}
-					for(int u = 0; u < LM.eventOrder[index]; u++){
+					for(int u = 0; u < LM.eventOrder[index]; u++){ //goes through all the objects in the sequence and makes the ready to be triggered again
 						LM.events[u+ numberOfTriggeredEvents].isReadyToBeTriggered = true;
 					}
 				}
@@ -68,7 +73,6 @@ public class GameManager : MonoBehaviour {
 					LM.events[i].isReadyToBeTriggered = true; //Makes the next sequence ready to be triggered 
 				}
 			}
-			Debug.Log("Door is open! :D"); //Should write code here for what is to happen with the next sequence of objects
 			currentNumberOfEventsTriggered = 0; //Resets the amount of objects that was triggered in the current sequence
 		}	
 	}
