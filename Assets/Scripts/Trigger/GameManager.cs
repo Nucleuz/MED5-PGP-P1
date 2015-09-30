@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 
 		for(int j = 0; j < LM.eventOrder[index]; j++){ //Runs the objects in the current sequence
 			//Checks if the current object is triggered, and if they are ready to be triggered
@@ -28,7 +28,11 @@ public class GameManager : MonoBehaviour {
 			if(LM.events[j + numberOfTriggeredEvents].isTriggered == true && LM.events[j + numberOfTriggeredEvents].isReadyToBeTriggered == true){ 
 				LM.events[j + numberOfTriggeredEvents].isReadyToBeTriggered = false; //sets the event untriggerable
 				currentNumberOfEventsTriggered++; //counts up the events in sequence by 1
-			} 
+			}
+			if(LM.events[j + numberOfTriggeredEvents].canReset == true && LM.events[j + numberOfTriggeredEvents].isReadyToBeTriggered == false){
+				LM.events[j + numberOfTriggeredEvents].isReadyToBeTriggered = true;
+				LM.events[j + numberOfTriggeredEvents].canReset = false;
+			}
 		}
 
 		if(currentNumberOfEventsTriggered == LM.eventOrder[index]){ //Checks if the right amount of events are triggered in the current sequence
