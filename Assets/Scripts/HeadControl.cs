@@ -6,20 +6,28 @@ By KasperHdL
 
 simple head control with mouse... for testing
 
+rotates head one full rot around y, half around x and is centered
+
 */
 
 public class HeadControl : MonoBehaviour {
 
-	public float rotationSpeed = 1;
+	float horizontalRotationAmount = 360;
+	float verticalRotationAmount = 180;
+	
+	float horizontalRotationOffset = -180;
+	float verticalRotationOffset = -90;
+
+
 
 	// Update is called once per frame
 	void Update () {
-		float h = Input.GetAxis("Mouse X");
-		float v = Input.GetAxis("Mouse Y");
+		Vector2 mouse = Input.mousePosition;
+		float h = mouse.x / Camera.main.pixelWidth;
+		float v = (Camera.main.pixelHeight - mouse.y)/Camera.main.pixelHeight ;
 		Debug.Log("h: " + h + ", v: " + v);
 	
-		transform.RotateAround(Vector3.zero,transform.right,v * rotationSpeed * Time.deltaTime);
-		transform.RotateAround(Vector3.zero,transform.up,h * rotationSpeed * Time.deltaTime);
+		transform.rotation = Quaternion.Euler(v * verticalRotationAmount + verticalRotationOffset,h * horizontalRotationAmount + horizontalRotationOffset,0);
 
 
 	}
