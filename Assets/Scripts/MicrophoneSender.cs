@@ -3,20 +3,26 @@ using System.Collections;
 using VoiceChat;
 using VoiceChat.Networking;
 using VoiceChat.Networking.Legacy;
+using DarkRift;
 
 public class MicrophoneSender : MonoBehaviour {
 	private VoiceChatRecorder recorder;
+
+	public ClientManager playerSender;
 
 	// Use this for initialization
 	void Start () {
 		// Get Components for Pointers
 		recorder = GetComponent<VoiceChatRecorder> ();
+		playerSender = GetComponent<NetPlayerSender> ();
 
 		// Presumes that the first device availiable is the best
 		recorder.Device = recorder.AvailableDevices [0];
 
 		//TODO: Get NetworkId from DarkRift before recording 
 		recorder.StartRecording();
+
+		recorder.NetworkId = playerSender.
 
 		//TODO: LIST
 		// 1. Set VoiceChatRecorder.Instance.NetworkId to a unique number on each client
