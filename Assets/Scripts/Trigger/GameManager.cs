@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 
 		for(int j = 0; j < LM.eventOrder[index]; j++){ //Runs the objects in the current sequence
 			//Checks if the current object is triggered, and if they are ready to be triggered

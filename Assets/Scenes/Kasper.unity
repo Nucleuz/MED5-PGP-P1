@@ -289,7 +289,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 477682, guid: 00b697725a05df340a302c801ae3437d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.32000005
+      value: -.370000005
       objectReference: {fileID: 0}
     - target: {fileID: 477682, guid: 00b697725a05df340a302c801ae3437d, type: 2}
       propertyPath: m_LocalPosition.y
@@ -297,7 +297,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 477682, guid: 00b697725a05df340a302c801ae3437d, type: 2}
       propertyPath: m_LocalPosition.z
-      value: .839999974
+      value: .379999995
       objectReference: {fileID: 0}
     - target: {fileID: 477682, guid: 00b697725a05df340a302c801ae3437d, type: 2}
       propertyPath: m_LocalRotation.x
@@ -405,7 +405,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: .0500000007
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -524,7 +524,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 409690, guid: 70151ed3ac12c9e4fa758a406ca38de6, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -.389999986
+      value: -.280000001
       objectReference: {fileID: 0}
     - target: {fileID: 409690, guid: 70151ed3ac12c9e4fa758a406ca38de6, type: 2}
       propertyPath: m_LocalPosition.y
@@ -532,7 +532,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 409690, guid: 70151ed3ac12c9e4fa758a406ca38de6, type: 2}
       propertyPath: m_LocalPosition.z
-      value: .860000014
+      value: .400000006
       objectReference: {fileID: 0}
     - target: {fileID: 409690, guid: 70151ed3ac12c9e4fa758a406ca38de6, type: 2}
       propertyPath: m_LocalRotation.x
@@ -554,9 +554,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 164354, guid: 70151ed3ac12c9e4fa758a406ca38de6, type: 2}
-      propertyPath: m_TagString
-      value: Untagged
+    - target: {fileID: 11440352, guid: 70151ed3ac12c9e4fa758a406ca38de6, type: 2}
+      propertyPath: minInteractLength
+      value: .200000003
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 70151ed3ac12c9e4fa758a406ca38de6, type: 2}
@@ -730,7 +730,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11492572, guid: 639ce8ab29167214da59d2876d4ab108, type: 2}
       propertyPath: eventOrder.Array.data[1]
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11492572, guid: 639ce8ab29167214da59d2876d4ab108, type: 2}
       propertyPath: events.Array.data[0]

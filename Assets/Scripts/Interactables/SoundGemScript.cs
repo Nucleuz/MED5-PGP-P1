@@ -38,11 +38,12 @@ public class SoundGemScript : Interactable
 			yield return new WaitForSeconds(audioClips[i].length + timeBetweenSounds);
 		}
         trigger.isTriggered = false;
+        trigger.canReset = true;
 		audioPlaying = false;
 	}
 
     public override void OnRayReceived(int playerIndex, Ray ray, RaycastHit hit){
-		if (!audioPlaying){
+		if (!audioPlaying && trigger.readyToBeTriggered){
 			StartCoroutine(PlaySounds());
 		}
 	}

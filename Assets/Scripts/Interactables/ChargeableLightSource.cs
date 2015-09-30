@@ -21,6 +21,7 @@ public class ChargeableLightSource : Interactable {
 	public float minInteractLength;
 	int playerIndex;
 
+    Trigger trigger;
 
 	void Start () {
 
@@ -30,6 +31,8 @@ public class ChargeableLightSource : Interactable {
 
         increaseRate = 1.0f;
         decreaseRate = 2.0f;
+
+        trigger = GetComponent<Trigger>();
 
         particles = GetComponent<ParticleSystem>();
         particles.enableEmission = false;
@@ -60,7 +63,7 @@ public class ChargeableLightSource : Interactable {
                 if (energy >= 100)
                 {
                     // Set isTrigger in Trigger script to true
-                    GetComponent<Trigger>().isTriggered = true;
+                    trigger.isTriggered = true;
 
                     // Make sure that we cannot charge it again right away
                     readyForCharge = false;
@@ -93,7 +96,9 @@ public class ChargeableLightSource : Interactable {
             }
 
             // Set isTrigger in Trigger script to false
-            GetComponent<Trigger>().isTriggered = false;
+            trigger.isTriggered = false;
+            trigger.canReset = true;
+
         }
 
     

@@ -30,6 +30,7 @@ public class ChargeableButtonScript : Interactable
 
     // Update is called once per frame
     void Update(){
+
         if (readyForCharge) { 
             // Checks if left mouse button is pressed. (This needs to be removed when we finally use it)
             if (endInteractTime > Time.time){
@@ -40,9 +41,8 @@ public class ChargeableButtonScript : Interactable
                 isCharging = false;
             }
         }
-
         // Checks if isCharging is true
-        if (isCharging){
+        if (isCharging && trigger.isReadyToBeTriggered){
             // Checks if we have less than 100 energy.
             if (energy < 100){
                 // Increase energy while the Chargeable Button is being triggered.
@@ -78,11 +78,13 @@ public class ChargeableButtonScript : Interactable
 
             // Set isTrigger in Trigger script to false
             trigger.isTriggered = false;
+            trigger.canReset = true;
         }
     }
     
 	public override void OnRayReceived(int playerIndex, Ray ray, RaycastHit hit){
-		endInteractTime = Time.time + minInteractLength;
+        if(trigger.isReadyToBeTriggered)
+		  endInteractTime = Time.time + minInteractLength;
 	
 	}
 }
