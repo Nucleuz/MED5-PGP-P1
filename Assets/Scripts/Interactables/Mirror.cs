@@ -5,25 +5,27 @@ public class Mirror : Interactable {
 	[HideInInspector]
 	public GameObject triggeredPlayer;
 	public Trigger tr;
-	public float startPoint;
-	public float endPoint;
+	public float startPoint; 
+	public float endPoint = 300; // Set this value to the rotation needed to complete the puzzle.
+	private int turnAmount = 50; // How much it is turning.
 
 
 	void Start(){
-		//transform.rotation.y = startPoint;
+		startPoint = transform.eulerAngles.y; // starPoint is the mirrors rotation at the start.
 	}
 	void Update(){
 		if(tr.isTriggered==true){
+			//Debug.Log(transform.eulerAngles.y);
 			//Check if the rotation is less then or bigger then the goal rotation
-			//Rotate forth
-			if(transform.rotation.y < endPoint){
-				gameObject.transform.Rotate(0* Time.deltaTime,50* Time.deltaTime,0 * Time.deltaTime, Space.World);
-				//transform.rotation = Quaternion.Euler(startPoint, endPoint, 5*Time.deltaTime);
+			if(transform.eulerAngles.y < endPoint){
+				turnAmount *= -1;
 			}
-			//Rotate back
-			else if(transform.rotation.y == endPoint){
-				transform.rotation = Quaternion.Euler(endPoint, startPoint, 5*Time.deltaTime);
+			else if(transform.eulerAngles.y > endPoint){
+				turnAmount *= 1;
 			}
+			//Rotate the object in the y-axis.
+			gameObject.transform.Rotate(0,turnAmount* Time.deltaTime,0, Space.World);
+			//Maybe write code locks the mirror positon when the correct postions is reached.
 		}
 	}
 	public override void OnRayReceived(int playerIndex, Ray ray, RaycastHit hit, ref LineRenderer lineRenderer,int nextLineVertex){
