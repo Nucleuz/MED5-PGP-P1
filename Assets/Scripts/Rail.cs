@@ -4,6 +4,7 @@ using System.Collections;
 [ExecuteInEditMode]
 public class Rail : MonoBehaviour {
 
+	public string rName = "railPoint";
 	public bool spawnRailPoint; 	//bool functions as a button for spawning a new railpoint
 	public Rail NextRail; 			//the next rail in line
 	public Rail PreviousRail; 		//the previous rail in line
@@ -54,6 +55,7 @@ public class Rail : MonoBehaviour {
 			GameObject g = Instantiate(railPoint, new Vector3(transform.position.x+1, transform.position.y, transform.position.z), Quaternion.identity) as GameObject;
 			g.transform.parent = this.transform.parent;
 			g.GetComponent<Rail>().PreviousRail = this;
+			g.name = rName + g.transform.parent.childCount.ToString();
 			NextRail = g.GetComponent<Rail>();
 		} else {
 			NextRail.createNewPoint();
