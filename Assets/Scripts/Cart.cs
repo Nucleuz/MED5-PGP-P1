@@ -13,6 +13,10 @@ public class Cart : MonoBehaviour {
 	
 	void Update(){
 
+		if(CurrentRail.GetComponent<RailConnection>() == true){	//This is specifically for elevator connection points where the cart has to move with the elevator
+			transform.position = new Vector3(CurrentRail.transform.position.x, CurrentRail.transform.position.y+1,CurrentRail.transform.position.z);
+		}
+
 		//Checks for key presses. If up/down key is pressed
 		//then run move function. This can only happen if cart is not
 		//already moving.
