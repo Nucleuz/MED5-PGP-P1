@@ -27,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164354}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.389999986, y: .449999988, z: .949999988}
+  m_LocalPosition: {x: -4.48000002, y: .449999988, z: -4.76000023}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -80,7 +80,7 @@ MonoBehaviour:
   isCharging: 0
   readyForCharge: 0
   endInteractTime: 0
-  minInteractLength: 0
+  minInteractLength: .100000001
 --- !u!114 &11472406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -94,6 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTriggered: 0
   isReadyToBeTriggered: 0
+  canReset: 0
 --- !u!135 &13508388
 SphereCollider:
   m_ObjectHideFlags: 1
