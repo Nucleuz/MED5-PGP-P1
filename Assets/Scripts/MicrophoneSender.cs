@@ -8,8 +8,6 @@ using System;
 
 [RequireComponent(typeof(AudioSource))]
 public class MicrophoneSender : MonoBehaviour {
-	public VoiceChatRecorder recorder;
-
 	private NetPlayerSync client;
 
 	float lastTime = 0;
@@ -20,7 +18,7 @@ public class MicrophoneSender : MonoBehaviour {
 	float playDelay = 0;
 	bool shouldPlay = false;
 	float lastRecvTime = 0;
-	
+
 	[SerializeField]
 	int playbackDelay = 2;
 	
@@ -33,22 +31,16 @@ public class MicrophoneSender : MonoBehaviour {
 	void Start () {
 		client = GetComponent<NetPlayerSync> ();
 
-        if(recorder != null){
-            // Presumes that the first device availiable is the best
-            recorder.Device = recorder.AvailableDevices [0];
+		// Presumes that the first device availiable is the best
+		VoiceChatRecorder.Instance.Device = VoiceChatRecorder.Instance.AvailableDevices [0];
 
-            recorder.NetworkId = (int) client.networkID;
+		VoiceChatRecorder.Instance.NetworkId = (int) client.networkID;
 
-            recorder.StartRecording ();
+		VoiceChatRecorder.Instance.StartRecording ();
 
-            VoiceChatRecorder.Instance.NewSample += OnNewSample;
-
-        }
+		VoiceChatRecorder.Instance.NewSample += OnNewSample;
 	}
-
-	// Called by recorder whenever we get a new sample packet.
-	//TODO: Play specific audio on specific player for spatialised audio
-	//HINT: Use packet.NetworkId and AudioSource on each player
+	
 	void OnNewSample (VoiceChatPacket packet)
 	{
 		// Set last time we got something
@@ -91,9 +83,46 @@ public class MicrophoneSender : MonoBehaviour {
 		
 		VoiceChatFloatPool.Instance.Return(sample);
 	}
-	
-	// Update is called once per frame
-	void Update () {
 
+	void Update() {
+		if (GetComponent<AudioSource>().isPlaying)
+		{
+			// Wrapped around
+			if (lastTime > GetComponent<AudioSource>().time)
+			{
+				played += GetComponent<AudioSource>().clip.length;
+			}
+			
+			lastTime = GetComponent<AudioSource>().time;
+			
+			// Check if we've played to far
+			if (played + GetComponent<AudioSource>().time >= received)
+			{
+				Stop();
+				shouldPlay = false;
+			}
+		}
+		else
+		{
+			if (shouldPlay)
+			{
+				playDelay -= Time.deltaTime;
+				
+				if (playDelay <= 0)
+				{
+					GetComponent<AudioSource>().Play();
+				}
+			}
+		}
+	}
+
+	void Stop()
+	{
+		GetComponent<AudioSource>().Stop();
+		GetComponent<AudioSource>().time = 0;
+		index = 0;
+		played = 0;
+		received = 0;
+		lastTime = 0;
 	}
 }
