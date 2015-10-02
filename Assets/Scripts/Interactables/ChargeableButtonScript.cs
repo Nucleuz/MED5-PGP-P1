@@ -20,7 +20,7 @@ public class ChargeableButtonScript : Interactable
     public bool readyForCharge;
 
 	public float endInteractTime;
-	public float minInteractLength;
+	public float minInteractLength = 0.1f;
 
     private Trigger trigger;
 
