@@ -3,6 +3,7 @@ using System.Collections;
 
 
 [RequireComponent(typeof(LineRenderer))]
+[RequireComponent(typeof(ParticleSystem))]
 public class ChargeableLightSource : Interactable {
 
     public Transform chargedBeamTargetPosition;
@@ -11,12 +12,13 @@ public class ChargeableLightSource : Interactable {
     private bool readyForCharge; // Bool for checking whether crystal is ready to charge
     private bool readyToShoot; // Bool for checking whether crystal is ready to shoot
 
-    public ParticleSystem particles;
+    private ParticleSystem particles;
 
     private float energy;
     public float increaseRate;
     public float decreaseRate;
     public Transform beamPos;
+    private bool isCharging;
 
     public LineRenderer lineRenderer;
 
@@ -47,6 +49,7 @@ public class ChargeableLightSource : Interactable {
 	
 	void Update () {
 
+
         if(energy != 0){
             particles.enableEmission = true;
             particles.emissionRate = energy*10;
@@ -55,10 +58,9 @@ public class ChargeableLightSource : Interactable {
             particles.enableEmission = false;
         }
 
-	
 
         // Checks if isHitByRay is true and whether readyForCharge is true
-		if (endInteractTime > Time.time && readyForCharge)
+        if (endInteractTime > Time.time && readyForCharge)
         {
             // Checks if we have less than 100 energy.
             if (energy < 100)
@@ -82,7 +84,7 @@ public class ChargeableLightSource : Interactable {
 		else  
 		{
 			// Checks if energy is higher than 0
-			if (energy > 0)
+			if (energy > 0 && !Input.GetKey(KeyCode.Space)) //TODO: This is dirty, fix me (The key check, we should somehow know this by other scripts)
 			{
 				// Decrease energy
 				energy -= decreaseRate;
