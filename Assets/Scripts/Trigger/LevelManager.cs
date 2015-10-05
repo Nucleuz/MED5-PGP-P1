@@ -11,5 +11,6 @@ public class LevelManager : MonoBehaviour {
 											3 = first, second and third can be triggered, while the rest in the sequence can't until they are finished
 											This array was made in order to reset a sequence of events
 											these numbers should be specified in the unity editor!! */
+	public Trigger[] triggerEvents;			//Used to trigger an object when a sequence is finished
 
 }
