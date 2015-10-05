@@ -57,6 +57,10 @@ public class Console : MonoBehaviour {
 			case "/reset":
 				SC.ResetLevel();
 			break;
+			case "/getPos":
+				CC.GetPosition();
+				message = CC.messageClient;
+			break;
 			default:
 				message = "Invalid input!";
 			break;
