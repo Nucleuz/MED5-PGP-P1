@@ -13,15 +13,14 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		LM = GameObject.Find("LevelManagerObject").GetComponent<LevelManager>(); //accessing the LevelManager script on the LevelManagerObject
-		for(int k = 0; k < LM.eventsInSequence[0]; k++){ //makes the first events in the scene triggerable
-			LM.events[k].isReadyToBeTriggered = true;
-		}
+		GameObject g = GameObject.Find("LevelManagerObject"); //accessing the LevelManager script on the LevelManagerObject
+		if(g != null)
+			LM = g.GetComponent<LevelManager>();
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-
+		if(LM == null)return;
 		//Checks if the current object is triggered, and if they are ready to be triggered
 		if(LM.eventOrder[index] == 0){ //Checks if there is a desired order in the sequence, runs if there isn't
 			for(int j = 0; j < LM.eventsInSequence[index]; j++){ //Goes through the events in the sequence
@@ -76,4 +75,14 @@ public class GameManager : MonoBehaviour {
 			currentNumberOfEventsTriggered = 0; //Resets the amount of objects that was triggered in the current sequence
 		}	
 	}
+
+
+	public void setNewLevelManager(LevelManager levelManager){
+		LM = levelManager;
+
+		for(int k = 0; k < LM.eventsInSequence[0]; k++){ //makes the first events in the scene triggerable
+			LM.events[k].isReadyToBeTriggered = true;
+		}
+	}
+
 }

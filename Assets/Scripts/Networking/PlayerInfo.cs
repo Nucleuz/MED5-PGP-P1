@@ -7,6 +7,7 @@ By KasperHdL
 
 Information being send for the players
 //@TODO check if it is more efficient to send them individually
+ * No need to check it is ...
 */
 
 //When using embedded server we need to serialize the that

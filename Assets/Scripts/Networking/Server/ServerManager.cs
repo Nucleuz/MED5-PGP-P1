@@ -61,7 +61,6 @@ public class ServerManager : MonoBehaviour {
 			}
 		}else if(data.tag == Network.Tag.Player){
 
-
 			if( data.subject == Network.Subject.PlayerUpdate ){
 				//if the message is a player update
 
@@ -72,7 +71,7 @@ public class ServerManager : MonoBehaviour {
 						index = i;
 						break;
 					}
-				}
+                }
 
 
 				if(index != -1){
@@ -90,4 +89,11 @@ public class ServerManager : MonoBehaviour {
 		}
 
 	}
+
+    public void loadNextLevel(){
+        //load the next level internally (in server) and tell clients to do the same.
+        //
+
+    }
+
 }

@@ -12,4 +12,8 @@ public class LevelManager : MonoBehaviour {
 											This array was made in order to reset a sequence of events
 											these numbers should be specified in the unity editor!! */
 
+
+	public Rail[] levelStartRail = new Rail[4];
+	public Rail[] levelEndRail = new Rail[4];
+
 }

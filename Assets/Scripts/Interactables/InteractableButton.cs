@@ -3,6 +3,7 @@ using System.Collections;
 
 public class InteractableButton : Interactable{
 	Trigger trigger;
+
 	// Use this for initialization
 	void Start () {
 		trigger = GetComponent<Trigger> ();
@@ -10,7 +11,7 @@ public class InteractableButton : Interactable{
 	
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
 
 	public override void OnRayReceived(int playerIndex, Ray ray, RaycastHit hit, ref LineRenderer lineRenderer,int nextLineVertex){
@@ -18,4 +19,5 @@ public class InteractableButton : Interactable{
 			trigger.isTriggered = true;
 		}
 	}
+
 }
