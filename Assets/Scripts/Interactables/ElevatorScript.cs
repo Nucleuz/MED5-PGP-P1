@@ -5,6 +5,7 @@ public class ElevatorScript : MonoBehaviour {
 
     public RailConnection rC;                                               //rC = railConnection
     public Rail rP;                                                         //rP = railPoint
+    public Trigger trigger;
 
     public bool isActivated = false;                                        //Check to see if the object has been activated
     public bool goingUp;
@@ -32,7 +33,7 @@ public class ElevatorScript : MonoBehaviour {
 	void Update () {
 
         // Checks if the mouse button is pressed
-        if (Input.GetMouseButtonDown(0))
+        if (trigger.isTriggered)
         {
             isActivated = true;
         }
@@ -71,6 +72,8 @@ public class ElevatorScript : MonoBehaviour {
                     goingUp = true;
                 }
                 isActivated = false;
+                trigger.isTriggered = false;
+                trigger.isReadyToBeTriggered = true;
             } 
 
             // Disconnects when the active nodes is not the first or last one
