@@ -25,7 +25,7 @@ public class HeadControl : MonoBehaviour {
 		Vector2 mouse = Input.mousePosition;
 		float h = mouse.x / Camera.main.pixelWidth;
 		float v = (Camera.main.pixelHeight - mouse.y)/Camera.main.pixelHeight ;
-		Debug.Log("h: " + h + ", v: " + v);
+		//Debug.Log("h: " + h + ", v: " + v);
 	
 		transform.rotation = Quaternion.Euler(v * verticalRotationAmount + verticalRotationOffset,h * horizontalRotationAmount + horizontalRotationOffset,0);
 
