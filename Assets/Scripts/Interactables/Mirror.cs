@@ -4,7 +4,7 @@ using System.Collections;
 public class Mirror : Interactable {
 	[HideInInspector]
 	public GameObject triggeredPlayer;
-	public Trigger tr;
+	public Trigger trigger;
 	public float startPoint; 
 	public float endPoint = 300; // Set this value to the rotation needed to complete the puzzle.
 	private int turnAmount = 50; // How much it is turning.
@@ -14,7 +14,7 @@ public class Mirror : Interactable {
 		startPoint = transform.eulerAngles.y; // starPoint is the mirrors rotation at the start.
 	}
 	void Update(){
-		if(tr.isTriggered==true){
+		if(trigger != null && trigger.isTriggered==true){
 			//Debug.Log(transform.eulerAngles.y);
 			//Check if the rotation is less then or bigger then the goal rotation
 			if(transform.eulerAngles.y < endPoint){
