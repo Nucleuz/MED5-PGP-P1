@@ -147,6 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
+  isConnector: 0
   NextRail: {fileID: 1184699202}
   PreviousRail: {fileID: 980441628}
   railPoint: {fileID: 1188988}
@@ -292,6 +293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
+  isConnector: 0
   NextRail: {fileID: 0}
   PreviousRail: {fileID: 796198691}
   railPoint: {fileID: 9360586}
@@ -688,9 +690,9 @@ Transform:
   m_LocalPosition: {x: 10.9357758, y: 19.7602596, z: 13.0641842}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 947020028}
   - {fileID: 1703081314}
   - {fileID: 1476258816}
+  - {fileID: 441357117}
   - {fileID: 172620449}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -1291,6 +1293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
+  isConnector: 0
   NextRail: {fileID: 887082881}
   PreviousRail: {fileID: 1697796284}
   railPoint: {fileID: 298335853}
@@ -1477,6 +1480,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
+  isConnector: 0
   NextRail: {fileID: 0}
   PreviousRail: {fileID: 1912089580}
   railPoint: {fileID: 312945874}
@@ -1816,6 +1820,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
+  isConnector: 0
   NextRail: {fileID: 0}
   PreviousRail: {fileID: 1029495657}
   railPoint: {fileID: 368447855}
@@ -2106,6 +2111,72 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400008, guid: 2d4ad3c7b87c71e41a666bef67c98016, type: 3}
   m_PrefabInternal: {fileID: 1261551001}
+--- !u!1001 &441357116
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 99089362}
+    m_Modifications:
+    - target: {fileID: 436586, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2.8342247
+      objectReference: {fileID: 0}
+    - target: {fileID: 436586, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -19.0602589
+      objectReference: {fileID: 0}
+    - target: {fileID: 436586, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -1.06418419
+      objectReference: {fileID: 0}
+    - target: {fileID: 436586, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 436586, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 436586, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 436586, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 436586, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11419944, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
+      propertyPath: trigger
+      value: 
+      objectReference: {fileID: 360320614}
+    - target: {fileID: 11441920, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
+      propertyPath: nRail
+      value: 
+      objectReference: {fileID: 4528711}
+    - target: {fileID: 11441920, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
+      propertyPath: pRail
+      value: 
+      objectReference: {fileID: 1550557258}
+    - target: {fileID: 138658, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
+      propertyPath: m_Name
+      value: ElevatorRed
+      objectReference: {fileID: 0}
+    - target: {fileID: 11459678, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
+      propertyPath: PreviousRail
+      value: 
+      objectReference: {fileID: 1550557258}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &441357117 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 436586, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
+  m_PrefabInternal: {fileID: 441357116}
 --- !u!4 &465407388 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400008, guid: 2d4ad3c7b87c71e41a666bef67c98016, type: 3}
@@ -2215,6 +2286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
+  isConnector: 0
   NextRail: {fileID: 0}
   PreviousRail: {fileID: 1710736366}
   railPoint: {fileID: 479182450}
@@ -2296,6 +2368,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
+  isConnector: 0
   NextRail: {fileID: 0}
   PreviousRail: {fileID: 668273590}
   railPoint: {fileID: 482700562}
@@ -2452,6 +2525,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
+  isConnector: 0
   NextRail: {fileID: 1307152520}
   PreviousRail: {fileID: 1797655728}
   railPoint: {fileID: 558855369}
@@ -2584,97 +2658,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!1001 &566204136
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 99089362}
-    m_Modifications:
-    - target: {fileID: 436586, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 2.8342247
-      objectReference: {fileID: 0}
-    - target: {fileID: 436586, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -19.0602589
-      objectReference: {fileID: 0}
-    - target: {fileID: 436586, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -1.06418419
-      objectReference: {fileID: 0}
-    - target: {fileID: 436586, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 436586, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 436586, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 436586, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 436586, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 138658, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
-      propertyPath: m_Name
-      value: ElevatorRed
-      objectReference: {fileID: 0}
-    - target: {fileID: 440878, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2370700, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 7ab5dd3ed3379f642a82a87daac634bf, type: 2}
-    - target: {fileID: 11459678, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
-      propertyPath: PreviousRail
-      value: 
-      objectReference: {fileID: 1550557258}
-    - target: {fileID: 498834, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -.161571622
-      objectReference: {fileID: 0}
-    - target: {fileID: 498834, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: .69098258
-      objectReference: {fileID: 0}
-    - target: {fileID: 498834, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: .162863359
-      objectReference: {fileID: 0}
-    - target: {fileID: 498834, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: .685502112
-      objectReference: {fileID: 0}
-    - target: {fileID: 11441920, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
-      propertyPath: pRail
-      value: 
-      objectReference: {fileID: 1550557258}
-    - target: {fileID: 11441920, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
-      propertyPath: nRail
-      value: 
-      objectReference: {fileID: 4528711}
-    - target: {fileID: 11441920, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
-      propertyPath: self
-      value: 
-      objectReference: {fileID: 1565092850}
-    - target: {fileID: 11419944, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
-      propertyPath: trigger
-      value: 
-      objectReference: {fileID: 360320614}
-    m_RemovedComponents:
-    - {fileID: 0}
-  m_ParentPrefab: {fileID: 100100000, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &566872117
 Prefab:
   m_ObjectHideFlags: 0
@@ -3171,6 +3154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
+  isConnector: 0
   NextRail: {fileID: 482700564}
   PreviousRail: {fileID: 711077998}
   railPoint: {fileID: 668273588}
@@ -3715,6 +3699,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
+  isConnector: 0
   NextRail: {fileID: 9360587}
   PreviousRail: {fileID: 1426276959}
   railPoint: {fileID: 796198690}
@@ -3928,6 +3913,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
+  isConnector: 0
   NextRail: {fileID: 0}
   PreviousRail: {fileID: 298335854}
   railPoint: {fileID: 887082880}
@@ -4220,10 +4206,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2d4ad3c7b87c71e41a666bef67c98016, type: 3}
   m_IsPrefabParent: 0
---- !u!4 &947020028 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 436586, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
-  m_PrefabInternal: {fileID: 566204136}
 --- !u!1 &966621836
 GameObject:
   m_ObjectHideFlags: 0
@@ -4519,6 +4501,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
+  isConnector: 0
   NextRail: {fileID: 368447857}
   PreviousRail: {fileID: 918903590}
   railPoint: {fileID: 1029495655}
@@ -4724,6 +4707,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
+  isConnector: 0
   NextRail: {fileID: 1550557258}
   PreviousRail: {fileID: 1188989}
   railPoint: {fileID: 1184699201}
@@ -5117,6 +5101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
+  isConnector: 0
   NextRail: {fileID: 2069617972}
   PreviousRail: {fileID: 558855370}
   railPoint: {fileID: 1307152519}
@@ -5482,6 +5467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
+  isConnector: 0
   NextRail: {fileID: 796198691}
   PreviousRail: {fileID: 19759062}
   railPoint: {fileID: 1426276958}
@@ -5855,6 +5841,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
+  isConnector: 0
   NextRail: {fileID: 0}
   PreviousRail: {fileID: 1184699202}
   railPoint: {fileID: 1550557257}
@@ -5901,12 +5888,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1550557257}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1565092850 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11459678, guid: d22668bd4fa2ee0469d6e2464e09b62f,
-    type: 2}
-  m_PrefabInternal: {fileID: 566204136}
-  m_Script: {fileID: 11500000, guid: efa0b44aa476f09449a63a6ecc6211ca, type: 3}
 --- !u!1001 &1591397818
 Prefab:
   m_ObjectHideFlags: 0
@@ -6080,6 +6061,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
+  isConnector: 0
   NextRail: {fileID: 298335854}
   PreviousRail: {fileID: 1916553668}
   railPoint: {fileID: 1697796283}
@@ -6235,6 +6217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
+  isConnector: 0
   NextRail: {fileID: 479182452}
   PreviousRail: {fileID: 4528711}
   railPoint: {fileID: 1710736364}
@@ -6838,6 +6821,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
+  isConnector: 0
   NextRail: {fileID: 312945876}
   PreviousRail: {fileID: 497028507}
   railPoint: {fileID: 1912089578}
@@ -7041,7 +7025,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 436586, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 138658, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
       propertyPath: m_Name
@@ -7381,7 +7365,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 436586, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 138658, guid: d22668bd4fa2ee0469d6e2464e09b62f, type: 2}
       propertyPath: m_Name
@@ -7767,6 +7751,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
+  isConnector: 0
   NextRail: {fileID: 0}
   PreviousRail: {fileID: 1307152520}
   railPoint: {fileID: 2069617971}
