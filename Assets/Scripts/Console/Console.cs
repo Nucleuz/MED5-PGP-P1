@@ -27,41 +27,17 @@ public class Console : MonoBehaviour {
 	void Update () {
 		//Code which prepares the console.
 		if(Input.GetKeyDown(KeyCode.F1)){
-			isActive = true;
+            isActive = !isActive;
 		}
 		//Printing the userinput/creating command and prepares new user command.
 		if(isActive == true && Input.GetKeyDown(KeyCode.Return)){
 			currentCommand = userInput;
+            Command(currentCommand);
 			userInput = "";
+            isActive = false;
 		}
-		//This is for ServerCommand. This should contain all the server methods (must be writter) and universal methods.
-		if(currentCommand != "" && CC == null){
-			switch(currentCommand){
-				case "/exit":
-					CallExit();
-				break;
-				case "/reset":
-					SC.ResetLevel();
-				break;
-				default:
-					message = "Invalid input!";
-				break;
-			}
-		}
-		//This is for ClientCommand. This should contain all the client methods and universal methods.
-		else if(currentCommand != "" && SC == null){
-		switch(currentCommand){
-			case "/exit":
-				CallExit();
-			break;
-			case "/reset":
-				SC.ResetLevel();
-			break;
-			default:
-				message = "Invalid input!";
-			break;
-			}
-		}	
+		
+		
 	}
 	void CallExit(){
 		//This makes the console not visible
@@ -81,4 +57,44 @@ public class Console : MonoBehaviour {
 			GUI.Box(new Rect(0, 0, Screen.width/2, Screen.height/2), message);
 		}
 	}
+    void Command(string currentCommand) {
+        //This is for ServerCommand. This should contain all the server methods (must be writter) and universal methods.
+        if (currentCommand != "" && CC == null)
+        {
+            switch (currentCommand)
+            {
+                case "/exit":
+                    CallExit();
+                    break;
+                case "/reset":
+                    SC.ResetLevel();
+                    break;
+                case "/fps":
+                    SC.ToggleFPS();
+                    break;
+                default:
+                    message = "Invalid input!";
+                    break;
+            }
+        }
+        //This is for ClientCommand. This should contain all the client methods and universal methods.
+        else if (currentCommand != "" && SC == null)
+        {
+            switch (currentCommand)
+            {
+                case "/exit":
+                    CallExit();
+                    break;
+                case "/reset":
+                    SC.ResetLevel();
+                    break;
+                case "/fps":
+                    SC.ToggleFPS();
+                    break;
+                default:
+                    message = "Invalid input!";
+                    break;
+            }
+        }
+    }
 }
