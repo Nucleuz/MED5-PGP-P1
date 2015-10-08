@@ -8,6 +8,7 @@ public class Mirror : Interactable {
 	public float startPoint; 
 	public float endPoint = 300; // Set this value to the rotation needed to complete the puzzle.
 	private int turnAmount = 50; // How much it is turning.
+    public InteractableButton ButtonToTrigger; // The target that the mirror has to hit.
 
 
 	void Start(){
@@ -30,8 +31,12 @@ public class Mirror : Interactable {
 	}
 	public override void OnRayReceived(int playerIndex, Ray ray, RaycastHit hit, ref LineRenderer lineRenderer,int nextLineVertex){
 
-		Ray newRay = new Ray (hit.point, Vector3.Reflect (ray.direction, hit.normal));
-		RaycastHit rayhit;            
+
+        //Ray newRay = new Ray (hit.point, Vector3.Reflect (ray.direction, hit.normal));        //Legacy code. Calculates a realistisc reflection off the mirror
+
+        //Shoots a new raycast to the point of the mirror.
+        Ray newRay = new Ray(hit.point, ButtonToTrigger.transform.position - transform.position);
+        RaycastHit rayhit;            
 		Debug.DrawRay(hit.point, newRay.direction * 10, Color.cyan, 1f);
 		if (Physics.Raycast (newRay, out rayhit)) {
 
