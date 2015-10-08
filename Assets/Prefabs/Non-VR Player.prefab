@@ -1,5 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &133072
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 493798}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &138790
 GameObject:
   m_ObjectHideFlags: 1
@@ -98,12 +113,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 139958}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 489372}
   - {fileID: 458836}
-  m_Father: {fileID: 458986}
+  m_Father: {fileID: 493798}
   m_RootOrder: 0
 --- !u!4 &458836
 Transform:
@@ -127,7 +142,7 @@ Transform:
   m_LocalPosition: {x: 0, y: .5, z: -.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 447438}
+  - {fileID: 493798}
   m_Father: {fileID: 463068}
   m_RootOrder: 0
 --- !u!4 &463068
@@ -137,7 +152,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 174738}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .860602617, y: .629999995, z: 2.32999992}
+  m_LocalPosition: {x: -.722261071, y: -.0464289188, z: -5.05527925}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 458986}
@@ -154,6 +169,19 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 447438}
+  m_RootOrder: 0
+--- !u!4 &493798
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 133072}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 447438}
+  m_Father: {fileID: 458986}
   m_RootOrder: 0
 --- !u!20 &2027462
 Camera:
@@ -183,6 +211,7 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
+  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -198,7 +227,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: c340ddd007d4d0f44b08c24269cd5100, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -384,7 +413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14fce854a4c2445969471c7a72f2660a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 1
+  controllerConnected: 0
 --- !u!120 &12034002
 LineRenderer:
   m_ObjectHideFlags: 1
