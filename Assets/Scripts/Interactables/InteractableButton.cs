@@ -6,14 +6,16 @@ public class InteractableButton : Interactable{
 
 	[Tooltip("-1 = anyone, 1 = player1, 2 = player2, 4 = player3")]
 	public int playerID;
-	private int receivedPlayerID;
+	private int combinedPlayerID;
+	private bool[] additionCheck;
 
-	private float timeDelay;
+	private float delay;
 	private float timer;
 
 	// Use this for initialization
 	void Start () {
-		timeDelay = 1.0f;
+		additionCheck = new bool[4];
+		delay = 1.0f;
 		trigger = GetComponent<Trigger> ();
 	}
 	
@@ -21,18 +23,22 @@ public class InteractableButton : Interactable{
 	void Update () {
 		timer -= Time.deltaTime;
 		if(timer <= 0){
-			timer = timeDelay;
-			receivedPlayerID = 0;
+			timer = delay;
+			combinedPlayerID = 0;
+			for(int i = 0; i < additionCheck.Length; i++)
+				additionCheck[i] = false;
 		}
-
-		Debug.Log(receivedPlayerID);
+		Debug.Log(combinedPlayerID);
 	}
 
 
 	public override void OnRayReceived(int playerIndex, Ray ray, RaycastHit hit, ref LineRenderer lineRenderer,int nextLineVertex){
+		if(!additionCheck[playerIndex-1]){
+			combinedPlayerID += playerIndex;
+			additionCheck[playerIndex-1] = true;
+		}
 		
-		receivedPlayerID = playerIndex;
-		if (trigger.isReadyToBeTriggered && (playerIndex == playerID || playerID == -1)) {
+		if (trigger.isReadyToBeTriggered && (playerIndex == playerID || playerID == -1 || combinedPlayerID == playerID)) {
 			trigger.isTriggered = true;
 		}
 	}
