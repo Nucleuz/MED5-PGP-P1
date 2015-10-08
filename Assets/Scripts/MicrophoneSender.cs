@@ -6,10 +6,11 @@ using VoiceChat.Networking.Legacy;
 using DarkRift;
 using System;
 
+[RequireComponent(typeof(AudioSource))]
 public class MicrophoneSender : MonoBehaviour {
-	private VoiceChatRecorder recorder;
+	public VoiceChatRecorder recorder;
 
-	public ClientManager client;
+	private NetPlayerSync client;
 
 	float lastTime = 0;
 	double played = 0;
@@ -19,7 +20,6 @@ public class MicrophoneSender : MonoBehaviour {
 	float playDelay = 0;
 	bool shouldPlay = false;
 	float lastRecvTime = 0;
-	NSpeex.SpeexDecoder speexDec = new NSpeex.SpeexDecoder(NSpeex.BandMode.Narrow);
 	
 	[SerializeField]
 	int playbackDelay = 2;
@@ -31,8 +31,7 @@ public class MicrophoneSender : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		// Get Components for Pointers
-		recorder = GetComponent<VoiceChatRecorder> ();
+		client = GetComponent<NetPlayerSync> ();
 
 		// Presumes that the first device availiable is the best
 		recorder.Device = recorder.AvailableDevices [0];
@@ -45,6 +44,8 @@ public class MicrophoneSender : MonoBehaviour {
 	}
 
 	// Called by recorder whenever we get a new sample packet.
+	//TODO: Play specific audio on specific player for spatialised audio
+	//HINT: Use packet.NetworkId and AudioSource on each player
 	void OnNewSample (VoiceChatPacket packet)
 	{
 		// Set last time we got something
@@ -52,7 +53,7 @@ public class MicrophoneSender : MonoBehaviour {
 		
 		// Decompress
 		float[] sample = null;
-		int length = VoiceChatUtils.Decompress(speexDec, packet, out sample);
+		int length = VoiceChatUtils.Decompress(packet, out sample);
 		
 		// Add more time to received
 		received += VoiceChatSettings.Instance.SampleTime;
