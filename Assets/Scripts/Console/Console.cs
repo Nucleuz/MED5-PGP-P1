@@ -59,8 +59,12 @@ public class Console : MonoBehaviour {
 			break;
 			case "/getPos":
 				CC.GetPosition();
-				message = CC.messageClient;
+				message = CC.getMessageClient();
 			break;
+            case "/teleportToCart":
+                CC.TeleportToCart();
+                message = CC.getMessageClient();
+            break;
 			default:
 				message = "Invalid input!";
 			break;
