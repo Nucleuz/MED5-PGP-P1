@@ -16,18 +16,25 @@ public class LevelHandler : MonoBehaviour {
 
 	public LevelContainer currentLevelContainer;
 
-	public int[] levelOrder = {1,1,1}; 
+	public int[] levelOrder = {1,1,1,2,2,2,2,2,2,2}; 
 	
-    [HideInInspector]
 	public int levelIndex = 0;
+    private float currentRotation;
 
 	// Use this for initialization
 	void Start () {
 
         loadNextLevel();
-        loadNextLevel();
 
 	}
+
+    void Update(){
+        if(Input.GetKeyDown(KeyCode.Space)){
+                loadNextLevel();
+
+        }
+
+    }
 	
 	IEnumerator LoadAndHandleLevel(int levelIndex){
 		//@Optimize - can be done async which should be faster
@@ -61,15 +68,16 @@ public class LevelHandler : MonoBehaviour {
             LevelManager nLM = levelContainer.levelManager;
 
             //Stich togehter with the currentLevelContainer and set the next as current..
+            Vector3 pNLD = pLM.nextLevelDirection.normalized;
         
             //rotate next level so that pLM.nextLevelDirection is equal to the inverse nLM.prevLevelDirection
+            Debug.Log(pLM.nextLevelDirection + " " + (Mathf.Rad2Deg * currentLevelContainer.transform.rotation.y ));
+            float a = Vector3.Angle(pLM.nextLevelDirection,nLM.prevLevelDirection) - currentRotation;
+            currentRotation = 180-a;
 
-            float a = Vector3.Angle(pLM.nextLevelDirection,nLM.prevLevelDirection);
-            Debug.Log(a);
+            levelContainer.transform.RotateAround(levelContainer.transform.position,Vector3.up,currentRotation);
 
-            currentLevelContainer.transform.RotateAround(Vector3.zero,Vector3.up,180-a);
-
-            Vector3 nLevelRailPos = pLM.levelEndRail[0].transform.position + pLM.nextLevelDirection.normalized * 2;
+            Vector3 nLevelRailPos = pLM.levelEndRail[0].transform.position + pNLD * 2;
             Vector3 delta = nLevelRailPos - nLM.levelStartRail[0].transform.position;
             
             levelContainer.transform.position += delta;
@@ -89,7 +97,9 @@ public class LevelHandler : MonoBehaviour {
 	public void loadNextLevel(){
 		StartCoroutine(LoadAndHandleLevel(levelIndex));
 
-	}
+	} 
+
+
 
 
 }
