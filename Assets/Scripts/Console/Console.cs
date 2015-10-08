@@ -72,6 +72,9 @@ public class Console : MonoBehaviour {
                 case "/fps":
                     SC.ToggleFPS();
                     break;
+                case "/resetPosition":
+                    SC.ResetPosition();
+                    break;
                 default:
                     message = "Invalid input!";
                     break;
@@ -90,6 +93,9 @@ public class Console : MonoBehaviour {
                     break;
                 case "/fps":
                     SC.ToggleFPS();
+                    break;
+                case "/resetPosition":
+                    SC.ResetPosition();
                     break;
                 default:
                     message = "Invalid input!";

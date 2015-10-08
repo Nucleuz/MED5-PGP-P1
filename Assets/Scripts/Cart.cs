@@ -6,8 +6,12 @@ public class Cart : MonoBehaviour {
 	public Rail CurrentRail; 	//The railpoint that the cart is currently on
 	bool isMoving = false;		//Bool for checking whether cart is currently moving
 	float speed = 5.0f;			//Cart move speed
+    Vector3 startingPosition;
+    Rail startingRail;
 
 	void Start() {
+        startingRail = CurrentRail;
+        startingPosition = transform.position;
 		StartCoroutine (UpdatePosition());
 	}
 	
@@ -61,4 +65,9 @@ public class Cart : MonoBehaviour {
 			isMoving = false;
 		}
 	}
+
+    public void ResetPosition() {
+        transform.position = startingPosition;
+        CurrentRail = startingRail;
+    }
 }
