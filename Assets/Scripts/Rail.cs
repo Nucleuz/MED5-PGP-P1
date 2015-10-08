@@ -9,17 +9,22 @@ public class Rail : MonoBehaviour {
 	public Rail NextRail; 			//the next rail in line
 	public Rail PreviousRail; 		//the previous rail in line
 	public GameObject railPoint; 	//prefab reference
+    private MeshRenderer mesh;
 
 	// Use this for initialization
 	void OnEnable () {
 		spawnRailPoint = false;
+        mesh = GetComponent<MeshRenderer>();
 	}
 
 	void Update(){
-		
+        if (Application.isPlaying && mesh.enabled)
+            mesh.enabled = false;
 			//Makes sure that application is not running.
 			//This part is for level editing.
 		if(!Application.isPlaying){
+            if (!mesh.enabled)
+                mesh.enabled = true;
 			//Checks for corner rails (if a previous or next rail is null
 			//it must be an end railpoint) and sets rotation according to neighbouring railpoints
 			if(NextRail != null && PreviousRail != null) {
