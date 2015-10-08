@@ -30,7 +30,8 @@ public class InteractableButton : Interactable{
 
 
 	public override void OnRayReceived(int playerIndex, Ray ray, RaycastHit hit, ref LineRenderer lineRenderer,int nextLineVertex){
-		receivedPlayerID += playerIndex;
+		
+		receivedPlayerID = playerIndex;
 		if (trigger.isReadyToBeTriggered && (playerIndex == playerID || playerID == -1)) {
 			trigger.isTriggered = true;
 		}
