@@ -25,6 +25,12 @@ public class ServerCommands : MonoBehaviour {
        
 
     }
+    public void ResetPosition() {
+        GameObject[] player = GameObject.FindGameObjectsWithTag("Player");
+        for (int i = 0; i < player.Length; i++) {
+            player[i].GetComponent<Cart>().ResetPosition();
+        }
+    }
     
 
     
