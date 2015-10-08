@@ -17,7 +17,9 @@ public class HelmetLightScript : MonoBehaviour {
     private float startTime;                        // Used for lerping the focus light angle and intensity
     private bool timeSaved = false;                 // Used for lerping the focus light angle and intensity
 
-    private LineRenderer lineRenderer;					// Used for drawing the ray from the helmet
+    private LineRenderer lineRenderer;				// Used for drawing the ray from the helmet
+
+    [Tooltip("1, 2, 4")]
 	public int playerIndex;							// index for the player.
 	public Transform objectHit;
 	public Ray ray;
