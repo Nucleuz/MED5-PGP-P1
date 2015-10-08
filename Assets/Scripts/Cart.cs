@@ -20,10 +20,10 @@ public class Cart : MonoBehaviour {
 		//Checks for key presses. If up/down key is pressed
 		//then run move function. This can only happen if cart is not
 		//already moving.
-		if(Input.GetKey(KeyCode.UpArrow) && !isMoving)
+		if(Input.GetAxis("Vertical")>0 && !isMoving)
 			MoveForward();
 
-		if(Input.GetKey(KeyCode.DownArrow) && !isMoving)
+		if(Input.GetAxis("Vertical")<0 && !isMoving)
 			MoveBackward();
 	}
 
