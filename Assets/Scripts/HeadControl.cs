@@ -24,16 +24,12 @@ public class HeadControl : MonoBehaviour {
 	void Update () {
 		Vector2 mouse = Input.mousePosition;
 		float h = mouse.x / Camera.main.pixelWidth;
-<<<<<<< HEAD
+
 		float v = (Camera.main.pixelHeight - mouse.y)/Camera.main.pixelHeight ;
-//<<<<<<< HEAD
-		//Debug.Log("h: " + h + ", v: " + v);
-//=======
-//		Debug.Log("h: " + h + ", v: " + v);
-//>>>>>>> origin/Puzzle-3-Scene
-=======
-		float v = (Camera.main.pixelHeight - mouse.y)/Camera.main.pixelHeight;
->>>>>>> origin/FixedMirrors
+
+
+		Debug.Log("h: " + h + ", v: " + v);
+
 	
 		transform.rotation = Quaternion.Euler(v * verticalRotationAmount + verticalRotationOffset,h * horizontalRotationAmount + horizontalRotationOffset,0);
 
