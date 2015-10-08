@@ -14,7 +14,7 @@ This is an example script of some of the possible things you can do to change th
 //this shows a little ? icon and open the following URL
 [HelpURL("http://example.com/docs/MyComponent.html")]
 
-[AddComponentMenu("GoodPractices/Select-GameObject-And-Click")] //can be used so that everyone easily can add this from the component menu
+[AddComponentMenu("GoodPractices")] //can be used so that everyone easily can add this from the component menu
 [RequireComponent(typeof(TextMesh))] //requires the component and automatically adds it when adding this script to an object AND prohibits removal of component that is stated to be required
 
 

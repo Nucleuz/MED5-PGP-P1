@@ -18,10 +18,10 @@ public class ServerManager : MonoBehaviour {
 
 	//test spawn positions
 	public SVector3[] spawnPos = {
-		new SVector3(-1,1,-1),
-		new SVector3(-1,1,1),
-		new SVector3(1,1,-1),
-		new SVector3(1,1,1)
+		new SVector3(-1 , 1 , -1 ) ,
+		new SVector3(-1 , 1 ,  1 )  ,
+		new SVector3( 1 , 1 , -1 ) ,
+		new SVector3( 1 , 1 ,  1 )
 	};
 
 	//reference to player object so the server has a visual indication of the players position and rotation
@@ -56,8 +56,8 @@ public class ServerManager : MonoBehaviour {
 				players[nextPos].gameObject.SetActive(true);
 				
 				//send back the spawnpos to the client
-				con.SendReply(Network.Tag.Manager,Network.Subject.ServerSentSpawnPos,spawnPos[nextPos++]);
-				con.SendReply(Network.Tag.Manager,Network.Subject.ServerSentNetID,con.id);
+				con.SendReply(Network.Tag.Manager , Network.Subject.ServerSentSpawnPos , spawnPos[nextPos++]);
+				con.SendReply(Network.Tag.Manager , Network.Subject.ServerSentNetID    , con.id);
 			}
 		}else if(data.tag == Network.Tag.Player){
 
@@ -78,6 +78,7 @@ public class ServerManager : MonoBehaviour {
 					//if the player exist on server update the server object
 
 					PlayerInfo info = (PlayerInfo)data.data;
+                    //TODO change this update position and roatation individually
 
 					players[index].position = info.position.get();
 					players[index].rotation = info.rotation.get();

@@ -14,11 +14,9 @@ public class LevelHandler : MonoBehaviour {
 
 	public GameManager gameManager;
 
-	public LevelManager currentLevelManager;
-	public LevelManager nextLevelManager;
+	public LevelContainer currentLevelContainer;
 
-
-	public int[] levelOrder = {1,2}; 
+	public int[] levelOrder = {1,1,1}; 
 	
     [HideInInspector]
 	public int levelIndex = 0;
@@ -26,11 +24,11 @@ public class LevelHandler : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		loadNextLevel();
+        loadNextLevel();
+        loadNextLevel();
 
 	}
 	
-
 	IEnumerator LoadAndHandleLevel(int levelIndex){
 		//@Optimize - can be done async which should be faster
 		Application.LoadLevelAdditive(levelOrder[levelIndex]);
@@ -42,26 +40,47 @@ public class LevelHandler : MonoBehaviour {
 
 		for(int i = 0;i<levelContainers.Length;i++){
 			LevelContainer lc = levelContainers[i].GetComponent<LevelContainer>();
-			if(!lc.HasBeenProcessed()){
-
-				lc.process(this);
+			if(!lc.processed){
+                
+                lc.processed = true;
+                processLevelContainer(lc);
 			}
 		}
         this.levelIndex++; 
     }
 
-    public void setNextLevelManager(LevelManager levelManager){
+    public void processLevelContainer(LevelContainer levelContainer){
         //check if it should stich them together
 
-        if(currentLevelManager == null){
+        if(currentLevelContainer == null){
 
-            currentLevelManager = levelManager;
+            currentLevelContainer = levelContainer;
 
         }else{
-            //Stich togehter with the currentLevelManager and set the next as current..
-            //
+            LevelManager pLM = currentLevelContainer.levelManager;
+            LevelManager nLM = levelContainer.levelManager;
 
+            //Stich togehter with the currentLevelContainer and set the next as current..
+        
+            //rotate next level so that pLM.nextLevelDirection is equal to the inverse nLM.prevLevelDirection
+
+            float a = Vector3.Angle(pLM.nextLevelDirection,nLM.prevLevelDirection);
+            Debug.Log(a);
+
+            currentLevelContainer.transform.RotateAround(Vector3.zero,Vector3.up,180-a);
+
+            Vector3 nLevelRailPos = pLM.levelEndRail[0].transform.position + pLM.nextLevelDirection.normalized * 2;
+            Vector3 delta = nLevelRailPos - nLM.levelStartRail[0].transform.position;
+            
+            levelContainer.transform.position += delta;
+
+            
+            for(int i = 0;i<4;i++)
+                pLM.levelEndRail[i].NextRail = nLM.levelStartRail[i];
+
+            currentLevelContainer = levelContainer;
         }
+
 
         //@TODO unloading of scenes
 

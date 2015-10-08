@@ -14,6 +14,7 @@ public class LevelManager : MonoBehaviour {
 
 
 	public Rail[] levelStartRail = new Rail[4];
-	public Rail[] levelEndRail = new Rail[4];
-
+	public Rail[] levelEndRail   = new Rail[4];
+    public Vector3 nextLevelDirection;
+    public Vector3 prevLevelDirection;
 }

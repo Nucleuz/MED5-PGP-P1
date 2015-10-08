@@ -16,7 +16,7 @@ public class NetPlayerSync : MonoBehaviour {
 	public Transform head;
 
 	//Reference to components that needs to be turn on and off when switching from sender to receiver
-	public Camera cam;
+	public GameObject cam;
 	public HeadControl headControl;
 
 
@@ -84,13 +84,14 @@ public class NetPlayerSync : MonoBehaviour {
 //  Getters / Setters
 	public void SetAsSender(){
 		isSender = true;
-		cam.enabled = true;
+		cam.SetActive(true);
 		headControl.enabled = true;
 	}
 
 	public void SetAsReceiver(){
 		isSender = false;
-		cam.enabled = false;
+        cam.SetActive(false);
 		headControl.enabled = false;
+
 	}
 }
