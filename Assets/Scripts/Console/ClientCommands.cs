@@ -38,4 +38,8 @@ public class ClientCommands : MonoBehaviour {
 		messageClient = "xPos: " + GameObject.Find("Player").transform.position.x + " yPos: " + GameObject.Find("Player").transform.position.y + " zPos: " + GameObject.Find("Player").transform.position.z;
 		return messageClient;
 	}
+	//Receive the method which turns on the no clip function from the no clip camera.
+	public void ToggleNoClip(){
+    	GameObject.Find("NoClipCam").GetComponent<NoClip>().On();
+	}
 }

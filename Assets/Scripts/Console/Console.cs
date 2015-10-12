@@ -75,6 +75,9 @@ public class Console : MonoBehaviour {
                 case "/resetPosition":
                     SC.ResetPosition();
                     break;
+                case "/noclip":
+                    SC.ToggleNoClip();
+                    break;
                 default:
                     message = "Invalid input!";
                     break;
@@ -104,6 +107,9 @@ public class Console : MonoBehaviour {
                     break;
                 case "/resetPosition":
                     SC.ResetPosition();
+                    break;
+                case "/noclip":
+                    CC.ToggleNoClip();
                     break;
                 default:
                     message = "Invalid input!";
