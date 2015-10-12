@@ -85,6 +85,14 @@ public class Console : MonoBehaviour {
         {
             switch (currentCommand)
             {
+			case "/getPos":
+				CC.GetPosition();
+				message = CC.getMessageClient();
+				break;
+			case "/teleportToCart":
+				CC.TeleportToCart();
+				message = CC.getMessageClient();
+				break;
                 case "/exit":
                     CallExit();
                     break;

@@ -14,7 +14,7 @@ public class ServerCommands : MonoBehaviour {
 	void Update () {
 	
 	}
-
+	
 	public void ResetLevel(){
 		Debug.Log("Reset level!");
         Application.LoadLevel(Application.loadedLevel);
