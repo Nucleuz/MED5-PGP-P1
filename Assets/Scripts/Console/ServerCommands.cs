@@ -6,33 +6,30 @@ public class ServerCommands : MonoBehaviour {
     
     
 	// Use this for initialization
-	void Start () {
-        
+	void Start () { 
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
 	}
 	
 	public void ResetLevel(){
 		Debug.Log("Reset level!");
         Application.LoadLevel(Application.loadedLevel);
 	}
+
     public void ToggleFPS() {
-
         GameObject.Find("FPS Counter").GetComponent<FPSUpdater>().Toggle();
-       
-
     }
+
     public void ResetPosition() {
         GameObject[] player = GameObject.FindGameObjectsWithTag("Player");
         for (int i = 0; i < player.Length; i++) {
             player[i].GetComponent<Cart>().ResetPosition();
         }
     }
-    
 
-    
-
+    public void ToggleNoClip(){
+    	GameObject.Find("NoClipCam").GetComponent<NoClip>().On();
+	}
 }
