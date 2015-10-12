@@ -28,7 +28,6 @@ public class InteractableButton : Interactable{
 			for(int i = 0; i < additionCheck.Length; i++)
 				additionCheck[i] = false;
 		}
-		Debug.Log(combinedPlayerID);
 	}
 
 
