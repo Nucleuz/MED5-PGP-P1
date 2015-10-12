@@ -33,6 +33,17 @@ public class ClientCommands : MonoBehaviour {
         return messageClient;
     }
 
+    public void ToggleFPS() {
+        GameObject.Find("FPS Counter").GetComponent<FPSUpdater>().Toggle();
+    }
+
+    public void ResetPosition() {
+        GameObject[] player = GameObject.FindGameObjectsWithTag("Player");
+        for (int i = 0; i < player.Length; i++) {
+            player[i].GetComponent<Cart>().ResetPosition();
+        }
+    }
+
     // Returns the position of the player
 	public string GetPosition(){
 		messageClient = "xPos: " + GameObject.Find("Player").transform.position.x + " yPos: " + GameObject.Find("Player").transform.position.y + " zPos: " + GameObject.Find("Player").transform.position.z;
