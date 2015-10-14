@@ -96,24 +96,21 @@ public class Console : MonoBehaviour {
 				CC.TeleportToCart();
 				message = CC.getMessageClient();
 				break;
-                case "/exit":
-                    CallExit();
-                    break;
-                case "/reset":
-                    SC.ResetLevel();
-                    break;
-                case "/fps":
-                    SC.ToggleFPS();
-                    break;
-                case "/resetPosition":
-                    SC.ResetPosition();
-                    break;
-                case "/noclip":
-                    CC.ToggleNoClip();
-                    break;
-                default:
-                    message = "Invalid input!";
-                    break;
+            case "/exit":
+                CallExit();
+                break;
+            case "/fps":
+                CC.ToggleFPS();
+                break;
+            case "/resetPosition":
+                CC.ResetPosition();
+                break;
+            case "/noclip":
+                CC.ToggleNoClip();
+                break;
+            default:
+                message = "Invalid input!";
+                break;
             }
         }
     }
