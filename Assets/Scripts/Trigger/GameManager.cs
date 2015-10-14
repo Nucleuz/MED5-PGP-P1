@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour {
 					for(int f = 0; f < LM.eventsInSequence[index]; f++){ //goes through all the objects in the sequence and untrigger them
 						LM.events[f + numberOfTriggeredEvents].isTriggered = false;
 					}
-					for(int u = 0; u < LM.eventOrder[index]; u++){ //goes through all the objects in the sequence and makes the ready to be triggered again
+					for(int u = 0; u < LM.eventOrder[index]; u++){ //goes through all the objects in the sequence and makes them ready to be triggered again
 						LM.events[u+ numberOfTriggeredEvents].isReadyToBeTriggered = true;
 					}
 				}
@@ -74,6 +74,9 @@ public class GameManager : MonoBehaviour {
 		if(currentNumberOfEventsTriggered == LM.eventsInSequence[index]){ //Checks if the right amount of events are triggered in the current sequence
 			if(index < LM.eventsInSequence.Length - 1){ //Checks if it is the last sequence of events - if it is: skip this
 				numberOfTriggeredEvents += LM.eventsInSequence[index]; //Increase the total number of events by the amount of events that was in the current sequence
+				if(LM.triggerEvents[index] != null){
+					LM.triggerEvents[index].isTriggered = true; //Triggers an object with should trigger when a sequence is finished. could for example be a door
+				}
 				index++; //Goes to the next sequence
 				for(int i = numberOfTriggeredEvents; i < numberOfTriggeredEvents + LM.eventsInSequence[index]; ++i){ //Goes through the next sequence of events
 					LM.events[i].isReadyToBeTriggered = true; //Makes the next sequence ready to be triggered 
