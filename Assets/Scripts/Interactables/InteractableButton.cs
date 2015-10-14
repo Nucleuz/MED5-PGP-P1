@@ -7,6 +7,7 @@ public class InteractableButton : Interactable{
 	Light buttonLight;
 	public AudioClip activatedButtonSound;
 	AudioSource audio;
+	ParticleSystem par;
 	//checks if the sound has been player, inorder to only play the sound only one time.
 	private bool isSoundPlayed = false;
 
@@ -23,35 +24,44 @@ public class InteractableButton : Interactable{
 		buttonAnimator = GetComponent<Animator>();
 		additionCheck = new bool[4];
 		delay = 1.0f;
-		trigger = GetComponent<Trigger> ();
+		trigger = GetComponent<Trigger>();
 		buttonLight = GetComponent<Light>();
 		audio = GetComponent<AudioSource>();
+		par = GetComponent<ParticleSystem>();
 
-		//Set the color of the interactable button to the correct user
+		//Set the color of the interactable button both background light and particles to the correct user.
 		switch (playerID){
-			case -1: //anybody
+			case -1:
 				buttonLight.color = Color.white;
+				par.startColor = Color.white;
 			break;
 			case 1:
 				buttonLight.color = Color.red;
+				par.startColor = Color.red;
 			break;
 			case 2:
 				buttonLight.color = Color.blue;
+				par.startColor = Color.blue;
 			break;
 			case 3:
 				buttonLight.color = Color.magenta;
+				par.startColor = Color.magenta;
 			break;
 			case 4:
 				buttonLight.color = Color.green;
+				par.startColor = Color.green;
 			break;
 			case 5:
 				buttonLight.color = Color.yellow;
+				par.startColor = Color.yellow;
 			break;
 			case 6:
 				buttonLight.color = Color.cyan;
+				par.startColor = Color.cyan;
 			break;
 			case 7:
 				buttonLight.color = Color.white;
+				par.startColor = Color.white;
 			break;
 			default:
                 Debug.Log("Invalid playerIndex");
@@ -69,12 +79,13 @@ public class InteractableButton : Interactable{
 				additionCheck[i] = false;
 		}
 		if(trigger.isTriggered){
-			buttonAnimator.SetBool("isActivated", true);
-			playSound();
+			buttonAnimator.SetBool("isActivated", true); //starts the animation of the button.
+			par.Play(); //starts the particles system.
+			playSound(); //starts the method which plays the sound.
 		} else {
-			 
-			 buttonAnimator.SetBool("isActivated", false);
-			 isSoundPlayed = false;
+			 buttonAnimator.SetBool("isActivated", false); //stops the animation of the button.
+			 isSoundPlayed = false; //makes sure that the sound only plays once.
+			 par.Stop(); //stops the particle system.
 		}
 	}
 
