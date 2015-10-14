@@ -87,6 +87,14 @@ public class ClientManager : NetworkManager
                         networkID = (ushort)data;
                     }
                     break;
+
+                case Network.Subject.ServerLoadedLevel:
+                    {
+                        //When the server has loaded a level
+                        Write("Server Load Level " + (int)data);
+                        levelHandler.loadLevel((int)data);
+                    }
+                    break;
                 case Network.Subject.SpawnPlayer:
                     {
                         //spawn other player
