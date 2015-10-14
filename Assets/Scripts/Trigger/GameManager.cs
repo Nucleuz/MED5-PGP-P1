@@ -9,11 +9,18 @@ public class GameManager : MonoBehaviour {
 	protected int index = 0; // used to count which sequence is currently in play
 
 	public LevelManager LM; //Used in order to access the LevelManagerObject in the scene
+    [HideInInspector]
+    public LevelHandler levelHandler;
+
+
 	
 
 	// Use this for initialization
 	void Start () {
 		GameObject g = GameObject.Find("LevelManagerObject"); //accessing the LevelManager script on the LevelManagerObject
+        levelHandler = GetComponent<LevelHandler>();
+
+            
 		if(g != null)
 			LM = g.GetComponent<LevelManager>();
 	}
@@ -71,7 +78,9 @@ public class GameManager : MonoBehaviour {
 				for(int i = numberOfTriggeredEvents; i < numberOfTriggeredEvents + LM.eventsInSequence[index]; ++i){ //Goes through the next sequence of events
 					LM.events[i].isReadyToBeTriggered = true; //Makes the next sequence ready to be triggered 
 				}
-			}
+			}else if(index == LM.eventsInSequence.Length - 1)
+                setNextLevelManager();
+
 			currentNumberOfEventsTriggered = 0; //Resets the amount of objects that was triggered in the current sequence
 		}	
 	}
@@ -85,4 +94,8 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
+    private void setNextLevelManager(){
+        setNewLevelManager(levelHandler.getLevelManager());
+
+    }
 }

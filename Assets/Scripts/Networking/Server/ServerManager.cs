@@ -11,12 +11,13 @@ Manager for the server. This is a test setup with spawn positions and simple ser
 */
 
 
-public class ServerManager : MonoBehaviour {
+public class ServerManager : NetworkManager {
 
 	//index for the next player to join, NOTE: cycles with the spawnPos Length
 	public ushort nextPos = 0;
 
-	//test spawn positions
+    public int currentLevel;
+    //@TODO change spawnPositions to be on RAILS
 	public SVector3[] spawnPos = {
 		new SVector3(-1 , 1 , -1 ) ,
 		new SVector3(-1 , 1 ,  1 )  ,
@@ -32,6 +33,7 @@ public class ServerManager : MonoBehaviour {
 	void Start () {
 		senders = new ushort[4];
 
+        Trigger.isServer = true;
 		//Networking - lets the method OnData be called
 		ConnectionService.onData += OnData;
 	}
@@ -86,15 +88,20 @@ public class ServerManager : MonoBehaviour {
 					Debug.LogError("Sender ID not found");
 				}
 			}
-
-		}
+        }
 
 	}
 
-    public void loadNextLevel(){
-        //load the next level internally (in server) and tell clients to do the same.
-        //
+    public void LoadNextLevel(){
+        //load the next level internally (in server) 
 
     }
 
+    public override void OnLevelLoaded(int levelIndex){
+        currentLevel = levelIndex;
+
+        Debug.Log("Level " + levelIndex + " Loaded");
+        // when level is loaded on server tell clients to do the same.
+       DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager, Network.Subject.ServerLoadedNextLevel, levelIndex);
+    }
 }

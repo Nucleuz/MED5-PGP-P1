@@ -15,7 +15,7 @@ Then sends a message to every other client so they can spawn this player
 
 */
 
-public class ClientManager : MonoBehaviour {
+public class ClientManager : NetworkManager {
 
 	//IP the client will try to connect to 
 	//@TODO - client should be able to change the ip when the client starts up, for easier use
@@ -45,6 +45,20 @@ public class ClientManager : MonoBehaviour {
 
 	}
 
+    void Update(){
+        if(Input.GetKeyDown(KeyCode.C) && !DarkRiftAPI.isConnected){
+
+            DarkRiftAPI.Connect(IP); //halts until connect or timeout
+            DarkRiftAPI.onDataDetailed += ReceiveData;
+
+            if(DarkRiftAPI.isConnected){
+                //tell everyone else that we have entered so they can tell where they are
+                DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager,Network.Subject.HasJoined,"...");
+            }
+
+        }
+
+    }
 	void OnApplicationQuit(){
 		DarkRiftAPI.Disconnect();
 	}
@@ -128,4 +142,13 @@ public class ClientManager : MonoBehaviour {
 		if(debugText != null)
 			debugText.text += mess + "\n";
 	}
+
+
+
+
+    public override void OnLevelLoaded(int levelIndex){
+
+        Debug.Log("Level " + levelIndex + " Loaded");
+
+    }
 }

@@ -16,7 +16,7 @@ public class InteractableButton : Interactable{
 
 	public override void OnRayReceived(int playerIndex, Ray ray, RaycastHit hit, ref LineRenderer lineRenderer,int nextLineVertex){
 		if (trigger.isReadyToBeTriggered) {
-			trigger.isTriggered = true;
+			trigger.Activate();
 		}
 	}
 

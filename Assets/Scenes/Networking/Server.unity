@@ -217,8 +217,11 @@ GameObject:
   - 4: {fileID: 1051606246}
   - 114: {fileID: 1051606247}
   - 23: {fileID: 1051606250}
+  - 114: {fileID: 1051606248}
+  - 114: {fileID: 1051606249}
+  - 114: {fileID: 1051606251}
   m_Layer: 0
-  m_Name: Levels
+  m_Name: Manager and Handler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -247,10 +250,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba42f63ffc57d4b47ad0efb1336d3972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  currentLevelContainer: {fileID: 0}
+  manager: {fileID: 1051606251}
   levelOrder: 01000000020000000200000002000000020000000200000002000000020000000200000002000000
-  levelIndex: 0
+--- !u!114 &1051606248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1051606245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 259d0502a9463424e955fd7b798f7af0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LM: {fileID: 0}
+  levelHandler: {fileID: 0}
+--- !u!114 &1051606249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1051606245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69c83008452ed407ea40ad05369b6186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggers: []
+  isServer: 1
+  triggerIds: 
 --- !u!23 &1051606250
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -275,6 +303,38 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!114 &1051606251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1051606245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced3f0e122c1f4bf8894b33a226da394, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextPos: 0
+  currentLevel: 0
+  spawnPos:
+  - x: -1
+    y: 1
+    z: -1
+  - x: -1
+    y: 1
+    z: 1
+  - x: 1
+    y: 1
+    z: -1
+  - x: 1
+    y: 1
+    z: 1
+  players:
+  - {fileID: 1673082716}
+  - {fileID: 70736714}
+  - {fileID: 507103831}
+  - {fileID: 2103890321}
+  senders: 
 --- !u!1 &1548518222
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,7 +408,6 @@ GameObject:
   - 124: {fileID: 1597933202}
   - 81: {fileID: 1597933201}
   - 114: {fileID: 1597933208}
-  - 114: {fileID: 1597933206}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -422,37 +481,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
---- !u!114 &1597933206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1597933200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ced3f0e122c1f4bf8894b33a226da394, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextPos: 0
-  spawnPos:
-  - x: -1
-    y: 1
-    z: -1
-  - x: -1
-    y: 1
-    z: 1
-  - x: 1
-    y: 1
-    z: -1
-  - x: 1
-    y: 1
-    z: 1
-  players:
-  - {fileID: 1673082716}
-  - {fileID: 70736714}
-  - {fileID: 507103831}
-  - {fileID: 2103890321}
-  senders: 
 --- !u!114 &1597933208
 MonoBehaviour:
   m_ObjectHideFlags: 0

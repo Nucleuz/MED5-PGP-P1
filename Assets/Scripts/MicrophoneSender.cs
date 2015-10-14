@@ -33,14 +33,17 @@ public class MicrophoneSender : MonoBehaviour {
 	void Start () {
 		client = GetComponent<NetPlayerSync> ();
 
-		// Presumes that the first device availiable is the best
-		recorder.Device = recorder.AvailableDevices [0];
+        if(recorder != null){
+            // Presumes that the first device availiable is the best
+            recorder.Device = recorder.AvailableDevices [0];
 
-		recorder.NetworkId = (int) client.networkID;
+            recorder.NetworkId = (int) client.networkID;
 
-		recorder.StartRecording ();
+            recorder.StartRecording ();
 
-		VoiceChatRecorder.Instance.NewSample += OnNewSample;
+            VoiceChatRecorder.Instance.NewSample += OnNewSample;
+
+        }
 	}
 
 	// Called by recorder whenever we get a new sample packet.

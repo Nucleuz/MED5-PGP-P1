@@ -70,7 +70,7 @@ public class ChargeableLightSource : Interactable {
                 if (energy >= 100)
                 {
                     // Set isTrigger in Trigger script to true
-                    trigger.isTriggered = true;
+                    trigger.Activate();
 
                     // Make sure that we cannot charge it again right away
                     readyForCharge = false;
@@ -103,7 +103,7 @@ public class ChargeableLightSource : Interactable {
             }
 
             // Set isTrigger in Trigger script to false
-            trigger.isTriggered = false;
+            trigger.Deactivate();
             trigger.canReset = true;
 
         }

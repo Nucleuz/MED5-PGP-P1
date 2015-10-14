@@ -30,14 +30,14 @@ public class SoundGemScript : Interactable
 
 	IEnumerator PlaySounds(){
 		audioPlaying = true;
-        trigger.isTriggered = true;
+        trigger.Activate();
 
 		for (int i = 0; i < audioClips.Length; i++) {
 			audioSource.clip = audioClips[i];
 			audioSource.Play ();
 			yield return new WaitForSeconds(audioClips[i].length + timeBetweenSounds);
 		}
-        trigger.isTriggered = false;
+        trigger.Deactivate();
         trigger.canReset = true;
 		audioPlaying = false;
 	}
