@@ -262,6 +262,10 @@ Prefab:
       propertyPath: players.Array.data[3]
       value: 
       objectReference: {fileID: 2103890321}
+    - target: {fileID: 11452974, guid: 7e7330d466a1f43f4a14678ff3d73045, type: 2}
+      propertyPath: levelOrder.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7e7330d466a1f43f4a14678ff3d73045, type: 2}
   m_IsPrefabParent: 0
@@ -378,7 +382,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 15
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

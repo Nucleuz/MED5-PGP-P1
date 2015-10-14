@@ -28,30 +28,11 @@ public class Trigger : MonoBehaviour {
 
     }
 
-	void RecieveData(ushort senderID, byte tag, ushort subject, object data){
-		//check that it is the right sender
-		if(NetworkManager.isServer){
+    public void SetState(bool state){
+        isTriggered = state;
+    }
 
-			//check if it wants to update the player
-			if(tag == Network.Tag.Trigger && (ushort)data == triggerID){
-                
-
-                if(subject == Network.Subject.TriggerActivate ){
-                    isTriggered = true;
-
-                }else if(subject == Network.Subject.TriggerDeactivate){
-                    isTriggered = false;
-
-                }
-			}
-		}
-
-        //client should also handle some eevents
-
-	}
-
-    public void setTriggerID(ushort id){
-
+    public void SetTriggerID(ushort id){
         triggerID = id;
     }
 }

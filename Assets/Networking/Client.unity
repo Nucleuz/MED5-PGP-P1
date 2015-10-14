@@ -226,7 +226,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 951545199}
-  levelOrder: 01000000010000000100000002000000020000000200000002000000020000000200000002000000
+  levelOrder: 02000000020000000200000002000000020000000200000002000000020000000200000002000000
+  levelIndex: 0
 --- !u!114 &951545202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,8 +240,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggers: []
-  isServer: 0
-  triggerIds: 
+  triggerIDs: 
+  triggersReady: 0
 --- !u!1 &1621890090
 GameObject:
   m_ObjectHideFlags: 0

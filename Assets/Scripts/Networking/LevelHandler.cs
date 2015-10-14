@@ -22,7 +22,7 @@ public class LevelHandler : MonoBehaviour {
     //@TODO make sure that it is fixed between server and client
 	public int[] levelOrder = {1,1,1,2,2,2,2,2,2,2}; 
 	
-	private int levelIndex = 0;
+    public int levelIndex = 0;
     private float currentRotation;
 
     void Start(){
@@ -61,8 +61,6 @@ public class LevelHandler : MonoBehaviour {
 		}
 
         manager.OnLevelLoaded(levelIndex);
-
-        this.levelIndex = levelIndex; 
     }
 
     public void processLevelContainer(LevelContainer levelContainer){
@@ -107,12 +105,13 @@ public class LevelHandler : MonoBehaviour {
         }
 
 
+        currentLevelContainer = levelContainer;
         //@TODO unloading of scenes
     }
 
 	public void loadNextLevel(){
-		StartCoroutine(LoadAndHandleLevel(levelIndex++));
-
+		StartCoroutine(LoadAndHandleLevel(levelIndex));
+        levelIndex++;
 	} 
 
     public void loadLevel(int index){

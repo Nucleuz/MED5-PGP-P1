@@ -14,7 +14,7 @@ Manager for the server. This is a test setup with spawn positions and simple ser
 public class ServerManager : NetworkManager {
 
 	//index for the next player to join, NOTE: cycles with the spawnPos Length
-	public ushort nextPos = 0;
+	public int playerIndex;
 
     public int currentLevel;
     
@@ -22,10 +22,12 @@ public class ServerManager : NetworkManager {
 	public Transform[] players;
 	//id of each sender
 	public ushort[] senders;
+    public ConnectionService[] connections;
 
 	void Start () {
         isServer = true;
 		senders = new ushort[4];
+        connections = new ConnectionService[4];
 
 		//Networking - lets the method OnData be called
 		ConnectionService.onData += OnData;
@@ -44,13 +46,23 @@ public class ServerManager : NetworkManager {
 				//if a new player has joined
 				
 				//save the id of sender
-				senders[nextPos] = con.id;
+				senders[playerIndex] = con.id;
+                connections[playerIndex] = con;
 				//set server visuals
-				players[nextPos].gameObject.SetActive(true);
-				
+				players[playerIndex].gameObject.SetActive(true);
+			
+                playerIndex++;
+
+                Debug.Log("Player joined told to load level " + currentLevel);
+
 				//send back the spawnpos to the client
-				con.SendReply(Network.Tag.Manager , Network.Subject.ServerSentNetID    , con.id);
-				con.SendReply(Network.Tag.Manager , Network.Subject.ServerLoadedLevel    ,currentLevel);
+				con.SendReply(
+                        Network.Tag.Manager, 
+                        Network.Subject.ServerSentNetID, 
+                        con.id);
+				con.SendReply(Network.Tag.Manager, 
+                        Network.Subject.ServerLoadedLevel, 
+                        currentLevel);
 			}
 		}else if(data.tag == Network.Tag.Player){
 
@@ -83,11 +95,6 @@ public class ServerManager : NetworkManager {
 
 	}
 
-    public void LoadNextLevel(){
-
-        //load the next level internally (in server) 
-
-    }
 
     public override void OnLevelLoaded(int levelIndex){
         currentLevel = levelIndex;
@@ -95,12 +102,11 @@ public class ServerManager : NetworkManager {
         Debug.Log("Level " + levelIndex + " Loaded");
 
         // when level is loaded on server tell clients to do the same.
-        try{
-            DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager, Network.Subject.ServerLoadedLevel, levelIndex);
-        }catch(NotConnectedException e){
-
-            Debug.Log("Not connected -- Cannot call Others since there is no one else");
+        for(int i = 0;i < connections.Length;i++){
+            if(connections[i] != null )
+                connections[i].SendReply(Network.Tag.Manager, Network.Subject.ServerLoadedLevel, levelIndex);
         }
+
 
     }
 }

@@ -74,13 +74,6 @@ public class ClientManager : NetworkManager {
 			switch(subject){
                 case Network.Subject.ServerSentNetID:{
 					networkID = (ushort)data;
-					if(player != null){
-						player.GetComponent<NetPlayerSync>().networkID = (ushort)data;
-                        
-                    }else
-						Write("ServerSentNetID was received before player was instantiated");
-
-
 				}break;
                                                      
                 case Network.Subject.ServerLoadedLevel:{
@@ -129,26 +122,29 @@ public class ClientManager : NetworkManager {
 
         Debug.Log("Level " + levelIndex + " Loaded");
 
-        //spawn the object
-        GameObject g = Instantiate(prefabPlayer,Vector3.zero,Quaternion.identity) as GameObject;
-        player = g.transform;
-        //set the network id so it will sync with the player
-        NetPlayerSync netPlayer = 	g.GetComponent<NetPlayerSync>();
+        if(player == null){
+            //spawn the object
+            GameObject g = Instantiate(prefabPlayer,Vector3.zero,Quaternion.identity) as GameObject;
+            player = g.transform;
+            //set the network id so it will sync with the player
+            NetPlayerSync netPlayer = 	g.GetComponent<NetPlayerSync>();
 
-        netPlayer.networkID = networkID;
-        netPlayer.SetAsSender();
+            netPlayer.networkID = networkID;
+            netPlayer.SetAsSender();
 
-        //place the player on the correct rail!
+            //place the player on the correct rail!
 
-        Rail startRail = levelHandler.getLevelManager().levelStartRail[networkID-1];
+            Rail startRail = levelHandler.getLevelManager().levelStartRail[networkID-1];
 
-        player.position = startRail.transform.position;
-        player.GetComponent<Cart>().CurrentRail = startRail;
+            player.position = startRail.transform.position;
+            player.GetComponent<Cart>().CurrentRail = startRail;
 
 
-        //send it to everyone else
-        DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager,Network.Subject.SpawnPlayer,new SVector3(player.position));
+            //send it to everyone else
+            DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager,Network.Subject.SpawnPlayer,new SVector3(player.position));
 
+
+        }
 
 
 

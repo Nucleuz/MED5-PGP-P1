@@ -25,7 +25,6 @@ public class NetPlayerSync : MonoBehaviour {
 	Vector3 lastPosition;
 
 	//network id for the object
-	[HideInInspector]
 	public ushort networkID;
 
 	// Use this for initialization
