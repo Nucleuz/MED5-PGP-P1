@@ -10,30 +10,27 @@ public class Trigger : MonoBehaviour {
     //Networking
     public ushort triggerID;
 
-    //server should set this to true
-    [HideInInspector]
-    public static bool isServer = false;
-
-
     //@TODO(kasper) sync state with server 
     public void Activate(){
         isTriggered = true; 
 
         //Send to Server @TODO to display visuals everyone should get this
-        DarkRiftAPI.SendMessageToServer(Network.Tag.Trigger, Network.Subject.TriggerActivate,triggerID); 
+        if(NetworkManager.isServer)
+            DarkRiftAPI.SendMessageToServer(Network.Tag.Trigger, Network.Subject.TriggerActivate,triggerID); 
 
     }
    
     public void Deactivate(){
         isTriggered = false;
 
-        DarkRiftAPI.SendMessageToServer(Network.Tag.Trigger,Network.Subject.TriggerDeactivate, triggerID);
+        if(NetworkManager.isServer)
+            DarkRiftAPI.SendMessageToServer(Network.Tag.Trigger,Network.Subject.TriggerDeactivate, triggerID);
 
     }
 
 	void RecieveData(ushort senderID, byte tag, ushort subject, object data){
 		//check that it is the right sender
-		if(isServer ){
+		if(NetworkManager.isServer){
 
 			//check if it wants to update the player
 			if(tag == Network.Tag.Trigger && (ushort)data == triggerID){

@@ -18,22 +18,21 @@ public class LevelHandler : MonoBehaviour {
 
     public NetworkManager manager;
 
+    //@TODO a better interface for this 
+    //@TODO make sure that it is fixed between server and client
 	public int[] levelOrder = {1,1,1,2,2,2,2,2,2,2}; 
 	
 	private int levelIndex = 0;
     private float currentRotation;
 
-	// Use this for initialization
-	void Awake () {
-    }
-
     void Start(){
         triggerHandler = TriggerHandler._instance;
-        loadNextLevel();
+        if(NetworkManager.isServer)
+            loadNextLevel();
     }
 
     void Update(){
-        if(Input.GetKeyDown(KeyCode.Space)){
+        if(NetworkManager.isServer && Input.GetKeyDown(KeyCode.Space)){
             loadNextLevel(); 
         }
 
@@ -63,7 +62,7 @@ public class LevelHandler : MonoBehaviour {
 
         manager.OnLevelLoaded(levelIndex);
 
-        this.levelIndex++; 
+        this.levelIndex = levelIndex; 
     }
 
     public void processLevelContainer(LevelContainer levelContainer){
@@ -75,7 +74,8 @@ public class LevelHandler : MonoBehaviour {
 
             currentLevelContainer = levelContainer;
 
-            GetComponent<GameManager>().setNewLevelManager(levelContainer.levelManager);
+            if(NetworkManager.isServer)
+                GetComponent<GameManager>().setNewLevelManager(levelContainer.levelManager);
 
         }else{
             //previous and next LevelManager
@@ -111,10 +111,14 @@ public class LevelHandler : MonoBehaviour {
     }
 
 	public void loadNextLevel(){
-		StartCoroutine(LoadAndHandleLevel(levelIndex));
+		StartCoroutine(LoadAndHandleLevel(levelIndex++));
 
 	} 
 
+    public void loadLevel(int index){
+
+        StartCoroutine(LoadAndHandleLevel(index));
+    }
 
     public LevelManager getLevelManager(){
         return currentLevelContainer.levelManager;

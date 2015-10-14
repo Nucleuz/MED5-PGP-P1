@@ -165,6 +165,8 @@ GameObject:
   - 4: {fileID: 951545198}
   - 114: {fileID: 951545200}
   - 114: {fileID: 951545199}
+  - 114: {fileID: 951545201}
+  - 114: {fileID: 951545202}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -200,6 +202,7 @@ MonoBehaviour:
   debugText: {fileID: 564146931}
   prefabPlayer: {fileID: 174738, guid: 6b51f68b61740074b921684716c1e935, type: 2}
   player: {fileID: 0}
+  levelHandler: {fileID: 951545201}
 --- !u!114 &951545200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,6 +214,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecb84c8190e27c641bab7651eb2b9f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &951545201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 951545197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba42f63ffc57d4b47ad0efb1336d3972, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 951545199}
+  levelOrder: 01000000010000000100000002000000020000000200000002000000020000000200000002000000
+--- !u!114 &951545202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 951545197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69c83008452ed407ea40ad05369b6186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggers: []
+  isServer: 0
+  triggerIds: 
 --- !u!1 &1621890090
 GameObject:
   m_ObjectHideFlags: 0

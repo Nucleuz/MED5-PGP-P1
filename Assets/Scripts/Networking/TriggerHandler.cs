@@ -20,7 +20,6 @@ using DarkRift;
 
      public List<Trigger> triggers;
 
-     public bool isServer = false;
      public List<ushort> triggerIds;
 
      private ushort triggerIdCount = 1;
@@ -48,7 +47,7 @@ using DarkRift;
          checkChild(levelContainer.transform);
 
          //when completed if server call clients and tell level to load
-         if(isServer){
+         if(NetworkManager.isServer){
 
          }else{
 
@@ -70,7 +69,7 @@ using DarkRift;
 
      //Assign trigger id, add to dictionary and return the id used.
      public void Assign(Trigger trigger){
-         if(isServer){
+         if(NetworkManager.isServer){
              ushort id = triggerIdCount++;
              triggers.Add(trigger);
              triggerIds.Add(id);

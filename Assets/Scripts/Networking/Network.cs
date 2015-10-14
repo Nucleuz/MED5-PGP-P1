@@ -25,7 +25,7 @@ public class Network{
         public const ushort TriggerActivate    = 6;
         public const ushort TriggerDeactivate  = 7;
         
-        public const ushort ServerLoadedNextLevel = 8;
+        public const ushort ServerLoadedLevel = 8;
         public const ushort ServerSentTriggerIDs = 9;
 	}
 

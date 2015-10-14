@@ -17,23 +17,16 @@ public class ServerManager : NetworkManager {
 	public ushort nextPos = 0;
 
     public int currentLevel;
-    //@TODO change spawnPositions to be on RAILS
-	public SVector3[] spawnPos = {
-		new SVector3(-1 , 1 , -1 ) ,
-		new SVector3(-1 , 1 ,  1 )  ,
-		new SVector3( 1 , 1 , -1 ) ,
-		new SVector3( 1 , 1 ,  1 )
-	};
-
-	//reference to player object so the server has a visual indication of the players position and rotation
+    
+    //reference to player object so the server has a visual indication of the players position and rotation
 	public Transform[] players;
 	//id of each sender
 	public ushort[] senders;
 
 	void Start () {
+        isServer = true;
 		senders = new ushort[4];
 
-        Trigger.isServer = true;
 		//Networking - lets the method OnData be called
 		ConnectionService.onData += OnData;
 	}
@@ -50,16 +43,14 @@ public class ServerManager : NetworkManager {
 			if(data.subject == Network.Subject.HasJoined){
 				//if a new player has joined
 				
-				if(nextPos >= spawnPos.Length)nextPos = 0;
-				
 				//save the id of sender
 				senders[nextPos] = con.id;
 				//set server visuals
 				players[nextPos].gameObject.SetActive(true);
 				
 				//send back the spawnpos to the client
-				con.SendReply(Network.Tag.Manager , Network.Subject.ServerSentSpawnPos , spawnPos[nextPos++]);
 				con.SendReply(Network.Tag.Manager , Network.Subject.ServerSentNetID    , con.id);
+				con.SendReply(Network.Tag.Manager , Network.Subject.ServerLoadedLevel    ,currentLevel);
 			}
 		}else if(data.tag == Network.Tag.Player){
 
@@ -93,6 +84,7 @@ public class ServerManager : NetworkManager {
 	}
 
     public void LoadNextLevel(){
+
         //load the next level internally (in server) 
 
     }
@@ -101,7 +93,14 @@ public class ServerManager : NetworkManager {
         currentLevel = levelIndex;
 
         Debug.Log("Level " + levelIndex + " Loaded");
+
         // when level is loaded on server tell clients to do the same.
-       DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager, Network.Subject.ServerLoadedNextLevel, levelIndex);
+        try{
+            DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager, Network.Subject.ServerLoadedLevel, levelIndex);
+        }catch(NotConnectedException e){
+
+            Debug.Log("Not connected -- Cannot call Others since there is no one else");
+        }
+
     }
 }
