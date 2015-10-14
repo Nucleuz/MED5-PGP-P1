@@ -29,8 +29,7 @@ public class NetPlayerSync : MonoBehaviour {
 
 	//network id for the object
 	public ushort networkID;
-
-	private VoiceChatPlayer voiceChatPlayer;
+	public VoiceChatPlayer voiceChatPlayer;
 
 	// Use this for initialization
 	void Start () {
@@ -64,9 +63,10 @@ public class NetPlayerSync : MonoBehaviour {
 	}
 
 	// Called once there is a new packet/sample ready
-	void OnNewSample (VoiceChatPacket packet)
+	public void OnNewSample (VoiceChatPacket packet)
 	{
-		DarkRiftAPI.SendMessageToOthers (Network.Tag.Player, Network.Subject.VoicePackage, packet);	// Send the packet to all other players
+		Debug.Log ("New sample, sending");
+		DarkRiftAPI.SendMessageToOthers (Network.Tag.Player, Network.Subject.VoiceChat, packet);	// Send the packet to all other players
 	}
 
 	public void VoiceChatInit ()
@@ -75,28 +75,30 @@ public class NetPlayerSync : MonoBehaviour {
 
 		VoiceChatRecorder.Instance.Device = VoiceChatRecorder.Instance.AvailableDevices [0];		// Set Microphone to first avaliable audio device
 		VoiceChatRecorder.Instance.NetworkId = networkID;
-		VoiceChatRecorder.Instance.StartRecording ();												// Start recording (Not the same as transmitting!)
+		if(!VoiceChatRecorder.Instance.StartRecording ())												// Start recording (Not the same as transmitting!)
+			Debug.LogError("Recording not Started!");
 		VoiceChatRecorder.Instance.NewSample += OnNewSample;										// Subscribe to the NewSample 
 	}
 	
 	void RecieveData(ushort senderID, byte tag, ushort subject, object data){
+		// Check if wants to update the voice packet
+		if(subject == Network.Subject.VoiceChat) {
+			VoiceChatPacket pak = (VoiceChatPacket)data ;
+			Debug.Log ("ID: " + pak.NetworkId + " Length: " + pak.Length);
+			//TODO Check for networkId and play sound on correlating player object
+			voiceChatPlayer.OnNewSample((VoiceChatPacket) data);
+		}
+
 		//check that it is the right sender
 		if(!isSender && senderID == networkID ){
 			//check if it wants to update the player
 			if( subject == Network.Subject.PlayerUpdate ){
 
 				//unpack the data
-				PlayerInfo info = (PlayerInfo)data;
+				PlayerInfo info 	= 	(PlayerInfo)data;
 				//apply the data
 				transform.position 	= 	info.position.get();
-				head.rotation 		= 	info.rotation.get();
-				
-			}
-
-			// Check if wants to update the voice packet
-			if(subject == Network.Subject.VoicePackage) {
-				//TODO Check for networkId and send sound to correlating player
-				voiceChatPlayer.OnNewSample((VoiceChatPacket) data);	
+				head.rotation 		= 	info.rotation.get();	
 			}
 		}
 	}

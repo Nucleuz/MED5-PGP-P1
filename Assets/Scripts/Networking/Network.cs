@@ -21,7 +21,7 @@ public class Network{
 		public const ushort ServerSentSpawnPos 	= 3;
 		public const ushort ServerSentNetID 	= 4;
 		public const ushort PlayerUpdate 		= 5;
-		public const ushort VoicePackage		= 6;
+		public const ushort VoiceChat			= 6;
 	}
 
 
