@@ -46,7 +46,7 @@ public class ClientManager : NetworkManager {
 	}
 
     void Update(){
-        if(Input.GetKeyDown(KeyCode.C) && !DarkRiftAPI.isConnected){
+        if(Input.GetKeyDown(KeyCode.S) && !DarkRiftAPI.isConnected){
 
             DarkRiftAPI.Connect(IP); //halts until connect or timeout
             DarkRiftAPI.onDataDetailed += ReceiveData;
