@@ -20,7 +20,7 @@ public class LevelHandler : MonoBehaviour {
 
     //@TODO a better interface for this 
     //@TODO make sure that it is fixed between server and client
-	public int[] levelOrder = {1,1,1,2,2,2,2,2,2,2}; 
+	public int[] levelOrder = {2,2}; 
 	
     public int levelIndex = 0;
     private float currentRotation;
