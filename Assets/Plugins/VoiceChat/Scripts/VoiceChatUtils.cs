@@ -197,6 +197,8 @@ namespace VoiceChat
 
                 case VoiceChatCompression.Speex:
                     {
+						speexDecoder = new NSpeex.SpeexDecoder(NSpeex.BandMode.Narrow, true);
+						
                         data = SpeexDecompress(speexDecoder, packet.Data, packet.Length);
                         return data.Length;
                     }
