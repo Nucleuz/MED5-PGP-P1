@@ -20,7 +20,7 @@ public class LevelHandler : MonoBehaviour {
 
     //@TODO a better interface for this 
     //@TODO make sure that it is fixed between server and client
-	public int[] levelOrder = {2,2}; 
+	public string[] levelOrder; 
 	
     public int levelIndex = 0;
     private float currentRotation;
@@ -39,6 +39,13 @@ public class LevelHandler : MonoBehaviour {
     }
 	
 	IEnumerator LoadAndHandleLevel(int levelIndex){
+        if(levelOrder.Length == 0){
+            Debug.LogError("No Level Order -- Can't load level");
+            return false;
+        }else if(levelIndex < 0 || levelIndex >= levelOrder.Length){
+            Debug.LogError("LevelIndex out of bounds");
+            return false;
+        }
 		//@Optimize - can be done async which should be faster
 		Application.LoadLevelAdditive(levelOrder[levelIndex]);
 		//it must wait 1 frame therefore

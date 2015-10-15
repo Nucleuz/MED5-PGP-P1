@@ -24,7 +24,10 @@ public class ServerManager : NetworkManager {
 	public ushort[] senders;
     public ConnectionService[] connections;
 
+    public LevelHandler levelHandler;
 	void Start () {
+
+        levelHandler = GetComponent<LevelHandler>();
         isServer = true;
 		senders = new ushort[4];
         connections = new ConnectionService[4];
@@ -99,7 +102,7 @@ public class ServerManager : NetworkManager {
     public override void OnLevelLoaded(int levelIndex){
         currentLevel = levelIndex;
 
-        Debug.Log("Level " + levelIndex + " Loaded");
+        Debug.Log("Level " + levelIndex + " (" + levelHandler.levelOrder[levelIndex] + ") Loaded");
 
         // when level is loaded on server tell clients to do the same.
         for(int i = 0;i < connections.Length;i++){

@@ -140,7 +140,7 @@ public class ClientManager : NetworkManager
     public override void OnLevelLoaded(int levelIndex)
     {
 
-        Debug.Log("Level " + levelIndex + " Loaded");
+        Debug.Log("Level " + levelIndex + " (" + levelHandler.levelOrder[levelIndex] + ") Loaded");
 
         if (player == null)
         {
