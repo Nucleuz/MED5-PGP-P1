@@ -351,8 +351,8 @@ Light:
   serializedVersion: 6
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 10
+  m_Intensity: 5
+  m_Range: 1000
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -404,7 +404,9 @@ MonoBehaviour:
   head: {fileID: 447438}
   cam: {fileID: 140992}
   headControl: {fileID: 11490494}
+  helmet: {fileID: 11433986}
   networkID: 0
+  voiceChatPlayer: {fileID: 0}
 --- !u!114 &11465930
 MonoBehaviour:
   m_ObjectHideFlags: 1

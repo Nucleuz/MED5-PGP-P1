@@ -95,15 +95,44 @@ using DarkRift;
 	public void ReceiveData(ushort senderID, byte tag, ushort subject, object data){
 
         if(tag == Network.Tag.Trigger){
-                if(subject == Network.Subject.ServerSentTriggerIDs){
-                    Debug.Log("trigger id's received");
-                    
-                    ushort[] ids = (ushort[])data;
+            if(subject == Network.Subject.ServerSentTriggerIDs){
+                Debug.Log("trigger id's received");
+                
+                TriggerState[] triggerStates = (TriggerState[])data;
 
-                    for(int i = 0;i<ids.Length;i++){
-                        triggers[i].SetTriggerID(ids[i]);
-                    }
+                for(int i = 0;i<triggerStates.Length;i++){
+                    triggers[i].SetState(triggerStates[i]);
                 }
+            }else if(subject == Network.Subject.TriggerActivate){
+                TriggerInteracted((ushort)data,true);
+            }else if(subject == Network.Subject.TriggerDeactivate){
+                TriggerInteracted((ushort)data,false);
+            }
         }
+    }
+
+    public void SetTriggerState(TriggerState state){
+        int index = FindTriggerIndexFromID(state.id);  
+        triggers[index].SetState(state);
+    }
+
+    public TriggerState GetTriggerState(ushort triggerID){
+        int index = FindTriggerIndexFromID(triggerID);
+        return new TriggerState(triggers[index]);
+
+    }
+
+    public void TriggerInteracted(ushort triggerID, bool state){
+        int index = FindTriggerIndexFromID(triggerID);  
+        triggers[index].isTriggered = state;
+    }
+
+    private int FindTriggerIndexFromID(ushort id){
+        for(int i = 0;i<triggerIDs.Count;i++){
+            if(triggerIDs[i] == id)return i;
+        }
+
+        Debug.LogError("Could not find Index from ID " + id);
+        return -1;
     }
 }

@@ -24,10 +24,12 @@ public class ServerManager : NetworkManager {
 	public ushort[] senders;
     public ConnectionService[] connections;
 
+    public GameManager gameManager;
     public LevelHandler levelHandler;
     public TriggerHandler triggerHandler;
 	void Start () {
 
+        gameManager = GetComponent<GameManager>();
         triggerHandler = GetComponent<TriggerHandler>();
         levelHandler = GetComponent<LevelHandler>();
         isServer = true;
@@ -98,30 +100,60 @@ public class ServerManager : NetworkManager {
 			}
         }else if(data.tag == Network.Tag.Trigger){
             //relay to triggerHandler
-            ushort[] ids = triggerHandler.triggerIDs.ToArray();
-            con.SendReply(
-                    Network.Tag.Trigger,
-                    Network.Subject.ServerSentTriggerIDs,
-                    ids);
+            if(data.subject == Network.Subject.RequestTriggerIDs){
+                TriggerState[] triggerStates = new TriggerState[triggerHandler.triggers.Count];
+                //populate
+                
+                for(int i = 0;i<triggerHandler.triggers.Count;i++){
+                    triggerStates[i] = new TriggerState(triggerHandler.triggers[i]);
+                }
 
+                con.SendReply(
+                        Network.Tag.Trigger,
+                        Network.Subject.ServerSentTriggerIDs,
+                        triggerStates);
+            }else if(data.subject == Network.Subject.TriggerActivate){
+                triggerHandler.TriggerInteracted((ushort)data.data,true);
 
+                //force update GameMnager
+                gameManager.DetectTriggerChanges();
 
+                TriggerState state = triggerHandler.GetTriggerState((ushort)data.data);
+                
+                //send to clients but not the sender
+                SendToAll(data.tag,data.subject,state);
+            }else if(data.subject == Network.Subject.TriggerDeactivate){
+                triggerHandler.TriggerInteracted((ushort)data.data,false);
+
+                //force update GameMnager
+                gameManager.DetectTriggerChanges();
+
+                TriggerState state = triggerHandler.GetTriggerState((ushort)data.data);
+
+                //send to clients but not the sender
+                SendToAllBut(con, data.tag,data.subject,data.data);
+            }
         }
-
 	}
-
 
     public override void OnLevelLoaded(int levelIndex){
         currentLevel = levelIndex;
 
         Debug.Log("Level " + levelIndex + " (" + levelHandler.levelOrder[levelIndex] + ") Loaded");
-
         // when level is loaded on server tell clients to do the same.
+        SendToAll(Network.Tag.Manager, Network.Subject.ServerLoadedLevel, levelIndex);
+    }
+
+    private void SendToAll(byte tag, ushort subject, object data){
         for(int i = 0;i < connections.Length;i++){
-            if(connections[i] != null )
-                connections[i].SendReply(Network.Tag.Manager, Network.Subject.ServerLoadedLevel, levelIndex);
+            if(connections[i] != null)
+                connections[i].SendReply(tag,subject,data);
         }
+    }
 
-
+    private void SendToAllBut(ConnectionService con, byte tag, ushort subject, object data){
+        for(int i = 0;i < connections.Length;i++)
+            if(connections[i] != null || connections[i] == con)
+                connections[i].SendReply(tag, subject, data);
     }
 }

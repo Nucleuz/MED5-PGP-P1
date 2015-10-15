@@ -22,6 +22,7 @@ public class NetPlayerSync : MonoBehaviour {
 	public GameObject cam;
 	public HeadControl headControl;
 
+    public HelmetLightScript helmet;
 
 	//reference to reduce when it sends data to everyone else
 	Quaternion lastRotation;
@@ -99,6 +100,7 @@ public class NetPlayerSync : MonoBehaviour {
 				//apply the data
 				transform.position 	= 	info.position.get();
 				head.rotation 		= 	info.rotation.get();	
+
 			}
 		}
 	}

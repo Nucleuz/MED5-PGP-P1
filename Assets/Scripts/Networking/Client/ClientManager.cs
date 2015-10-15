@@ -152,6 +152,9 @@ public class ClientManager : NetworkManager
             NetPlayerSync netPlayer = g.GetComponent<NetPlayerSync>();
 
             netPlayer.networkID = networkID;
+            netPlayer.helmet.playerIndex = networkID;
+            Debug.Log(netPlayer.helmet.playerIndex);
+            Write("Player Index: " + netPlayer.helmet.playerIndex);
             netPlayer.SetAsSender();
 
             //place the player on the correct rail!

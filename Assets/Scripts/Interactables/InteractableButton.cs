@@ -11,7 +11,7 @@ public class InteractableButton : Interactable{
 	//checks if the sound has been player, inorder to only play the sound only one time.
 
 	[Tooltip("NEEDS TO BE THE SIZE 3. Check the players that have to hit the button. 0 = red, 1 = green, 2 = blue")]
-	public bool[] playerList;
+	public bool[] playerList = new bool[3];
 	
 	private bool[] playerCheck = new bool[3];
 	

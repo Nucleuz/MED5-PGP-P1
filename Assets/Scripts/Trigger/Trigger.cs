@@ -15,21 +15,24 @@ public class Trigger : MonoBehaviour {
         isTriggered = true; 
 
         //Send to Server @TODO to display visuals everyone should get this
-        if(NetworkManager.isServer)
+        if(!NetworkManager.isServer)
             DarkRiftAPI.SendMessageToServer(Network.Tag.Trigger, Network.Subject.TriggerActivate,triggerID); 
+        Debug.Log("Trigger " + triggerID + " Activated");
 
     }
    
     public void Deactivate(){
         isTriggered = false;
 
-        if(NetworkManager.isServer)
+        if(!NetworkManager.isServer)
             DarkRiftAPI.SendMessageToServer(Network.Tag.Trigger,Network.Subject.TriggerDeactivate, triggerID);
-
+        Debug.Log("Trigger " + triggerID + " Deactivated");
     }
 
-    public void SetState(bool state){
-        isTriggered = state;
+    public void SetState(TriggerState state){
+        isTriggered = state.isTriggered;
+        isReadyToBeTriggered = state.isReadyToBeTriggered;
+        canReset = state.canReset;
     }
 
     public void SetTriggerID(ushort id){
