@@ -25,8 +25,10 @@ public class ServerManager : NetworkManager {
     public ConnectionService[] connections;
 
     public LevelHandler levelHandler;
+    public TriggerHandler triggerHandler;
 	void Start () {
 
+        triggerHandler = GetComponent<TriggerHandler>();
         levelHandler = GetComponent<LevelHandler>();
         isServer = true;
 		senders = new ushort[4];
@@ -94,6 +96,16 @@ public class ServerManager : NetworkManager {
 					Debug.LogError("Sender ID not found");
 				}
 			}
+        }else if(data.tag == Network.Tag.Trigger){
+            //relay to triggerHandler
+            ushort[] ids = triggerHandler.triggerIDs.ToArray();
+            con.SendReply(
+                    Network.Tag.Trigger,
+                    Network.Subject.ServerSentTriggerIDs,
+                    ids);
+
+
+
         }
 
 	}

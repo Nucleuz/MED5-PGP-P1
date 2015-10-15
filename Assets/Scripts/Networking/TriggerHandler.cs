@@ -35,8 +35,8 @@ using DarkRift;
          triggers = new List<Trigger>();
          triggerIDs = new List<ushort>();
 
-         DarkRiftAPI.onDataDetailed += ReceiveData;
-
+         if(!NetworkManager.isServer)
+             DarkRiftAPI.onDataDetailed += ReceiveData;
          
      }
 
@@ -50,6 +50,7 @@ using DarkRift;
          checkChild(levelContainer.transform);
 
          //when completed if server call clients and tell level to load
+         //if client when completed call server and ask for list of ids
          if(NetworkManager.isServer){
              triggersReady = true;
               
@@ -61,7 +62,6 @@ using DarkRift;
                     true
                     );
          }
-         //if client when completed call server and ask for list of ids
      }
 
      private void checkChild(Transform child){
@@ -92,22 +92,9 @@ using DarkRift;
 
      }
       
-	void ReceiveData(ushort senderID, byte tag, ushort subject, object data){
+	public void ReceiveData(ushort senderID, byte tag, ushort subject, object data){
 
         if(tag == Network.Tag.Trigger){
-            if(NetworkManager.isServer){
-                if(subject == Network.Subject.RequestTriggerIDs){
-
-                    Debug.Log("request received");
-                    ushort[] ids = triggerIDs.ToArray();
-                    DarkRiftAPI.SendMessageToID(
-                            senderID,
-                            Network.Tag.Trigger,
-                            Network.Subject.ServerSentTriggerIDs,
-                            ids);
-
-                }
-            }else{
                 if(subject == Network.Subject.ServerSentTriggerIDs){
                     Debug.Log("trigger id's received");
                     
@@ -117,7 +104,6 @@ using DarkRift;
                         triggers[i].SetTriggerID(ids[i]);
                     }
                 }
-            }
         }
     }
 }

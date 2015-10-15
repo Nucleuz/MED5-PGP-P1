@@ -51,21 +51,30 @@ public class LevelHandler : MonoBehaviour {
 		//it must wait 1 frame therefore
 		yield return null;
 
-		//runs when loaded
-		GameObject[] levelContainers = GameObject.FindGameObjectsWithTag("LevelContainer");
+        bool foundLC = false;
+        while(!foundLC){
+            //waits for one frame 
+            yield return null;
+            Debug.Log("looking for object tagged levelContainer");
+            //runs when loaded
+            GameObject[] levelContainers = GameObject.FindGameObjectsWithTag("LevelContainer");
 
-		for(int i = 0;i<levelContainers.Length;i++){
-			LevelContainer lc = levelContainers[i].GetComponent<LevelContainer>();
-			if(!lc.processed){
-                
-                lc.processed = true;
-                processLevelContainer(lc);
+            for(int i = 0;i<levelContainers.Length;i++){
+                LevelContainer lc = levelContainers[i].GetComponent<LevelContainer>();
+                if(!lc.processed){
 
-                //TriggerHandler - find and store all triggers then sync with server
-                triggerHandler.process(lc);
-			}
+                    foundLC = true;
+                    
+                    lc.processed = true;
+                    processLevelContainer(lc);
 
-		}
+                    //TriggerHandler - find and store all triggers then sync with server
+                    triggerHandler.process(lc);
+                    break;
+                }
+
+            }
+        }
 
         manager.OnLevelLoaded(levelIndex);
     }
@@ -74,11 +83,7 @@ public class LevelHandler : MonoBehaviour {
         //check if it should stich them together
 
         if(currentLevelContainer == null){
-
             //first run setup
-
-            currentLevelContainer = levelContainer;
-
             if(NetworkManager.isServer)
                 GetComponent<GameManager>().setNewLevelManager(levelContainer.levelManager);
 

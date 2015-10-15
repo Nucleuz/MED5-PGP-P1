@@ -37,6 +37,7 @@ public class ClientManager : NetworkManager
 
     void Start()
     {
+        levelHandler = GetComponent<LevelHandler>();
         //Connect to the server
         DarkRiftAPI.workInBackground = true;
         DarkRiftAPI.Connect(IP); //halts until connect or timeout
