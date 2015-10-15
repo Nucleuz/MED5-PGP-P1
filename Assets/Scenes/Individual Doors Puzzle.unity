@@ -366,6 +366,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1066171589}
     m_Modifications:
+    - target: {fileID: 11435184, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
+      propertyPath: playerList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 461432, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
       propertyPath: m_LocalPosition.x
       value: 12
@@ -380,7 +384,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 461432, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
       propertyPath: m_LocalRotation.x
-      value: .700446784
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 461432, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
       propertyPath: m_LocalRotation.y
@@ -392,7 +396,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 461432, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .713704646
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 461432, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
       propertyPath: m_RootOrder
@@ -400,11 +404,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 461432, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
       propertyPath: m_LocalScale.y
-      value: .0895638168
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198304, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
       propertyPath: m_Name
-      value: Button Yellow
+      value: Button Blue
       objectReference: {fileID: 0}
     - target: {fileID: 2344398, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
       propertyPath: m_Materials.Array.data[0]
@@ -413,6 +417,18 @@ Prefab:
     - target: {fileID: 11435184, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
       propertyPath: playerID
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11435184, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
+      propertyPath: playerList.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11435184, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
+      propertyPath: playerList.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11435184, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
+      propertyPath: playerList.Array.data[2]
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
@@ -499,7 +515,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 196659429}
   m_Layer: 0
-  m_Name: Yellow Points
+  m_Name: Blue Points
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -559,7 +575,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 189580, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
       propertyPath: m_Name
-      value: Barricade Blue
+      value: Barricade Green
       objectReference: {fileID: 0}
     - target: {fileID: 11499764, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
       propertyPath: pRail
@@ -856,7 +872,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 440710934}
   m_Layer: 0
-  m_Name: Blue Points
+  m_Name: Green Points
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -884,7 +900,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 542775970}
   m_Layer: 0
-  m_Name: Blue Player Track Models
+  m_Name: Green Player Track Models
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -905,7 +921,7 @@ Transform:
   - {fileID: 26773526}
   - {fileID: 74873030}
   m_Father: {fileID: 2093271853}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!1001 &558099046
 Prefab:
   m_ObjectHideFlags: 0
@@ -1005,7 +1021,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 174738, guid: 6b51f68b61740074b921684716c1e935, type: 2}
       propertyPath: m_Name
-      value: Non-VR Player Blue
+      value: Non-VR Player Green
       objectReference: {fileID: 0}
     - target: {fileID: 11465930, guid: 6b51f68b61740074b921684716c1e935, type: 2}
       propertyPath: CurrentRail
@@ -1520,7 +1536,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1087812324}
   m_Layer: 0
-  m_Name: Yellow Player Track Models
+  m_Name: Blue Player Track Models
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1559,6 +1575,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1066171589}
     m_Modifications:
+    - target: {fileID: 11435184, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
+      propertyPath: playerList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 461432, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
       propertyPath: m_LocalPosition.x
       value: 2
@@ -1573,7 +1593,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 461432, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
       propertyPath: m_LocalRotation.x
-      value: .700446784
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 461432, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
       propertyPath: m_LocalRotation.y
@@ -1585,7 +1605,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 461432, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .713704646
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 461432, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
       propertyPath: m_RootOrder
@@ -1593,7 +1613,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 198304, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
       propertyPath: m_Name
-      value: Button Blue
+      value: Button Green
       objectReference: {fileID: 0}
     - target: {fileID: 2344398, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
       propertyPath: m_Materials.Array.data[0]
@@ -1602,6 +1622,14 @@ Prefab:
     - target: {fileID: 11435184, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
       propertyPath: playerID
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11435184, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
+      propertyPath: playerList.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11435184, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
+      propertyPath: playerList.Array.data[2]
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
@@ -1651,7 +1679,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 189580, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
       propertyPath: m_Name
-      value: Barricade Yellow
+      value: Barricade Blue
       objectReference: {fileID: 0}
     - target: {fileID: 11499764, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
       propertyPath: pRail
@@ -2029,6 +2057,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1066171589}
     m_Modifications:
+    - target: {fileID: 11435184, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
+      propertyPath: playerList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 461432, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
       propertyPath: m_LocalPosition.x
       value: -8
@@ -2043,7 +2075,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 461432, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
       propertyPath: m_LocalRotation.x
-      value: .700446784
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 461432, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
       propertyPath: m_LocalRotation.y
@@ -2055,7 +2087,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 461432, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .713704646
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 461432, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
       propertyPath: m_RootOrder
@@ -2063,7 +2095,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 461432, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
       propertyPath: m_LocalScale.y
-      value: .0895638168
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198304, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
       propertyPath: m_Name
@@ -2076,6 +2108,18 @@ Prefab:
     - target: {fileID: 11435184, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
       propertyPath: playerID
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11435184, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
+      propertyPath: playerList.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11435184, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
+      propertyPath: playerList.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11435184, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
+      propertyPath: playerList.Array.data[2]
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
@@ -2258,7 +2302,7 @@ Transform:
   - {fileID: 1346118534}
   - {fileID: 236007091}
   m_Father: {fileID: 2093271853}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!4 &1692450258 stripped
 Transform:
   m_PrefabParentObject: {fileID: 472034, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
@@ -2443,7 +2487,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 174738, guid: 6b51f68b61740074b921684716c1e935, type: 2}
       propertyPath: m_Name
-      value: Non-VR Player Yellow
+      value: Non-VR Player Blue
       objectReference: {fileID: 0}
     - target: {fileID: 11465930, guid: 6b51f68b61740074b921684716c1e935, type: 2}
       propertyPath: CurrentRail
@@ -2451,7 +2495,7 @@ Prefab:
       objectReference: {fileID: 929695715}
     - target: {fileID: 11433986, guid: 6b51f68b61740074b921684716c1e935, type: 2}
       propertyPath: playerIndex
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 174738, guid: 6b51f68b61740074b921684716c1e935, type: 2}
       propertyPath: m_IsActive
@@ -2557,8 +2601,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 542775970}
   - {fileID: 1667366592}
+  - {fileID: 542775970}
   - {fileID: 1087812324}
   m_Father: {fileID: 0}
   m_RootOrder: 3
