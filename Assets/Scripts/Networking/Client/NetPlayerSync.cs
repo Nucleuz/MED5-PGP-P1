@@ -29,7 +29,8 @@ public class NetPlayerSync : MonoBehaviour {
 
 	//network id for the object
 	public ushort networkID;
-	public VoiceChatPlayer voiceChatPlayer;
+
+	public VoiceChatPlayer player; //TODO Placeholder, remove later when spatial
 
 	// Use this for initialization
 	void Start () {
@@ -65,28 +66,21 @@ public class NetPlayerSync : MonoBehaviour {
 	// Called once there is a new packet/sample ready
 	public void OnNewSample (VoiceChatPacket packet)
 	{
-		Debug.Log ("New sample, sending");
-		DarkRiftAPI.SendMessageToOthers (Network.Tag.Player, Network.Subject.VoiceChat, packet);	// Send the packet to all other players
+		// We only send the byte[], if VoiceChatPacket is send then DarkRifts package header breaks
+		DarkRiftAPI.SendMessageToOthers (Network.Tag.Player, Network.Subject.VoiceChat, packet.Data);	// Send the packet to all other players
 	}
 
-	public void VoiceChatInit ()
-	{
-		voiceChatPlayer = GameObject.Find("VoiceChat_Player").GetComponent<VoiceChatPlayer>(); 		//TODO: Sorry for I have sinned
-
-		VoiceChatRecorder.Instance.Device = VoiceChatRecorder.Instance.AvailableDevices [0];		// Set Microphone to first avaliable audio device
-		VoiceChatRecorder.Instance.NetworkId = networkID;
-		if(!VoiceChatRecorder.Instance.StartRecording ())												// Start recording (Not the same as transmitting!)
-			Debug.LogError("Recording not Started!");
-		VoiceChatRecorder.Instance.NewSample += OnNewSample;										// Subscribe to the NewSample 
-	}
-	
 	void RecieveData(ushort senderID, byte tag, ushort subject, object data){
 		// Check if wants to update the voice packet
 		if(subject == Network.Subject.VoiceChat) {
-			VoiceChatPacket pak = (VoiceChatPacket)data ;
-			Debug.Log ("ID: " + pak.NetworkId + " Length: " + pak.Length);
+			VoiceChatPacket recreatedPackage = new VoiceChatPacket();
+			recreatedPackage.Data = (byte[]) data;
+			recreatedPackage.Compression = VoiceChatCompression.Speex;
+			recreatedPackage.Length = 150; 					// Found using debugging
+			recreatedPackage.NetworkId = (int)senderID;
+
 			//TODO Check for networkId and play sound on correlating player object
-			voiceChatPlayer.OnNewSample((VoiceChatPacket) data);
+			player.OnNewSample(recreatedPackage);
 		}
 
 		//check that it is the right sender

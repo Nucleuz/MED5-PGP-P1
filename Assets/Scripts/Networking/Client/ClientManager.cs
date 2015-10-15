@@ -4,7 +4,7 @@ using System.Collections;
 using DarkRift;
 
 /*
-By KasperHdL
+By KasperHdL and Jalict
 
 Manager for the client. 
 
@@ -14,6 +14,7 @@ Then sends a message to every other client so they can spawn this player
 
 
 */
+using VoiceChat;
 
 public class ClientManager : NetworkManager
 {
@@ -77,7 +78,6 @@ public class ClientManager : NetworkManager
 
     void ReceiveData(ushort senderID, byte tag, ushort subject, object data)
     {
-
         //only handle data if it is for the manager
         if (tag == Network.Tag.Manager)
         {
@@ -109,9 +109,9 @@ public class ClientManager : NetworkManager
                         //set the network id so it will sync with the player
                         NetPlayerSync netPlayer = g.GetComponent<NetPlayerSync>();
 
+						// 
                         netPlayer.networkID = senderID;
                         netPlayer.SetAsReceiver();
-
                     }
                     break;
                 case Network.Subject.HasJoined:
@@ -143,6 +143,7 @@ public class ClientManager : NetworkManager
 
         Debug.Log("Level " + levelIndex + " (" + levelHandler.levelOrder[levelIndex] + ") Loaded");
 
+
         if (player == null)
         {
             //spawn the object
@@ -154,8 +155,21 @@ public class ClientManager : NetworkManager
             netPlayer.networkID = networkID;
             netPlayer.SetAsSender();
 
-            //place the player on the correct rail!
+			//  VOICE CHAT SPECIFIC STUFF
+			g.AddComponent<VoiceChatSettings>();
+			g.AddComponent<VoiceChatRecorder>(); // Only add this to the Sender, Receivers will get VoiceChatPlayer
+			VoiceChatRecorder.Instance.Device = VoiceChatRecorder.Instance.AvailableDevices [0];	// Set Microphone to first avaliable audio device
+			VoiceChatRecorder.Instance.NetworkId = networkID;										// Necessary for VoiceChat to work
+			VoiceChatRecorder.Instance.StartRecording ();											// Record the microphone (Not the same as Transmitting) should always be on as long as you want to be able to transmit.
+			VoiceChatRecorder.Instance.NewSample += netPlayer.OnNewSample;							// Put voicesamples into OnNewSample in netPlayer
+			VoiceChatRecorder.Instance.AutoDetectSpeech = true;
 
+			AudioSource a = g.AddComponent<AudioSource>();						// Add audiosource for playing voice on other players
+			a.loop = true;														// Loop? (They recommend this in their own Prefab)
+			netPlayer.player = g.AddComponent<VoiceChatPlayer>(); 				// Only add this to the Sender, Receivers will get VoiceChatRecorder
+
+
+            //place the player on the correct rail!
             Rail startRail = levelHandler.getLevelManager().levelStartRail[networkID - 1];
 
             player.position = startRail.transform.position;
