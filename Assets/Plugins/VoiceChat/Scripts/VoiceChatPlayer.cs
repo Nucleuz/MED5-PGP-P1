@@ -14,7 +14,6 @@ namespace VoiceChat
         float playDelay = 0;
         bool shouldPlay = false;
         float lastRecvTime = 0;
-        NSpeex.SpeexDecoder speexDec = new NSpeex.SpeexDecoder(NSpeex.BandMode.Narrow);
 
         [SerializeField]
         int playbackDelay = 2;
@@ -90,7 +89,7 @@ namespace VoiceChat
 
             // Decompress
             float[] sample = null;
-            int length = VoiceChatUtils.Decompress(speexDec, packet, out sample);
+            int length = VoiceChatUtils.Decompress(packet, out sample);
 
             // Add more time to received
             received += VoiceChatSettings.Instance.SampleTime;

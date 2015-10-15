@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 using DarkRift;
+using VoiceChat;
 
 /*
-By KasperHdL
+By KasperHdL and Jalict
 
 Syncs, toggles between being send only or receive only
 
 */
+using System.Collections.Generic;
+
 
 public class NetPlayerSync : MonoBehaviour {
 
@@ -26,6 +29,7 @@ public class NetPlayerSync : MonoBehaviour {
 
 	//network id for the object
 	public ushort networkID;
+	public VoiceChatPlayer voiceChatPlayer;
 
 	// Use this for initialization
 	void Start () {
@@ -58,29 +62,54 @@ public class NetPlayerSync : MonoBehaviour {
 		}
 	}
 
+	// Called once there is a new packet/sample ready
+	public void OnNewSample (VoiceChatPacket packet)
+	{
+		Debug.Log ("New sample, sending");
+		DarkRiftAPI.SendMessageToOthers (Network.Tag.Player, Network.Subject.VoiceChat, packet);	// Send the packet to all other players
+	}
+
+	public void VoiceChatInit ()
+	{
+		voiceChatPlayer = GameObject.Find("VoiceChat_Player").GetComponent<VoiceChatPlayer>(); 		//TODO: Sorry for I have sinned
+
+		VoiceChatRecorder.Instance.Device = VoiceChatRecorder.Instance.AvailableDevices [0];		// Set Microphone to first avaliable audio device
+		VoiceChatRecorder.Instance.NetworkId = networkID;
+		if(!VoiceChatRecorder.Instance.StartRecording ())												// Start recording (Not the same as transmitting!)
+			Debug.LogError("Recording not Started!");
+		VoiceChatRecorder.Instance.NewSample += OnNewSample;										// Subscribe to the NewSample 
+	}
+	
 	void RecieveData(ushort senderID, byte tag, ushort subject, object data){
+		// Check if wants to update the voice packet
+		if(subject == Network.Subject.VoiceChat) {
+			VoiceChatPacket pak = (VoiceChatPacket)data ;
+			Debug.Log ("ID: " + pak.NetworkId + " Length: " + pak.Length);
+			//TODO Check for networkId and play sound on correlating player object
+			voiceChatPlayer.OnNewSample((VoiceChatPacket) data);
+		}
+
 		//check that it is the right sender
 		if(!isSender && senderID == networkID ){
 			//check if it wants to update the player
 			if( subject == Network.Subject.PlayerUpdate ){
 
 				//unpack the data
-				PlayerInfo info = (PlayerInfo)data;
+				PlayerInfo info 	= 	(PlayerInfo)data;
 				//apply the data
 				transform.position 	= 	info.position.get();
-				head.rotation 		= 	info.rotation.get();
-				
+				head.rotation 		= 	info.rotation.get();	
 			}
 		}
 	}
 
-//When the player disconnects destroy it
+	//When the player disconnects destroy it
 	void PlayerDisconnected(ushort ID){
 		Destroy(gameObject);
 	}
 
-//--------------------
-//  Getters / Setters
+	//--------------------
+	//  Getters / Setters
 	public void SetAsSender(){
 		isSender = true;
 		cam.SetActive(true);
