@@ -10,7 +10,7 @@ public class InteractableButton : Interactable{
 	AudioSource audio;
 	//checks if the sound has been player, inorder to only play the sound only one time.
 
-	[Tooltip("Check the players that have to hit the button")]
+	[Tooltip("NEEDS TO BE THE SIZE 3. Check the players that have to hit the button. 0 = red, 1 = green, 2 = blue")]
 	public bool[] playerList;
 	
 	private bool[] playerCheck = new bool[3];
@@ -35,43 +35,7 @@ public class InteractableButton : Interactable{
 		par 			= GetComponent<ParticleSystem>();
 
 		//Set the color of the interactable button both background light and particles to the correct user.
-		/*switch (playerID){
-			case -1:
-				buttonLight.color = Color.white;
-				par.startColor = Color.white;
-			break;
-			case 1:
-				buttonLight.color = Color.red;
-				par.startColor = Color.red;
-			break;
-			case 2:
-				buttonLight.color = Color.blue;
-				par.startColor = Color.blue;
-			break;
-			case 3:
-				buttonLight.color = Color.magenta;
-				par.startColor = Color.magenta;
-			break;
-			case 4:
-				buttonLight.color = Color.green;
-				par.startColor = Color.green;
-			break;
-			case 5:
-				buttonLight.color = Color.yellow;
-				par.startColor = Color.yellow;
-			break;
-			case 6:
-				buttonLight.color = Color.cyan;
-				par.startColor = Color.cyan;
-			break;
-			case 7:
-				buttonLight.color = Color.white;
-				par.startColor = Color.white;
-			break;
-			default:
-                Debug.Log("Invalid playerIndex");
-            break;
-            }*/	
+		setButtonColor(playerList);
 	}
 	
 	// Update is called once per frame
@@ -122,5 +86,37 @@ public class InteractableButton : Interactable{
 				return false;
 		}
 		return true;
+	}
+
+	public void setButtonColor(bool[] a){
+		//a[0] = red, a[1] = green, a[2] = blue
+		if(a[0] && !a[1] && !a[2]){							//Only red player
+			buttonLight.color = Color.red;
+			par.startColor = Color.red;
+
+		} else if(!a[0] && a[1] && !a[2]){					//Only green player
+			buttonLight.color = Color.green;
+			par.startColor = Color.green;
+
+		} else if(!a[0] && !a[1] && a[2]){					//Only blue player
+			buttonLight.color = Color.blue;
+			par.startColor = Color.blue;
+
+		} else if(a[0] && !a[1] && a[2]){					//Red and blue player
+			buttonLight.color = Color.magenta;
+			par.startColor = Color.magenta;
+
+		} else if(a[0] && a[1] && !a[2]){					//Red and green player
+			buttonLight.color = Color.yellow;
+			par.startColor = Color.yellow;
+
+		} else if(!a[0] && a[1] && a[2]){					//Green and blue
+			buttonLight.color = Color.cyan;
+			par.startColor = Color.cyan;
+		
+		} else if(a[0] && a[1] && a[2]){					//All players
+			buttonLight.color = Color.white;
+			par.startColor = Color.white;        	
+		}
 	}
 }
