@@ -8,11 +8,15 @@ public class Cart : MonoBehaviour {
 	float speed = 5.0f;			//Cart move speed
     Vector3 startingPosition;
     Rail startingRail;
+    Animator minecartAnimator;
+
+    private float movingSpeed;
 
 	void Start() {
         startingRail = CurrentRail;
         startingPosition = transform.position;
 		StartCoroutine (UpdatePosition());
+		minecartAnimator = GetComponent<Animator>();
 	}
 	
 	void Update(){
@@ -24,12 +28,15 @@ public class Cart : MonoBehaviour {
 		//Checks for key presses. If up/down key is pressed
 		//then run move function. This can only happen if cart is not
 		//already moving.
-		if(Input.GetAxis("Vertical")>0 && !isMoving)
+		if(Input.GetAxis("Vertical")>0 && !isMoving){
 			MoveForward();
-
-		if(Input.GetAxis("Vertical")<0 && !isMoving)
+			minecartAnimator.speed = movingSpeed; //Change the speed of the animation accordingly to the speed of the cart
+		} else if(Input.GetAxis("Vertical")<0 && !isMoving){
 			MoveBackward();
+			minecartAnimator.speed = movingSpeed; //Change the speed of the animation accordingly to the speed of the cart
+		}
 	}
+
 
 	//Sets current railpoint to next railpoint
 	//and runs movement coroutine
@@ -64,8 +71,10 @@ public class Cart : MonoBehaviour {
 				transform.rotation = Quaternion.Slerp(currentRotation, CurrentRail.transform.rotation, t);
 				t += (Time.deltaTime/dist)*speed;
 				yield return null;
+				movingSpeed = t * 3.2f; //Change the speed of the animation accordingly to the speed of the cart
 			}
 			isMoving = false;
+			minecartAnimator.speed = 0; //Change the speed of the animation accordingly to the speed of the cart
 		}
 	}
 
