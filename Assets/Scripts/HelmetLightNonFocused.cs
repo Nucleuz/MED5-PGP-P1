@@ -17,7 +17,7 @@ public class HelmetLightNonFocused : MonoBehaviour {
             case 2:
                 nonFocusedHelmetLight.color = new Color(0.2F, 0.2F, 1, 1F); //blue
             break;
-            case 4:
+            case 3:
                 nonFocusedHelmetLight.color = new Color(0.2F, 1, 0.2F, 1F); //green
             break;
             default:

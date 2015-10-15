@@ -19,7 +19,7 @@ public class HelmetLightScript : MonoBehaviour {
 
     private LineRenderer lineRenderer;				// Used for drawing the ray from the helmet
 
-    [Tooltip("1, 2, 4")]
+    [Tooltip("1, 2, 3")]
 	public int playerIndex;							// index for the player.
 	public Transform objectHit;
 	public Ray ray;
@@ -37,7 +37,7 @@ public class HelmetLightScript : MonoBehaviour {
             case 2:
                 helmetLight.color = new Color(0.2F, 0.2F, 1, 1F); //blue
             break;
-            case 4:
+            case 3:
                 helmetLight.color = new Color(0.2F, 1, 0.2F, 1F); //green
             break;
             default:
@@ -114,10 +114,6 @@ public class HelmetLightScript : MonoBehaviour {
 
 				}
 			}
-
-            
-
-            
         }
     }
 }
