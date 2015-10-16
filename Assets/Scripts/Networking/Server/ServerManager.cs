@@ -171,10 +171,12 @@ public class ServerManager : NetworkManager {
                 connections[i].SendReply(tag, subject, data);
     }
 
-	void OnApplicationQuit() {
+	private void OnApplicationQuit() {
 		for(int i = connections.Length;i > 0;i--) {
 			connections[i] = null;
 		}
+
+		ConnectionService.onData -= OnData;
 
 		DarkRiftServer.Close(false);
 	}
