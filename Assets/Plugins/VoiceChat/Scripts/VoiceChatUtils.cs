@@ -168,14 +168,9 @@ namespace VoiceChat
 
         public static int Decompress(VoiceChatPacket packet, out float[] data)
         {
-            return Decompress(null, packet, out data);
-        }
-
-        public static int Decompress(NSpeex.SpeexDecoder speexDecoder, VoiceChatPacket packet, out float[] data)
-        {
-            switch (packet.Compression)
-            {
-                /*
+			switch (packet.Compression)
+			{
+				/*
                 case VoiceChatCompression.Raw:
                     {
                         short[9 buffer 
@@ -194,31 +189,29 @@ namespace VoiceChat
                         return unzipedData.Length / 2;
                     }
                 */
-
-                case VoiceChatCompression.Speex:
-                    {
-						speexDecoder = new NSpeex.SpeexDecoder(NSpeex.BandMode.Narrow, true);
-						
-                        data = SpeexDecompress(speexDecoder, packet.Data, packet.Length);
-                        return data.Length;
-                    }
-
-                case VoiceChatCompression.Alaw:
-                    {
-                        data = ALawDecompress(packet.Data, packet.Length);
-                        return packet.Length;
-                    }
-
-                case VoiceChatCompression.AlawZlib:
-                    {
-                        byte[] alaw = ZlibDecompress(packet.Data, packet.Length);
-                        data = ALawDecompress(alaw, alaw.Length);
-                        return alaw.Length;
-                    }
-            }
-
-            data = new float[0];
-            return 0;
+				
+			case VoiceChatCompression.Speex:
+			{
+				data = SpeexDecompress(new NSpeex.SpeexDecoder(NSpeex.BandMode.Narrow, true), packet.Data, packet.Length);
+				return data.Length;
+			}
+				
+			case VoiceChatCompression.Alaw:
+			{
+				data = ALawDecompress(packet.Data, packet.Length);
+				return packet.Length;
+			}
+				
+			case VoiceChatCompression.AlawZlib:
+			{
+				byte[] alaw = ZlibDecompress(packet.Data, packet.Length);
+				data = ALawDecompress(alaw, alaw.Length);
+				return alaw.Length;
+			}
+			}
+			
+			data = new float[0];
+			return 0;
         }
 
         public static int ClosestPowerOfTwo(int value)
