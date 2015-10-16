@@ -21,8 +21,8 @@ public class LevelManager : MonoBehaviour {
 	public Trigger[] triggerEvents;			//Used to trigger an object when a sequence is finished
 
 //@TODO(Kasper) make description and tool tips
-	public Rail[] levelStartRail = new Rail[4]; 
-	public Rail[] levelEndRail   = new Rail[4];
+	public Rail[] levelStartRail = new Rail[3]; 
+	public Rail[] levelEndRail   = new Rail[3];
     public Vector3 nextLevelDirection;
     public Vector3 prevLevelDirection;
 }
