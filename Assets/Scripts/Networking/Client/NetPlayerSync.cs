@@ -58,7 +58,6 @@ public class NetPlayerSync : MonoBehaviour {
 			//send it to everyone else
 			DarkRiftAPI.SendMessageToOthers(Network.Tag.Player, Network.Subject.PlayerUpdate, info);
 
-
 			//save the sent position and rotation
 			lastPosition = info.position.get();
 			lastRotation = info.rotation.get();
@@ -89,11 +88,11 @@ public class NetPlayerSync : MonoBehaviour {
 		}
 
 		// Check if wants to update the voice packet
-		if(subject == Network.Subject.VoiceChat) {
+		if(subject == Network.Subject.VoiceChat && data != null) {		//TODO Check why packages may be null
 			VoiceChatPacket recreatedPackage = new VoiceChatPacket();	// Recreating package (Based on assumptions)
 			recreatedPackage.Data = (byte[]) data;
 			recreatedPackage.Compression = VoiceChatCompression.Speex;	// We only use Speeex
-			recreatedPackage.Length = 150; 								// Found using debugging
+			recreatedPackage.Length = recreatedPackage.Data.Length;     // (150) Found using debugging
 			recreatedPackage.NetworkId = (int)senderID;
 		
 			player.OnNewSample(recreatedPackage);						// Queue package to the VoiceChatPlayer
