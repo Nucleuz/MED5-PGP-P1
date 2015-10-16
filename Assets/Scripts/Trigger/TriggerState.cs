@@ -9,15 +9,15 @@ public class TriggerState{
     public bool canReset;
 
     public TriggerState(ushort id, bool isTriggered, bool isReadyToBeTriggered, bool canReset){
-        this.id = id;
-        this.isTriggered = isTriggered;
+        this.id                   = id;
+        this.isTriggered          = isTriggered;
         this.isReadyToBeTriggered = isReadyToBeTriggered;
-        this.canReset = canReset;
+        this.canReset             = canReset;
     }
     public TriggerState(Trigger trigger){
-        this.id = trigger.triggerID;
-        this.isTriggered = trigger.isTriggered;
+        this.id                   = trigger.triggerID;
+        this.isTriggered          = trigger.isTriggered;
         this.isReadyToBeTriggered = trigger.isReadyToBeTriggered;
-        this.canReset = trigger.canReset;
+        this.canReset             = trigger.canReset;
     }
 }

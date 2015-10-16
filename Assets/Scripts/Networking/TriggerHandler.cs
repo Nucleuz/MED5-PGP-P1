@@ -10,105 +10,110 @@ using DarkRift;
  *
  * sends trigger info to Other Clients 
  *
- * (Singleton)
- */
+     * (Singleton)
+     */
 
- 
- public class TriggerHandler : MonoBehaviour{
+     
+     public class TriggerHandler : MonoBehaviour{
 
-     public static TriggerHandler _instance;
+         public static TriggerHandler _instance;
 
-     public List<Trigger> triggers;
+         public List<Trigger> triggers;
 
-     //Server Specific
-     public List<ushort> triggerIDs;
-     public bool triggersReady = false;
+         //Server Specific
+         public List<ushort> triggerIDs;
+         public bool triggersReady = false;
 
-     private ushort triggerIdCount = 1;
-
-
-     void Awake(){
-         _instance = this;
-     }
-
-     void Start(){
-         triggers = new List<Trigger>();
-         triggerIDs = new List<ushort>();
-
-         if(!NetworkManager.isServer)
-             DarkRiftAPI.onDataDetailed += ReceiveData;
-         
-     }
+         private ushort triggerIdCount = 1;
 
 
-     public void process(LevelContainer levelContainer){
-         //get all triggers in the levelcontainer
-         triggersReady = false;
-
-         purgeTriggers();
-         //@TODO check perf and mem of checkChild method -- should maybe put it in a coroutine
-         checkChild(levelContainer.transform);
-
-         //when completed if server call clients and tell level to load
-         //if client when completed call server and ask for list of ids
-         if(NetworkManager.isServer){
-             triggersReady = true;
-              
-         }else{
-
-            DarkRiftAPI.SendMessageToServer(
-                    Network.Tag.Trigger,
-                    Network.Subject.RequestTriggerIDs,
-                    true
-                    );
+         void Awake(){
+             _instance = this;
          }
-     }
 
-     private void checkChild(Transform child){
+         void Start(){
+             triggers = new List<Trigger>();
+             triggerIDs = new List<ushort>();
 
-         if(child.GetComponent<Trigger>() != null)
-             Assign(child.GetComponent<Trigger>());
-
-         foreach(Transform c in child.transform)
-             checkChild(c);
-
-     }
+             if(!NetworkManager.isServer)
+                 DarkRiftAPI.onDataDetailed += ReceiveData;
+             
+         }
 
 
+         public void process(LevelContainer levelContainer){
+             //get all triggers in the levelcontainer
+             triggersReady = false;
 
-     //Assign trigger id, add to dictionary and return the id used.
-     public void Assign(Trigger trigger){
-         if(NetworkManager.isServer){
-             ushort id = triggerIdCount++;
-             triggers.Add(trigger);
-             triggerIDs.Add(id);
-         }else
-             triggers.Add(trigger);
-     }
+             purgeTriggers();
+             //@TODO check perf and mem of checkChild method -- should maybe put it in a coroutine
+             checkChild(levelContainer.transform);
 
-     public void purgeTriggers(){
-         triggers.Clear();
-         triggerIDs.Clear();
+             //when completed if server call clients and tell level to load
+             //if client when completed call server and ask for list of ids
+             if(NetworkManager.isServer){
+                 triggersReady = true;
+                  
+             }else{
 
-     }
-      
-	public void ReceiveData(ushort senderID, byte tag, ushort subject, object data){
+                DarkRiftAPI.SendMessageToServer(
+                        Network.Tag.Trigger,
+                        Network.Subject.RequestTriggerIDs,
+                        true
+                        );
+             }
+         }
 
-        if(tag == Network.Tag.Trigger){
-            if(subject == Network.Subject.ServerSentTriggerIDs){
-                Debug.Log("trigger id's received");
-                
-                TriggerState[] triggerStates = (TriggerState[])data;
+         private void checkChild(Transform child){
 
-                for(int i = 0;i<triggerStates.Length;i++){
-                    triggers[i].SetState(triggerStates[i]);
+             if(child.GetComponent<Trigger>() != null)
+                 Assign(child.GetComponent<Trigger>());
+
+             foreach(Transform c in child.transform)
+                 checkChild(c);
+
+         }
+
+
+
+         //Assign trigger id, add to dictionary and return the id used.
+         public void Assign(Trigger trigger){
+             if(NetworkManager.isServer){
+                 ushort id = triggerIdCount++;
+                 trigger.triggerID = id;
+                 triggers.Add(trigger);
+                 triggerIDs.Add(id);
+             }else
+                 triggers.Add(trigger);
+         }
+
+         public void purgeTriggers(){
+             triggers.Clear();
+             triggerIDs.Clear();
+
+         }
+          
+        public void ReceiveData(ushort senderID, byte tag, ushort subject, object data){
+
+            if(tag == Network.Tag.Trigger){
+                if(subject == Network.Subject.ServerSentTriggerIDs){
+                    Debug.Log("trigger id's received");
+                    
+                    TriggerState[] triggerStates = (TriggerState[])data;
+
+                    for(int i = 0;i<triggerStates.Length;i++){
+                        triggers[i].SetState(triggerStates[i]);
+                        triggerIDs.Add(triggerStates[i].id);
+                        Debug.Log(triggerStates[i].id);
+                    }
+                }else if(subject == Network.Subject.TriggerActivate){
+                    TriggerInteracted((ushort)data,true);
+                }else if(subject == Network.Subject.TriggerDeactivate){
+                    TriggerInteracted((ushort)data,false);
+                }else if(subject == Network.Subject.TriggerState){
+                    SetTriggerState((TriggerState)data);
                 }
-            }else if(subject == Network.Subject.TriggerActivate){
-                TriggerInteracted((ushort)data,true);
-            }else if(subject == Network.Subject.TriggerDeactivate){
-                TriggerInteracted((ushort)data,false);
             }
-        }
     }
 
     public void SetTriggerState(TriggerState state){
@@ -124,6 +129,7 @@ using DarkRift;
 
     public void TriggerInteracted(ushort triggerID, bool state){
         int index = FindTriggerIndexFromID(triggerID);  
+        
         triggers[index].isTriggered = state;
     }
 

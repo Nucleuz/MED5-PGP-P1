@@ -110,12 +110,14 @@ public class NetPlayerSync : MonoBehaviour {
 		isSender = true;
 		cam.SetActive(true);
 		headControl.enabled = true;
+        helmet.enabled = true;
 	}
 
 	public void SetAsReceiver(){
 		isSender = false;
         cam.SetActive(false);
 		headControl.enabled = false;
+        helmet.enabled = false;
 
 	}
 }

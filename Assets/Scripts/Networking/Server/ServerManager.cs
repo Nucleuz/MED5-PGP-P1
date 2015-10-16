@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using DarkRift;
 
@@ -12,6 +13,9 @@ Manager for the server. This is a test setup with spawn positions and simple ser
 
 
 public class ServerManager : NetworkManager {
+
+    //for debugging
+    public Text debug;
 
 	//index for the next player to join, NOTE: cycles with the spawnPos Length
 	public int playerIndex;
@@ -106,6 +110,7 @@ public class ServerManager : NetworkManager {
                 
                 for(int i = 0;i<triggerHandler.triggers.Count;i++){
                     triggerStates[i] = new TriggerState(triggerHandler.triggers[i]);
+                    Debug.Log(triggerStates[i].id);
                 }
 
                 con.SendReply(
@@ -121,7 +126,7 @@ public class ServerManager : NetworkManager {
                 TriggerState state = triggerHandler.GetTriggerState((ushort)data.data);
                 
                 //send to clients but not the sender
-                SendToAll(data.tag,data.subject,state);
+                SendToAll(data.tag,Network.Subject.TriggerState,state);
             }else if(data.subject == Network.Subject.TriggerDeactivate){
                 triggerHandler.TriggerInteracted((ushort)data.data,false);
 
@@ -131,7 +136,7 @@ public class ServerManager : NetworkManager {
                 TriggerState state = triggerHandler.GetTriggerState((ushort)data.data);
 
                 //send to clients but not the sender
-                SendToAllBut(con, data.tag,data.subject,data.data);
+                SendToAllBut(con, data.tag,Network.Subject.TriggerState,data.data);
             }
         }
 	}

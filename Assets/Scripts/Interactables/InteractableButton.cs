@@ -75,8 +75,8 @@ public class InteractableButton : Interactable{
 
 		arraysFit = checkArrays(playerCheck, playerList);
 
-		if (trigger.isReadyToBeTriggered && arraysFit)
-			trigger.isTriggered = true;
+		if (!trigger.isTriggered && trigger.isReadyToBeTriggered && arraysFit)
+		    trigger.Activate();	
 		
 	}
 
