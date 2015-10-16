@@ -4,7 +4,7 @@ using System.Collections;
 using DarkRift;
 
 /*
-By KasperHdL
+By KasperHdL & Jalict
 
 Manager for the server. This is a test setup with spawn positions and simple server visuals(cube game objects).
 
@@ -31,6 +31,7 @@ public class ServerManager : NetworkManager {
     public GameManager gameManager;
     public LevelHandler levelHandler;
     public TriggerHandler triggerHandler;
+
 	void Start () {
 
         gameManager = GetComponent<GameManager>();
@@ -169,4 +170,12 @@ public class ServerManager : NetworkManager {
             if(connections[i] != null || connections[i] == con)
                 connections[i].SendReply(tag, subject, data);
     }
+
+	void OnApplicationQuit() {
+		for(int i = connections.Length;i > 0;i--) {
+			connections[i] = null;
+		}
+
+		DarkRiftServer.Close(false);
+	}
 }
