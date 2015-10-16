@@ -116,6 +116,7 @@ public class Mirror : Interactable {
             yield return null;
         }
         isRotating = false;
-        trigger.canReset = true;
+        //trigger.canReset = true;
+        trigger.isReadyToBeTriggered = true;
     }
 }
