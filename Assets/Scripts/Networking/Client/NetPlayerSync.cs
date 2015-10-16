@@ -11,7 +11,7 @@ Syncs, toggles between being send only or receive only
 */
 using System.Collections.Generic;
 
-
+[RequireComponent(typeof (VoiceChatPlayer))]
 public class NetPlayerSync : MonoBehaviour {
 
 	private bool isSender = false; //if false it is receiver
@@ -21,6 +21,7 @@ public class NetPlayerSync : MonoBehaviour {
 	//Reference to components that needs to be turn on and off when switching from sender to receiver
 	public GameObject cam;
 	public HeadControl headControl;
+	private VoiceChatPlayer player;
 
     public HelmetLightScript helmet;
 
@@ -31,12 +32,12 @@ public class NetPlayerSync : MonoBehaviour {
 	//network id for the object
 	public ushort networkID;
 
-	public VoiceChatPlayer player; //TODO Placeholder, remove later when spatial
-
 	// Use this for initialization
 	void Start () {
 		DarkRiftAPI.onPlayerDisconnected += PlayerDisconnected;
 		DarkRiftAPI.onDataDetailed += RecieveData;
+
+		player = GetComponent<VoiceChatPlayer>();
 	}
 	
 	// Update is called once per frame
@@ -72,17 +73,6 @@ public class NetPlayerSync : MonoBehaviour {
 	}
 
 	void RecieveData(ushort senderID, byte tag, ushort subject, object data){
-		// Check if wants to update the voice packet
-		if(subject == Network.Subject.VoiceChat) {
-			VoiceChatPacket recreatedPackage = new VoiceChatPacket();
-			recreatedPackage.Data = (byte[]) data;
-			recreatedPackage.Compression = VoiceChatCompression.Speex;
-			recreatedPackage.Length = 150; 					// Found using debugging
-			recreatedPackage.NetworkId = (int)senderID;
-
-			//TODO Check for networkId and play sound on correlating player object
-			player.OnNewSample(recreatedPackage);
-		}
 
 		//check that it is the right sender
 		if(!isSender && senderID == networkID ){
@@ -97,6 +87,18 @@ public class NetPlayerSync : MonoBehaviour {
 
 			}
 		}
+
+		// Check if wants to update the voice packet
+		if(subject == Network.Subject.VoiceChat) {
+			VoiceChatPacket recreatedPackage = new VoiceChatPacket();	// Recreating package (Based on assumptions)
+			recreatedPackage.Data = (byte[]) data;
+			recreatedPackage.Compression = VoiceChatCompression.Speex;	// We only use Speeex
+			recreatedPackage.Length = 150; 								// Found using debugging
+			recreatedPackage.NetworkId = (int)senderID;
+		
+			player.OnNewSample(recreatedPackage);						// Queue package to the VoiceChatPlayer
+		}
+
 	}
 
 	//When the player disconnects destroy it
