@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour {
 			if(index < LM.eventsInSequence.Length - 1){ //Checks if it is the last sequence of events - if it is: skip this
 				numberOfTriggeredEvents += LM.eventsInSequence[index]; //Increase the total number of events by the amount of events that was in the current sequence
 				if(LM.triggerEvents[index] != null){
-					LM.triggerEvents[index].isTriggered = true; //Triggers an object with should trigger when a sequence is finished. could for example be a door
+					LM.triggerEvents[index].Activate(); //Triggers an object with should trigger when a sequence is finished. could for example be a door
 				}
 				index++; //Goes to the next sequence
 				for(int i = numberOfTriggeredEvents; i < numberOfTriggeredEvents + LM.eventsInSequence[index]; ++i){ //Goes through the next sequence of events
@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour {
                 //If they are triggered which they shouldn't be, then we reset the sequence
                 currentNumberOfEventsTriggered = 0;
                 for(int f = 0; f < LM.eventsInSequence[index]; f++){ //goes through all the objects in the sequence and untrigger them
-                    LM.events[f + numberOfTriggeredEvents].isTriggered = false;
+                    LM.events[f + numberOfTriggeredEvents].Deactivate();
                 }
                 for(int u = 0; u < LM.eventOrder[index]; u++){ //goes through all the objects in the sequence and makes them ready to be triggered again
                     LM.events[u+ numberOfTriggeredEvents].isReadyToBeTriggered = true;
@@ -104,6 +104,7 @@ public class GameManager : MonoBehaviour {
     }
     private void resetTriggers(int triggerIndex){
         //This if statement is used in order to reset interactables if they require it
+        if(LM.events[triggerIndex + numberOfTriggeredEvents] == null)return;
         if(LM.events[triggerIndex + numberOfTriggeredEvents].canReset == true && LM.events[triggerIndex + numberOfTriggeredEvents].isReadyToBeTriggered == false){
             LM.events[triggerIndex + numberOfTriggeredEvents].isReadyToBeTriggered = true;
             LM.events[triggerIndex  + numberOfTriggeredEvents].canReset = false;

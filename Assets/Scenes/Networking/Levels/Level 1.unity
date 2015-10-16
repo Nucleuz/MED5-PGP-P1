@@ -2547,6 +2547,10 @@ Prefab:
       propertyPath: prevLevelDirection.z
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 11492572, guid: 639ce8ab29167214da59d2876d4ab108, type: 2}
+      propertyPath: eventsInSequence.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 639ce8ab29167214da59d2876d4ab108, type: 2}
   m_IsPrefabParent: 0
@@ -3443,10 +3447,10 @@ Light:
   m_GameObject: {fileID: 1886687171}
   m_Enabled: 1
   serializedVersion: 6
-  m_Type: 1
+  m_Type: 2
   m_Color: {r: 1, g: .956862748, b: .839215696, a: 1}
-  m_Intensity: 1
-  m_Range: 10
+  m_Intensity: 2.02999997
+  m_Range: 75
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -3474,7 +3478,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1886687171}
   m_LocalRotation: {x: .408217937, y: -.234569728, z: .109381676, w: .875426054}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 42.4700012, z: 35.5999985}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1356360608}
