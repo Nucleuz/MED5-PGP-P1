@@ -14,6 +14,7 @@ Then sends a message to every other client so they can spawn this player
 
 
 */
+using VoiceChat;
 
 public class ClientManager : NetworkManager
 {
@@ -97,7 +98,7 @@ public class ClientManager : NetworkManager
                         levelHandler.loadLevel((int)data);
                     }
                     break;
-                case Network.Subject.SpawnPlayer:
+                case Network.Subject.SpawnPlayer: // Spawn OTHER players
                     {
                         //spawn other player
                         Write("SpawnPlayer sender: " + senderID);
@@ -106,6 +107,10 @@ public class ClientManager : NetworkManager
 
                         //spawn the object
                         GameObject g = Instantiate(prefabPlayer, ((SVector3)data).get(), Quaternion.identity) as GameObject;
+
+						// VoiceChat Components
+						g.AddComponent<AudioSource>();
+						g.AddComponent<VoiceChatPlayer>();
 
                         //set the network id so it will sync with the player
                         NetPlayerSync netPlayer = g.GetComponent<NetPlayerSync>();
