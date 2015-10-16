@@ -13,10 +13,11 @@ public class GameManager : MonoBehaviour {
     public LevelHandler levelHandler;
 
 
-	
+    public ServerManager server;	
 
 	// Use this for initialization
 	void Start () {
+        server = GetComponent<ServerManager>();
 		GameObject g = GameObject.Find("LevelManagerObject"); //accessing the LevelManager script on the LevelManagerObject
         levelHandler = GetComponent<LevelHandler>();
 
@@ -64,6 +65,7 @@ public class GameManager : MonoBehaviour {
 				numberOfTriggeredEvents += LM.eventsInSequence[index]; //Increase the total number of events by the amount of events that was in the current sequence
 				if(LM.triggerEvents[index] != null){
 					LM.triggerEvents[index].Activate(); //Triggers an object with should trigger when a sequence is finished. could for example be a door
+                    server.TriggerChanged(LM.triggerEvents[index]);
 				}
 				index++; //Goes to the next sequence
 				for(int i = numberOfTriggeredEvents; i < numberOfTriggeredEvents + LM.eventsInSequence[index]; ++i){ //Goes through the next sequence of events
@@ -82,6 +84,7 @@ public class GameManager : MonoBehaviour {
                 currentNumberOfEventsTriggered = 0;
                 for(int f = 0; f < LM.eventsInSequence[index]; f++){ //goes through all the objects in the sequence and untrigger them
                     LM.events[f + numberOfTriggeredEvents].Deactivate();
+                    server.TriggerChanged(LM.triggerEvents[index]);
                 }
                 for(int u = 0; u < LM.eventOrder[index]; u++){ //goes through all the objects in the sequence and makes them ready to be triggered again
                     LM.events[u+ numberOfTriggeredEvents].isReadyToBeTriggered = true;

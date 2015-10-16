@@ -141,6 +141,14 @@ public class ServerManager : NetworkManager {
         }
 	}
 
+    public void TriggerChanged(Trigger trigger){
+
+        TriggerState state = new TriggerState(trigger);
+        
+        //send to clients but not the sender
+        SendToAll(Network.Tag.Trigger,Network.Subject.TriggerState,state);
+    }
+
     public override void OnLevelLoaded(int levelIndex){
         currentLevel = levelIndex;
 
