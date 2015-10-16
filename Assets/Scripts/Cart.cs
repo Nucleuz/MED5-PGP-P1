@@ -5,14 +5,16 @@ public class Cart : MonoBehaviour {
 
 	public Rail CurrentRail; 	//The railpoint that the cart is currently on
 	bool isMoving = false;		//Bool for checking whether cart is currently moving
-	float speed = 5.0f;			//Cart move speed
+	public float speed = 5.0f;			//Cart move speed
     Vector3 startingPosition;
     Rail startingRail;
     Animator minecartAnimator;
-
-    private float movingSpeed;
+	public float animationSpeed;
+	float t = 0; 	
 
 	void Start() {
+
+
         startingRail = CurrentRail;
         startingPosition = transform.position;
 		StartCoroutine (UpdatePosition());
@@ -29,11 +31,18 @@ public class Cart : MonoBehaviour {
 		//then run move function. This can only happen if cart is not
 		//already moving.
 		if(Input.GetAxis("Vertical")>0 && !isMoving){
+			minecartAnimator.StartPlayback();
+			minecartAnimator.speed = animationSpeed; //Change the speed of the animation accordingly to the speed of the cart
 			MoveForward();
-			minecartAnimator.speed = movingSpeed; //Change the speed of the animation accordingly to the speed of the cart
+
+
+	
 		} else if(Input.GetAxis("Vertical")<0 && !isMoving){
+			minecartAnimator.StartPlayback();
+			minecartAnimator.speed = -animationSpeed; //Change the speed of the animation accordingly to the speed of the cart
 			MoveBackward();
-			minecartAnimator.speed = movingSpeed; //Change the speed of the animation accordingly to the speed of the cart
+		
+		
 		}
 	}
 
@@ -65,16 +74,18 @@ public class Cart : MonoBehaviour {
 			Vector3 targetPos = CurrentRail.transform.position + CurrentRail.transform.up;
 			float dist = Vector3.Distance(currentPos, targetPos);
 			isMoving = true;
-			float t = 0;
+		
 			while(t <= 1) {
 				transform.position = Vector3.Lerp(currentPos, targetPos, t);
 				transform.rotation = Quaternion.Slerp(currentRotation, CurrentRail.transform.rotation, t);
 				t += (Time.deltaTime/dist)*speed;
 				yield return null;
-				movingSpeed = t * 3.2f; //Change the speed of the animation accordingly to the speed of the cart
+				 //Change the speed of the animation accordingly to the speed of the cart
 			}
+			t =  0;
 			isMoving = false;
 			minecartAnimator.speed = 0; //Change the speed of the animation accordingly to the speed of the cart
+			yield return null;
 		}
 	}
 
