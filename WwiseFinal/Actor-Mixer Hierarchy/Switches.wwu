@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{327F0D9F-0297-440A-B1A0-2C7566DDBDBD}" SchemaVersion="70" RootDocumentID="{1BE62AEE-9809-4847-B300-E418C8D744C6}">
+	<AudioObjects>
+		<WorkUnit Name="Switches" ID="{327F0D9F-0297-440A-B1A0-2C7566DDBDBD}" OwnerID="{1BE62AEE-9809-4847-B300-E418C8D744C6}" PersistMode="Nested">
+			<ChildrenList>
+				<ActorMixer Name="ButtonOn-Off" ID="{A0CD4BC8-B0B0-4229-8ECF-3AB552FB71A5}" ShortID="552351416">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<SwitchContainer Name="ButtonOnOff" ID="{C1456220-4F46-4EE4-8B18-D47F171654E9}" ShortID="715559442">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="SwitchRealOff02" ID="{0E01FD5C-3E0D-4F4B-8DCF-0D4CA76144CE}" ShortID="413311006" Type="SoundFX">
+									<PropertyList>
+										<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
+										<Property Name="UseMaxSoundPerInstance" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="SwitchRealOff02" ID="{1BA291F6-0EF3-487A-8DA4-22285C8E795D}" ShortID="356831244">
+											<Language>SFX</Language>
+											<AudioFile>SwitchRealOff02.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="SwitchRealOff02" ID="{1BA291F6-0EF3-487A-8DA4-22285C8E795D}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="SwitchRealOn04" ID="{B4EAA80A-6555-4051-BA06-4813425D1BA9}" ShortID="160095419" Type="SoundFX">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="SwitchRealOn04" ID="{E65778CA-D115-42F8-B2C1-E5C102578D53}" ShortID="74272173">
+											<Language>SFX</Language>
+											<AudioFile>SwitchRealOn04.wav</AudioFile>
+											<ConvertedFileIDList>
+												<File ID="1059423158"/>
+											</ConvertedFileIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="SwitchRealOn04" ID="{E65778CA-D115-42F8-B2C1-E5C102578D53}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<GroupingInfo>
+								<GroupRef Name="On_Off" ID="{869DA538-BD66-4E28-95E4-B62E5F8F61AA}"/>
+								<DefaultSwitchRef Name="Off" ID="{85FA9B18-7984-4849-A21D-D576442D4E90}"/>
+								<GroupingBehaviorList>
+									<GroupingBehavior>
+										<ItemRef Name="SwitchRealOn04" ID="{B4EAA80A-6555-4051-BA06-4813425D1BA9}"/>
+									</GroupingBehavior>
+									<GroupingBehavior>
+										<ItemRef Name="SwitchRealOff02" ID="{0E01FD5C-3E0D-4F4B-8DCF-0D4CA76144CE}"/>
+									</GroupingBehavior>
+								</GroupingBehaviorList>
+								<GroupingList>
+									<Grouping>
+										<SwitchRef Name="Off" ID="{85FA9B18-7984-4849-A21D-D576442D4E90}"/>
+										<ItemList>
+											<ItemRef Name="SwitchRealOff02" ID="{0E01FD5C-3E0D-4F4B-8DCF-0D4CA76144CE}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
+										<SwitchRef Name="On" ID="{0C79EF1A-F312-4C1F-A825-05304CE27172}"/>
+										<ItemList>
+											<ItemRef Name="SwitchRealOn04" ID="{B4EAA80A-6555-4051-BA06-4813425D1BA9}"/>
+										</ItemList>
+									</Grouping>
+								</GroupingList>
+							</GroupingInfo>
+						</SwitchContainer>
+					</ChildrenList>
+				</ActorMixer>
+				<ActorMixer Name="ChannelingSwitchMixer" ID="{2ED1390A-D013-442D-9E4F-10A83A66D383}" ShortID="364909133">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<SwitchContainer Name="ChannelingOnOff" ID="{3ADF1FC3-175C-4D5B-8A58-42B752B12628}" ShortID="812131271">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<RandomSequenceContainer Name="ChannelingSwitch" ID="{AA911511-7FEE-4694-A1F4-799B1278E73B}" ShortID="378567012">
+									<PropertyList>
+										<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+										<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="3"/>
+										<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.6"/>
+										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="MojoSynth04" ID="{F7F1BB7E-429B-488E-B0C2-57B979710DA9}" ShortID="427820539" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="MojoSynth04" ID="{DE456243-F06E-47D5-942B-04289B5148B5}" ShortID="945408936">
+													<Language>SFX</Language>
+													<AudioFile>MojoSynth04.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="MojoSynth04" ID="{DE456243-F06E-47D5-942B-04289B5148B5}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="SwitchRealOn04" ID="{686CDBC1-943A-4B50-A617-963B42133C11}" ShortID="849606403" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="SwitchRealOn04" ID="{9E74F718-7AFF-4D9C-BEA9-E154110C77D4}" ShortID="1059423158">
+													<Language>SFX</Language>
+													<AudioFile>SwitchRealOn04.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="SwitchRealOn04" ID="{9E74F718-7AFF-4D9C-BEA9-E154110C77D4}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<Playlist>
+										<ItemRef Name="SwitchRealOn04" ID="{686CDBC1-943A-4B50-A617-963B42133C11}"/>
+										<ItemRef Name="MojoSynth04" ID="{F7F1BB7E-429B-488E-B0C2-57B979710DA9}"/>
+									</Playlist>
+								</RandomSequenceContainer>
+								<Sound Name="SwitchRealOff02" ID="{0866D52A-F1AE-40EB-9A2D-1916BFCC2525}" ShortID="521887505" Type="SoundFX">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="SwitchRealOff02" ID="{5EAA689E-7E07-489F-9F55-A2D8CC483D48}" ShortID="147236732">
+											<Language>SFX</Language>
+											<AudioFile>SwitchRealOff02.wav</AudioFile>
+											<ConvertedFileIDList>
+												<File ID="356831244"/>
+											</ConvertedFileIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="SwitchRealOff02" ID="{5EAA689E-7E07-489F-9F55-A2D8CC483D48}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<GroupingInfo>
+								<GroupRef Name="On_Off" ID="{869DA538-BD66-4E28-95E4-B62E5F8F61AA}"/>
+								<DefaultSwitchRef Name="Off" ID="{85FA9B18-7984-4849-A21D-D576442D4E90}"/>
+								<GroupingBehaviorList>
+									<GroupingBehavior>
+										<ItemRef Name="ChannelingSwitch" ID="{AA911511-7FEE-4694-A1F4-799B1278E73B}"/>
+									</GroupingBehavior>
+									<GroupingBehavior>
+										<ItemRef Name="SwitchRealOff02" ID="{0866D52A-F1AE-40EB-9A2D-1916BFCC2525}"/>
+									</GroupingBehavior>
+								</GroupingBehaviorList>
+								<GroupingList>
+									<Grouping>
+										<SwitchRef Name="Off" ID="{85FA9B18-7984-4849-A21D-D576442D4E90}"/>
+										<ItemList>
+											<ItemRef Name="SwitchRealOff02" ID="{0866D52A-F1AE-40EB-9A2D-1916BFCC2525}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
+										<SwitchRef Name="On" ID="{0C79EF1A-F312-4C1F-A825-05304CE27172}"/>
+										<ItemList>
+											<ItemRef Name="ChannelingSwitch" ID="{AA911511-7FEE-4694-A1F4-799B1278E73B}"/>
+										</ItemList>
+									</Grouping>
+								</GroupingList>
+							</GroupingInfo>
+						</SwitchContainer>
+					</ChildrenList>
+				</ActorMixer>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>
