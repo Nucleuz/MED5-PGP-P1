@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour {
 			for(int h = 0; h < LM.eventOrder[index]; h++)
                 resetTriggers(h);
         }
+        DetectTriggerChanges();
     }
 
     public void DetectTriggerChanges(){
@@ -51,9 +52,9 @@ public class GameManager : MonoBehaviour {
 			} 
 		}
 		else { //Checks if there is a desired order in the sequence. Only checks the objects that should be interacted with in the sequence 
-			for(int h = 0; h < LM.eventOrder[index]; h++){  
-				if(LM.events[h + numberOfTriggeredEvents].isTriggered == true && LM.events[h + numberOfTriggeredEvents].isReadyToBeTriggered == true){ //Checks if they are triggered 
-                    LM.events[h + numberOfTriggeredEvents].isReadyToBeTriggered = false; //sets the event untriggerable
+			for(int h = 0; h < LM.eventOrder[index]; h++){
+				if(LM.events[h + numberOfTriggeredEvents + currentNumberOfEventsTriggered].isTriggered == true && LM.events[h + numberOfTriggeredEvents + currentNumberOfEventsTriggered].isReadyToBeTriggered == true){ //Checks if they are triggered 
+                    LM.events[h + numberOfTriggeredEvents + currentNumberOfEventsTriggered].isReadyToBeTriggered = false; //sets the event untriggerable
                     currentNumberOfEventsTriggered++; //counts up the events in sequence by 1
 				}
                 resetTriggers(h);
@@ -61,9 +62,11 @@ public class GameManager : MonoBehaviour {
         }
  
 		if(currentNumberOfEventsTriggered == LM.eventsInSequence[index]){ //Checks if the right amount of events are triggered in the current sequence
+
 			if(index < LM.eventsInSequence.Length - 1){ //Checks if it is the last sequence of events - if it is: skip this
 				numberOfTriggeredEvents += LM.eventsInSequence[index]; //Increase the total number of events by the amount of events that was in the current sequence
 				if(LM.triggerEvents[index] != null){
+					Debug.Log("Hi" + index);
 					LM.triggerEvents[index].Activate(); //Triggers an object with should trigger when a sequence is finished. could for example be a door
                     server.TriggerChanged(LM.triggerEvents[index]);
 				}
@@ -71,11 +74,12 @@ public class GameManager : MonoBehaviour {
 				for(int i = numberOfTriggeredEvents; i < numberOfTriggeredEvents + LM.eventsInSequence[index]; ++i){ //Goes through the next sequence of events
 					LM.events[i].isReadyToBeTriggered = true; //Makes the next sequence ready to be triggered 
 				}
-			}else if(index == LM.eventsInSequence.Length - 1)
-                setNextLevelManager();
+				currentNumberOfEventsTriggered = 0; //Resets the amount of objects that was triggered in the current sequence
+			} else if(index == LM.eventsInSequence.Length - 1){
+				setNextLevelManager();
+			}
+		}
 
-			currentNumberOfEventsTriggered = 0; //Resets the amount of objects that was triggered in the current sequence
-		}	
         //This loop goes through the objects, which is not part of the current order, but is still in the sequence
         for(int g = LM.eventOrder[index] + currentNumberOfEventsTriggered; g < LM.eventsInSequence[index]; g++){
             //It then checks if they are triggered
