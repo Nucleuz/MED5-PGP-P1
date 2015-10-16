@@ -23,8 +23,6 @@ public class ElevatorScript : MonoBehaviour {
         rC = GetComponent<RailConnection>();
         rP = GetComponent<Rail>();
 
-        rC.connectToPrev = true;
-
         speed = 1000;                                                       //Sets the speed of the elevator
         activeNode = 0;                                                     //Sets the visited nodes to zero
 	}
