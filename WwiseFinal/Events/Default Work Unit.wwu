@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{F435BC40-F026-475F-8354-F9EAA1C9BD20}" SchemaVersion="70">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{F435BC40-F026-475F-8354-F9EAA1C9BD20}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="ButtonOnOff" ID="{5E4C7DF6-17E5-4F84-8E1F-433EE60FECDF}">
+					<ChildrenList>
+						<Action Name="Play" ID="{7D533AF2-5F82-4E1A-BD91-69E42241EC3A}" ShortID="17592572" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{CA0B376F-833A-4252-9D1E-8A19B9072713}" Global="false">
+									<ObjectRef Name="ButtonOnOff" ID="{C1456220-4F46-4EE4-8B18-D47F171654E9}" WorkUnitID="{327F0D9F-0297-440A-B1A0-2C7566DDBDBD}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="ChannelingButtonOnOff" ID="{54B60628-FBE6-45D6-B988-301D5F8D8C28}">
+					<ChildrenList>
+						<Action Name="Play" ID="{031B85DB-87AA-479D-A4E7-59838314BB22}" ShortID="850734313" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{A749882C-841F-4456-8A82-3D1E3207B49E}" Global="false">
+									<ObjectRef Name="ChannelingOnOff" ID="{3ADF1FC3-175C-4D5B-8A58-42B752B12628}" WorkUnitID="{327F0D9F-0297-440A-B1A0-2C7566DDBDBD}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>
