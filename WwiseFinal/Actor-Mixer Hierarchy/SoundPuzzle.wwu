@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{02394BAC-4378-4228-A594-ADB64CABA9F6}" SchemaVersion="70" RootDocumentID="{1BE62AEE-9809-4847-B300-E418C8D744C6}">
+	<AudioObjects>
+		<WorkUnit Name="SoundPuzzle" ID="{02394BAC-4378-4228-A594-ADB64CABA9F6}" OwnerID="{1BE62AEE-9809-4847-B300-E418C8D744C6}" PersistMode="Nested">
+			<ChildrenList>
+				<Folder Name="Waterfall" ID="{565FA3E5-7C7F-41B8-80ED-C4E2C5885E89}" ShortID="363255136">
+					<ChildrenList>
+						<ActorMixer Name="WaterFall" ID="{C7792086-3D01-4A99-A8B4-0B60F3A5A953}" ShortID="35061698">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="SP_Waterfall01" ID="{78097AB3-2783-452C-9971-693A892C56CD}" ShortID="560272309" Type="SoundFX">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+										</Reference>
+										<Reference Name="UserAuxSend0">
+											<ObjectRef Name="AmbienceBus" ID="{8FC1403E-05A4-4BCC-A84E-51488EF5BA6F}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Waterfall01" ID="{DE3C0D9E-3052-4442-8096-A067F8E849A3}" ShortID="378898815">
+											<Language>SFX</Language>
+											<AudioFile>Waterfall01.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Waterfall01" ID="{DE3C0D9E-3052-4442-8096-A067F8E849A3}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</ActorMixer>
+					</ChildrenList>
+				</Folder>
+				<WorkUnit Name="Emitting" ID="{5C9BCD85-448D-4F45-952B-8F6124C87A93}" PersistMode="Reference"/>
+				<ActorMixer Name="PlayerButton" ID="{A8C89E4A-FF4A-4E00-9E75-AD22F1B5C8E0}" ShortID="816568593">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>12</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+						</Reference>
+						<Reference Name="UserAuxSend0">
+							<ObjectRef Name="AmbienceBus" ID="{8FC1403E-05A4-4BCC-A84E-51488EF5BA6F}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="SP_PlayerButton01" ID="{15323575-AB0D-459F-B32E-7A02B6700E46}" ShortID="679779515" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="PlayerCrystal01" ID="{3D95104C-6C6C-401F-9382-BC0DFF2BD052}" ShortID="552757871">
+									<Language>SFX</Language>
+									<AudioFile>PlayerCrystal01.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="PlayerCrystal01" ID="{3D95104C-6C6C-401F-9382-BC0DFF2BD052}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="SP_PlayerButton02" ID="{CFFC7600-7004-44EB-8155-017C8402C142}" ShortID="936433709" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="PlayerCrystal04" ID="{789C32E8-35ED-46BB-A98D-7CC8901F7F7E}" ShortID="764596330">
+									<Language>SFX</Language>
+									<AudioFile>PlayerCrystal04.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="PlayerCrystal04" ID="{789C32E8-35ED-46BB-A98D-7CC8901F7F7E}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="SP_PlayerButton03" ID="{03EA9022-64E5-4653-A9F2-6BFA8B51B7EE}" ShortID="645488668" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="PlayerCrystal05" ID="{66C4BA39-F6BB-4DB1-99D6-AAE5BCCD532D}" ShortID="909824755">
+									<Language>SFX</Language>
+									<AudioFile>PlayerCrystal05.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="PlayerCrystal05" ID="{66C4BA39-F6BB-4DB1-99D6-AAE5BCCD532D}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="SP_PlayerButton301" ID="{4D7E1A18-E4F6-41CB-BBB3-F3DD758F0412}" ShortID="414544507" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="PlayerCrystal301" ID="{93DF80B1-8DFA-448A-9D2D-0682C7278CD3}" ShortID="783517991">
+									<Language>SFX</Language>
+									<AudioFile>PlayerCrystal301.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="PlayerCrystal301" ID="{93DF80B1-8DFA-448A-9D2D-0682C7278CD3}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="SP_PlayerButton302" ID="{BC603705-CDD1-4FFD-AFFC-EF71CBABC2CD}" ShortID="325906078" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="PlayerCrystal302" ID="{7DC2622A-ABF2-40E2-8928-9F35C3940852}" ShortID="636816213">
+									<Language>SFX</Language>
+									<AudioFile>PlayerCrystal302.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="PlayerCrystal302" ID="{7DC2622A-ABF2-40E2-8928-9F35C3940852}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="SP_PlayerButton303" ID="{3B0E7527-3BF4-4F0E-9A6D-F0C3B628E4D7}" ShortID="347826398" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="PlayerCrystal303" ID="{66FD5B45-2D71-46F1-B583-151636F0BF6B}" ShortID="347106548">
+									<Language>SFX</Language>
+									<AudioFile>PlayerCrystal303.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="PlayerCrystal303" ID="{66FD5B45-2D71-46F1-B583-151636F0BF6B}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</ActorMixer>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

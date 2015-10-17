@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{CF3E908C-113F-413B-9543-5863483251E4}" SchemaVersion="70">
+	<SoundcasterSessions>
+		<WorkUnit Name="Default Work Unit" ID="{CF3E908C-113F-413B-9543-5863483251E4}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundcasterSession Name="Ambience" ID="{E1C38E07-94F5-4265-873E-40FE6CE9A99D}">
+					<ModuleList>
+						<Module>
+							<ObjectRef Name="DeepRumble" ID="{F208F7DC-696B-46BE-A17C-AEC24C1709DD}" WorkUnitID="{36AA1685-24D3-498E-A2C6-91EC6AD0136D}"/>
+							<Position X="0" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="SoftWater1" ID="{9C835D59-9538-4EF2-8135-7C6A0FDD359A}" WorkUnitID="{36AA1685-24D3-498E-A2C6-91EC6AD0136D}"/>
+							<Position X="0" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="DeepRumble02" ID="{A30C9BCE-3727-4585-803E-EC224593277A}" WorkUnitID="{36AA1685-24D3-498E-A2C6-91EC6AD0136D}"/>
+							<Position X="1" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Waterfall02" ID="{9DD8C911-B4F6-4A58-9290-D91C676096E0}" WorkUnitID="{36AA1685-24D3-498E-A2C6-91EC6AD0136D}"/>
+							<Position X="1" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Mojo03" ID="{33502EE4-B40C-4D2A-84E2-A9B6D79BA1E4}" WorkUnitID="{36AA1685-24D3-498E-A2C6-91EC6AD0136D}"/>
+							<Position X="2" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Waterfall01" ID="{55E6E442-DCCB-4895-AF94-CD05906EB31E}" WorkUnitID="{36AA1685-24D3-498E-A2C6-91EC6AD0136D}"/>
+							<Position X="2" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="MojoWithoutEnergy" ID="{26F6EF8F-A4E9-42D8-84BD-3AF2CE234154}" WorkUnitID="{36AA1685-24D3-498E-A2C6-91EC6AD0136D}"/>
+							<Position X="3" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="MysticalWater1" ID="{9786B85D-B6E1-42D0-BB76-BB73C4A65FC3}" WorkUnitID="{36AA1685-24D3-498E-A2C6-91EC6AD0136D}"/>
+							<Position X="4" Y="0"/>
+						</Module>
+					</ModuleList>
+					<RTPCValueList ShowAll="true">
+						<RTPCValue>
+							<GameParameterRef Name="SS_Air_Turbulence" ID="{EDA87B19-73AA-40A0-9F19-2073606DB710}"/>
+							<Value>6</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="SS_Air_Presence" ID="{E3B7811A-7B2F-490F-B44F-5FE51B468041}"/>
+							<Value>75</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="SS_Air_TimeOfDay" ID="{536FA72C-8C7E-4C8B-AE03-EF34FDADC314}"/>
+							<Value>6</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="SS_Air_Freefall" ID="{2F2DFE37-4F9E-4D94-83D8-53CCA39781AD}"/>
+							<Value>75</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="SS_Air_Month" ID="{09E2B445-C4A3-447F-B3CA-818A1D925EF7}"/>
+							<Value>6</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="SS_Air_Fear" ID="{F72E0659-4346-4E1C-A1B1-DAB46A05101E}"/>
+							<Value>50</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="SS_Air_RPM" ID="{A34890AB-B9D5-4526-A64D-5290C43EF2DC}"/>
+							<Value>50</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="SS_Air_Storm" ID="{E93F8CDB-06D1-4737-ACAF-7CD44BBED783}"/>
+							<Value>75</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="SS_Air_Fury" ID="{A2AE79DC-CA3A-46BA-9652-9986C322A87B}"/>
+							<Value>50</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="SS_Air_Size" ID="{1329EBEF-A193-472E-A38C-64668B494879}"/>
+							<Value>50</Value>
+						</RTPCValue>
+					</RTPCValueList>
+					<CurrentStateList ShowAll="true"/>
+					<CurrentSwitchList ShowAll="true"/>
+				</SoundcasterSession>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundcasterSessions>
+</WwiseDocument>
