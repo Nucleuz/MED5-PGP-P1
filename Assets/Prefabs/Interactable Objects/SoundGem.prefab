@@ -145,6 +145,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c9eaeec70163da47a4fbed84d963b2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioClips: []
+  timeBetweenSounds: 0
 --- !u!114 &11484108
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -158,6 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTriggered: 0
   isReadyToBeTriggered: 0
+  canReset: 0
 --- !u!135 &13589992
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -250,6 +250,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb8ccdb70bee52a46b2c6b6a9029ee31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rC: {fileID: 0}
+  rP: {fileID: 0}
+  trigger: {fileID: 0}
+  isActivated: 0
+  goingUp: 0
+  nodes: []
+  speed: 0
 --- !u!114 &11475634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -261,6 +268,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 926d1a3606557c64ea087cece6585945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nRail: {fileID: 0}
+  pRail: {fileID: 0}
+  self: {fileID: 0}
+  connectToNext: 0
+  connectToPrev: 0
 --- !u!114 &11498600
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -272,6 +284,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efa0b44aa476f09449a63a6ecc6211ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rName: railPoint
+  spawnRailPoint: 0
+  NextRail: {fileID: 0}
+  PreviousRail: {fileID: 0}
+  railPoint: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
