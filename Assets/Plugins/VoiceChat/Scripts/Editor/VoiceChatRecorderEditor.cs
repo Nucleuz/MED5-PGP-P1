@@ -1,13 +1,15 @@
 #if UNITY_EDITOR
 using System;
 using System.Linq;
-using UnityEngine;
 using UnityEditor;
+using UnityEngine;
+
 namespace VoiceChat
 {
     [CustomEditor(typeof(VoiceChatRecorder))]
     public class VoiceChatRecorderEditor : Editor
     {
+        
         public override void OnInspectorGUI()
         {
             VoiceChatRecorder recorder = target as VoiceChatRecorder;
@@ -57,6 +59,7 @@ namespace VoiceChat
                 DrawDefaultInspector();
             }
         }
-    } 
+
+    }
 }
 #endif

@@ -1,4 +1,6 @@
 using System;
+using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace VoiceChat
@@ -6,6 +8,8 @@ namespace VoiceChat
     [RequireComponent(typeof(AudioSource))]
     public class VoiceChatPlayer : MonoBehaviour
     {
+        public event Action PlayerStarted;
+
         float lastTime = 0;
         double played = 0;
         double received = 0;
@@ -14,9 +18,17 @@ namespace VoiceChat
         float playDelay = 0;
         bool shouldPlay = false;
         float lastRecvTime = 0;
+        NSpeex.SpeexDecoder speexDec = new NSpeex.SpeexDecoder(NSpeex.BandMode.Narrow);
 
         [SerializeField]
-        int playbackDelay = 2;
+        [Range(.1f, 5f)]
+        float playbackDelay = .5f;
+
+        [SerializeField]
+        [Range(1, 32)]
+        int packetBufferSize = 10;
+
+        SortedList<ulong, VoiceChatPacket> packetsToPlay = new SortedList<ulong, VoiceChatPacket>();
 
         public float LastRecvTime
         {
@@ -34,6 +46,11 @@ namespace VoiceChat
             if (VoiceChatSettings.Instance.LocalDebug)
             {
                 VoiceChatRecorder.Instance.NewSample += OnNewSample;
+            }
+
+            if(PlayerStarted != null)
+            {
+                PlayerStarted();
             }
         }
 
@@ -80,16 +97,25 @@ namespace VoiceChat
             lastTime = 0;
         }
 
-        public void OnNewSample(VoiceChatPacket packet)
+        public void OnNewSample(VoiceChatPacket newPacket)
         {
-            // Store last packet
-
             // Set last time we got something
             lastRecvTime = Time.time;
+            
+            packetsToPlay.Add(newPacket.PacketId, newPacket);
+
+            if (packetsToPlay.Count < 10)
+            {
+                return;
+            }
+
+            var pair = packetsToPlay.First();
+            var packet = pair.Value;
+            packetsToPlay.Remove(pair.Key);
 
             // Decompress
             float[] sample = null;
-            int length = VoiceChatUtils.Decompress(packet, out sample);
+            int length = VoiceChatUtils.Decompress(speexDec, packet, out sample);
 
             // Add more time to received
             received += VoiceChatSettings.Instance.SampleTime;
@@ -108,7 +134,7 @@ namespace VoiceChat
 
             // Set data
             GetComponent<AudioSource>().clip.SetData(data, 0);
-
+            
             // If we're not playing
             if (!GetComponent<AudioSource>().isPlaying)
             {
