@@ -154,8 +154,6 @@ public class ClientManager : NetworkManager
             Write("Player Index: " + netPlayer.helmet.playerIndex);
             netPlayer.SetAsSender();
 
-            g.AddComponent<VoiceChatSettings>();
-            g.AddComponent<VoiceChatRecorder>();    
 			VoiceChatRecorder.Instance.NetworkId = networkID;
 			VoiceChatRecorder.Instance.Device = VoiceChatRecorder.Instance.AvailableDevices[0];
 			VoiceChatRecorder.Instance.StartRecording();
