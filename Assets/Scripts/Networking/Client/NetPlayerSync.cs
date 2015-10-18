@@ -10,6 +10,8 @@ Syncs, toggles between being send only or receive only
 
 */
 using System.Collections.Generic;
+using VoiceChat.Networking;
+using UnityEngine.Networking;
 
 [RequireComponent(typeof (VoiceChatPlayer))]
 public class NetPlayerSync : MonoBehaviour {
@@ -31,15 +33,19 @@ public class NetPlayerSync : MonoBehaviour {
 
 	//network id for the object
 	public ushort networkID;
-    public ulong voicePacketID;
 
-	// Use this for initialization
-	void Start () {
+    private VoiceChatPacketMessage voicePacketMessage;
+    private NetworkWriter writer;
+
+    // Use this for initialization
+    void Start () {
 		DarkRiftAPI.onPlayerDisconnected += PlayerDisconnected;
 		DarkRiftAPI.onDataDetailed += RecieveData;
 
 		player = GetComponent<VoiceChatPlayer>();
-	}
+
+        voicePacketMessage = new VoiceChatPacketMessage();
+    }
 	
 	// Update is called once per frame
 	void FixedUpdate () {
@@ -69,8 +75,10 @@ public class NetPlayerSync : MonoBehaviour {
 	public void OnNewSample (VoiceChatPacket packet)
 	{
         // We only send the byte[], if VoiceChatPacket is send then DarkRifts package header breaks
-        
-        DarkRiftAPI.SendMessageToOthers (Network.Tag.Player, Network.Subject.VoiceChat, VoiceChatUtils.Serialise(packet));	// Send the packet to all other players
+        voicePacketMessage.packet = packet;
+        writer = new NetworkWriter();
+        voicePacketMessage.Serialize(writer);
+        DarkRiftAPI.SendMessageToOthers (Network.Tag.Player, Network.Subject.VoiceChat, writer);	// Send the packet to all other players
 	}
 
 	void RecieveData(ushort senderID, byte tag, ushort subject, object data){
@@ -91,12 +99,10 @@ public class NetPlayerSync : MonoBehaviour {
 
 		// Check if wants to update the voice packet
 		if(subject == Network.Subject.VoiceChat) {		//TODO Check why packages may be null
-            if(data is DarkRiftReader)
+            if(data is NetworkReader)
             {
-                using (DarkRiftReader reader = (DarkRiftReader)data)
-                {
-                    player.OnNewSample(VoiceChatUtils.Deserialise(reader));                     // Queue package to the VoiceChatPlayer
-                }
+                voicePacketMessage.Deserialize((NetworkReader)data);
+                player.OnNewSample(voicePacketMessage.packet);                     // Queue package to the VoiceChatPlayer
             }
             else
             {
