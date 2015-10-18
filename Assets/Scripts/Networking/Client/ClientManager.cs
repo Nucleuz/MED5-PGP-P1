@@ -154,9 +154,12 @@ public class ClientManager : NetworkManager
             Write("Player Index: " + netPlayer.helmet.playerIndex);
             netPlayer.SetAsSender();
 
-			VoiceChatRecorder.Instance.NetworkId = (int) networkID;
+            g.AddComponent<VoiceChatSettings>();
+            g.AddComponent<VoiceChatRecorder>();    
+			VoiceChatRecorder.Instance.NetworkId = networkID;
 			VoiceChatRecorder.Instance.Device = VoiceChatRecorder.Instance.AvailableDevices[0];
 			VoiceChatRecorder.Instance.StartRecording();
+            VoiceChatRecorder.Instance.AutoDetectSpeech = true;
 			VoiceChatRecorder.Instance.NewSample += netPlayer.OnNewSample;
 
             //place the player on the correct rail!
