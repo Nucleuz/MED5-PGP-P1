@@ -1,6 +1,7 @@
 ﻿using System;
 using Ionic.Zlib;
 using UnityEngine;
+using DarkRift;
 
 namespace VoiceChat
 {
@@ -83,6 +84,31 @@ namespace VoiceChat
             }
 
             return output;
+        }
+
+        public static VoiceChatPacket Deserialise(DarkRiftReader reader)
+        {
+            VoiceChatPacket packet = new VoiceChatPacket();
+
+            packet.Compression = VoiceChatCompression.Speex;
+            packet.Length = reader.ReadInt32();
+            packet.Data = reader.ReadBytes();
+            packet.NetworkId = reader.ReadInt32();
+            packet.PacketId = reader.ReadUInt64();
+
+            return packet;
+        }
+
+        public static DarkRiftWriter Serialise(VoiceChatPacket packet)
+        {
+            DarkRiftWriter writer = new DarkRiftWriter();
+
+            writer.Write(packet.Length);
+            writer.Write(packet.Data);
+            writer.Write(packet.NetworkId);
+            writer.Write(packet.PacketId);
+
+            return writer;
         }
 
         static NSpeex.SpeexEncoder speexEnc = new NSpeex.SpeexEncoder(NSpeex.BandMode.Narrow);

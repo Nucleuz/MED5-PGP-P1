@@ -69,7 +69,8 @@ public class NetPlayerSync : MonoBehaviour {
 	public void OnNewSample (VoiceChatPacket packet)
 	{
         // We only send the byte[], if VoiceChatPacket is send then DarkRifts package header breaks
-		DarkRiftAPI.SendMessageToOthers (Network.Tag.Player, Network.Subject.VoiceChat, packet.Data);	// Send the packet to all other players
+        
+        DarkRiftAPI.SendMessageToOthers (Network.Tag.Player, Network.Subject.VoiceChat, VoiceChatUtils.Serialise(packet));	// Send the packet to all other players
 	}
 
 	void RecieveData(ushort senderID, byte tag, ushort subject, object data){
@@ -90,16 +91,18 @@ public class NetPlayerSync : MonoBehaviour {
 
 		// Check if wants to update the voice packet
 		if(subject == Network.Subject.VoiceChat) {		//TODO Check why packages may be null
-			VoiceChatPacket recreatedPackage = new VoiceChatPacket();	// Recreating package (Based on assumptions)
-			recreatedPackage.Data = (byte[]) data;
-			recreatedPackage.Compression = VoiceChatCompression.Speex;	// We only use Speeex
-			recreatedPackage.Length = 150;     // (150) Found using debugging
-			recreatedPackage.NetworkId = senderID;
-            recreatedPackage.PacketId = voicePacketID;
-            voicePacketID++;
-		
-			player.OnNewSample(recreatedPackage);						// Queue package to the VoiceChatPlayer
-		}
+            if(data is DarkRiftReader)
+            {
+                using (DarkRiftReader reader = (DarkRiftReader)data)
+                {
+                    player.OnNewSample(VoiceChatUtils.Deserialise(reader));                     // Queue package to the VoiceChatPlayer
+                }
+            }
+            else
+            {
+                Debug.LogError("Should have recieved a DarkRiftReciever but didn't! (Got: " + data.GetType() + ")");
+            }
+        }
 
 	}
 
