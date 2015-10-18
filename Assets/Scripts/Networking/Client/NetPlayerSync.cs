@@ -68,7 +68,7 @@ public class NetPlayerSync : MonoBehaviour {
 	// Called once there is a new packet/sample ready
 	public void OnNewSample (VoiceChatPacket packet)
 	{
-		// We only send the byte[], if VoiceChatPacket is send then DarkRifts package header breaks
+        // We only send the byte[], if VoiceChatPacket is send then DarkRifts package header breaks
 		DarkRiftAPI.SendMessageToOthers (Network.Tag.Player, Network.Subject.VoiceChat, packet.Data);	// Send the packet to all other players
 	}
 
@@ -93,7 +93,7 @@ public class NetPlayerSync : MonoBehaviour {
 			VoiceChatPacket recreatedPackage = new VoiceChatPacket();	// Recreating package (Based on assumptions)
 			recreatedPackage.Data = (byte[]) data;
 			recreatedPackage.Compression = VoiceChatCompression.Speex;	// We only use Speeex
-			recreatedPackage.Length = recreatedPackage.Data.Length;     // (150) Found using debugging
+			recreatedPackage.Length = 150;     // (150) Found using debugging
 			recreatedPackage.NetworkId = senderID;
             recreatedPackage.PacketId = voicePacketID;
             voicePacketID++;
