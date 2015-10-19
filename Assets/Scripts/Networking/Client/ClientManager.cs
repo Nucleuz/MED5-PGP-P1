@@ -108,12 +108,12 @@ public class ClientManager : NetworkManager
                         //spawn the object
                         GameObject g = Instantiate(prefabPlayer, ((SVector3)data).get(), Quaternion.identity) as GameObject;
 
-						// VoiceChat Components
-						g.AddComponent<AudioSource>();
-						g.AddComponent<VoiceChatPlayer>();
-
                         //set the network id so it will sync with the player
                         NetPlayerSync netPlayer = g.GetComponent<NetPlayerSync>();
+
+                        // VoiceChat Components
+                        g.AddComponent<AudioSource>();
+                        netPlayer.SetVoiceChatPlayer(g.AddComponent<VoiceChatPlayer>());
 
                         netPlayer.networkID = senderID;
                         netPlayer.SetAsReceiver();

@@ -167,8 +167,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 228749959}
-  - 114: {fileID: 228749958}
   - 114: {fileID: 228749957}
+  - 114: {fileID: 228749956}
+  - 114: {fileID: 228749958}
   m_Layer: 0
   m_Name: VoiceChat
   m_TagString: Untagged
@@ -176,6 +177,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &228749956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 228749955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b875bcbbb5e194b4e9bb134d9bd100d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &228749957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,7 +217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toggleToTalkKey: 111
   pushToTalkKey: 112
-  autoDetectSpeaking: 0
+  autoDetectSpeaking: 1
   autoDetectIndex: 4
   forceTransmitTime: 2
 --- !u!4 &228749959
@@ -353,7 +365,9 @@ Prefab:
       propertyPath: debug
       value: 
       objectReference: {fileID: 2127616520}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11403230, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
+    - {fileID: 11484290, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &2127616518

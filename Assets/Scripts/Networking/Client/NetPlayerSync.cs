@@ -31,14 +31,11 @@ public class NetPlayerSync : MonoBehaviour {
 	
 	//network id for the object
 	public ushort networkID;
-	public ulong voicePacketID;
 	
 	// Use this for initialization
 	void Start () {
 		DarkRiftAPI.onPlayerDisconnected += PlayerDisconnected;
 		DarkRiftAPI.onDataDetailed += RecieveData;
-		
-		player = GetComponent<VoiceChatPlayer>();
 	}
 	
 	// Update is called once per frame
@@ -88,8 +85,9 @@ public class NetPlayerSync : MonoBehaviour {
 		}
 		
 		// Check if wants to update the voice packet
-		if(subject == Network.Subject.VoiceChat) {		//TODO Check why packages may be null
-			player.OnNewSample(VoiceChatUtils.Deserialise((byte[])data));                     // Queue package to the VoiceChatPlayer
+		if(subject == Network.Subject.VoiceChat) {
+            VoiceChatPacket packet = VoiceChatUtils.Deserialise((byte[])data);
+            player.OnNewSample(packet); // Queue package to the VoiceChatPlayer
 		}
 		
 	}
@@ -115,4 +113,9 @@ public class NetPlayerSync : MonoBehaviour {
 		helmet.enabled = false;
 		
 	}
+
+    public void SetVoiceChatPlayer(VoiceChatPlayer player)
+    {
+        this.player = player;
+    }
 }

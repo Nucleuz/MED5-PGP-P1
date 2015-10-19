@@ -92,12 +92,12 @@ namespace VoiceChat
 				using(BinaryWriter writer = new BinaryWriter(m)) {
 					writer.Write((byte)packet.Compression);
 					writer.Write(packet.Length);
-					writer.Write(packet.Data.Length);	// Apparently Packet.Data.Length =/= Packet.Length
-					writer.Write(packet.Data);
-					writer.Write(packet.NetworkId);
-					writer.Write(packet.PacketId);
-					
-					return m.ToArray();
+                    writer.Write(packet.Data.Length);	// Apparently Packet.Data.Length =/= Packet.Length
+                    writer.Write(packet.Data);
+                    writer.Write(packet.NetworkId);
+                    writer.Write(packet.PacketId);
+
+                    return m.ToArray();
 				}
 			}
 		}
@@ -113,8 +113,6 @@ namespace VoiceChat
 					packet.Data 		= reader.ReadBytes(lengthOfData);
 					packet.NetworkId 	= reader.ReadInt32();
 					packet.PacketId 	= reader.ReadUInt64();
-
-					Debug.Log (packet.PacketId);
 					
 					return packet;
 				}
