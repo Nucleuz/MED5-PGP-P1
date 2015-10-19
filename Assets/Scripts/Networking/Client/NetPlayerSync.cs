@@ -10,42 +10,36 @@ Syncs, toggles between being send only or receive only
 
 */
 using System.Collections.Generic;
-using VoiceChat.Networking;
-using UnityEngine.Networking;
 
 [RequireComponent(typeof (VoiceChatPlayer))]
 public class NetPlayerSync : MonoBehaviour {
-
+	
 	private bool isSender = false; //if false it is receiver
-
+	
 	public Transform head;
-
+	
 	//Reference to components that needs to be turn on and off when switching from sender to receiver
 	public GameObject cam;
 	public HeadControl headControl;
 	private VoiceChatPlayer player;
-
-    public HelmetLightScript helmet;
-
+	
+	public HelmetLightScript helmet;
+	
 	//reference to reduce when it sends data to everyone else
 	Quaternion lastRotation;
 	Vector3 lastPosition;
-
+	
 	//network id for the object
 	public ushort networkID;
-
-    private VoiceChatPacketMessage voicePacketMessage;
-    private NetworkWriter writer;
-
-    // Use this for initialization
-    void Start () {
+	public ulong voicePacketID;
+	
+	// Use this for initialization
+	void Start () {
 		DarkRiftAPI.onPlayerDisconnected += PlayerDisconnected;
 		DarkRiftAPI.onDataDetailed += RecieveData;
-
+		
 		player = GetComponent<VoiceChatPlayer>();
-
-        voicePacketMessage = new VoiceChatPacketMessage();
-    }
+	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
@@ -53,7 +47,7 @@ public class NetPlayerSync : MonoBehaviour {
 			SendData();
 		}
 	}
-
+	
 	void SendData(){
 		//has the rotation or position changed since last sent message
 		if( head.rotation != lastRotation || transform.position != lastPosition){
@@ -61,76 +55,64 @@ public class NetPlayerSync : MonoBehaviour {
 			PlayerInfo info = new PlayerInfo();
 			info.position = new SVector3(transform.position);
 			info.rotation = new SQuaternion(head.rotation);
-
+			
 			//send it to everyone else
 			DarkRiftAPI.SendMessageToOthers(Network.Tag.Player, Network.Subject.PlayerUpdate, info);
-
+			
 			//save the sent position and rotation
 			lastPosition = info.position.get();
 			lastRotation = info.rotation.get();
 		}
 	}
-
+	
 	// Called once there is a new packet/sample ready
 	public void OnNewSample (VoiceChatPacket packet)
 	{
-        // We only send the byte[], if VoiceChatPacket is send then DarkRifts package header breaks
-        voicePacketMessage.packet = packet;
-        writer = new NetworkWriter();
-        voicePacketMessage.Serialize(writer);
-        DarkRiftAPI.SendMessageToOthers (Network.Tag.Player, Network.Subject.VoiceChat, writer);	// Send the packet to all other players
+		DarkRiftAPI.SendMessageToOthers (Network.Tag.Player, Network.Subject.VoiceChat, VoiceChatUtils.Serialise(packet));	// Send the packet to all other players
 	}
-
+	
 	void RecieveData(ushort senderID, byte tag, ushort subject, object data){
-
+		
 		//check that it is the right sender
 		if(!isSender && senderID == networkID ){
 			//check if it wants to update the player
 			if( subject == Network.Subject.PlayerUpdate ){
-
+				
 				//unpack the data
 				PlayerInfo info 	= 	(PlayerInfo)data;
 				//apply the data
 				transform.position 	= 	info.position.get();
 				head.rotation 		= 	info.rotation.get();	
-
+				
 			}
 		}
-
+		
 		// Check if wants to update the voice packet
 		if(subject == Network.Subject.VoiceChat) {		//TODO Check why packages may be null
-            if(data is NetworkReader)
-            {
-                voicePacketMessage.Deserialize((NetworkReader)data);
-                player.OnNewSample(voicePacketMessage.packet);                     // Queue package to the VoiceChatPlayer
-            }
-            else
-            {
-                Debug.LogError("Should have recieved a DarkRiftReciever but didn't! (Got: " + data.GetType() + ")");
-            }
-        }
-
+			player.OnNewSample(VoiceChatUtils.Deserialise((byte[])data));                     // Queue package to the VoiceChatPlayer
+		}
+		
 	}
-
+	
 	//When the player disconnects destroy it
 	void PlayerDisconnected(ushort ID){
 		Destroy(gameObject);
 	}
-
+	
 	//--------------------
 	//  Getters / Setters
 	public void SetAsSender(){
 		isSender = true;
 		cam.SetActive(true);
 		headControl.enabled = true;
-        helmet.enabled = true;
+		helmet.enabled = true;
 	}
-
+	
 	public void SetAsReceiver(){
 		isSender = false;
-        cam.SetActive(false);
+		cam.SetActive(false);
 		headControl.enabled = false;
-        helmet.enabled = false;
-
+		helmet.enabled = false;
+		
 	}
 }
