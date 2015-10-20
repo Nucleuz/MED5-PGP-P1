@@ -108,6 +108,27 @@ public class Console : MonoBehaviour {
             case "/noclip":
                 CC.ToggleNoClip();
                 break;
+            case "/resetlevel":
+                CC.ResetLevel();
+                break;
+            case "/resetgame":
+                CC.ResetGame();
+                break;
+            case "/skiplevel":
+                CC.SkipLevel();
+                break;
+            case "/level1":
+                CC.JumpToLevel(0);
+                break;
+            case "/level2":
+                CC.JumpToLevel(1);
+                break;
+            case "/level3":
+                CC.JumpToLevel(2);
+                break;
+            case "/level4":
+                CC.JumpToLevel(3);
+                break;
             default:
                 message = "Invalid input!";
                 break;
