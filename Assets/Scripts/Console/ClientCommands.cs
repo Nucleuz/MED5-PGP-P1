@@ -53,4 +53,20 @@ public class ClientCommands : MonoBehaviour {
 	public void ToggleNoClip(){
     	GameObject.Find("NoClipCam").GetComponent<NoClip>().On();
 	}
+
+    public void ResetLevel(){
+        Application.LoadLevel(Application.loadedLevel);
+    }
+
+    public void ResetGame(){
+        Application.LoadLevel(0);
+    }
+
+    public void SkipLevel(){
+        Application.LoadLevel(Application.loadedLevel + 1);
+    }
+
+    public void JumpToLevel(int levelNumber){
+        Application.LoadLevel(levelNumber);
+    }
 }
