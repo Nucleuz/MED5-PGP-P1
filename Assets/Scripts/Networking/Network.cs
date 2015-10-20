@@ -25,12 +25,12 @@ public class Network{
 		public const ushort PlayerUpdate         = 5;
         public const ushort TriggerActivate      = 6;
         public const ushort TriggerDeactivate    = 7;
-        public const ushort TriggerState         = 12;
+        public const ushort TriggerState         = 8;
 
-        public const ushort ServerLoadedLevel    = 8;
-        public const ushort ServerSentTriggerIDs = 9;
-        public const ushort RequestTriggerIDs    = 10;
+        public const ushort ServerLoadedLevel    = 9;
+        public const ushort ServerSentTriggerIDs = 10;
+        public const ushort RequestTriggerIDs    = 11;
 
-        public const ushort VoiceChat            = 11;
+        public const ushort VoiceChat            = 12;
     }
 }
