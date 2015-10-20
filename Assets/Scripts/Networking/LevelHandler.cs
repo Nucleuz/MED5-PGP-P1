@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-
 using DarkRift;
 
 
@@ -25,8 +24,9 @@ public class LevelHandler : MonoBehaviour {
     //@TODO make sure that it is fixed between server and client
 	public string[] levelOrder; 
 	
-    //@NOTE levelIndex is first incremented when the level is loaded and processed
-    public int levelIndex = -1;
+    public int levelManagerIndex = 0;
+    public int loadedLevelIndex = -1;
+
     private float currentRotation;
 
     void Start(){
@@ -44,18 +44,17 @@ public class LevelHandler : MonoBehaviour {
     }
 	
 	IEnumerator LoadAndHandleLevel(){
+        int loadingIndex = loadedLevelIndex;
         if(levelOrder.Length == 0){
             Debug.LogError("No Level Order -- Can't load level");
             return false;
-        }else if(levelIndex < 0 || levelIndex >= levelOrder.Length){
-            Debug.LogError("LevelIndex out of bounds");
+        }else if(loadingIndex < 0 || loadingIndex >= levelOrder.Length){
+            Debug.LogError("loadedLevelIndex out of bounds");
             return false;
         }
         
 		//@TODO --- Optimize - can be done async which should be faster
-		Application.LoadLevelAdditive(levelOrder[levelIndex]);
-		//it must wait 1 frame therefore
-		yield return null;
+		Application.LoadLevelAdditive(levelOrder[loadingIndex]);
 
         //wait a frame and try to find LevelContainer and repeat until it finds it
         bool foundLC = false;
@@ -72,37 +71,35 @@ public class LevelHandler : MonoBehaviour {
 
                     foundLC = true;
                     
+                    processLevelContainer(lc,loadingIndex);
                     lc.processed = true;
-                    processLevelContainer(lc);
-
-                    //TriggerHandler - find and store all triggers then sync with server
-                    triggerHandler.process(lc);
                     break;
                 }
-
             }
         }
 
-        manager.OnLevelLoaded(levelIndex);
+        manager.OnLevelLoaded(loadedLevelIndex);
     }
 
-    public void processLevelContainer(LevelContainer levelContainer){
+    public void processLevelContainer(LevelContainer levelContainer,int loadingIndex){
         //check if it should stich them together
 
-        if(levelIndex == 0){
+        if(loadingIndex == 0){
             //run first time on the server
             if(NetworkManager.isServer)
                 GetComponent<GameManager>().setNewLevelManager(levelContainer.levelManager);
+
+            triggerHandler.process(levelContainer);
         }else{
             //previous and next LevelManager
-            LevelManager pLM = levelContainers[levelIndex-1].levelManager;
+            LevelManager pLM = levelContainers[loadingIndex - 1].levelManager;
             LevelManager nLM = levelContainer.levelManager;
 
             //Stich togehter with the levelContainers and set the next as current..
             Vector3 pNLD = pLM.nextLevelDirection.normalized;
         
             //rotate next level so that pLM.nextLevelDirection is equal to the inverse nLM.prevLevelDirection
-            Debug.Log(pLM.nextLevelDirection + " " + (Mathf.Rad2Deg * levelContainers[levelIndex - 1].transform.rotation.y ));
+            Debug.Log(pLM.nextLevelDirection + " " + (Mathf.Rad2Deg * levelContainers[loadingIndex - 1].transform.rotation.y ));
             float a = Vector3.Angle(pLM.nextLevelDirection,nLM.prevLevelDirection) - currentRotation;
             currentRotation = 180-a;
 
@@ -134,34 +131,41 @@ public class LevelHandler : MonoBehaviour {
             }
         }
 
-        levelContainers[levelIndex] = levelContainer;
+        levelContainers[loadingIndex] = levelContainer;
 
+        
         //@TODO unloading of scenes
     }
 
 	public void loadNextLevel(){
-        levelIndex++;
+        loadedLevelIndex++;
 		StartCoroutine(LoadAndHandleLevel());
 	} 
 
     public void loadLevel(int index){
         if(index >= 0 && index < levelContainers.Length){
-            levelIndex = index;
+            loadedLevelIndex = index;
             StartCoroutine(LoadAndHandleLevel());
         }else
             Debug.LogError("Trying to Load Level that is out of Index");
     }
 
     public LevelManager getLevelManager(){
-        return levelContainers[levelIndex].levelManager;
+        return levelContainers[levelManagerIndex].levelManager;
     }
 
-    public LevelManager getNextLevelManager(){
-        if(levelIndex+1 < levelContainers.Length)
-            return levelContainers[levelIndex+1].levelManager;
+    //current level completed
+    public void OnLevelCompleted(){
+        if(levelManagerIndex+1 < levelContainers.Length){
+            levelManagerIndex++;
 
-        Debug.LogError("Trying to get LevelManager for Level that is out of the levelContainers array range");
-        return null;
+            manager.OnLevelCompleted();
+
+            //load one ahead
+            loadNextLevel();
+        }else{
+            Debug.Log("Last Level Completed");
+        }
 
     }
 }

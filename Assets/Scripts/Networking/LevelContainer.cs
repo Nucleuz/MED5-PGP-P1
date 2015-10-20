@@ -8,4 +8,5 @@ public class LevelContainer : MonoBehaviour {
 
 	public LevelManager levelManager;
 
+    //TODO make an editor script that recursively goes through and stores all found triggers in an array (function is already made in TriggerHandler.. )
 }

@@ -20,8 +20,6 @@ public class ServerManager : NetworkManager {
 	//index for the next player to join, NOTE: cycles with the spawnPos Length
 	public int playerIndex;
 
-    public int currentLevel;
-    
     //reference to player object so the server has a visual indication of the players position and rotation
 	public Transform[] players;
 	//id of each sender
@@ -31,6 +29,8 @@ public class ServerManager : NetworkManager {
     public GameManager gameManager;
     public LevelHandler levelHandler;
     public TriggerHandler triggerHandler;
+
+    private bool[] clientLoadedLevel = new bool[3];
 
 	void Start () {
 
@@ -65,7 +65,7 @@ public class ServerManager : NetworkManager {
 			
                 playerIndex++;
 
-                Debug.Log("Player joined told to load level " + currentLevel);
+                Debug.Log("Player joined told to load level " + levelHandler.levelManagerIndex);
 
 				//send back the spawnpos to the client
 				con.SendReply(
@@ -74,7 +74,7 @@ public class ServerManager : NetworkManager {
                         con.id);
 				con.SendReply(Network.Tag.Manager, 
                         Network.Subject.ServerLoadedLevel, 
-                        currentLevel);
+                        levelHandler.levelManagerIndex);
 			}
 		}else if(data.tag == Network.Tag.Player){
 
@@ -111,13 +111,31 @@ public class ServerManager : NetworkManager {
                 
                 for(int i = 0;i<triggerHandler.triggers.Count;i++){
                     triggerStates[i] = new TriggerState(triggerHandler.triggers[i]);
-                    Debug.Log(triggerStates[i].id);
+                    Debug.Log("triggers: " + triggerStates[i].id);
                 }
 
                 con.SendReply(
                         Network.Tag.Trigger,
                         Network.Subject.ServerSentTriggerIDs,
                         triggerStates);
+
+
+                //if all client have loaded the level load the next
+
+                clientLoadedLevel[con.id-1] = true;
+
+                bool b = false;
+                for(int i = 0;i<clientLoadedLevel.Length;i++){
+                    if(connections[i] != null)
+                        b = clientLoadedLevel[i];
+                }
+
+                if(b){
+                    for(int i = 0;i<clientLoadedLevel.Length;i++)
+                        clientLoadedLevel[i] = false;
+                    levelHandler.loadNextLevel();
+                }
+
             }else if(data.subject == Network.Subject.TriggerActivate){
                 triggerHandler.TriggerInteracted((ushort)data.data,true);
 
@@ -150,12 +168,23 @@ public class ServerManager : NetworkManager {
         SendToAll(Network.Tag.Trigger,Network.Subject.TriggerState,state);
     }
 
-    public override void OnLevelLoaded(int levelIndex){
-        currentLevel = levelIndex;
+    public override void OnLevelCompleted(){
 
+        LevelContainer lc = levelHandler.levelContainers[levelHandler.levelManagerIndex];
+        triggerHandler.process(lc);
+        gameManager.setNewLevelManager(lc.levelManager);
+
+        SendToAll(Network.Tag.Trigger,Network.Subject.LevelManagerCompleted,levelHandler.levelManagerIndex);
+
+        Write("Level Completed");
+ 
+    }
+    
+    public override void OnLevelLoaded(int levelIndex){
         Debug.Log("Level " + levelIndex + " (name: " + levelHandler.levelOrder[levelIndex] + ") Loaded");
         // when level is loaded on server tell clients to do the same.
         SendToAll(Network.Tag.Manager, Network.Subject.ServerLoadedLevel, levelIndex);
+
     }
 
     private void SendToAll(byte tag, ushort subject, object data){
@@ -174,7 +203,8 @@ public class ServerManager : NetworkManager {
 	private void OnApplicationQuit() {
 		// Close all connections
 		foreach (var con in connections) {
-			con.Close();
+            if(con != null)
+                con.Close();
 		}
 
 		// Close server

@@ -76,9 +76,7 @@ public class GameManager : MonoBehaviour {
                         LM.events[i].isReadyToBeTriggered = true; //Makes the next sequence ready to be triggered 
                     }
                     currentNumberOfEventsTriggered = 0; //Resets the amount of objects that was triggered in the current sequence
-                } else if(index == LM.eventsInSequence.Length - 1){
-                    setNextLevelManager();
-                }
+               }
             }
 
             //This loop goes through the objects, which is not part of the current order, but is still in the sequence
@@ -111,10 +109,6 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-    private void setNextLevelManager(){
-        setNewLevelManager(levelHandler.getLevelManager());
-
-    }
     private void resetTriggers(int triggerIndex){
         //This if statement is used in order to reset interactables if they require it
         try{

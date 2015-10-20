@@ -18,19 +18,21 @@ public class Network{
     //what is the message about
     public class Subject
     {
-		public const ushort HasJoined            = 1;
-		public const ushort SpawnPlayer          = 2;
-		public const ushort ServerSentSpawnPos   = 3;
-		public const ushort ServerSentNetID      = 4;
-		public const ushort PlayerUpdate         = 5;
-        public const ushort TriggerActivate      = 6;
-        public const ushort TriggerDeactivate    = 7;
-        public const ushort TriggerState         = 8;
+		public const ushort HasJoined             = 1;
+		public const ushort SpawnPlayer           = 2;
+		public const ushort ServerSentSpawnPos    = 3;
+		public const ushort ServerSentNetID       = 4;
+		public const ushort PlayerUpdate          = 5;
+        public const ushort TriggerActivate       = 6;
+        public const ushort TriggerDeactivate     = 7;
+        public const ushort TriggerState          = 8;
 
-        public const ushort ServerLoadedLevel    = 9;
-        public const ushort ServerSentTriggerIDs = 10;
-        public const ushort RequestTriggerIDs    = 11;
+        public const ushort ServerLoadedLevel     = 9;
+        public const ushort ServerSentTriggerIDs  = 10;
+        public const ushort RequestTriggerIDs     = 11;
 
-        public const ushort VoiceChat            = 12;
+        public const ushort VoiceChat             = 12;
+
+        public const ushort LevelManagerCompleted = 13;
     }
 }

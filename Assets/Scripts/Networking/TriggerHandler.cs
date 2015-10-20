@@ -26,6 +26,9 @@ using DarkRift;
 
          private ushort triggerIdCount = 1;
 
+         //ref
+
+         private LevelHandler levelHandler;
 
          void Awake(){
              _instance = this;
@@ -35,6 +38,7 @@ using DarkRift;
              triggers = new List<Trigger>();
              triggerIDs = new List<ushort>();
 
+             levelHandler = GetComponent<LevelHandler>();
              if(!NetworkManager.isServer)
                  DarkRiftAPI.onDataDetailed += ReceiveData;
              
@@ -68,6 +72,9 @@ using DarkRift;
 
              if(child.GetComponent<Trigger>() != null)
                  Assign(child.GetComponent<Trigger>());
+             else if(child.GetComponent<LevelEndedZone>() != null)
+                 child.GetComponent<LevelEndedZone>().triggerHandler = this;
+
 
              foreach(Transform c in child.transform)
                  checkChild(c);
@@ -96,24 +103,51 @@ using DarkRift;
         public void ReceiveData(ushort senderID, byte tag, ushort subject, object data){
 
             if(tag == Network.Tag.Trigger){
-                if(subject == Network.Subject.ServerSentTriggerIDs){
-                    Debug.Log("trigger id's received");
-                    
-                    TriggerState[] triggerStates = (TriggerState[])data;
+                switch(subject){
+                    case Network.Subject.ServerSentTriggerIDs:
+                    {
+                        Debug.Log("trigger id's received");
+                        
+                        TriggerState[] triggerStates = (TriggerState[])data;
 
-                    for(int i = 0;i<triggerStates.Length;i++){
-                        triggers[i].SetState(triggerStates[i]);
-                        triggerIDs.Add(triggerStates[i].id);
-                        Debug.Log(triggerStates[i].id);
+                        for(int i = 0;i<triggerStates.Length;i++){
+                            triggers[i].SetState(triggerStates[i]);
+                            triggerIDs.Add(triggerStates[i].id);
+                            Debug.Log(triggerStates[i].id);
+                        }
                     }
-                }else if(subject == Network.Subject.TriggerActivate){
-                    TriggerInteracted((ushort)data,true);
-                }else if(subject == Network.Subject.TriggerDeactivate){
-                    TriggerInteracted((ushort)data,false);
-                }else if(subject == Network.Subject.TriggerState){
-                    SetTriggerState((TriggerState)data);
-                }
+                    break;
+
+                    case Network.Subject.TriggerActivate:
+                    {
+                        TriggerInteracted((ushort)data,true);
+                    }
+                    break;
+                    case Network.Subject.TriggerDeactivate:
+                    {
+                        TriggerInteracted((ushort)data,false);
+                    }
+                    break;
+                    case Network.Subject.TriggerState:
+                    {
+                        SetTriggerState((TriggerState)data);
+                    }
+                    break;
+                    case Network.Subject.LevelManagerCompleted:
+                    {
+                        process(levelHandler.levelContainers[(int)data]);
+                    }
+                    break;
+ 
             }
+            }
+    }
+
+
+    public void OnLevelCompleted(){
+        //this is pretty retarded.. long call chain
+        levelHandler.OnLevelCompleted();
+
     }
 
     public void SetTriggerState(TriggerState state){

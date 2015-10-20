@@ -9,9 +9,13 @@ public class NetworkManager : MonoBehaviour{
     public static Text debugText;
 
     public virtual void OnLevelLoaded(int levelIndex){
-        
 
     }
+
+    public virtual void OnLevelCompleted(){
+
+    }
+
 
     //for debugging 
     //@TODO - replace with console

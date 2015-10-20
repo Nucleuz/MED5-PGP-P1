@@ -129,10 +129,13 @@ public class ClientManager : NetworkManager
                         DarkRiftAPI.SendMessageToID(senderID, Network.Tag.Manager, Network.Subject.SpawnPlayer, new SVector3(player.position));
                     }
                     break;
-            }
+           }
         }
     }
 
+    public override void OnLevelCompleted(){
+
+    }
     
 
     public override void OnLevelLoaded(int levelIndex)
