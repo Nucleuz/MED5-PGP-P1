@@ -153,7 +153,7 @@ public class ServerManager : NetworkManager {
     public override void OnLevelLoaded(int levelIndex){
         currentLevel = levelIndex;
 
-        Debug.Log("Level " + levelIndex + " (" + levelHandler.levelOrder[levelIndex] + ") Loaded");
+        Debug.Log("Level " + levelIndex + " (name: " + levelHandler.levelOrder[levelIndex] + ") Loaded");
         // when level is loaded on server tell clients to do the same.
         SendToAll(Network.Tag.Manager, Network.Subject.ServerLoadedLevel, levelIndex);
     }

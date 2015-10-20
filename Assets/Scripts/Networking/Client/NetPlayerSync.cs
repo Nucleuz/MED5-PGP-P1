@@ -96,7 +96,8 @@ public class NetPlayerSync : MonoBehaviour {
 	
 	//When the player disconnects destroy it
 	void PlayerDisconnected(ushort ID){
-		Destroy(gameObject);
+        if(!isSender && ID == networkID)
+            Destroy(gameObject);
 	}
 	
 	//--------------------

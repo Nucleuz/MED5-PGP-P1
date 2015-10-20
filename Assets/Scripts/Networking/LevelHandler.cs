@@ -12,6 +12,8 @@ LevelHandler handles loading of scenes and stitching together loaded scenes
 
 public class LevelHandler : MonoBehaviour {
 
+    public LevelContainer[] levelContainers;
+    //for quick access
     private LevelContainer currentLevelContainer;
 
     private TriggerHandler triggerHandler;
@@ -22,10 +24,12 @@ public class LevelHandler : MonoBehaviour {
     //@TODO make sure that it is fixed between server and client
 	public string[] levelOrder; 
 	
-    public int levelIndex = 0;
+    //@NOTE levelIndex is first incremented when the level is loaded and processed
+    private int levelIndex = -1;
     private float currentRotation;
 
     void Start(){
+        levelContainers = new LevelContainer[levelOrder.Length];
         triggerHandler = TriggerHandler._instance;
         if(NetworkManager.isServer)
             loadNextLevel();
@@ -38,7 +42,7 @@ public class LevelHandler : MonoBehaviour {
 
     }
 	
-	IEnumerator LoadAndHandleLevel(int levelIndex){
+	IEnumerator LoadAndHandleLevel(){
         if(levelOrder.Length == 0){
             Debug.LogError("No Level Order -- Can't load level");
             return false;
@@ -46,11 +50,13 @@ public class LevelHandler : MonoBehaviour {
             Debug.LogError("LevelIndex out of bounds");
             return false;
         }
-		//@Optimize - can be done async which should be faster
+        
+		//@TODO --- Optimize - can be done async which should be faster
 		Application.LoadLevelAdditive(levelOrder[levelIndex]);
 		//it must wait 1 frame therefore
 		yield return null;
 
+        //wait a frame and try to find LevelContainer and repeat until it finds it
         bool foundLC = false;
         while(!foundLC){
             //waits for one frame 
@@ -82,21 +88,20 @@ public class LevelHandler : MonoBehaviour {
     public void processLevelContainer(LevelContainer levelContainer){
         //check if it should stich them together
 
-        if(currentLevelContainer == null){
-            //first run setup
+        if(levelIndex == 0){
+            //run first time on the server
             if(NetworkManager.isServer)
                 GetComponent<GameManager>().setNewLevelManager(levelContainer.levelManager);
-
         }else{
             //previous and next LevelManager
-            LevelManager pLM = currentLevelContainer.levelManager;
+            LevelManager pLM = levelContainers[levelIndex-1].levelManager;
             LevelManager nLM = levelContainer.levelManager;
 
-            //Stich togehter with the currentLevelContainer and set the next as current..
+            //Stich togehter with the levelContainers and set the next as current..
             Vector3 pNLD = pLM.nextLevelDirection.normalized;
         
             //rotate next level so that pLM.nextLevelDirection is equal to the inverse nLM.prevLevelDirection
-            Debug.Log(pLM.nextLevelDirection + " " + (Mathf.Rad2Deg * currentLevelContainer.transform.rotation.y ));
+            Debug.Log(pLM.nextLevelDirection + " " + (Mathf.Rad2Deg * levelContainers[levelIndex - 1].transform.rotation.y ));
             float a = Vector3.Angle(pLM.nextLevelDirection,nLM.prevLevelDirection) - currentRotation;
             currentRotation = 180-a;
 
@@ -112,27 +117,50 @@ public class LevelHandler : MonoBehaviour {
             levelContainer.transform.position += delta;
             
             //set rails
-            for(int i = 0;i<4;i++)
-                pLM.levelEndRail[i].NextRail = nLM.levelStartRail[i];
+            for(int i = 0;i<3;i++){
+                Rail pRail = pLM.levelEndRail[i];
+                Rail nRail = nLM.levelStartRail[i];
+
+                //check if it is a Rail Connection
+                if(pRail.GetComponent<RailConnection>() != null){
+                    RailConnection pRailConnection = pRail.GetComponent<RailConnection>();
+
+                    pRailConnection.nRail = nRail;
+                    pRailConnection.connectToNext = true;
+                }else
+                pRail.NextRail = nRail;
+
+            }
         }
 
+        levelContainers[levelIndex] = levelContainer;
 
-        currentLevelContainer = levelContainer;
         //@TODO unloading of scenes
     }
 
 	public void loadNextLevel(){
-		StartCoroutine(LoadAndHandleLevel(levelIndex));
         levelIndex++;
+		StartCoroutine(LoadAndHandleLevel());
 	} 
 
     public void loadLevel(int index){
-
-        StartCoroutine(LoadAndHandleLevel(index));
+        if(index >= 0 && index < levelContainers.Length){
+            levelIndex = index;
+            StartCoroutine(LoadAndHandleLevel());
+        }else
+            Debug.LogError("Trying to Load Level that is out of Index");
     }
 
     public LevelManager getLevelManager(){
-        return currentLevelContainer.levelManager;
+        return levelContainers[levelIndex].levelManager;
     }
 
+    public LevelManager getNextLevelManager(){
+        if(levelIndex+1 < levelContainers.Length)
+            return levelContainers[levelIndex+1].levelManager;
+
+        Debug.LogError("Trying to get LevelManager for Level that is out of the levelContainers array range");
+        return null;
+
+    }
 }
