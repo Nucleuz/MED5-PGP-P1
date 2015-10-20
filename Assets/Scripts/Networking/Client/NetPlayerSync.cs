@@ -82,14 +82,14 @@ public class NetPlayerSync : MonoBehaviour {
 				head.rotation 		= 	info.rotation.get();	
 				
 			}
-		}
-		
-		// Check if wants to update the voice packet
-		if(subject == Network.Subject.VoiceChat) {
-            VoiceChatPacket packet = VoiceChatUtils.Deserialise((byte[])data);
-            player.OnNewSample(packet); // Queue package to the VoiceChatPlayer
-		}
-		
+
+			// Check if wants to update the voice packet
+			if(subject == Network.Subject.VoiceChat) {
+				VoiceChatPacket packet = VoiceChatUtils.Deserialise((byte[])data);
+				player.OnNewSample(packet); // Queue package to the VoiceChatPlayer
+				//TODO Check why player/OnNewSample/packet/VoiceChatUtils is not initialised?
+			}
+		}		
 	}
 	
 	//When the player disconnects destroy it
