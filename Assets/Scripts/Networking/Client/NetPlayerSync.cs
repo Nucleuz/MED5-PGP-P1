@@ -11,7 +11,6 @@ Syncs, toggles between being send only or receive only
 */
 using System.Collections.Generic;
 
-[RequireComponent(typeof (VoiceChatPlayer))]
 public class NetPlayerSync : MonoBehaviour {
 	
 	private bool isSender = false; //if false it is receiver
@@ -87,7 +86,6 @@ public class NetPlayerSync : MonoBehaviour {
 				{
 					VoiceChatPacket packet = VoiceChatUtils.Deserialise((byte[])data);
 					player.OnNewSample(packet); // Queue package to the VoiceChatPlayer
-					//TODO Check why player/OnNewSample/packet/VoiceChatUtils is not initialised?
 				}
 				break;
 			}
