@@ -18,7 +18,7 @@ public class Trigger : MonoBehaviour {
         if(!NetworkManager.isServer)
             DarkRiftAPI.SendMessageToServer(Network.Tag.Trigger, Network.Subject.TriggerActivate,triggerID); 
         
-        NetworkManager.Write("Trigger " + triggerID + " Activated");
+		Console.Instance.AddMessage("Trigger " + triggerID + " Activated");
     }
    
     public void Deactivate(){
@@ -26,7 +26,7 @@ public class Trigger : MonoBehaviour {
 
         if(!NetworkManager.isServer)
             DarkRiftAPI.SendMessageToServer(Network.Tag.Trigger,Network.Subject.TriggerDeactivate, triggerID);
-       NetworkManager.Write("Trigger " + triggerID + " Deactivated");
+		Console.Instance.AddMessage("Trigger " + triggerID + " Deactivated");
     }
 
     public void SetState(TriggerState state){
