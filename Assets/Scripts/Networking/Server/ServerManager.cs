@@ -172,12 +172,12 @@ public class ServerManager : NetworkManager {
     }
 
 	private void OnApplicationQuit() {
-		for(int i = connections.Length;i > 0;i--) {
-			connections[i] = null;
+		// Close all connections
+		foreach (var con in connections) {
+			con.Close();
 		}
 
-		ConnectionService.onData -= OnData;
-
+		// Close server
 		DarkRiftServer.Close(false);
 	}
 }
