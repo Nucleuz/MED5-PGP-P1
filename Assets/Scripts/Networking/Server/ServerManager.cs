@@ -137,7 +137,7 @@ public class ServerManager : NetworkManager {
                 TriggerState state = triggerHandler.GetTriggerState((ushort)data.data);
 
                 //send to clients but not the sender
-                SendToAllBut(con, data.tag,Network.Subject.TriggerState,data.data);
+                SendToAll(data.tag,Network.Subject.TriggerState,state);
             }
         }
 	}
