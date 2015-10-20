@@ -73,21 +73,23 @@ public class NetPlayerSync : MonoBehaviour {
 		//check that it is the right sender
 		if(!isSender && senderID == networkID ){
 			//check if it wants to update the player
-			if( subject == Network.Subject.PlayerUpdate ){
-				
-				//unpack the data
-				PlayerInfo info 	= 	(PlayerInfo)data;
-				//apply the data
-				transform.position 	= 	info.position.get();
-				head.rotation 		= 	info.rotation.get();	
-				
-			}
-
-			// Check if wants to update the voice packet
-			if(subject == Network.Subject.VoiceChat) {
-				VoiceChatPacket packet = VoiceChatUtils.Deserialise((byte[])data);
-				player.OnNewSample(packet); // Queue package to the VoiceChatPlayer
-				//TODO Check why player/OnNewSample/packet/VoiceChatUtils is not initialised?
+			switch(subject) {
+				case Network.Subject.PlayerUpdate:
+				{
+					//unpack the data
+					PlayerInfo info 	= 	(PlayerInfo)data;
+					//apply the data
+					transform.position 	= 	info.position.get();
+					head.rotation 		= 	info.rotation.get();	
+				}
+				break;
+				case Network.Subject.VoiceChat:
+				{
+					VoiceChatPacket packet = VoiceChatUtils.Deserialise((byte[])data);
+					player.OnNewSample(packet); // Queue package to the VoiceChatPlayer
+					//TODO Check why player/OnNewSample/packet/VoiceChatUtils is not initialised?
+				}
+				break;
 			}
 		}		
 	}
