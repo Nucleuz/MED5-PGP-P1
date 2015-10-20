@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
 public class Console : MonoBehaviour {
 	//This code creates a console on the screen. 
@@ -56,7 +57,8 @@ public class Console : MonoBehaviour {
 	}
 
 	public void AddMessage(string message) {
-		output += (message + "\n");
+
+		output += "[" + DateTime.Now.ToLongTimeString() + "] " + (message + "\n");
 	}
 
     public void ExecuteCommand(string currentCommand) {
