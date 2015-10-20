@@ -369,7 +369,11 @@ Prefab:
       objectReference: {fileID: 2127616520}
     - target: {fileID: 11467866, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
       propertyPath: IP
-      value: 10.42.0.116
+      value: 127.0.0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11493670, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
+      propertyPath: levelOrder.Array.data[0]
+      value: Level 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11403230, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+
 using DarkRift;
 
 
@@ -25,7 +26,7 @@ public class LevelHandler : MonoBehaviour {
 	public string[] levelOrder; 
 	
     //@NOTE levelIndex is first incremented when the level is loaded and processed
-    private int levelIndex = -1;
+    public int levelIndex = -1;
     private float currentRotation;
 
     void Start(){
