@@ -25,10 +25,6 @@ public class ClientManager : NetworkManager
 
     public ushort networkID;
 
-    //debug text
-    //@TODO - create a kind of console instead if this..
-    public Text debug;
-
     //prefab for the players
     public GameObject prefabPlayer;
     public Transform player;
@@ -38,7 +34,6 @@ public class ClientManager : NetworkManager
 
     void Start()
     {
-        debugText = debug;
         levelHandler = GetComponent<LevelHandler>();
         //Connect to the server
         DarkRiftAPI.workInBackground = true;
@@ -48,7 +43,8 @@ public class ClientManager : NetworkManager
         if (DarkRiftAPI.isConnected)
         {
             //tell everyone else that we have entered so they can tell where they are
-            DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager, Network.Subject.HasJoined, "");
+            DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager, Network.Subject.HasJoined, ""); 
+			//TODO Sending just an empty string? Why not have a Network.Subject.RequestOther and then have a set if enums on what to request, such as Network.Request.StartPosition
         }
 
 
@@ -94,14 +90,14 @@ public class ClientManager : NetworkManager
                 case Network.Subject.ServerLoadedLevel:
                     {
                         //When the server has loaded a level
-                        Write("Server Load Level " + (int)data);
+                        Console.Instance.AddMessage("Server Load Level " + (int)data);
                         levelHandler.loadLevel((int)data);
                     }
                     break;
                 case Network.Subject.SpawnPlayer: // Spawn OTHER players
                     {
                         //spawn other player
-                        Write("SpawnPlayer sender: " + senderID);
+						Console.Instance.AddMessage("SpawnPlayer sender: " + senderID);
 
                         //unpack data
 
@@ -123,7 +119,7 @@ public class ClientManager : NetworkManager
                 case Network.Subject.HasJoined:
                     {
                         //send player info back when someone has joined
-                        Write("HasJoined sender: " + senderID);
+						Console.Instance.AddMessage("HasJoined sender: " + senderID);
 
                         //send player data to the one who asked
                         DarkRiftAPI.SendMessageToID(senderID, Network.Tag.Manager, Network.Subject.SpawnPlayer, new SVector3(player.position));
@@ -154,7 +150,7 @@ public class ClientManager : NetworkManager
             netPlayer.networkID = networkID;
             netPlayer.helmet.playerIndex = networkID;
             Debug.Log(netPlayer.helmet.playerIndex);
-            Write("Player Index: " + netPlayer.helmet.playerIndex);
+			Console.Instance.AddMessage("Player Index: " + netPlayer.helmet.playerIndex);
             netPlayer.SetAsSender();
 
 			VoiceChatRecorder.Instance.NetworkId = networkID;
@@ -164,7 +160,6 @@ public class ClientManager : NetworkManager
 			VoiceChatRecorder.Instance.NewSample += netPlayer.OnNewSample;
 
             //place the player on the correct rail!
-
             Rail startRail = levelHandler.getLevelManager().levelStartRail[networkID - 1];
 
             player.position = startRail.transform.position;

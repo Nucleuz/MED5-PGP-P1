@@ -50,7 +50,8 @@ public class ServerManager : NetworkManager {
 	void OnData(ConnectionService con, ref NetworkMessage data)
 	{
 		//Decode the data so it is readable
-		data.DecodeData ();
+		if(data.subject != Network.Subject.VoiceChat) //Don't try to decode VoiceChat, you will fail.
+			data.DecodeData ();
 
 		if(data.tag == Network.Tag.Manager){
 
