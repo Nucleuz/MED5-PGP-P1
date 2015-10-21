@@ -69,7 +69,7 @@ public class InteractableButton : Interactable{
 			trigger.isTriggered = true;
 			if(!playedSound){
 				sM.ToggleSwitch("On_Off", "On", gameObject);
-				sM.playEvent("ButtonOnOff", gameObject);
+				sM.PlayEvent("ButtonOnOff", gameObject);
 				playedSound = true;
 			}
 		}

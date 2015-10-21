@@ -9,6 +9,8 @@ public class SoundCrystal : Interactable
 	// Name of played event (wWise)
 	string eventName;
 
+    int currentSequence;
+
     // Time between sounds that can be changed in the inspector.
     public float timeBetweenSounds;
 
@@ -17,6 +19,8 @@ public class SoundCrystal : Interactable
     // Use this for initialization
     void Start()
     {
+        currentSequence = 0;
+
     	// Finding soundmanager and setting reference
     	sM = GameObject.Find("SoundManager").GetComponent<SoundManager>();
 
@@ -25,8 +29,27 @@ public class SoundCrystal : Interactable
     }
 
 
-	public void PlaySounds(){
-		sM.playEvent(eventName, gameObject);
+	public void PlaySounds(int i){
+        switch(i){
+            case 0:
+		      sM.ToggleSwitch(SwitchName, SwitchMode, gameObject);
+              sM.PlayEvent(eventName, gameObject);
+            break;
+            
+            case 1:
+              sM.ToggleSwitch(SwitchName, SwitchMode, gameObject);
+              sM.PlayEvent(eventName, gameObject);
+            break;
+
+            case 2:
+              sM.ToggleSwitch(SwitchName, SwitchMode, gameObject);
+              sM.PlayEvent(eventName, gameObject);
+            break;
+
+            default:
+                Debug.Log("Sound Crystal gem sequence out of bounds");
+            break;
+        }
 	}
 
     public override void OnRayReceived(int playerIndex, Ray ray, RaycastHit hit, ref LineRenderer lineRenderer,int nextLineVertex){
