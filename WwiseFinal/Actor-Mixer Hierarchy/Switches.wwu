@@ -4,7 +4,21 @@
 		<WorkUnit Name="Switches" ID="{327F0D9F-0297-440A-B1A0-2C7566DDBDBD}" OwnerID="{1BE62AEE-9809-4847-B300-E418C8D744C6}" PersistMode="Nested">
 			<ChildrenList>
 				<ActorMixer Name="ButtonOn-Off" ID="{A0CD4BC8-B0B0-4229-8ECF-3AB552FB71A5}" ShortID="552351416">
+					<PropertyList>
+						<Property Name="PositioningType" Type="int16" Value="1"/>
+					</PropertyList>
 					<ReferenceList>
+						<Reference Name="AttachableMixerInput">
+							<Custom>
+								<Effect Name="Two Big Ears 3Dception (Attached)" ID="{46C425F9-12D0-4AC0-B650-32A4FFC15D6A}" ShortID="52173776" PluginName="AttachableMixerInput" CompanyID="265" PluginID="2" PluginType="3">
+									<PropertyList>
+										<Property Name="InputChannel" Type="int32" Value="2"/>
+										<Property Name="MaxDistance" Type="Real32" Value="999.94"/>
+										<Property Name="Room" Type="bool" Value="True"/>
+									</PropertyList>
+								</Effect>
+							</Custom>
+						</Reference>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
 						</Reference>

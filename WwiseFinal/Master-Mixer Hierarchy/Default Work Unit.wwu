@@ -4,6 +4,13 @@
 		<WorkUnit Name="Default Work Unit" ID="{88AEA801-E436-458F-9865-10A1788249D3}" PersistMode="Standalone">
 			<ChildrenList>
 				<Bus Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}">
+					<ReferenceList>
+						<Reference Name="Mixer">
+							<Custom>
+								<Effect Name="Two Big Ears 3Dception (Custom)" ID="{E2627A87-1778-499B-A91F-CD84411AA626}" ShortID="417105745" PluginName="Two Big Ears 3Dception" CompanyID="265" PluginID="1" PluginType="6"/>
+							</Custom>
+						</Reference>
+					</ReferenceList>
 					<ChildrenList>
 						<AuxBus Name="AmbienceBus" ID="{8FC1403E-05A4-4BCC-A84E-51488EF5BA6F}">
 							<ReferenceList>
