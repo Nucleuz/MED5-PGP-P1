@@ -53,6 +53,7 @@ public class Console : MonoBehaviour {
 			userInput = "";
 		}
 			
+        if(consoleCanvasText.text != output)
 		consoleCanvasText.text = output;
 	}
 

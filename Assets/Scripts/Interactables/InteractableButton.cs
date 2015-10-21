@@ -53,11 +53,13 @@ public class InteractableButton : Interactable{
 		if(trigger.isTriggered){
 			buttonAnimator.SetBool("isActivated", true); 	//starts the animation of the button.
 			par.Play(); 									//starts the particles system.
-			playSound(); 									//starts the method which plays the sound.
+            if(!par.isPlaying)
+                playSound(); 									//starts the method which plays the sound.
 		} else {
 			 buttonAnimator.SetBool("isActivated", false); 	//stops the animation of the button.
 			 isSoundPlayed = false; 						//makes sure that the sound only plays once.
-			 par.Stop(); 									//stops the particle system.
+             if(par.isPlaying)
+                 par.Stop(); 									//stops the particle system.
 		}
 	}
 
