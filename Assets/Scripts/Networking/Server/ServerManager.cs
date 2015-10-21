@@ -49,9 +49,25 @@ public class ServerManager : NetworkManager {
 	//Called when we receive data
 	void OnData(ConnectionService con, ref NetworkMessage data)
 	{
-		//Decode the data so it is readable
-		if(data.subject != Network.Subject.VoiceChat) //Don't try to decode VoiceChat, you will fail.
-			data.DecodeData ();
+        if(data.data == null)return;
+		//Decode the so it is readable
+        try{
+            if(data.subject != Network.Subject.VoiceChat ) //Don't try to decode VoiceChat, you will fail.
+                data.DecodeData ();
+        }catch(System.Exception e){
+            Debug.LogError("SOMETHING WENT WRONT! from: " + con.id);
+            Debug.LogError(e);
+            string s = "";
+            foreach(var b in (byte[])data.data){
+                s += " "+b;
+
+
+            }
+            Debug.Log(s);
+
+
+        }
+        
 
 		if(data.tag == Network.Tag.Manager){
 

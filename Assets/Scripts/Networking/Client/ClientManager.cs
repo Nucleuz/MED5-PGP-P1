@@ -51,7 +51,7 @@ public class ClientManager : NetworkManager
         if (DarkRiftAPI.isConnected)
         {
             //tell everyone else that we have entered so they can tell where they are
-            DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager, Network.Subject.HasJoined, "");
+            DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager, Network.Subject.HasJoined, "hello world");
         }
 
 
@@ -129,7 +129,8 @@ public class ClientManager : NetworkManager
                         Write("HasJoined sender: " + senderID);
 
                         //send player data to the one who asked
-                        DarkRiftAPI.SendMessageToID(senderID, Network.Tag.Manager, Network.Subject.SpawnPlayer, new SVector3(player.position));
+                        if(player != null)
+                            DarkRiftAPI.SendMessageToID(senderID, Network.Tag.Manager, Network.Subject.SpawnPlayer, new SVector3(player.position));
                     }
                     break;
            }
@@ -164,7 +165,7 @@ public class ClientManager : NetworkManager
 			VoiceChatRecorder.Instance.NetworkId = networkID;
 			VoiceChatRecorder.Instance.Device = VoiceChatRecorder.Instance.AvailableDevices[0];
 			VoiceChatRecorder.Instance.StartRecording();
-            VoiceChatRecorder.Instance.AutoDetectSpeech = true;
+   //         VoiceChatRecorder.Instance.AutoDetectSpeech = true;
 			VoiceChatRecorder.Instance.NewSample += netPlayer.OnNewSample;
 
             //place the player on the correct rail!
