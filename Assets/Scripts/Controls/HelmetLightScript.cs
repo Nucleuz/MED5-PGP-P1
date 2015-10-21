@@ -55,7 +55,7 @@ public class HelmetLightScript : MonoBehaviour {
         lineRenderer.enabled = helmetLightFocused;
 
         //Checks if the focus button is pressed (Default = space)
-        if (Input.GetKey("space")) {
+        if (Input.GetKey("space") || Input.GetAxis("RightTrigger") > 0.1f || Input.GetAxis("LeftTrigger") > 0.1f) {
 
             
 
