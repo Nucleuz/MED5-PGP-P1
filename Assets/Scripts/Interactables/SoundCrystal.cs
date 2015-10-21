@@ -32,17 +32,17 @@ public class SoundCrystal : Interactable
 	public void PlaySounds(int i){
         switch(i){
             case 0:
-		      sM.ToggleSwitch(SwitchName, SwitchMode, gameObject);
+		      sM.ToggleSwitch("derp", "herp", gameObject);
               sM.PlayEvent(eventName, gameObject);
             break;
             
             case 1:
-              sM.ToggleSwitch(SwitchName, SwitchMode, gameObject);
+			sM.ToggleSwitch("derp", "herp", gameObject);
               sM.PlayEvent(eventName, gameObject);
             break;
 
             case 2:
-              sM.ToggleSwitch(SwitchName, SwitchMode, gameObject);
+			sM.ToggleSwitch("derp", "herp", gameObject);
               sM.PlayEvent(eventName, gameObject);
             break;
 
@@ -53,6 +53,6 @@ public class SoundCrystal : Interactable
 	}
 
     public override void OnRayReceived(int playerIndex, Ray ray, RaycastHit hit, ref LineRenderer lineRenderer,int nextLineVertex){
-		PlaySounds();
+		PlaySounds(0);
 	}
 }

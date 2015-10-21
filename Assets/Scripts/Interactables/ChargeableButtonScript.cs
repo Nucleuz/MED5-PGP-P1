@@ -32,11 +32,11 @@ public class ChargeableButtonScript : Interactable
     void Start(){
         soundStopped = true;
         trigger = GetComponent<Trigger>();
-<<<<<<< HEAD
+
         particles = GetComponent<ParticleSystem>();
-=======
+
         sM = GameObject.Find("SoundManager").GetComponent<SoundManager>();
->>>>>>> origin/SoundManager
+
     }
 
     // Update is called once per frame
