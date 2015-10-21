@@ -6,9 +6,8 @@ public class InteractableButton : Interactable{
 	Light buttonLight;
 	ParticleSystem par;
 	
-	public AudioClip activatedButtonSound;
-	AudioSource audio;
-	//checks if the sound has been player, inorder to only play the sound only one time.
+	SoundManager sM;
+	bool playedSound;
 
 	[Tooltip("NEEDS TO BE THE SIZE 3. Check the players that have to hit the button. 0 = red, 1 = green, 2 = blue")]
 	public bool[] playerList;
@@ -16,7 +15,6 @@ public class InteractableButton : Interactable{
 	private bool[] playerCheck = new bool[3];
 	
 	private bool arraysFit;
-	private bool isSoundPlayed = false;
 
 	private float delay;
 	private float timer;
@@ -27,14 +25,15 @@ public class InteractableButton : Interactable{
 	
 	// Use this for initialization
 	void Start () {
+		playedSound 	= false;
 		arraysFit 		= false;
 		delay 			= 1.0f;
 	
 		buttonAnimator 	= GetComponent<Animator>();
 		buttonLight 	= GetComponent<Light>();
 		trigger 		= GetComponent<Trigger>();
-		audio 			= GetComponent<AudioSource>();
 		par 			= GetComponent<ParticleSystem>();
+		sM 				= GameObject.Find("SoundManager").GetComponent<SoundManager>();
 
 		//Set the color of the interactable button both background light and particles to the correct user.
 		setButtonColor(playerList);
@@ -55,18 +54,9 @@ public class InteractableButton : Interactable{
 		if(trigger.isTriggered){
 			buttonAnimator.SetBool("isActivated", true); 	//starts the animation of the button.
 			par.Play(); 									//starts the particles system.
-			playSound(); 									//starts the method which plays the sound.
 		} else {
-			 buttonAnimator.SetBool("isActivated", false); 	//stops the animation of the button.
-			 isSoundPlayed = false; 						//makes sure that the sound only plays once.
-			 par.Stop(); 									//stops the particle system.
-		}
-	}
-
-	void playSound(){
-		if(isSoundPlayed == false){ 						//if the sound has not been played.
-			audio.PlayOneShot(activatedButtonSound, 1F); 	// play sound with the volume of 1.
-			isSoundPlayed = true; 							// set to true, so the sound wont play twice.
+			buttonAnimator.SetBool("isActivated", false); 	//stops the animation of the button.
+			par.Stop(); 									//stops the particle system.
 		}
 	}
 
@@ -77,8 +67,14 @@ public class InteractableButton : Interactable{
 
 		arraysFit = checkArrays(playerCheck, playerList);
 
-		if (trigger.isReadyToBeTriggered && arraysFit)
+		if (trigger.isReadyToBeTriggered && arraysFit){
 			trigger.isTriggered = true;
+			if(!playedSound){
+				sM.ToggleSwitch("On_Off", "On", gameObject);
+				sM.playEvent("ButtonOnOff", gameObject);
+				playedSound = true;
+			}
+		}
 		
 	}
 

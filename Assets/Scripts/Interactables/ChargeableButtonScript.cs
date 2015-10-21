@@ -4,6 +4,9 @@ using System.Collections;
 public class ChargeableButtonScript : Interactable
 {
 
+    SoundManager sM;
+    bool soundStopped;
+
     // Float to hold the total charged energy
     public float energy = 0;
 
@@ -27,8 +30,13 @@ public class ChargeableButtonScript : Interactable
     ParticleSystem particles;
 
     void Start(){
+        soundStopped = true;
         trigger = GetComponent<Trigger>();
+<<<<<<< HEAD
         particles = GetComponent<ParticleSystem>();
+=======
+        sM = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+>>>>>>> origin/SoundManager
     }
 
     // Update is called once per frame
@@ -56,6 +64,9 @@ public class ChargeableButtonScript : Interactable
 
                     // Set isTrigger in Trigger script to true
                     trigger.isTriggered = true;
+                    sM.ToggleSwitch("On_Off", "On", gameObject);
+                    sM.playEvent("ChannelingButtonOnOff", gameObject);
+                    soundStopped = false;
 
                     //Plays the particles once.
                     particles.Play();
@@ -73,6 +84,7 @@ public class ChargeableButtonScript : Interactable
         if (energy > 0 && !isCharging){
                 // Decrease energy
                 energy -= decreaseRate;
+                Debug.Log(energy);
             
         }
 
@@ -84,6 +96,12 @@ public class ChargeableButtonScript : Interactable
 
             // Set isTrigger in Trigger script to false
             trigger.isTriggered = false;
+            if(!soundStopped){
+                sM.stopEvent("ChannelingButtonOnOff", gameObject);
+                sM.ToggleSwitch("On_Off", "Off", gameObject);
+                sM.playEvent("ChannelingButtonOnOff", gameObject);
+                soundStopped = true;
+            }
             trigger.canReset = true;
         }
     }
