@@ -11,6 +11,9 @@ public class Mirror : Interactable {
 	public int turnAmount = 50; // How much it is turning.
     public InteractableButton ButtonToTrigger; // The target that the mirror has to hit.
 
+    public Cart player;
+    public Rail railPoint;
+
     [Tooltip("Use empty gameobjects as targets that doesn't need to interact and buttons for targets that needs to interact.")]
     public Transform[] targets;
 
@@ -79,27 +82,25 @@ public class Mirror : Interactable {
         
         //Ray newRay = new Ray (hit.point, Vector3.Reflect (ray.direction, hit.normal));        //Legacy code. Calculates a realistisc reflection off the mirror
 
-        //Shoots a new raycast to the point of the mirror.
-        Ray newRay = new Ray(hit.point, ButtonToTrigger.transform.position - transform.position);
-        RaycastHit rayhit;
+        //Shoots a new raycast to the point of the mirror if they are at the correct rail.
+        if(player.CurrentRail == railPoint){
+            Ray newRay = new Ray(hit.point, ButtonToTrigger.transform.position - transform.position);
+            RaycastHit rayhit;
 
-        Vector3 targetDir = ButtonToTrigger.transform.position - transform.position;
-        float rotationalAngle = Vector3.Angle(targetDir, transform.forward);
+            Vector3 targetDir = ButtonToTrigger.transform.position - transform.position;
+            float rotationalAngle = Vector3.Angle(targetDir, transform.forward);
 
-        //Debug.Log(rotationalAngle);
+            if (rotationalAngle < 5f) {
+                if (Physics.Raycast(newRay, out rayhit)) {
+                    //Debug.DrawRay(hit.point, newRay.direction * 10, Color.cyan, 1f);
+                    lineRenderer.SetVertexCount(++nextLineVertex);             // resets the number of vertecies of the line renderer to 1
+                    lineRenderer.SetPosition(nextLineVertex - 1, rayhit.point);  // sets the line origin to the 
 
-        if (rotationalAngle < 5f) {
-
-            if (Physics.Raycast(newRay, out rayhit)) {
-            
-		        Debug.DrawRay(hit.point, newRay.direction * 10, Color.cyan, 1f);
-                lineRenderer.SetVertexCount(++nextLineVertex);             // resets the number of vertecies of the line renderer to 1
-                lineRenderer.SetPosition(nextLineVertex - 1, rayhit.point);  // sets the line origin to the 
-
-                Interactable interactable = rayhit.transform.GetComponent<Interactable>();
-                if (interactable != null) {
-                    //@Optimize - The mirror is the only one who the ray, hit, lineRenderer, and count
-                    interactable.OnRayReceived(playerIndex, newRay, rayhit, ref lineRenderer, nextLineVertex);
+                    Interactable interactable = rayhit.transform.GetComponent<Interactable>();
+                    if (interactable != null) {
+                        //@Optimize - The mirror is the only one who the ray, hit, lineRenderer, and count
+                        interactable.OnRayReceived(playerIndex, newRay, rayhit, ref lineRenderer, nextLineVertex);
+                    }
                 }
             }
         }
