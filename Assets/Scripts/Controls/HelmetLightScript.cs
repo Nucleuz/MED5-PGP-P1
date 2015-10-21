@@ -48,6 +48,10 @@ public class HelmetLightScript : MonoBehaviour {
 	
 	void Update () {
 
+        if(Input.GetKeyDown("l")){ //It is the "L" key
+            Application.LoadLevel(Application.loadedLevel + 1);
+        }
+
         lineRenderer.enabled = helmetLightFocused;
 
         //Checks if the focus button is pressed (Default = space)
