@@ -13,6 +13,7 @@ public class Mirror : Interactable {
 
     public Cart player;
     public Rail railPoint;
+    private LightShafts LS;
 
     [Tooltip("Use empty gameobjects as targets that doesn't need to interact and buttons for targets that needs to interact.")]
     public Transform[] targets;
@@ -21,36 +22,35 @@ public class Mirror : Interactable {
 
     public bool movingForward = true;
     public bool isRotating = false;
+    public bool isBeingLitOn;
+
+    //light to reflect 
+    private Light reflectedLight;   
 
 	void Start(){
 		startPoint = transform.eulerAngles.y; // starPoint is the mirrors rotation at the start.
         buttonNumber = 0;
+        reflectedLight = GetComponent<Light>();        //Calls the light component on the mirror.
+        LS = GetComponent<LightShafts>();
     }
     
 	void Update(){
+		//The mirror will reflect only when the player is lighting on the mirror.
+		if(isBeingLitOn == true){
+			reflectedLight.enabled = true;
+			LS.enabled = true;
+		} else if(isBeingLitOn == false){
+			reflectedLight.enabled = false;
+			LS.enabled = false;
+		} 
+		if(isBeingLitOn == true){
+			isBeingLitOn = false;
+		}
+		
+		
         if (trigger != null && trigger.isTriggered && !isRotating) {
             rotateMirror();
-
         }
-
-
-        /*
-		if(trigger != null && trigger.isTriggered) {
-			//Debug.Log(transform.eulerAngles.y);
-			//Check if the rotation is less then or bigger then the goal rotation
-			if(transform.eulerAngles.y < endPoint){
-				turnAmount *= -1;
-			}
-			else if(transform.eulerAngles.y > endPoint){
-				turnAmount *= 1;
-			}
-
-            //Rotate the object in the y-axis.
-            gameObject.transform.Rotate(0, turnAmount * Time.deltaTime, 0, Space.World);
-            //Maybe write code locks the mirror positon when the correct postions is reached.
-
-        }
-        */
     }
 
     private void rotateMirror() {
@@ -79,6 +79,24 @@ public class Mirror : Interactable {
     }
 
     public override void OnRayReceived(int playerIndex, Ray ray, RaycastHit hit, ref LineRenderer lineRenderer,int nextLineVertex){
+    	//Used for turning on the relfectance of the mirror.
+                	isBeingLitOn = true;
+
+    	//Set the color of the reflected light to the correct user.
+        switch (playerIndex){
+            case 1:
+                reflectedLight.color = new Color(1, 0.2F, 0.2F, 1F); //red
+            break;
+            case 2:
+                reflectedLight.color = new Color(0.2F, 1, 0.2F, 1F); //green
+            break;
+            case 3:
+                reflectedLight.color = new Color(0.2F, 0.2F, 1, 1F); //blue
+            break;
+            default:
+                Debug.Log("Invalid playerIndex");
+            break;
+            }   
         
         //Ray newRay = new Ray (hit.point, Vector3.Reflect (ray.direction, hit.normal));        //Legacy code. Calculates a realistisc reflection off the mirror
 
@@ -92,6 +110,8 @@ public class Mirror : Interactable {
 
             if (rotationalAngle < 5f) {
                 if (Physics.Raycast(newRay, out rayhit)) {
+                	//turn on the light off the mirror.
+                	//reflectedLight.enabled = true;
                     //Debug.DrawRay(hit.point, newRay.direction * 10, Color.cyan, 1f);
                     lineRenderer.SetVertexCount(++nextLineVertex);             // resets the number of vertecies of the line renderer to 1
                     lineRenderer.SetPosition(nextLineVertex - 1, rayhit.point);  // sets the line origin to the 

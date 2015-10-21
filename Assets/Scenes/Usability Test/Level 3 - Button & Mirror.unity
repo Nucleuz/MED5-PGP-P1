@@ -519,6 +519,12 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 490218, guid: f81887950d082ee4e839f4dadc7ef52f, type: 2}
   m_PrefabInternal: {fileID: 368172406}
+--- !u!114 &372319536 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11465930, guid: 6b51f68b61740074b921684716c1e935,
+    type: 2}
+  m_PrefabInternal: {fileID: 2061114574}
+  m_Script: {fileID: 11500000, guid: e3775ac8eb885d44c8f5c8afc133c205, type: 3}
 --- !u!4 &416190121 stripped
 Transform:
   m_PrefabParentObject: {fileID: 423466, guid: 2df3e5b03961e4840a7d5c96234cdb81, type: 2}
@@ -1833,6 +1839,11 @@ Transform:
   - {fileID: 938937021}
   m_Father: {fileID: 0}
   m_RootOrder: 13
+--- !u!20 &1218191474 stripped
+Camera:
+  m_PrefabParentObject: {fileID: 2027462, guid: 6b51f68b61740074b921684716c1e935,
+    type: 2}
+  m_PrefabInternal: {fileID: 2061114574}
 --- !u!4 &1234918610 stripped
 Transform:
   m_PrefabParentObject: {fileID: 492380, guid: eeff2b357d4a3ac4b86f924dba2df790, type: 2}
@@ -2387,6 +2398,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11482310, guid: 70e0543610778d146913e48e544db282, type: 2}
+      propertyPath: m_Cameras.Array.data[0]
+      value: 
+      objectReference: {fileID: 1218191474}
     - target: {fileID: 11423946, guid: 70e0543610778d146913e48e544db282, type: 2}
       propertyPath: trigger
       value: 
@@ -2395,6 +2410,14 @@ Prefab:
       propertyPath: ButtonToTrigger
       value: 
       objectReference: {fileID: 1185156763}
+    - target: {fileID: 11423946, guid: 70e0543610778d146913e48e544db282, type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 372319536}
+    - target: {fileID: 11423946, guid: 70e0543610778d146913e48e544db282, type: 2}
+      propertyPath: railPoint
+      value: 
+      objectReference: {fileID: 1945624872}
     - target: {fileID: 11423946, guid: 70e0543610778d146913e48e544db282, type: 2}
       propertyPath: targets.Array.data[0]
       value: 
@@ -3086,6 +3109,63 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 490218, guid: f81887950d082ee4e839f4dadc7ef52f, type: 2}
   m_PrefabInternal: {fileID: 925006879}
+--- !u!1 &1764062849
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1764062852}
+  - 114: {fileID: 1764062851}
+  - 114: {fileID: 1764062850}
+  m_Layer: 0
+  m_Name: WwiseGlobal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1764062850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1764062849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1adccdce10ac384da0d669fa50d0ae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basePath: Audio\GeneratedSoundBanks
+  language: English(US)
+  defaultPoolSize: 4096
+  lowerPoolSize: 2048
+  streamingPoolSize: 1024
+  memoryCutoffThreshold: .949999988
+--- !u!114 &1764062851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1764062849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0da75c80cd89ba4b82c3e81eda3d189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1764062852
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1764062849}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
 --- !u!1001 &1768089982
 Prefab:
   m_ObjectHideFlags: 0
