@@ -10,6 +10,7 @@ Syncs, toggles between being send only or receive only
 
 */
 using System.Collections.Generic;
+using VoiceChat.Networking;
 
 public class NetPlayerSync : MonoBehaviour {
 	
