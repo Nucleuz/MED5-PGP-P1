@@ -98,7 +98,6 @@ public class Mirror : Interactable {
 
                 Interactable interactable = rayhit.transform.GetComponent<Interactable>();
                 if (interactable != null) {
-                    //@Optimize - The mirror is the only one who the ray, hit, lineRenderer, and count
                     interactable.OnRayReceived(playerIndex, newRay, rayhit, ref lineRenderer, nextLineVertex);
                 }
             }

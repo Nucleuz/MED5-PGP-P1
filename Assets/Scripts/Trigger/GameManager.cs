@@ -69,9 +69,10 @@ public class GameManager : MonoBehaviour {
             if(currentNumberOfEventsTriggered == LM.eventsInSequence[index]){ //Checks if the right amount of events are triggered in the current sequence
 
                 if(index < LM.eventsInSequence.Length - 1){ //Checks if it is the last sequence of events - if it is: skip this
+                    Debug.Log("hello " + index);
                     numberOfTriggeredEvents += LM.eventsInSequence[index]; //Increase the total number of events by the amount of events that was in the current sequence
                     if(LM.triggerEvents[index] != null){
-                        Debug.Log("Hi" + index);
+                        Debug.Log("Hi " + index);
                         LM.triggerEvents[index].Activate(); //Triggers an object with should trigger when a sequence is finished. could for example be a door
                         server.TriggerChanged(LM.triggerEvents[index]);
                     }
@@ -109,6 +110,10 @@ public class GameManager : MonoBehaviour {
 		LM = levelManager;
 
         if(LM == null)return;
+        
+        index = 0;
+        numberOfTriggeredEvents = 0;
+        currentNumberOfEventsTriggered = 0;
 
 		for(int k = 0; k < LM.eventsInSequence[0]; k++){ //makes the first events in the scene triggerable
 			LM.events[k].isReadyToBeTriggered = true;

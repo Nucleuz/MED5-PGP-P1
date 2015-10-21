@@ -10,7 +10,6 @@ public class Trigger : MonoBehaviour {
     //Networking
     public ushort triggerID;
 
-    //@TODO(kasper) sync state with server 
     public void Activate(){
         isTriggered = true; 
 
@@ -26,6 +25,7 @@ public class Trigger : MonoBehaviour {
 
         if(!NetworkManager.isServer)
             DarkRiftAPI.SendMessageToServer(Network.Tag.Trigger,Network.Subject.TriggerDeactivate, triggerID);
+
 		Console.Instance.AddMessage("Trigger " + triggerID + " Deactivated");
     }
 

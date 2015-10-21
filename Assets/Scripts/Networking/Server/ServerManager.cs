@@ -122,6 +122,7 @@ public class ServerManager : NetworkManager {
 
             }else if(data.subject == Network.Subject.TriggerActivate){
                 triggerHandler.TriggerInteracted((ushort)data.data,true);
+                Debug.Log("trigger " + (ushort)data.data + " activated"); 
 
                 //force update GameMnager
                 gameManager.DetectTriggerChanges();

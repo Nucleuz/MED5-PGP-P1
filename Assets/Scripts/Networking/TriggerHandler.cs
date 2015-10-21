@@ -61,7 +61,7 @@ using DarkRift;
                  triggersReady = true;
                   
              }else{
-
+                Debug.Log(triggers.Count);
                 DarkRiftAPI.SendMessageToServer(
                         Network.Tag.Trigger,
                         Network.Subject.RequestTriggerIDs,
@@ -108,15 +108,18 @@ using DarkRift;
                 switch(subject){
                     case Network.Subject.ServerSentTriggerIDs:
                     {
+
                         Debug.Log("trigger id's received");
                         
                         TriggerState[] triggerStates = (TriggerState[])data;
-
-                        for(int i = 0;i<triggerStates.Length;i++){
-                            triggers[i].SetState(triggerStates[i]);
-                            triggerIDs.Add(triggerStates[i].id);
-                            Debug.Log(triggerStates[i].id);
-                        }
+                        if(triggerStates.Length == triggers.Count){
+                            for(int i = 0;i<triggerStates.Length;i++){
+                                triggers[i].SetState(triggerStates[i]);
+                                triggerIDs.Add(triggerStates[i].id);
+                                Debug.Log(triggerStates[i].id);
+                            }
+                        }else
+                            Debug.Log("Received triggerstates has length: " + triggerStates.Length + " local has : " + triggers.Count);
                     }
                     break;
 
