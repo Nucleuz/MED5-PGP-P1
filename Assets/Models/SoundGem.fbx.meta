@@ -1,0 +1,314 @@
+fileFormatVersion: 2
+guid: 33d22e4db788a4e41b1c8e172041bf82
+timeCreated: 1444986657
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: group3
+    100002: group4
+    100004: group5
+    100006: joint1
+    100008: joint1 1
+    100010: joint10
+    100012: joint10 1
+    100014: joint2
+    100016: joint2 1
+    100018: joint3
+    100020: joint3 1
+    100022: joint4
+    100024: joint4 1
+    100026: joint5
+    100028: joint5 1
+    100030: joint6
+    100032: joint6 1
+    100034: joint7
+    100036: joint7 1
+    100038: joint8
+    100040: joint8 1
+    100042: joint9
+    100044: joint9 1
+    100046: pCube1
+    100048: pCube10
+    100050: pCube3
+    100052: pCube4
+    100054: pCube5
+    100056: pCube6
+    100058: pCube7
+    100060: pCube8
+    100062: pCube9
+    100064: pCylinder4
+    100066: pCylinder4 1
+    100068: pCylinder4 2
+    100070: pCylinder5
+    100072: pCylinder6
+    100074: pCylinder7
+    100076: //RootNode
+    100078: transform1
+    100080: transform10
+    100082: transform11
+    100084: transform12
+    100086: transform2
+    100088: transform3
+    100090: transform4
+    100092: transform5
+    100094: transform6
+    100096: transform7
+    100098: transform8
+    100100: transform9
+    400000: group3
+    400002: group4
+    400004: group5
+    400006: joint1
+    400008: joint1 1
+    400010: joint10
+    400012: joint10 1
+    400014: joint2
+    400016: joint2 1
+    400018: joint3
+    400020: joint3 1
+    400022: joint4
+    400024: joint4 1
+    400026: joint5
+    400028: joint5 1
+    400030: joint6
+    400032: joint6 1
+    400034: joint7
+    400036: joint7 1
+    400038: joint8
+    400040: joint8 1
+    400042: joint9
+    400044: joint9 1
+    400046: pCube1
+    400048: pCube10
+    400050: pCube3
+    400052: pCube4
+    400054: pCube5
+    400056: pCube6
+    400058: pCube7
+    400060: pCube8
+    400062: pCube9
+    400064: pCylinder4
+    400066: pCylinder4 1
+    400068: pCylinder4 2
+    400070: pCylinder5
+    400072: pCylinder6
+    400074: pCylinder7
+    400076: //RootNode
+    400078: transform1
+    400080: transform10
+    400082: transform11
+    400084: transform12
+    400086: transform2
+    400088: transform3
+    400090: transform4
+    400092: transform5
+    400094: transform6
+    400096: transform7
+    400098: transform8
+    400100: transform9
+    2300000: pCube10
+    3300000: pCube10
+    4300000: pCube10
+    4300002: pCylinder4
+    4300004: pCylinder4
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: pCylinder4 1
+    13700002: pCylinder4 2
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 52
+      lastFrame: 500
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: group3
+        weight: 1
+      - path: group3/pCylinder4
+        weight: 1
+      - path: group3/pCylinder4/transform12
+        weight: 1
+      - path: group3/pCylinder5
+        weight: 1
+      - path: group3/pCylinder5/transform11
+        weight: 1
+      - path: group3/pCylinder6
+        weight: 1
+      - path: group3/pCylinder6/transform10
+        weight: 1
+      - path: group3/pCylinder7
+        weight: 1
+      - path: group3/pCylinder7/transform9
+        weight: 1
+      - path: group4
+        weight: 1
+      - path: group4/joint1
+        weight: 1
+      - path: group4/joint1/joint2
+        weight: 1
+      - path: group4/joint1/joint2/joint3
+        weight: 1
+      - path: group4/joint1/joint2/joint3/joint4
+        weight: 1
+      - path: group4/joint1/joint2/joint3/joint4/joint5
+        weight: 1
+      - path: group4/joint1/joint2/joint3/joint4/joint5/joint6
+        weight: 1
+      - path: group4/joint1/joint2/joint3/joint4/joint5/joint6/joint7
+        weight: 1
+      - path: group4/joint1/joint2/joint3/joint4/joint5/joint6/joint7/joint8
+        weight: 1
+      - path: group4/joint1/joint2/joint3/joint4/joint5/joint6/joint7/joint8/joint9
+        weight: 1
+      - path: group4/joint1/joint2/joint3/joint4/joint5/joint6/joint7/joint8/joint9/joint10
+        weight: 1
+      - path: group4/pCylinder4 1
+        weight: 1
+      - path: group5
+        weight: 1
+      - path: group5/joint1 1
+        weight: 1
+      - path: group5/joint1 1/joint2 1
+        weight: 1
+      - path: group5/joint1 1/joint2 1/joint3 1
+        weight: 1
+      - path: group5/joint1 1/joint2 1/joint3 1/joint4 1
+        weight: 1
+      - path: group5/joint1 1/joint2 1/joint3 1/joint4 1/joint5 1
+        weight: 1
+      - path: group5/joint1 1/joint2 1/joint3 1/joint4 1/joint5 1/joint6 1
+        weight: 1
+      - path: group5/joint1 1/joint2 1/joint3 1/joint4 1/joint5 1/joint6 1/joint7
+          1
+        weight: 1
+      - path: group5/joint1 1/joint2 1/joint3 1/joint4 1/joint5 1/joint6 1/joint7
+          1/joint8 1
+        weight: 1
+      - path: group5/joint1 1/joint2 1/joint3 1/joint4 1/joint5 1/joint6 1/joint7
+          1/joint8 1/joint9 1
+        weight: 1
+      - path: group5/joint1 1/joint2 1/joint3 1/joint4 1/joint5 1/joint6 1/joint7
+          1/joint8 1/joint9 1/joint10 1
+        weight: 1
+      - path: group5/pCylinder4 2
+        weight: 1
+      - path: pCube1
+        weight: 1
+      - path: pCube1/transform2
+        weight: 1
+      - path: pCube3
+        weight: 1
+      - path: pCube3/transform1
+        weight: 1
+      - path: pCube4
+        weight: 1
+      - path: pCube4/transform4
+        weight: 1
+      - path: pCube5
+        weight: 1
+      - path: pCube5/transform3
+        weight: 1
+      - path: pCube6
+        weight: 1
+      - path: pCube6/transform6
+        weight: 1
+      - path: pCube7
+        weight: 1
+      - path: pCube7/transform5
+        weight: 1
+      - path: pCube8
+        weight: 1
+      - path: pCube8/transform8
+        weight: 1
+      - path: pCube9
+        weight: 1
+      - path: pCube9/transform7
+        weight: 1
+      - path: pCube10
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 150
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

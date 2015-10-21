@@ -16,6 +16,8 @@ public class SoundGemScript : Interactable
 
     private Trigger trigger;
 
+    ParticleSystem particles;
+
     // Use this for initialization
     void Start()
     {
@@ -24,7 +26,9 @@ public class SoundGemScript : Interactable
         trigger = GetComponent<Trigger>();
 
         // Default value for time between the sounds
-        timeBetweenSounds = 2.0f;
+        //timeBetweenSounds = 2.0f;
+
+        particles = GetComponent<ParticleSystem>();
     }
 
 
@@ -35,6 +39,7 @@ public class SoundGemScript : Interactable
 		for (int i = 0; i < audioClips.Length; i++) {
 			audioSource.clip = audioClips[i];
 			audioSource.Play ();
+            particles.Play();
 			yield return new WaitForSeconds(audioClips[i].length + timeBetweenSounds);
 		}
         trigger.isTriggered = false;
