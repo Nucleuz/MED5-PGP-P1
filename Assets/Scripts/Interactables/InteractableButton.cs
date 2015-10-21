@@ -22,6 +22,8 @@ public class InteractableButton : Interactable{
 	private float timer;
 
 	private Trigger trigger;
+
+	public Renderer[] rend;
 	
 	// Use this for initialization
 	void Start () {
@@ -93,30 +95,51 @@ public class InteractableButton : Interactable{
 		if(a[0] && !a[1] && !a[2]){							//Only red player
 			buttonLight.color = Color.red;
 			par.startColor = Color.red;
+			for(int i = 0; i < rend.Length; i++){
+				rend[i].material.color = Color.red;
+			}
 
 		} else if(!a[0] && a[1] && !a[2]){					//Only green player
 			buttonLight.color = Color.green;
 			par.startColor = Color.green;
+			for(int i = 0; i < rend.Length; i++){
+				rend[i].material.color = Color.green;
+			}
 
 		} else if(!a[0] && !a[1] && a[2]){					//Only blue player
 			buttonLight.color = Color.blue;
 			par.startColor = Color.blue;
+			for(int i = 0; i < rend.Length; i++){
+				rend[i].material.color = Color.blue;
+			}
 
 		} else if(a[0] && !a[1] && a[2]){					//Red and blue player
 			buttonLight.color = Color.magenta;
 			par.startColor = Color.magenta;
+			for(int i = 0; i < rend.Length; i++){
+				rend[i].material.color = Color.magenta;
+			}
 
 		} else if(a[0] && a[1] && !a[2]){					//Red and green player
 			buttonLight.color = Color.yellow;
 			par.startColor = Color.yellow;
+			for(int i = 0; i < rend.Length; i++){
+				rend[i].material.color = Color.yellow;
+			}
 
 		} else if(!a[0] && a[1] && a[2]){					//Green and blue
 			buttonLight.color = Color.cyan;
 			par.startColor = Color.cyan;
+			for(int i = 0; i < rend.Length; i++){
+				rend[i].material.color = Color.cyan;
+			}
 		
 		} else if(a[0] && a[1] && a[2]){					//All players
 			buttonLight.color = Color.white;
-			par.startColor = Color.white;        	
+			par.startColor = Color.white; 
+			for(int i = 0; i < rend.Length; i++){
+				rend[i].material.color = Color.white;
+			}       	
 		}
 	}
 }

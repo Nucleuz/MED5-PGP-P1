@@ -35,10 +35,10 @@ public class HelmetLightScript : MonoBehaviour {
                 helmetLight.color = new Color(1, 0.2F, 0.2F, 1F); //red
             break;
             case 2:
-                helmetLight.color = new Color(0.2F, 0.2F, 1, 1F); //blue
+                helmetLight.color = new Color(0.2F, 1, 0.2F, 1F); //green
             break;
             case 3:
-                helmetLight.color = new Color(0.2F, 1, 0.2F, 1F); //green
+                helmetLight.color = new Color(0.2F, 0.2F, 1, 1F); //blue
             break;
             default:
                 Debug.Log("Invalid playerIndex");
@@ -52,8 +52,8 @@ public class HelmetLightScript : MonoBehaviour {
 
         //Checks if the focus button is pressed (Default = space)
         if (Input.GetKey("space")) {
-            // Sets helmetLightFocused to true - is used later for checking if we are in "focus" mode.
-            helmetLightFocused = true;
+
+            
 
             // Checks if timeSaved is false.
             if(timeSaved == false) {
@@ -69,6 +69,13 @@ public class HelmetLightScript : MonoBehaviour {
 
             // Lerps the intensity from normal to focused intensity.
             helmetLight.intensity = Mathf.Lerp(intensityNormal, intensityFocus, (Time.time - startTime) / (fadeTime * 5));
+
+            if(helmetLight.intensity >  intensityFocus * 0.3f){
+                // Sets helmetLightFocused to true - is used later for checking if we are in "focus" mode.
+                helmetLightFocused = true;
+            } else {
+                helmetLightFocused = false;
+            }
         } else {
 
             // Sets timeSaved to false
