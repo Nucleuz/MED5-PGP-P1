@@ -13,11 +13,11 @@ public class SoundManager: MonoBehaviour {
 		- Handle triggers
 */
 
-	public void playEvent(string eventName, GameObject g){
+	public void PlayEvent(string eventName, GameObject g){
 		AkSoundEngine.PostEvent(eventName, g);
 	}
 
-	public void stopEvent(string eventName, GameObject g){
+	public void StopEvent(string eventName, GameObject g){
 		AkSoundEngine.ExecuteActionOnEvent(eventName, AkActionOnEventType.AkActionOnEventType_Stop, g, 0, 0);
 	}
 

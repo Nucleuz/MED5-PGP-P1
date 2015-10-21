@@ -65,7 +65,7 @@ public class ChargeableButtonScript : Interactable
                     // Set isTrigger in Trigger script to true
                     trigger.isTriggered = true;
                     sM.ToggleSwitch("On_Off", "On", gameObject);
-                    sM.playEvent("ChannelingButtonOnOff", gameObject);
+                    sM.PlayEvent("ChannelingButtonOnOff", gameObject);
                     soundStopped = false;
 
                     //Plays the particles once.
@@ -97,9 +97,9 @@ public class ChargeableButtonScript : Interactable
             // Set isTrigger in Trigger script to false
             trigger.isTriggered = false;
             if(!soundStopped){
-                sM.stopEvent("ChannelingButtonOnOff", gameObject);
+                sM.StopEvent("ChannelingButtonOnOff", gameObject);
                 sM.ToggleSwitch("On_Off", "Off", gameObject);
-                sM.playEvent("ChannelingButtonOnOff", gameObject);
+                sM.PlayEvent("ChannelingButtonOnOff", gameObject);
                 soundStopped = true;
             }
             trigger.canReset = true;
