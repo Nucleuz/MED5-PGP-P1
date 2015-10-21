@@ -24,8 +24,11 @@ public class ChargeableButtonScript : Interactable
 
     private Trigger trigger;
 
+    ParticleSystem particles;
+
     void Start(){
         trigger = GetComponent<Trigger>();
+        particles = GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -53,6 +56,9 @@ public class ChargeableButtonScript : Interactable
 
                     // Set isTrigger in Trigger script to true
                     trigger.isTriggered = true;
+
+                    //Plays the particles once.
+                    particles.Play();
 
                     // Make sure that we cannot charge it again right away
                     readyForCharge = false;
