@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour {
             }
         }catch(System.IndexOutOfRangeException e){
             Debug.LogWarning("This was an error -- needs to implement Andreas GameManager Fix");
-
+			Debug.LogWarning(e);
         }
 
    }
@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour {
             }
         }catch(System.IndexOutOfRangeException e){
             Debug.LogWarning("This was an error -- needs to implement Andreas GameManager Fix");
-
+			Debug.LogWarning(e);
         }
    }
 	
