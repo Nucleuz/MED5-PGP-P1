@@ -12,8 +12,6 @@ GameObject:
   - 114: {fileID: 11467866}
   - 114: {fileID: 11493670}
   - 114: {fileID: 11486854}
-  - 114: {fileID: 11403230}
-  - 114: {fileID: 11484290}
   m_Layer: 0
   m_Name: ClientManager
   m_TagString: Untagged
@@ -33,22 +31,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11403230
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 114808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17547167380002040b8e43f2e4bc2a42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  toggleToTalkKey: 111
-  pushToTalkKey: 112
-  autoDetectSpeaking: 1
-  autoDetectIndex: 4
-  forceTransmitTime: 2
 --- !u!114 &11467866
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -66,6 +48,7 @@ MonoBehaviour:
   prefabPlayer: {fileID: 174738, guid: 6b51f68b61740074b921684716c1e935, type: 2}
   player: {fileID: 0}
   levelHandler: {fileID: 11493670}
+  triggerHandler: {fileID: 0}
 --- !u!114 &11481684
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -77,22 +60,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecb84c8190e27c641bab7651eb2b9f5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11484290
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 114808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de0860d9b7ab1d142a488b0f614caad1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  frequency: 16000
-  sampleSize: 640
-  compression: 2
-  preset: 1
-  localDebug: 0
 --- !u!114 &11486854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -118,13 +85,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba42f63ffc57d4b47ad0efb1336d3972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelContainers: []
   manager: {fileID: 11467866}
   levelOrder:
-  - Level 1
+  - Level 3
   - Level 2
   - Level 3
   - Level 4
-  levelIndex: 0
+  levelManagerIndex: 0
+  loadedLevelIndex: -1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

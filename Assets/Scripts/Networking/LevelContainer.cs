@@ -5,6 +5,8 @@ public class LevelContainer : MonoBehaviour {
 
     //TODO [HideInInspector]
 	public bool processed = false;
+    //TODO [HideInInspector]
+    public bool triggersProcessed = false;
 
 	public LevelManager levelManager;
 

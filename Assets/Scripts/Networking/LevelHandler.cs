@@ -138,8 +138,10 @@ public class LevelHandler : MonoBehaviour {
     }
 
 	public void loadNextLevel(){
-        loadedLevelIndex++;
-		StartCoroutine(LoadAndHandleLevel());
+        if(loadedLevelIndex < levelContainers.Length - 1){
+            loadedLevelIndex++;
+            StartCoroutine(LoadAndHandleLevel());
+        }
 	} 
 
     public void loadLevel(int index){
@@ -147,7 +149,7 @@ public class LevelHandler : MonoBehaviour {
             loadedLevelIndex = index;
             StartCoroutine(LoadAndHandleLevel());
         }else
-            Debug.LogError("Trying to Load Level that is out of Index");
+            Debug.Log("Trying to Load Level that is out of Index");
     }
 
     public LevelManager getLevelManager(){
@@ -156,13 +158,11 @@ public class LevelHandler : MonoBehaviour {
 
     //current level completed
     public void OnLevelCompleted(){
-        if(levelManagerIndex+1 < levelContainers.Length){
+        if(levelManagerIndex+1 <= levelContainers.Length){
             levelManagerIndex++;
 
             manager.OnLevelCompleted();
 
-            //load one ahead
-            loadNextLevel();
         }else{
             Debug.Log("Last Level Completed");
         }

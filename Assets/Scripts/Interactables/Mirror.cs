@@ -111,7 +111,7 @@ public class Mirror : Interactable {
         float endTime = startTime + length;
 
         while(Time.time < endTime) {
-            trigger.isTriggered = false; // @NOTE hack!
+            trigger.Deactivate(); //@NOTE Hack!
             transform.rotation = Quaternion.Slerp(start,end,(Time.time - startTime) / length);
             yield return null;
         }

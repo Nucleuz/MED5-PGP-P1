@@ -53,6 +53,8 @@ using DarkRift;
              //@TODO check perf and mem of checkChild method -- should maybe put it in a coroutine
              checkChild(levelContainer.transform);
 
+             levelContainer.triggersProcessed = true;
+
              //when completed if server call clients and tell level to load
              //if client when completed call server and ask for list of ids
              if(NetworkManager.isServer){
@@ -73,7 +75,7 @@ using DarkRift;
              if(child.GetComponent<Trigger>() != null)
                  Assign(child.GetComponent<Trigger>());
              else if(child.GetComponent<LevelEndedZone>() != null)
-                 child.GetComponent<LevelEndedZone>().triggerHandler = this;
+                 child.GetComponent<LevelEndedZone>().levelHandler = levelHandler;
 
 
              foreach(Transform c in child.transform)
@@ -133,21 +135,8 @@ using DarkRift;
                         SetTriggerState((TriggerState)data);
                     }
                     break;
-                    case Network.Subject.LevelManagerCompleted:
-                    {
-                        process(levelHandler.levelContainers[(int)data]);
-                    }
-                    break;
- 
+                }
             }
-            }
-    }
-
-
-    public void OnLevelCompleted(){
-        //this is pretty retarded.. long call chain
-        levelHandler.OnLevelCompleted();
-
     }
 
     public void SetTriggerState(TriggerState state){

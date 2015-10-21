@@ -29,14 +29,18 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		if(LM == null)return;
-		if(LM.eventOrder[index] == 0){ //Checks if there is a desired order in the sequence, runs if there isn't
-			for(int j = 0; j < LM.eventsInSequence[index]; j++)
-                resetTriggers(j);
-        }else{
-			for(int h = 0; h < LM.eventOrder[index]; h++)
-                resetTriggers(h);
+        try{
+            if(LM.eventOrder[index] == 0){ //Checks if there is a desired order in the sequence, runs if there isn't
+                for(int j = 0; j < LM.eventsInSequence[index]; j++)
+                    resetTriggers(j);
+            }else{
+                for(int h = 0; h < LM.eventOrder[index]; h++)
+                    resetTriggers(h);
+            }
+            DetectTriggerChanges();
+        }catch(System.IndexOutOfRangeException e){
+            Debug.Log("GM ERROR with index: " + index);
         }
-        DetectTriggerChanges();
     }
 
     public void DetectTriggerChanges(){
@@ -103,6 +107,8 @@ public class GameManager : MonoBehaviour {
 
 	public void setNewLevelManager(LevelManager levelManager){
 		LM = levelManager;
+
+        if(LM == null)return;
 
 		for(int k = 0; k < LM.eventsInSequence[0]; k++){ //makes the first events in the scene triggerable
 			LM.events[k].isReadyToBeTriggered = true;

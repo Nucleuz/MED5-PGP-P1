@@ -4,11 +4,11 @@ using System.Collections;
 public class LevelEndedZone : MonoBehaviour {
 
     [HideInInspector]
-    public TriggerHandler triggerHandler;
+    public LevelHandler levelHandler;
 
     void OnTriggerEnter(Collider col){
-        if(col.gameObject.tag == "Player"){
-            triggerHandler.OnLevelCompleted();
+        if(NetworkManager.isServer && col.gameObject.tag == "Player"){
+            levelHandler.OnLevelCompleted();
             Destroy(gameObject);
         }
 

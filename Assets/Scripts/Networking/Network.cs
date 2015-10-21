@@ -16,23 +16,30 @@ public class Network{
 	}
 
     //what is the message about
+
+
     public class Subject
     {
-		public const ushort HasJoined             = 1;
-		public const ushort SpawnPlayer           = 2;
-		public const ushort ServerSentSpawnPos    = 3;
-		public const ushort ServerSentNetID       = 4;
-		public const ushort PlayerUpdate          = 5;
-        public const ushort TriggerActivate       = 6;
-        public const ushort TriggerDeactivate     = 7;
-        public const ushort TriggerState          = 8;
 
-        public const ushort ServerLoadedLevel     = 9;
-        public const ushort ServerSentTriggerIDs  = 10;
-        public const ushort RequestTriggerIDs     = 11;
+        //NetworkManager
+        public const ushort NewLevelManager      = 1;
+		public const ushort ServerSentNetID      = 2;
 
-        public const ushort VoiceChat             = 12;
+        //Player Specific
+		public const ushort HasJoined            = 3;
+		public const ushort SpawnPlayer          = 4;
+		public const ushort PlayerUpdate         = 5;
 
-        public const ushort LevelManagerCompleted = 13;
+        //TriggerSystem
+        public const ushort TriggerActivate      = 6;
+        public const ushort TriggerDeactivate    = 7;
+        public const ushort TriggerState         = 8;
+
+        public const ushort ServerSentTriggerIDs = 9;
+        public const ushort RequestTriggerIDs    = 10;
+
+        public const ushort VoiceChat            = 11;
+
+
     }
 }

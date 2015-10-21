@@ -74,7 +74,7 @@ public class ServerManager : NetworkManager {
                         Network.Subject.ServerSentNetID, 
                         con.id);
 				con.SendReply(Network.Tag.Manager, 
-                        Network.Subject.ServerLoadedLevel, 
+                        Network.Subject.NewLevelManager, 
                         levelHandler.levelManagerIndex);
 			}
 		}else if(data.tag == Network.Tag.Player){
@@ -120,23 +120,6 @@ public class ServerManager : NetworkManager {
                         Network.Subject.ServerSentTriggerIDs,
                         triggerStates);
 
-
-                //if all client have loaded the level load the next
-
-                clientLoadedLevel[con.id-1] = true;
-
-                bool b = false;
-                for(int i = 0;i<clientLoadedLevel.Length;i++){
-                    if(connections[i] != null)
-                        b = clientLoadedLevel[i];
-                }
-
-                if(b){
-                    for(int i = 0;i<clientLoadedLevel.Length;i++)
-                        clientLoadedLevel[i] = false;
-                    levelHandler.loadNextLevel();
-                }
-
             }else if(data.subject == Network.Subject.TriggerActivate){
                 triggerHandler.TriggerInteracted((ushort)data.data,true);
 
@@ -170,12 +153,16 @@ public class ServerManager : NetworkManager {
     }
 
     public override void OnLevelCompleted(){
+        //When a Level is Completed get the new Level manager, process triggers and give GM the LM
+        Debug.Log("LevelCompleted");
 
+        gameManager.setNewLevelManager(null);
         LevelContainer lc = levelHandler.levelContainers[levelHandler.levelManagerIndex];
         triggerHandler.process(lc);
         gameManager.setNewLevelManager(lc.levelManager);
 
-        SendToAll(Network.Tag.Trigger,Network.Subject.LevelManagerCompleted,levelHandler.levelManagerIndex);
+        //tell client to set the next level manager
+        SendToAll(Network.Tag.Manager,Network.Subject.NewLevelManager,levelHandler.levelManagerIndex);
 
         Write("Level Completed");
  
@@ -183,9 +170,7 @@ public class ServerManager : NetworkManager {
     
     public override void OnLevelLoaded(int levelIndex){
         Debug.Log("Level " + levelIndex + " (name: " + levelHandler.levelOrder[levelIndex] + ") Loaded");
-        // when level is loaded on server tell clients to do the same.
-        SendToAll(Network.Tag.Manager, Network.Subject.ServerLoadedLevel, levelIndex);
-
+        levelHandler.loadLevel(levelIndex + 1);
     }
 
     private void SendToAll(byte tag, ushort subject, object data){

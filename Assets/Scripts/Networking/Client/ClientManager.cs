@@ -25,16 +25,24 @@ public class ClientManager : NetworkManager
 
     public ushort networkID;
 
+    //debug text
+    //@TODO - create a kind of console instead if this..
+    public Text debug;
+
     //prefab for the players
     public GameObject prefabPlayer;
     public Transform player;
 
     public LevelHandler levelHandler;
+    public TriggerHandler triggerHandler;
 
+    private int serverLevelIndex;
 
     void Start()
     {
+        debugText = debug;
         levelHandler = GetComponent<LevelHandler>();
+        triggerHandler = GetComponent<TriggerHandler>();
         //Connect to the server
         DarkRiftAPI.workInBackground = true;
         DarkRiftAPI.Connect(IP); //halts until connect or timeout
@@ -43,30 +51,12 @@ public class ClientManager : NetworkManager
         if (DarkRiftAPI.isConnected)
         {
             //tell everyone else that we have entered so they can tell where they are
-            DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager, Network.Subject.HasJoined, ""); 
-			//TODO Sending just an empty string? Why not have a Network.Subject.RequestOther and then have a set if enums on what to request, such as Network.Request.StartPosition
+            DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager, Network.Subject.HasJoined, "");
         }
 
 
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.S) && !DarkRiftAPI.isConnected)
-        {
-
-            DarkRiftAPI.Connect(IP); //halts until connect or timeout
-            DarkRiftAPI.onDataDetailed += ReceiveData;
-
-            if (DarkRiftAPI.isConnected)
-            {
-                //tell everyone else that we have entered so they can tell where they are
-                DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager, Network.Subject.HasJoined, "");
-            }
-
-        }
-
-    }
     void OnApplicationQuit()
     {
         DarkRiftAPI.Disconnect();
@@ -87,17 +77,34 @@ public class ClientManager : NetworkManager
                     }
                     break;
 
-                case Network.Subject.ServerLoadedLevel:
+                case Network.Subject.NewLevelManager:
                     {
                         //When the server has loaded a level
-                        Console.Instance.AddMessage("Server Load Level " + (int)data);
-                        levelHandler.loadLevel((int)data);
+
+                        serverLevelIndex = (int)data;
+                        Write("Server is at level " + serverLevelIndex);
+
+                        //load the previous, current and next level if available(serverLevelIndex >/< x) and not already loaded(levelcontainer == null)
+
+                        if(serverLevelIndex > 0 && levelHandler.levelContainers[serverLevelIndex - 1] == null)
+                            levelHandler.loadLevel(serverLevelIndex - 1);
+                        
+                        if(levelHandler.levelContainers[serverLevelIndex] == null)
+                            levelHandler.loadLevel(serverLevelIndex);
+
+                        if(serverLevelIndex < levelHandler.levelOrder.Length - 1 && levelHandler.levelContainers[serverLevelIndex + 1] == null)
+                            levelHandler.loadLevel(serverLevelIndex + 1);
+
+
+                        //if the level is already loaded process it's triggers
+                        if(levelHandler.levelContainers[serverLevelIndex] != null)
+                            triggerHandler.process(levelHandler.levelContainers[serverLevelIndex]);
                     }
                     break;
                 case Network.Subject.SpawnPlayer: // Spawn OTHER players
                     {
                         //spawn other player
-						Console.Instance.AddMessage("SpawnPlayer sender: " + senderID);
+                        Write("SpawnPlayer sender: " + senderID);
 
                         //unpack data
 
@@ -119,7 +126,7 @@ public class ClientManager : NetworkManager
                 case Network.Subject.HasJoined:
                     {
                         //send player info back when someone has joined
-						Console.Instance.AddMessage("HasJoined sender: " + senderID);
+                        Write("HasJoined sender: " + senderID);
 
                         //send player data to the one who asked
                         DarkRiftAPI.SendMessageToID(senderID, Network.Tag.Manager, Network.Subject.SpawnPlayer, new SVector3(player.position));
@@ -139,6 +146,7 @@ public class ClientManager : NetworkManager
 
         Debug.Log("Level " + levelIndex + " (" + levelHandler.levelOrder[levelIndex] + ") Loaded");
 
+        //check if player is not spawned, then spawn
         if (player == null)
         {
             //spawn the object
@@ -150,7 +158,7 @@ public class ClientManager : NetworkManager
             netPlayer.networkID = networkID;
             netPlayer.helmet.playerIndex = networkID;
             Debug.Log(netPlayer.helmet.playerIndex);
-			Console.Instance.AddMessage("Player Index: " + netPlayer.helmet.playerIndex);
+            Write("Player Index: " + netPlayer.helmet.playerIndex);
             netPlayer.SetAsSender();
 
 			VoiceChatRecorder.Instance.NetworkId = networkID;
@@ -160,6 +168,7 @@ public class ClientManager : NetworkManager
 			VoiceChatRecorder.Instance.NewSample += netPlayer.OnNewSample;
 
             //place the player on the correct rail!
+
             Rail startRail = levelHandler.getLevelManager().levelStartRail[networkID - 1];
 
             player.position = startRail.transform.position;
@@ -168,11 +177,13 @@ public class ClientManager : NetworkManager
 
             //send it to everyone else
             DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager, Network.Subject.SpawnPlayer, new SVector3(player.position));
-
-
         }
 
 
+        //if level that is loaded is the level that the server is on currently process it's triggers
+
+        if(serverLevelIndex == levelIndex)
+            triggerHandler.process(levelHandler.levelContainers[levelIndex]);
 
     }
 }
