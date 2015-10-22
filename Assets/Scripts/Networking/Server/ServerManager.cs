@@ -49,7 +49,6 @@ public class ServerManager : NetworkManager {
 	//Called when we receive data
 	void OnData(ConnectionService con, ref NetworkMessage data)
 	{
-        if(data.data == null)return;
 		//Decode the so it is readable
         try{
             if(data.subject != Network.Subject.VoiceChat ) //Don't try to decode VoiceChat, you will fail.
@@ -67,7 +66,11 @@ public class ServerManager : NetworkManager {
 
 
         }
-        
+        if(data.data == null){
+            Debug.Log("Tag: " + data.tag + ", Subject: " + data.subject);
+        }    
+
+
 
 		if(data.tag == Network.Tag.Manager){
 

@@ -50,8 +50,9 @@ public class ClientManager : NetworkManager
 
         if (DarkRiftAPI.isConnected)
         {
+            Console.Instance.AddMessage("Is connected to Server");
             //tell everyone else that we have entered so they can tell where they are
-            DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager, Network.Subject.HasJoined, "hello world");
+            DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager, Network.Subject.HasJoined,(ushort) 123);
         }
 
 
