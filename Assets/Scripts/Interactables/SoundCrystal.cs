@@ -4,9 +4,11 @@ using System.Collections;
 public class SoundCrystal : Interactable
 {
 	SoundManager sM;
+	public ParticleSystem pS;
 
     // Reference to Game Manager, so that SoundCrystal can know when a sequence is done.
     GameManager gM;
+    
     int currentIn;
     public Trigger[] buttons;
 
@@ -101,26 +103,32 @@ public class SoundCrystal : Interactable
 
             case 0:
                 sM.PlayEvent("SP_PlayerButton1", gameObject);
+        		pS.Play();
             break;
 
             case 1:
                 sM.PlayEvent("SP_PlayerButton2", gameObject);
+        		pS.Play();
             break;
 
             case 2:
                 sM.PlayEvent("SP_PlayerButton3", gameObject);
+        		pS.Play();
             break;
 
             case 3:
                 sM.PlayEvent("SP_PlayerButton4", gameObject);
+        		pS.Play();
             break;
 
             case 4:
                 sM.PlayEvent("SP_PlayerButton5", gameObject);
+        		pS.Play();
             break;
 
             case 5:
                 sM.PlayEvent("SP_PlayerButton6", gameObject);
+        		pS.Play();
             break;
 
             default:
