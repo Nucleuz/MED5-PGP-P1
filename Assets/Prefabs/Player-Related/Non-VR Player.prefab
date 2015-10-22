@@ -264,6 +264,7 @@ GameObject:
   - 124: {fileID: 12479220}
   - 92: {fileID: 9268044}
   - 114: {fileID: 11472548}
+  - 114: {fileID: 11417868}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1368,8 +1369,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 174738}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1.20000005, y: 1.19999981, z: 1.19999981}
+  m_LocalPosition: {x: -29.0599995, y: -18.9473896, z: -22.0871639}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 441562}
   - {fileID: 414024}
@@ -1728,7 +1729,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1844,6 +1845,17 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
+--- !u!114 &11417868
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 140992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 937b8818995c45e449c3d131a35ac5d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11428396
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1871,7 +1883,7 @@ MonoBehaviour:
   angleFocus: 5
   intensityNormal: 1
   intensityFocus: 8
-  playerIndex: 1
+  playerIndex: 3
   objectHit: {fileID: 0}
 --- !u!114 &11448950
 MonoBehaviour:
@@ -1887,7 +1899,7 @@ MonoBehaviour:
   m_ShadowmapMode: 0
   m_Cameras:
   - {fileID: 0}
-  m_CurrentCamera: {fileID: 0}
+  m_CurrentCamera: {fileID: 2027462}
   m_Size: {x: 10, y: 10, z: 20}
   m_SpotNear: .00999999978
   m_SpotFar: 1
@@ -1978,7 +1990,7 @@ MonoBehaviour:
   m_ShadowmapMode: 0
   m_Cameras:
   - {fileID: 0}
-  m_CurrentCamera: {fileID: 0}
+  m_CurrentCamera: {fileID: 2027462}
   m_Size: {x: 10, y: 10, z: 20}
   m_SpotNear: .00999999978
   m_SpotFar: 1

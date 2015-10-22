@@ -19,13 +19,15 @@
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<IncludedEvents>
-				<Event Id="3178682639" Name="BackgroundDeepWater_Ambience"/>
+				<Event Id="3702518971" Name="Ambience_BackgroundDeepWater"/>
+				<Event Id="13542051" Name="Ambience_Main"/>
+				<Event Id="4259853717" Name="Ambience_Mojo"/>
+				<Event Id="995042587" Name="Ambience_Pebbles"/>
+				<Event Id="3823482786" Name="Ambience_WaterDrops1"/>
+				<Event Id="3823482785" Name="Ambience_WaterDrops2"/>
 				<Event Id="1973289021" Name="ButtonOnOff"/>
 				<Event Id="4083559728" Name="ChannelingButtonOnOff"/>
 				<Event Id="2264822489" Name="DoorSlide1"/>
-				<Event Id="72377605" Name="Main_Ambience"/>
-				<Event Id="2914821347" Name="Mojo_Ambience"/>
-				<Event Id="1382407115" Name="Pebbles_Ambience"/>
 				<Event Id="1389759676" Name="SP_EmittingCrystal"/>
 				<Event Id="1067329105" Name="SP_PlayerButton1"/>
 				<Event Id="1067329106" Name="SP_PlayerButton2"/>
@@ -33,10 +35,6 @@
 				<Event Id="1067329108" Name="SP_PlayerButton4"/>
 				<Event Id="1067329109" Name="SP_PlayerButton5"/>
 				<Event Id="1067329110" Name="SP_PlayerButton6"/>
-				<Event Id="1224940348" Name="WaterDrops1_Ambience"/>
-				<Event Id="4289730509" Name="WaterDrops2_Ambience"/>
-				<Event Id="2402090994" Name="WaterfallLarge"/>
-				<Event Id="4287948414" Name="WaterfallSmall"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
 				<File Id="625245" Language="SFX">
@@ -143,10 +141,6 @@
 					<ShortName>Rumble01.wav</ShortName>
 					<Path>SFX\Rumble01_9E69E797.wem</Path>
 				</File>
-				<File Id="674515164" Language="SFX">
-					<ShortName>Waterfall04.wav</ShortName>
-					<Path>SFX\Waterfall04_4B8CC0C5.wem</Path>
-				</File>
 				<File Id="713371685" Language="SFX">
 					<ShortName>IndoorPebbles03.wav</ShortName>
 					<Path>SFX\IndoorPebbles03_9E69E797.wem</Path>
@@ -178,10 +172,6 @@
 				<File Id="823055302" Language="SFX">
 					<ShortName>IndoorPebbles04.wav</ShortName>
 					<Path>SFX\IndoorPebbles04_9E69E797.wem</Path>
-				</File>
-				<File Id="851356452" Language="SFX">
-					<ShortName>Waterfall03.wav</ShortName>
-					<Path>SFX\Waterfall03_4B8CC0C5.wem</Path>
 				</File>
 				<File Id="901528223" Language="SFX">
 					<ShortName>Emitting302.wav</ShortName>
