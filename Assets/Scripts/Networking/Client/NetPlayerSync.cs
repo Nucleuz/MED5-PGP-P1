@@ -51,22 +51,16 @@ public class NetPlayerSync : MonoBehaviour {
 		//has the rotation or position changed since last sent message
         if(transform.position != lastPosition){
 
-            DarkRiftWriter writer = new DarkRiftWriter();
             //serialize and send information
-			DarkRiftAPI.SendMessageToOthers(Network.Tag.Player, Network.Subject.PlayerPositionUpdate, writer);
+			DarkRiftAPI.SendMessageToOthers(Network.Tag.Player, Network.Subject.PlayerPositionUpdate, transform.position.Serialize());
 
-            writer.Close();
             //Save the sent position
             lastPosition = transform.position;
         }
 		if( head.rotation != lastRotation ){
 
-            DarkRiftWriter writer = new DarkRiftWriter();
-            head.rotation.Serialize(ref writer);
-
             //serialize and send information
-			DarkRiftAPI.SendMessageToOthers(Network.Tag.Player, Network.Subject.PlayerRotationUpdate,writer);
-            writer.Close();
+			DarkRiftAPI.SendMessageToOthers(Network.Tag.Player, Network.Subject.PlayerRotationUpdate, head.rotation.Serialize());
 			
 			//save the sent position and rotation
 			lastRotation = head.rotation;
@@ -87,12 +81,12 @@ public class NetPlayerSync : MonoBehaviour {
 			switch(subject) {
                 case Network.Subject.PlayerPositionUpdate:
                 {
-                    Vector3 position = Deserializer.Vector3(data);
+                    Vector3 position = Deserializer.Vector3((byte[])data);
                     transform.position = position;
                 }break;
 				case Network.Subject.PlayerRotationUpdate:
 				{
-                    Quaternion rotation = Deserializer.Quaternion(data);
+                    Quaternion rotation = Deserializer.Quaternion((byte[])data);
 					head.rotation = rotation;	
 				}
 				break;
