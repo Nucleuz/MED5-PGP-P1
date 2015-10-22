@@ -28,17 +28,18 @@ public class Network{
         //Player Specific
 		public const ushort HasJoined            = 3;
 		public const ushort SpawnPlayer          = 4;
-		public const ushort PlayerUpdate         = 5;
+		public const ushort PlayerPositionUpdate = 5;
+        public const ushort PlayerRotationUpdate = 6;
 
         //TriggerSystem
-        public const ushort TriggerActivate      = 6;
-        public const ushort TriggerDeactivate    = 7;
-        public const ushort TriggerState         = 8;
+        public const ushort TriggerActivate      = 7;
+        public const ushort TriggerDeactivate    = 8;
+        public const ushort TriggerState         = 9;
 
-        public const ushort ServerSentTriggerIDs = 9;
-        public const ushort RequestTriggerIDs    = 10;
+        public const ushort ServerSentTriggerIDs = 10;
+        public const ushort RequestTriggerIDs    = 11;
 
-        public const ushort VoiceChat            = 11;
+        public const ushort VoiceChat            = 12;
 
 
     }

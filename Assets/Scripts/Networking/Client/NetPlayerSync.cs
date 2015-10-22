@@ -47,18 +47,23 @@ public class NetPlayerSync : MonoBehaviour {
 	
 	void SendData(){
 		//has the rotation or position changed since last sent message
-		if( head.rotation != lastRotation || transform.position != lastPosition){
-			//pack player infomation
-			PlayerInfo info = new PlayerInfo();
-			info.position = new SVector3(transform.position);
-			info.rotation = new SQuaternion(head.rotation);
-			
-			//send it to everyone else
-			DarkRiftAPI.SendMessageToOthers(Network.Tag.Player, Network.Subject.PlayerUpdate, info);
+        if(transform.position != lastPosition){
+
+            //serialize and send information
+            SVector3 pos = new SVector3(transform.position);
+			DarkRiftAPI.SendMessageToOthers(Network.Tag.Player, Network.Subject.PlayerRotationUpdate, pos);
+
+            //Save the sent position
+            lastPosition = pos.get();
+        }
+		if( head.rotation != lastRotation ){
+
+            //serialize and send information
+			SQuaternion rot = new SQuaternion(head.rotation);
+			DarkRiftAPI.SendMessageToOthers(Network.Tag.Player, Network.Subject.PlayerRotationUpdate, rot);
 			
 			//save the sent position and rotation
-			lastPosition = info.position.get();
-			lastRotation = info.rotation.get();
+			lastRotation = rot.get();
 		}
 	}
 	
@@ -74,13 +79,13 @@ public class NetPlayerSync : MonoBehaviour {
 		if(!isSender && senderID == networkID ){
 			//check if it wants to update the player
 			switch(subject) {
-				case Network.Subject.PlayerUpdate:
+                case Network.Subject.PlayerPositionUpdate:
+                {
+                    transform.position = ((SVector3)data).get();
+                }break;
+				case Network.Subject.PlayerRotationUpdate:
 				{
-					//unpack the data
-					PlayerInfo info 	= 	(PlayerInfo)data;
-					//apply the data
-					transform.position 	= 	info.position.get();
-					head.rotation 		= 	info.rotation.get();	
+					head.rotation = ((SQuaternion)data).get();	
 				}
 				break;
 				case Network.Subject.VoiceChat:

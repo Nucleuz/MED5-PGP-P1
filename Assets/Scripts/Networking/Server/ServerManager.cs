@@ -45,33 +45,12 @@ public class ServerManager : NetworkManager {
 		ConnectionService.onData += OnData;
 	}
 
+    //@TODO cleanup OnData -- change ifs to switches and seperate out longer subject switches to seperate functions
 
 	//Called when we receive data
 	void OnData(ConnectionService con, ref NetworkMessage data)
 	{
-		//Decode the so it is readable
-        try{
-            if(data.subject != Network.Subject.VoiceChat ) //Don't try to decode VoiceChat, you will fail.
-                data.DecodeData ();
-        }catch(System.Exception e){
-            Debug.LogError("SOMETHING WENT WRONT! from: " + con.id);
-            Debug.LogError(e);
-            string s = "";
-            foreach(var b in (byte[])data.data){
-                s += " "+b;
-
-
-            }
-            Debug.Log(s);
-
-
-        }
-        if(data.data == null){
-            Debug.Log("Tag: " + data.tag + ", Subject: " + data.subject);
-        }    
-
-
-
+        Debug.Log("Data from " + con.id + ", Tag: " + data.tag + ", Subject: " + data.subject);
 		if(data.tag == Network.Tag.Manager){
 
 			if(data.subject == Network.Subject.HasJoined){
@@ -98,8 +77,7 @@ public class ServerManager : NetworkManager {
 			}
 		}else if(data.tag == Network.Tag.Player){
 
-			if( data.subject == Network.Subject.PlayerUpdate ){
-				//if the message is a player update
+			if( data.subject == Network.Subject.PlayerPositionUpdate ){
 
 				//find the index of the sender
 				int index = -1;
@@ -110,15 +88,29 @@ public class ServerManager : NetworkManager {
 					}
                 }
 
+				if(index != -1){
+					//if the player exist on server update the server object
+                    data.DecodeData();
+
+					players[index].position = ((SVector3)data.data).get();
+				}else{
+					Debug.LogError("Sender ID not found");
+				}
+			}else if(data.subject == Network.Subject.PlayerRotationUpdate){
+                //find the index of the sender
+				int index = -1;
+				for(int i = 0;i<senders.Length;i++){
+					if(con.id == senders[i]){
+						index = i;
+						break;
+					}
+                }
 
 				if(index != -1){
 					//if the player exist on server update the server object
+                    data.DecodeData();
 
-					PlayerInfo info = (PlayerInfo)data.data;
-                    //TODO change this update position and roatation individually
-
-					players[index].position = info.position.get();
-					players[index].rotation = info.rotation.get();
+					players[index].rotation = ((SQuaternion)data.data).get();
 				}else{
 					Debug.LogError("Sender ID not found");
 				}
@@ -140,6 +132,9 @@ public class ServerManager : NetworkManager {
                         triggerStates);
 
             }else if(data.subject == Network.Subject.TriggerActivate){
+
+                data.DecodeData();
+
                 triggerHandler.TriggerInteracted((ushort)data.data,true);
                 Debug.Log("trigger " + (ushort)data.data + " activated"); 
 
@@ -151,6 +146,8 @@ public class ServerManager : NetworkManager {
                 //send to clients but not the sender
                 SendToAll(data.tag,Network.Subject.TriggerState,state);
             }else if(data.subject == Network.Subject.TriggerDeactivate){
+                data.DecodeData();
+
                 triggerHandler.TriggerInteracted((ushort)data.data,false);
 
                 //force update GameMnager
