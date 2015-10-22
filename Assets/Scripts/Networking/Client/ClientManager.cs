@@ -110,7 +110,7 @@ public class ClientManager : NetworkManager
                         //unpack data
 
                         //spawn the object
-                        GameObject g = Instantiate(prefabPlayer,VectorExtensions.Deserialize(data) , Quaternion.identity) as GameObject;
+                        GameObject g = Instantiate(prefabPlayer,Deserializer.Vector3(data) , Quaternion.identity) as GameObject;
 
                         //set the network id so it will sync with the player
                         NetPlayerSync netPlayer = g.GetComponent<NetPlayerSync>();
@@ -130,8 +130,12 @@ public class ClientManager : NetworkManager
                         Write("HasJoined sender: " + senderID);
 
                         //send player data to the one who asked
-                        if(player != null)
-                            DarkRiftAPI.SendMessageToID(senderID, Network.Tag.Manager, Network.Subject.SpawnPlayer,player.position.Serialize());
+                        if(player != null){
+                            DarkRiftWriter writer = new DarkRiftWriter();
+                            player.position.Serialize(ref writer);
+                            DarkRiftAPI.SendMessageToID(senderID, Network.Tag.Manager, Network.Subject.SpawnPlayer,writer);
+                            writer.Close();
+                        }
                     }
                     break;
            }
@@ -177,8 +181,12 @@ public class ClientManager : NetworkManager
             player.GetComponent<Cart>().CurrentRail = startRail;
 
 
+             DarkRiftWriter writer = new DarkRiftWriter();
+            player.position.Serialize(ref writer);
+
             //send it to everyone else
-            DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager, Network.Subject.SpawnPlayer, player.position.Serialize());
+            DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager, Network.Subject.SpawnPlayer,writer);
+            writer.Close();
         }
 
 

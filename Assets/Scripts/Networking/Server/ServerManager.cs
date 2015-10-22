@@ -92,7 +92,7 @@ public class ServerManager : NetworkManager {
 					//if the player exist on server update the server object
                     data.DecodeData();
 
-					players[index].position = VectorExtensions.Deserialize(data.data);
+					players[index].position = Deserializer.Vector3(data.data);
 				}else{
 					Debug.LogError("Sender ID not found");
 				}
@@ -110,7 +110,7 @@ public class ServerManager : NetworkManager {
 					//if the player exist on server update the server object
                     data.DecodeData();
 
-					players[index].rotation = QuaternionExtensions.Deserialize(data.data);
+					players[index].rotation = Deserializer.Quaternion(data.data);
 				}else{
 					Debug.LogError("Sender ID not found");
 				}
