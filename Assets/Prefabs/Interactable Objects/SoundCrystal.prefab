@@ -674,11 +674,12 @@ GameObject:
   - 4: {fileID: 462974}
   - 95: {fileID: 9524172}
   - 199: {fileID: 19970738}
+  - 65: {fileID: 6544734}
   - 198: {fileID: 19835416}
   - 114: {fileID: 11431384}
   - 114: {fileID: 11445354}
   m_Layer: 0
-  m_Name: SoundGem
+  m_Name: SoundCrystal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1173,7 +1174,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187638}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.047997, y: 15.2176456, z: 21.9251289}
+  m_LocalPosition: {x: 0, y: 58.2000008, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 498264}
@@ -1467,6 +1468,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 102696}
   m_Mesh: {fileID: 4300000, guid: 33d22e4db788a4e41b1c8e172041bf82, type: 3}
+--- !u!65 &6544734
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 187638}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.18876481, y: 6.05788183, z: 1.57586527}
+  m_Center: {x: -.0340031385, y: 1.94358826, z: -.430034637}
 --- !u!95 &9524172
 Animator:
   serializedVersion: 3
@@ -1509,7 +1522,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c9eaeec70163da47a4fbed84d963b2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioClips: []
   timeBetweenSounds: 0
 --- !u!137 &13705730
 SkinnedMeshRenderer:

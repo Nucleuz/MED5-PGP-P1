@@ -9,6 +9,20 @@
 						<Switch Name="Off" ID="{85FA9B18-7984-4849-A21D-D576442D4E90}"/>
 					</ChildrenList>
 				</SwitchGroup>
+				<SwitchGroup Name="SP_EmittingCrystalMelodies" ID="{3AE91B62-4F20-4AAE-9C69-5E27C11E9FEE}">
+					<ChildrenList>
+						<Switch Name="Melody1" ID="{04A8C7D6-43CA-4AB6-8699-7F3D3B95AABD}"/>
+						<Switch Name="Melody2" ID="{90EE88DC-101C-4BFC-880C-AC0DA2EFD37A}"/>
+						<Switch Name="Melody3" ID="{A58FB5EA-D78F-452D-ACC9-1F7306D80E10}"/>
+						<Switch Name="NoMelody" ID="{03DB71E8-A943-4EAA-ADB3-B97A2E68A619}"/>
+					</ChildrenList>
+				</SwitchGroup>
+				<SwitchGroup Name="HeadLampOn_Off" ID="{2066C19F-19CB-410B-B691-D434D31262D1}">
+					<ChildrenList>
+						<Switch Name="On" ID="{3B8D3E7A-9DC1-41A2-A94A-9753F5CBD851}"/>
+						<Switch Name="Off" ID="{0BCF7D13-4F39-47D5-8E8D-06D9338564AE}"/>
+					</ChildrenList>
+				</SwitchGroup>
 			</ChildrenList>
 		</WorkUnit>
 	</Switches>

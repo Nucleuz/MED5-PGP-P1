@@ -6,8 +6,8 @@ public class GameManager : MonoBehaviour {
 
 	protected int numberOfTriggeredEvents = 0; //Is used to determine where we should continue from each time a puzzle sequence is finished. is only updated after each sequence is finished
 	protected int currentNumberOfEventsTriggered = 0; //counts up when a single event is triggered, is reset when all events in the sequence is triggered
-	protected int index = 0; // used to count which sequence is currently in play
 
+	public int index = 0; // used to count which sequence is currently in play
 	public LevelManager LM; //Used in order to access the LevelManagerObject in the scene
 	
 
@@ -39,9 +39,9 @@ public class GameManager : MonoBehaviour {
 		}
 		else { //Checks if there is a desired order in the sequence. Only checks the objects that should be interacted with in the sequence 
 			for(int h = 0; h < LM.eventOrder[index]; h++){  
-				if(LM.events[h + numberOfTriggeredEvents].isTriggered == true && LM.events[h + numberOfTriggeredEvents].isReadyToBeTriggered == true){ //Checks if they are triggered 
-				LM.events[h + numberOfTriggeredEvents].isReadyToBeTriggered = false; //sets the event untriggerable
-				currentNumberOfEventsTriggered++; //counts up the events in sequence by 1
+				if(LM.events[h + numberOfTriggeredEvents + currentNumberOfEventsTriggered].isTriggered == true && LM.events[h + numberOfTriggeredEvents + currentNumberOfEventsTriggered].isReadyToBeTriggered == true){ //Checks if they are triggered 
+					LM.events[h + numberOfTriggeredEvents + currentNumberOfEventsTriggered].isReadyToBeTriggered = false; //sets the event untriggerable
+					currentNumberOfEventsTriggered++; //counts up the events in sequence by 1
 				}
 				//This if statement is used in order to reset interactables if they require it
 				if(LM.events[h + numberOfTriggeredEvents].canReset == true && LM.events[h + numberOfTriggeredEvents].isReadyToBeTriggered == false){
