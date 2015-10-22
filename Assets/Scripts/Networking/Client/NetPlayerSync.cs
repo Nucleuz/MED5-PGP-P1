@@ -46,24 +46,24 @@ public class NetPlayerSync : MonoBehaviour {
 	}
 	
 	void SendData(){
+        //@TODO -- currently dobble dipping
+
 		//has the rotation or position changed since last sent message
         if(transform.position != lastPosition){
 
             //serialize and send information
-            SVector3 pos = new SVector3(transform.position);
-			DarkRiftAPI.SendMessageToOthers(Network.Tag.Player, Network.Subject.PlayerPositionUpdate, pos);
+			DarkRiftAPI.SendMessageToOthers(Network.Tag.Player, Network.Subject.PlayerPositionUpdate, transform.position.Serialize());
 
             //Save the sent position
-            lastPosition = pos.get();
+            lastPosition = transform.position;
         }
 		if( head.rotation != lastRotation ){
 
             //serialize and send information
-			SQuaternion rot = new SQuaternion(head.rotation);
-			DarkRiftAPI.SendMessageToOthers(Network.Tag.Player, Network.Subject.PlayerRotationUpdate, rot);
+			DarkRiftAPI.SendMessageToOthers(Network.Tag.Player, Network.Subject.PlayerRotationUpdate, head.rotation.Serialize());
 			
 			//save the sent position and rotation
-			lastRotation = rot.get();
+			lastRotation = head.rotation;
 		}
 	}
 	
@@ -81,11 +81,13 @@ public class NetPlayerSync : MonoBehaviour {
 			switch(subject) {
                 case Network.Subject.PlayerPositionUpdate:
                 {
-                    transform.position = ((SVector3)data).get();
+                    Vector3 position = VectorExtensions.Deserialize(data);
+                    transform.position = position;
                 }break;
 				case Network.Subject.PlayerRotationUpdate:
 				{
-					head.rotation = ((SQuaternion)data).get();	
+                    Quaternion rotation = QuaternionExtensions.Deserialize(data);
+					head.rotation = rotation;	
 				}
 				break;
 				case Network.Subject.VoiceChat:
