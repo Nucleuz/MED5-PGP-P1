@@ -110,7 +110,7 @@ public class ClientManager : NetworkManager
                         //unpack data
 
                         //spawn the object
-                        GameObject g = Instantiate(prefabPlayer, ((SVector3)data).get(), Quaternion.identity) as GameObject;
+                        GameObject g = Instantiate(prefabPlayer,VectorExtensions.Deserialize(data) , Quaternion.identity) as GameObject;
 
                         //set the network id so it will sync with the player
                         NetPlayerSync netPlayer = g.GetComponent<NetPlayerSync>();
@@ -131,7 +131,7 @@ public class ClientManager : NetworkManager
 
                         //send player data to the one who asked
                         if(player != null)
-                            DarkRiftAPI.SendMessageToID(senderID, Network.Tag.Manager, Network.Subject.SpawnPlayer, new SVector3(player.position));
+                            DarkRiftAPI.SendMessageToID(senderID, Network.Tag.Manager, Network.Subject.SpawnPlayer,player.position.Serialize());
                     }
                     break;
            }
@@ -178,7 +178,7 @@ public class ClientManager : NetworkManager
 
 
             //send it to everyone else
-            DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager, Network.Subject.SpawnPlayer, new SVector3(player.position));
+            DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager, Network.Subject.SpawnPlayer, player.position.Serialize());
         }
 
 
