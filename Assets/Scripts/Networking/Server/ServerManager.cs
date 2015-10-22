@@ -90,6 +90,7 @@ public class ServerManager : NetworkManager {
 
 				if(index != -1){
 					//if the player exist on server update the server object
+                    data.DecodeData();
 
 					players[index].position = Deserializer.Vector3((byte[])data.data);
 				}else{
@@ -107,6 +108,7 @@ public class ServerManager : NetworkManager {
 
 				if(index != -1){
 					//if the player exist on server update the server object
+                    data.DecodeData();
 
 					players[index].rotation = Deserializer.Quaternion((byte[])data.data);
 				}else{

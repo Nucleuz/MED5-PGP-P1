@@ -16,7 +16,6 @@ public static class Deserializer{
         {
             using (BinaryReader reader = new BinaryReader(m))
             {
-                Debug.Log(reader.BaseStream.Length);
                 int i = 0;
                 while (reader.BaseStream.Position != reader.BaseStream.Length)
                 {
@@ -34,7 +33,6 @@ public static class Deserializer{
         {
             using (BinaryReader reader = new BinaryReader(m))
             {
-                Debug.Log(reader.BaseStream.Length);
                 int i = 0;
                 while (reader.BaseStream.Position != reader.BaseStream.Length)
                 {
