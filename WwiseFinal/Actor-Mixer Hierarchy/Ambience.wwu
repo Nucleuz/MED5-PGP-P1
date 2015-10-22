@@ -11,12 +11,18 @@
 							</ValueList>
 						</Property>
 						<Property Name="PositioningType" Type="int16" Value="1"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-5</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="AttachableMixerInput">
 							<Custom>
 								<Effect Name="Two Big Ears 3Dception (Attached)" ID="{D2B10A2C-6D4C-4252-B7AA-39ED5152FE01}" ShortID="825200181" PluginName="AttachableMixerInput" CompanyID="265" PluginID="2" PluginType="3">
 									<PropertyList>
+										<Property Name="InputChannel" Type="int32" Value="2"/>
 										<Property Name="Room" Type="bool" Value="True"/>
 									</PropertyList>
 								</Effect>
@@ -58,63 +64,6 @@
 							</ChildrenList>
 							<ActiveSourceList>
 								<ActiveSource Name="MojoWithoutEnergy" ID="{01A4AB9D-D033-4BED-8151-D77236DE173D}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-						<Sound Name="Waterfall03" ID="{817A93FB-BFE1-4A25-823E-6D6CE8BA620C}" ShortID="226006052" Type="SoundFX">
-							<PropertyList>
-								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
-								<Property Name="Volume" Type="Real64">
-									<ValueList>
-										<Value>-2</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
-								</Reference>
-								<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-									<ObjectRef Name="Hall_Large" ID="{6D154498-FF6D-4823-96FC-56841B70E079}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="Waterfall03" ID="{9B440CC0-65C0-4D7E-BF02-929CBDD76DD9}" ShortID="851356452">
-									<Language>SFX</Language>
-									<AudioFile>Waterfall03.wav</AudioFile>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="Waterfall03" ID="{9B440CC0-65C0-4D7E-BF02-929CBDD76DD9}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-						<Sound Name="Waterfall04" ID="{FD611285-CA0D-4139-8EF1-C52F36E856B5}" ShortID="820486126" Type="SoundFX">
-							<PropertyList>
-								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
-								<Property Name="Volume" Type="Real64">
-									<ValueList>
-										<Value>1</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="Waterfall04" ID="{D40305E2-CAD0-49EC-99D0-F7DEA68776FD}" ShortID="674515164">
-									<Language>SFX</Language>
-									<AudioFile>Waterfall04.wav</AudioFile>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="Waterfall04" ID="{D40305E2-CAD0-49EC-99D0-F7DEA68776FD}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 						<RandomSequenceContainer Name="MAIN AMBIENCE" ID="{AEAEC6F9-FCBD-4F92-9253-05A1EE1CCBE6}" ShortID="678201422">
@@ -609,6 +558,10 @@
 						</RandomSequenceContainer>
 						<RandomSequenceContainer Name="Waterdrops(Background)" ID="{375C372D-0F55-42CC-A157-0B809FA8419A}" ShortID="403063104">
 							<PropertyList>
+								<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+								<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+								<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="2"/>
+								<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 								<Property Name="RandomOrSequence" Type="int16" Value="0"/>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
@@ -865,7 +818,7 @@
 								<Property Name="RandomOrSequence" Type="int16" Value="0"/>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>-15</Value>
+										<Value>-5</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -1014,7 +967,7 @@
 								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>-20</Value>
+										<Value>-10</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
