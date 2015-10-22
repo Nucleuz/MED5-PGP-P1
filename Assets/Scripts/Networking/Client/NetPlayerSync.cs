@@ -51,7 +51,7 @@ public class NetPlayerSync : MonoBehaviour {
 
             //serialize and send information
             SVector3 pos = new SVector3(transform.position);
-			DarkRiftAPI.SendMessageToOthers(Network.Tag.Player, Network.Subject.PlayerRotationUpdate, pos);
+			DarkRiftAPI.SendMessageToOthers(Network.Tag.Player, Network.Subject.PlayerPositionUpdate, pos);
 
             //Save the sent position
             lastPosition = pos.get();
