@@ -5,15 +5,23 @@
 			<ChildrenList>
 				<ActorMixer Name="ButtonOn-Off" ID="{A0CD4BC8-B0B0-4229-8ECF-3AB552FB71A5}" ShortID="552351416">
 					<PropertyList>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>1</Value>
+							</ValueList>
+						</Property>
 						<Property Name="PositioningType" Type="int16" Value="1"/>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="AttachableMixerInput">
 							<Custom>
-								<Effect Name="Two Big Ears 3Dception (Attached)" ID="{46C425F9-12D0-4AC0-B650-32A4FFC15D6A}" ShortID="52173776" PluginName="AttachableMixerInput" CompanyID="265" PluginID="2" PluginType="3">
+								<Effect Name="Two Big Ears 3Dception (Attached)" ID="{4AAC6919-34E4-4C24-B54D-EADF963C1481}" ShortID="24697711" PluginName="AttachableMixerInput" CompanyID="265" PluginID="2" PluginType="3">
 									<PropertyList>
-										<Property Name="InputChannel" Type="int32" Value="2"/>
-										<Property Name="MaxDistance" Type="Real32" Value="999.94"/>
 										<Property Name="Room" Type="bool" Value="True"/>
 									</PropertyList>
 								</Effect>
@@ -39,7 +47,6 @@
 							<ChildrenList>
 								<Sound Name="SwitchRealOff02" ID="{0E01FD5C-3E0D-4F4B-8DCF-0D4CA76144CE}" ShortID="413311006" Type="SoundFX">
 									<PropertyList>
-										<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
 										<Property Name="UseMaxSoundPerInstance" Type="bool">
 											<ValueList>
 												<Value>True</Value>
@@ -117,7 +124,29 @@
 					</ChildrenList>
 				</ActorMixer>
 				<ActorMixer Name="ChannelingSwitchMixer" ID="{2ED1390A-D013-442D-9E4F-10A83A66D383}" ShortID="364909133">
+					<PropertyList>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>1</Value>
+							</ValueList>
+						</Property>
+						<Property Name="PositioningType" Type="int16" Value="1"/>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
+						<Reference Name="AttachableMixerInput">
+							<Custom>
+								<Effect Name="Two Big Ears 3Dception (Attached)" ID="{7B9E0B67-640D-44D5-B0D4-7C00B8A4CC20}" ShortID="785834110" PluginName="AttachableMixerInput" CompanyID="265" PluginID="2" PluginType="3">
+									<PropertyList>
+										<Property Name="Room" Type="bool" Value="True"/>
+									</PropertyList>
+								</Effect>
+							</Custom>
+						</Reference>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
 						</Reference>
