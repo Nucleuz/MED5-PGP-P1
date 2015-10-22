@@ -7,7 +7,7 @@ public class InteractableButton : Interactable{
 	ParticleSystem par;
 	
 	SoundManager sM;
-	bool playedSound;
+	public bool playedSound;
 
 	[Tooltip("NEEDS TO BE THE SIZE 3. Check the players that have to hit the button. 0 = red, 1 = green, 2 = blue")]
 	public bool[] playerList;
@@ -19,7 +19,7 @@ public class InteractableButton : Interactable{
 	private float delay;
 	private float timer;
 
-	private Trigger trigger;
+	public Trigger trigger;
 
 	public Renderer[] rend;
 	
@@ -57,6 +57,12 @@ public class InteractableButton : Interactable{
 		} else {
 			buttonAnimator.SetBool("isActivated", false); 	//stops the animation of the button.
 			par.Stop(); 									//stops the particle system.
+		}
+
+		if(playedSound && !trigger.isTriggered){
+			sM.ToggleSwitch("On_Off", "Off", gameObject);
+			sM.PlayEvent("ButtonOnOff", gameObject);
+			playedSound = false;
 		}
 	}
 
