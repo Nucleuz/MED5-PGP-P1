@@ -82,7 +82,7 @@ class LightShaftsEditor extends Editor
 		brightness.floatValue = Mathf.Max(0, brightness.floatValue);
 		brightnessColored.floatValue = Mathf.Max(0, brightnessColored.floatValue);
 		minDistFromCamera.floatValue = Mathf.Max(0, minDistFromCamera.floatValue);
-		var minNear : float = 0.05;
+		var minNear : float = 0.01;
 		far.floatValue = Mathf.Clamp(far.floatValue, minNear, 1.0f);
 		near.floatValue = Mathf.Clamp(near.floatValue, minNear, far.floatValue);
 	}
