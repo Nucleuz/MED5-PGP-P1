@@ -9,6 +9,9 @@ public class LevelManager : MonoBehaviour {
 	[Tooltip("This contains how many of the gameobjects there is in a specific sequence. You must specifiy the corresponding event size to the number of gameobjects. e.g if you have 6 elements, you must make sure that the total number is also 6 in this array. could be written as the element0 is 2 and element1 is 4. Element0 is the first sequence. Array size is the amount of sequences")]
 	public int[] eventsInSequence; 			//amount of events in each sequence 				- Should be specified in the unity editor!!
 
+	[Tooltip("This is a Tooltip")]
+	public bool[] triggeredEvents;
+
 	[Tooltip("This contains the event order in which you want gameobjects triggered in a sequence. The number specifies the amount of gameobjects that should be triggered, 0 = no order, 1 = first gameobject in the sequence needs to be triggered before the rest, then second, and then third, 2 = first and second can be triggered, then third and fourth. Array size must be the same as amount of sequences")]
 	public int[] eventOrder; 				/*The event order in which you want things triggered. if no order leave it at zero!
 											should be specified how events should be triggered e.g.
