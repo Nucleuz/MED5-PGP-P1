@@ -6,6 +6,9 @@ public class LevelManager : MonoBehaviour {
 	[Tooltip("Interactable gameobjects in the game, should be dragged on in the right order for the eventOrder to work. Because it will be used in eventOrder!!")]
 	public Trigger[] events; 				// Events which are dragged into the levelmanager 	- Should be specified in the unity editor!!
 
+	[Tooltip("Bool used to detect if se is finished. Size must be the same size as 'events'")]
+	public bool[] triggeredEvents;
+
 	[Tooltip("This contains how many of the gameobjects there is in a specific sequence. You must specifiy the corresponding event size to the number of gameobjects. e.g if you have 6 elements, you must make sure that the total number is also 6 in this array. could be written as the element0 is 2 and element1 is 4. Element0 is the first sequence. Array size is the amount of sequences")]
 	public int[] eventsInSequence; 			//amount of events in each sequence 				- Should be specified in the unity editor!!
 

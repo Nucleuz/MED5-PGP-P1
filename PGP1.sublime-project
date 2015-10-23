@@ -2,8 +2,15 @@
 	"folders":
 	[
 		{
-			"path": "Assets/Scripts"
+			"path": "Assets/Scripts",
+		
+		"file_exclude_patterns":
+			[
+				"*.dll",
+				"*.meta",
+				"*.swo",
+				"*.swp"
+			]
 		}
-	],
-	"solution_file": "./MED5-PGP-P1.sln"
+	]
 }
