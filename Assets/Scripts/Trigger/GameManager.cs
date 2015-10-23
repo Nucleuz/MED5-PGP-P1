@@ -57,13 +57,14 @@ public class GameManager : MonoBehaviour {
 			for(int i = LM.eventOrder[index] + currentNumberOfEventsTriggered; i < LM.eventsInSequence[index]; i++){
 				//It then checks if they are triggered
 				if(LM.events[i + numberOfTriggeredEvents].isTriggered == true && LM.events[i + numberOfTriggeredEvents].isReadyToBeTriggered == true){
+					LM.events[i + numberOfTriggeredEvents].isReadyToBeTriggered = false;
+					Debug.Log("Above current" + currentNumberOfEventsTriggered);
 					//If they are triggered which they shouldn't be, then we reset the sequence
 					currentNumberOfEventsTriggered = 0;
 					for(int j = 0; j < LM.eventsInSequence[index]; j++){ //goes through all the objects in the sequence and untrigger them
-						StartCoroutine(FailedReset(j)); /*
+						StartCoroutine(FailedReset(j));
 						LM.events[j + numberOfTriggeredEvents].isTriggered = false;
 						LM.triggeredEvents[j + numberOfTriggeredEvents] = false;
-						LM.events[j + numberOfTriggeredEvents].isReadyToBeTriggered = true; */
 						Debug.Log("YOU FAILED");
 					} /*
 					for(int u = 0; u < LM.eventOrder[index]; u++){ //goes through all the objects in the sequence and makes them ready to be triggered again
@@ -74,12 +75,13 @@ public class GameManager : MonoBehaviour {
 			if(currentNumberOfEventsTriggered > 0){ 
 				for(int i = 0; i < currentNumberOfEventsTriggered; i++){ //Checking events earlier in the sequence
 					if(LM.events[i + numberOfTriggeredEvents].isTriggered == true && LM.events[i + numberOfTriggeredEvents].isReadyToBeTriggered == true){
+						LM.events[i + numberOfTriggeredEvents].isReadyToBeTriggered = false;
+						Debug.Log("Below current" + currentNumberOfEventsTriggered);
 						currentNumberOfEventsTriggered = 0;
 						for(int j = 0; j < LM.eventsInSequence[index]; j++){
-							StartCoroutine(FailedReset(j)); /*
+							StartCoroutine(FailedReset(j));
 							LM.events[j + numberOfTriggeredEvents].isTriggered = false;
 							LM.triggeredEvents[j + numberOfTriggeredEvents] = false;
-							LM.events[j + numberOfTriggeredEvents].isReadyToBeTriggered = true; */
 							Debug.Log("YOU FAILED");
 						}
 					}
@@ -87,6 +89,8 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 
+
+		//========== Code segment used for detecting if they are finished with a sequence ======================================================================
 		//Checks if all of the events in the current sequence are triggered
 		for(int i = 0; i < LM.eventsInSequence[index]; i++){
 			if(LM.triggeredEvents[i + numberOfTriggeredEvents] == false){
@@ -128,17 +132,18 @@ public class GameManager : MonoBehaviour {
 	}
 
 	IEnumerator TimedReset(int resetIndex){ //Coroutine used for resetting objects which needs to be resetted
-		yield return new WaitForSeconds(1.5f); //Resets after 2 seconds
+		Debug.Log("TimedReset");
+		yield return new WaitForSeconds(1.5f); //Resets after x seconds
 		LM.events[resetIndex + numberOfTriggeredEvents].isTriggered = false;
 		LM.events[resetIndex + numberOfTriggeredEvents].isReadyToBeTriggered = true;
 		//isResetting = false;
 	}
 
-	IEnumerator FailedReset(int resetIndex){ //MOVE SOME OF THIS STUFF UP!
-		LM.events[resetIndex + numberOfTriggeredEvents].isTriggered = false;
+	IEnumerator FailedReset(int resetIndex){ //MOVE SOME OF THIS STUFF UP! 
+		/*LM.events[resetIndex + numberOfTriggeredEvents].isTriggered = false;
+		LM.triggeredEvents[resetIndex + numberOfTriggeredEvents] = false; */
 		Debug.Log("I resetted the stuff");
-		LM.triggeredEvents[resetIndex + numberOfTriggeredEvents] = false;
-		yield return new WaitForSeconds(1.5f); //Resets after 2 seconds
+		yield return new WaitForSeconds(1.5f); //Resets after x seconds
 		LM.events[resetIndex + numberOfTriggeredEvents].isReadyToBeTriggered = true;
 		//isResetting = false;
 		Debug.Log("Hello");
