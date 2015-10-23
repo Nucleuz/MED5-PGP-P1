@@ -56,8 +56,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114066}
-  m_LocalRotation: {x: 0, y: -.824768245, z: 0, w: .565470874}
-  m_LocalPosition: {x: 13.6728649, y: 2.3499999, z: 11.5535908}
+  m_LocalRotation: {x: -.0944895446, y: -.734361827, z: -.0470546596, w: .67050004}
+  m_LocalPosition: {x: 7.94000006, y: 3.3900001, z: 25.9599991}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 429934}
@@ -73,7 +73,11 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
+<<<<<<< HEAD
   - {fileID: 2100000, guid: 1139604f5d330834eb38ab436f231b67, type: 2}
+=======
+  - {fileID: 2100000, guid: c42f5a9831e2d3a4f834c78304e9797f, type: 2}
+>>>>>>> origin/FixTheMirrorReflectionLightShaft
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -146,7 +150,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -202,7 +206,7 @@ MonoBehaviour:
   m_SpotFar: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_ColorFilterMask:
     serializedVersion: 2
     m_Bits: 0

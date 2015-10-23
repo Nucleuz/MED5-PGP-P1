@@ -32,11 +32,6 @@ public class HeadControl : MonoBehaviour {
 
 		float v = (Camera.main.pixelHeight - mouse.y)/Camera.main.pixelHeight ;
 		//Debug.Log("h: " + h + ", v: " + v);
-	
-		transform.rotation = Quaternion.Euler(v * verticalRotationAmount + verticalRotationOffset,h * horizontalRotationAmount + horizontalRotationOffset,0);
-
-
-
 
 		//Script used for detecting if controller should be used
 		if(controllerConnected == false) {

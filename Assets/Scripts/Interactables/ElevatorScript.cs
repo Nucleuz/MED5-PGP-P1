@@ -12,7 +12,7 @@ public class ElevatorScript : MonoBehaviour {
 
     public Transform[] nodes;                                               //Array of transform objects that holds the positions the elevator will visit
     private int activeNode;                                                 //Int that counts the number of nodes that has been visited
-    public float speed;                                                     //Speed of the elevator
+    public float speed = 1;                                                     //Speed of the elevator
 
     private float currentLerpTime;                                          //holds the amount of time the lerp has been running
  
@@ -23,7 +23,7 @@ public class ElevatorScript : MonoBehaviour {
         rC = GetComponent<RailConnection>();
         rP = GetComponent<Rail>();
 
-        speed = 1000;                                                       //Sets the speed of the elevator
+        rC.connectToPrev = true;                                                       //Sets the speed of the elevator
         activeNode = 0;                                                     //Sets the visited nodes to zero
 	}
 	
@@ -48,7 +48,7 @@ public class ElevatorScript : MonoBehaviour {
                 currentLerpTime = lerpTime;
             }
 
-            float t = currentLerpTime / lerpTime * 0.15f;                   //Calculates the final speed of the object.
+            float t = currentLerpTime / lerpTime * speed;                   //Calculates the final speed of the object.
             
             //Moves the elevator from it's current position to the next active node
             transform.position = Vector3.MoveTowards(transform.position, nodes[activeNode].position, t);
