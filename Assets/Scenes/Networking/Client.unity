@@ -565,6 +565,63 @@ MonoBehaviour:
   keyToOpen: 282
   isServer: 0
   fps: {fileID: 982676339}
+--- !u!1 &681335979
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 681335982}
+  - 114: {fileID: 681335981}
+  - 114: {fileID: 681335980}
+  m_Layer: 0
+  m_Name: WwiseGlobal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &681335980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 681335979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1adccdce10ac384da0d669fa50d0ae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basePath: Audio\GeneratedSoundBanks
+  language: English(US)
+  defaultPoolSize: 4096
+  lowerPoolSize: 2048
+  streamingPoolSize: 1024
+  memoryCutoffThreshold: .949999988
+--- !u!114 &681335981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 681335979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0da75c80cd89ba4b82c3e81eda3d189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &681335982
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 681335979}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
 --- !u!1 &798704652
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,6 +786,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11493670, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
+      propertyPath: levelOrder.Array.size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 483922, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
       propertyPath: m_LocalPosition.x
       value: -90.0280533
@@ -776,6 +837,10 @@ Prefab:
     - target: {fileID: 11493670, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
       propertyPath: levelOrder.Array.data[2]
       value: Level 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11493670, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
+      propertyPath: levelOrder.Array.data[4]
+      value: Level 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}

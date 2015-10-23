@@ -11,6 +11,7 @@ public class Trigger : MonoBehaviour {
     public ushort triggerID;
 
     public void Activate(){
+        if(isTriggered) return;
         isTriggered = true; 
 
         //Send to Server @TODO to display visuals everyone should get this
@@ -21,6 +22,7 @@ public class Trigger : MonoBehaviour {
     }
    
     public void Deactivate(){
+        if(!isTriggered) return;
         isTriggered = false;
 
         if(!NetworkManager.isServer)

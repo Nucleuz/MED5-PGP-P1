@@ -372,157 +372,71 @@
 	"buffers":
 	[
 		{
-			"file": "Assets/Scripts/Networking/Server/ServerManager.cs",
+			"file": "Assets/Scripts/Trigger/GameManager.cs",
 			"settings":
 			{
-				"buffer_size": 2803,
-				"line_ending": "Unix"
+				"buffer_size": 10096,
+				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "using UnityEngine;\nusing System.Collections;\npublic static class VectorExtensions {\n     \n    public static Vector2 Rotate(this Vector2 v, float radians) {\n        float sin = Mathf.Sin(radians);\n        float cos = Mathf.Cos(radians);\n         \n        float tx = v.x;\n        float ty = v.y;\n\n        v.x = (cos * tx) - (sin * ty);\n        v.y = (sin * tx) + (cos * ty);\n\n        return v;\n    }\n}\n",
-			"file": "Assets/Scripts/ExtensionMethods.cs",
-			"file_size": 403,
-			"file_write_time": 130887803734617990,
+			"file": "Assets/Scripts/Trigger/LevelManager.cs",
 			"settings":
 			{
-				"buffer_size": 400,
-				"line_ending": "Unix"
+				"buffer_size": 2675,
+				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "Assets/Scripts/Networking/LevelHandler.cs",
+			"file": "Assets/Scripts/Interactables/InteractableButton.cs",
 			"settings":
 			{
-				"buffer_size": 3559,
-				"line_ending": "Unix"
+				"buffer_size": 4091,
+				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "Assets/Scripts/MicrophoneSender.cs",
+			"file": "Assets/Scripts/SoundManager.cs",
 			"settings":
 			{
-				"buffer_size": 2132,
-				"line_ending": "Unix"
+				"buffer_size": 882,
+				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "Assets/Scripts/Cart.cs",
-			"settings":
-			{
-				"buffer_size": 2018,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Assets/Scripts/Networking/TriggerHandler.cs",
-			"settings":
-			{
-				"buffer_size": 1838,
-				"line_ending": "Unix"
-			}
-		},
-		{
+			"contents": "using UnityEngine;\nusing System.Collections;\nusing DarkRift;\n\npublic class Trigger : MonoBehaviour {\n	public bool isTriggered = false;\n	public bool isReadyToBeTriggered = false;\n	public bool canReset = false;\n    \n    //Networking\n    public ushort triggerID;\n\n    public void Activate(){\n        if(isTriggered) return;\n        isTriggered = true; \n\n        //Send to Server @TODO to display visuals everyone should get this\n        if(!NetworkManager.isServer)\n            DarkRiftAPI.SendMessageToServer(Network.Tag.Trigger, Network.Subject.TriggerActivate,triggerID); \n        \n		Console.Instance.AddMessage(\"Trigger \" + triggerID + \" Activated\");\n    }\n   \n    public void Deactivate(){\n        if(!isTriggered) return;\n        isTriggered = false;\n\n        if(!NetworkManager.isServer)\n            DarkRiftAPI.SendMessageToServer(Network.Tag.Trigger,Network.Subject.TriggerDeactivate, triggerID);\n\n		Console.Instance.AddMessage(\"Trigger \" + triggerID + \" Deactivated\");\n    }\n\n    public void SetState(TriggerState state){\n        triggerID = state.id;\n        isTriggered = state.isTriggered;\n        isReadyToBeTriggered = state.isReadyToBeTriggered;\n        canReset = state.canReset;\n    }\n\n    public void SetTriggerID(ushort id){\n        triggerID = id;\n    }\n}\n\n\n\n",
 			"file": "Assets/Scripts/Trigger/Trigger.cs",
+			"file_size": 1327,
+			"file_write_time": 130900809936847500,
 			"settings":
 			{
-				"buffer_size": 1468,
-				"line_ending": "Unix"
+				"buffer_size": 1277,
+				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "Assets/Scripts/HeadControl.cs",
+			"file": "Assets/Plugins/DarkRift/DarkRift/Plugins/DarkRiftReceiver.cs",
 			"settings":
 			{
-				"buffer_size": 794,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/home/kaholi/MEGA/AAU/5 Semester/CGP/Homework/lesson 4/Homework4/Assets/Shooter.shader",
-			"settings":
-			{
-				"buffer_size": 3813,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/home/kaholi/MEGA/AAU/5 Semester/CGP/InClass/lesson 6/DiffuseReflection/Assets/SimpleLighting.shader",
-			"settings":
-			{
-				"buffer_size": 2408,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/home/kaholi/MEGA/AAU/5 Semester/CGP/Homework/lesson 6/Homework5/Assets/SimpleLighting.shader",
-			"settings":
-			{
-				"buffer_size": 2884,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "Shader \"Simple Lighting\" {\n   Properties {\n      _DiffuseColor (\"Diffuse Material Color\", Color) = (1,0,0,1) \n      _SpecColor (\"Specular Material Color\", Color) = (1,1,1,1) \n      _Shininess (\"Shininess\", Float) = 10\n   }\n   SubShader {\n      Pass {	\n      \n      	 Tags { \"LightMode\" = \"ForwardBase\" } \n      \n         CGPROGRAM\n\n         #pragma vertex vert  \n         #pragma fragment frag \n \n 		 #include \"UnityCG.cginc\"\n \n         struct vertexInput {\n            float4 vertex : POSITION;\n            float3 normal : NORMAL;\n         };\n         struct vertexOutput {\n			float4 pos    : SV_POSITION;\n            float3 normal : NORMAL;\n            float4 wPos   : POSITION;\n            float4 col    : COLOR;\n         };\n \n 		 uniform float4 _DiffuseColor; \n         uniform float4 _SpecColor; \n         uniform float _Shininess;\n \n         vertexOutput vert(vertexInput input) \n         {\n            vertexOutput output;\n                       float4x4 modelMatrix = _Object2World;\n            float4x4 viewMatrix = UNITY_MATRIX_V; \n            float4x4 projectionMatrix = UNITY_MATRIX_P;\n            \n            //Find the world position\n            float4 worldPosition = mul(modelMatrix,input.vertex);\n            \n            //Find the normals in world coordinates\n            float4x4 modelMatrixInverse = _World2Object;\n            float3 worldNormal = normalize(mul(float4(input.normal,0),transpose(modelMatrixInverse)).xyz);\n            \n            output.normal = worldNormal;\n            output.wPos = worldPosition;\n\n            \n           output.pos = mul(projectionMatrix,mul(viewMatrix,worldPosition));\n           return output;\n         }\n \n         float4 frag(vertexOutput input) : COLOR\n         {\n            float4 worldPosition = input.pos; \n            float3 worldNormal = input.normal;\n\n            float4 lightPosition = float4(unity_4LightPosX0[0], \n                  unity_4LightPosY0[0], \n                  unity_4LightPosZ0[0], 1.0);\n                  \n            float4 viewPosition = float4(_WorldSpaceCameraPos,1);\n \n            //Calculate the light direction\n            float3 lightDirection = normalize((lightPosition - worldPosition).xyz);\n            \n            //Calculate the diffuse reflection intensity\n            float diffuseReflectionIntensity = max(0.0, dot(worldNormal,lightDirection)) ;\n            \n            //Calculate viewDirection\n            float3 viewDirection = normalize((viewPosition - worldPosition).xyz);\n            \n            //Calculate the specular reflection intensity\n            float specularReflectionIntensity = pow(max(0.0, dot(reflect(-lightDirection, worldNormal),viewDirection)), _Shininess);\n            //input.col = diffuseReflectionIntensity * _DiffuseColor + specularReflectionIntensity * _SpecColor;\njjk            input.col = input.normal;\n            return input.col;\n         }\n         ENDCG\n      }\n   }\n}\n",
-			"file": "/home/kaholi/MEGA/AAU/5 Semester/CGP/Homework/lesson 6/Homework5/Assets/test.shader",
-			"file_size": 2878,
-			"file_write_time": 130886051700825988,
-			"settings":
-			{
-				"buffer_size": 2914,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/home/kaholi/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
-			"settings":
-			{
-				"buffer_size": 263,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "",
-			"file": "/home/kaholi/.config/sublime-text-3/Packages/User/JSON.sublime-settings",
-			"file_size": -1,
-			"file_write_time": -1,
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "{\n	\n}\n",
-			"file": "/home/kaholi/.config/sublime-text-3/Packages/User/Distraction Free.sublime-settings",
-			"file_size": -1,
-			"file_write_time": -1,
-			"settings":
-			{
-				"buffer_size": 6,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/home/kaholi/.config/sublime-text-3/Packages/OmniSharp/Default.sublime-keymap",
-			"settings":
-			{
-				"buffer_size": 1150,
+				"buffer_size": 260,
 				"line_ending": "Windows"
 			}
 		}
 	],
 	"build_system": "",
-	"build_system_choices":
-	[
-	],
-	"build_varint": "",
 	"command_palette":
 	{
-		"height": 400.0,
-		"last_filter": "in",
+		"height": 104.0,
 		"selected_items":
 		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"unity",
+				"Set Syntax: Unity C#"
+			],
 			[
 				"in",
 				"Package Control: Install Package"
@@ -538,10 +452,6 @@
 			[
 				"shader ",
 				"Set Syntax: Unity Shader"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
 			],
 			[
 				"shader",
@@ -572,19 +482,11 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 754.0
+		"width": 400.0
 	},
 	"console":
 	{
-		"height": 569.0,
-		"history":
-		[
-			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
-			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) ",
-			" import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
-			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) ",
-			" import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
-		]
+		"height": 569.0
 	},
 	"distraction_free":
 	{
@@ -595,13 +497,28 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
-	"expanded_folders":
-	[
-		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Scripts",
-		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Scripts/Trigger"
-	],
 	"file_history":
 	[
+		"/C/Users/Andreas/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/LevelManager_new.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/GameManage_Localr.cs",
+		"/home/kaholi/.config/sublime-text-3/Packages/OmniSharp/Default.sublime-keymap",
+		"/home/kaholi/.config/sublime-text-3/Packages/User/Distraction Free.sublime-settings",
+		"/home/kaholi/.config/sublime-text-3/Packages/User/JSON.sublime-settings",
+		"/home/kaholi/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/kaholi/MEGA/AAU/5 Semester/CGP/Homework/lesson 6/Homework5/Assets/test.shader",
+		"/home/kaholi/MEGA/AAU/5 Semester/CGP/Homework/lesson 6/Homework5/Assets/SimpleLighting.shader",
+		"/home/kaholi/MEGA/AAU/5 Semester/CGP/InClass/lesson 6/DiffuseReflection/Assets/SimpleLighting.shader",
+		"/home/kaholi/MEGA/AAU/5 Semester/CGP/Homework/lesson 4/Homework4/Assets/Shooter.shader",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/HeadControl.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/Trigger.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/TriggerHandler.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/Server/ServerManager.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Cart.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/MicrophoneSender.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/LevelHandler.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/ExtensionMethods.cs",
+		"/C/Users/Andreas/Desktop/PGP/PGP1.sublime-project",
 		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Scripts/Extensions.cs",
 		"/home/kaholi/.local/share/unity3d/Trash/Extensions.cs",
 		"/home/kaholi/dev/games/unity/SpaceBase/Assets/Scripts/Extensions.cs",
@@ -614,7 +531,6 @@
 		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Scripts/Trigger/GameManager.cs",
 		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Scripts/Networking/Network.cs",
 		"/home/kaholi/.config/sublime-text-3/Packages/User/UnityC#.sublime-settings",
-		"/home/kaholi/.config/sublime-text-3/Packages/OmniSharp/Default.sublime-keymap",
 		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Scripts/GoodPracticesExample.cs",
 		"/home/kaholi/.config/sublime-text-3/Packages/User/Default.sublime-keymap",
 		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Scripts/Networking/LevelContainer.cs",
@@ -656,7 +572,6 @@
 		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Plugins/DarkRift/DarkRift/Plugins/DarkRiftReceiver.cs",
 		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Plugins/DarkRift/PlayerDemo/Readme.txt",
 		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Plugins/DarkRift/EmbeddedServer/ReadMe.txt",
-		"/home/kaholi/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
 		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Plugins/DarkRift/PlayerDemo/TagIndex.cs",
 		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Plugins/DarkRift/EmbeddedServer/EmbeddedCubeMove.cs",
 		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Scripts/Networking/ServerManager.cs",
@@ -711,25 +626,7 @@
 		"/home/kaholi/dev/games/unity/SpaceBase/Assets/Scripts/Components/Camera/CameraShake.cs",
 		"/home/kaholi/dev/games/unity/SpaceBase/Assets/Scripts/Components/Base/Room.cs",
 		"/home/kaholi/dev/games/unity/SpaceBase/Assets/Scripts/Components/GameStates.cs",
-		"/home/kaholi/dev/games/unity/SpaceBase/Assets/CircularMenu/CircularButton.cs",
-		"/home/kaholi/dev/games/unity/SpaceBase/Assets/Scripts/CircularMenu/CircularMenu.cs",
-		"/home/kaholi/dev/games/unity/SpaceBase/Assets/Scripts/CircularMenu/CircularButton.cs",
-		"/home/kaholi/dev/games/unity/SpaceBase/Assets/Scripts/Camera/CameraFollow.cs",
-		"/home/kaholi/dev/games/unity/SpaceBase/Assets/Scripts/Systems/DroneManager.cs",
-		"/home/kaholi/dev/games/unity/SpaceBase/Assets/Scripts/Components/Base/BaseFlying.cs",
-		"/home/kaholi/dev/games/unity/SpaceBase/Assets/Scripts/Components/Base/BaseInput.cs",
-		"/home/kaholi/dev/games/unity/SpaceBase/Assets/Scripts/Systems/BaseRoomCreation.cs",
-		"/home/kaholi/dev/games/unity/SpaceBase/Assets/Scripts/Systems/BaseFlying.cs",
-		"/home/kaholi/dev/games/unity/SpaceBase/Assets/Scripts/Components/Base/Rooms/DroneRoom.cs",
-		"/home/kaholi/dev/games/unity/SpaceBase/Assets/Scripts/Components/Base/Rooms/Room.cs",
-		"/home/kaholi/dev/games/unity/SpaceBase/Assets/Scripts/Containers.cs",
-		"/home/kaholi/dev/games/unity/SpaceBase/Assets/Scripts/Systems/BaseCreationSystem.cs",
-		"/home/kaholi/dev/games/unity/SpaceBase/Assets/Scripts/Components/Base/RoomComponent.cs",
-		"/home/kaholi/dev/games/unity/SpaceBase/Assets/Scripts/Components/Base/BaseComponent.cs",
-		"/home/kaholi/.config/sublime-text-3/Packages/Package Control/Package Control.sublime-settings",
-		"/home/kaholi/dev/games/unity/Test/Assets/test.cs",
-		"/home/kaholi/dev/games/unity/Test/\"/home/kaholi/dev/games/unity/Test/Assets/test.cs\"",
-		"/etc/apt/sources.list.save"
+		"/home/kaholi/dev/games/unity/SpaceBase/Assets/CircularMenu/CircularButton.cs"
 	],
 	"find":
 	{
@@ -737,7 +634,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 233.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"",
@@ -747,9 +644,11 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": true,
+		"case_sensitive": false,
 		"find_history":
 		[
+			"Console",
+			"TimedReset",
 			"Vector2",
 			"		\n",
 			"Camera.main.",
@@ -875,9 +774,7 @@
 			"</h3>​,",
 			"<h3>​",
 			"wei",
-			"collider",
-			"Transform",
-			"t"
+			"collider"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -885,6 +782,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"}\n",
 			"int nextLineVertex",
 			"ref LineRenderer lineRenderer,ref int nextLineVertex",
 			"nextLineVertex",
@@ -900,483 +798,170 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 5,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "Assets/Scripts/Networking/Server/ServerManager.cs",
-					"semi_transient": false,
+					"file": "Assets/Scripts/Trigger/GameManager.cs",
 					"settings":
 					{
-						"buffer_size": 2803,
+						"buffer_size": 10096,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								7209,
+								7209
 							]
 						],
 						"settings":
 						{
-							"oops":
-							{
-								"19,24": "Using directive is not used by code and can be removed safely.",
-								"1924,1934": "Use 'var' keyword",
-								"335,342": "Name should have prefix '_'. (Rule 'Fields').",
-								"345,346": "Initializing field by default value is redundant",
-								"392,400": "Name should have prefix '_'. (Rule 'Fields').",
-								"630,637": "Name should have prefix '_'. (Rule 'Fields').",
-								"677,684": "Name should have prefix '_'. (Rule 'Fields').",
-								"809,810": "Subscription to static events without unsubscription may cause memory leaks."
-							},
-							"rainbowth.lispy": false,
-							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 60.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "Assets/Scripts/ExtensionMethods.cs",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 400,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								81,
-								81
-							]
-						],
-						"settings":
-						{
-							"oops":
-							{
-								"19,24": "Using directive is not used by code and can be removed safely."
-							},
-							"syntax": "Packages/Unity3D/UnityC#.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "Assets/Scripts/Networking/LevelHandler.cs",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3559,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1434,
-								1434
-							]
-						],
-						"settings":
-						{
-							"oops":
-							{
-								"1894,1910": "'VectorExtensions' is not a known identifier",
-								"1911,1917": "Cannot convert from ? to UnityEngine.Vector2",
-								"1944,1945": "Cannot convert from UnityEngine.Vector2 to System.Single",
-								"1988,1989": "Invocation error: ArgumentTypeMismatch"
-							},
-							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1049.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "Assets/Scripts/MicrophoneSender.cs",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2132,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								743,
-								743
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Unity3D/UnityC#.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 374.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "Assets/Scripts/Cart.cs",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2018,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								351,
-								351
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Unity3D/UnityC#.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 29.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "Assets/Scripts/Networking/TriggerHandler.cs",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1838,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Unity3D/UnityC#.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 764.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "Assets/Scripts/Trigger/Trigger.cs",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1468,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Unity3D/UnityC#.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 119.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "Assets/Scripts/HeadControl.cs",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 794,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								597,
-								597
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Unity3D/UnityC#.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 315.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 14,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "/home/kaholi/MEGA/AAU/5 Semester/CGP/Homework/lesson 4/Homework4/Assets/Shooter.shader",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3813,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 1754.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 13,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "/home/kaholi/MEGA/AAU/5 Semester/CGP/InClass/lesson 6/DiffuseReflection/Assets/SimpleLighting.shader",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2408,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 572.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 12,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "/home/kaholi/MEGA/AAU/5 Semester/CGP/Homework/lesson 6/Homework5/Assets/SimpleLighting.shader",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2884,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 1439.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "/home/kaholi/MEGA/AAU/5 Semester/CGP/Homework/lesson 6/Homework5/Assets/test.shader",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2914,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2805,
-								2805
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 992.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "/home/kaholi/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 263,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "/home/kaholi/.config/sublime-text-3/Packages/User/JSON.sublime-settings",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 14,
-					"file": "/home/kaholi/.config/sublime-text-3/Packages/User/Distraction Free.sublime-settings",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6,
-								6
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 15,
-					"file": "/home/kaholi/.config/sublime-text-3/Packages/OmniSharp/Default.sublime-keymap",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1150,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"syntax": "Packages/C#/C#.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
+						"translation.y": 1699.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Assets/Scripts/Trigger/LevelManager.cs",
+					"settings":
+					{
+						"buffer_size": 2675,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1729,
+								1729
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Assets/Scripts/Interactables/InteractableButton.cs",
+					"settings":
+					{
+						"buffer_size": 4091,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								139,
+								139
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "Assets/Scripts/SoundManager.cs",
+					"settings":
+					{
+						"buffer_size": 882,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								343,
+								343
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "Assets/Scripts/Trigger/Trigger.cs",
+					"settings":
+					{
+						"buffer_size": 1277,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1277,
+								1277
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 378.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "Assets/Plugins/DarkRift/DarkRift/Plugins/DarkRiftReceiver.cs",
+					"settings":
+					{
+						"buffer_size": 260,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
 					"type": "text"
 				}
 			]
@@ -1425,8 +1010,6 @@
 	{
 		"height": 241.0
 	},
-	"pinned_build_system": "",
-	"project": "PGP1.sublime-project",
 	"replace":
 	{
 		"height": 42.0
@@ -1435,7 +1018,6 @@
 	"select_file":
 	{
 		"height": 0.0,
-		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -1444,76 +1026,15 @@
 	"select_project":
 	{
 		"height": 500.0,
-		"last_filter": "",
 		"selected_items":
 		[
 		],
 		"width": 380.0
-	},
-	"select_symbol":
-	{
-		"height": 109.0,
-		"last_filter": "RayR",
-		"selected_items":
-		[
-			[
-				"RayR",
-				"OnRayReceived"
-			],
-			[
-				"onR",
-				"OnRayReceived"
-			],
-			[
-				"Draw",
-				"DrawRay"
-			],
-			[
-				"fl",
-				"Flag"
-			],
-			[
-				"fla",
-				"FlagCreation"
-			],
-			[
-				"job",
-				"set_job"
-			],
-			[
-				"Flag",
-				"Flag"
-			],
-			[
-				"droneM",
-				"DroneManager"
-			],
-			[
-				"",
-				"CameraShake"
-			],
-			[
-				"flag",
-				"FlagCreation"
-			],
-			[
-				"Spawn",
-				"spawn_room"
-			]
-		],
-		"width": 400.0
-	},
-	"selected_group": 0,
-	"settings":
-	{
 	},
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
 	"side_bar_width": 237.0,
-	"status_bar_visible": true,
-	"template_settings":
-	{
-	}
+	"status_bar_visible": true
 }
