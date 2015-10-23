@@ -25,6 +25,9 @@ public class InteractableButton : Interactable{
 	
 	// Use this for initialization
 	void Start () {
+		
+		
+
 		playedSound 	= false;
 		arraysFit 		= false;
 		delay 			= 1.0f;
@@ -33,10 +36,11 @@ public class InteractableButton : Interactable{
 		buttonLight 	= GetComponent<Light>();
 		trigger 		= GetComponent<Trigger>();
 		par 			= GetComponent<ParticleSystem>();
-		sM 				= GameObject.Find("SoundManager").GetComponent<SoundManager>();
-
+		//Was moved here since the sM made it not work!
 		//Set the color of the interactable button both background light and particles to the correct user.
 		setButtonColor(playerList);
+		sM 				= GameObject.Find("SoundManager").GetComponent<SoundManager>();
+
 	}
 	
 	// Update is called once per frame
@@ -88,12 +92,12 @@ public class InteractableButton : Interactable{
 
 	public void setButtonColor(bool[] a){
 		//a[0] = red, a[1] = green, a[2] = blue
-		if(a[0] && !a[1] && !a[2]){							//Only red player
-			buttonLight.color = Color.red;
-			par.startColor = Color.red;
-			for(int i = 0; i < rend.Length; i++){
+		if(a[0] && !a[1] && !a[2]){						
+		buttonLight.color = Color.red;						
+		par.startColor = Color.red;                         //Only red player
+		for(int i = 0; i < rend.Length; i++){
 				rend[i].material.color = Color.red;
-			}
+		}	
 
 		} else if(!a[0] && a[1] && !a[2]){					//Only green player
 			buttonLight.color = Color.green;

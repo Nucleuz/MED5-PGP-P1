@@ -12,13 +12,13 @@ public class HelmetLightNonFocused : MonoBehaviour {
         //Set the color of the interactable button both background light and particles to the correct user.
         switch (hls.playerIndex){
             case 1:
-                nonFocusedHelmetLight.color = new Color(1, 0.2F, 0.2F, 1F); //red
+                nonFocusedHelmetLight.color = new Color(1F, 0.7F, 0.7F, 1F); //red
             break;
             case 2:
-                nonFocusedHelmetLight.color = new Color(0.2F, 1, 0.2F, 1F); //green
+                nonFocusedHelmetLight.color = new Color(0.7F, 1F, 0.7F, 1F); //green
             break;
             case 3:
-                nonFocusedHelmetLight.color = new Color(0.2F, 0.2F, 1, 1F); //blue
+                nonFocusedHelmetLight.color = new Color(0.7F, 0.7F, 1F, 1F); //blue
             break;
 
             default:
