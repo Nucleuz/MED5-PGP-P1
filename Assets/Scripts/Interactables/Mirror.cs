@@ -80,6 +80,7 @@ public class Mirror : Interactable {
 
     public override void OnRayReceived(int playerIndex, Ray ray, RaycastHit hit, ref LineRenderer lineRenderer,int nextLineVertex){
     	//Used for turning on the relfectance of the mirror.
+    	Debug.Log("check");
                 	isBeingLitOn = true;
 
     	//Set the color of the reflected light to the correct user.
