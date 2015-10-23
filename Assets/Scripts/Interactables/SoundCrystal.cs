@@ -7,7 +7,7 @@ public class SoundCrystal : Interactable
 	public ParticleSystem pS;
 
     // Reference to Game Manager, so that SoundCrystal can know when a sequence is done.
-    GameManager gM;
+    public GameManager gM;
     
     int currentIn;
     public Trigger[] buttons;
@@ -26,7 +26,7 @@ public class SoundCrystal : Interactable
         sM = GameObject.Find("SoundManager").GetComponent<SoundManager>();
 
         // Finding gameManager and setting reference
-        gM = GameObject.Find("GameManagerObject").GetComponent<GameManager>();
+      //  gM = GameObject.Find("GameManagerObject").GetComponent<GameManager>();
 
         currentIn = gM.index;
         
