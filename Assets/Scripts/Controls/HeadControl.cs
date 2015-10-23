@@ -20,7 +20,7 @@ public class HeadControl : MonoBehaviour {
 	private float turnSpeed = 80.0f;
 	public bool controllerConnected = false;
 
-
+	public Camera cam;
 
 	// Update is called once per frame
 	void Update () {

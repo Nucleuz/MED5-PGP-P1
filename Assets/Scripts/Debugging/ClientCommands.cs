@@ -44,19 +44,19 @@ public static class ClientCommands {
     	NoClip.Instance.GetComponent<NoClip>().On();
 	}
 
-    public void ResetLevel(){
+    public static void ResetLevel(){
         Application.LoadLevel(Application.loadedLevel);
     }
 
-    public void ResetGame(){
+    public static void ResetGame(){
         Application.LoadLevel(0);
     }
 
-    public void SkipLevel(){
+    public static void SkipLevel(){
         Application.LoadLevel(Application.loadedLevel + 1);
     }
 
-    public void JumpToLevel(int levelNumber){
+    public static void JumpToLevel(int levelNumber){
         Application.LoadLevel(levelNumber);
     }
 }
