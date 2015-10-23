@@ -6,33 +6,34 @@ public class InteractableButton : Interactable{
 	Light buttonLight;
 	ParticleSystem par;
 	
-	public AudioClip activatedButtonSound;
-	AudioSource audio;
-	//checks if the sound has been player, inorder to only play the sound only one time.
+	SoundManager sM;
+	bool playedSound;
 
 	[Tooltip("NEEDS TO BE THE SIZE 3. Check the players that have to hit the button. 0 = red, 1 = green, 2 = blue")]
-	public bool[] playerList = new bool[3];
+	public bool[] playerList;
 	
 	private bool[] playerCheck = new bool[3];
 	
 	private bool arraysFit;
-	private bool isSoundPlayed = false;
 
 	private float delay;
 	private float timer;
 
 	private Trigger trigger;
+
+	public Renderer[] rend;
 	
 	// Use this for initialization
 	void Start () {
+		playedSound 	= false;
 		arraysFit 		= false;
 		delay 			= 1.0f;
 	
 		buttonAnimator 	= GetComponent<Animator>();
 		buttonLight 	= GetComponent<Light>();
 		trigger 		= GetComponent<Trigger>();
-		audio 			= GetComponent<AudioSource>();
 		par 			= GetComponent<ParticleSystem>();
+		sM 				= GameObject.Find("SoundManager").GetComponent<SoundManager>();
 
 		//Set the color of the interactable button both background light and particles to the correct user.
 		setButtonColor(playerList);
@@ -53,20 +54,9 @@ public class InteractableButton : Interactable{
 		if(trigger.isTriggered){
 			buttonAnimator.SetBool("isActivated", true); 	//starts the animation of the button.
 			par.Play(); 									//starts the particles system.
-            if(!par.isPlaying)
-                playSound(); 									//starts the method which plays the sound.
 		} else {
-			 buttonAnimator.SetBool("isActivated", false); 	//stops the animation of the button.
-			 isSoundPlayed = false; 						//makes sure that the sound only plays once.
-             if(par.isPlaying)
-                 par.Stop(); 									//stops the particle system.
-		}
-	}
-
-	void playSound(){
-		if(isSoundPlayed == false){ 						//if the sound has not been played.
-			audio.PlayOneShot(activatedButtonSound, 1F); 	// play sound with the volume of 1.
-			isSoundPlayed = true; 							// set to true, so the sound wont play twice.
+			buttonAnimator.SetBool("isActivated", false); 	//stops the animation of the button.
+			par.Stop(); 									//stops the particle system.
 		}
 	}
 
@@ -77,8 +67,14 @@ public class InteractableButton : Interactable{
 
 		arraysFit = checkArrays(playerCheck, playerList);
 
-		if (!trigger.isTriggered && trigger.isReadyToBeTriggered && arraysFit)
-		    trigger.Activate();	
+		if (trigger.isReadyToBeTriggered && arraysFit){
+			trigger.isTriggered = true;
+			if(!playedSound){
+				sM.ToggleSwitch("On_Off", "On", gameObject);
+				sM.PlayEvent("ButtonOnOff", gameObject);
+				playedSound = true;
+			}
+		}
 		
 	}
 
@@ -95,30 +91,51 @@ public class InteractableButton : Interactable{
 		if(a[0] && !a[1] && !a[2]){							//Only red player
 			buttonLight.color = Color.red;
 			par.startColor = Color.red;
+			for(int i = 0; i < rend.Length; i++){
+				rend[i].material.color = Color.red;
+			}
 
 		} else if(!a[0] && a[1] && !a[2]){					//Only green player
 			buttonLight.color = Color.green;
 			par.startColor = Color.green;
+			for(int i = 0; i < rend.Length; i++){
+				rend[i].material.color = Color.green;
+			}
 
 		} else if(!a[0] && !a[1] && a[2]){					//Only blue player
 			buttonLight.color = Color.blue;
 			par.startColor = Color.blue;
+			for(int i = 0; i < rend.Length; i++){
+				rend[i].material.color = Color.blue;
+			}
 
 		} else if(a[0] && !a[1] && a[2]){					//Red and blue player
 			buttonLight.color = Color.magenta;
 			par.startColor = Color.magenta;
+			for(int i = 0; i < rend.Length; i++){
+				rend[i].material.color = Color.magenta;
+			}
 
 		} else if(a[0] && a[1] && !a[2]){					//Red and green player
 			buttonLight.color = Color.yellow;
 			par.startColor = Color.yellow;
+			for(int i = 0; i < rend.Length; i++){
+				rend[i].material.color = Color.yellow;
+			}
 
 		} else if(!a[0] && a[1] && a[2]){					//Green and blue
 			buttonLight.color = Color.cyan;
 			par.startColor = Color.cyan;
+			for(int i = 0; i < rend.Length; i++){
+				rend[i].material.color = Color.cyan;
+			}
 		
 		} else if(a[0] && a[1] && a[2]){					//All players
 			buttonLight.color = Color.white;
-			par.startColor = Color.white;        	
+			par.startColor = Color.white; 
+			for(int i = 0; i < rend.Length; i++){
+				rend[i].material.color = Color.white;
+			}       	
 		}
 	}
 }

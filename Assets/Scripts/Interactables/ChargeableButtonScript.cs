@@ -4,6 +4,9 @@ using System.Collections;
 public class ChargeableButtonScript : Interactable
 {
 
+    SoundManager sM;
+    bool soundStopped;
+
     // Float to hold the total charged energy
     public float energy = 0;
 
@@ -20,12 +23,20 @@ public class ChargeableButtonScript : Interactable
     public bool readyForCharge;
 
 	public float endInteractTime;
-	public float minInteractLength = 0.1f;
+	public float minInteractLength;
 
     private Trigger trigger;
 
+    ParticleSystem particles;
+
     void Start(){
+        soundStopped = true;
         trigger = GetComponent<Trigger>();
+
+        particles = GetComponent<ParticleSystem>();
+
+        sM = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+
     }
 
     // Update is called once per frame
@@ -52,7 +63,13 @@ public class ChargeableButtonScript : Interactable
                 if (energy >= 100){
 
                     // Set isTrigger in Trigger script to true
-                    trigger.Activate();
+                    trigger.isTriggered = true;
+                    sM.ToggleSwitch("On_Off", "On", gameObject);
+                    sM.PlayEvent("ChannelingButtonOnOff", gameObject);
+                    soundStopped = false;
+
+                    //Plays the particles once.
+                    particles.Play();
 
                     // Make sure that we cannot charge it again right away
                     readyForCharge = false;
@@ -67,6 +84,7 @@ public class ChargeableButtonScript : Interactable
         if (energy > 0 && !isCharging){
                 // Decrease energy
                 energy -= decreaseRate;
+                Debug.Log(energy);
             
         }
 
@@ -77,7 +95,13 @@ public class ChargeableButtonScript : Interactable
             energy = 0;
 
             // Set isTrigger in Trigger script to false
-            trigger.Deactivate();
+            trigger.isTriggered = false;
+            if(!soundStopped){
+                sM.StopEvent("ChannelingButtonOnOff", gameObject);
+                sM.ToggleSwitch("On_Off", "Off", gameObject);
+                sM.PlayEvent("ChannelingButtonOnOff", gameObject);
+                soundStopped = true;
+            }
             trigger.canReset = true;
         }
     }
