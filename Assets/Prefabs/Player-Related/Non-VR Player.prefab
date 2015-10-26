@@ -283,6 +283,7 @@ GameObject:
   - 92: {fileID: 9268044}
   - 114: {fileID: 11472548}
   - 114: {fileID: 11417868}
+  - 114: {fileID: 11490834}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1245,7 +1246,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 139958}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: -1.62920685e-07}
   m_LocalPosition: {x: 0, y: -.256999999, z: 0}
   m_LocalScale: {x: .200000003, y: .200000003, z: .200000003}
   m_Children:
@@ -1349,7 +1350,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 138790}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .239999995, y: .25, z: 0}
+  m_LocalPosition: {x: .31099999, y: .522000015, z: .303000003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 458290}
@@ -1387,7 +1388,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 174738}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1.20000005, y: 1.20000005, z: 1.20000005}
   m_Children:
   - {fileID: 441562}
@@ -1962,7 +1963,7 @@ MonoBehaviour:
   angleFocus: 5
   intensityNormal: 1
   intensityFocus: 8
-  playerIndex: 3
+  playerIndex: 1
   objectHit: {fileID: 0}
 --- !u!114 &11448950
 MonoBehaviour:
@@ -2131,7 +2132,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14fce854a4c2445969471c7a72f2660a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controllerConnected: 0
+  controllerConnected: 1
+--- !u!114 &11490834
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 140992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11e7895a362bed940a138aefafcd3409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listenerId: 0
 --- !u!120 &12034002
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -2142,7 +2155,7 @@ LineRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: c42f5a9831e2d3a4f834c78304e9797f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
