@@ -3,6 +3,8 @@ using System.Collections;
 
 public class ElevatorScript : MonoBehaviour {
 
+    private SoundManager sM;
+
     public RailConnection rC;                                               //rC = railConnection
     public Rail rP;                                                         //rP = railPoint
     public Trigger trigger;
@@ -18,6 +20,8 @@ public class ElevatorScript : MonoBehaviour {
  
 	// Use this for initialization
 	void Start () {
+        sM = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+
         goingUp = true;
 
         rC = GetComponent<RailConnection>();
