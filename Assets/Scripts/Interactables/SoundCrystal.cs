@@ -12,7 +12,7 @@ public class SoundCrystal : Interactable
     int currentIn;
     public Trigger[] buttons;
 
-    private string[] sequenceSerial = new string[3];
+    private string[] sequenceSerial = new string[2];
     private byte[] seqLengths;
     
     private bool sequenceIsPlaying = false;
@@ -20,19 +20,19 @@ public class SoundCrystal : Interactable
     // Use this for initialization
     void Start()
     {
-        seqLengths = new byte[3] {3, 6, 6};
+        seqLengths = new byte[2] {3, 6};
 
         // Finding soundmanager and setting reference
         sM = GameObject.Find("SoundManager").GetComponent<SoundManager>();
 
         // Finding gameManager and setting reference
-      //  gM = GameObject.Find("GameManagerObject").GetComponent<GameManager>();
+        gM = GameObject.Find("GameManagerObject").GetComponent<GameManager>();
 
         currentIn = gM.index;
         
         sequenceSerial[0] = createSequenceSerial(seqLengths[0], 3);
         sequenceSerial[1] = createSequenceSerial(seqLengths[1], 3);
-        sequenceSerial[2] = createSequenceSerial(seqLengths[2], 3);
+        //sequenceSerial[2] = createSequenceSerial(seqLengths[2], 3);
 
         SetupLevelManager();
 
@@ -76,7 +76,7 @@ public class SoundCrystal : Interactable
             gM.LM.eventsInSequence[i] = seqLengths[i];
         }
 
-        string fullSeq = sequenceSerial[0] + sequenceSerial[1] + sequenceSerial[2];
+        string fullSeq = sequenceSerial[0] + sequenceSerial[1];
 
         int x = 0;
         // counts what sequence its at

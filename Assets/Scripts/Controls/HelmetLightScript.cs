@@ -48,7 +48,7 @@ public class HelmetLightScript : MonoBehaviour {
 	
 	void Update () {
 
-        if(Input.GetKeyDown("l")){ //It is the "L" key
+        if(Input.GetKeyDown("l")){ // || Input.GetKeyDown("NextLevel")){ //It is the "L" key
             Application.LoadLevel(Application.loadedLevel + 1);
         }
 

@@ -94,11 +94,12 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 		if(readyForNextSequence == true){
+			if(LM.triggerEvents[index] != null){
+				LM.triggerEvents[index].isTriggered = true; //Triggers an object with should trigger when a sequence is finished. could for example be a door
+			}
 			if(index < LM.eventsInSequence.Length - 1){ //Checks if it is the last sequence of events - if it is: skip this
 				numberOfTriggeredEvents = LM.eventsInSequence[index]; //Increase the total number of events by the amount of events that was in the current sequence
-				if(LM.triggerEvents[index] != null){
-					LM.triggerEvents[index].isTriggered = true; //Triggers an object with should trigger when a sequence is finished. could for example be a door
-				}
+				
 				index++;
 				for(int i = numberOfTriggeredEvents; i < numberOfTriggeredEvents + LM.eventsInSequence[index]; ++i){ //Goes through the next sequence of events
 					LM.events[i].isReadyToBeTriggered = true; //Makes the next sequence ready to be triggered 
