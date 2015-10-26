@@ -63,7 +63,7 @@ public class ChargeableButtonScript : Interactable
                 if (energy >= 100){
 
                     // Set isTrigger in Trigger script to true
-                    trigger.isTriggered = true;
+                    trigger.Activate();
                     sM.ToggleSwitch("On_Off", "On", gameObject);
                     sM.PlayEvent("ChannelingButtonOnOff", gameObject);
                     soundStopped = false;
@@ -95,7 +95,7 @@ public class ChargeableButtonScript : Interactable
             energy = 0;
 
             // Set isTrigger in Trigger script to false
-            trigger.isTriggered = false;
+            trigger.Deactivate();
             if(!soundStopped){
                 sM.StopEvent("ChannelingButtonOnOff", gameObject);
                 sM.ToggleSwitch("On_Off", "Off", gameObject);

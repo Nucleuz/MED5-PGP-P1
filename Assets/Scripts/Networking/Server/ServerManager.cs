@@ -211,6 +211,6 @@ public class ServerManager : NetworkManager {
 		}
 
 		// Close server
-		DarkRiftServer.Close(false);
+		//DarkRiftServer.Close(false);
 	}
 }

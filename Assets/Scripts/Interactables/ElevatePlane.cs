@@ -73,7 +73,7 @@ public class ElevatePlane : MonoBehaviour
                     goingUp = true;
                 }
                 isActivated = false;
-                trigger.isTriggered = false;
+                trigger.Deactivate();
                 trigger.isReadyToBeTriggered = true;
             }
         }

@@ -57,10 +57,12 @@ public class InteractableButton : Interactable{
 
 		if(trigger.isTriggered){
 			buttonAnimator.SetBool("isActivated", true); 	//starts the animation of the button.
-			par.Play(); 									//starts the particles system.
+			if(!par.isPlaying)
+				par.Play(); 									//starts the particles system.
 		} else {
 			buttonAnimator.SetBool("isActivated", false); 	//stops the animation of the button.
-			par.Stop(); 									//stops the particle system.
+			if(par.isPlaying)
+				par.Stop(); 									//stops the particle system.
 		}
 	}
 
@@ -72,7 +74,7 @@ public class InteractableButton : Interactable{
 		arraysFit = checkArrays(playerCheck, playerList);
 
 		if (trigger.isReadyToBeTriggered && arraysFit){
-			trigger.isTriggered = true;
+			trigger.Activate();
 			if(!playedSound){
 				sM.ToggleSwitch("On_Off", "On", gameObject);
 				sM.PlayEvent("ButtonOnOff", gameObject);

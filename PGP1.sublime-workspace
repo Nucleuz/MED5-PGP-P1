@@ -391,7 +391,23 @@
 			"file": "Assets/Scripts/Interactables/InteractableButton.cs",
 			"settings":
 			{
-				"buffer_size": 4091,
+				"buffer_size": 4128,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Controls/Cart.cs",
+			"settings":
+			{
+				"buffer_size": 3032,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Interactables/Barricade.cs",
+			"settings":
+			{
+				"buffer_size": 908,
 				"line_ending": "Windows"
 			}
 		},
@@ -404,21 +420,18 @@
 			}
 		},
 		{
-			"contents": "using UnityEngine;\nusing System.Collections;\nusing DarkRift;\n\npublic class Trigger : MonoBehaviour {\n	public bool isTriggered = false;\n	public bool isReadyToBeTriggered = false;\n	public bool canReset = false;\n    \n    //Networking\n    public ushort triggerID;\n\n    public void Activate(){\n        if(isTriggered) return;\n        isTriggered = true; \n\n        //Send to Server @TODO to display visuals everyone should get this\n        if(!NetworkManager.isServer)\n            DarkRiftAPI.SendMessageToServer(Network.Tag.Trigger, Network.Subject.TriggerActivate,triggerID); \n        \n		Console.Instance.AddMessage(\"Trigger \" + triggerID + \" Activated\");\n    }\n   \n    public void Deactivate(){\n        if(!isTriggered) return;\n        isTriggered = false;\n\n        if(!NetworkManager.isServer)\n            DarkRiftAPI.SendMessageToServer(Network.Tag.Trigger,Network.Subject.TriggerDeactivate, triggerID);\n\n		Console.Instance.AddMessage(\"Trigger \" + triggerID + \" Deactivated\");\n    }\n\n    public void SetState(TriggerState state){\n        triggerID = state.id;\n        isTriggered = state.isTriggered;\n        isReadyToBeTriggered = state.isReadyToBeTriggered;\n        canReset = state.canReset;\n    }\n\n    public void SetTriggerID(ushort id){\n        triggerID = id;\n    }\n}\n\n\n\n",
-			"file": "Assets/Scripts/Trigger/Trigger.cs",
-			"file_size": 1327,
-			"file_write_time": 130900809936847500,
-			"settings":
-			{
-				"buffer_size": 1277,
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "Assets/Plugins/DarkRift/DarkRift/Plugins/DarkRiftReceiver.cs",
 			"settings":
 			{
 				"buffer_size": 260,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Networking/Server/ServerManager.cs",
+			"settings":
+			{
+				"buffer_size": 7006,
 				"line_ending": "Windows"
 			}
 		}
@@ -499,6 +512,11 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/Client/NetPlayerSync.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Plugins/DarkRift/EmbeddedServer/Server.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/ChargeableButtonScript.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/ElevatePlane.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/Trigger.cs",
 		"/C/Users/Andreas/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/LevelManager_new.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/GameManage_Localr.cs",
@@ -511,7 +529,6 @@
 		"/home/kaholi/MEGA/AAU/5 Semester/CGP/InClass/lesson 6/DiffuseReflection/Assets/SimpleLighting.shader",
 		"/home/kaholi/MEGA/AAU/5 Semester/CGP/Homework/lesson 4/Homework4/Assets/Shooter.shader",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/HeadControl.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/Trigger.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/TriggerHandler.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/Server/ServerManager.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Cart.cs",
@@ -622,11 +639,7 @@
 		"/home/kaholi/dev/games/unity/SpaceBase/Assets/Scripts/Components/Base/BaseRoomCreation.cs",
 		"/home/kaholi/dev/games/unity/SpaceBase/Assets/Scripts/Components/Flags/FlagCreation.cs",
 		"/home/kaholi/dev/games/unity/SpaceBase/SpaceBase.sublime-workspace",
-		"/home/kaholi/dev/games/unity/SpaceBase/Assets/Scripts/Components/Base/Base.cs",
-		"/home/kaholi/dev/games/unity/SpaceBase/Assets/Scripts/Components/Camera/CameraShake.cs",
-		"/home/kaholi/dev/games/unity/SpaceBase/Assets/Scripts/Components/Base/Room.cs",
-		"/home/kaholi/dev/games/unity/SpaceBase/Assets/Scripts/Components/GameStates.cs",
-		"/home/kaholi/dev/games/unity/SpaceBase/Assets/CircularMenu/CircularButton.cs"
+		"/home/kaholi/dev/games/unity/SpaceBase/Assets/Scripts/Components/Base/Base.cs"
 	],
 	"find":
 	{
@@ -634,7 +647,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 90.0,
 		"where_history":
 		[
 			"",
@@ -647,6 +660,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"trigger.isTriggered",
+			"trigger.isTriggered = ",
 			"Console",
 			"TimedReset",
 			"Vector2",
@@ -772,9 +787,7 @@
 			"\"]",
 			"[\"",
 			"</h3>​,",
-			"<h3>​",
-			"wei",
-			"collider"
+			"<h3>​"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -798,7 +811,7 @@
 	"groups":
 	[
 		{
-			"selected": 5,
+			"selected": 7,
 			"sheets":
 			[
 				{
@@ -861,15 +874,15 @@
 					"file": "Assets/Scripts/Interactables/InteractableButton.cs",
 					"settings":
 					{
-						"buffer_size": 4091,
+						"buffer_size": 4128,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								139,
-								139
+								1773,
+								1773
 							]
 						],
 						"settings":
@@ -878,13 +891,68 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 648.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
+					"file": "Assets/Scripts/Controls/Cart.cs",
+					"settings":
+					{
+						"buffer_size": 3032,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2773,
+								2773
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1176.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "Assets/Scripts/Interactables/Barricade.cs",
+					"settings":
+					{
+						"buffer_size": 908,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								538,
+								538
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 162.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
 					"file": "Assets/Scripts/SoundManager.cs",
 					"settings":
 					{
@@ -911,35 +979,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "Assets/Scripts/Trigger/Trigger.cs",
-					"settings":
-					{
-						"buffer_size": 1277,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1277,
-								1277
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C#/C#.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 378.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "Assets/Plugins/DarkRift/DarkRift/Plugins/DarkRiftReceiver.cs",
 					"settings":
 					{
@@ -960,6 +1000,34 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "Assets/Scripts/Networking/Server/ServerManager.cs",
+					"settings":
+					{
+						"buffer_size": 7006,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6958,
+								6958
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2345.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1004,7 +1072,7 @@
 	},
 	"output.find_results":
 	{
-		"height": 110.0
+		"height": 390.0
 	},
 	"output.variable_get":
 	{
