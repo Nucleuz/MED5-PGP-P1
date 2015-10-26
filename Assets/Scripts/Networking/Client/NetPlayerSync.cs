@@ -40,6 +40,10 @@ public class NetPlayerSync : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+		if(Input.GetKeyDown(KeyCode.Space)){
+			DarkRiftAPI.SendMessageToOthers(Network.Tag.Player, Network.Subject.PlayerPositionUpdate, transform.position.Serialize());
+
+		}
 		if(isSender && DarkRiftAPI.isConnected){
 			SendData();
 		}

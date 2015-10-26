@@ -372,58 +372,18 @@
 	"buffers":
 	[
 		{
-			"file": "Assets/Scripts/Trigger/GameManager.cs",
+			"file": "Assets/Scripts/Networking/Client/ClientManager.cs",
 			"settings":
 			{
-				"buffer_size": 10096,
+				"buffer_size": 7006,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "Assets/Scripts/Trigger/LevelManager.cs",
+			"file": "Assets/Scripts/Networking/Client/NetPlayerSync.cs",
 			"settings":
 			{
-				"buffer_size": 2675,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "Assets/Scripts/Interactables/InteractableButton.cs",
-			"settings":
-			{
-				"buffer_size": 4128,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "Assets/Scripts/Controls/Cart.cs",
-			"settings":
-			{
-				"buffer_size": 3032,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "Assets/Scripts/Interactables/Barricade.cs",
-			"settings":
-			{
-				"buffer_size": 908,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "Assets/Scripts/SoundManager.cs",
-			"settings":
-			{
-				"buffer_size": 882,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "Assets/Plugins/DarkRift/DarkRift/Plugins/DarkRiftReceiver.cs",
-			"settings":
-			{
-				"buffer_size": 260,
+				"buffer_size": 3641,
 				"line_ending": "Windows"
 			}
 		},
@@ -512,6 +472,17 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Andreas/Desktop/PGP/Assets/Plugins/DarkRift/DarkRift/Plugins/DarkRiftReceiver.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/SoundManager.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/Barricade.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Controls/Cart.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/InteractableButton.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/LevelHandler.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/Server/ServerManager.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/LevelManager.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/GameManager.cs",
+		"/C/Users/Andreas/Desktop/UnityReflRefr/Assets/Scripts/PenControllerRefraction.cs",
+		"/C/Users/Andreas/Desktop/UnityReflRefr/Assets/Scripts/PenControllerReflection.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/Client/NetPlayerSync.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Plugins/DarkRift/EmbeddedServer/Server.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/ChargeableButtonScript.cs",
@@ -530,10 +501,8 @@
 		"/home/kaholi/MEGA/AAU/5 Semester/CGP/Homework/lesson 4/Homework4/Assets/Shooter.shader",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/HeadControl.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/TriggerHandler.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/Server/ServerManager.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Cart.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/MicrophoneSender.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/LevelHandler.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/ExtensionMethods.cs",
 		"/C/Users/Andreas/Desktop/PGP/PGP1.sublime-project",
 		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Scripts/Extensions.cs",
@@ -630,16 +599,7 @@
 		"/home/kaholi/MEGA/AAU/5 Semester/CGP/Homework/lesson 1/Homework1/Assets/Emissive.shader",
 		"/home/kaholi/dev/games/unity/SpaceBase/Assets/Scripts/Components/Base/Room_Interior/DroneInterior.cs",
 		"/home/kaholi/dev/games/unity/SpaceBase/Library/ScriptAssemblies/Assembly-CSharp.dll",
-		"/home/kaholi/dev/games/unity/SpaceBase/Library/metadata/50/50d4b87d633404c1c914f043ff8a49f2",
-		"/home/kaholi/dev/games/unity/SpaceBase/Library/metadata/67/670376d0ef029490f8d8485dce27814f",
-		"/home/kaholi/dev/games/unity/SpaceBase/Library/metadata/f6/f62711b69c52349f58ce6e4867576e57",
-		"/home/kaholi/dev/games/unity/SpaceBase/Assets/Scripts/Components/Drones/Drone.cs",
-		"/home/kaholi/dev/games/unity/SpaceBase/Assets/Scripts/Enums.cs",
-		"/home/kaholi/dev/games/unity/SpaceBase/Assets/Scripts/Components/Flags/Flag.cs",
-		"/home/kaholi/dev/games/unity/SpaceBase/Assets/Scripts/Components/Base/BaseRoomCreation.cs",
-		"/home/kaholi/dev/games/unity/SpaceBase/Assets/Scripts/Components/Flags/FlagCreation.cs",
-		"/home/kaholi/dev/games/unity/SpaceBase/SpaceBase.sublime-workspace",
-		"/home/kaholi/dev/games/unity/SpaceBase/Assets/Scripts/Components/Base/Base.cs"
+		"/home/kaholi/dev/games/unity/SpaceBase/Library/metadata/50/50d4b87d633404c1c914f043ff8a49f2"
 	],
 	"find":
 	{
@@ -647,7 +607,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 90.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"",
@@ -660,6 +620,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"refRatio",
+			"hL",
+			"Reflect",
 			"trigger.isTriggered",
 			"trigger.isTriggered = ",
 			"Console",
@@ -784,10 +747,7 @@
 			"Demo",
 			"demo",
 			"\", \"",
-			"\"]",
-			"[\"",
-			"</h3>​,",
-			"<h3>​"
+			"\"]"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -805,29 +765,29 @@
 		"reverse": false,
 		"show_context": false,
 		"use_buffer2": false,
-		"whole_word": false,
+		"whole_word": true,
 		"wrap": true
 	},
 	"groups":
 	[
 		{
-			"selected": 7,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "Assets/Scripts/Trigger/GameManager.cs",
+					"file": "Assets/Scripts/Networking/Client/ClientManager.cs",
 					"settings":
 					{
-						"buffer_size": 10096,
+						"buffer_size": 7006,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7209,
-								7209
+								6401,
+								6410
 							]
 						],
 						"settings":
@@ -836,26 +796,26 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 1699.0,
+						"translation.x": 56.0,
+						"translation.y": 1197.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "Assets/Scripts/Trigger/LevelManager.cs",
+					"file": "Assets/Scripts/Networking/Client/NetPlayerSync.cs",
 					"settings":
 					{
-						"buffer_size": 2675,
+						"buffer_size": 3641,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1729,
-								1729
+								1012,
+								1012
 							]
 						],
 						"settings":
@@ -864,148 +824,19 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 383.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
-				},
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
 				{
 					"buffer": 2,
-					"file": "Assets/Scripts/Interactables/InteractableButton.cs",
-					"settings":
-					{
-						"buffer_size": 4128,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1773,
-								1773
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 648.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "Assets/Scripts/Controls/Cart.cs",
-					"settings":
-					{
-						"buffer_size": 3032,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2773,
-								2773
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C#/C#.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1176.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "Assets/Scripts/Interactables/Barricade.cs",
-					"settings":
-					{
-						"buffer_size": 908,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								538,
-								538
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C#/C#.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 162.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "Assets/Scripts/SoundManager.cs",
-					"settings":
-					{
-						"buffer_size": 882,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								343,
-								343
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C#/C#.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "Assets/Plugins/DarkRift/DarkRift/Plugins/DarkRiftReceiver.cs",
-					"settings":
-					{
-						"buffer_size": 260,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C#/C#.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
 					"file": "Assets/Scripts/Networking/Server/ServerManager.cs",
 					"settings":
 					{
@@ -1016,8 +847,8 @@
 						"selection":
 						[
 							[
-								6958,
-								6958
+								862,
+								862
 							]
 						],
 						"settings":
@@ -1027,7 +858,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2345.0,
+						"translation.y": 1005.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1052,11 +883,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -1088,6 +926,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"netsyn",
+				"Networking/Client/NetPlayerSync.cs"
+			]
 		],
 		"width": 0.0
 	},
@@ -1102,7 +944,7 @@
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": true,
+	"side_bar_visible": false,
 	"side_bar_width": 237.0,
 	"status_bar_visible": true
 }

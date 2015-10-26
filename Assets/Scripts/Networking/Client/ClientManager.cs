@@ -54,8 +54,6 @@ public class ClientManager : NetworkManager
             //tell everyone else that we have entered so they can tell where they are
             DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager, Network.Subject.HasJoined,(ushort) 123);
         }
-
-
     }
 
     void OnApplicationQuit()
