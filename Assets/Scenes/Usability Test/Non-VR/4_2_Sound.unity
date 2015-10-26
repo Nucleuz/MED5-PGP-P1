@@ -1926,65 +1926,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b4a782cbcb5024bc8b098fa398c83d48, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &68983210
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 406254, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -13.6899996
-      objectReference: {fileID: 0}
-    - target: {fileID: 406254, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: .870000005
-      objectReference: {fileID: 0}
-    - target: {fileID: 406254, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -31.5100002
-      objectReference: {fileID: 0}
-    - target: {fileID: 406254, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 406254, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: .707106829
-      objectReference: {fileID: 0}
-    - target: {fileID: 406254, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 406254, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: .707106709
-      objectReference: {fileID: 0}
-    - target: {fileID: 406254, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
-      propertyPath: m_RootOrder
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 150028, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
-      propertyPath: m_Name
-      value: VR Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 11470410, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
-      propertyPath: playerIndex
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11449746, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
-      propertyPath: CurrentRail
-      value: 
-      objectReference: {fileID: 1916553668}
-    - target: {fileID: 2373790, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8145124, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
-  m_ParentPrefab: {fileID: 100100000, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
-  m_IsPrefabParent: 0
 --- !u!4 &70647460 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: d3d598021f4e5492e8bf0e69b6a21a23, type: 3}
@@ -8400,22 +8341,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 448000, guid: 7b5adbd77f46d44b0b0357c897de48a5, type: 2}
   m_PrefabInternal: {fileID: 685617722}
---- !u!1 &412977766 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 189880, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
-  m_PrefabInternal: {fileID: 68983210}
---- !u!114 &412977769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 412977766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11e7895a362bed940a138aefafcd3409, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  listenerId: 0
 --- !u!4 &414347482 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: d3d598021f4e5492e8bf0e69b6a21a23, type: 3}
@@ -11700,7 +11625,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 22
 --- !u!4 &588331163 stripped
 Transform:
   m_PrefabParentObject: {fileID: 496926, guid: 269caeba40e854a55ac13b6791bc70e6, type: 2}
@@ -25529,7 +25454,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 42de07958cecb91459133580e4d537dc, type: 2}
     - target: {fileID: 174738, guid: 6b51f68b61740074b921684716c1e935, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11433986, guid: 6b51f68b61740074b921684716c1e935, type: 2}
       propertyPath: playerIndex
