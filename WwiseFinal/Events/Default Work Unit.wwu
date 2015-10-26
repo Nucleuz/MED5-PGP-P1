@@ -267,6 +267,39 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="CartRings" ID="{B44B5591-398C-4B77-9B39-5ECFE45BA4C5}">
+					<ChildrenList>
+						<Action Name="Play" ID="{93F00E2E-34AE-4D21-B32C-A350E05D2F9E}" ShortID="366289306" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{770E5F1F-EFF4-4F00-86BE-25817F3E83FF}" Global="false">
+									<ObjectRef Name="CartRings" ID="{BAC7E7FC-76DC-4B21-8723-F0026B8DD1FB}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="RiverRunning" ID="{10F19444-12CD-440D-8E1E-34936C4C2FAF}">
+					<ChildrenList>
+						<Action Name="Play" ID="{414B2D45-3C93-45CA-BF13-6078AE3C6265}" ShortID="923857501" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{F03B245C-1C45-4CBE-A1E7-6DDCF6C1C484}" Global="false">
+									<ObjectRef Name="RunningRiver" ID="{12C9908C-7BB9-46AD-B5B6-AD8B9534B7B8}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="WaterfallHuge" ID="{3EBD2926-339B-44E8-B616-2F8D833FF2C0}">
+					<ChildrenList>
+						<Action Name="Play" ID="{DD9A3016-3ECD-4E4E-9BE9-4C859E6CCF87}" ShortID="328735860" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{6BB37CE3-D173-4B75-B4BE-BAA5CFC177A8}" Global="false">
+									<ObjectRef Name="Waterfall07" ID="{BC24D74B-5F20-4599-995C-AE9527B53197}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
