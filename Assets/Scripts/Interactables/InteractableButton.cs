@@ -4,10 +4,11 @@ using System.Collections;
 public class InteractableButton : Interactable{
 	Animator buttonAnimator;
 	Light buttonLight;
-	ParticleSystem par;
-	
+	public ParticleSystem par;
+	public ParticleSystem placeHolder;
 	SoundManager sM;
 	public bool playedSound;
+	public bool particlesReplaced = false;
 
 	[Tooltip("NEEDS TO BE THE SIZE 3. Check the players that have to hit the button. 0 = red, 1 = green, 2 = blue")]
 	public bool[] playerList;
@@ -39,6 +40,7 @@ public class InteractableButton : Interactable{
 		//Was moved here since the sM made it not work!
 		//Set the color of the interactable button both background light and particles to the correct user.
 		setButtonColor(playerList);
+		par.Play ();
 		sM 				= GameObject.Find("SoundManager").GetComponent<SoundManager>();
 
 	}
@@ -57,10 +59,11 @@ public class InteractableButton : Interactable{
 
 		if(trigger.isTriggered){
 			buttonAnimator.SetBool("isActivated", true); 	//starts the animation of the button.
-			par.Play(); 									//starts the particles system.
+											//starts the particles system.
+			ReplaceParticles();
 		} else {
 			buttonAnimator.SetBool("isActivated", false); 	//stops the animation of the button.
-			par.Stop(); 									//stops the particle system.
+
 		}
 
 		if(playedSound && !trigger.isTriggered){
@@ -100,7 +103,8 @@ public class InteractableButton : Interactable{
 		//a[0] = red, a[1] = green, a[2] = blue
 		if(a[0] && !a[1] && !a[2]){						
 		buttonLight.color = Color.red;						
-		par.startColor = Color.red;                         //Only red player
+		par.startColor = Color.red; //Only red player
+			placeHolder.startColor = Color.red;
 		for(int i = 0; i < rend.Length; i++){
 				rend[i].material.color = Color.red;
 		}	
@@ -108,13 +112,16 @@ public class InteractableButton : Interactable{
 		} else if(!a[0] && a[1] && !a[2]){					//Only green player
 			buttonLight.color = Color.green;
 			par.startColor = Color.green;
+			placeHolder.startColor = Color.green;
 			for(int i = 0; i < rend.Length; i++){
 				rend[i].material.color = Color.green;
+
 			}
 
 		} else if(!a[0] && !a[1] && a[2]){					//Only blue player
 			buttonLight.color = Color.blue;
 			par.startColor = Color.blue;
+			placeHolder.startColor = Color.blue;
 			for(int i = 0; i < rend.Length; i++){
 				rend[i].material.color = Color.blue;
 			}
@@ -122,6 +129,7 @@ public class InteractableButton : Interactable{
 		} else if(a[0] && !a[1] && a[2]){					//Red and blue player
 			buttonLight.color = Color.magenta;
 			par.startColor = Color.magenta;
+			placeHolder.startColor = Color.magenta;
 			for(int i = 0; i < rend.Length; i++){
 				rend[i].material.color = Color.magenta;
 			}
@@ -136,6 +144,7 @@ public class InteractableButton : Interactable{
 		} else if(!a[0] && a[1] && a[2]){					//Green and blue
 			buttonLight.color = Color.cyan;
 			par.startColor = Color.cyan;
+			placeHolder.startColor = Color.cyan;
 			for(int i = 0; i < rend.Length; i++){
 				rend[i].material.color = Color.cyan;
 			}
@@ -143,9 +152,19 @@ public class InteractableButton : Interactable{
 		} else if(a[0] && a[1] && a[2]){					//All players
 			buttonLight.color = Color.white;
 			par.startColor = Color.white; 
+			placeHolder.startColor = Color.white;
 			for(int i = 0; i < rend.Length; i++){
 				rend[i].material.color = Color.white;
 			}       	
+		}
+	}
+	void ReplaceParticles(){
+		if (!particlesReplaced) {
+
+			par.Stop();
+			placeHolder.loop = false;
+			placeHolder.Play();
+			particlesReplaced = true;
 		}
 	}
 }

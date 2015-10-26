@@ -115,6 +115,11 @@ public class GameManager : MonoBehaviour {
 		yield return new WaitForSeconds(1.5f); //Resets after x seconds
 		LM.events[resetIndex + numberOfTriggeredEvents].isTriggered = false;
 		LM.events[resetIndex + numberOfTriggeredEvents].isReadyToBeTriggered = true;
+		if (LM.events[resetIndex + numberOfTriggeredEvents].GetComponent<InteractableButton>()) {
+			LM.events[resetIndex + numberOfTriggeredEvents].GetComponent<InteractableButton>().par.Play();
+			LM.events[resetIndex + numberOfTriggeredEvents].GetComponent<InteractableButton>().particlesReplaced = false;
+			LM.events[resetIndex + numberOfTriggeredEvents].GetComponent<InteractableButton>().placeHolder.Stop ();
+		}
 	}
 	
 	IEnumerator FailedReset(int resetIndex){ //MOVE SOME OF THIS STUFF UP! 
