@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour {
                 for(int h = 0; h < LM.eventOrder[index]; h++)
                     StartCoroutine(TimedReset(h));
             }
-            DetectTriggerChanges();
         }catch(System.IndexOutOfRangeException e){
             Debug.Log("GM ERROR with index: " + index);
         }
@@ -53,6 +52,8 @@ public class GameManager : MonoBehaviour {
                     //Used in order to not get double values
                     if(LM.events[j + numberOfTriggeredEvents].isTriggered == true && LM.events[j + numberOfTriggeredEvents].isReadyToBeTriggered == true){ //Checks if they are triggered
                         LM.events[j + numberOfTriggeredEvents].isReadyToBeTriggered = false; //sets the event untriggerable
+                        LM.triggeredEvents[j + numberOfTriggeredEvents + currentNumberOfEventsTriggered] = true;
+
                         currentNumberOfEventsTriggered++; //counts up the events in sequence by 1
                     }
                     resetTriggers(j);
