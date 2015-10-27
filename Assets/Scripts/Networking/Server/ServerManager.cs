@@ -50,7 +50,6 @@ public class ServerManager : NetworkManager {
 	//Called when we receive data
 	void OnData(ConnectionService con, ref NetworkMessage data)
 	{
-        Debug.Log("Data from " + con.id + ", Tag: " + data.tag + ", Subject: " + data.subject);
 		if(data.tag == Network.Tag.Manager){
 
 			if(data.subject == Network.Subject.HasJoined){
@@ -71,10 +70,12 @@ public class ServerManager : NetworkManager {
                         Network.Tag.Manager, 
                         Network.Subject.ServerSentNetID, 
                         con.id);
-				con.SendReply(Network.Tag.Manager, 
+			}else if(data.subject == Network.Subject.RequestServerLevel){
+                Debug.Log("Player requested the servers level index");
+                con.SendReply(Network.Tag.Manager, 
                         Network.Subject.NewLevelManager, 
                         levelHandler.levelManagerIndex);
-			}
+            }
 		}else if(data.tag == Network.Tag.Player){
 
 			if( data.subject == Network.Subject.PlayerPositionUpdate ){
