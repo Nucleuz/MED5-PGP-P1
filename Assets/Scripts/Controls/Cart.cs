@@ -12,12 +12,15 @@ public class Cart : MonoBehaviour {
 	public float animationSpeed;
 	float t = 0; 	
 
+	// New Stuff
+	private float currentStep;
+
 	void Start() {
 
 
         startingRail = CurrentRail;
         startingPosition = transform.position;
-		StartCoroutine (UpdatePosition());
+		//StartCoroutine (UpdatePosition());
 		minecartAnimator = GetComponent<Animator>();
 	}
 	
@@ -30,14 +33,14 @@ public class Cart : MonoBehaviour {
 		//Checks for key presses. If up/down key is pressed
 		//then run move function. This can only happen if cart is not
 		//already moving.
-		if(Input.GetAxis("Vertical")>0 && !isMoving){
+		if(Input.GetAxis("Vertical") > 0 && !isMoving){
 			minecartAnimator.StartPlayback();
 			minecartAnimator.speed = animationSpeed; //Change the speed of the animation accordingly to the speed of the cart
 			MoveForward();
 
 
 	
-		} else if(Input.GetAxis("Vertical")<0 && !isMoving){
+		} else if(Input.GetAxis("Vertical") < 0 && !isMoving){
 			minecartAnimator.StartPlayback();
 			minecartAnimator.speed = -animationSpeed; //Change the speed of the animation accordingly to the speed of the cart
 			MoveBackward();
@@ -49,20 +52,40 @@ public class Cart : MonoBehaviour {
 
 	//Sets current railpoint to next railpoint
 	//and runs movement coroutine
-	void MoveForward(){
-		if(CurrentRail.NextRail != null){
-			CurrentRail = CurrentRail.NextRail;
+	void MoveForward() {
+		if(CurrentRail.NextRail != null)
+		{
+			transform.position = Vector3.Lerp(CurrentRail.transform.position, CurrentRail.NextRail.transform.position, currentStep);
+
+			float length = Vector3.Distance(CurrentRail.transform.position, CurrentRail.NextRail.transform.position);
+
+			currentStep += (1/length) * 0.01f;
+			
+			if(currentStep >= 1) {
+				CurrentRail = CurrentRail.NextRail;
+				currentStep = 0;
+			}
 		}
-		StartCoroutine(UpdatePosition());
 	}
 
 	//Sets current railpoint to previous railpoint
 	//and runs movement coroutine
-	void MoveBackward(){
-		if(CurrentRail.PreviousRail != null){
-			CurrentRail = CurrentRail.PreviousRail;
+	void MoveBackward() {
+		if(CurrentRail.PreviousRail != null)
+		{
+			transform.position = Vector3.Lerp(CurrentRail.transform.position, CurrentRail.PreviousRail.transform.position, currentStep);
+			
+			float length = Vector3.Distance(CurrentRail.transform.position, CurrentRail.PreviousRail.transform.position);
+			
+			currentStep -= (1/length) * 0.01f;
+
+			if(currentStep >= 1) {
+				CurrentRail = CurrentRail.PreviousRail;
+				currentStep = 0;
+			}
 		}
-		StartCoroutine(UpdatePosition());
+
+
 	}
 
 	//Utilizes lerps for movement and rotation adjustment between position and
