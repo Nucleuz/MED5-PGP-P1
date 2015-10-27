@@ -3,16 +3,35 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class SoundManager: MonoBehaviour {
-/*
-		Game Plan!
-- Sound Manager class needs to handle all sound playing
-- Sound Manager will hold all needed functions for: 
-	- Events
-		- Play / stop event (PostEvent will play sound)
-		- Handle switch modes
-		- Handle state modes
-		- Handle triggers
-*/
+
+	static SoundManager instance;
+
+	public static bool isActive { 
+		get { 
+			return instance != null; 
+		} 
+	}
+
+	public static SoundManager Instance
+	{
+		get
+		{
+			if (instance == null)
+			{
+				instance = Object.FindObjectOfType(typeof(SoundManager)) as SoundManager;
+ 
+				if (instance == null)
+				{
+					GameObject go = new GameObject("_gamemanager");
+					DontDestroyOnLoad(go);
+					instance = go.AddComponent<SoundManager>();
+				}
+			}
+			return instance;
+		}
+	}
+
+
 	private List<GameObject> objectList = new List<GameObject>();
 
 	public void StopAllEvents(){
@@ -67,5 +86,4 @@ public class SoundManager: MonoBehaviour {
 		}
 		Debug.Log("END OF LIST");
 	}
-
 }

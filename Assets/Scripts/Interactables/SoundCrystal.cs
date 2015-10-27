@@ -3,8 +3,6 @@ using System.Collections;
 
 public class SoundCrystal : Interactable
 {
-	SoundManager sM;
-
     // Reference to Game Manager, so that SoundCrystal can know when a sequence is done.
     GameManager gM;
     int currentIn;
@@ -19,9 +17,6 @@ public class SoundCrystal : Interactable
     void Start()
     {
         seqLengths = new byte[3] {3, 6, 6};
-
-        // Finding soundmanager and setting reference
-        sM = GameObject.Find("SoundManager").GetComponent<SoundManager>();
 
         // Finding gameManager and setting reference
         gM = GameObject.Find("GameManagerObject").GetComponent<GameManager>();
@@ -100,27 +95,27 @@ public class SoundCrystal : Interactable
             switch( (int)(char.GetNumericValue(sequenceSerial[gM.index][i]))    ){
 
             case 0:
-                sM.PlayEvent("SP_PlayerButton1", gameObject);
+                SoundManager.Instance.PlayEvent("SP_PlayerButton1", gameObject);
             break;
 
             case 1:
-                sM.PlayEvent("SP_PlayerButton2", gameObject);
+                SoundManager.Instance.PlayEvent("SP_PlayerButton2", gameObject);
             break;
 
             case 2:
-                sM.PlayEvent("SP_PlayerButton3", gameObject);
+                SoundManager.Instance.PlayEvent("SP_PlayerButton3", gameObject);
             break;
 
             case 3:
-                sM.PlayEvent("SP_PlayerButton4", gameObject);
+                SoundManager.Instance.PlayEvent("SP_PlayerButton4", gameObject);
             break;
 
             case 4:
-                sM.PlayEvent("SP_PlayerButton5", gameObject);
+                SoundManager.Instance.PlayEvent("SP_PlayerButton5", gameObject);
             break;
 
             case 5:
-                sM.PlayEvent("SP_PlayerButton6", gameObject);
+                SoundManager.Instance.PlayEvent("SP_PlayerButton6", gameObject);
             break;
 
             default:
