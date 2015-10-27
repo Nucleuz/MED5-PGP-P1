@@ -16,7 +16,7 @@ using DarkRift;
      
      public class TriggerHandler : MonoBehaviour{
 
-         public static TriggerHandler _instance;
+         private static TriggerHandler instance;
 
          public List<Trigger> triggers;
 
@@ -30,9 +30,13 @@ using DarkRift;
 
          private LevelHandler levelHandler;
 
-         void Awake(){
-             _instance = this;
-         }
+        public static TriggerHandler Instance{
+            get{
+                if (instance == null)
+                    instance = FindObjectOfType(typeof(TriggerHandler)) as TriggerHandler;
+                return instance;
+            }
+        }
 
          void Start(){
              triggers = new List<Trigger>();
