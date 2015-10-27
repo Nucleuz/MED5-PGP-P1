@@ -111,6 +111,7 @@ public class ServerManager : NetworkManager {
 					//if the player exist on server update the server object
                     data.DecodeData();
 
+
 					players[index].rotation = Deserializer.Quaternion((byte[])data.data);
 				}else{
 					Debug.LogError("Sender ID not found");
@@ -124,7 +125,6 @@ public class ServerManager : NetworkManager {
                 
                 for(int i = 0;i<triggerHandler.triggers.Count;i++){
                     triggerStates[i] = new TriggerState(triggerHandler.triggers[i]);
-                    Debug.Log("triggers: " + triggerStates[i].id);
                 }
 
                 con.SendReply(
@@ -206,10 +206,10 @@ public class ServerManager : NetworkManager {
 
 	private void OnApplicationQuit() {
 		// Close all connections
-		foreach (var con in connections) {
+/*		foreach (var con in connections) {
             if(con != null)
                 con.Close();
-		}
+		}*/
 
 		// Close server
 		//DarkRiftServer.Close(false);

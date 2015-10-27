@@ -25,9 +25,6 @@ public class InteractableButton : Interactable{
 	
 	// Use this for initialization
 	void Start () {
-		
-		
-
 		playedSound 	= false;
 		arraysFit 		= false;
 		delay 			= 1.0f;
@@ -58,11 +55,11 @@ public class InteractableButton : Interactable{
 		if(trigger.isTriggered){
 			buttonAnimator.SetBool("isActivated", true); 	//starts the animation of the button.
 			if(!par.isPlaying)
-				par.Play(); 									//starts the particles system.
+				par.Play(); 								//starts the particles system.
 		} else {
 			buttonAnimator.SetBool("isActivated", false); 	//stops the animation of the button.
 			if(par.isPlaying)
-				par.Stop(); 									//stops the particle system.
+				par.Stop(); 								//stops the particle system.
 		}
 	}
 
