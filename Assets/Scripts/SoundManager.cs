@@ -21,6 +21,10 @@ public class SoundManager: MonoBehaviour {
 		AkSoundEngine.ExecuteActionOnEvent(eventName, AkActionOnEventType.AkActionOnEventType_Stop, g, 0, 0);
 	}
 
+	public void StopAll(GameObject g){
+		  AkSoundEngine.StopAll(g);
+	}
+
 	public void ToggleSwitch(string switchName, string switchMode, GameObject g){
 		AkSoundEngine.SetSwitch(switchName, switchMode, g);
 	}
