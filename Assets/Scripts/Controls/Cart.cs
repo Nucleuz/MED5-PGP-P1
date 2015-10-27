@@ -14,7 +14,7 @@ public class Cart : MonoBehaviour {
 
 	void Start() {
 
-
+		animationSpeed = 1;
         startingRail = CurrentRail;
         startingPosition = transform.position;
 		StartCoroutine (UpdatePosition());
