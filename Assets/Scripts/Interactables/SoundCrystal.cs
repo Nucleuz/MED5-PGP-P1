@@ -4,7 +4,7 @@ using System.Collections;
 public class SoundCrystal : Interactable
 {
 
-	SoundManager sM;
+	//SoundManager sM;
 
 	// Name of played event (wWise)
 	string eventName;
@@ -22,7 +22,7 @@ public class SoundCrystal : Interactable
         currentSequence = 0;
 
     	// Finding soundmanager and setting reference
-    	sM = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+//    	sM = GameObject.Find("SoundManager").GetComponent<SoundManager>();
 
         // Default value for time between the sounds
         timeBetweenSounds = 2.0f;
@@ -32,18 +32,18 @@ public class SoundCrystal : Interactable
 	public void PlaySounds(int i){
         switch(i){
             case 0:
-		      sM.ToggleSwitch("derp", "herp", gameObject);
-              sM.PlayEvent(eventName, gameObject);
+//		      sM.ToggleSwitch("derp", "herp", gameObject);
+//              sM.PlayEvent(eventName, gameObject);
             break;
             
             case 1:
-			sM.ToggleSwitch("derp", "herp", gameObject);
-              sM.PlayEvent(eventName, gameObject);
+//			sM.ToggleSwitch("derp", "herp", gameObject);
+//              sM.PlayEvent(eventName, gameObject);
             break;
 
             case 2:
-			sM.ToggleSwitch("derp", "herp", gameObject);
-              sM.PlayEvent(eventName, gameObject);
+//			sM.ToggleSwitch("derp", "herp", gameObject);
+//              sM.PlayEvent(eventName, gameObject);
             break;
 
             default:

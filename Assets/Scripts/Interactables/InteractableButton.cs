@@ -6,7 +6,7 @@ public class InteractableButton : Interactable{
 	Light buttonLight;
 	ParticleSystem par;
 	
-	SoundManager sM;
+	//SoundManager sM;
 	bool playedSound;
 
 	[Tooltip("NEEDS TO BE THE SIZE 3. Check the players that have to hit the button. 0 = red, 1 = green, 2 = blue")]
@@ -36,10 +36,10 @@ public class InteractableButton : Interactable{
 		buttonLight 	= GetComponent<Light>();
 		trigger 		= GetComponent<Trigger>();
 		par 			= GetComponent<ParticleSystem>();
-		//Was moved here since the sM made it not work!
+		////Was moved here since the sM made it not work!
 		//Set the color of the interactable button both background light and particles to the correct user.
 		setButtonColor(playerList);
-		sM 				= GameObject.Find("SoundManager").GetComponent<SoundManager>();
+//		sM 				= GameObject.Find("SoundManager").GetComponent<SoundManager>();
 
 	}
 	
@@ -76,8 +76,8 @@ public class InteractableButton : Interactable{
 		if (trigger.isReadyToBeTriggered && arraysFit){
 			trigger.Activate();
 			if(!playedSound){
-				sM.ToggleSwitch("On_Off", "On", gameObject);
-				sM.PlayEvent("ButtonOnOff", gameObject);
+//				sM.ToggleSwitch("On_Off", "On", gameObject);
+//				sM.PlayEvent("ButtonOnOff", gameObject);
 				playedSound = true;
 			}
 		}
