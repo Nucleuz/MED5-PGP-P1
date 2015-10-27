@@ -26,6 +26,7 @@ public class Console : MonoBehaviour {
 
 	public Text consoleCanvasText;				// Pointer to Canvas Text
 	public Canvas consoleCanvas;				// Pointer to whole Canvas (For Enable/Disable)
+	private byte lines;
 	public KeyCode keyToOpen;					// Which key to press to open Console
 	private string userInput = ""; 				// Holds the input from the user
 	private string output;
@@ -54,11 +55,15 @@ public class Console : MonoBehaviour {
 		}
 			
         if(consoleCanvasText.text != output)
-		consoleCanvasText.text = output;
+			consoleCanvasText.text = output;
 	}
 
 	public void AddMessage(string message) {
-
+		if(lines >= 100) {	//TODO Dirty Fix for Console Overflow - Please make better later
+			lines = 0;
+			output = "";
+		}
+		lines++;
 		output += "[" + DateTime.Now.ToLongTimeString() + "] " + (message + "\n");
 	}
 
