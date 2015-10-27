@@ -65,7 +65,6 @@ LightmapSettings:
     m_TextureCompression: 1
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
-    m_ReflectionCompression: 2
   m_LightmapSnapshot: {fileID: 0}
   m_RuntimeCPUUsage: 25
 --- !u!196 &4
@@ -85,6 +84,9 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!127 &5
+LevelGameManager:
+  m_ObjectHideFlags: 0
 --- !u!4 &2587260 stripped
 Transform:
   m_PrefabParentObject: {fileID: 472034, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
@@ -138,7 +140,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 148076, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
       propertyPath: m_Name
-      value: Start RailSegment Blue
+      value: Start RailSegment Red
       objectReference: {fileID: 0}
     - target: {fileID: 11403774, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
       propertyPath: spawnRailPoint
@@ -529,15 +531,45 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 472034, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 189580, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
       propertyPath: m_Name
-      value: Barricade Green
+      value: Barricade Red
       objectReference: {fileID: 0}
+    - target: {fileID: 11491194, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
+      propertyPath: NextRail
+      value: 
+      objectReference: {fileID: 405875591}
+    - target: {fileID: 494962, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11491194, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
+      propertyPath: PreviousRail
+      value: 
+      objectReference: {fileID: 2069747268}
+    - target: {fileID: 494962, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11499764, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
+      propertyPath: pRail
+      value: 
+      objectReference: {fileID: 2069747268}
+    - target: {fileID: 11499764, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
+      propertyPath: nRail
+      value: 
+      objectReference: {fileID: 405875591}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &304949896 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11415694, guid: 333a9a060967feb4f83dbba165e8c794,
+    type: 2}
+  m_PrefabInternal: {fileID: 304949895}
+  m_Script: {fileID: 11500000, guid: 57f8bf624c4748748a66e6f53c5aacba, type: 3}
 --- !u!1001 &317758707
 Prefab:
   m_ObjectHideFlags: 0
@@ -579,7 +611,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 189580, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
       propertyPath: m_Name
-      value: Barricade Blue
+      value: Barricade Green
       objectReference: {fileID: 0}
     - target: {fileID: 11443750, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
       propertyPath: playerList.Array.data[0]
@@ -587,11 +619,29 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11443750, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
       propertyPath: playerList.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11443750, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
+      propertyPath: playerList.Array.data[1]
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11499764, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
+      propertyPath: pRail
+      value: 
+      objectReference: {fileID: 929695715}
+    - target: {fileID: 11499764, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
+      propertyPath: nRail
+      value: 
+      objectReference: {fileID: 613858793}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &317758708 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11415694, guid: 333a9a060967feb4f83dbba165e8c794,
+    type: 2}
+  m_PrefabInternal: {fileID: 317758707}
+  m_Script: {fileID: 11500000, guid: 57f8bf624c4748748a66e6f53c5aacba, type: 3}
 --- !u!4 &342260599 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400008, guid: 2d4ad3c7b87c71e41a666bef67c98016, type: 3}
@@ -744,8 +794,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 440710934}
   - {fileID: 1300184616}
+  - {fileID: 440710934}
   - {fileID: 196659429}
   m_Father: {fileID: 178490656}
   m_RootOrder: 3
@@ -776,7 +826,7 @@ Transform:
   m_Children:
   - {fileID: 1403140403}
   m_Father: {fileID: 422353191}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!1 &542775969
 GameObject:
   m_ObjectHideFlags: 0
@@ -972,8 +1022,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2587260}
   - {fileID: 1692450258}
+  - {fileID: 2587260}
   - {fileID: 1288053188}
   m_Father: {fileID: 178490656}
   m_RootOrder: 4
@@ -1018,7 +1068,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 148076, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
       propertyPath: m_Name
-      value: Start RailSegment Red
+      value: Start RailSegment Blue
       objectReference: {fileID: 0}
     - target: {fileID: 11403774, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
       propertyPath: spawnRailPoint
@@ -1080,7 +1130,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 464848, guid: 159513c094cc6477fb978d2ac3d96525, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 159513c094cc6477fb978d2ac3d96525, type: 2}
@@ -1279,7 +1329,7 @@ Transform:
   m_LocalScale: {x: 7, y: 1, z: 7}
   m_Children: []
   m_Father: {fileID: 178490656}
-  m_RootOrder: 10
+  m_RootOrder: 9
 --- !u!4 &1040570917 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400008, guid: 2d4ad3c7b87c71e41a666bef67c98016, type: 3}
@@ -1428,7 +1478,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 148076, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
       propertyPath: m_Name
-      value: Start RailSegment Yellow
+      value: Start RailSegment Green
       objectReference: {fileID: 0}
     - target: {fileID: 11403774, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
       propertyPath: spawnRailPoint
@@ -1484,7 +1534,7 @@ Transform:
   m_Children:
   - {fileID: 401217173}
   m_Father: {fileID: 422353191}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!4 &1346118534 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400008, guid: 2d4ad3c7b87c71e41a666bef67c98016, type: 3}
@@ -1677,15 +1727,15 @@ Prefab:
     - target: {fileID: 11492572, guid: 639ce8ab29167214da59d2876d4ab108, type: 2}
       propertyPath: events.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 304949896}
     - target: {fileID: 11492572, guid: 639ce8ab29167214da59d2876d4ab108, type: 2}
       propertyPath: events.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2019503555}
     - target: {fileID: 11492572, guid: 639ce8ab29167214da59d2876d4ab108, type: 2}
       propertyPath: events.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 317758708}
     - target: {fileID: 11492572, guid: 639ce8ab29167214da59d2876d4ab108, type: 2}
       propertyPath: triggerEvents.Array.data[0]
       value: 
@@ -1763,63 +1813,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1486405687}
   m_Script: {fileID: 11500000, guid: ea563a57a966cd545941506de9929593, type: 3}
---- !u!1 &1509717132
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1509717135}
-  - 114: {fileID: 1509717134}
-  - 114: {fileID: 1509717133}
-  m_Layer: 0
-  m_Name: WwiseGlobal
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1509717133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1509717132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1adccdce10ac384da0d669fa50d0ae4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  basePath: Audio\GeneratedSoundBanks
-  language: English(US)
-  defaultPoolSize: 4096
-  lowerPoolSize: 2048
-  streamingPoolSize: 1024
-  memoryCutoffThreshold: .949999988
---- !u!114 &1509717134
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1509717132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0da75c80cd89ba4b82c3e81eda3d189, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1509717135
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1509717132}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 178490656}
-  m_RootOrder: 9
 --- !u!1001 &1533813090
 Prefab:
   m_ObjectHideFlags: 0
@@ -2279,23 +2272,57 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 472034, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 189580, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
       propertyPath: m_Name
-      value: Barricade Red
+      value: Barricade Blue
       objectReference: {fileID: 0}
     - target: {fileID: 11443750, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
       propertyPath: playerList.Array.data[1]
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11443750, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
       propertyPath: playerList.Array.data[0]
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11443750, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
+      propertyPath: playerList.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11491194, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
+      propertyPath: PreviousRail
+      value: 
+      objectReference: {fileID: 1112192853}
+    - target: {fileID: 11491194, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
+      propertyPath: NextRail
+      value: 
+      objectReference: {fileID: 1800081552}
+    - target: {fileID: 494962, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 494962, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11499764, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
+      propertyPath: pRail
+      value: 
+      objectReference: {fileID: 1112192853}
+    - target: {fileID: 11499764, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
+      propertyPath: nRail
+      value: 
+      objectReference: {fileID: 1800081552}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &2019503555 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11415694, guid: 333a9a060967feb4f83dbba165e8c794,
+    type: 2}
+  m_PrefabInternal: {fileID: 2019503554}
+  m_Script: {fileID: 11500000, guid: 57f8bf624c4748748a66e6f53c5aacba, type: 3}
 --- !u!4 &2060980150 stripped
 Transform:
   m_PrefabParentObject: {fileID: 450956, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}

@@ -65,7 +65,6 @@ LightmapSettings:
     m_TextureCompression: 1
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
-    m_ReflectionCompression: 2
   m_LightmapSnapshot: {fileID: 0}
   m_RuntimeCPUUsage: 25
 --- !u!196 &4
@@ -85,6 +84,9 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!127 &5
+LevelGameManager:
+  m_ObjectHideFlags: 0
 --- !u!1001 &3393457
 Prefab:
   m_ObjectHideFlags: 0
@@ -597,7 +599,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 461432, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 11435184, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
+      propertyPath: playerList.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11435184, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
+      propertyPath: playerList.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11435184, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
+      propertyPath: playerList.Array.data[0]
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
@@ -702,63 +716,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 419162, guid: 91c3df4335a7fc34797daa2c77c78710, type: 2}
   m_PrefabInternal: {fileID: 201983631}
---- !u!1 &238175860
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 238175863}
-  - 114: {fileID: 238175862}
-  - 114: {fileID: 238175861}
-  m_Layer: 0
-  m_Name: WwiseGlobal
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &238175861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 238175860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1adccdce10ac384da0d669fa50d0ae4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  basePath: Audio\GeneratedSoundBanks
-  language: English(US)
-  defaultPoolSize: 4096
-  lowerPoolSize: 2048
-  streamingPoolSize: 1024
-  memoryCutoffThreshold: .949999988
---- !u!114 &238175862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 238175860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0da75c80cd89ba4b82c3e81eda3d189, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &238175863
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 238175860}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1245960577}
-  m_RootOrder: 6
 --- !u!4 &240527952 stripped
 Transform:
   m_PrefabParentObject: {fileID: 450956, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
@@ -3468,7 +3425,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 464848, guid: 159513c094cc6477fb978d2ac3d96525, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 464848, guid: 159513c094cc6477fb978d2ac3d96525, type: 2}
       propertyPath: m_LocalScale.x
@@ -4569,7 +4526,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 422748, guid: 639ce8ab29167214da59d2876d4ab108, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 11492572, guid: 639ce8ab29167214da59d2876d4ab108, type: 2}
       propertyPath: triggerEvents.Array.data[0]
