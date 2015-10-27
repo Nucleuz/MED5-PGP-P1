@@ -61,7 +61,7 @@ public class LevelHandler : MonoBehaviour {
         while(!foundLC){
             //waits for one frame 
             yield return null;
-            Debug.Log("looking for object tagged levelContainer");
+            Console.Instance.AddMessage("looking for object tagged levelContainer");
             //runs when loaded
             GameObject[] levelContainers = GameObject.FindGameObjectsWithTag("LevelContainer");
 
@@ -78,7 +78,7 @@ public class LevelHandler : MonoBehaviour {
             }
         }
 
-        manager.OnLevelLoaded(loadedLevelIndex);
+        manager.OnLevelLoaded(loadingIndex);
     }
 
     public void processLevelContainer(LevelContainer levelContainer,int loadingIndex){
@@ -99,7 +99,7 @@ public class LevelHandler : MonoBehaviour {
             Vector3 pNLD = pLM.nextLevelDirection.normalized;
         
             //rotate next level so that pLM.nextLevelDirection is equal to the inverse nLM.prevLevelDirection
-            Debug.Log(pLM.nextLevelDirection + " " + (Mathf.Rad2Deg * levelContainers[loadingIndex - 1].transform.rotation.y ));
+            Console.Instance.AddMessage(pLM.nextLevelDirection + " " + (Mathf.Rad2Deg * levelContainers[loadingIndex - 1].transform.rotation.y ));
             float a = Vector3.Angle(pLM.nextLevelDirection,nLM.prevLevelDirection) - currentRotation;
             currentRotation = 180-a;
 
@@ -149,7 +149,7 @@ public class LevelHandler : MonoBehaviour {
             loadedLevelIndex = index;
             StartCoroutine(LoadAndHandleLevel());
         }else
-            Debug.Log("Trying to Load Level that is out of Index");
+            Console.Instance.AddMessage("Trying to Load Level that is out of Index");
     }
 
     public LevelManager getLevelManager(){
@@ -164,7 +164,7 @@ public class LevelHandler : MonoBehaviour {
             manager.OnLevelCompleted();
 
         }else{
-            Debug.Log("Last Level Completed");
+            Console.Instance.AddMessage("Last Level Completed");
         }
 
     }

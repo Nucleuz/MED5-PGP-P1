@@ -40,10 +40,6 @@ public class NetPlayerSync : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		if(Input.GetKeyDown(KeyCode.Space)){
-			DarkRiftAPI.SendMessageToOthers(Network.Tag.Player, Network.Subject.PlayerPositionUpdate, transform.position.Serialize());
-
-		}
 		if(isSender && DarkRiftAPI.isConnected){
 			SendData();
 		}
@@ -117,6 +113,7 @@ public class NetPlayerSync : MonoBehaviour {
 		cam.SetActive(true);
 		headControl.enabled = true;
 		helmet.enabled = true;
+		helmet.SetPlayerIndex(networkID);
 	}
 	
 	public void SetAsReceiver(){
@@ -124,7 +121,7 @@ public class NetPlayerSync : MonoBehaviour {
 		cam.SetActive(false);
 		headControl.enabled = false;
 		helmet.enabled = false;
-		
+		helmet.SetPlayerIndex(networkID);
 	}
 
     public void SetVoiceChatPlayer(VoiceChatPlayer player)

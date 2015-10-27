@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ConnectAfterAnimation : MonoBehaviour {
 
-    public RailConnection rC;
+    public RailConnection[] railConnections;
     private Animator anim;
     float timeStamp;
     public bool isStarted;
@@ -26,7 +26,8 @@ public class ConnectAfterAnimation : MonoBehaviour {
 
         if (Time.time > timeStamp && isStarted)
         {
-            rC.connectToPrev = true;
+            for(int i = 0;i<railConnections.Length;i++)
+                railConnections[i].connectToPrev = true;
         }
     }
 }

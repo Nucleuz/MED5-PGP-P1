@@ -11,10 +11,10 @@ public class ElevatorScript : MonoBehaviour {
     public bool goingUp;
 
     public Transform[] nodes;                                               //Array of transform objects that holds the positions the elevator will visit
-    private int activeNode;                                                 //Int that counts the number of nodes that has been visited
-    public float speed = 1;                                                     //Speed of the elevator
+    private int activeNode;                                                     //Speed of the elevator
 
-    private float currentLerpTime;                                          //holds the amount of time the lerp has been running
+    public float animationLength = 1;
+    private float endAnimationTime;                                       //holds the amount of time the lerp has been running
  
 	// Use this for initialization
 	void Start () {
@@ -31,24 +31,17 @@ public class ElevatorScript : MonoBehaviour {
 	void Update () {
 
         // Checks if the mouse button is pressed
-        if (trigger.isTriggered)
+        if (trigger.isTriggered && !isActivated)
         {
             isActivated = true;
+            endAnimationTime = Time.time + animationLength;
         }
 
         if (isActivated)                                                    //Activates after a mousepress
         {
 
-            float lerpTime = 1.0f;                                          //Sets the time to lerp the elevator between two points.
 
-            currentLerpTime += Time.deltaTime;                              //Adds deltatime to the time to lerp
-
-            //Makes sure that the time to lerp never exceeds float lerpTime
-            if (currentLerpTime > lerpTime) {
-                currentLerpTime = lerpTime;
-            }
-
-            float t = currentLerpTime / lerpTime * speed;                   //Calculates the final speed of the object.
+            float t = (endAnimationTime - Time.time) / animationLength;                   //Calculates the final speed of the object.
             
             //Moves the elevator from it's current position to the next active node
             transform.position = Vector3.MoveTowards(transform.position, nodes[activeNode].position, t);

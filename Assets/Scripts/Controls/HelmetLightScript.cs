@@ -19,12 +19,18 @@ public class HelmetLightScript : MonoBehaviour {
 
     private LineRenderer lineRenderer;				// Used for drawing the ray from the helmet
 
-    [Tooltip("1, 2, 3")]
+    [Tooltip("1 = blue, 2 = red, 3 = green")]
 	public int playerIndex;							// index for the player.
 	public Transform objectHit;
 	public Ray ray;
 
-    void Start () {
+    public void SetPlayerIndex (int networkId) {
+        switch(networkId){
+            case 1: playerIndex = 3;break;
+            case 2: playerIndex = 1;break;
+            case 3: playerIndex = 2;break;
+        }
+
 		lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.SetWidth(0.1f, 0.1f);
 

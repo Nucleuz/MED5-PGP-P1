@@ -23,7 +23,7 @@ public class ClientManager : NetworkManager
     //@TODO - client should be able to change the ip when the client starts up, for easier use
     public string IP = "127.0.0.1";
 
-    public ushort networkID;
+    public ushort networkID = 0;
 
     //debug text
     //@TODO - create a kind of console instead if this..
@@ -36,7 +36,7 @@ public class ClientManager : NetworkManager
     public LevelHandler levelHandler;
     public TriggerHandler triggerHandler;
 
-    private int serverLevelIndex;
+    private int serverLevelIndex = -1;
 
     void Start()
     {
@@ -73,6 +73,9 @@ public class ClientManager : NetworkManager
                 case Network.Subject.ServerSentNetID:
                     {
                         networkID = (ushort)data;
+                        Console.Instance.AddMessage("Got network id " + networkID);
+                        DarkRiftAPI.SendMessageToServer(Network.Tag.Manager, Network.Subject.RequestServerLevel,true);
+
                     }
                     break;
 
@@ -81,16 +84,16 @@ public class ClientManager : NetworkManager
                         //When the server has loaded a level
 
                         serverLevelIndex = (int)data;
-                        Write("Server is at level " + serverLevelIndex);
+                        Console.Instance.AddMessage("Server is at level " + serverLevelIndex);
 
                         //load the previous, current and next level if available(serverLevelIndex >/< x) and not already loaded(levelcontainer == null)
-
+                        //previous level
                         if(serverLevelIndex > 0 && levelHandler.levelContainers[serverLevelIndex - 1] == null)
                             levelHandler.loadLevel(serverLevelIndex - 1);
-                        
+                        //current level
                         if(levelHandler.levelContainers[serverLevelIndex] == null)
                             levelHandler.loadLevel(serverLevelIndex);
-
+                        //next level
                         if(serverLevelIndex < levelHandler.levelOrder.Length - 1 && levelHandler.levelContainers[serverLevelIndex + 1] == null)
                             levelHandler.loadLevel(serverLevelIndex + 1);
 
@@ -98,6 +101,7 @@ public class ClientManager : NetworkManager
                         //if the level is already loaded process it's triggers
                         if(levelHandler.levelContainers[serverLevelIndex] != null)
                             triggerHandler.process(levelHandler.levelContainers[serverLevelIndex]);
+
                     }
                     break;
                 case Network.Subject.SpawnPlayer: // Spawn OTHER players
@@ -146,45 +150,10 @@ public class ClientManager : NetworkManager
     public override void OnLevelLoaded(int levelIndex)
     {
 
-        Debug.Log("Level " + levelIndex + " (" + levelHandler.levelOrder[levelIndex] + ") Loaded");
+        Console.Instance.AddMessage("Level " + levelIndex + " (" + levelHandler.levelOrder[levelIndex] + ") Loaded");
 
-        //check if player is not spawned, then spawn
-        if (player == null)
-        {
-            //spawn the object
-            GameObject g = Instantiate(prefabPlayer, Vector3.zero, Quaternion.identity) as GameObject;
-            player = g.transform;
-            //set the network id so it will sync with the player
-            NetPlayerSync netPlayer = g.GetComponent<NetPlayerSync>();
-
-            netPlayer.networkID = networkID;
-            netPlayer.helmet.playerIndex = networkID;
-            Debug.Log(netPlayer.helmet.playerIndex);
-            Write("Player Index: " + netPlayer.helmet.playerIndex);
-            netPlayer.SetAsSender();
-
-			VoiceChatRecorder.Instance.NetworkId = networkID;
-			VoiceChatRecorder.Instance.Device = VoiceChatRecorder.Instance.AvailableDevices[0];
-			VoiceChatRecorder.Instance.StartRecording();
-   //         VoiceChatRecorder.Instance.AutoDetectSpeech = true;
-			VoiceChatRecorder.Instance.NewSample += netPlayer.OnNewSample;
-
-            //place the player on the correct rail!
-
-            Rail startRail = levelHandler.getLevelManager().levelStartRail[networkID - 1];
-
-            player.position = startRail.transform.position;
-            player.GetComponent<Cart>().CurrentRail = startRail;
-
-
-             DarkRiftWriter writer = new DarkRiftWriter();
-            
-
-            //send it to everyone else
-            DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager, Network.Subject.SpawnPlayer, player.position.Serialize());
-            writer.Close();
-        }
-
+        //try to spawn the player
+        SpawnPlayer();
 
         //if level that is loaded is the level that the server is on currently process it's triggers
 
@@ -192,4 +161,53 @@ public class ClientManager : NetworkManager
             triggerHandler.process(levelHandler.levelContainers[levelIndex]);
 
     }
+
+    private void SpawnPlayer(){
+        if(player != null || networkID == 0 || serverLevelIndex == -1 || levelHandler.getLevelManager() == null){
+            if(player != null)
+                Console.Instance.AddMessage("Player is already spawned");
+            else
+                Console.Instance.AddMessage("failed .. Trying to spawn player: " + player + " netID: " + networkID + " serverLevel: " + serverLevelIndex + " levelHandler: " + levelHandler.getLevelManager());
+            return;
+        }
+        Console.Instance.AddMessage("Spawning Player");
+        Console.Instance.AddMessage("Info dump > ni:" + networkID + ", lmI:" + levelHandler.levelManagerIndex + " sI:" + serverLevelIndex);
+
+        //spawn the object
+        GameObject g = Instantiate(prefabPlayer, Vector3.zero, Quaternion.identity) as GameObject;
+        player = g.transform;
+        //set the network id so it will sync with the player
+        NetPlayerSync netPlayer = g.GetComponent<NetPlayerSync>();
+
+        netPlayer.networkID = networkID;
+        netPlayer.SetAsSender();
+        Console.Instance.AddMessage("Net id: " + networkID);
+/*
+        VoiceChatRecorder.Instance.NetworkId = networkID;
+        VoiceChatRecorder.Instance.Device = VoiceChatRecorder.Instance.AvailableDevices[0];
+        VoiceChatRecorder.Instance.StartRecording();
+//         VoiceChatRecorder.Instance.AutoDetectSpeech = true;
+        VoiceChatRecorder.Instance.NewSample += netPlayer.OnNewSample;
+        */
+        Console.Instance.AddMessage("did voicechat stuff");
+
+        //place the player on the correct rail!
+
+        Console.Instance.AddMessage("levelManager: " + levelHandler.getLevelManager());
+        Rail startRail = levelHandler.getLevelManager().levelStartRail[networkID - 1];
+        Console.Instance.AddMessage("startrail: " + startRail.transform.position);
+
+
+        player.position = startRail.transform.position;
+        player.GetComponent<Cart>().CurrentRail = startRail;
+
+
+         DarkRiftWriter writer = new DarkRiftWriter();
+        
+
+        //send it to everyone else
+        DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager, Network.Subject.SpawnPlayer, player.position.Serialize());
+        writer.Close();
+    }
+
 }

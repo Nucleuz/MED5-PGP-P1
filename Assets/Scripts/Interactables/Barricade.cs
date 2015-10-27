@@ -13,24 +13,18 @@ public class Barricade : MonoBehaviour {
     private Vector3 endPos;
     private bool isOpened = false;
 
-	// Use this for initialization
-	void Start () {
-        t = 0;
-        startPos = transform.position;
-        endPos = endNode.transform.position;
-	}
-	
 	// Update is called once per frame
 	void Update () {
 
 		if(trigger.isTriggered && !isOpened){
             isOpened = true;
+            startPos = transform.position;
             
 		}
 
         if(isOpened && t < 1){
             t += Time.time / moveSpeed;
-            transform.position = Vector3.Lerp(startPos, endPos, t);
+            transform.position = Vector3.Lerp(startPos, endNode.transform.position, t);
         }
 
         if(isOpened && t >= 1)

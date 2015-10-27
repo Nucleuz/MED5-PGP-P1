@@ -22,6 +22,7 @@ public class Network{
     {
 
         //NetworkManager
+        public const ushort RequestServerLevel   = 0;
         public const ushort NewLevelManager      = 1;
 		public const ushort ServerSentNetID      = 2;
 
