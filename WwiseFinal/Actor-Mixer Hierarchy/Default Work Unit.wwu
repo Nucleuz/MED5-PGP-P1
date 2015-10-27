@@ -21,6 +21,7 @@
 						<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
 						<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.5"/>
 						<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+						<Property Name="PositioningType" Type="int16" Value="1"/>
 						<Property Name="RandomOrSequence" Type="int16" Value="0"/>
 						<Property Name="UseMaxSoundPerInstance" Type="bool">
 							<ValueList>
@@ -34,6 +35,16 @@
 						</Property>
 					</PropertyList>
 					<ReferenceList>
+						<Reference Name="AttachableMixerInput">
+							<Custom>
+								<Effect Name="Two Big Ears 3Dception (Attached)" ID="{B65F6D16-6036-4B15-BAE0-5046B29558E3}" ShortID="342166714" PluginName="AttachableMixerInput" CompanyID="265" PluginID="2" PluginType="3">
+									<PropertyList>
+										<Property Name="InputChannel" Type="int32" Value="2"/>
+										<Property Name="Room" Type="bool" Value="True"/>
+									</PropertyList>
+								</Effect>
+							</Custom>
+						</Reference>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
 						</Reference>
@@ -124,9 +135,14 @@
 							<PropertyList>
 								<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
 								<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="3"/>
-								<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="4.3"/>
+								<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="5.8"/>
 								<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 								<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-5</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -163,24 +179,7 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<Sound Name="RumbleForDoor" ID="{DC3D9D8C-226A-4F15-9E3C-7CEFC3D14CC0}" ShortID="374454333" Type="SoundFX">
-											<PropertyList>
-												<Property Name="MaxSoundPerInstance" Type="int16">
-													<ValueList>
-														<Value>1</Value>
-													</ValueList>
-												</Property>
-												<Property Name="UseMaxSoundPerInstance" Type="bool">
-													<ValueList>
-														<Value>True</Value>
-													</ValueList>
-												</Property>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>-10</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
+										<Sound Name="BoulderSlideEdit03" ID="{3511F838-D647-4DE7-837C-EDAB920096C5}" ShortID="814298446" Type="SoundFX">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
@@ -188,28 +187,18 @@
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
 												</Reference>
-												<Reference Name="UserAuxSend0">
-													<ObjectRef Name="AmbienceBus" ID="{8FC1403E-05A4-4BCC-A84E-51488EF5BA6F}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
-												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="RumbleForDoor" ID="{077F2647-CAE9-4FC9-A9D7-6E8F4938D106}" ShortID="213929639">
+												<AudioFileSource Name="BoulderSlideEdit03" ID="{CC97A6E6-3F64-4A9A-B261-448655D51CD0}" ShortID="135463620">
 													<Language>SFX</Language>
-													<AudioFile>RumbleForDoor.wav</AudioFile>
+													<AudioFile>BoulderSlideEdit03.wav</AudioFile>
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="RumbleForDoor" ID="{077F2647-CAE9-4FC9-A9D7-6E8F4938D106}" Platform="Linked"/>
+												<ActiveSource Name="BoulderSlideEdit03" ID="{CC97A6E6-3F64-4A9A-B261-448655D51CD0}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="LargeBoulderSlideEdit02" ID="{AA8A1837-A3E6-49EF-9262-46743969F945}" ShortID="592612458" Type="SoundFX">
-											<PropertyList>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>-8</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
+										<Sound Name="LargeBoulderSlideEdit03" ID="{074B0AAD-7855-4674-844D-696949508757}" ShortID="283292618" Type="SoundFX">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
@@ -219,23 +208,16 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="LargeBoulderSlideEdit02" ID="{0A02D0E2-FC88-4FE7-AB7B-0BF34C4CA454}" ShortID="807397003">
+												<AudioFileSource Name="LargeBoulderSlideEdit03" ID="{E7B1BE4D-F61D-4B6A-890D-A2CBA861024E}" ShortID="75782487">
 													<Language>SFX</Language>
-													<AudioFile>LargeBoulderSlideEdit02.wav</AudioFile>
+													<AudioFile>LargeBoulderSlideEdit03.wav</AudioFile>
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="LargeBoulderSlideEdit02" ID="{0A02D0E2-FC88-4FE7-AB7B-0BF34C4CA454}" Platform="Linked"/>
+												<ActiveSource Name="LargeBoulderSlideEdit03" ID="{E7B1BE4D-F61D-4B6A-890D-A2CBA861024E}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="BoulderSlideEdit02" ID="{61F2E53C-01FF-46E1-BC60-31D0B90AC1FD}" ShortID="654837364" Type="SoundFX">
-											<PropertyList>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>6</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
+										<Sound Name="RumbleForDoor02" ID="{BAA70F45-F441-48E2-809B-32AAB5D7867B}" ShortID="663519345" Type="SoundFX">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
@@ -245,13 +227,13 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="BoulderSlideEdit02" ID="{28912382-1F26-45F0-9AC3-FDE33B50DD96}" ShortID="407031214">
+												<AudioFileSource Name="RumbleForDoor02" ID="{221CB4DC-D3CC-46E3-8D14-6809BABDBBB0}" ShortID="402533040">
 													<Language>SFX</Language>
-													<AudioFile>BoulderSlideEdit02.wav</AudioFile>
+													<AudioFile>RumbleForDoor02.wav</AudioFile>
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="BoulderSlideEdit02" ID="{28912382-1F26-45F0-9AC3-FDE33B50DD96}" Platform="Linked"/>
+												<ActiveSource Name="RumbleForDoor02" ID="{221CB4DC-D3CC-46E3-8D14-6809BABDBBB0}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
@@ -270,7 +252,7 @@
 										</Property>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-3</Value>
+												<Value>3</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -310,7 +292,20 @@
 				<WorkUnit Name="CarLegHits" ID="{65641274-E32A-4F56-AD3E-5477076BCE50}" PersistMode="Reference"/>
 				<WorkUnit Name="Headlamp" ID="{5B50697D-D4CD-40FC-A2AF-91662BDC1193}" PersistMode="Reference"/>
 				<ActorMixer Name="Waterfall" ID="{4636A008-07C5-472A-93B3-D906D9FEB2A9}" ShortID="409898733">
+					<PropertyList>
+						<Property Name="PositioningType" Type="int16" Value="1"/>
+					</PropertyList>
 					<ReferenceList>
+						<Reference Name="AttachableMixerInput">
+							<Custom>
+								<Effect Name="Two Big Ears 3Dception (Attached)" ID="{AA319779-A055-410F-923F-D9551AE12048}" ShortID="904437999" PluginName="AttachableMixerInput" CompanyID="265" PluginID="2" PluginType="3">
+									<PropertyList>
+										<Property Name="InputChannel" Type="int32" Value="2"/>
+										<Property Name="Room" Type="bool" Value="True"/>
+									</PropertyList>
+								</Effect>
+							</Custom>
+						</Reference>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
 						</Reference>
@@ -389,6 +384,384 @@
 							</ChildrenList>
 							<ActiveSourceList>
 								<ActiveSource Name="Waterfall04" ID="{D40305E2-CAD0-49EC-99D0-F7DEA68776FD}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Waterfall07" ID="{BC24D74B-5F20-4599-995C-AE9527B53197}" ShortID="648753460" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Waterfall07" ID="{D038699A-C43F-4985-8579-7642DAE38412}" ShortID="400527701">
+									<Language>SFX</Language>
+									<AudioFile>Waterfall07.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Waterfall07" ID="{D038699A-C43F-4985-8579-7642DAE38412}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</ActorMixer>
+				<ActorMixer Name="CartRings" ID="{44586F71-5C60-45C3-B835-0744E6F6F8FA}" ShortID="221779957">
+					<Comment>Ring sounds for the cart legs.</Comment>
+					<PropertyList>
+						<Property Name="Pitch" Type="int32">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{79D8264B-2925-4C73-B080-40230394A42C}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Max" Type="Real64" Value="50"/>
+											<Property Name="Min" Type="Real64" Value="-200"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+						<Property Name="PositioningType" Type="int16" Value="1"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="AttachableMixerInput">
+							<Custom>
+								<Effect Name="Two Big Ears 3Dception (Attached)" ID="{84DCFE2A-6A48-43AF-9794-091B68193BF2}" ShortID="626663635" PluginName="AttachableMixerInput" CompanyID="265" PluginID="2" PluginType="3">
+									<PropertyList>
+										<Property Name="InputChannel" Type="int32" Value="2"/>
+										<Property Name="Room" Type="bool" Value="True"/>
+									</PropertyList>
+								</Effect>
+							</Custom>
+						</Reference>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+						</Reference>
+						<Reference Name="UserAuxSend0">
+							<ObjectRef Name="CartBus" ID="{D52F4739-F660-4D00-9C11-0F284E9E8CA4}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<RandomSequenceContainer Name="CartRings" ID="{BAC7E7FC-76DC-4B21-8723-F0026B8DD1FB}" ShortID="638676253">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Chain1" ID="{27EA7D67-26FD-4F87-8CD6-8EB9EF5D1BFE}" ShortID="115830842" Type="SoundFX">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Chain1" ID="{97BC831C-0C26-45A8-BB27-F101F28527AA}" ShortID="854137208">
+											<Language>SFX</Language>
+											<AudioFile>Chain1.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Chain1" ID="{97BC831C-0C26-45A8-BB27-F101F28527AA}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Chain2" ID="{7001318A-6A95-4664-89BD-8B7BDA5CB270}" ShortID="989786342" Type="SoundFX">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Chain2" ID="{8C074628-37E0-492D-8C4F-7705FA515ABA}" ShortID="224227694">
+											<Language>SFX</Language>
+											<AudioFile>Chain2.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Chain2" ID="{8C074628-37E0-492D-8C4F-7705FA515ABA}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Chain3" ID="{733EC4BD-6EC8-4571-A543-85888F5A1635}" ShortID="64228249" Type="SoundFX">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Chain3" ID="{727A7AF8-BA1D-4334-B315-0B9C9F8FC760}" ShortID="478387182">
+											<Language>SFX</Language>
+											<AudioFile>Chain3.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Chain3" ID="{727A7AF8-BA1D-4334-B315-0B9C9F8FC760}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Chain4" ID="{9CF262A7-DA82-4934-BCD7-E70513D43282}" ShortID="542248494" Type="SoundFX">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Chain4" ID="{71717135-51A4-4E55-9717-2E4B9A3E5CE1}" ShortID="641578875">
+											<Language>SFX</Language>
+											<AudioFile>Chain4.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Chain4" ID="{71717135-51A4-4E55-9717-2E4B9A3E5CE1}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+					</ChildrenList>
+				</ActorMixer>
+				<ActorMixer Name="CartMojo" ID="{3F8E204B-408A-417B-BF1A-D6D6F7892101}" ShortID="858609164">
+					<Comment>Startup and shutdown sound of cart. Will be played everytime it moves and stops moving. </Comment>
+					<PropertyList>
+						<Property Name="PositioningType" Type="int16" Value="1"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="AttachableMixerInput">
+							<Custom>
+								<Effect Name="Two Big Ears 3Dception (Attached)" ID="{3C1DA135-E668-4F2D-979D-A4F1B2F0E152}" ShortID="1037020736" PluginName="AttachableMixerInput" CompanyID="265" PluginID="2" PluginType="3">
+									<PropertyList>
+										<Property Name="InputChannel" Type="int32" Value="2"/>
+										<Property Name="Room" Type="bool" Value="True"/>
+									</PropertyList>
+								</Effect>
+							</Custom>
+						</Reference>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<SwitchContainer Name="CartOn_Off" ID="{EF5235FA-BBE8-4D76-9D25-5809881BDBE2}" ShortID="859520513">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<RandomSequenceContainer Name="StartUp" ID="{E2B6A8CE-C403-4C66-B97C-C40FA06760E8}" ShortID="395118264">
+									<PropertyList>
+										<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+										<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.5"/>
+										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="CartMojoLoop" ID="{51EE552C-EE1F-4F8D-8F33-6235E3E29B6D}" ShortID="58038798" Type="SoundFX">
+											<PropertyList>
+												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="CartMojoLoop" ID="{3148F5C2-8AB6-4123-8965-3964C7636230}" ShortID="449140603">
+													<Language>SFX</Language>
+													<AudioFile>CartMojoLoop.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="CartMojoLoop" ID="{3148F5C2-8AB6-4123-8965-3964C7636230}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="StartUp" ID="{E7BC78C3-34D8-45A4-8CF8-05D726750F19}" ShortID="997403457" Type="SoundFX">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-10</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="StartUp" ID="{71AF1257-2F0F-4CA5-B723-962BD1513F16}" ShortID="1790046">
+													<Language>SFX</Language>
+													<AudioFile>StartUp.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="StartUp" ID="{71AF1257-2F0F-4CA5-B723-962BD1513F16}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<Playlist>
+										<ItemRef Name="StartUp" ID="{E7BC78C3-34D8-45A4-8CF8-05D726750F19}"/>
+										<ItemRef Name="CartMojoLoop" ID="{51EE552C-EE1F-4F8D-8F33-6235E3E29B6D}"/>
+									</Playlist>
+								</RandomSequenceContainer>
+								<Sound Name="ShutDown" ID="{A1DFF88B-BC20-4136-B9DF-1E777C9059EC}" ShortID="978448229" Type="SoundFX">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-3</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="ShutDown" ID="{78223747-493D-4155-A453-57D623F710EE}" ShortID="708409794">
+											<Language>SFX</Language>
+											<AudioFile>ShutDown.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="ShutDown" ID="{78223747-493D-4155-A453-57D623F710EE}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<GroupingInfo>
+								<GroupRef Name="CartOn_Off" ID="{0460A9C2-FDEC-43FA-A444-5E7C2B25AD40}"/>
+								<DefaultSwitchRef Name="Nothing" ID="{DF8051A9-F51A-4B6B-AD9C-D7A941D9A43B}"/>
+								<GroupingBehaviorList>
+									<GroupingBehavior>
+										<ItemRef Name="ShutDown" ID="{A1DFF88B-BC20-4136-B9DF-1E777C9059EC}"/>
+									</GroupingBehavior>
+									<GroupingBehavior>
+										<ItemRef Name="StartUp" ID="{E2B6A8CE-C403-4C66-B97C-C40FA06760E8}"/>
+									</GroupingBehavior>
+								</GroupingBehaviorList>
+								<GroupingList>
+									<Grouping>
+										<SwitchRef Name="Off" ID="{AAC5A752-E36F-4467-BC0F-B5333B3CE980}"/>
+										<ItemList>
+											<ItemRef Name="ShutDown" ID="{A1DFF88B-BC20-4136-B9DF-1E777C9059EC}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
+										<SwitchRef Name="On" ID="{F9A6EFA9-953D-4857-8147-4BAE979411BB}"/>
+										<ItemList>
+											<ItemRef Name="StartUp" ID="{E2B6A8CE-C403-4C66-B97C-C40FA06760E8}"/>
+										</ItemList>
+									</Grouping>
+								</GroupingList>
+							</GroupingInfo>
+						</SwitchContainer>
+					</ChildrenList>
+				</ActorMixer>
+				<ActorMixer Name="WaterRunning" ID="{C8D5AEFD-2602-43C6-A127-9866D3B5F0F2}" ShortID="1006485743">
+					<Comment>Water running in lanes after a waterfall. Think soundpuzzle</Comment>
+					<PropertyList>
+						<Property Name="Pitch" Type="int32">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{278C9CD2-6EAD-494A-934D-5C07BC40E376}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Max" Type="Real64" Value="50"/>
+											<Property Name="Min" Type="Real64" Value="-100"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+						<Property Name="PositioningType" Type="int16" Value="1"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="AttachableMixerInput">
+							<Custom>
+								<Effect Name="Two Big Ears 3Dception (Attached)" ID="{F709F71F-83C2-4FDF-9935-6C6B7FCDCBF7}" ShortID="103103498" PluginName="AttachableMixerInput" CompanyID="265" PluginID="2" PluginType="3">
+									<PropertyList>
+										<Property Name="InputChannel" Type="int32" Value="2"/>
+										<Property Name="Room" Type="bool" Value="True"/>
+									</PropertyList>
+								</Effect>
+							</Custom>
+						</Reference>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+						</Reference>
+						<Reference Name="UserAuxSend0">
+							<ObjectRef Name="AmbienceBus" ID="{8FC1403E-05A4-4BCC-A84E-51488EF5BA6F}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="RunningRiver" ID="{12C9908C-7BB9-46AD-B5B6-AD8B9534B7B8}" ShortID="141295397" Type="SoundFX">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-10</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="RunningRiver" ID="{B2E6AD36-6B32-4184-84D9-D77259F552B0}" ShortID="561152648">
+									<Language>SFX</Language>
+									<AudioFile>RunningRiver.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="RunningRiver" ID="{B2E6AD36-6B32-4184-84D9-D77259F552B0}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
