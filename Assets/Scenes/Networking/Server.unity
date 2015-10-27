@@ -477,7 +477,6 @@ MonoBehaviour:
   - Level 1
   - Level 2
   - Level 3
-  - Level 4
   - Level 5
   levelManagerIndex: 0
   loadedLevelIndex: -1
@@ -505,7 +504,6 @@ GameObject:
   - 92: {fileID: 1388316763}
   - 124: {fileID: 1388316762}
   - 114: {fileID: 1388316760}
-  - 114: {fileID: 1388316761}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -525,21 +523,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   port: 4296
-  maxConnections: 20
+  maxConnections: 3
   logData: 0
   callEventsFrom: 0
---- !u!114 &1388316761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1388316759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11e7895a362bed940a138aefafcd3409, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  listenerId: 0
 --- !u!124 &1388316762
 Behaviour:
   m_ObjectHideFlags: 0
