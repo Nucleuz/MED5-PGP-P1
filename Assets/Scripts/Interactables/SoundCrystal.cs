@@ -15,7 +15,7 @@ public class SoundCrystal : Interactable
     private string[] sequenceSerial = new string[2];
     private byte[] seqLengths;
     
-    private bool sequenceIsPlaying = false;
+    public bool sequenceIsPlaying = false;
 
     // Use this for initialization
     void Start()
