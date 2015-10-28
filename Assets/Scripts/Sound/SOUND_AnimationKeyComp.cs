@@ -37,7 +37,7 @@ public class SOUND_AnimationKeyComp : MonoBehaviour {
 		if(GetRealNormalizedTime(currentState.normalizedTime) > 0){
 			currentPoint = GetRealNormalizedTime(currentState.normalizedTime)*currentState.speed;
 
-			if(currentPoint >= nextKeyPoint && lastKeyPoint < nextKeyPoint){
+			if(currentPoint >= nextKeyPoint && lastKeyPoint <= nextKeyPoint){
 				if(!isPlaying){
 					PlaySound();
 					isPlaying = true;
