@@ -44,6 +44,7 @@
 				<WorkUnit Name="Emitting" ID="{5C9BCD85-448D-4F45-952B-8F6124C87A93}" PersistMode="Reference"/>
 				<ActorMixer Name="PlayerButton" ID="{A8C89E4A-FF4A-4E00-9E75-AD22F1B5C8E0}" ShortID="816568593">
 					<PropertyList>
+						<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
 						<Property Name="MaxSoundPerInstance" Type="int16">
 							<ValueList>
 								<Value>1</Value>
