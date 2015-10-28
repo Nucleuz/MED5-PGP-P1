@@ -80,6 +80,7 @@ public class Cart : MonoBehaviour {
             {
                 currentStep = 0;
             }
+            //TODO Might be some issue with last rail point, haven't tested yet!
 
             // Set minecart animation speed
             minecartAnimator.speed = (movementSpeed) * verticalAxis;
