@@ -3,9 +3,6 @@ using System.Collections;
 
 public class SoundCrystal : Interactable
 {
-	SoundManager sM;
-	public ParticleSystem pS;
-
     // Reference to Game Manager, so that SoundCrystal can know when a sequence is done.
     public GameManager gM;
     
@@ -21,9 +18,6 @@ public class SoundCrystal : Interactable
     void Start()
     {
         seqLengths = new byte[2] {3, 6};
-
-        // Finding soundmanager and setting reference
-        sM = GameObject.Find("SoundManager").GetComponent<SoundManager>();
 
         // Finding gameManager and setting reference
         gM = GameObject.Find("GameManagerObject").GetComponent<GameManager>();
@@ -102,33 +96,27 @@ public class SoundCrystal : Interactable
             switch( (int)(char.GetNumericValue(sequenceSerial[gM.index][i]))    ){
 
             case 0:
-                sM.PlayEvent("SP_PlayerButton1", gameObject);
-        		pS.Play();
+                SoundManager.Instance.PlayEvent("SP_PlayerButton1", gameObject);
             break;
 
             case 1:
-                sM.PlayEvent("SP_PlayerButton2", gameObject);
-        		pS.Play();
+                SoundManager.Instance.PlayEvent("SP_PlayerButton2", gameObject);
             break;
 
             case 2:
-                sM.PlayEvent("SP_PlayerButton3", gameObject);
-        		pS.Play();
+                SoundManager.Instance.PlayEvent("SP_PlayerButton3", gameObject);
             break;
 
             case 3:
-                sM.PlayEvent("SP_PlayerButton4", gameObject);
-        		pS.Play();
+                SoundManager.Instance.PlayEvent("SP_PlayerButton4", gameObject);
             break;
 
             case 4:
-                sM.PlayEvent("SP_PlayerButton5", gameObject);
-        		pS.Play();
+                SoundManager.Instance.PlayEvent("SP_PlayerButton5", gameObject);
             break;
 
             case 5:
-                sM.PlayEvent("SP_PlayerButton6", gameObject);
-        		pS.Play();
+                SoundManager.Instance.PlayEvent("SP_PlayerButton6", gameObject);
             break;
 
             default:

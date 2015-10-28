@@ -6,7 +6,7 @@ public class InteractableButton : Interactable{
 	Light buttonLight;
 	public ParticleSystem par;
 	public ParticleSystem placeHolder;
-	SoundManager sM;
+	
 	public bool playedSound;
 	public bool particlesReplaced = false;
 
@@ -37,7 +37,7 @@ public class InteractableButton : Interactable{
 		buttonLight 	= GetComponent<Light>();
 		trigger 		= GetComponent<Trigger>();
 		par 			= GetComponent<ParticleSystem>();
-		//Was moved here since the sM made it not work!
+
 		//Set the color of the interactable button both background light and particles to the correct user.
 		setButtonColor(playerList);
 		par.Play ();
@@ -67,8 +67,8 @@ public class InteractableButton : Interactable{
 		}
 
 		if(playedSound && !trigger.isTriggered){
-			sM.ToggleSwitch("On_Off", "Off", gameObject);
-			sM.PlayEvent("ButtonOnOff", gameObject);
+			SoundManager.Instance.ToggleSwitch("On_Off", "Off", gameObject);
+			SoundManager.Instance.PlayEvent("ButtonOnOff", gameObject);
 			playedSound = false;
 		}
 	}
@@ -83,8 +83,8 @@ public class InteractableButton : Interactable{
 		if (trigger.isReadyToBeTriggered && arraysFit){
 			trigger.isTriggered = true;
 			if(!playedSound){
-				sM.ToggleSwitch("On_Off", "On", gameObject);
-				sM.PlayEvent("ButtonOnOff", gameObject);
+				SoundManager.Instance.ToggleSwitch("On_Off", "On", gameObject);
+				SoundManager.Instance.PlayEvent("ButtonOnOff", gameObject);
 				playedSound = true;
 			}
 		}
