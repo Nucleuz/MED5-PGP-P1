@@ -5,6 +5,10 @@ public class InteractableButton : Interactable{
 	Animator buttonAnimator;
 	Light buttonLight;
 	ParticleSystem par;
+
+	bool timerRunning = false;
+	float lastInteractionTime = 0;
+	float activatedLength = 0.5f;
 	
 	//SoundManager sM;
 	bool playedSound;
@@ -35,6 +39,14 @@ public class InteractableButton : Interactable{
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+		if(trigger.isReadyToBeTriggered && timerRunning){
+			if(Time.time < lastInteractionTime + activatedLength){
+				trigger.Deactivate();
+				timerRunning = false;
+
+			}
+		}
+
 		if(trigger.isTriggered){
 			buttonAnimator.SetBool("isActivated", true); 	//starts the animation of the button.
 			if(!playedSound){
@@ -53,8 +65,10 @@ public class InteractableButton : Interactable{
 	}
 
 	public override void OnRayReceived(int playerIndex, Ray ray, RaycastHit hit, ref LineRenderer lineRenderer,int nextLineVertex){
-		if (trigger.isReadyToBeTriggered){
+		if (trigger.isReadyToBeTriggered && !timerRunning){
 			trigger.Activate();
+			lastInteractionTime = Time.time;
+			timerRunning = true;
 		}
 	}
 
