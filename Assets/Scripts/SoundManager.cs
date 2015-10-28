@@ -40,6 +40,10 @@ public class SoundManager: MonoBehaviour {
 		RemoveFromList(g);
 	}
 
+	public void StopAll(GameObject g){
+		  AkSoundEngine.StopAll(g);
+	}
+
 	public void ToggleSwitch(string switchName, string switchMode, GameObject g){
 		AkSoundEngine.SetSwitch(switchName, switchMode, g);
 	}

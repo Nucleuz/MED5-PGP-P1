@@ -1979,7 +1979,7 @@ MonoBehaviour:
   m_ShadowmapMode: 0
   m_Cameras:
   - {fileID: 0}
-  m_CurrentCamera: {fileID: 0}
+  m_CurrentCamera: {fileID: 2027462}
   m_Size: {x: 10, y: 10, z: 20}
   m_SpotNear: .00999999978
   m_SpotFar: 1
@@ -2041,9 +2041,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3775ac8eb885d44c8f5c8afc133c205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentRail: {fileID: 0}
-  speed: 5
-  animationSpeed: 0
+  currentRail: {fileID: 0}
+  movementSpeed: 3
 --- !u!114 &11472548
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2070,7 +2069,7 @@ MonoBehaviour:
   m_ShadowmapMode: 0
   m_Cameras:
   - {fileID: 0}
-  m_CurrentCamera: {fileID: 0}
+  m_CurrentCamera: {fileID: 2027462}
   m_Size: {x: 10, y: 10, z: 20}
   m_SpotNear: .00999999978
   m_SpotFar: 1
@@ -2879,7 +2878,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: movementSpeed
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 174738}

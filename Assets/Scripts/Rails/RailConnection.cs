@@ -22,25 +22,25 @@ public class RailConnection : MonoBehaviour {
 	void Update () {
 	
 		//Checks whether points are already connected
-		if(connectToNext && self.NextRail == null){
-			self.NextRail = nRail; 		//Connect self to the next rail
-			nRail.PreviousRail = self; 	//Connect the next rail to self
+		if(connectToNext && self.next == null){
+			self.next = nRail; 		//Connect self to the next rail
+			nRail.prev = self; 	//Connect the next rail to self
 
 			//Checks whether points are already disconnected
-		} else if(!connectToNext && self.NextRail != null){
-			self.NextRail = null;		//Remove connection to next rail
-			nRail.PreviousRail = null;	//Remove next rails connection to self
+		} else if(!connectToNext && self.next != null){
+			self.next = null;		//Remove connection to next rail
+			nRail.prev = null;	//Remove next rails connection to self
 		}
 
 		//This bool condition ensures that the script does not try to set a variable that is already set.
-		if(connectToPrev && self.PreviousRail == null){
-			self.PreviousRail = pRail; 	//Connect self to the previous rail
-			pRail.NextRail = self;		//Connect the previous rail to self
+		if(connectToPrev && self.prev == null){
+			self.prev = pRail; 	//Connect self to the previous rail
+			pRail.next = self;		//Connect the previous rail to self
 
 			//Checks whether points are already disconnected
-		} else if(!connectToPrev && self.PreviousRail != null){
-			self.PreviousRail = null;	//Remove connection to previous rail
-			pRail.NextRail = null;		//Remove previous rails connection to self
+		} else if(!connectToPrev && self.prev != null){
+			self.prev = null;	//Remove connection to previous rail
+			pRail.next = null;		//Remove previous rails connection to self
 		}
 
 	}

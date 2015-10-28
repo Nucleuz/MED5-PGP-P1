@@ -6,8 +6,8 @@ public class Rail : MonoBehaviour {
 
 	public string rName = "railPoint";
 	public bool spawnRailPoint; 	//bool functions as a button for spawning a new railpoint
-	public Rail NextRail; 			//the next rail in line
-	public Rail PreviousRail; 		//the previous rail in line
+	public Rail next; 			    //the next rail in line
+	public Rail prev; 		        //the previous rail in line
 	public GameObject railPoint; 	//prefab reference
     private MeshRenderer mesh;
 
@@ -27,16 +27,16 @@ public class Rail : MonoBehaviour {
                 mesh.enabled = true;
 			//Checks for corner rails (if a previous or next rail is null
 			//it must be an end railpoint) and sets rotation according to neighbouring railpoints
-			if(NextRail != null && PreviousRail != null) {
-				transform.rotation = Quaternion.LookRotation(NextRail.transform.position - PreviousRail.transform.position);
+			if(next != null && prev != null) {
+				transform.rotation = Quaternion.LookRotation(next.transform.position - prev.transform.position);
 
 			//sets rotation for first end point
-			} else if(PreviousRail == null && NextRail != null) {
-				transform.LookAt(NextRail.transform);
+			} else if(prev == null && next != null) {
+				transform.LookAt(next.transform);
 
 			//sets rotation for second end point
-			} else if(NextRail == null && PreviousRail != null) {
-				transform.rotation = Quaternion.LookRotation(transform.position - PreviousRail.transform.position);
+			} else if(next == null && prev != null) {
+				transform.rotation = Quaternion.LookRotation(transform.position - prev.transform.position);
 			}
 
 			//Check if bool is true, when runs createNewPoint function
@@ -46,8 +46,8 @@ public class Rail : MonoBehaviour {
 			}
 
 			//Visual debugging (shows direction vector)
-			if(NextRail != null){
-				Debug.DrawLine(transform.position, NextRail.transform.position, Color.red);
+			if(next != null){
+				Debug.DrawLine(transform.position, next.transform.position, Color.red);
 			}
 		}
 	}
@@ -56,14 +56,14 @@ public class Rail : MonoBehaviour {
 	//(the one railpoint that has an empty NextRail variable)
 	//Creates new railpoint and set its PreviousRail, and itself as the previous rails NextRail
 	protected void createNewPoint(){
-		if(NextRail == null){
+		if(next == null){
 			GameObject g = Instantiate(railPoint, new Vector3(transform.position.x+1, transform.position.y, transform.position.z), Quaternion.identity) as GameObject;
 			g.transform.parent = this.transform.parent;
-			g.GetComponent<Rail>().PreviousRail = this;
+			g.GetComponent<Rail>().prev = this;
 			g.name = rName + g.transform.parent.childCount.ToString();
-			NextRail = g.GetComponent<Rail>();
+			next = g.GetComponent<Rail>();
 		} else {
-			NextRail.createNewPoint();
+			next.createNewPoint();
 		}
 	}
 }
