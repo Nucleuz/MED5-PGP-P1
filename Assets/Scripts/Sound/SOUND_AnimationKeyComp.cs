@@ -21,12 +21,14 @@ public class SOUND_AnimationKeyComp : MonoBehaviour {
 
 	//Next keypoint relative to currentPoint
 	private float nextKeyPoint;
+	private float lastKeyPoint;
 
 	// Use this for initialization
 	void Start () {
 		currentState = anim.GetCurrentAnimatorStateInfo(0);
 		currentPoint = currentState.normalizedTime*currentState.length;
 		nextKeyPoint = FindNextPoint();
+		lastKeyPoint = nextKeyPoint;
 	}
 	
 	// Update is called once per frame
@@ -35,11 +37,16 @@ public class SOUND_AnimationKeyComp : MonoBehaviour {
 		if(GetRealNormalizedTime(currentState.normalizedTime) > 0){
 			currentPoint = GetRealNormalizedTime(currentState.normalizedTime)*currentState.speed;
 
-			if(currentPoint >= nextKeyPoint){
+			if(currentPoint >= nextKeyPoint && lastKeyPoint < nextKeyPoint){
 				if(!isPlaying){
 					PlaySound();
 					isPlaying = true;
 				}
+				else if(currentPoint >= nextKeyPoint && currentPoint >= 0){
+					PlaySound();
+					isPlaying = true;
+				}
+				lastKeyPoint = nextKeyPoint;
 				nextKeyPoint = FindNextPoint();
 			}
 		}
