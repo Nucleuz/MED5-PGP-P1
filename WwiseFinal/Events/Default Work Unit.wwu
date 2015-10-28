@@ -190,12 +190,12 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="DoorSlide1" ID="{8E8CA289-7B5B-4754-80BF-76A27D2C9BFF}">
+				<Event Name="DoorSlideStart" ID="{8E8CA289-7B5B-4754-80BF-76A27D2C9BFF}">
 					<ChildrenList>
-						<Action Name="Play" ID="{0E1085DA-AB11-4423-A2EB-CF08C0E7AF8C}" ShortID="905737012" Type="Play" Scope="One" Global="false">
+						<Action Name="Play" ID="{9CDF26FA-1025-488B-9C72-6DB1BDB39A44}" ShortID="686764384" Type="Play" Scope="One" Global="false">
 							<ElementList>
-								<Element ID="{FF4711BA-EF0A-40E8-8DBC-F070034DB71E}" Global="false">
-									<ObjectRef Name="Door" ID="{6599B0E5-E325-4182-B38E-07A7C6B44894}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
+								<Element ID="{BA4D2D37-4FA4-4473-9400-53B3E41B45C2}" Global="false">
+									<ObjectRef Name="DoorSlideSlide" ID="{536239C0-78B6-4B16-A674-1E75CB01F868}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
 								</Element>
 							</ElementList>
 						</Action>
@@ -295,6 +295,24 @@
 							<ElementList>
 								<Element ID="{6BB37CE3-D173-4B75-B4BE-BAA5CFC177A8}" Global="false">
 									<ObjectRef Name="Waterfall07" ID="{BC24D74B-5F20-4599-995C-AE9527B53197}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="DoorSlideStop" ID="{316BA6E6-AE8D-447C-B729-3E04329056E0}">
+					<ChildrenList>
+						<Action Name="Stop" ID="{3D368F00-8305-4227-8236-F82999B4DED8}" ShortID="5083838" Type="Stop" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{16EA5D2E-4ED4-4703-8F69-4A5B5C1F8A85}" Global="false">
+									<ObjectRef Name="DoorSlideSlide" ID="{536239C0-78B6-4B16-A674-1E75CB01F868}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
+								</Element>
+							</ElementList>
+						</Action>
+						<Action Name="Play" ID="{C4C316EC-570E-4CBF-BA1F-B3A29361B5EB}" ShortID="236759566" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{2A350580-C05D-4F72-B4AE-FB661DBAE1D0}" Global="false">
+									<ObjectRef Name="DoorClose" ID="{C5D1BF35-7DCB-4ED8-BDF5-8AF45A26DD7D}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
 								</Element>
 							</ElementList>
 						</Action>
