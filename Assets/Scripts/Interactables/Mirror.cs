@@ -102,7 +102,7 @@ public class Mirror : Interactable {
         //Ray newRay = new Ray (hit.point, Vector3.Reflect (ray.direction, hit.normal));        //Legacy code. Calculates a realistisc reflection off the mirror
 
         //Shoots a new raycast to the point of the mirror if they are at the correct rail.
-        if(player.CurrentRail == railPoint){
+        if(player.currentRail == railPoint){
             Ray newRay = new Ray(hit.point, ButtonToTrigger.transform.position - transform.position);
             RaycastHit rayhit;
 
