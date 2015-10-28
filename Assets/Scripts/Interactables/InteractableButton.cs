@@ -41,7 +41,7 @@ public class InteractableButton : Interactable{
 		//Set the color of the interactable button both background light and particles to the correct user.
 		setButtonColor(playerList);
 		par.Play ();
-		sM 				= GameObject.Find("SoundManager").GetComponent<SoundManager>();
+
 
 	}
 	
