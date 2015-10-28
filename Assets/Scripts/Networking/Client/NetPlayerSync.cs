@@ -24,6 +24,9 @@ public class NetPlayerSync : MonoBehaviour {
 	private VoiceChatPlayer player;
 	
 	public HelmetLightScript helmet;
+
+	public LightShafts nonFocusedLightShaft;
+	public LightShafts focusedLightShaft;
 	
 	//reference to reduce when it sends data to everyone else
 	Quaternion lastRotation;
@@ -127,5 +130,15 @@ public class NetPlayerSync : MonoBehaviour {
     public void SetVoiceChatPlayer(VoiceChatPlayer player)
     {
         this.player = player;
+    }
+
+    public void AddCameraToLightShaft(GameObject camera){
+    	if(nonFocusedLightShaft.m_Cameras[0] == null){
+    		nonFocusedLightShaft.m_Cameras[0] = camera.GetComponent<Camera>();
+    		focusedLightShaft.m_Cameras[0] = camera.GetComponent<Camera>();
+    	}else{
+    		nonFocusedLightShaft.m_Cameras[1] = camera.GetComponent<Camera>();
+    		focusedLightShaft.m_Cameras[1] = camera.GetComponent<Camera>();
+    	}
     }
 }

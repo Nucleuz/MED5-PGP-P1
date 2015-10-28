@@ -543,6 +543,10 @@ Prefab:
       propertyPath: pRail
       value: 
       objectReference: {fileID: 2069747268}
+    - target: {fileID: 11415694, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
+      propertyPath: redPlayerRequired
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
   m_IsPrefabParent: 0
@@ -2323,6 +2327,14 @@ Prefab:
       objectReference: {fileID: 1800081552}
     - target: {fileID: 11443750, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
       propertyPath: playerList.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11415694, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
+      propertyPath: redPlayerRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11415694, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
+      propertyPath: bluePlayerRequired
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

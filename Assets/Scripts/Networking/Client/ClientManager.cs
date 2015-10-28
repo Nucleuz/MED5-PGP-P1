@@ -124,6 +124,8 @@ public class ClientManager : NetworkManager
                         netPlayer.networkID = senderID;
                         netPlayer.SetAsReceiver();
 
+                        player.GetComponent<NetPlayerSync>().AddCameraToLightShaft(netPlayer.cam);
+
                     }
                     break;
                 case Network.Subject.HasJoined:

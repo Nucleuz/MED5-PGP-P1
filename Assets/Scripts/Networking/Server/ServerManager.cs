@@ -17,13 +17,13 @@ public class ServerManager : NetworkManager {
     //for debugging
     public Text debug;
 
-	//index for the next player to join, NOTE: cycles with the spawnPos Length
-	public int playerIndex;
+    //index for the next player to join, NOTE: cycles with the spawnPos Length
+    public int playerIndex;
 
     //reference to player object so the server has a visual indication of the players position and rotation
-	public Transform[] players;
-	//id of each sender
-	public ushort[] senders;
+    public Transform[] players;
+    //id of each sender
+    public ushort[] senders;
     public ConnectionService[] connections;
 
     public GameManager gameManager;
@@ -32,89 +32,91 @@ public class ServerManager : NetworkManager {
 
     private bool[] clientLoadedLevel = new bool[3];
 
-	void Start () {
+    void Start () {
 
         gameManager = GetComponent<GameManager>();
         triggerHandler = GetComponent<TriggerHandler>();
         levelHandler = GetComponent<LevelHandler>();
         isServer = true;
-		senders = new ushort[4];
+        senders = new ushort[4];
         connections = new ConnectionService[4];
 
-		//Networking - lets the method OnData be called
-		ConnectionService.onData += OnData;
-	}
+        //Networking - lets the method OnData be called
+        ConnectionService.onData += OnData;
+    }
 
     //@TODO cleanup OnData -- change ifs to switches and seperate out longer subject switches to seperate functions
 
-	//Called when we receive data
-	void OnData(ConnectionService con, ref NetworkMessage data)
-	{
-        Debug.Log("Data from " + con.id + ", Tag: " + data.tag + ", Subject: " + data.subject);
-		if(data.tag == Network.Tag.Manager){
+    //Called when we receive data
+    void OnData(ConnectionService con, ref NetworkMessage data)
+    {
+        if(data.tag == Network.Tag.Manager){
 
-			if(data.subject == Network.Subject.HasJoined){
-				//if a new player has joined
-				
-				//save the id of sender
-				senders[playerIndex] = con.id;
+            if(data.subject == Network.Subject.HasJoined){
+                //if a new player has joined
+                
+                //save the id of sender
+                senders[playerIndex] = con.id;
                 connections[playerIndex] = con;
-				//set server visuals
-				players[playerIndex].gameObject.SetActive(true);
-			
+                //set server visuals
+                players[playerIndex].gameObject.SetActive(true);
+            
                 playerIndex++;
 
                 Debug.Log("Player joined told to load level " + levelHandler.levelManagerIndex);
 
-				//send back the spawnpos to the client
-				con.SendReply(
+                //send back the spawnpos to the client
+                con.SendReply(
                         Network.Tag.Manager, 
                         Network.Subject.ServerSentNetID, 
                         con.id);
-				con.SendReply(Network.Tag.Manager, 
+            }else if(data.subject == Network.Subject.RequestServerLevel){
+                Debug.Log("Player requested the servers level index");
+                con.SendReply(Network.Tag.Manager, 
                         Network.Subject.NewLevelManager, 
                         levelHandler.levelManagerIndex);
-			}
-		}else if(data.tag == Network.Tag.Player){
+            }
+        }else if(data.tag == Network.Tag.Player){
 
-			if( data.subject == Network.Subject.PlayerPositionUpdate ){
+            if( data.subject == Network.Subject.PlayerPositionUpdate ){
 
-				//find the index of the sender
-				int index = -1;
-				for(int i = 0;i<senders.Length;i++){
-					if(con.id == senders[i]){
-						index = i;
-						break;
-					}
-                }
-
-				if(index != -1){
-					//if the player exist on server update the server object
-                    data.DecodeData();
-
-					players[index].position = Deserializer.Vector3((byte[])data.data);
-				}else{
-					Debug.LogError("Sender ID not found");
-				}
-			}else if(data.subject == Network.Subject.PlayerRotationUpdate){
                 //find the index of the sender
-				int index = -1;
-				for(int i = 0;i<senders.Length;i++){
-					if(con.id == senders[i]){
-						index = i;
-						break;
-					}
+                int index = -1;
+                for(int i = 0;i<senders.Length;i++){
+                    if(con.id == senders[i]){
+                        index = i;
+                        break;
+                    }
                 }
 
-				if(index != -1){
-					//if the player exist on server update the server object
+                if(index != -1){
+                    //if the player exist on server update the server object
                     data.DecodeData();
 
-					players[index].rotation = Deserializer.Quaternion((byte[])data.data);
-				}else{
-					Debug.LogError("Sender ID not found");
-				}
-			}
+                    players[index].position = Deserializer.Vector3((byte[])data.data);
+                }else{
+                    Debug.LogError("Sender ID not found");
+                }
+            }else if(data.subject == Network.Subject.PlayerRotationUpdate){
+                //find the index of the sender
+                int index = -1;
+                for(int i = 0;i<senders.Length;i++){
+                    if(con.id == senders[i]){
+                        index = i;
+                        break;
+                    }
+                }
+
+                if(index != -1){
+                    //if the player exist on server update the server object
+                    data.DecodeData();
+
+
+                    players[index].rotation = Deserializer.Quaternion((byte[])data.data);
+                }else{
+                    Debug.LogError("Sender ID not found");
+                }
+            }
         }else if(data.tag == Network.Tag.Trigger){
             //relay to triggerHandler
             if(data.subject == Network.Subject.RequestTriggerIDs){
@@ -123,7 +125,6 @@ public class ServerManager : NetworkManager {
                 
                 for(int i = 0;i<triggerHandler.triggers.Count;i++){
                     triggerStates[i] = new TriggerState(triggerHandler.triggers[i]);
-                    Debug.Log("triggers: " + triggerStates[i].id);
                 }
 
                 con.SendReply(
@@ -132,10 +133,9 @@ public class ServerManager : NetworkManager {
                         triggerStates);
 
             }else if(data.subject == Network.Subject.TriggerActivate){
-
                 data.DecodeData();
 
-                triggerHandler.TriggerInteracted((ushort)data.data,true);
+                triggerHandler.TriggerInteracted((ushort)data.data,con.id,true);
                 Debug.Log("trigger " + (ushort)data.data + " activated"); 
 
                 //force update GameMnager
@@ -148,7 +148,7 @@ public class ServerManager : NetworkManager {
             }else if(data.subject == Network.Subject.TriggerDeactivate){
                 data.DecodeData();
 
-                triggerHandler.TriggerInteracted((ushort)data.data,false);
+                triggerHandler.TriggerInteracted((ushort)data.data,con.id,false);
 
                 //force update GameMnager
                 gameManager.DetectTriggerChanges();
@@ -159,7 +159,7 @@ public class ServerManager : NetworkManager {
                 SendToAll(data.tag,Network.Subject.TriggerState,state);
             }
         }
-	}
+    }
 
     public void TriggerChanged(Trigger trigger){
 
@@ -203,14 +203,14 @@ public class ServerManager : NetworkManager {
                 connections[i].SendReply(tag, subject, data);
     }
 
-	private void OnApplicationQuit() {
-		// Close all connections
-		foreach (var con in connections) {
+    private void OnApplicationQuit() {
+        // Close all connections
+/*      foreach (var con in connections) {
             if(con != null)
                 con.Close();
-		}
+        }*/
 
-		// Close server
-		//DarkRiftServer.Close(false);
-	}
+        // Close server
+        //DarkRiftServer.Close(false);
+    }
 }

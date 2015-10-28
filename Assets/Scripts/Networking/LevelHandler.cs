@@ -31,7 +31,7 @@ public class LevelHandler : MonoBehaviour {
 
     void Start(){
         levelContainers = new LevelContainer[levelOrder.Length];
-        triggerHandler = TriggerHandler._instance;
+        triggerHandler = TriggerHandler.Instance;
         if(NetworkManager.isServer)
             loadNextLevel();
     }
