@@ -155,9 +155,9 @@ using DarkRift;
             trigger.playersInteracting[playerID-1] = state;
 
             //is players interacting the correct ones
-            if(trigger.playersInteracting[0] == trigger.redPlayerRequired &&
-                trigger.playersInteracting[1] == trigger.greenPlayerRequired &&
-                trigger.playersInteracting[2] == trigger.bluePlayerRequired){
+            if(trigger.playersInteracting[0] == trigger.bluePlayerRequired &&
+                trigger.playersInteracting[1] == trigger.redPlayerRequired &&
+                trigger.playersInteracting[2] == trigger.greenPlayerRequired){
                 
                 trigger.isTriggered = true;
             }else

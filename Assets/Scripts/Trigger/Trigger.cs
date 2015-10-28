@@ -17,9 +17,9 @@ public class Trigger : MonoBehaviour {
     public bool playersRequired;
 
     //players required to trigger the trigger
+    public bool bluePlayerRequired;
     public bool redPlayerRequired;
     public bool greenPlayerRequired;
-    public bool bluePlayerRequired;
 
     public void Start(){
         playersRequired = bluePlayerRequired || redPlayerRequired || greenPlayerRequired;
