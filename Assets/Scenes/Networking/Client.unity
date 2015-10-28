@@ -891,14 +891,24 @@ Prefab:
     - target: {fileID: 11467866, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
       propertyPath: prefabPlayer
       value: 
-      objectReference: {fileID: 174738, guid: b069a51adf9428a4298b4739e68ed3d0, type: 2}
+      objectReference: {fileID: 174738, guid: 045c78c4ed3dbe04392c99ca4301d053, type: 2}
     - target: {fileID: 11493670, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
       propertyPath: levelOrder.Array.data[3]
       value: Level 5
       objectReference: {fileID: 0}
+    - target: {fileID: 11467866, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
+      propertyPath: triggerHandler
+      value: 
+      objectReference: {fileID: 1730890975}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1730890975 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11486854, guid: 9148512b76a384e92a98ff8a3ede02d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1730890974}
+  m_Script: {fileID: 11500000, guid: 69c83008452ed407ea40ad05369b6186, type: 3}
 --- !u!1 &1904935178
 GameObject:
   m_ObjectHideFlags: 0
