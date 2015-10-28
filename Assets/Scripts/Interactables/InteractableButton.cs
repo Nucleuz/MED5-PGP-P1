@@ -40,7 +40,7 @@ public class InteractableButton : Interactable{
 	// Update is called once per frame
 	void FixedUpdate () {
 		if(trigger.isReadyToBeTriggered && timerRunning){
-			if(Time.time > lastInteractionTime + activatedLength){
+			if(Time.time < lastInteractionTime + activatedLength){
 				trigger.Deactivate();
 				timerRunning = false;
 			}
