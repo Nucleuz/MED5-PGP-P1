@@ -126,17 +126,6 @@ using DarkRift;
                             Debug.Log("Received triggerstates has length: " + triggerStates.Length + " local has : " + triggers.Count);
                     }
                     break;
-
-                    case Network.Subject.TriggerActivate:
-                    {
-                        TriggerInteracted((ushort)data,true);
-                    }
-                    break;
-                    case Network.Subject.TriggerDeactivate:
-                    {
-                        TriggerInteracted((ushort)data,false);
-                    }
-                    break;
                     case Network.Subject.TriggerState:
                     {
                         SetTriggerState((TriggerState)data);
@@ -157,10 +146,28 @@ using DarkRift;
 
     }
 
-    public void TriggerInteracted(ushort triggerID, bool state){
+    public void TriggerInteracted(ushort triggerID,ushort playerID, bool state){
         int index = FindTriggerIndexFromID(triggerID);  
         
-        triggers[index].isTriggered = state;
+        Trigger trigger = triggers[index];
+
+        if(trigger.playersRequired){
+            trigger.playersInteracting[playerID-1] = state;
+
+            //is players interacting the correct ones
+            if(trigger.playersInteracting[0] == trigger.redPlayerRequired &&
+                trigger.playersInteracting[1] == trigger.greenPlayerRequired &&
+                trigger.playersInteracting[2] == trigger.bluePlayerRequired){
+                
+                trigger.isTriggered = true;
+            }else
+                trigger.isTriggered = false;
+
+
+        }else
+            trigger.isTriggered = state;
+
+
     }
 
     private int FindTriggerIndexFromID(ushort id){

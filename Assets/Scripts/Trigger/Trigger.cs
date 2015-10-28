@@ -10,9 +10,24 @@ public class Trigger : MonoBehaviour {
     //Networking
     public ushort triggerID;
 
+    //which players are currently interacting
+    public bool[] playersInteracting;
+
+    [HideInInspector]
+    public bool playersRequired;
+
+    //players required to trigger the trigger
+    public bool redPlayerRequired;
+    public bool greenPlayerRequired;
+    public bool bluePlayerRequired;
+
+    public void Start(){
+        playersRequired = bluePlayerRequired || redPlayerRequired || greenPlayerRequired;
+    }
     public void Activate(){
         if(isTriggered) return;
-        isTriggered = true; 
+        if(!playersRequired)
+            isTriggered = true; 
 
         //Send to Server @TODO to display visuals everyone should get this
         if(!NetworkManager.isServer)
@@ -23,7 +38,8 @@ public class Trigger : MonoBehaviour {
    
     public void Deactivate(){
         if(!isTriggered) return;
-        isTriggered = false;
+        if(!playersRequired)
+            isTriggered = false;
 
         if(!NetworkManager.isServer)
             DarkRiftAPI.SendMessageToServer(Network.Tag.Trigger,Network.Subject.TriggerDeactivate, triggerID);

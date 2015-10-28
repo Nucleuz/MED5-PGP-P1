@@ -133,10 +133,9 @@ public class ServerManager : NetworkManager {
                         triggerStates);
 
             }else if(data.subject == Network.Subject.TriggerActivate){
-
                 data.DecodeData();
 
-                triggerHandler.TriggerInteracted((ushort)data.data,true);
+                triggerHandler.TriggerInteracted((ushort)data.data,con.id,true);
                 Debug.Log("trigger " + (ushort)data.data + " activated"); 
 
                 //force update GameMnager
@@ -149,7 +148,7 @@ public class ServerManager : NetworkManager {
             }else if(data.subject == Network.Subject.TriggerDeactivate){
                 data.DecodeData();
 
-                triggerHandler.TriggerInteracted((ushort)data.data,false);
+                triggerHandler.TriggerInteracted((ushort)data.data,con.id,false);
 
                 //force update GameMnager
                 gameManager.DetectTriggerChanges();

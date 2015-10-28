@@ -8,17 +8,7 @@ public class InteractableButton : Interactable{
 	
 	//SoundManager sM;
 	bool playedSound;
-
-	[Tooltip("NEEDS TO BE THE SIZE 3. Check the players that have to hit the button. 0 = red, 1 = green, 2 = blue")]
-	public bool[] playerList;
 	
-	private bool[] playerCheck = new bool[3];
-	
-	private bool arraysFit;
-
-	private float delay;
-	private float timer;
-
 	private Trigger trigger;
 
 	public Renderer[] rend;
@@ -26,8 +16,6 @@ public class InteractableButton : Interactable{
 	// Use this for initialization
 	void Start () {
 		playedSound 	= false;
-		arraysFit 		= false;
-		delay 			= 1.0f;
 	
 		buttonAnimator 	= GetComponent<Animator>();
 		buttonLight 	= GetComponent<Light>();
@@ -35,25 +23,26 @@ public class InteractableButton : Interactable{
 		par 			= GetComponent<ParticleSystem>();
 		////Was moved here since the sM made it not work!
 		//Set the color of the interactable button both background light and particles to the correct user.
-		setButtonColor(playerList);
+		setButtonColor(
+			new bool[3]{
+				trigger.bluePlayerRequired,
+				trigger.redPlayerRequired,
+				trigger.greenPlayerRequired
+				});
 //		sM 				= GameObject.Find("SoundManager").GetComponent<SoundManager>();
 
 	}
 	
 	// Update is called once per frame
-	void Update () {
-
-		//This essentially updates the playerCheck arrays, so if one player stops hitting the button he will be removed
-		timer -= Time.deltaTime;							//CountDown
-		if(timer <= 0){										//Check if timer is up
-			timer = delay;									//Reset Timer
-			for(int i = 0; i < playerCheck.Length; i++){	//Reset playerCheck array
-				playerCheck[i] = false;
-			}
-		}
-
+	void FixedUpdate () {
 		if(trigger.isTriggered){
 			buttonAnimator.SetBool("isActivated", true); 	//starts the animation of the button.
+			if(!playedSound){
+//				sM.ToggleSwitch("On_Off", "On", gameObject);
+//				sM.PlayEvent("ButtonOnOff", gameObject);
+				playedSound = true;
+			}
+
 			if(!par.isPlaying)
 				par.Play(); 								//starts the particles system.
 		} else {
@@ -64,29 +53,9 @@ public class InteractableButton : Interactable{
 	}
 
 	public override void OnRayReceived(int playerIndex, Ray ray, RaycastHit hit, ref LineRenderer lineRenderer,int nextLineVertex){
-		if(!playerCheck[playerIndex-1]){
-			playerCheck[playerIndex-1] = true;
-		}
-
-		arraysFit = checkArrays(playerCheck, playerList);
-
-		if (trigger.isReadyToBeTriggered && arraysFit){
+		if (trigger.isReadyToBeTriggered){
 			trigger.Activate();
-			if(!playedSound){
-//				sM.ToggleSwitch("On_Off", "On", gameObject);
-//				sM.PlayEvent("ButtonOnOff", gameObject);
-				playedSound = true;
-			}
 		}
-		
-	}
-
-	public bool checkArrays(bool[] a, bool[] b){
-		for(int i = 0; i < a.Length; i++){
-			if(a[i] != b[i])
-				return false;
-		}
-		return true;
 	}
 
 	public void setButtonColor(bool[] a){
