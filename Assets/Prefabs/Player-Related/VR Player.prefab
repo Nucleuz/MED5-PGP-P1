@@ -790,8 +790,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 434852}
-  - 81: {fileID: 8145124}
   - 20: {fileID: 2079844}
+  - 114: {fileID: 11458238}
+  - 114: {fileID: 11404172}
+  - 114: {fileID: 11440690}
   m_Layer: 0
   m_Name: CenterEyeAnchor
   m_TagString: MainCamera
@@ -1049,8 +1051,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 150028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.0500000007, y: .870000005, z: 0}
-  m_LocalScale: {x: 1.20000005, y: 1.19999981, z: 1.19999981}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 413774}
   - {fileID: 498022}
@@ -1812,7 +1814,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 115974}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
@@ -1868,13 +1870,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 115974}
   m_Mesh: {fileID: 4300000, guid: 4a498b35cfe6f4102bb57ac28474cefd, type: 3}
---- !u!81 &8145124
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 189880}
-  m_Enabled: 1
 --- !u!95 &9556122
 Animator:
   serializedVersion: 3
@@ -1973,6 +1968,18 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
+--- !u!114 &11404172
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 189880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11e7895a362bed940a138aefafcd3409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listenerId: 0
 --- !u!114 &11404310
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1986,6 +1993,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   usePositionTracking: 1
   resetTrackerOnLoad: 1
+--- !u!114 &11440690
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 189880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 937b8818995c45e449c3d131a35ac5d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11449746
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1997,8 +2015,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3775ac8eb885d44c8f5c8afc133c205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   currentRail: {fileID: 0}
   movementSpeed: 3
+=======
+  CurrentRail: {fileID: 0}
+  speed: 5
+  animationSpeed: 0
+--- !u!114 &11458238
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 189880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11e7895a362bed940a138aefafcd3409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listenerId: 0
+>>>>>>> origin/CreateFreeMovement
 --- !u!114 &11467030
 MonoBehaviour:
   m_ObjectHideFlags: 1

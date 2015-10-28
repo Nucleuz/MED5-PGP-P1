@@ -12,7 +12,7 @@ public class Mirror : Interactable {
     public InteractableButton ButtonToTrigger; // The target that the mirror has to hit.
 
     public Cart player;
-    public Rail railPoint;
+    //public Rail railPoint;
     private LightShafts LS;
 
     [Tooltip("Use empty gameobjects as targets that doesn't need to interact and buttons for targets that needs to interact.")]
@@ -80,8 +80,7 @@ public class Mirror : Interactable {
 
     public override void OnRayReceived(int playerIndex, Ray ray, RaycastHit hit, ref LineRenderer lineRenderer,int nextLineVertex){
     	//Used for turning on the relfectance of the mirror.
-    	Debug.Log("check");
-                	isBeingLitOn = true;
+        isBeingLitOn = true;
 
     	//Set the color of the reflected light to the correct user.
         switch (playerIndex){
@@ -102,7 +101,7 @@ public class Mirror : Interactable {
         //Ray newRay = new Ray (hit.point, Vector3.Reflect (ray.direction, hit.normal));        //Legacy code. Calculates a realistisc reflection off the mirror
 
         //Shoots a new raycast to the point of the mirror if they are at the correct rail.
-        if(player.currentRail == railPoint){
+        //if(player.CurrentRail == railPoint){
             Ray newRay = new Ray(hit.point, ButtonToTrigger.transform.position - transform.position);
             RaycastHit rayhit;
 
@@ -125,7 +124,7 @@ public class Mirror : Interactable {
                 }
             }
         }
-	}
+	//}
 
     IEnumerator rotateTowardsTarget(Quaternion start, Quaternion end, float length) {
         isRotating = true;

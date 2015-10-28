@@ -13,8 +13,8 @@ public class Cart : MonoBehaviour {
 
 	void Start() {
 
-
-        startingRail = currentRail;
+		animationSpeed = 1;
+        startingRail = CurrentRail;
         startingPosition = transform.position;
 		minecartAnimator = GetComponent<Animator>();
 
