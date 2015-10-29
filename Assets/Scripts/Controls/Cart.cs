@@ -5,6 +5,7 @@ public class Cart : MonoBehaviour {
 
 	public Rail currentRail;            // The railpoint that the cart is currently on
     public float movementSpeed = 1;        // Speed of animation (At full speed);
+    public bool isMoving;
 
     private Vector3 startingPosition;   // Starting Position (In case of reset)
     private Rail startingRail;          // Starting Rail (In case of reset)
@@ -13,7 +14,7 @@ public class Cart : MonoBehaviour {
 
 	void Start() {
 
-
+        isMoving = false;
         startingRail = currentRail;
         startingPosition = transform.position;
 		minecartAnimator = GetComponent<Animator>();
@@ -22,6 +23,7 @@ public class Cart : MonoBehaviour {
     }
 
 	void Update(){
+
         //This is specifically for elevator connection points where the cart has to move with the elevator
         if (currentRail.next == null && currentRail.prev == null){
 					transform.position = currentRail.transform.position + currentRail.transform.up;
@@ -35,6 +37,7 @@ public class Cart : MonoBehaviour {
         } else {
             minecartAnimator.speed = 0;
             minecartAnimator.StopPlayback();
+            isMoving = false;
         }
     }
 
@@ -84,6 +87,8 @@ public class Cart : MonoBehaviour {
 
             // Set minecart animation speed
             minecartAnimator.speed = (movementSpeed) * verticalAxis;
+
+            isMoving = true;
         }
     }
 

@@ -239,8 +239,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  NextRail: {fileID: 649421663}
-  PreviousRail: {fileID: 911221833}
+  next: {fileID: 649421663}
+  prev: {fileID: 911221833}
   railPoint: {fileID: 120714201}
 --- !u!4 &120714203
 Transform:
@@ -382,8 +382,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  NextRail: {fileID: 911221833}
-  PreviousRail: {fileID: 1781520197}
+  next: {fileID: 911221833}
+  prev: {fileID: 1781520197}
   railPoint: {fileID: 242986494}
 --- !u!4 &242986496
 Transform:
@@ -997,8 +997,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  NextRail: {fileID: 1584980494}
-  PreviousRail: {fileID: 120714202}
+  next: {fileID: 1584980494}
+  prev: {fileID: 120714202}
   railPoint: {fileID: 649421662}
 --- !u!4 &649421664
 Transform:
@@ -1176,8 +1176,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  NextRail: {fileID: 0}
-  PreviousRail: {fileID: 1952086915}
+  next: {fileID: 0}
+  prev: {fileID: 1952086915}
   railPoint: {fileID: 738113879}
 --- !u!4 &738113881
 Transform:
@@ -1521,7 +1521,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11403774, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
       propertyPath: spawnRailPoint
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11403774, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
       propertyPath: NextRail
@@ -1535,6 +1535,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: .707106829
       objectReference: {fileID: 0}
+    - target: {fileID: 11403774, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
+      propertyPath: next
+      value: 
+      objectReference: {fileID: 1781520197}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
   m_IsPrefabParent: 0
@@ -1573,8 +1577,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  NextRail: {fileID: 120714202}
-  PreviousRail: {fileID: 242986495}
+  next: {fileID: 120714202}
+  prev: {fileID: 242986495}
   railPoint: {fileID: 911221832}
 --- !u!23 &911221834
 MeshRenderer:
@@ -1721,9 +1725,13 @@ Prefab:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 11465930, guid: 6b51f68b61740074b921684716c1e935, type: 2}
-      propertyPath: CurrentRail
+      propertyPath: currentRail
       value: 
       objectReference: {fileID: 1463423101}
+    - target: {fileID: 11444098, guid: 6b51f68b61740074b921684716c1e935, type: 2}
+      propertyPath: car
+      value: 
+      objectReference: {fileID: 2074501435}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b51f68b61740074b921684716c1e935, type: 2}
   m_IsPrefabParent: 0
@@ -2520,8 +2528,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  NextRail: {fileID: 1952086915}
-  PreviousRail: {fileID: 649421663}
+  next: {fileID: 1952086915}
+  prev: {fileID: 649421663}
   railPoint: {fileID: 1584980493}
 --- !u!4 &1584980495
 Transform:
@@ -2837,8 +2845,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  NextRail: {fileID: 242986495}
-  PreviousRail: {fileID: 1463423101}
+  next: {fileID: 242986495}
+  prev: {fileID: 1463423101}
   railPoint: {fileID: 1781520196}
 --- !u!4 &1781520198
 Transform:
@@ -3253,8 +3261,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  NextRail: {fileID: 738113880}
-  PreviousRail: {fileID: 1584980494}
+  next: {fileID: 738113880}
+  prev: {fileID: 1584980494}
   railPoint: {fileID: 1952086914}
 --- !u!4 &1952086916
 Transform:
@@ -3407,6 +3415,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 17a3efe76b04e014c8e7b3a090996616, type: 3}
   m_IsPrefabParent: 0
+--- !u!114 &2074501435 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11465930, guid: 6b51f68b61740074b921684716c1e935,
+    type: 2}
+  m_PrefabInternal: {fileID: 968914991}
+  m_Script: {fileID: 11500000, guid: e3775ac8eb885d44c8f5c8afc133c205, type: 3}
 --- !u!4 &2113487537 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 17a3efe76b04e014c8e7b3a090996616, type: 3}

@@ -212,7 +212,7 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="CartRings" ID="{B44B5591-398C-4B77-9B39-5ECFE45BA4C5}">
+				<Event Name="CarRings" ID="{B44B5591-398C-4B77-9B39-5ECFE45BA4C5}">
 					<ChildrenList>
 						<Action Name="Play" ID="{93F00E2E-34AE-4D21-B32C-A350E05D2F9E}" ShortID="366289306" Type="Play" Scope="One" Global="false">
 							<ElementList>
@@ -258,6 +258,17 @@
 							<ElementList>
 								<Element ID="{2A350580-C05D-4F72-B4AE-FB661DBAE1D0}" Global="false">
 									<ObjectRef Name="DoorClose" ID="{C5D1BF35-7DCB-4ED8-BDF5-8AF45A26DD7D}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="CarCrystal" ID="{32606418-FE2D-4361-8DB1-D7D110DE79A9}">
+					<ChildrenList>
+						<Action Name="Play" ID="{0D0890E2-7D11-4112-9974-0C0BA4C91FCB}" ShortID="1070140720" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{301B3393-0B77-49FA-A889-F4D4606C67AC}" Global="false">
+									<ObjectRef Name="CartOn_Off" ID="{EF5235FA-BBE8-4D76-9D25-5809881BDBE2}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
 								</Element>
 							</ElementList>
 						</Action>

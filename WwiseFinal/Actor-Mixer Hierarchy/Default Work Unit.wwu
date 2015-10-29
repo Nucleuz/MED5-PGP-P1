@@ -263,6 +263,11 @@
 					<Comment>Startup and shutdown sound of cart. Will be played everytime it moves and stops moving. </Comment>
 					<PropertyList>
 						<Property Name="PositioningType" Type="int16" Value="1"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-5</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="AttachableMixerInput">
@@ -312,6 +317,64 @@
 										<Sound Name="CartMojoLoop" ID="{51EE552C-EE1F-4F8D-8F33-6235E3E29B6D}" ShortID="58038798" Type="SoundFX">
 											<PropertyList>
 												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<RTPCList>
+														<RTPC Name="" ID="{1DAE0B09-3776-4ECA-AE6C-930B9F801C9A}" ShortID="783658309">
+															<ReferenceList>
+																<Reference Name="ControlInput">
+																	<ObjectRef Name="CarSpeed" ID="{084F0DC3-915C-4B76-9182-81E1CBBE131F}" WorkUnitID="{1CDE7489-06E1-4799-9128-CEAD0A4805CE}"/>
+																</Reference>
+															</ReferenceList>
+															<Curve Name="" ID="{1DEE91A4-C187-428C-933D-BB144F1F7212}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="65537"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>0</YPos>
+																		<Flags>5</Flags>
+																		<SegmentShape>Exp1</SegmentShape>
+																	</Point>
+																	<Point>
+																		<XPos>10</XPos>
+																		<YPos>1076</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</RTPC>
+													</RTPCList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<RTPCList>
+														<RTPC Name="" ID="{2E84E8CF-8496-4D9E-9367-6C0C16E6253B}" ShortID="623331960">
+															<ReferenceList>
+																<Reference Name="ControlInput">
+																	<ObjectRef Name="CarSpeed" ID="{084F0DC3-915C-4B76-9182-81E1CBBE131F}" WorkUnitID="{1CDE7489-06E1-4799-9128-CEAD0A4805CE}"/>
+																</Reference>
+															</ReferenceList>
+															<Curve Name="" ID="{5EB119C5-EFD3-485C-B33B-8A1D65649745}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>0</YPos>
+																		<Flags>5</Flags>
+																		<SegmentShape>Exp1</SegmentShape>
+																	</Point>
+																	<Point>
+																		<XPos>10</XPos>
+																		<YPos>5</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</RTPC>
+													</RTPCList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -391,7 +454,7 @@
 								</Sound>
 							</ChildrenList>
 							<GroupingInfo>
-								<GroupRef Name="CartOn_Off" ID="{0460A9C2-FDEC-43FA-A444-5E7C2B25AD40}"/>
+								<GroupRef Name="CarOn_Off" ID="{0460A9C2-FDEC-43FA-A444-5E7C2B25AD40}"/>
 								<DefaultSwitchRef Name="Nothing" ID="{DF8051A9-F51A-4B6B-AD9C-D7A941D9A43B}"/>
 								<GroupingBehaviorList>
 									<GroupingBehavior>
