@@ -23,11 +23,9 @@ public class SOUND_AnimationKeyComp : MonoBehaviour {
 	private float nextKeyPoint;
 	private float lastKeyPoint;
 
-	private int testInt;
 
 	// Use this for initialization
 	void Start () {
-		testInt = 0;
 		currentState = anim.GetCurrentAnimatorStateInfo(0);
 		currentPoint = currentState.normalizedTime*currentState.length;
 		nextKeyPoint = FindNextPoint();
@@ -39,7 +37,7 @@ public class SOUND_AnimationKeyComp : MonoBehaviour {
 		currentState = anim.GetCurrentAnimatorStateInfo(0);
 		if(GetRealNormalizedTime(currentState.normalizedTime) > 0){
 			currentPoint = GetRealNormalizedTime(currentState.normalizedTime)*currentState.speed;
-			
+
 			if(currentPoint >= nextKeyPoint && nextKeyPoint != keyPoints[0]){
 				if(!isPlaying){
 					PlaySound();
