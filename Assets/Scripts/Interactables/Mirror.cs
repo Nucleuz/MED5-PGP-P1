@@ -75,7 +75,7 @@ public class Mirror : Interactable {
         
     }
 
-    public override void OnRayReceived(int playerIndex, Ray ray, RaycastHit hit, ref LineRenderer lineRenderer,int nextLineVertex){
+    public override void OnRayEnter(int playerIndex, Ray ray, RaycastHit hit, ref LineRenderer lineRenderer,int nextLineVertex){
         
         //Ray newRay = new Ray (hit.point, Vector3.Reflect (ray.direction, hit.normal));        //Legacy code. Calculates a realistisc reflection off the mirror
 
@@ -98,11 +98,16 @@ public class Mirror : Interactable {
 
                 Interactable interactable = rayhit.transform.GetComponent<Interactable>();
                 if (interactable != null) {
-                    interactable.OnRayReceived(playerIndex, newRay, rayhit, ref lineRenderer, nextLineVertex);
+                    interactable.OnRayEnter(playerIndex, newRay, rayhit, ref lineRenderer, nextLineVertex);
                 }
             }
         }
 	}
+    
+
+    public override void OnRayExit(){
+        
+    }
 
     IEnumerator rotateTowardsTarget(Quaternion start, Quaternion end, float length) {
         isRotating = true;

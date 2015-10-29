@@ -131,7 +131,7 @@ public class ChargeableLightSource : Interactable {
                 Interactable interactable = hit.transform.GetComponent<Interactable>();
 				if (interactable != null)
                     //@Optimize - The mirror is the only one who the ray, hit, lineRenderer, and count
-					interactable.OnRayReceived(playerIndex,ray,hit,ref lineRenderer,2);
+					interactable.OnRayEnter(playerIndex,ray,hit,ref lineRenderer,2);
 				
             }
 
@@ -140,9 +140,14 @@ public class ChargeableLightSource : Interactable {
         }
 
 	}
-    public override void OnRayReceived(int playerIndex, Ray ray, RaycastHit hit,ref LineRenderer lineRenderer,int nextLineVertex){
+    public override void OnRayEnter(int playerIndex, Ray ray, RaycastHit hit,ref LineRenderer lineRenderer,int nextLineVertex){
 		this.playerIndex = playerIndex;
         endInteractTime = Time.time + minInteractLength;
 
 	}
+    
+
+    public override void OnRayExit(){
+        
+    }
 }

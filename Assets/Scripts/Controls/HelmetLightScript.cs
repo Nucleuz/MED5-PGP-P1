@@ -21,7 +21,8 @@ public class HelmetLightScript : MonoBehaviour {
 
     [Tooltip("1 = blue, 2 = red, 3 = green")]
 	public int playerIndex;							// index for the player.
-	public Transform objectHit;
+	
+    public Interactable lastObjectHit;
 	public Ray ray;
 
     public void SetPlayerIndex (int networkId) {
@@ -116,19 +117,18 @@ public class HelmetLightScript : MonoBehaviour {
 
             
 			if (Physics.Raycast(ray, out hit)) {
-				// Declaring objectHit to be the object that the ray hits
-				objectHit = hit.transform;
-				
                 //setting up the lineRenderer (only if we have actually hit something)
                 lineRenderer.SetVertexCount(2);             
                 lineRenderer.SetPosition(0, transform.position);  // sets the line origin to the 
 				lineRenderer.SetPosition(1, hit.point);
 
-                Interactable interactable = objectHit.GetComponent<Interactable>();
-				if (interactable != null){
+                Interactable interactable = hit.transform.GetComponent<Interactable>();
+                if(interactable != lastObjectHit){
+                    lastObjectHit.OnRayExit();
+                }else if (interactable != null){
                     //@Optimize - The mirror is the only one who the ray, hit, lineRenderer, and count
-                    interactable.OnRayReceived(playerIndex,ray, hit,ref lineRenderer,2);
-
+                    interactable.OnRayEnter(playerIndex,ray, hit,ref lineRenderer,2);
+                    lastObjectHit = interactable;
 				}
 			}
         }
