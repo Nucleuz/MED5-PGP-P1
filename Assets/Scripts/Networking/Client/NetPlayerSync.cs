@@ -32,9 +32,9 @@ public class NetPlayerSync : MonoBehaviour {
 	private Quaternion lastRotation;
 	private Vector3 lastPosition;
 
-	private float minDistanceMoved = 2f;
+	private float minDistanceMoved = .5f;
 
-	private float lastPositionTime;
+	private float lastPositionTime = -1f;
 	private float lastRotationTime;
 	
 	//network id for the object
@@ -93,15 +93,15 @@ public class NetPlayerSync : MonoBehaviour {
                 {
                     Vector3 position = Deserializer.Vector3((byte[])data);
 
-                    StopAllCoroutines();
+                    StopCoroutine("InterpolatePosition");
+                    if(lastPositionTime == -1f)
+                    	lastPositionTime = Time.time - .5f;
+
                     float interpolationLength = Time.time - lastPositionTime;
                     
-                    if(interpolationLength > 1f)
-                    	interpolationLength = 1f;
-                   	else if(interpolationLength <= 0f)
-                   		interpolationLength = 1f;
-                    Debug.Log("interpolation length: " + interpolationLength);
-                    StartCoroutine(InterpolatePosition(position,interpolationLength));
+
+                   	if(interpolationLength > 0f)
+                    	StartCoroutine(InterpolatePosition(position,interpolationLength));
                 }break;
 				case Network.Subject.PlayerRotationUpdate:
 				{
@@ -209,7 +209,7 @@ public class NetPlayerSync : MonoBehaviour {
     	transform.position = newPosition;
     }
     IEnumerator InterpolateRotation(Quaternion newRotation, float interpolationLength){
-    	lastPositionTime = Time.time;
+    	lastRotationTime = Time.time;
     	Quaternion startRotation = transform.rotation;
 
     	float t = 1f;
