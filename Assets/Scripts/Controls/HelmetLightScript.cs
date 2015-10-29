@@ -123,13 +123,16 @@ public class HelmetLightScript : MonoBehaviour {
 				lineRenderer.SetPosition(1, hit.point);
 
                 Interactable interactable = hit.transform.GetComponent<Interactable>();
-                if(interactable != lastObjectHit){
-                    lastObjectHit.OnRayExit();
-                }else if (interactable != null){
-                    //@Optimize - The mirror is the only one who the ray, hit, lineRenderer, and count
-                    interactable.OnRayEnter(playerIndex,ray, hit,ref lineRenderer,2);
-                    lastObjectHit = interactable;
-				}
+                if(interactable != null){
+                    if(lastObjectHit != null && interactable != lastObjectHit){
+                        lastObjectHit.OnRayExit();
+                    }
+                    if (interactable != lastObjectHit){
+                        //@Optimize - The mirror is the only one who the ray, hit, lineRenderer, and count
+                        interactable.OnRayEnter(playerIndex,ray, hit,ref lineRenderer,2);
+                        lastObjectHit = interactable;
+    				}
+                }
 			}
         }
     }
