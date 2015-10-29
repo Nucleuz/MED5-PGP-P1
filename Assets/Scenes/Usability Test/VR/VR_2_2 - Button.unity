@@ -232,8 +232,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  NextRail: {fileID: 1945624872}
-  PreviousRail: {fileID: 482817204}
+  next: {fileID: 1945624872}
+  prev: {fileID: 482817204}
   railPoint: {fileID: 46307397}
 --- !u!4 &46307399
 Transform:
@@ -1009,11 +1009,11 @@ Prefab:
       objectReference: {fileID: 647702518}
     - target: {fileID: 401016, guid: f09fb6a5623609c4086c9d6cc2df051c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .0199999996
+      value: 15.1300001
       objectReference: {fileID: 0}
     - target: {fileID: 11469310, guid: f09fb6a5623609c4086c9d6cc2df051c, type: 2}
       propertyPath: speed
-      value: .00999999978
+      value: .100000001
       objectReference: {fileID: 0}
     - target: {fileID: 11475634, guid: f09fb6a5623609c4086c9d6cc2df051c, type: 2}
       propertyPath: nRail
@@ -1049,7 +1049,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 427034, guid: f09fb6a5623609c4086c9d6cc2df051c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.11000001
+      value: 11.9899998
+      objectReference: {fileID: 0}
+    - target: {fileID: 468820, guid: f09fb6a5623609c4086c9d6cc2df051c, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -3.31999993
+      objectReference: {fileID: 0}
+    - target: {fileID: 419464, guid: f09fb6a5623609c4086c9d6cc2df051c, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 13.8599997
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f09fb6a5623609c4086c9d6cc2df051c, type: 2}
@@ -1228,8 +1236,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  NextRail: {fileID: 205565861}
-  PreviousRail: {fileID: 95444942}
+  next: {fileID: 205565861}
+  prev: {fileID: 95444942}
   railPoint: {fileID: 157581687}
 --- !u!23 &157581690
 MeshRenderer:
@@ -1537,8 +1545,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  NextRail: {fileID: 0}
-  PreviousRail: {fileID: 157581689}
+  next: {fileID: 0}
+  prev: {fileID: 157581689}
   railPoint: {fileID: 205565859}
 --- !u!23 &205565862
 MeshRenderer:
@@ -1715,7 +1723,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 248739932}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 15, z: 0}
+  m_LocalPosition: {x: 0, y: 1.88, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1850851228}
@@ -1791,7 +1799,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 450956, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 14.5
+      value: 15.1000004
       objectReference: {fileID: 0}
     - target: {fileID: 450956, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1827,11 +1835,11 @@ Prefab:
       objectReference: {fileID: 157581689}
     - target: {fileID: 470516, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
       propertyPath: m_LocalRotation.y
-      value: .707106829
+      value: .707093596
       objectReference: {fileID: 0}
     - target: {fileID: 470516, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .707106829
+      value: .707093477
       objectReference: {fileID: 0}
     - target: {fileID: 148076, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
       propertyPath: m_Name
@@ -1845,6 +1853,22 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11403774, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
+      propertyPath: prev
+      value: 
+      objectReference: {fileID: 1342018221}
+    - target: {fileID: 470516, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -.00433341693
+      objectReference: {fileID: 0}
+    - target: {fileID: 470516, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: .00433341786
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403774, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
+      propertyPath: next
+      value: 
+      objectReference: {fileID: 157581689}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
   m_IsPrefabParent: 0
@@ -2218,13 +2242,13 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 377797482}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -.211999997, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1550216395}
   - {fileID: 435967254}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
 --- !u!1001 &386961286
 Prefab:
   m_ObjectHideFlags: 0
@@ -3983,6 +4007,21 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 414840, guid: 678b721c936619549909799cbe87108e, type: 2}
   m_PrefabInternal: {fileID: 745144090}
+--- !u!1 &754692705
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 2129618498}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 848930187}
+  m_Layer: 0
+  m_Name: Missing Prefab (Dummy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1001 &782131830
 Prefab:
   m_ObjectHideFlags: 0
@@ -4230,10 +4269,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 841847226}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &848930187 stripped
+--- !u!4 &848930187
 Transform:
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 496952, guid: 5f77ee7e2ca8f68408988354554068eb, type: 2}
   m_PrefabInternal: {fileID: 2129618498}
+  m_GameObject: {fileID: 754692705}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 922328618}
+  m_RootOrder: 0
 --- !u!1001 &852322704
 Prefab:
   m_ObjectHideFlags: 0
@@ -4713,10 +4760,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1792466536}
-  - {fileID: 848930187}
+  - {fileID: 922328618}
   - {fileID: 1460128413}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!114 &903400090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4848,6 +4895,34 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 414840, guid: 678b721c936619549909799cbe87108e, type: 2}
   m_PrefabInternal: {fileID: 917188230}
+--- !u!1 &922328617
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 2129618498}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 922328618}
+  m_Layer: 0
+  m_Name: Missing Prefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &922328618
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 2129618498}
+  m_GameObject: {fileID: 922328617}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 848930187}
+  m_Father: {fileID: 903400089}
+  m_RootOrder: 1
 --- !u!1001 &924224012
 Prefab:
   m_ObjectHideFlags: 0
@@ -5819,7 +5894,7 @@ Transform:
   - {fileID: 1699232440}
   - {fileID: 458926677}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
 --- !u!1001 &1061566766
 Prefab:
   m_ObjectHideFlags: 0
@@ -7173,7 +7248,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11403774, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
       propertyPath: spawnRailPoint
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11403774, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
       propertyPath: NextRail
@@ -7191,6 +7266,10 @@ Prefab:
       propertyPath: m_Name
       value: LowerRailSegment
       objectReference: {fileID: 0}
+    - target: {fileID: 11403774, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
+      propertyPath: next
+      value: 
+      objectReference: {fileID: 46307398}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
   m_IsPrefabParent: 0
@@ -7372,6 +7451,12 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 414840, guid: 678b721c936619549909799cbe87108e, type: 2}
   m_PrefabInternal: {fileID: 1315672927}
+--- !u!114 &1342018221 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11498600, guid: f09fb6a5623609c4086c9d6cc2df051c,
+    type: 2}
+  m_PrefabInternal: {fileID: 120216982}
+  m_Script: {fileID: 11500000, guid: efa0b44aa476f09449a63a6ecc6211ca, type: 3}
 --- !u!1001 &1349591740
 Prefab:
   m_ObjectHideFlags: 0
@@ -7938,7 +8023,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1455393974}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 14.1400003, z: 0}
+  m_LocalPosition: {x: 0, y: 2.23000002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1850851228}
@@ -8036,8 +8121,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  NextRail: {fileID: 0}
-  PreviousRail: {fileID: 1945624872}
+  next: {fileID: 1342018221}
+  prev: {fileID: 1945624872}
   railPoint: {fileID: 1475037162}
 --- !u!4 &1475037164
 Transform:
@@ -8045,7 +8130,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1475037162}
-  m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106829}
+  m_LocalRotation: {x: -.215441346, y: .673487365, z: .215441421, w: .673487127}
   m_LocalPosition: {x: 37.3199997, y: 0, z: 0}
   m_LocalScale: {x: .50000006, y: .5, z: .50000006}
   m_Children: []
@@ -8556,7 +8641,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 150028, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8145124, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
@@ -9961,13 +10046,13 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1779249523}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: .270000011, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 914702525}
   - {fileID: 1301241392}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 3
 --- !u!1001 &1782817818
 Prefab:
   m_ObjectHideFlags: 0
@@ -10604,7 +10689,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!1001 &1887435659
 Prefab:
   m_ObjectHideFlags: 0
@@ -10868,8 +10953,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  NextRail: {fileID: 1475037163}
-  PreviousRail: {fileID: 46307398}
+  next: {fileID: 1475037163}
+  prev: {fileID: 46307398}
   railPoint: {fileID: 1945624871}
 --- !u!4 &1945624873
 Transform:
@@ -11585,7 +11670,7 @@ Prefab:
       objectReference: {fileID: 482817204}
     - target: {fileID: 11490494, guid: 6b51f68b61740074b921684716c1e935, type: 2}
       propertyPath: controllerConnected
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 12034002, guid: 6b51f68b61740074b921684716c1e935, type: 2}
       propertyPath: m_Materials.Array.data[0]
@@ -11597,7 +11682,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 174738, guid: 6b51f68b61740074b921684716c1e935, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 463068, guid: 6b51f68b61740074b921684716c1e935, type: 2}
       propertyPath: m_LocalScale.x
@@ -11610,6 +11695,14 @@ Prefab:
     - target: {fileID: 463068, guid: 6b51f68b61740074b921684716c1e935, type: 2}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11465930, guid: 6b51f68b61740074b921684716c1e935, type: 2}
+      propertyPath: currentRail
+      value: 
+      objectReference: {fileID: 482817204}
+    - target: {fileID: 11465930, guid: 6b51f68b61740074b921684716c1e935, type: 2}
+      propertyPath: movementSpeed
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b51f68b61740074b921684716c1e935, type: 2}

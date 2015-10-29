@@ -19,12 +19,12 @@ public class ElevatorScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        goingUp = true;
+        goingUp = false;
 
         rC = GetComponent<RailConnection>();
         rP = GetComponent<Rail>();
 
-        rC.connectToPrev = true;                                                       //Sets the speed of the elevator
+                                                           
         activeNode = 0;                                                     //Sets the visited nodes to zero
 	}
 	
