@@ -23,7 +23,6 @@ public class ElevatorScript : MonoBehaviour {
 
         rC = GetComponent<RailConnection>();
         rP = GetComponent<Rail>();
-
                                                            
         activeNode = 0;                                                     //Sets the visited nodes to zero
 	}
@@ -57,7 +56,7 @@ public class ElevatorScript : MonoBehaviour {
             
             //Checks if the distance between the elevator and current active node is less than 0.1 and if active node is not larger than array nodes length.
             if (Vector3.Distance(transform.position, nodes[activeNode].transform.position) < 0.1f && activeNode <= nodes.Length - 1) {
-                    activeNode++;
+                activeNode++;
             }
 
             // Checks if we've reached the last node. If true, then we reverse the order of the nodes, set the active node to 0, and deactivate the elevator. 
@@ -65,10 +64,10 @@ public class ElevatorScript : MonoBehaviour {
             if(Vector3.Distance(transform.position, nodes[nodes.Length-1].transform.position) < 0.1f){
                 System.Array.Reverse(nodes);
                 activeNode = 0;
-                if(goingUp){
-                    goingUp = false;
-                } else{
+                if(!goingUp){
                     goingUp = true;
+                } else{
+                    goingUp = false;
                 }
                 isActivated = false;
                 trigger.isTriggered = false;
