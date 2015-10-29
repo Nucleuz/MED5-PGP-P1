@@ -32,7 +32,7 @@ public class NetPlayerSync : MonoBehaviour {
 	private Quaternion lastRotation;
 	private Vector3 lastPosition;
 
-	private float minDistanceMoved = .5f;
+	private float minDistanceMoved = 2f;
 
 	private float lastPositionTime;
 	private float lastRotationTime;
@@ -58,7 +58,7 @@ public class NetPlayerSync : MonoBehaviour {
         //@TODO -- currently dobble dipping
 
 		//has the rotation or position changed since last sent message
-        if(transform.position != lastPosition){
+        if((transform.position - lastPosition).magnitude > minDistanceMoved){
 
             //serialize and send information
 			DarkRiftAPI.SendMessageToOthers(Network.Tag.Player, Network.Subject.PlayerPositionUpdate, transform.position.Serialize());
@@ -93,10 +93,15 @@ public class NetPlayerSync : MonoBehaviour {
                 {
                     Vector3 position = Deserializer.Vector3((byte[])data);
 
-                    Debug.Log("new pos " + position);
-                    StopCoroutine("InterpolatePosition");
-                    if(position != transform.position)
-                    	StartCoroutine(InterpolatePosition(position,Time.time - lastPositionTime));
+                    StopAllCoroutines();
+                    float interpolationLength = Time.time - lastPositionTime;
+                    
+                    if(interpolationLength > 1f)
+                    	interpolationLength = 1f;
+                   	else if(interpolationLength <= 0f)
+                   		interpolationLength = 1f;
+                    Debug.Log("interpolation length: " + interpolationLength);
+                    StartCoroutine(InterpolatePosition(position,interpolationLength));
                 }break;
 				case Network.Subject.PlayerRotationUpdate:
 				{
@@ -197,7 +202,7 @@ public class NetPlayerSync : MonoBehaviour {
     	float t = 0f;
     	while(t < 1f){
     		t = (Time.time - lastPositionTime)/interpolationLength;
-    		Debug.Log(startPosition + " - " + newPosition);
+    		Debug.Log("interpolating: " + t + " - " + interpolationLength);
     		transform.position = Vector3.Lerp(startPosition,newPosition,t);
     		yield return null;
     	}
