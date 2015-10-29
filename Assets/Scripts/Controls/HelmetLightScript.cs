@@ -66,13 +66,13 @@ public class HelmetLightScript : MonoBehaviour {
             }
             
             // Fadetime for the spotlight angle and intensity
-            float fadeTime = 1.0f;
+            float fadeTime = 0.2f;
 
             // Lerps the spotlight angle from normal to focused angle.
             helmetLight.spotAngle = Mathf.Lerp(angleNormal, angleFocus, (Time.time - startTime)/ fadeTime);
 
             // Lerps the intensity from normal to focused intensity.
-            helmetLight.intensity = Mathf.Lerp(intensityNormal, intensityFocus, (Time.time - startTime) / (fadeTime * 5));
+            helmetLight.intensity = Mathf.Lerp(intensityNormal, intensityFocus, (Time.time - startTime) / (fadeTime * 2));
 
             if(helmetLight.intensity >  intensityFocus * 0.3f){
                 // Sets helmetLightFocused to true - is used later for checking if we are in "focus" mode.
@@ -93,7 +93,7 @@ public class HelmetLightScript : MonoBehaviour {
 
         // Increase spotlight angle to the normal angle when not in "focus". (Couldnt get the lerp function to work, which is why we did it like this.)
         if(helmetLight.spotAngle <= angleNormal) {
-            helmetLight.spotAngle += 1;
+            helmetLight.spotAngle += 2;
         }
 
         // Decreases spotlight intensity to the normal intensity when not in "focus". (Couldnt get the lerp function to work, which is why we did it like this.)
