@@ -33,6 +33,8 @@ public class ClientManager : NetworkManager
     public GameObject prefabPlayer;
     public Transform player;
 
+    private NetPlayerSync[] otherPlayers = new NetPlayerSync[2];
+
     public LevelHandler levelHandler;
     public TriggerHandler triggerHandler;
 
@@ -124,7 +126,13 @@ public class ClientManager : NetworkManager
                         netPlayer.networkID = senderID;
                         netPlayer.SetAsReceiver();
 
-                        player.GetComponent<NetPlayerSync>().AddCameraToLightShaft(netPlayer.cam);
+                        if(otherPlayers[0] == null)
+                            otherPlayers[0] = netPlayer;
+                        else
+                            otherPlayers[1] = netPlayer;
+
+                        if(player != null)
+                            player.GetComponent<NetPlayerSync>().AddCameraToLightShaft(netPlayer.cam);
 
                     }
                     break;
@@ -173,8 +181,6 @@ public class ClientManager : NetworkManager
             return;
         }
         Console.Instance.AddMessage("Spawning Player");
-        Console.Instance.AddMessage("Info dump > ni:" + networkID + ", lmI:" + levelHandler.levelManagerIndex + " sI:" + serverLevelIndex);
-
         //spawn the object
         GameObject g = Instantiate(prefabPlayer, Vector3.zero, Quaternion.identity) as GameObject;
         player = g.transform;
@@ -183,7 +189,12 @@ public class ClientManager : NetworkManager
 
         netPlayer.networkID = networkID;
         netPlayer.SetAsSender();
-        Console.Instance.AddMessage("Net id: " + networkID);
+
+        for(int i = 0;i<otherPlayers.Length;i++)
+            if(otherPlayers[i] != null)
+               netPlayer.AddCameraToLightShaft(otherPlayers[i].cam);
+
+
 /*
         VoiceChatRecorder.Instance.NetworkId = networkID;
         VoiceChatRecorder.Instance.Device = VoiceChatRecorder.Instance.AvailableDevices[0];
@@ -191,7 +202,6 @@ public class ClientManager : NetworkManager
 //         VoiceChatRecorder.Instance.AutoDetectSpeech = true;
         VoiceChatRecorder.Instance.NewSample += netPlayer.OnNewSample;
         */
-        Console.Instance.AddMessage("did voicechat stuff");
 
         //place the player on the correct rail!
 
@@ -203,13 +213,8 @@ public class ClientManager : NetworkManager
         player.position = startRail.transform.position;
         player.GetComponent<Cart>().CurrentRail = startRail;
 
-
-         DarkRiftWriter writer = new DarkRiftWriter();
-        
-
         //send it to everyone else
         DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager, Network.Subject.SpawnPlayer, player.position.Serialize());
-        writer.Close();
     }
 
 }

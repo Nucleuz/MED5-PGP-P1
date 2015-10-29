@@ -29,9 +29,9 @@ public class InteractableButton : Interactable{
 		//Set the color of the interactable button both background light and particles to the correct user.
 		setButtonColor(
 			new bool[3]{
-				trigger.bluePlayerRequired,
 				trigger.redPlayerRequired,
-				trigger.greenPlayerRequired
+				trigger.greenPlayerRequired,
+				trigger.bluePlayerRequired
 				});
 		//sM 				= GameObject.Find("SoundManager").GetComponent<SoundManager>();
 
