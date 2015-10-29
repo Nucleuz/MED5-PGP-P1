@@ -104,12 +104,11 @@ public class NetPlayerSync : MonoBehaviour {
 				case Network.Subject.PlayerFocus:
 				{
 					StopAllCoroutines();
-					StartCoroutine(StartFocusing((float)data));
-				}break;
-				case Network.Subject.PlayerUnfocus:
-				{
-					StopAllCoroutines();
-					StartCoroutine(StopFocusing((float)data));
+					if((bool)data)
+						StartCoroutine(StartFocusing());
+					else
+						StartCoroutine(StopFocusing());
+
 				}break;
 			}
 		}		
@@ -152,17 +151,15 @@ public class NetPlayerSync : MonoBehaviour {
 		focusedLightShaft.UpdateCameraDepthMode();
     }
 
-    public void UpdateHelmetLight(bool isFocusing, float animationEndTime){
-    	if(isFocusing)
-			DarkRiftAPI.SendMessageToOthers(Network.Tag.Player, Network.Subject.PlayerFocus, animationEndTime);
-		else
-			DarkRiftAPI.SendMessageToOthers(Network.Tag.Player, Network.Subject.PlayerUnfocus, animationEndTime);
+    public void UpdateHelmetLight(bool isFocusing){
+		DarkRiftAPI.SendMessageToOthers(Network.Tag.Player, Network.Subject.PlayerFocus,isFocusing);
     }
 
-    IEnumerator StartFocusing(float endTime){
-    	float animationLength = endTime - Time.time;
-    	while(Time.time < endTime){
-    		float t = (endTime - Time.time)/animationLength;
+    IEnumerator StartFocusing(){
+    	float t = 0f;
+    	float startTime = Time.time;
+    	while(t < 1f){
+    		t = (Time.time - startTime)/helmet.spotlightAnimationLength;
     		helmet.LightUpdate(t);
     		yield return null;
     	}
@@ -170,10 +167,11 @@ public class NetPlayerSync : MonoBehaviour {
     	helmet.LightUpdate(1f);
     }
 
-    IEnumerator StopFocusing(float endTime){
-		float animationLength = endTime - Time.time;
-    	while(Time.time < endTime){
-    		float t = 1-((endTime - Time.time)/animationLength);
+    IEnumerator StopFocusing(){
+    	float t = 1f;
+    	float startTime = Time.time;
+    	while(t > 0f){
+    		t = 1-((Time.time - startTime)/helmet.spotlightAnimationLength);
     		helmet.LightUpdate(t);
     		yield return null;
     	}

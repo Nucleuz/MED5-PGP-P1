@@ -73,7 +73,7 @@ public class HelmetLightScript : MonoBehaviour {
                 startTime = Time.time;
                 stopTime = -1f;
 
-                netPlayer.UpdateHelmetLight(true,startTime + spotlightAnimationLength);
+                netPlayer.UpdateHelmetLight(true);
             }else{
                 spotlightAnimationTime = (Time.time - startTime)/spotlightAnimationLength;
                 if(spotlightAnimationTime < 1f)
@@ -89,7 +89,7 @@ public class HelmetLightScript : MonoBehaviour {
                 stopTime = Time.time;
                 startTime = -1f;
 
-                netPlayer.UpdateHelmetLight(false,startTime + spotlightAnimationLength);
+                netPlayer.UpdateHelmetLight(false);
 
                 if(lastObjectHit != null){
                     lastObjectHit.OnRayExit();
