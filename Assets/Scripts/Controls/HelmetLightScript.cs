@@ -96,6 +96,8 @@ public class HelmetLightScript : MonoBehaviour {
             startTime = 0.0f;
 
             helmetLightFocused = false;
+            lastObjectHit.OnRayExit();
+            lastObjectHit = null;
         }
 
         // Increase spotlight angle to the normal angle when not in "focus". (Couldnt get the lerp function to work, which is why we did it like this.)
