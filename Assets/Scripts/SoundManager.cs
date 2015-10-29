@@ -39,7 +39,11 @@ public class SoundManager: MonoBehaviour {
 			StopAllEventsOnObject(objectList[i]);
 		}
 	}
-	
+
+	public void SetRTPC(string rtpcName, float value, GameObject g){
+		AkSoundEngine.SetRTPCValue(rtpcName, value, g);
+	}
+
 	public void StopAllEventsOnObject(GameObject g){
 		AkSoundEngine.StopAll(g);
 	}

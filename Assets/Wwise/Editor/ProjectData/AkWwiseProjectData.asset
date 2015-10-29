@@ -16,8 +16,8 @@ MonoBehaviour:
   - PhysicalPath: Events\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{F435BC40-F026-475F-8354-F9EAA1C9BD20}'
-    m_lastTimePsrt1: -813712882
-    m_lastTimePart2: -1999445957
+    m_lastTimePsrt1: 2010383766
+    m_lastTimePart2: -1999445913
     List:
     - Name: Ambience_BackgroundDeepWater
       Path: Default Work Unit\Ambience_BackgroundDeepWater
@@ -89,6 +89,16 @@ MonoBehaviour:
       ID: 1973289021
       Guid: f67d4c5ee517844f8e1f433ee60fecdf
       maxAttenuation: 0
+    - Name: CarCrystal
+      Path: Default Work Unit\CarCrystal
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: CarCrystal
+        ObjectType: 3
+      ID: -869445727
+      Guid: 186460322dfe61438db1d7d110de79a9
+      maxAttenuation: 0
     - Name: CarLegHit1
       Path: Default Work Unit\CarLegHit1
       PathAndIcons:
@@ -99,14 +109,14 @@ MonoBehaviour:
       ID: 480657863
       Guid: 188f3cbc2ac32d41a4704a537ec361dd
       maxAttenuation: 0
-    - Name: CartRings
-      Path: Default Work Unit\CartRings
+    - Name: CarRings
+      Path: Default Work Unit\CarRings
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
-      - ElementName: CartRings
+      - ElementName: CarRings
         ObjectType: 3
-      ID: 609395596
+      ID: 1666923066
       Guid: 91554bb48c39774b9b395ecfe45ba4c5
       maxAttenuation: 0
     - Name: ChannelingButtonOnOff
@@ -253,8 +263,8 @@ MonoBehaviour:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{88AEA801-E436-458F-9865-10A1788249D3}'
-    m_lastTimePsrt1: -1752581120
-    m_lastTimePart2: -1999446179
+    m_lastTimePsrt1: -1612782710
+    m_lastTimePart2: -1999445921
     List:
     - Name: AmbienceBus
       Path: Default Work Unit\Master Audio Bus\AmbienceBus
@@ -282,24 +292,24 @@ MonoBehaviour:
   - PhysicalPath: States\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{AE51883C-3B7E-44A4-8103-D9454D178678}'
-    m_lastTimePsrt1: -1872581120
-    m_lastTimePart2: -1999446179
+    m_lastTimePsrt1: -1590957672
+    m_lastTimePart2: -1999445921
     List: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{FC282CBF-8094-4F9E-A1C0-F8921C840242}'
-    m_lastTimePsrt1: -1892581120
-    m_lastTimePart2: -1999446179
+    m_lastTimePsrt1: 1567599285
+    m_lastTimePart2: -1999445913
     List:
-    - Name: CartOn_Off
-      Path: Default Work Unit\CartOn_Off
+    - Name: CarOn_Off
+      Path: Default Work Unit\CarOn_Off
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
-      - ElementName: CartOn_Off
+      - ElementName: CarOn_Off
         ObjectType: 11
-      ID: 1466256562
+      ID: 1449453084
       Guid: c2a96004ecfdfa43a4445e7c2b25ad40
       values:
       - Nothing
@@ -392,8 +402,8 @@ MonoBehaviour:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{116C8925-F139-4949-97E9-2B14250AD9FB}'
-    m_lastTimePsrt1: -1897974791
-    m_lastTimePart2: -1999446104
+    m_lastTimePsrt1: 1567559259
+    m_lastTimePart2: -1999445913
     List:
     - Name: Main
       Path: Default Work Unit\Main
@@ -408,11 +418,6 @@ MonoBehaviour:
   - /WwiseFinal
   - /WwiseFinal/Events
   - /WwiseFinal/Events/Default Work Unit
-  - /WwiseFinal/SoundBanks
-  - /WwiseFinal/SoundBanks/Default Work Unit
-  - /WwiseFinal/Switches
-  - /WwiseFinal/Switches/Default Work Unit
-  - /WwiseFinal/Switches/Default Work Unit/On_Off
   m_lastPopulateTimePsrt1: 0
   m_lastPopulateTimePart2: 0
   autoPopulateEnabled: 1
