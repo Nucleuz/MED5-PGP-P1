@@ -32,6 +32,8 @@ public class NetPlayerSync : MonoBehaviour {
 	private Quaternion lastRotation;
 	private Vector3 lastPosition;
 
+	private float minDistanceMoved = .5f;
+
 	private float lastPositionTime;
 	private float lastRotationTime;
 	
@@ -90,13 +92,15 @@ public class NetPlayerSync : MonoBehaviour {
                 case Network.Subject.PlayerPositionUpdate:
                 {
                     Vector3 position = Deserializer.Vector3((byte[])data);
+
+                    Debug.Log("new pos " + position);
                     StopCoroutine("InterpolatePosition");
-                    StartCoroutine(InterpolatePosition(position,Time.time - lastPositionTime));
+                    if(position != transform.position)
+                    	StartCoroutine(InterpolatePosition(position,Time.time - lastPositionTime));
                 }break;
 				case Network.Subject.PlayerRotationUpdate:
 				{
                     Quaternion rotation = Deserializer.Quaternion((byte[])data);
-					head.rotation = rotation;	
 
                     StopCoroutine("InterpolateRotation");
                     StartCoroutine(InterpolateRotation(rotation,Time.time - lastRotationTime));
@@ -193,6 +197,7 @@ public class NetPlayerSync : MonoBehaviour {
     	float t = 0f;
     	while(t < 1f){
     		t = (Time.time - lastPositionTime)/interpolationLength;
+    		Debug.Log(startPosition + " - " + newPosition);
     		transform.position = Vector3.Lerp(startPosition,newPosition,t);
     		yield return null;
     	}
@@ -205,9 +210,9 @@ public class NetPlayerSync : MonoBehaviour {
     	float t = 1f;
     	while(t < 1f){
     		t = (Time.time - lastRotationTime)/interpolationLength;
-    		transform.rotation = Quaternion.Slerp(startRotation,newRotation,t);
+    		head.rotation = Quaternion.Lerp(startRotation,newRotation,t);
     		yield return null;
     	}
-    	transform.rotation = newRotation;
+    	head.rotation = newRotation;
     }
 }
