@@ -61,7 +61,7 @@ public class HelmetLightScript : MonoBehaviour {
         if (Input.GetKey("space") || Input.GetAxis("RightTrigger") > 0.1f || Input.GetAxis("LeftTrigger") > 0.1f) {
 
             if(!soundIsPlaying){
-                SoundManager.Instance.PlayEvent("Focus_Active", gameObject);
+                SoundManager.Instance.PlayEvent("Headlamp_Focus_Active", gameObject);
                 SoundIsPlaying = true;
             }
             
@@ -89,7 +89,7 @@ public class HelmetLightScript : MonoBehaviour {
             }
         } else {
             if(SoundIsPlaying){
-                SoundManager.Instance.PlayEvent("Focus_Stop", gameObject);
+                SoundManager.Instance.PlayEvent("Headlamp_Focus_Stop", gameObject);
                 SoundIsPlaying = false;
             }
 
