@@ -23,8 +23,11 @@ public class SOUND_AnimationKeyComp : MonoBehaviour {
 	private float nextKeyPoint;
 	private float lastKeyPoint;
 
+	private int testInt;
+
 	// Use this for initialization
 	void Start () {
+		testInt = 0;
 		currentState = anim.GetCurrentAnimatorStateInfo(0);
 		currentPoint = currentState.normalizedTime*currentState.length;
 		nextKeyPoint = FindNextPoint();
@@ -36,19 +39,21 @@ public class SOUND_AnimationKeyComp : MonoBehaviour {
 		currentState = anim.GetCurrentAnimatorStateInfo(0);
 		if(GetRealNormalizedTime(currentState.normalizedTime) > 0){
 			currentPoint = GetRealNormalizedTime(currentState.normalizedTime)*currentState.speed;
-
-			if(currentPoint >= nextKeyPoint && lastKeyPoint <= nextKeyPoint){
+			
+			if(currentPoint >= nextKeyPoint && nextKeyPoint != keyPoints[0]){
 				if(!isPlaying){
 					PlaySound();
 					isPlaying = true;
 				}
-				else if(currentPoint >= nextKeyPoint && currentPoint >= 0){
+			}
+			else if(currentPoint >= nextKeyPoint && currentPoint < keyPoints[keyPoints.Length-1]){
+				if(!isPlaying){
 					PlaySound();
 					isPlaying = true;
 				}
-				lastKeyPoint = nextKeyPoint;
-				nextKeyPoint = FindNextPoint();
 			}
+			lastKeyPoint = nextKeyPoint;
+			nextKeyPoint = FindNextPoint();
 		}
 	}
 
@@ -61,23 +66,17 @@ public class SOUND_AnimationKeyComp : MonoBehaviour {
 	}
 
 	private float FindNextPoint(){
-		float currentDif = keyPoints[0]-currentPoint;
-		float smallestNeg = currentDif;
-		float smallestPos = currentDif;
+		float nearestPos = keyPoints[keyPoints.Length-1];
 
-		for(int i = 0; i < keyPoints.Length; i++)
-			currentDif = keyPoints[i]-currentPoint;
-			if(currentDif < 0)
-				if(currentDif < smallestNeg)
-					smallestNeg = currentDif;
-			else
-				if(currentDif < smallestPos)
-					smallestPos = currentDif;
-
+		for(int i = 0; i < keyPoints.Length; i++){
+			if(currentPoint < keyPoints[keyPoints.Length-1]){
+				if(keyPoints[i] > currentPoint && keyPoints[i] < nearestPos)
+					nearestPos = keyPoints[i];
+			} else
+				if(keyPoints[i] < nearestPos)
+					nearestPos = keyPoints[i];
+		}
 		isPlaying = false;
-		if(smallestPos != null)
-			return smallestPos;
-		else
-			return smallestNeg;
+		return nearestPos;
 	}
 }

@@ -76,6 +76,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &111656
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 476202}
+  m_Layer: 0
+  m_Name: LegSoundPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &116514
 GameObject:
   m_ObjectHideFlags: 1
@@ -625,6 +640,7 @@ GameObject:
   - 4: {fileID: 463068}
   - 95: {fileID: 9505746}
   - 114: {fileID: 11465930}
+  - 114: {fileID: 11454702}
   m_Layer: 0
   m_Name: Non-VR Player
   m_TagString: Untagged
@@ -1010,7 +1026,7 @@ Transform:
   - {fileID: 431388}
   - {fileID: 483646}
   m_Father: {fileID: 463068}
-  m_RootOrder: 1
+  m_RootOrder: 3
 --- !u!4 &415964
 Transform:
   m_ObjectHideFlags: 1
@@ -1195,7 +1211,7 @@ Transform:
   - {fileID: 497620}
   - {fileID: 484514}
   m_Father: {fileID: 463068}
-  m_RootOrder: 0
+  m_RootOrder: 2
 --- !u!4 &442450
 Transform:
   m_ObjectHideFlags: 1
@@ -1349,7 +1365,7 @@ Transform:
   m_Children:
   - {fileID: 493798}
   m_Father: {fileID: 463068}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!4 &462600
 Transform:
   m_ObjectHideFlags: 1
@@ -1368,13 +1384,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 174738}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -29.0599995, y: -18.9473896, z: -22.0871639}
+  m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106709}
+  m_LocalPosition: {x: 2.78105974, y: .300000012, z: -.233907223}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 476202}
+  - {fileID: 458986}
   - {fileID: 441562}
   - {fileID: 414024}
-  - {fileID: 458986}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &465636
@@ -1421,6 +1438,18 @@ Transform:
   - {fileID: 417178}
   m_Father: {fileID: 441562}
   m_RootOrder: 4
+--- !u!4 &476202
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 111656}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 463068}
+  m_RootOrder: 0
 --- !u!4 &476580
 Transform:
   m_ObjectHideFlags: 1
@@ -1851,7 +1880,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 140992}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 937b8818995c45e449c3d131a35ac5d7, type: 3}
   m_Name: 
@@ -1950,6 +1979,26 @@ MonoBehaviour:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!114 &11454702
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa31e8300958f0844b232b36fe20d8ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: CarLegHit1
+  keyPoints:
+  - .159999996
+  - .200000003
+  - .300000012
+  - 2
+  - 2.29999995
+  - 2.70000005
+  anim: {fileID: 9505746}
 --- !u!114 &11465930
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1963,7 +2012,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentRail: {fileID: 0}
   speed: 5
-  animationSpeed: 0
+  animationSpeed: 1
 --- !u!114 &11472548
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"GetCurrentAnim",
+				"GetCurrentAnimatorStateInfo	Animator.*(layerIndex)"
+			],
+			[
+				"length",
+				"length	Array.*"
+			],
+			[
+				"currentPoint",
+				"currentPoint-keyPoints"
+			],
+			[
+				"else",
+				"eloScore	ListMatchRequest.*"
+			],
+			[
 				"startCor",
 				"startCoroutine	MonoBehaviour.*(methodName, value)"
 			],
@@ -444,11 +460,27 @@
 	"buffers":
 	[
 		{
-			"file": "/C/Users/itai.yavin/Documents/DiffuseTexture/Assets/Phong.shader",
+			"file": "Assets/Scripts/Sound/SOUND_AnimationKeyComp.cs",
 			"settings":
 			{
-				"buffer_size": 3427,
+				"buffer_size": 2009,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/SoundManager.cs",
+			"settings":
+			{
+				"buffer_size": 1929,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/Wwise/Deployment/Components/AkInitializer.cs",
+			"settings":
+			{
+				"buffer_size": 10007,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -542,17 +574,19 @@
 	],
 	"file_history":
 	[
+		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/Sound/Ambience/AmbientSound.cs",
+		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Wwise/Deployment/Components/AkInitializer.cs",
+		"/C/Users/itai.yavin/Documents/DiffuseTexture/Assets/Phong.shader",
+		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/Trigger/LevelManager.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/SOUND_LegHit.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/Controls/Cart.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/TEST.cs",
-		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Wwise/Deployment/Components/AkInitializer.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/SoundManager.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/Sound/SOUND_GiantDoor.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/Interactables/ElevatorScript.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/Interactables/ChargeableButtonScript.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/pgp.sublime-project",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/AMB_CrystalSound.cs",
-		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/Sound/Ambience/AmbientSound.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/Sound/Ambience/AMB_Pebbles.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/SoundEmitter.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/Interactables/InteractableButton.cs",
@@ -576,7 +610,6 @@
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1 - Copy/Assets/Scripts/Interactables/SoundCrystal.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1 - Copy/Assets/Scripts/SoundEmitter.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/Trigger/Trigger.cs",
-		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/Trigger/LevelManager.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Wwise/Deployment/Components/AkUtilities.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Wwise/Deployment/Components/AkBank.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Wwise/Deployment/Components/AkBankManager.cs",
@@ -668,8 +701,7 @@
 		"/C/Users/itai.yavin/Documents/uPD_Test/Assets/Magicolo/AudioTools/PureData/PureData.cs",
 		"/C/Users/itai.yavin/Documents/uPD_Test/Assets/Magicolo/AudioTools/PureData/PureDataFilterRead.cs",
 		"/C/Users/itai.yavin/Documents/uPD_Test/Assets/Scripts/pdTest.cs",
-		"/C/Users/itai.yavin/Documents/uPD_Test/Assets/Magicolo/!Examples/PureData/Scripts/PureDataSoundExample.cs",
-		"/C/Users/itai.yavin/Documents/uPD_Test/Assets/Magicolo/!Examples/PureData/Scripts/PureDataSequenceExample.cs"
+		"/C/Users/itai.yavin/Documents/uPD_Test/Assets/Magicolo/!Examples/PureData/Scripts/PureDataSoundExample.cs"
 	],
 	"find":
 	{
@@ -688,6 +720,9 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"Animation",
+			"GetComponent",
+			"anim",
 			"normal",
 			"_MainTex_ST",
 			"input",
@@ -812,10 +847,7 @@
 			"previousButton",
 			"nextButton",
 			"previousButton",
-			"previous",
-			"setActive",
-			"[i]",
-			"createButton"
+			"previous"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -833,32 +865,91 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/C/Users/itai.yavin/Documents/DiffuseTexture/Assets/Phong.shader",
+					"file": "Assets/Scripts/Sound/SOUND_AnimationKeyComp.cs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3427,
+						"buffer_size": 2009,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2829,
-								2829
+								1045,
+								1045
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Unity3D Shader Highlighter and Snippets/UnityShader.tmLanguage"
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 1200.0,
+						"translation.y": 323.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Assets/Scripts/SoundManager.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1929,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								970,
+								970
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": -0.0,
+						"translation.y": 700.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Assets/Wwise/Deployment/Components/AkInitializer.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10007,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8887,
+								8887
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4143.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
