@@ -20,19 +20,19 @@ public class Cart : MonoBehaviour {
 
         currentStep = 0;
     }
-	
+
 	void Update(){
         //This is specifically for elevator connection points where the cart has to move with the elevator
-        if (currentRail.GetComponent<RailConnection>() == true){	
-			transform.position = new Vector3(currentRail.transform.position.x, currentRail.transform.position.y+1,currentRail.transform.position.z);
-		}
+        if (currentRail.next == null && currentRail.prev == null){
+					transform.position = currentRail.transform.position + currentRail.transform.up;
+					return;
+				}
 
         float verticalAxis = Input.GetAxis("Vertical");
-        if (Mathf.Abs(verticalAxis) > 0.01f) { 
+        if (Mathf.Abs(verticalAxis) > 0.01f) {
             minecartAnimator.StartPlayback();
             Move(verticalAxis);
-        } else
-        {
+        } else {
             minecartAnimator.speed = 0;
             minecartAnimator.StopPlayback();
         }
@@ -53,18 +53,18 @@ public class Cart : MonoBehaviour {
         else
             Debug.LogError("Movement went terrible wrong, this should not be possible!");
 
-        if(railMoveTowards != null) { 
+        if(railMoveTowards != null) {
             // Find distance between Current Rail and the Next Rail for Normalize amount of movement
             float length = Vector3.Distance(currentRail.transform.position, railMoveTowards.transform.position);
 
             // Set the currentStep (t) to move towards verticalAxis with normalize distance of the two rails, times acceleration and animationSpeed.
-            currentStep += (1 / length) * verticalAxis * movementSpeed * 0.0075f;
+            currentStep += (1 / length) * verticalAxis * movementSpeed * 0.0075f * (Time.deltaTime * 1000);
 
-            // Set new position using the currentStep and move that position just a tad up 
+            // Set new position using the currentStep and move that position just a tad up
             transform.position = Vector3.Lerp(currentRail.transform.position, railMoveTowards.transform.position, Mathf.Abs(currentStep)) + (currentRail.transform.up / 4)*2;
 
             // Check if the cart have reached a rail and set that rail to the current rail.
-            if (currentStep >= 1) 
+            if (currentStep >= 1)
             {
                 currentRail = currentRail.next;
                 currentStep = 0;
