@@ -4,6 +4,8 @@ using System;
 
 public class Mirror : Interactable {
 	[HideInInspector]
+    private bool soundIsPlaying;
+
 	public GameObject triggeredPlayer;
 	public Trigger trigger;
 	public float startPoint; 
@@ -28,6 +30,7 @@ public class Mirror : Interactable {
     private Light reflectedLight;   
 
 	void Start(){
+        soundIsPlaying = false;
 		startPoint = transform.eulerAngles.y; // starPoint is the mirrors rotation at the start.
         buttonNumber = 0;
         reflectedLight = GetComponent<Light>();        //Calls the light component on the mirror.
@@ -50,7 +53,12 @@ public class Mirror : Interactable {
 		
         if (trigger != null && trigger.isTriggered && !isRotating) {
             rotateMirror();
+            if(!soundIsPlaying)
+                SoundManager.Instance.PlayEvent("Mirror_Turning_Active", gameObject);
+                soundIsPlaying = true;
+            }
         }
+
     }
 
     private void rotateMirror() {
@@ -137,6 +145,10 @@ public class Mirror : Interactable {
             yield return null;
         }
         isRotating = false;
+        if(soundIsPlaying){
+            SoundManager.Instance.PlayEvent(Mirror_Turning_Stop);
+            soundIsPlaying = false;
+        }
         //trigger.canReset = true;
         trigger.isReadyToBeTriggered = true;
     }
