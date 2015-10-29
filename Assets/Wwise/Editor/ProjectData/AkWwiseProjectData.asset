@@ -16,8 +16,13 @@ MonoBehaviour:
   - PhysicalPath: Events\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{F435BC40-F026-475F-8354-F9EAA1C9BD20}'
+<<<<<<< HEAD
     m_lastTimePsrt1: -497706406
     m_lastTimePart2: -1999446549
+=======
+    m_lastTimePsrt1: -813712882
+    m_lastTimePart2: -1999445957
+>>>>>>> origin/CartLegSounds
     List:
     - Name: Ambience_BackgroundDeepWater
       Path: Default Work Unit\Ambience_BackgroundDeepWater
@@ -99,6 +104,7 @@ MonoBehaviour:
       ID: 480657863
       Guid: 188f3cbc2ac32d41a4704a537ec361dd
       maxAttenuation: 0
+<<<<<<< HEAD
     - Name: CarLegHit2
       Path: Default Work Unit\CarLegHit2
       PathAndIcons:
@@ -148,6 +154,17 @@ MonoBehaviour:
         ObjectType: 3
       ID: 480657856
       Guid: dc6b4faea9026d4db7df6659a74c6835
+=======
+    - Name: CartRings
+      Path: Default Work Unit\CartRings
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: CartRings
+        ObjectType: 3
+      ID: 609395596
+      Guid: 91554bb48c39774b9b395ecfe45ba4c5
+>>>>>>> origin/CartLegSounds
       maxAttenuation: 0
     - Name: ChannelingButtonOnOff
       Path: Default Work Unit\ChannelingButtonOnOff
@@ -159,6 +176,7 @@ MonoBehaviour:
       ID: -211407568
       Guid: 2806b654e6fbd645b988301d5f8d8c28
       maxAttenuation: 0
+<<<<<<< HEAD
     - Name: DoorSlide1
       Path: Default Work Unit\DoorSlide1
       PathAndIcons:
@@ -169,6 +187,38 @@ MonoBehaviour:
       ID: -2030144807
       Guid: 89a28c8e5b7b544780bf76a27d2c9bff
       maxAttenuation: 0
+=======
+    - Name: DoorSlideStart
+      Path: Default Work Unit\DoorSlideStart
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: DoorSlideStart
+        ObjectType: 3
+      ID: -1064061476
+      Guid: 89a28c8e5b7b544780bf76a27d2c9bff
+      maxAttenuation: 0
+    - Name: DoorSlideStop
+      Path: Default Work Unit\DoorSlideStop
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: DoorSlideStop
+        ObjectType: 3
+      ID: 1108313776
+      Guid: e6a66b318dae7c44b7293e04329056e0
+      maxAttenuation: 0
+    - Name: RiverRunning
+      Path: Default Work Unit\RiverRunning
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: RiverRunning
+        ObjectType: 3
+      ID: 2104256950
+      Guid: 4494f110cd120d448e1e34936c4c2faf
+      maxAttenuation: 0
+>>>>>>> origin/CartLegSounds
     - Name: SP_EmittingCrystal
       Path: Default Work Unit\SP_EmittingCrystal
       PathAndIcons:
@@ -239,6 +289,19 @@ MonoBehaviour:
       ID: 1067329110
       Guid: 04dea25f2786a64187d77ce8004a72c7
       maxAttenuation: 0
+<<<<<<< HEAD
+=======
+    - Name: WaterfallHuge
+      Path: Default Work Unit\WaterfallHuge
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: WaterfallHuge
+        ObjectType: 3
+      ID: -235189076
+      Guid: 2629bd3e9b33e844b6162f8d833ff2c0
+      maxAttenuation: 0
+>>>>>>> origin/CartLegSounds
     - Name: WaterfallLarge
       Path: Default Work Unit\WaterfallLarge
       PathAndIcons:
@@ -263,8 +326,13 @@ MonoBehaviour:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{88AEA801-E436-458F-9865-10A1788249D3}'
+<<<<<<< HEAD
     m_lastTimePsrt1: -482089820
     m_lastTimePart2: -1999446549
+=======
+    m_lastTimePsrt1: -1752581120
+    m_lastTimePart2: -1999446179
+>>>>>>> origin/CartLegSounds
     List:
     - Name: AmbienceBus
       Path: Default Work Unit\Master Audio Bus\AmbienceBus
@@ -292,16 +360,52 @@ MonoBehaviour:
   - PhysicalPath: States\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{AE51883C-3B7E-44A4-8103-D9454D178678}'
+<<<<<<< HEAD
     m_lastTimePsrt1: -402547193
     m_lastTimePart2: -1999446549
+=======
+    m_lastTimePsrt1: -1872581120
+    m_lastTimePart2: -1999446179
+>>>>>>> origin/CartLegSounds
     List: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{FC282CBF-8094-4F9E-A1C0-F8921C840242}'
+<<<<<<< HEAD
     m_lastTimePsrt1: -402537208
     m_lastTimePart2: -1999446549
     List:
+=======
+    m_lastTimePsrt1: -1892581120
+    m_lastTimePart2: -1999446179
+    List:
+    - Name: CartOn_Off
+      Path: Default Work Unit\CartOn_Off
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: CartOn_Off
+        ObjectType: 11
+      ID: 1466256562
+      Guid: c2a96004ecfdfa43a4445e7c2b25ad40
+      values:
+      - Nothing
+      - Off
+      - On
+      ValueIcons:
+      - ElementName: Nothing
+        ObjectType: 10
+      - ElementName: Off
+        ObjectType: 10
+      - ElementName: On
+        ObjectType: 10
+      valueIDs: 00a93efd648a79373e177762
+      ValueGuids:
+      - bytes: a95180df1af56b4bad9cd7a941d9a43b
+      - bytes: 52a7c5aa6fe36744bc0fb5333b3ce980
+      - bytes: a9efa6f93d95574881474bae979411bb
+>>>>>>> origin/CartLegSounds
     - Name: HeadLampOn_Off
       Path: Default Work Unit\HeadLampOn_Off
       PathAndIcons:
@@ -377,8 +481,13 @@ MonoBehaviour:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{116C8925-F139-4949-97E9-2B14250AD9FB}'
+<<<<<<< HEAD
     m_lastTimePsrt1: -402567208
     m_lastTimePart2: -1999446549
+=======
+    m_lastTimePsrt1: -1897974791
+    m_lastTimePart2: -1999446104
+>>>>>>> origin/CartLegSounds
     List:
     - Name: Main
       Path: Default Work Unit\Main

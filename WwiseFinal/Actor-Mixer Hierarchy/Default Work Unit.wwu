@@ -6,289 +6,6 @@
 				<WorkUnit Name="SoundPuzzle" ID="{02394BAC-4378-4228-A594-ADB64CABA9F6}" PersistMode="Reference"/>
 				<WorkUnit Name="Switches" ID="{327F0D9F-0297-440A-B1A0-2C7566DDBDBD}" PersistMode="Reference"/>
 				<WorkUnit Name="Ambience" ID="{36AA1685-24D3-498E-A2C6-91EC6AD0136D}" PersistMode="Reference"/>
-				<RandomSequenceContainer Name="Door" ID="{6599B0E5-E325-4182-B38E-07A7C6B44894}" ShortID="543464844">
-					<PropertyList>
-						<Property Name="Lowpass" Type="int16">
-							<ValueList>
-								<Value>20</Value>
-							</ValueList>
-						</Property>
-						<Property Name="MaxSoundPerInstance" Type="int16">
-							<ValueList>
-								<Value>1</Value>
-							</ValueList>
-						</Property>
-						<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
-						<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.5"/>
-						<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
-						<Property Name="PositioningType" Type="int16" Value="1"/>
-						<Property Name="RandomOrSequence" Type="int16" Value="0"/>
-						<Property Name="UseMaxSoundPerInstance" Type="bool">
-							<ValueList>
-								<Value>True</Value>
-							</ValueList>
-						</Property>
-						<Property Name="Volume" Type="Real64">
-							<ValueList>
-								<Value>12</Value>
-							</ValueList>
-						</Property>
-					</PropertyList>
-					<ReferenceList>
-						<Reference Name="AttachableMixerInput">
-							<Custom>
-								<Effect Name="Two Big Ears 3Dception (Attached)" ID="{B65F6D16-6036-4B15-BAE0-5046B29558E3}" ShortID="342166714" PluginName="AttachableMixerInput" CompanyID="265" PluginID="2" PluginType="3">
-									<PropertyList>
-										<Property Name="InputChannel" Type="int32" Value="2"/>
-										<Property Name="Room" Type="bool" Value="True"/>
-									</PropertyList>
-								</Effect>
-							</Custom>
-						</Reference>
-						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
-						</Reference>
-						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
-						</Reference>
-						<Reference Name="UserAuxSend0">
-							<ObjectRef Name="AmbienceBus" ID="{8FC1403E-05A4-4BCC-A84E-51488EF5BA6F}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
-						</Reference>
-					</ReferenceList>
-					<ChildrenList>
-						<BlendContainer Name="Steam" ID="{4FD57461-AA34-458D-AC2B-EAB9E65E310B}" ShortID="971940931">
-							<PropertyList>
-								<Property Name="OverrideEffect" Type="bool" Value="True"/>
-								<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
-								<Property Name="Pitch" Type="int32">
-									<ValueList>
-										<Value>-1520</Value>
-									</ValueList>
-								</Property>
-								<Property Name="Volume" Type="Real64">
-									<ValueList>
-										<Value>-15</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
-								</Reference>
-								<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-									<ObjectRef Name="Hall_Large" ID="{6D154498-FF6D-4823-96FC-56841B70E079}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<Sound Name="Steam01" ID="{623C1A46-871E-43A3-8E3F-53543C6B89D7}" ShortID="946558995" Type="SoundFX">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Steam01" ID="{6FC33A6E-C432-4B05-B473-F3CDA03A11EA}" ShortID="335342100">
-											<PropertyList>
-												<Property Name="FadeOutDuration" Type="Real64" Value="1.95497448979592"/>
-												<Property Name="TrimEnd" Type="Real64" Value="1.95497448979592"/>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>Steam01.wav</AudioFile>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Steam01" ID="{6FC33A6E-C432-4B05-B473-F3CDA03A11EA}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Steam02" ID="{C741C9A9-9E57-480F-BA12-D9150F47C98A}" ShortID="137318239" Type="SoundFX">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Steam02" ID="{EDC666FC-7217-4A9E-B9ED-D6E5F5604DD6}" ShortID="1054996965">
-											<PropertyList>
-												<Property Name="FadeOutDuration" Type="Real64" Value="0.847558638038549"/>
-												<Property Name="TrimEnd" Type="Real64" Value="0.847558638038549"/>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>Steam02.wav</AudioFile>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Steam02" ID="{EDC666FC-7217-4A9E-B9ED-D6E5F5604DD6}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-							</ChildrenList>
-						</BlendContainer>
-						<RandomSequenceContainer Name="DoorSlideSlide" ID="{536239C0-78B6-4B16-A674-1E75CB01F868}" ShortID="146229524">
-							<PropertyList>
-								<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
-								<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="3"/>
-								<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="5.8"/>
-								<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
-								<Property Name="RandomOrSequence" Type="int16" Value="0"/>
-								<Property Name="Volume" Type="Real64">
-									<ValueList>
-										<Value>-5</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<BlendContainer Name="DoorSLide" ID="{34C3D570-E7FB-4A55-A5CF-8D5DE13FDD08}" ShortID="675087494">
-									<PropertyList>
-										<Property Name="MaxSoundPerInstance" Type="int16">
-											<ValueList>
-												<Value>3</Value>
-											</ValueList>
-										</Property>
-										<Property Name="OverrideMaxSoundInstance" Type="bool" Value="True"/>
-										<Property Name="UseMaxSoundPerInstance" Type="bool">
-											<ValueList>
-												<Value>True</Value>
-											</ValueList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
-										</Reference>
-										<Reference Name="UserAuxSend0">
-											<ObjectRef Name="AmbienceBus" ID="{8FC1403E-05A4-4BCC-A84E-51488EF5BA6F}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<Sound Name="BoulderSlideEdit03" ID="{3511F838-D647-4DE7-837C-EDAB920096C5}" ShortID="814298446" Type="SoundFX">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="BoulderSlideEdit03" ID="{CC97A6E6-3F64-4A9A-B261-448655D51CD0}" ShortID="135463620">
-													<Language>SFX</Language>
-													<AudioFile>BoulderSlideEdit03.wav</AudioFile>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="BoulderSlideEdit03" ID="{CC97A6E6-3F64-4A9A-B261-448655D51CD0}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="LargeBoulderSlideEdit03" ID="{074B0AAD-7855-4674-844D-696949508757}" ShortID="283292618" Type="SoundFX">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="LargeBoulderSlideEdit03" ID="{E7B1BE4D-F61D-4B6A-890D-A2CBA861024E}" ShortID="75782487">
-													<Language>SFX</Language>
-													<AudioFile>LargeBoulderSlideEdit03.wav</AudioFile>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="LargeBoulderSlideEdit03" ID="{E7B1BE4D-F61D-4B6A-890D-A2CBA861024E}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="RumbleForDoor02" ID="{BAA70F45-F441-48E2-809B-32AAB5D7867B}" ShortID="663519345" Type="SoundFX">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="RumbleForDoor02" ID="{221CB4DC-D3CC-46E3-8D14-6809BABDBBB0}" ShortID="402533040">
-													<Language>SFX</Language>
-													<AudioFile>RumbleForDoor02.wav</AudioFile>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="RumbleForDoor02" ID="{221CB4DC-D3CC-46E3-8D14-6809BABDBBB0}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-									</ChildrenList>
-								</BlendContainer>
-								<Sound Name="GiantBoulderImpactEdit02" ID="{79199E1D-E0A0-47A5-B758-44E4F9288403}" ShortID="608870241" Type="SoundFX">
-									<PropertyList>
-										<Property Name="MaxSoundPerInstance" Type="int16">
-											<ValueList>
-												<Value>1</Value>
-											</ValueList>
-										</Property>
-										<Property Name="UseMaxSoundPerInstance" Type="bool">
-											<ValueList>
-												<Value>True</Value>
-											</ValueList>
-										</Property>
-										<Property Name="Volume" Type="Real64">
-											<ValueList>
-												<Value>3</Value>
-											</ValueList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
-										</Reference>
-										<Reference Name="UserAuxSend0">
-											<ObjectRef Name="AmbienceBus" ID="{8FC1403E-05A4-4BCC-A84E-51488EF5BA6F}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="GiantBoulderImpactEdit02" ID="{EC5A3046-DF29-44E2-9D10-1DDB11A96B95}" ShortID="150787738">
-											<Language>SFX</Language>
-											<AudioFile>GiantBoulderImpactEdit02.wav</AudioFile>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="GiantBoulderImpactEdit02" ID="{EC5A3046-DF29-44E2-9D10-1DDB11A96B95}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-							</ChildrenList>
-							<Playlist>
-								<ItemRef Name="DoorSLide" ID="{34C3D570-E7FB-4A55-A5CF-8D5DE13FDD08}"/>
-								<ItemRef Name="GiantBoulderImpactEdit02" ID="{79199E1D-E0A0-47A5-B758-44E4F9288403}"/>
-							</Playlist>
-						</RandomSequenceContainer>
-					</ChildrenList>
-					<Playlist>
-						<ItemRef Name="DoorSlideSlide" ID="{536239C0-78B6-4B16-A674-1E75CB01F868}"/>
-						<ItemRef Name="Steam" ID="{4FD57461-AA34-458D-AC2B-EAB9E65E310B}"/>
-					</Playlist>
-				</RandomSequenceContainer>
 				<WorkUnit Name="CarLegHits" ID="{65641274-E32A-4F56-AD3E-5477076BCE50}" PersistMode="Reference"/>
 				<WorkUnit Name="Headlamp" ID="{5B50697D-D4CD-40FC-A2AF-91662BDC1193}" PersistMode="Reference"/>
 				<ActorMixer Name="Waterfall" ID="{4636A008-07C5-472A-93B3-D906D9FEB2A9}" ShortID="409898733">
@@ -765,6 +482,271 @@
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
+				</ActorMixer>
+				<ActorMixer Name="DoorClose" ID="{0DA1F700-5084-40C3-BDB1-FD82E4134445}" ShortID="113421071">
+					<PropertyList>
+						<Property Name="PositioningType" Type="int16" Value="1"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="AttachableMixerInput">
+							<Custom>
+								<Effect Name="Two Big Ears 3Dception (Attached)" ID="{714300D2-A80F-4E33-B1F8-9A51BD52E619}" ShortID="61862824" PluginName="AttachableMixerInput" CompanyID="265" PluginID="2" PluginType="3">
+									<PropertyList>
+										<Property Name="InputChannel" Type="int32" Value="2"/>
+										<Property Name="Room" Type="bool" Value="True"/>
+									</PropertyList>
+								</Effect>
+							</Custom>
+						</Reference>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+						</Reference>
+						<Reference Name="UserAuxSend0">
+							<ObjectRef Name="AmbienceBus" ID="{8FC1403E-05A4-4BCC-A84E-51488EF5BA6F}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<RandomSequenceContainer Name="DoorClose" ID="{C5D1BF35-7DCB-4ED8-BDF5-8AF45A26DD7D}" ShortID="1034377670">
+							<PropertyList>
+								<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+								<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+								<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<BlendContainer Name="Steam" ID="{4FD57461-AA34-458D-AC2B-EAB9E65E310B}" ShortID="971940931">
+									<PropertyList>
+										<Property Name="OverrideEffect" Type="bool" Value="True"/>
+										<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
+										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>-1520</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-15</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+										</Reference>
+										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+											<ObjectRef Name="Hall_Large" ID="{6D154498-FF6D-4823-96FC-56841B70E079}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Steam01" ID="{623C1A46-871E-43A3-8E3F-53543C6B89D7}" ShortID="946558995" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Steam01" ID="{6FC33A6E-C432-4B05-B473-F3CDA03A11EA}" ShortID="335342100">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="1.95497448979592"/>
+														<Property Name="TrimEnd" Type="Real64" Value="1.95497448979592"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Steam01.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Steam01" ID="{6FC33A6E-C432-4B05-B473-F3CDA03A11EA}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Steam02" ID="{C741C9A9-9E57-480F-BA12-D9150F47C98A}" ShortID="137318239" Type="SoundFX">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Steam02" ID="{EDC666FC-7217-4A9E-B9ED-D6E5F5604DD6}" ShortID="1054996965">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.847558638038549"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.847558638038549"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Steam02.wav</AudioFile>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Steam02" ID="{EDC666FC-7217-4A9E-B9ED-D6E5F5604DD6}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</BlendContainer>
+								<Sound Name="DoorClose" ID="{57A6C98C-80E5-415E-880E-C25859872534}" ShortID="415683334" Type="SoundFX">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="DoorClose" ID="{EE78C23F-3B31-43DB-8191-F9BD061D7AA6}" ShortID="190139503">
+											<Language>SFX</Language>
+											<AudioFile>DoorClose.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="DoorClose" ID="{EE78C23F-3B31-43DB-8191-F9BD061D7AA6}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<Playlist>
+								<ItemRef Name="DoorClose" ID="{57A6C98C-80E5-415E-880E-C25859872534}"/>
+								<ItemRef Name="Steam" ID="{4FD57461-AA34-458D-AC2B-EAB9E65E310B}"/>
+							</Playlist>
+						</RandomSequenceContainer>
+					</ChildrenList>
+				</ActorMixer>
+				<RandomSequenceContainer Name="DoorSlideSlide" ID="{536239C0-78B6-4B16-A674-1E75CB01F868}" ShortID="146229524">
+					<PropertyList>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>1</Value>
+							</ValueList>
+						</Property>
+						<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+						<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="1"/>
+						<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.8"/>
+						<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+						<Property Name="PositioningType" Type="int16" Value="1"/>
+						<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="AttachableMixerInput">
+							<Custom>
+								<Effect Name="Two Big Ears 3Dception (Attached)" ID="{0D7FF64B-2B63-4459-818B-280FA6BB2439}" ShortID="841351062" PluginName="AttachableMixerInput" CompanyID="265" PluginID="2" PluginType="3">
+									<PropertyList>
+										<Property Name="InputChannel" Type="int32" Value="2"/>
+										<Property Name="Room" Type="bool" Value="True"/>
+									</PropertyList>
+								</Effect>
+							</Custom>
+						</Reference>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+						</Reference>
+						<Reference Name="UserAuxSend0">
+							<ObjectRef Name="AmbienceBus" ID="{8FC1403E-05A4-4BCC-A84E-51488EF5BA6F}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="DoorSlideLoop" ID="{0DE74480-FD3E-445D-AA3C-6C6AE9489464}" ShortID="796744026" Type="SoundFX">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-5</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DoorSlideLoop" ID="{EB10F19B-CFCF-490A-ADDB-CE1E378807DC}" ShortID="303978757">
+									<PropertyList>
+										<Property Name="FadeInDuration" Type="Real64" Value="2.74291636297376E-02"/>
+										<Property Name="FadeOutDuration" Type="Real64" Value="2.13337939342404E-02"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>DoorSlideLoop.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DoorSlideLoop" ID="{EB10F19B-CFCF-490A-ADDB-CE1E378807DC}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="DoorOpen" ID="{69B73F3B-06AB-400F-B88A-0189D5D5C61B}" ShortID="989976940" Type="SoundFX">
+							<PropertyList>
+								<Property Name="Lowpass" Type="int16">
+									<ValueList>
+										<Value>40</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-5</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DoorOpen" ID="{1127708B-9BCB-4C0B-A8FD-60C25EC2CFEA}" ShortID="622065201">
+									<PropertyList>
+										<Property Name="FadeOutDuration" Type="Real64" Value="4.67620262390669E-02"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>DoorOpen.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DoorOpen" ID="{1127708B-9BCB-4C0B-A8FD-60C25EC2CFEA}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+					<Playlist>
+						<ItemRef Name="DoorOpen" ID="{69B73F3B-06AB-400F-B88A-0189D5D5C61B}"/>
+						<ItemRef Name="DoorSlideLoop" ID="{0DE74480-FD3E-445D-AA3C-6C6AE9489464}"/>
+					</Playlist>
+				</RandomSequenceContainer>
+				<ActorMixer Name="RailWayBlocker" ID="{4BB6190B-7EB7-438C-8B8D-33C6CA94A1D7}" ShortID="179476472">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+						</Reference>
+					</ReferenceList>
 				</ActorMixer>
 			</ChildrenList>
 		</WorkUnit>
