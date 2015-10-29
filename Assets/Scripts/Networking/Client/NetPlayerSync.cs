@@ -37,6 +37,7 @@ public class NetPlayerSync : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		helmet.netPlayer = this;
 		DarkRiftAPI.onPlayerDisconnected += PlayerDisconnected;
 		DarkRiftAPI.onDataDetailed += RecieveData;
 	}
@@ -68,6 +69,7 @@ public class NetPlayerSync : MonoBehaviour {
 			//save the sent position and rotation
 			lastRotation = head.rotation;
 		}
+
 	}
 	
 	// Called once there is a new packet/sample ready
@@ -99,6 +101,16 @@ public class NetPlayerSync : MonoBehaviour {
 					player.OnNewSample(packet); // Queue package to the VoiceChatPlayer
 				}
 				break;
+				case Network.Subject.PlayerFocus:
+				{
+					StopAllCoroutines();
+					StartCoroutine(StartFocusing((float)data));
+				}break;
+				case Network.Subject.PlayerUnfocus:
+				{
+					StopAllCoroutines();
+					StartCoroutine(StopFocusing((float)data));
+				}break;
 			}
 		}		
 	}
@@ -115,16 +127,16 @@ public class NetPlayerSync : MonoBehaviour {
 		isSender = true;
 		cam.SetActive(true);
 		headControl.enabled = true;
-		helmet.enabled = true;
 		helmet.SetPlayerIndex(networkID);
+		helmet.enabled = true;
 	}
 	
 	public void SetAsReceiver(){
 		isSender = false;
 		cam.SetActive(false);
 		headControl.enabled = false;
-		helmet.enabled = false;
 		helmet.SetPlayerIndex(networkID);
+		helmet.enabled = false;
 	}
 
     public void SetVoiceChatPlayer(VoiceChatPlayer player)
@@ -133,13 +145,39 @@ public class NetPlayerSync : MonoBehaviour {
     }
 
     public void AddCameraToLightShaft(GameObject camera){
-    	Debug.Log(nonFocusedLightShaft.m_Cameras[0]);
-    	if(nonFocusedLightShaft.m_Cameras[0] == null){
-    		nonFocusedLightShaft.m_Cameras[0] = camera.GetComponent<Camera>();
-    		focusedLightShaft.m_Cameras[0] = camera.GetComponent<Camera>();
-    	}else{
-    		nonFocusedLightShaft.m_Cameras[1] = camera.GetComponent<Camera>();
-    		focusedLightShaft.m_Cameras[1] = camera.GetComponent<Camera>();
+		nonFocusedLightShaft.m_Cameras[0] = camera.GetComponent<Camera>();
+		focusedLightShaft.m_Cameras[0] = camera.GetComponent<Camera>();
+
+		nonFocusedLightShaft.UpdateCameraDepthMode();
+		focusedLightShaft.UpdateCameraDepthMode();
+    }
+
+    public void UpdateHelmetLight(bool isFocusing, float animationEndTime){
+    	if(isFocusing)
+			DarkRiftAPI.SendMessageToOthers(Network.Tag.Player, Network.Subject.PlayerFocus, animationEndTime);
+		else
+			DarkRiftAPI.SendMessageToOthers(Network.Tag.Player, Network.Subject.PlayerUnfocus, animationEndTime);
+    }
+
+    IEnumerator StartFocusing(float endTime){
+    	float animationLength = endTime - Time.time;
+    	while(Time.time < endTime){
+    		float t = (endTime - Time.time)/animationLength;
+    		helmet.LightUpdate(t);
+    		yield return null;
     	}
+
+    	helmet.LightUpdate(1f);
+    }
+
+    IEnumerator StopFocusing(float endTime){
+		float animationLength = endTime - Time.time;
+    	while(Time.time < endTime){
+    		float t = 1-((endTime - Time.time)/animationLength);
+    		helmet.LightUpdate(t);
+    		yield return null;
+    	}
+
+    	helmet.LightUpdate(0f);
     }
 }

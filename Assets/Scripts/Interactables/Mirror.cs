@@ -75,7 +75,7 @@ public class Mirror : Interactable {
         
     }
 
-    public override void OnRayEnter(int playerIndex, Ray ray, RaycastHit hit, ref LineRenderer lineRenderer,int nextLineVertex){
+    public override void OnRayEnter(int playerIndex, Ray ray, RaycastHit hit){
         
         //Ray newRay = new Ray (hit.point, Vector3.Reflect (ray.direction, hit.normal));        //Legacy code. Calculates a realistisc reflection off the mirror
 
@@ -93,12 +93,10 @@ public class Mirror : Interactable {
             if (Physics.Raycast(newRay, out rayhit)) {
             
 		        Debug.DrawRay(hit.point, newRay.direction * 10, Color.cyan, 1f);
-                lineRenderer.SetVertexCount(++nextLineVertex);             // resets the number of vertecies of the line renderer to 1
-                lineRenderer.SetPosition(nextLineVertex - 1, rayhit.point);  // sets the line origin to the 
 
                 Interactable interactable = rayhit.transform.GetComponent<Interactable>();
                 if (interactable != null) {
-                    interactable.OnRayEnter(playerIndex, newRay, rayhit, ref lineRenderer, nextLineVertex);
+                    interactable.OnRayEnter(playerIndex, newRay, rayhit);
                 }
             }
         }

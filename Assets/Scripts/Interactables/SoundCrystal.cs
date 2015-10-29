@@ -52,7 +52,7 @@ public class SoundCrystal : Interactable
         }
 	}
 
-    public override void OnRayEnter(int playerIndex, Ray ray, RaycastHit hit, ref LineRenderer lineRenderer,int nextLineVertex){
+    public override void OnRayEnter(int playerIndex, Ray ray, RaycastHit hit){
 		PlaySounds(0);
 	}
     

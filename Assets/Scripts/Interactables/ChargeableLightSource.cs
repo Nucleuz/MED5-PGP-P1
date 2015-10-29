@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
-[RequireComponent(typeof(LineRenderer))]
 [RequireComponent(typeof(ParticleSystem))]
 public class ChargeableLightSource : Interactable {
 
@@ -20,7 +18,6 @@ public class ChargeableLightSource : Interactable {
     public Transform beamPos;
     private bool isCharging;
 
-    public LineRenderer lineRenderer;
 
 
 	float endInteractTime;
@@ -40,8 +37,6 @@ public class ChargeableLightSource : Interactable {
 
         trigger = GetComponent<Trigger>();
 
-        lineRenderer = GetComponent<LineRenderer>();
-        lineRenderer.SetWidth(0.1f, 0.1f);
 
         particles = GetComponent<ParticleSystem>();
         particles.enableEmission = false;
@@ -123,15 +118,10 @@ public class ChargeableLightSource : Interactable {
             // Casts a ray against all colliders
             if (Physics.Raycast(ray, out hit)) {
 
-                //setting up the lineRenderer (only if we have actually hit something)
-                lineRenderer.SetVertexCount(2);
-                lineRenderer.SetPosition(0, transform.position);
-                lineRenderer.SetPosition(1, hit.point);
                 // Declaring objectHit to be the object that the ray hits
                 Interactable interactable = hit.transform.GetComponent<Interactable>();
 				if (interactable != null)
-                    //@Optimize - The mirror is the only one who the ray, hit, lineRenderer, and count
-					interactable.OnRayEnter(playerIndex,ray,hit,ref lineRenderer,2);
+					interactable.OnRayEnter(playerIndex,ray,hit);
 				
             }
 
@@ -140,7 +130,7 @@ public class ChargeableLightSource : Interactable {
         }
 
 	}
-    public override void OnRayEnter(int playerIndex, Ray ray, RaycastHit hit,ref LineRenderer lineRenderer,int nextLineVertex){
+    public override void OnRayEnter(int playerIndex, Ray ray, RaycastHit hit){
 		this.playerIndex = playerIndex;
         endInteractTime = Time.time + minInteractLength;
 

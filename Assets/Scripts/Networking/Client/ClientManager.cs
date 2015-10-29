@@ -109,7 +109,7 @@ public class ClientManager : NetworkManager
                 case Network.Subject.SpawnPlayer: // Spawn OTHER players
                     {
                         //spawn other player
-                        Write("SpawnPlayer sender: " + senderID);
+                        Console.Instance.AddMessage("SpawnPlayer sender: " + senderID);
 
                         //unpack data
 
@@ -190,9 +190,11 @@ public class ClientManager : NetworkManager
         netPlayer.networkID = networkID;
         netPlayer.SetAsSender();
 
-        for(int i = 0;i<otherPlayers.Length;i++)
+        for(int i = 0;i<otherPlayers.Length;i++){
+            Console.Instance.AddMessage("other player: " + otherPlayers[i]);
             if(otherPlayers[i] != null)
                otherPlayers[i].AddCameraToLightShaft(netPlayer.cam);
+        }
 
 
 /*

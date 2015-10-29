@@ -106,7 +106,7 @@ public class ChargeableButtonScript : Interactable
         }
     }
     
-	public override void OnRayEnter(int playerIndex, Ray ray, RaycastHit hit,ref LineRenderer lineRenderer,int nextLineVertex){
+	public override void OnRayEnter(int playerIndex, Ray ray, RaycastHit hit){
         if(trigger.isReadyToBeTriggered)
 		  endInteractTime = Time.time + minInteractLength;
 	}
