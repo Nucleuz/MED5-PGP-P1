@@ -1891,7 +1891,7 @@ MonoBehaviour:
   intensityNormal: 1
   intensityFocus: 8
   playerIndex: 0
-  objectHit: {fileID: 0}
+  lastObjectHit: {fileID: 0}
 --- !u!114 &11448950
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1905,6 +1905,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ShadowmapMode: 0
   m_Cameras:
+  - {fileID: 0}
   - {fileID: 0}
   m_CurrentCamera: {fileID: 0}
   m_Size: {x: 10, y: 10, z: 20}
@@ -1996,6 +1997,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ShadowmapMode: 0
   m_Cameras:
+  - {fileID: 0}
   - {fileID: 0}
   m_CurrentCamera: {fileID: 0}
   m_Size: {x: 10, y: 10, z: 20}
