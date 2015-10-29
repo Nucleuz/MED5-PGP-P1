@@ -29,8 +29,11 @@ public class NetPlayerSync : MonoBehaviour {
 	public LightShafts focusedLightShaft;
 	
 	//reference to reduce when it sends data to everyone else
-	Quaternion lastRotation;
-	Vector3 lastPosition;
+	private Quaternion lastRotation;
+	private Vector3 lastPosition;
+
+	private float lastPositionTime;
+	private float lastRotationTime;
 	
 	//network id for the object
 	public ushort networkID;
@@ -87,12 +90,16 @@ public class NetPlayerSync : MonoBehaviour {
                 case Network.Subject.PlayerPositionUpdate:
                 {
                     Vector3 position = Deserializer.Vector3((byte[])data);
-                    transform.position = position;
+                    StopCoroutine("InterpolatePosition");
+                    StartCoroutine(InterpolatePosition(position,Time.time - lastPositionTime));
                 }break;
 				case Network.Subject.PlayerRotationUpdate:
 				{
                     Quaternion rotation = Deserializer.Quaternion((byte[])data);
 					head.rotation = rotation;	
+
+                    StopCoroutine("InterpolateRotation");
+                    StartCoroutine(InterpolateRotation(rotation,Time.time - lastRotationTime));
 				}
 				break;
 				case Network.Subject.VoiceChat:
@@ -177,5 +184,30 @@ public class NetPlayerSync : MonoBehaviour {
     	}
 
     	helmet.LightUpdate(0f);
+    }
+
+    IEnumerator InterpolatePosition(Vector3 newPosition, float interpolationLength){
+    	lastPositionTime = Time.time;
+    	Vector3 startPosition = transform.position;
+
+    	float t = 0f;
+    	while(t < 1f){
+    		t = (Time.time - lastPositionTime)/interpolationLength;
+    		transform.position = Vector3.Lerp(startPosition,newPosition,t);
+    		yield return null;
+    	}
+    	transform.position = newPosition;
+    }
+    IEnumerator InterpolateRotation(Quaternion newRotation, float interpolationLength){
+    	lastPositionTime = Time.time;
+    	Quaternion startRotation = transform.rotation;
+
+    	float t = 1f;
+    	while(t < 1f){
+    		t = (Time.time - lastRotationTime)/interpolationLength;
+    		transform.rotation = Quaternion.Slerp(startRotation,newRotation,t);
+    		yield return null;
+    	}
+    	transform.rotation = newRotation;
     }
 }
