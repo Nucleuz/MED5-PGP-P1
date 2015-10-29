@@ -133,6 +133,7 @@ public class NetPlayerSync : MonoBehaviour {
     }
 
     public void AddCameraToLightShaft(GameObject camera){
+    	Debug.Log(nonFocusedLightShaft.m_Cameras[0]);
     	if(nonFocusedLightShaft.m_Cameras[0] == null){
     		nonFocusedLightShaft.m_Cameras[0] = camera.GetComponent<Camera>();
     		focusedLightShaft.m_Cameras[0] = camera.GetComponent<Camera>();

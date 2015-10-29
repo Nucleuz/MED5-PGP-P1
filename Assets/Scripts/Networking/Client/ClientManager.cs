@@ -132,7 +132,7 @@ public class ClientManager : NetworkManager
                             otherPlayers[1] = netPlayer;
 
                         if(player != null)
-                            player.GetComponent<NetPlayerSync>().AddCameraToLightShaft(netPlayer.cam);
+                            netPlayer.AddCameraToLightShaft(player.GetComponent<NetPlayerSync>().cam);
 
                     }
                     break;
@@ -192,7 +192,7 @@ public class ClientManager : NetworkManager
 
         for(int i = 0;i<otherPlayers.Length;i++)
             if(otherPlayers[i] != null)
-               netPlayer.AddCameraToLightShaft(otherPlayers[i].cam);
+               otherPlayers[i].AddCameraToLightShaft(netPlayer.cam);
 
 
 /*
