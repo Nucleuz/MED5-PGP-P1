@@ -2035,6 +2035,71 @@
 						</RandomSequenceContainer>
 					</ChildrenList>
 				</ActorMixer>
+				<ActorMixer Name="Wrong Mixer" ID="{A9AB34F5-0C0A-486B-A848-98425276D3A4}" ShortID="145131642">
+					<PropertyList>
+						<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>1</Value>
+							</ValueList>
+						</Property>
+						<Property Name="PositioningType" Type="int16" Value="1"/>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="AttachableMixerInput">
+							<Custom>
+								<Effect Name="Two Big Ears 3Dception (Attached)" ID="{31666E38-8945-43C6-89D1-5BC3F0F7AE1D}" ShortID="738953896" PluginName="AttachableMixerInput" CompanyID="265" PluginID="2" PluginType="3">
+									<PropertyList>
+										<Property Name="InputChannel" Type="int32" Value="2"/>
+										<Property Name="Room" Type="bool" Value="True"/>
+									</PropertyList>
+								</Effect>
+							</Custom>
+						</Reference>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+						</Reference>
+						<Reference Name="UserAuxSend0">
+							<ObjectRef Name="LowVerb" ID="{0C8BA126-5456-48DB-B654-3042F35723DA}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="Wrong" ID="{A17BCA55-6BA3-4FF9-B170-C3811888B623}" ShortID="379206004" Type="SoundFX">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-5</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Wrong" ID="{D01EE588-961C-4966-86F7-0511206A2985}" ShortID="29242027">
+									<Language>SFX</Language>
+									<AudioFile>Wrong.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Wrong" ID="{D01EE588-961C-4966-86F7-0511206A2985}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</ActorMixer>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>
