@@ -37,6 +37,11 @@
 								<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.5"/>
 								<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 								<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-25</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -75,20 +80,8 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="ElectricityBox" ID="{EA0F7AE8-C48B-4B9E-9B2E-B6769C2840A7}" ShortID="853830410">
-<<<<<<< HEAD
 													<Language>SFX</Language>
 													<AudioFile>ElectricityBox.wav</AudioFile>
-=======
-													<Language>SFX</Language>
-													<AudioFile>ElectricityBox.wav</AudioFile>
-												</AudioFileSource>
-												<AudioFileSource Name="ElectricityBox_01" ID="{950EBB5F-CC87-4A8F-A40A-F0A616B7F21F}" ShortID="383710389">
-													<Language>SFX</Language>
-													<AudioFile>ElectricityBox.wav</AudioFile>
-													<ConvertedFileIDList>
-														<File ID="853830410"/>
-													</ConvertedFileIDList>
->>>>>>> origin/HelmetlightCookie
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
@@ -112,20 +105,8 @@
 									</ReferenceList>
 									<ChildrenList>
 										<AudioFileSource Name="ElectricityBox(intro½sec)" ID="{B7E73A92-800F-4A47-8D04-89E99FAADF97}" ShortID="417635021">
-<<<<<<< HEAD
 											<Language>SFX</Language>
 											<AudioFile>ElectricityBox(intro½sec).wav</AudioFile>
-=======
-											<Language>SFX</Language>
-											<AudioFile>ElectricityBox(intro½sec).wav</AudioFile>
-										</AudioFileSource>
-										<AudioFileSource Name="ElectricityBox(intro½sec)_01" ID="{3760AD7F-6C16-436F-8679-CCB61170EE10}" ShortID="282976338">
-											<Language>SFX</Language>
-											<AudioFile>ElectricityBox(intro½sec).wav</AudioFile>
-											<ConvertedFileIDList>
-												<File ID="417635021"/>
-											</ConvertedFileIDList>
->>>>>>> origin/HelmetlightCookie
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
