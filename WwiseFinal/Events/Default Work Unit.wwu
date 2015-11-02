@@ -471,17 +471,6 @@ This SFX is placed near the base of the elevator.</Comment>
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Wrong" ID="{DE54229E-B738-405B-9F5A-2DCAC9D882FF}">
-					<ChildrenList>
-						<Action Name="Play" ID="{98189358-DB4C-432C-B4AB-1D3765FCB44A}" ShortID="460905957" Type="Play" Scope="One" Global="false">
-							<ElementList>
-								<Element ID="{B147B4C4-B578-465A-80C5-1D68C5F64446}" Global="false">
-									<ObjectRef Name="Wrong" ID="{A17BCA55-6BA3-4FF9-B170-C3811888B623}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
-								</Element>
-							</ElementList>
-						</Action>
-					</ChildrenList>
-				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
