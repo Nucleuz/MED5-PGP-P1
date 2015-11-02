@@ -17,6 +17,6 @@ public class SOUND_LegHit : MonoBehaviour {
 
 	public void PlayLegHitSound(){
 		Debug.Log("HEY");
-		//SoundManager.Instance.PlayEvent("LegSoundHit1", soundPos);
+		////SoundManager.Instance.PlayEvent("LegSoundHit1", soundPos);
 	}
 }

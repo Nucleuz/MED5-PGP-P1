@@ -49,8 +49,8 @@ public class InteractableButton : Interactable{
 		}
 
 		if(playedSound && !trigger.isTriggered){
-			SoundManager.Instance.ToggleSwitch("On_Off", "Off", gameObject);
-			SoundManager.Instance.PlayEvent("ButtonOnOff", gameObject);
+			//SoundManager.Instance.ToggleSwitch("On_Off", "Off", gameObject);
+			//SoundManager.Instance.PlayEvent("ButtonOnOff", gameObject);
 			playedSound = false;
 		}
 	}
@@ -59,8 +59,8 @@ public class InteractableButton : Interactable{
 		if (trigger.isReadyToBeTriggered){
 			trigger.Activate();
 			if(!playedSound){
-				SoundManager.Instance.ToggleSwitch("On_Off", "On", gameObject);
-				SoundManager.Instance.PlayEvent("ButtonOnOff", gameObject);
+				//SoundManager.Instance.ToggleSwitch("On_Off", "On", gameObject);
+				//SoundManager.Instance.PlayEvent("ButtonOnOff", gameObject);
 				playedSound = true;
 			}
 		}

@@ -55,7 +55,7 @@ public class Mirror : Interactable {
         if (trigger != null && trigger.isTriggered && !isRotating) {
             rotateMirror();
             if(!soundIsPlaying){
-                SoundManager.Instance.PlayEvent("Mirror_Turning_Active", gameObject);
+                //SoundManager.Instance.PlayEvent("Mirror_Turning_Active", gameObject);
                 soundIsPlaying = true;
             }
         }
@@ -141,7 +141,7 @@ public class Mirror : Interactable {
         }
         isRotating = false;
         if(soundIsPlaying){
-            SoundManager.Instance.PlayEvent("Mirror_Turning_Stop", gameObject);
+            //SoundManager.Instance.PlayEvent("Mirror_Turning_Stop", gameObject);
             soundIsPlaying = false;
         }
         //trigger.canReset = true;

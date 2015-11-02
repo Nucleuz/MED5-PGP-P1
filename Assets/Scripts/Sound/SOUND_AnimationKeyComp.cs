@@ -60,7 +60,7 @@ public class SOUND_AnimationKeyComp : MonoBehaviour {
 	}
 
 	public void PlaySound(){
-		SoundManager.Instance.PlayEvent(eventName, gameObject);
+		//SoundManager.Instance.PlayEvent(eventName, gameObject);
 	}
 
 	private float FindNextPoint(){

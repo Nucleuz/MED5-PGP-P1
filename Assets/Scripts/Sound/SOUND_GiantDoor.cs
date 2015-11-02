@@ -21,13 +21,13 @@ public class SOUND_GiantDoor : MonoBehaviour {
         {
         	hasPlayed = true;
         	isStarted = true;
-        	SoundManager.Instance.PlayEvent("DoorSlideStart", gameObject);
+        	//SoundManager.Instance.PlayEvent("DoorSlideStart", gameObject);
         	timeStamp = Time.time + anim.GetCurrentAnimatorStateInfo(0).length;
         	Debug.Log("timeStamp: " +timeStamp + " time: " + Time.time);
         }
 
         if(timeStamp < Time.time && isStarted){
-        	SoundManager.Instance.PlayEvent("DoorSlideStop", gameObject);
+        	//SoundManager.Instance.PlayEvent("DoorSlideStop", gameObject);
         	isStarted = false;
         }
 	

@@ -157,6 +157,7 @@ public class GameManager : MonoBehaviour {
             if(LM.events[triggerIndex + numberOfTriggeredEvents].canReset == true && LM.events[triggerIndex + numberOfTriggeredEvents].isReadyToBeTriggered == false){
                 LM.events[triggerIndex + numberOfTriggeredEvents].isReadyToBeTriggered = true;
                 LM.events[triggerIndex  + numberOfTriggeredEvents].canReset = false;
+                server.resetTriggers();
             }
         }catch(System.IndexOutOfRangeException e){
             Debug.LogWarning("This was an error -- needs to implement Andreas GameManager Fix");

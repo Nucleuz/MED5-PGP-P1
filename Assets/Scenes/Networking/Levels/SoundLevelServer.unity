@@ -65,6 +65,7 @@ LightmapSettings:
     m_TextureCompression: 1
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
+    m_ReflectionCompression: 2
   m_LightmapSnapshot: {fileID: 0}
   m_RuntimeCPUUsage: 25
 --- !u!196 &4
@@ -84,9 +85,6 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!127 &5
-LevelGameManager:
-  m_ObjectHideFlags: 0
 --- !u!1001 &5425810
 Prefab:
   m_ObjectHideFlags: 0
@@ -143,6 +141,12 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 218562020}
   m_Script: {fileID: 11500000, guid: 57f8bf624c4748748a66e6f53c5aacba, type: 3}
+--- !u!114 &19759062 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11403774, guid: 8e11523e821032e4b8f8fb66ddd03fad,
+    type: 2}
+  m_PrefabInternal: {fileID: 637727852}
+  m_Script: {fileID: 11500000, guid: efa0b44aa476f09449a63a6ecc6211ca, type: 3}
 --- !u!4 &22135856 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 98658e531a56c48e185e247d38cb8cbf, type: 3}
@@ -1496,8 +1500,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  NextRail: {fileID: 0}
-  PreviousRail: {fileID: 0}
+  next: {fileID: 0}
+  prev: {fileID: 0}
   railPoint: {fileID: 0}
 --- !u!23 &206543529
 MeshRenderer:
@@ -3027,8 +3031,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  NextRail: {fileID: 0}
-  PreviousRail: {fileID: 0}
+  next: {fileID: 1307152520}
+  prev: {fileID: 1797655728}
   railPoint: {fileID: 558855369}
 --- !u!4 &558855371
 Transform:
@@ -3377,6 +3381,63 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 98658e531a56c48e185e247d38cb8cbf, type: 3}
   m_PrefabInternal: {fileID: 1009739936}
+--- !u!1 &579149414
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 579149417}
+  - 114: {fileID: 579149416}
+  - 114: {fileID: 579149415}
+  m_Layer: 0
+  m_Name: WwiseGlobal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &579149415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 579149414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1adccdce10ac384da0d669fa50d0ae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basePath: Audio\GeneratedSoundBanks
+  language: English(US)
+  defaultPoolSize: 4096
+  lowerPoolSize: 2048
+  streamingPoolSize: 1024
+  memoryCutoffThreshold: .949999988
+--- !u!114 &579149416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 579149414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0da75c80cd89ba4b82c3e81eda3d189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &579149417
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 579149414}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
 --- !u!4 &580291290 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 98658e531a56c48e185e247d38cb8cbf, type: 3}
@@ -4454,8 +4515,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  NextRail: {fileID: 0}
-  PreviousRail: {fileID: 0}
+  next: {fileID: 0}
+  prev: {fileID: 0}
   railPoint: {fileID: 0}
 --- !u!4 &795616827
 Transform:
@@ -4546,8 +4607,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  NextRail: {fileID: 0}
-  PreviousRail: {fileID: 0}
+  next: {fileID: 0}
+  prev: {fileID: 0}
   railPoint: {fileID: 796198690}
 --- !u!23 &796198692
 MeshRenderer:
@@ -4995,8 +5056,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  NextRail: {fileID: 0}
-  PreviousRail: {fileID: 0}
+  next: {fileID: 0}
+  prev: {fileID: 1999390903}
   railPoint: {fileID: 858720155}
 --- !u!23 &858720158
 MeshRenderer:
@@ -7186,8 +7247,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  NextRail: {fileID: 0}
-  PreviousRail: {fileID: 0}
+  next: {fileID: 0}
+  prev: {fileID: 0}
   railPoint: {fileID: 0}
 --- !u!4 &1148256073
 Transform:
@@ -8279,8 +8340,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  NextRail: {fileID: 0}
-  PreviousRail: {fileID: 0}
+  next: {fileID: 0}
+  prev: {fileID: 558855370}
   railPoint: {fileID: 1307152519}
 --- !u!23 &1307152521
 MeshRenderer:
@@ -8866,8 +8927,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  NextRail: {fileID: 0}
-  PreviousRail: {fileID: 0}
+  next: {fileID: 0}
+  prev: {fileID: 0}
   railPoint: {fileID: 0}
 --- !u!23 &1386325449
 MeshRenderer:
@@ -9094,7 +9155,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32bfff70e8738f24292acaa39a2eb270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sc: {fileID: 0}
   maxIntensity: 1
   minIntensity: 0
   pulseSpeed: 1.5
@@ -9263,8 +9323,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  NextRail: {fileID: 0}
-  PreviousRail: {fileID: 0}
+  next: {fileID: 796198691}
+  prev: {fileID: 19759062}
   railPoint: {fileID: 1426276958}
 --- !u!4 &1426276960
 Transform:
@@ -9925,8 +9985,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  NextRail: {fileID: 0}
-  PreviousRail: {fileID: 0}
+  next: {fileID: 0}
+  prev: {fileID: 0}
   railPoint: {fileID: 0}
 --- !u!4 &1521167955
 Transform:
@@ -10759,8 +10819,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  NextRail: {fileID: 0}
-  PreviousRail: {fileID: 0}
+  next: {fileID: 0}
+  prev: {fileID: 0}
   railPoint: {fileID: 0}
 --- !u!23 &1663750232
 MeshRenderer:
@@ -11090,8 +11150,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  NextRail: {fileID: 0}
-  PreviousRail: {fileID: 0}
+  next: {fileID: 0}
+  prev: {fileID: 0}
   railPoint: {fileID: 0}
 --- !u!23 &1723220630
 MeshRenderer:
@@ -11599,6 +11659,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1797655728 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11403774, guid: 8e11523e821032e4b8f8fb66ddd03fad,
+    type: 2}
+  m_PrefabInternal: {fileID: 566872117}
+  m_Script: {fileID: 11500000, guid: efa0b44aa476f09449a63a6ecc6211ca, type: 3}
 --- !u!4 &1810980615 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 98658e531a56c48e185e247d38cb8cbf, type: 3}
@@ -12538,6 +12604,12 @@ Transform:
   - {fileID: 576705741}
   m_Father: {fileID: 938873710}
   m_RootOrder: 0
+--- !u!114 &1999390903 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11403774, guid: 8e11523e821032e4b8f8fb66ddd03fad,
+    type: 2}
+  m_PrefabInternal: {fileID: 971835161}
+  m_Script: {fileID: 11500000, guid: efa0b44aa476f09449a63a6ecc6211ca, type: 3}
 --- !u!1001 &2000291976
 Prefab:
   m_ObjectHideFlags: 0
@@ -12647,8 +12719,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  NextRail: {fileID: 0}
-  PreviousRail: {fileID: 0}
+  next: {fileID: 0}
+  prev: {fileID: 0}
   railPoint: {fileID: 0}
 --- !u!23 &2006966187
 MeshRenderer:
@@ -13423,8 +13495,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  NextRail: {fileID: 0}
-  PreviousRail: {fileID: 0}
+  next: {fileID: 0}
+  prev: {fileID: 0}
   railPoint: {fileID: 0}
 --- !u!23 &2094521051
 MeshRenderer:
