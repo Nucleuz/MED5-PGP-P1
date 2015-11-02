@@ -44,6 +44,31 @@
 								</Reference>
 							</ReferenceList>
 						</AuxBus>
+						<AuxBus Name="LowVerb" ID="{0C8BA126-5456-48DB-B654-3042F35723DA}">
+							<ReferenceList>
+								<Reference Name="Effect0">
+									<Custom CreatedFrom="{6D154498-FF6D-4823-96FC-56841B70E079}">
+										<Effect Name="Hall_Large (Custom)" ID="{143A3BC2-1E57-4D50-9706-33FF485849FF}" ShortID="423654615" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+											<PropertyList>
+												<Property Name="DecayTime" Type="Real32" Value="1.5"/>
+												<Property Name="Density" Type="Real32" Value="70"/>
+												<Property Name="ERLevel" Type="Real32" Value="-23"/>
+												<Property Name="ERPattern" Type="int32" Value="15"/>
+												<Property Name="Filter1Freq" Type="Real32" Value="590"/>
+												<Property Name="Filter1Gain" Type="Real32" Value="3"/>
+												<Property Name="Filter1InsertPos" Type="int32" Value="2"/>
+												<Property Name="HFDamping" Type="Real32" Value="2.35"/>
+												<Property Name="PreDelay" Type="Real32" Value="74"/>
+												<Property Name="Quality" Type="int32" Value="14"/>
+												<Property Name="ReverbLevel" Type="Real32" Value="-23"/>
+												<Property Name="RoomShape" Type="Real32" Value="55"/>
+												<Property Name="RoomSize" Type="Real32" Value="49"/>
+											</PropertyList>
+										</Effect>
+									</Custom>
+								</Reference>
+							</ReferenceList>
+						</AuxBus>
 					</ChildrenList>
 				</Bus>
 				<Bus Name="Master Secondary Bus" ID="{D2E0BC7E-7B3F-4FFE-A670-FAE02761B631}"/>

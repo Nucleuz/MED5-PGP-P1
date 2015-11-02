@@ -3,6 +3,8 @@ using System.Collections;
 
 public class ElevatorScript : MonoBehaviour {
 
+    private bool soundIsPlaying;
+
     public RailConnection rC;                                               //rC = railConnection
     public Rail rP;                                                         //rP = railPoint
     public Trigger trigger;
@@ -18,7 +20,7 @@ public class ElevatorScript : MonoBehaviour {
  
 	// Use this for initialization
 	void Start () {
-
+        soundIsPlaying = false;
         goingUp = false;
 
         rC = GetComponent<RailConnection>();
@@ -45,6 +47,10 @@ public class ElevatorScript : MonoBehaviour {
             
             //Moves the elevator from it's current position to the next active node
             transform.position = Vector3.MoveTowards(transform.position, nodes[activeNode].position, t);
+            if(!soundIsPlaying){
+                SoundManager.Instance.PlayEvent("Elevator_Active", gameObject);
+                soundIsPlaying = true;
+            }
             
             
             //Checks if the distance between the elevator and current active node is less than 0.1 and if active node is not larger than array nodes length.
@@ -65,6 +71,10 @@ public class ElevatorScript : MonoBehaviour {
                 isActivated = false;
                 trigger.Deactivate();
                 trigger.isReadyToBeTriggered = true;
+                if(soundIsPlaying){
+                    SoundManager.Instance.PlayEvent("Elevator_Stop", gameObject);
+                    soundIsPlaying = false;
+                }
             } 
 
             // Disconnects when the active nodes is not the first or last one

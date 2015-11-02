@@ -1,5 +1,6 @@
 Event	ID	Name			Wwise Object Path	Notes
 	13542051	Ambience_Main			\Default Work Unit\Ambience_Main	
+	296982171	Mirror_Turning_Active			\Default Work Unit\Mirror_Turning_Active	
 	480657863	CarLegHit1			\Default Work Unit\CarLegHit1	
 	995042587	Ambience_Pebbles			\Default Work Unit\Ambience_Pebbles	
 	1067329105	SP_PlayerButton1			\Default Work Unit\SP_PlayerButton1	
@@ -10,10 +11,14 @@ Event	ID	Name			Wwise Object Path	Notes
 	1067329110	SP_PlayerButton6			\Default Work Unit\SP_PlayerButton6	
 	1108313776	DoorSlideStop			\Default Work Unit\DoorSlideStop	
 	1389759676	SP_EmittingCrystal			\Default Work Unit\SP_EmittingCrystal	
+	1401356413	Mirror_Turning_Stop			\Default Work Unit\Mirror_Turning_Stop	
+	1471623179	Headlamp_Focus_Stop			\Default Work Unit\Headlamp_Focus_Stop	
 	1666923066	CarRings			\Default Work Unit\CarRings	
 	1973289021	ButtonOnOff			\Default Work Unit\ButtonOnOff	
 	2104256950	RiverRunning			\Default Work Unit\RiverRunning	
 	2402090994	WaterfallLarge			\Default Work Unit\WaterfallLarge	
+	2761191377	Headlamp_Focus_Active			\Default Work Unit\Headlamp_Focus_Active	
+	2818913498	Elevator_Stop			\Default Work Unit\Elevator_Stop	
 	3230905820	DoorSlideStart			\Default Work Unit\DoorSlideStart	
 	3425521569	CarCrystal			\Default Work Unit\CarCrystal	
 	3702518971	Ambience_BackgroundDeepWater			\Default Work Unit\Ambience_BackgroundDeepWater	
@@ -21,6 +26,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	3823482786	Ambience_WaterDrops1			\Default Work Unit\Ambience_WaterDrops1	
 	4059778220	WaterfallHuge			\Default Work Unit\WaterfallHuge	
 	4083559728	ChannelingButtonOnOff			\Default Work Unit\ChannelingButtonOnOff	
+	4112392368	Elevator_Active			\Default Work Unit\Elevator_Active	The elevator is activated. This SFX is placed near the base of the elevator.
 	4259853717	Ambience_Mojo			\Default Work Unit\Ambience_Mojo	
 	4287948414	WaterfallSmall			\Default Work Unit\WaterfallSmall	
 
@@ -48,17 +54,21 @@ Effect plug-ins	ID	Name	Type				Notes
 	61862824	Two Big Ears 3Dception (Attached)	AttachableMixerInput			
 	103103498	Two Big Ears 3Dception (Attached)	AttachableMixerInput			
 	448093333	Two Big Ears 3Dception (Attached)	AttachableMixerInput			
+	453592875	Two Big Ears 3Dception (Attached)	AttachableMixerInput			
 	626663635	Two Big Ears 3Dception (Attached)	AttachableMixerInput			
 	785834110	Two Big Ears 3Dception (Attached)	AttachableMixerInput			
 	825200181	Two Big Ears 3Dception (Attached)	AttachableMixerInput			
 	841351062	Two Big Ears 3Dception (Attached)	AttachableMixerInput			
+	844577349	Two Big Ears 3Dception (Attached)	AttachableMixerInput			
 	904437999	Two Big Ears 3Dception (Attached)	AttachableMixerInput			
+	1007057097	Two Big Ears 3Dception (Attached)	AttachableMixerInput			
 	1037020736	Two Big Ears 3Dception (Attached)	AttachableMixerInput			
 	2513915904	Hall_Large	Wwise RoomVerb			
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	625245	Mojo04 (1)	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Mojo04 (1)_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience\Mojo04 (1)		1701172
 	1790046	StartUp	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\StartUp_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\CartMojo\CartOn_Off\StartUp\StartUp		165348
+	46169572	HandPoweredDrill(looped)	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\HandPoweredDrill(looped)_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Elevator\Elevator\Elevator Mechanics\Mechanics\HandPoweredDrill\HandPoweredDrill(looped)		896512
 	51361253	GentleWaterDrops02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\GentleWaterDrops02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience\Waterdrops(Background)\Waterdrops\GentleWaterDrops02		2718784
 	59566495	Rumble03	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Rumble03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience\MAIN AMBIENCE\Cave And Rumble\Rumble\Rumble03\Rumble03		701464
 	83543432	Cave Ambience05	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Cave Ambience05_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience\MAIN AMBIENCE\Cave And Rumble\Cave\Cave05\Cave Ambience05		1413064
@@ -69,6 +79,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	190139503	DoorClose	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\DoorClose_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\DoorClose\DoorClose\DoorClose		398296
 	204065441	IndoorPebbles02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\IndoorPebbles02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience\Pebbles\Pebbles\IndoorPebbles02		221248
 	224227694	Chain2	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Chain2_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\CartRings\CartRings\Chain2		138040
+	238285289	Click02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Click02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Mirror\Mirror Mechanics\Click02		88292
 	303978757	DoorSlideLoop	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\DoorSlideLoop_236CB72C.wem		\Actor-Mixer Hierarchy\Default Work Unit\DoorSlideSlide\DoorSlideLoop		481764
 	335342100	Steam01	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Steam01_97E5D50C.wem		\Actor-Mixer Hierarchy\Default Work Unit\DoorClose\DoorClose\Steam\Steam01		344920
 	340341777	SP_Emitting303	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Emitting303_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SoundPuzzle\Emitting\Emitting\EmittingCrystal\SP_Emitting303		895696
@@ -78,6 +89,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	374094042	LegHit02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\LegHit02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\CarLegHits\CartLegHit\LegHit02		73048
 	378898815	SP_Waterfall01	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Waterfall01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SoundPuzzle\Waterfall\WaterFall\SP_Waterfall01		1781248
 	400527701	Waterfall07	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Waterfall07_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Waterfall\Waterfall07		853664
+	417635021	ElectricityBox(intro½sec)	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\ElectricityBox(intro½sec)_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Headlamp\Headlamp Mixer\Headlamp intro + active loop\ElectricityBox(intro½sec)		158344
 	449140603	CartMojoLoop	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\CartMojoLoop_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\CartMojo\CartOn_Off\StartUp\CartMojoLoop		1609140
 	452530934	WaterDrop01	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\WaterDrop01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience\Waterdrops(Environment)\Single Waterdrops\WaterDrop01		152748
 	478387182	Chain3	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Chain3_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\CartRings\CartRings\Chain3		110012
@@ -87,7 +99,6 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	552757871	SP_PlayerButton01	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\PlayerCrystal01_1AF56484.wem		\Actor-Mixer Hierarchy\Default Work Unit\SoundPuzzle\PlayerButton\SP_PlayerButton01		162960
 	561152648	RunningRiver	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\RunningRiver_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\WaterRunning\RunningRiver		2305740
 	576964155	WaterDrop04	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\WaterDrop04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience\Waterdrops(Environment)\Single Waterdrops\WaterDrop04		116394
-	622065201	DoorOpen	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\DoorOpen_488C9287.wem		\Actor-Mixer Hierarchy\Default Work Unit\DoorSlideSlide\DoorOpen		336016
 	636816213	SP_PlayerButton302	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\PlayerCrystal302_2C71C199.wem		\Actor-Mixer Hierarchy\Default Work Unit\SoundPuzzle\PlayerButton\SP_PlayerButton302		162960
 	641578875	Chain4	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Chain4_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\CartRings\CartRings\Chain4		127260
 	650515432	Rumble01	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Rumble01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience\MAIN AMBIENCE\Cave And Rumble\Rumble\Rumble01\Rumble01		722472
@@ -99,14 +110,19 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	764596330	SP_PlayerButton02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\PlayerCrystal04_04A87E39.wem		\Actor-Mixer Hierarchy\Default Work Unit\SoundPuzzle\PlayerButton\SP_PlayerButton02		162960
 	779480299	Cave Ambience02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Cave Ambience02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience\MAIN AMBIENCE\Cave And Rumble\Cave\Cave02\Cave Ambience02		986808
 	783517991	SP_PlayerButton301	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\PlayerCrystal301_B940C46E.wem		\Actor-Mixer Hierarchy\Default Work Unit\SoundPuzzle\PlayerButton\SP_PlayerButton301		162960
+	786909846	OldPrintPressMachinery(looped)	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\OldPrintPressMachinery(looped)_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Elevator\Elevator\Elevator Mechanics\Mechanics\OldPress\OldPrintPressMachinery(looped)		1536208
+	811655087	LargeBoulderSlide01(looped)	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\LargeBoulderSlide01(looped)_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Elevator\Elevator\Elevator Active\Active\LargeBoulderSlide01(looped)\LargeBoulderSlide01(looped)		321884
 	823055302	IndoorPebbles04	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\IndoorPebbles04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience\Pebbles\Pebbles\IndoorPebbles04		341056
 	851356452	Waterfall03	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Waterfall03_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\Waterfall\Waterfall03		677816
+	853830410	ElectricityBox	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\ElectricityBox_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Headlamp\Headlamp Mixer\Headlamp intro + active loop\Headlamp active\ElectricityBox		868416
 	854137208	Chain1	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Chain1_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\CartRings\CartRings\Chain1		118636
 	901528223	SP_Emitting302	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Emitting302_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SoundPuzzle\Emitting\Emitting\EmittingCrystal\SP_Emitting302		895696
 	909824755	SP_PlayerButton03	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\PlayerCrystal05_90C210C9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SoundPuzzle\PlayerButton\SP_PlayerButton03		162960
 	936983434	Cave Ambience01	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Cave Ambience01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience\MAIN AMBIENCE\Cave And Rumble\Cave\Cave01\Cave Ambience01		1763908
 	945408936	MojoSynth04	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\MojoSynth04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Switches\ChannelingSwitchMixer\ChannelingOnOff\ChannelingSwitch\MojoSynth04		9200068
+	1023845289	QuickGiantBoulderImpact04	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\QuickGiantBoulderImpact04_4C4B17D4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Elevator\Elevator\Elevator Start\QuickGiantBoulderImpact04		173956
 	1044601209	Cave Ambience04	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Cave Ambience04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience\MAIN AMBIENCE\Cave And Rumble\Cave\Cave04\Cave Ambience04		1418356
 	1054996965	Steam02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Steam02_ED4035B8.wem		\Actor-Mixer Hierarchy\Default Work Unit\DoorClose\DoorClose\Steam\Steam02		149572
 	1059423158	SwitchRealOn04	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\SwitchRealOn04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Switches\ChannelingSwitchMixer\ChannelingOnOff\ChannelingSwitch\SwitchRealOn04		234480
+	1068891639	QuickGiantBoulderImpact01	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\QuickGiantBoulderImpact01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Elevator\Elevator\Elevator Stop\QuickGiantBoulderImpact01		176192
 

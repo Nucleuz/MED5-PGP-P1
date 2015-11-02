@@ -35,12 +35,17 @@ public class SoundCrystal : Interactable
 
     void Update()
     {
+        //Plays the sound when the buttons resets.
+        if(gM.resetSound){
+            //SoundManager.Instance.PlayEvent("Wrong", gameObject);
+            gM.resetSound = false;
+        }
+
         if(currentIn != gM.index){
             StartCoroutine("playSequence");
             currentIn = gM.index;
         }
     }
-
     public string createSequenceSerial(byte seqLength, byte seqVariance){
         // Create number series
         string serial = "";

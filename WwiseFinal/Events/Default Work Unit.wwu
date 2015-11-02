@@ -274,6 +274,203 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Headlamp_Focus_Active" ID="{6D037065-770D-4416-A1CC-D2FC8E13D33C}">
+					<ChildrenList>
+						<Action Name="Play" ID="{3B9F2AE6-D0B8-47E1-86CE-1E8BB2755F79}" ShortID="832711776" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{E75D29C4-FD4C-4BB4-A775-F248234508F3}" Global="false">
+									<ObjectRef Name="Headlamp intro + active loop" ID="{4300EB0E-87FC-4A27-99A8-74562D406A2F}" WorkUnitID="{5B50697D-D4CD-40FC-A2AF-91662BDC1193}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Headlamp_Focus_Stop" ID="{D5D82F84-1934-47DF-818A-15A2267260A2}">
+					<ChildrenList>
+						<Action Name="Stop" ID="{F3CD030E-960E-4723-8981-FC7DD550EAE8}" ShortID="66524590" Type="Stop" Scope="One" Global="false">
+							<PropertyList>
+								<Property Name="FadeCurve" Type="int16" Value="1"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+							</PropertyList>
+							<ElementList>
+								<Element ID="{772E3039-7BFC-408A-9590-4D26BF0F2644}" Global="false">
+									<ObjectRef Name="Headlamp intro + active loop" ID="{4300EB0E-87FC-4A27-99A8-74562D406A2F}" WorkUnitID="{5B50697D-D4CD-40FC-A2AF-91662BDC1193}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Elevator_Active" ID="{03F254BC-28EA-4FC2-9097-C918F985BE4F}">
+					<Comment>The elevator is activated.
+This SFX is placed near the base of the elevator.</Comment>
+					<ChildrenList>
+						<Action Name="Play" ID="{198B64F5-B609-40B4-92B0-F9411A769FB9}" ShortID="569677273" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{A71CFF77-A3D2-46E5-ABF1-A7920C659C4B}" Global="false">
+									<ObjectRef Name="Elevator Start" ID="{5B2BAA85-7BDA-422E-B0C8-24E2F6222255}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
+								</Element>
+							</ElementList>
+						</Action>
+						<Action Name="Play" ID="{2BFC5B5E-D73E-43BE-905D-AC1DE9398601}" ShortID="1000964983" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{BD842AA4-8790-4187-A00F-6253E61A7908}" Global="false">
+									<ObjectRef Name="Elevator Active" ID="{B6C03FF8-D262-4BC5-AD04-447E2AEF07E0}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
+								</Element>
+							</ElementList>
+						</Action>
+						<Action Name="Play" ID="{F8151470-0FC5-4E5E-95A4-61A0058504F1}" ShortID="1047537146" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{613F7793-99BB-4B76-AC70-A62447BA857F}" Global="false">
+									<ObjectRef Name="Elevator Mechanics" ID="{5AD291F5-1401-4E1E-BA55-65E7A8B866DF}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Elevator_Stop" ID="{457BDBF7-141F-448B-99C4-A90E00704903}">
+					<ChildrenList>
+						<Action Name="Stop" ID="{B6EDA8C7-30FB-4EEF-ADA7-D18965FD62FF}" ShortID="338988785" Type="Stop" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{736AA880-3A18-4827-B6BA-2635733C6FD9}" Global="false">
+									<ObjectRef Name="Elevator Active" ID="{B6C03FF8-D262-4BC5-AD04-447E2AEF07E0}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
+								</Element>
+							</ElementList>
+						</Action>
+						<Action Name="Stop" ID="{8C764620-16E9-4850-A0A3-63769C0F6F59}" ShortID="505942640" Type="Stop" Scope="One" Global="false">
+							<PropertyList>
+								<Property Name="FadeCurve" Type="int16" Value="1"/>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+							</PropertyList>
+							<ElementList>
+								<Element ID="{C76342A7-73A8-42AE-8606-E1B0C9723656}" Global="false">
+									<ObjectRef Name="Elevator Mechanics" ID="{5AD291F5-1401-4E1E-BA55-65E7A8B866DF}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
+								</Element>
+							</ElementList>
+						</Action>
+						<Action Name="Play" ID="{084E703E-3374-4DF8-A50E-5539ED3E841A}" ShortID="835270875" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{11A0FA34-ADBA-4567-9907-296109015828}" Global="false">
+									<ObjectRef Name="Elevator Stop" ID="{83B67426-2A4D-4DD6-A12A-326BC5E69EA5}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="RailwayBlockerMove" ID="{52BCCCAF-3C48-4BE6-A297-A7A0B6092F0A}">
+					<ChildrenList>
+						<Action Name="Play" ID="{CA67DF10-90B3-40CC-8B9E-8AC3B9BDEECA}" ShortID="150461640" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{12B148B9-BA17-4CD6-AA9B-82B24F339C19}" Global="false">
+									<ObjectRef Name="RailWayBlockerMove" ID="{E4F13E40-7E16-4DEF-AEA6-EBB0686CFE5E}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Door02" ID="{EEB8F5EC-BD4D-4E57-8ED6-770D1814950A}">
+					<ChildrenList>
+						<Action Name="Play" ID="{B2409670-6D5C-4EA5-BA81-4A44EE0125A7}" ShortID="366435761" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{FC66DC3C-D9DA-4E9E-A69A-1E454252EF43}" Global="false">
+									<ObjectRef Name="Door02" ID="{56B08C6C-14E0-4999-8877-000DE0426D1A}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Mirror_Turning_Active" ID="{0E4423FE-4103-42BB-B68D-98C27D795772}">
+					<ChildrenList>
+						<Action Name="Play" ID="{AD115F81-5521-475D-B974-D5C8C3F0F51A}" ShortID="804843274" Type="Play" Scope="One" Global="false">
+							<PropertyList>
+								<Property Name="FadeCurve" Type="int16" Value="1"/>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+							</PropertyList>
+							<ElementList>
+								<Element ID="{8DC77415-5FD9-44D0-A160-71D2D76C69AA}" Global="false">
+									<ObjectRef Name="Mirror Mechanics" ID="{11124F3A-8908-4721-A164-8F34F34DBC35}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Mirror_Turning_Stop" ID="{35D4EFD1-041C-4CD1-AEEF-9F51B79A4618}">
+					<ChildrenList>
+						<Action Name="Stop" ID="{8709DF0D-5433-49AC-9B30-0D29A08A3D2A}" ShortID="626281401" Type="Stop" Scope="One" Global="false">
+							<PropertyList>
+								<Property Name="FadeCurve" Type="int16" Value="1"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.2"/>
+							</PropertyList>
+							<ElementList>
+								<Element ID="{33B83D4F-5F40-41E8-88BA-D5C980DEB04D}" Global="false">
+									<ObjectRef Name="Mirror Mechanics" ID="{11124F3A-8908-4721-A164-8F34F34DBC35}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
+								</Element>
+							</ElementList>
+						</Action>
+						<Action Name="Play" ID="{7B26C263-D4A8-40F1-A11C-6B9FBB6200CC}" ShortID="38143424" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{2AAF3F44-206F-41D8-9332-E8E006945B2E}" Global="false">
+									<ObjectRef Name="Click02" ID="{096ABDD5-A5F0-4791-9F24-BB96C65204FF}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Lava_Active" ID="{DF594B4B-7F01-44FD-8E19-359290E49905}">
+					<ChildrenList>
+						<Action Name="Play" ID="{04B75C42-7761-4165-8DD3-0C4B9C540C7D}" ShortID="720382366" Type="Play" Scope="One" Global="false">
+							<PropertyList>
+								<Property Name="FadeCurve" Type="int16" Value="1"/>
+								<Property Name="FadeTime" Type="Real64" Value="3"/>
+							</PropertyList>
+							<ElementList>
+								<Element ID="{59ACA21F-4073-4521-89C6-6E7A2AEEF064}" Global="false">
+									<ObjectRef Name="Lava" ID="{15FD5088-0813-4EFE-A8C8-E02D684FDF65}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Lava_Stop" ID="{1420504D-A2E2-405B-8D8B-1EB476513DC2}">
+					<ChildrenList>
+						<Action Name="Stop" ID="{BEFB5C6B-A089-47EF-8EE2-43F278A2B9CB}" ShortID="665996491" Type="Stop" Scope="One" Global="false">
+							<PropertyList>
+								<Property Name="FadeCurve" Type="int16" Value="1"/>
+								<Property Name="FadeTime" Type="Real64" Value="3"/>
+							</PropertyList>
+							<ElementList>
+								<Element ID="{1F3262D1-3C6D-4347-B30C-F804D5AC84CF}" Global="false">
+									<ObjectRef Name="Lava" ID="{15FD5088-0813-4EFE-A8C8-E02D684FDF65}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Liana_Active" ID="{19B03D0D-536F-4441-AE3D-9229C8784D27}">
+					<ChildrenList>
+						<Action Name="Play" ID="{07F87923-1A3B-415C-8AE6-8B95A754DACB}" ShortID="303999908" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{A1242F4D-DAE3-4502-9743-0C0487721200}" Global="false">
+									<ObjectRef Name="Liana" ID="{30659F7B-3854-49F8-95A3-ABAA7664796B}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Liana_Stop" ID="{588C4123-15C7-4F84-8A11-18E39389B080}">
+					<ChildrenList>
+						<Action Name="Stop" ID="{97D6661B-99B4-4AB1-A8B0-E6C8BA815653}" ShortID="797905776" Type="Stop" Scope="One" Global="false">
+							<PropertyList>
+								<Property Name="FadeCurve" Type="int16" Value="1"/>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+							</PropertyList>
+							<ElementList>
+								<Element ID="{A9D395BB-6F18-47E6-9209-A614B2B531DC}" Global="false">
+									<ObjectRef Name="Liana" ID="{30659F7B-3854-49F8-95A3-ABAA7664796B}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

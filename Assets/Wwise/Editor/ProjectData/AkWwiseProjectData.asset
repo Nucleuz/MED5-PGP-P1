@@ -16,8 +16,8 @@ MonoBehaviour:
   - PhysicalPath: Events\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{F435BC40-F026-475F-8354-F9EAA1C9BD20}'
-    m_lastTimePsrt1: 2010383766
-    m_lastTimePart2: -1999445913
+    m_lastTimePsrt1: 1388760698
+    m_lastTimePart2: -1999445127
     List:
     - Name: Ambience_BackgroundDeepWater
       Path: Default Work Unit\Ambience_BackgroundDeepWater
@@ -129,6 +129,16 @@ MonoBehaviour:
       ID: -211407568
       Guid: 2806b654e6fbd645b988301d5f8d8c28
       maxAttenuation: 0
+    - Name: Door02
+      Path: Default Work Unit\Door02
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Door02
+        ObjectType: 3
+      ID: -936975305
+      Guid: ecf5b8ee4dbd574e8ed6770d1814950a
+      maxAttenuation: 0
     - Name: DoorSlideStart
       Path: Default Work Unit\DoorSlideStart
       PathAndIcons:
@@ -148,6 +158,116 @@ MonoBehaviour:
         ObjectType: 3
       ID: 1108313776
       Guid: e6a66b318dae7c44b7293e04329056e0
+      maxAttenuation: 0
+    - Name: Elevator_Active
+      Path: Default Work Unit\Elevator_Active
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Elevator_Active
+        ObjectType: 3
+      ID: -182574928
+      Guid: bc54f203ea28c24f9097c918f985be4f
+      maxAttenuation: 0
+    - Name: Elevator_Stop
+      Path: Default Work Unit\Elevator_Stop
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Elevator_Stop
+        ObjectType: 3
+      ID: -1476053798
+      Guid: f7db7b451f148b4499c4a90e00704903
+      maxAttenuation: 0
+    - Name: Headlamp_Focus_Active
+      Path: Default Work Unit\Headlamp_Focus_Active
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Headlamp_Focus_Active
+        ObjectType: 3
+      ID: -1533775919
+      Guid: 6570036d0d771644a1ccd2fc8e13d33c
+      maxAttenuation: 0
+    - Name: Headlamp_Focus_Stop
+      Path: Default Work Unit\Headlamp_Focus_Stop
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Headlamp_Focus_Stop
+        ObjectType: 3
+      ID: 1471623179
+      Guid: 842fd8d53419df47818a15a2267260a2
+      maxAttenuation: 0
+    - Name: Lava_Active
+      Path: Default Work Unit\Lava_Active
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Lava_Active
+        ObjectType: 3
+      ID: -1152242860
+      Guid: 4b4b59df017ffd448e19359290e49905
+      maxAttenuation: 0
+    - Name: Lava_Stop
+      Path: Default Work Unit\Lava_Stop
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Lava_Stop
+        ObjectType: 3
+      ID: 777918054
+      Guid: 4d502014e2a25b408d8b1eb476513dc2
+      maxAttenuation: 0
+    - Name: Liana_Active
+      Path: Default Work Unit\Liana_Active
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Liana_Active
+        ObjectType: 3
+      ID: 1266636787
+      Guid: 0d3db0196f534144ae3d9229c8784d27
+      maxAttenuation: 0
+    - Name: Liana_Stop
+      Path: Default Work Unit\Liana_Stop
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Liana_Stop
+        ObjectType: 3
+      ID: -2081929611
+      Guid: 23418c58c715844f8a1118e39389b080
+      maxAttenuation: 0
+    - Name: Mirror_Turning_Active
+      Path: Default Work Unit\Mirror_Turning_Active
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Mirror_Turning_Active
+        ObjectType: 3
+      ID: 296982171
+      Guid: fe23440e0341bb42b68d98c27d795772
+      maxAttenuation: 0
+    - Name: Mirror_Turning_Stop
+      Path: Default Work Unit\Mirror_Turning_Stop
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Mirror_Turning_Stop
+        ObjectType: 3
+      ID: 1401356413
+      Guid: d1efd4351c04d14caeef9f51b79a4618
+      maxAttenuation: 0
+    - Name: RailwayBlockerMove
+      Path: Default Work Unit\RailwayBlockerMove
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: RailwayBlockerMove
+        ObjectType: 3
+      ID: -966119561
+      Guid: afccbc52483ce64ba297a7a0b6092f0a
       maxAttenuation: 0
     - Name: RiverRunning
       Path: Default Work Unit\RiverRunning
@@ -263,8 +383,8 @@ MonoBehaviour:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{88AEA801-E436-458F-9865-10A1788249D3}'
-    m_lastTimePsrt1: -1612782710
-    m_lastTimePart2: -1999445921
+    m_lastTimePsrt1: 1395303229
+    m_lastTimePart2: -1999445127
     List:
     - Name: AmbienceBus
       Path: Default Work Unit\Master Audio Bus\AmbienceBus
@@ -288,6 +408,17 @@ MonoBehaviour:
         ObjectType: 1
       ID: 320812735
       Guid: 39472fd560f6004d9c110f284e9e8ca4
+    - Name: LowVerb
+      Path: Default Work Unit\Master Audio Bus\LowVerb
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+      - ElementName: LowVerb
+        ObjectType: 1
+      ID: -578987574
+      Guid: 26a18b0c5654db48b6543042f35723da
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
     ParentPhysicalPath: 
@@ -299,8 +430,8 @@ MonoBehaviour:
   - PhysicalPath: Switches\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{FC282CBF-8094-4F9E-A1C0-F8921C840242}'
-    m_lastTimePsrt1: 1567599285
-    m_lastTimePart2: -1999445913
+    m_lastTimePsrt1: 1401980265
+    m_lastTimePart2: -1999445127
     List:
     - Name: CarOn_Off
       Path: Default Work Unit\CarOn_Off
@@ -402,8 +533,8 @@ MonoBehaviour:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{116C8925-F139-4949-97E9-2B14250AD9FB}'
-    m_lastTimePsrt1: 1567559259
-    m_lastTimePart2: -1999445913
+    m_lastTimePsrt1: 1401960250
+    m_lastTimePart2: -1999445127
     List:
     - Name: Main
       Path: Default Work Unit\Main
@@ -418,6 +549,11 @@ MonoBehaviour:
   - /WwiseFinal
   - /WwiseFinal/Events
   - /WwiseFinal/Events/Default Work Unit
+  - /WwiseFinal/SoundBanks
+  - /WwiseFinal/SoundBanks/Default Work Unit
+  - /WwiseFinal/Switches
+  - /WwiseFinal/Switches/Default Work Unit
+  - /WwiseFinal/Switches/Default Work Unit/On_Off
   m_lastPopulateTimePsrt1: 0
   m_lastPopulateTimePart2: 0
   autoPopulateEnabled: 1
