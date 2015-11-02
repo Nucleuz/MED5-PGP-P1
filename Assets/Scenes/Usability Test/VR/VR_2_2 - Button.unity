@@ -1013,7 +1013,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11469310, guid: f09fb6a5623609c4086c9d6cc2df051c, type: 2}
       propertyPath: speed
-      value: .100000001
+      value: .00999999978
       objectReference: {fileID: 0}
     - target: {fileID: 11475634, guid: f09fb6a5623609c4086c9d6cc2df051c, type: 2}
       propertyPath: nRail
@@ -8645,6 +8645,14 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11449746, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
+      propertyPath: movementSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 10822996, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
+      propertyPath: m_Range
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8145124, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
@@ -11704,7 +11712,11 @@ Prefab:
       objectReference: {fileID: 482817204}
     - target: {fileID: 11465930, guid: 6b51f68b61740074b921684716c1e935, type: 2}
       propertyPath: movementSpeed
-      value: 20
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 10839436, guid: 6b51f68b61740074b921684716c1e935, type: 2}
+      propertyPath: m_Range
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b51f68b61740074b921684716c1e935, type: 2}

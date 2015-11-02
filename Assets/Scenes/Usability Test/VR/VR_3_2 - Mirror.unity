@@ -2179,6 +2179,10 @@ Prefab:
       propertyPath: currentRail
       value: 
       objectReference: {fileID: 482817204}
+    - target: {fileID: 11449746, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
+      propertyPath: movementSpeed
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
   m_IsPrefabParent: 0
@@ -5881,6 +5885,14 @@ Prefab:
       propertyPath: car
       value: 
       objectReference: {fileID: 1054917435}
+    - target: {fileID: 11465930, guid: 6b51f68b61740074b921684716c1e935, type: 2}
+      propertyPath: movementSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 10839436, guid: 6b51f68b61740074b921684716c1e935, type: 2}
+      propertyPath: m_Range
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b51f68b61740074b921684716c1e935, type: 2}
   m_IsPrefabParent: 0
