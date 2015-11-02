@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using DarkRift;
 
-/*
+    /*
 By KasperHdL
 
 Manager for the client. 
@@ -25,24 +25,25 @@ public class ClientManager : NetworkManager
 
     public ushort networkID = 0;
 
-    //debug text
-    //@TODO - create a kind of console instead if this..
-    public Text debug;
-
     //prefab for the players
-    public GameObject prefabPlayer;
+    public bool useVR = false;
+    public GameObject nvrPrefab;
+    public GameObject vrPrefab;
+
+    [HideInInspector]
     public Transform player;
 
     private NetPlayerSync[] otherPlayers = new NetPlayerSync[2];
 
+    [HideInInspector]
     public LevelHandler levelHandler;
+    [HideInInspector]
     public TriggerHandler triggerHandler;
 
     private int serverLevelIndex = -1;
 
     void Start()
     {
-        debugText = debug;
         levelHandler = GetComponent<LevelHandler>();
         triggerHandler = GetComponent<TriggerHandler>();
         //Connect to the server
@@ -114,7 +115,7 @@ public class ClientManager : NetworkManager
                         //unpack data
 
                         //spawn the object
-                        GameObject g = Instantiate(prefabPlayer,Deserializer.Vector3((byte[])data) , Quaternion.identity) as GameObject;
+                        GameObject g = Instantiate(nvrPrefab,Deserializer.Vector3((byte[])data) , Quaternion.identity) as GameObject;
 
                         //set the network id so it will sync with the player
                         NetPlayerSync netPlayer = g.GetComponent<NetPlayerSync>();
@@ -182,7 +183,9 @@ public class ClientManager : NetworkManager
         }
         Console.Instance.AddMessage("Spawning Player");
         //spawn the object
-        GameObject g = Instantiate(prefabPlayer, Vector3.zero, Quaternion.identity) as GameObject;
+
+
+        GameObject g = Instantiate(nvrPrefab, Vector3.zero, Quaternion.identity) as GameObject;
         player = g.transform;
         //set the network id so it will sync with the player
         NetPlayerSync netPlayer = g.GetComponent<NetPlayerSync>();

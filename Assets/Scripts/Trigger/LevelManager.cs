@@ -22,5 +22,19 @@ public class LevelManager : MonoBehaviour {
 											these numbers should be specified in the unity editor!! */
 	[Tooltip("Array size MUST be the same as amounts of sequences. One object can be triggered after a sequence, drag element into the corresponding array place. e.g if a door wants to be triggered after sequence 3, the door must be dragged onto element2 in the array. Leave other elements in the array empty")]
 	public Trigger[] triggerEvents;			//Used to trigger an object when a sequence is finished
-	public bool[] timedResets;
+	
+
+	[Header("Defining Level start and end")]
+
+	[Tooltip("The 3 rail points where the level starts, Organized Blue, Red, Green")]
+	public Rail[] levelStartRail = new Rail[3]; 
+
+	[Tooltip("The 3 rail points where the level end, Organized Blue, Red, Green")]
+	public Rail[] levelEndRail   = new Rail[3];
+
+	[Tooltip("Direction vector pointing to the next level")]
+    public Vector3 nextLevelDirection;
+	[Tooltip("Direction vector pointing to the previous level")]
+    public Vector3 prevLevelDirection;
+
 }

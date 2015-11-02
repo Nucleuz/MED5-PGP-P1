@@ -9,7 +9,7 @@ public class HelmetLightScript : MonoBehaviour {
     private bool soundIsPlaying;
 
     public float angleNormal = 45;                  // Angle of the spotlight without focus
-    public float angleFocus = 10;                   // Angle of the spotlight during focus
+    public float angleFocus = 5;                   // Angle of the spotlight during focus
     public float intensityNormal = 1;               // Intensity of the spotlight without focus
     public float intensityFocus = 8;                // Intensity of the spotlight during focus
 
