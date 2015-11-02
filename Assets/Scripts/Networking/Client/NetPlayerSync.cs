@@ -32,7 +32,8 @@ public class NetPlayerSync : MonoBehaviour {
 	private Quaternion lastRotation;
 	private Vector3 lastPosition;
 
-	private float minDistanceMoved = .05f;
+	private float minDistanceMoved = .5f;
+	private float minAngleMoved = 10f;
 
 	private float lastPositionTime = -1f;
 	private float lastRotationTime = -1f;
@@ -58,8 +59,6 @@ public class NetPlayerSync : MonoBehaviour {
 	}
 	
 	void SendData(){
-        //@TODO -- currently dobble dipping
-
 		//has the rotation or position changed since last sent message
         if((transform.position - lastPosition).magnitude > minDistanceMoved){
 
@@ -69,7 +68,7 @@ public class NetPlayerSync : MonoBehaviour {
             //Save the sent position
             lastPosition = transform.position;
         }
-		if( head.rotation != lastRotation ){
+		if(Quaternion.Angle(head.rotation, lastRotation) > minAngleMoved){
 
             //serialize and send information
 			DarkRiftAPI.SendMessageToOthers(Network.Tag.Player, Network.Subject.PlayerRotationUpdate, head.rotation.Serialize());
@@ -102,10 +101,10 @@ public class NetPlayerSync : MonoBehaviour {
                     if(lastPositionTime == -1f)
                     	lastPositionTime = Time.time;
 
-                    float interpolationLength = Time.time - lastPositionTime;
+                    float interpolationLength = .3f;
                     
 
-                   	if(interpolationLength > 0.05f){
+                   	if(interpolationLength > 0f){
                    		positionRoutine = InterpolatePosition(position,interpolationLength);
                     	StartCoroutine(positionRoutine);
                    	}
@@ -116,15 +115,9 @@ public class NetPlayerSync : MonoBehaviour {
                     if(rotationRoutine != null)
                     	StopCoroutine(rotationRoutine);
 
-                    if(lastPositionTime == -1f)
-                    	lastPositionTime = Time.time;
-                    	
-                    float interpolationLength = Time.time - lastPositionTime;
-                    
-                   	if(interpolationLength > 0.05f){
-	                    rotationRoutine = InterpolateRotation(rotation,Time.time - lastRotationTime);
-	                    StartCoroutine(rotationRoutine);
-	                }
+                    float interpolationLength = .1f;
+                    rotationRoutine = InterpolateRotation(rotation,interpolationLength);
+                    StartCoroutine(rotationRoutine);
 				}
 				break;
 				case Network.Subject.VoiceChat:
@@ -212,27 +205,28 @@ public class NetPlayerSync : MonoBehaviour {
     }
 
     IEnumerator InterpolatePosition(Vector3 newPosition, float interpolationLength){
-    	lastPositionTime = Time.time;
+    	float startTime = Time.time;
     	Vector3 startPosition = transform.position;
 
     	float t = 0f;
     	while(t < 1f){
-    		t = (Time.time - lastPositionTime)/interpolationLength;
+    		t = (Time.time - startTime)/interpolationLength;
     		transform.position = Vector3.Lerp(startPosition,newPosition,t);
     		yield return null;
     	}
-    	transform.position = newPosition;
+    	lastPositionTime = Time.time;
+    	//transform.position = newPosition;
     }
     IEnumerator InterpolateRotation(Quaternion newRotation, float interpolationLength){
+    	float startTime = Time.time;
     	lastRotationTime = Time.time;
-    	Quaternion startRotation = transform.rotation;
-
-    	float t = 1f;
+    	Quaternion startRotation = head.rotation;
+    	float t = 0f;
     	while(t < 1f){
-    		t = (Time.time - lastRotationTime)/interpolationLength;
-    		head.rotation = Quaternion.Lerp(startRotation,newRotation,t);
+    		t = (Time.time - startTime)/interpolationLength;
+    		head.rotation = Quaternion.Slerp(startRotation,newRotation,t);
     		yield return null;
     	}
-    	head.rotation = newRotation;
+//    	head.rotation = newRotation;
     }
 }
