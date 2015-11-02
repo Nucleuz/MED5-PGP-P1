@@ -54,7 +54,10 @@ public class ElevatorScript : MonoBehaviour {
             
             //Moves the elevator from it's current position to the next active node
             transform.position = Vector3.MoveTowards(transform.position, nodes[activeNode].position, t);
-            SoundManager.Instance.PlayEvent("Elevator_Active", gameObject);
+            if(!soundIsPlaying){
+                SoundManager.Instance.PlayEvent("Elevator_Active", gameObject);
+                soundIsPlaying = true;
+            }
             
             
             //Checks if the distance between the elevator and current active node is less than 0.1 and if active node is not larger than array nodes length.
@@ -75,7 +78,10 @@ public class ElevatorScript : MonoBehaviour {
                 isActivated = false;
                 trigger.isTriggered = false;
                 trigger.isReadyToBeTriggered = true;
-                SoundManager.Instance.PlayEvent("Elevator_Stop", gameObject);
+                if(soundIsPlaying){
+                    SoundManager.Instance.PlayEvent("Elevator_Stop", gameObject);
+                    soundIsPlaying = false;
+                }
             } 
 
             // Disconnects when the active nodes is not the first or last one
