@@ -33,7 +33,7 @@ public class NetPlayerSync : MonoBehaviour {
 	private Vector3 lastPosition;
 
 	private float minDistanceMoved = .5f;
-	private float minAngleMoved = 10f;
+	private float minAngleMoved = 2f;
 
 	private float lastPositionTime = -1f;
 	private float lastRotationTime = -1f;
