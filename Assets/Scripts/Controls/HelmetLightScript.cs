@@ -6,6 +6,8 @@ using System.Collections.Generic;
 [RequireComponent (typeof (LineRenderer))]
 public class HelmetLightScript : MonoBehaviour {
 
+    private bool soundIsPlaying;
+
     public float angleNormal = 45;                  // Angle of the spotlight without focus
     public float angleFocus = 10;                   // Angle of the spotlight during focus
     public float intensityNormal = 1;               // Intensity of the spotlight without focus
@@ -19,18 +21,13 @@ public class HelmetLightScript : MonoBehaviour {
 
     private LineRenderer lineRenderer;				// Used for drawing the ray from the helmet
 
-    [Tooltip("1 = blue, 2 = red, 3 = green")]
+    [Tooltip("1, 2, 3")]
 	public int playerIndex;							// index for the player.
 	public Transform objectHit;
 	public Ray ray;
 
-    public void SetPlayerIndex (int networkId) {
-        switch(networkId){
-            case 1: playerIndex = 3;break;
-            case 2: playerIndex = 1;break;
-            case 3: playerIndex = 2;break;
-        }
-
+    void Start () {
+        soundIsPlaying = false;
 		lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.SetWidth(0.1f, 0.1f);
 
@@ -54,7 +51,7 @@ public class HelmetLightScript : MonoBehaviour {
 	
 	void Update () {
 
-        if(Input.GetKeyDown("l")){ //It is the "L" key
+        if(Input.GetKeyDown("l")){ // || Input.GetKeyDown("NextLevel")){ //It is the "L" key
             Application.LoadLevel(Application.loadedLevel + 1);
         }
 
@@ -63,6 +60,10 @@ public class HelmetLightScript : MonoBehaviour {
         //Checks if the focus button is pressed (Default = space)
         if (Input.GetKey("space") || Input.GetAxis("RightTrigger") > 0.1f || Input.GetAxis("LeftTrigger") > 0.1f) {
 
+            if(!soundIsPlaying){
+                SoundManager.Instance.PlayEvent("Headlamp_Focus_Active", gameObject);
+                soundIsPlaying = true;
+            }
             
 
             // Checks if timeSaved is false.
@@ -72,13 +73,13 @@ public class HelmetLightScript : MonoBehaviour {
             }
             
             // Fadetime for the spotlight angle and intensity
-            float fadeTime = 1.0f;
+            float fadeTime = 0.2f;
 
             // Lerps the spotlight angle from normal to focused angle.
             helmetLight.spotAngle = Mathf.Lerp(angleNormal, angleFocus, (Time.time - startTime)/ fadeTime);
 
             // Lerps the intensity from normal to focused intensity.
-            helmetLight.intensity = Mathf.Lerp(intensityNormal, intensityFocus, (Time.time - startTime) / (fadeTime * 5));
+            helmetLight.intensity = Mathf.Lerp(intensityNormal, intensityFocus, (Time.time - startTime) / (fadeTime * 2));
 
             if(helmetLight.intensity >  intensityFocus * 0.3f){
                 // Sets helmetLightFocused to true - is used later for checking if we are in "focus" mode.
@@ -87,6 +88,10 @@ public class HelmetLightScript : MonoBehaviour {
                 helmetLightFocused = false;
             }
         } else {
+            if(soundIsPlaying){
+                SoundManager.Instance.PlayEvent("Headlamp_Focus_Stop", gameObject);
+                soundIsPlaying = false;
+            }
 
             // Sets timeSaved to false
             timeSaved = false;
@@ -99,7 +104,7 @@ public class HelmetLightScript : MonoBehaviour {
 
         // Increase spotlight angle to the normal angle when not in "focus". (Couldnt get the lerp function to work, which is why we did it like this.)
         if(helmetLight.spotAngle <= angleNormal) {
-            helmetLight.spotAngle += 1;
+            helmetLight.spotAngle += 2;
         }
 
         // Decreases spotlight intensity to the normal intensity when not in "focus". (Couldnt get the lerp function to work, which is why we did it like this.)

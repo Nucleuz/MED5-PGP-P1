@@ -5,7 +5,7 @@ public class ElevatePlane : MonoBehaviour
 {
 
 
-    public Trigger trigger;
+    private Trigger trigger;
 
     public bool isActivated = false;                                        //Check to see if the object has been activated
     public bool goingUp;
@@ -19,6 +19,7 @@ public class ElevatePlane : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+		trigger = GetComponent<Trigger>();
         goingUp = true;                                                    
         activeNode = 0;                                                     //Sets the visited nodes to zero
     }

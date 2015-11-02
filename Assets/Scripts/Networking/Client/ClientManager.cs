@@ -33,6 +33,8 @@ public class ClientManager : NetworkManager
     public GameObject prefabPlayer;
     public Transform player;
 
+    private NetPlayerSync[] otherPlayers = new NetPlayerSync[2];
+
     public LevelHandler levelHandler;
     public TriggerHandler triggerHandler;
 
@@ -107,7 +109,7 @@ public class ClientManager : NetworkManager
                 case Network.Subject.SpawnPlayer: // Spawn OTHER players
                     {
                         //spawn other player
-                        Write("SpawnPlayer sender: " + senderID);
+                        Console.Instance.AddMessage("SpawnPlayer sender: " + senderID);
 
                         //unpack data
 
@@ -123,6 +125,14 @@ public class ClientManager : NetworkManager
 
                         netPlayer.networkID = senderID;
                         netPlayer.SetAsReceiver();
+
+                        if(otherPlayers[0] == null)
+                            otherPlayers[0] = netPlayer;
+                        else
+                            otherPlayers[1] = netPlayer;
+
+                        if(player != null)
+                            netPlayer.AddCameraToLightShaft(player.GetComponent<NetPlayerSync>().cam);
 
                     }
                     break;
@@ -171,8 +181,6 @@ public class ClientManager : NetworkManager
             return;
         }
         Console.Instance.AddMessage("Spawning Player");
-        Console.Instance.AddMessage("Info dump > ni:" + networkID + ", lmI:" + levelHandler.levelManagerIndex + " sI:" + serverLevelIndex);
-
         //spawn the object
         GameObject g = Instantiate(prefabPlayer, Vector3.zero, Quaternion.identity) as GameObject;
         player = g.transform;
@@ -181,7 +189,14 @@ public class ClientManager : NetworkManager
 
         netPlayer.networkID = networkID;
         netPlayer.SetAsSender();
-        Console.Instance.AddMessage("Net id: " + networkID);
+
+        for(int i = 0;i<otherPlayers.Length;i++){
+            Console.Instance.AddMessage("other player: " + otherPlayers[i]);
+            if(otherPlayers[i] != null)
+               otherPlayers[i].AddCameraToLightShaft(netPlayer.cam);
+        }
+
+
 /*
         VoiceChatRecorder.Instance.NetworkId = networkID;
         VoiceChatRecorder.Instance.Device = VoiceChatRecorder.Instance.AvailableDevices[0];
@@ -189,7 +204,6 @@ public class ClientManager : NetworkManager
 //         VoiceChatRecorder.Instance.AutoDetectSpeech = true;
         VoiceChatRecorder.Instance.NewSample += netPlayer.OnNewSample;
         */
-        Console.Instance.AddMessage("did voicechat stuff");
 
         //place the player on the correct rail!
 
@@ -199,15 +213,10 @@ public class ClientManager : NetworkManager
 
 
         player.position = startRail.transform.position;
-        player.GetComponent<Cart>().CurrentRail = startRail;
-
-
-         DarkRiftWriter writer = new DarkRiftWriter();
-        
+        player.GetComponent<Cart>().currentRail = startRail;
 
         //send it to everyone else
         DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager, Network.Subject.SpawnPlayer, player.position.Serialize());
-        writer.Close();
     }
 
 }

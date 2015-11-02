@@ -42,6 +42,8 @@ public class Network{
 
         public const ushort VoiceChat            = 12;
 
+        public const ushort PlayerFocus          = 13;
+
 
     }
 }

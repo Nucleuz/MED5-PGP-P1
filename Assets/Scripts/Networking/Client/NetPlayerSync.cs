@@ -24,16 +24,29 @@ public class NetPlayerSync : MonoBehaviour {
 	private VoiceChatPlayer player;
 	
 	public HelmetLightScript helmet;
+
+	public LightShafts nonFocusedLightShaft;
+	public LightShafts focusedLightShaft;
 	
 	//reference to reduce when it sends data to everyone else
-	Quaternion lastRotation;
-	Vector3 lastPosition;
+	private Quaternion lastRotation;
+	private Vector3 lastPosition;
+
+	private float minDistanceMoved = .5f;
+	private float minAngleMoved = 2f;
+
+	private float lastPositionTime = -1f;
+	private float lastRotationTime = -1f;
 	
 	//network id for the object
 	public ushort networkID;
 	
+	private IEnumerator positionRoutine;
+	private IEnumerator rotationRoutine;
+
 	// Use this for initialization
 	void Start () {
+		helmet.netPlayer = this;
 		DarkRiftAPI.onPlayerDisconnected += PlayerDisconnected;
 		DarkRiftAPI.onDataDetailed += RecieveData;
 	}
@@ -46,10 +59,8 @@ public class NetPlayerSync : MonoBehaviour {
 	}
 	
 	void SendData(){
-        //@TODO -- currently dobble dipping
-
 		//has the rotation or position changed since last sent message
-        if(transform.position != lastPosition){
+        if((transform.position - lastPosition).magnitude > minDistanceMoved){
 
             //serialize and send information
 			DarkRiftAPI.SendMessageToOthers(Network.Tag.Player, Network.Subject.PlayerPositionUpdate, transform.position.Serialize());
@@ -57,7 +68,7 @@ public class NetPlayerSync : MonoBehaviour {
             //Save the sent position
             lastPosition = transform.position;
         }
-		if( head.rotation != lastRotation ){
+		if(Quaternion.Angle(head.rotation, lastRotation) > minAngleMoved){
 
             //serialize and send information
 			DarkRiftAPI.SendMessageToOthers(Network.Tag.Player, Network.Subject.PlayerRotationUpdate, head.rotation.Serialize());
@@ -65,6 +76,7 @@ public class NetPlayerSync : MonoBehaviour {
 			//save the sent position and rotation
 			lastRotation = head.rotation;
 		}
+
 	}
 	
 	// Called once there is a new packet/sample ready
@@ -82,12 +94,30 @@ public class NetPlayerSync : MonoBehaviour {
                 case Network.Subject.PlayerPositionUpdate:
                 {
                     Vector3 position = Deserializer.Vector3((byte[])data);
-                    transform.position = position;
+
+                    if(positionRoutine != null)
+                    	StopCoroutine(positionRoutine);
+                    
+                    if(lastPositionTime == -1f)
+                    	lastPositionTime = Time.time;
+
+                    float interpolationLength = .3f;
+                    
+
+                   	if(interpolationLength > 0f){
+                   		positionRoutine = InterpolatePosition(position,interpolationLength);
+                    	StartCoroutine(positionRoutine);
+                   	}
                 }break;
 				case Network.Subject.PlayerRotationUpdate:
 				{
                     Quaternion rotation = Deserializer.Quaternion((byte[])data);
-					head.rotation = rotation;	
+                    if(rotationRoutine != null)
+                    	StopCoroutine(rotationRoutine);
+
+                    float interpolationLength = .1f;
+                    rotationRoutine = InterpolateRotation(rotation,interpolationLength);
+                    StartCoroutine(rotationRoutine);
 				}
 				break;
 				case Network.Subject.VoiceChat:
@@ -96,6 +126,15 @@ public class NetPlayerSync : MonoBehaviour {
 					player.OnNewSample(packet); // Queue package to the VoiceChatPlayer
 				}
 				break;
+				case Network.Subject.PlayerFocus:
+				{
+					StopAllCoroutines();
+					if((bool)data)
+						StartCoroutine(StartFocusing());
+					else
+						StartCoroutine(StopFocusing());
+
+				}break;
 			}
 		}		
 	}
@@ -112,20 +151,82 @@ public class NetPlayerSync : MonoBehaviour {
 		isSender = true;
 		cam.SetActive(true);
 		headControl.enabled = true;
-		helmet.enabled = true;
 		helmet.SetPlayerIndex(networkID);
+		helmet.enabled = true;
 	}
 	
 	public void SetAsReceiver(){
 		isSender = false;
 		cam.SetActive(false);
 		headControl.enabled = false;
-		helmet.enabled = false;
 		helmet.SetPlayerIndex(networkID);
+		helmet.enabled = false;
 	}
 
     public void SetVoiceChatPlayer(VoiceChatPlayer player)
     {
         this.player = player;
+    }
+
+    public void AddCameraToLightShaft(GameObject camera){
+		nonFocusedLightShaft.m_Cameras[0] = camera.GetComponent<Camera>();
+		focusedLightShaft.m_Cameras[0] = camera.GetComponent<Camera>();
+
+		nonFocusedLightShaft.UpdateCameraDepthMode();
+		focusedLightShaft.UpdateCameraDepthMode();
+    }
+
+    public void UpdateHelmetLight(bool isFocusing){
+		DarkRiftAPI.SendMessageToOthers(Network.Tag.Player, Network.Subject.PlayerFocus,isFocusing);
+    }
+
+    IEnumerator StartFocusing(){
+    	float t = 0f;
+    	float startTime = Time.time;
+    	while(t < 1f){
+    		t = (Time.time - startTime)/helmet.spotlightAnimationLength;
+    		helmet.LightUpdate(t);
+    		yield return null;
+    	}
+
+    	helmet.LightUpdate(1f);
+    }
+
+    IEnumerator StopFocusing(){
+    	float t = 1f;
+    	float startTime = Time.time;
+    	while(t > 0f){
+    		t = 1-((Time.time - startTime)/helmet.spotlightAnimationLength);
+    		helmet.LightUpdate(t);
+    		yield return null;
+    	}
+
+    	helmet.LightUpdate(0f);
+    }
+
+    IEnumerator InterpolatePosition(Vector3 newPosition, float interpolationLength){
+    	float startTime = Time.time;
+    	Vector3 startPosition = transform.position;
+
+    	float t = 0f;
+    	while(t < 1f){
+    		t = (Time.time - startTime)/interpolationLength;
+    		transform.position = Vector3.Lerp(startPosition,newPosition,t);
+    		yield return null;
+    	}
+    	lastPositionTime = Time.time;
+    	//transform.position = newPosition;
+    }
+    IEnumerator InterpolateRotation(Quaternion newRotation, float interpolationLength){
+    	float startTime = Time.time;
+    	lastRotationTime = Time.time;
+    	Quaternion startRotation = head.rotation;
+    	float t = 0f;
+    	while(t < 1f){
+    		t = (Time.time - startTime)/interpolationLength;
+    		head.rotation = Quaternion.Slerp(startRotation,newRotation,t);
+    		yield return null;
+    	}
+//    	head.rotation = newRotation;
     }
 }
