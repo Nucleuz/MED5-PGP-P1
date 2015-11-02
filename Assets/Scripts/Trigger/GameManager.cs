@@ -26,10 +26,7 @@ public class GameManager : MonoBehaviour {
 		for(int i = 0; i < LM.eventsInSequence[0]; i++){ //makes the first events in the scene triggerable
 			LM.events[i].isReadyToBeTriggered = true;
 		}
-		LM.timedResets = new bool[LM.events.Length];
-		for (int i = 0; i < LM.timedResets.Length; i++){
-			LM.timedResets[i] = false;
-		}
+		
 	}
 	
 	// Update is called once per frame
@@ -45,8 +42,7 @@ public class GameManager : MonoBehaviour {
 					currentNumberOfEventsTriggered++; //counts up the events in sequence by 1
 				}
 				//This if statement is used in order to reset interactables if they require it
-				if(LM.events[i + numberOfTriggeredEvents].canReset && !LM.events[i + numberOfTriggeredEvents].isReadyToBeTriggered && !LM.timedResets[i]){
-					LM.timedResets[i] = true;
+				if(LM.events[i + numberOfTriggeredEvents].canReset && !LM.events[i + numberOfTriggeredEvents].isReadyToBeTriggered){
 					StartCoroutine(TimedReset(i));
 				}
 			}
@@ -61,8 +57,7 @@ public class GameManager : MonoBehaviour {
 			}
 			//This if statement is used in order to reset interactables if they require it
 			for(int i = 0; i < LM.eventsInSequence[index]; i++){
-				if(LM.events[i + numberOfTriggeredEvents].canReset && !LM.events[i + numberOfTriggeredEvents].isReadyToBeTriggered && !LM.timedResets[i]){
-					LM.timedResets[i] = true;
+				if(LM.events[i + numberOfTriggeredEvents].canReset && !LM.events[i + numberOfTriggeredEvents].isReadyToBeTriggered){
 					StartCoroutine(TimedReset(i));
 				}
 			}
@@ -132,12 +127,7 @@ public class GameManager : MonoBehaviour {
 		yield return new WaitForSeconds(2f); //Resets after x seconds
 		LM.events[resetIndex + numberOfTriggeredEvents].isTriggered = false;
 		LM.events[resetIndex + numberOfTriggeredEvents].isReadyToBeTriggered = true;
-		LM.timedResets[resetIndex] = false;
-		if (LM.events[resetIndex + numberOfTriggeredEvents].GetComponent<InteractableButton>()) {
-			LM.events[resetIndex + numberOfTriggeredEvents].GetComponent<InteractableButton>().par.Play();
-			LM.events[resetIndex + numberOfTriggeredEvents].GetComponent<InteractableButton>().particlesReplaced = false;
-			LM.events[resetIndex + numberOfTriggeredEvents].GetComponent<InteractableButton>().placeHolder.Stop ();
-		}
+		
 	}
 	
 	IEnumerator FailedReset(int resetIndex){ //MOVE SOME OF THIS STUFF UP! 
