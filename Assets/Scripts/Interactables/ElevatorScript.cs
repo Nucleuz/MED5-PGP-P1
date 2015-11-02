@@ -54,9 +54,9 @@ public class ElevatorScript : MonoBehaviour {
             
             //Moves the elevator from it's current position to the next active node
             transform.position = Vector3.MoveTowards(transform.position, nodes[activeNode].position, t);
-            if(!hasPlayed){
+            if(!soundIsPlaying){
                 SoundManager.Instance.PlayEvent("Elevator_Active", gameObject);
-                hasPlayed = true;
+                soundIsPlaying = true;
             }
             
             
@@ -78,9 +78,9 @@ public class ElevatorScript : MonoBehaviour {
                 isActivated = false;
                 trigger.isTriggered = false;
                 trigger.isReadyToBeTriggered = true;
-                if(hasPlayed){
+                if(soundIsPlaying){
                     SoundManager.Instance.PlayEvent("Elevator_Stop", gameObject);
-                    hasPlayed = false;
+                    soundIsPlaying = false;
                 }
             } 
 
