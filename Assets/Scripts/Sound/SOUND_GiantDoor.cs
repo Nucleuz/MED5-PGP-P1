@@ -17,12 +17,14 @@ public class SOUND_GiantDoor : MonoBehaviour {
 		if (anim.GetCurrentAnimatorStateInfo(0).IsName("Open") && !isStarted)
         {
         	isStarted = true;
-        	SoundManager.Instance.PlayEvent("DoorSlide1", gameObject);
+        	SoundManager.Instance.PlayEvent("DoorSlide_Start", gameObject);
         	timeStamp = Time.time + anim.GetCurrentAnimatorStateInfo(0).length;
         }
 
-        if(timeStamp < Time.time && !isStarted)
+        if(timeStamp < Time.time && !isStarted){
+        	SoundManager.Instance.PlayEvent("DoorSlide_Stop", gameObject);
         	isStarted = false;
+        }
 	
 	}
 }
