@@ -136,24 +136,28 @@ public class ServerManager : NetworkManager {
                 data.DecodeData();
 
                 triggerHandler.TriggerInteracted((ushort)data.data,con.id,true);
-                Debug.Log("trigger " + (ushort)data.data + " activated"); 
+                Debug.Log("trigger " + (ushort)data.data + " activated - state(" + triggerHandler.GetTriggerState((ushort)data.data) + ")"); 
 
                 //force update GameMnager
                 gameManager.DetectTriggerChanges();
 
                 TriggerState state = triggerHandler.GetTriggerState((ushort)data.data);
                 
+                Debug.Log("sending: " + state);
                 //send to clients but not the sender
                 SendToAll(data.tag,Network.Subject.TriggerState,state);
             }else if(data.subject == Network.Subject.TriggerDeactivate){
                 data.DecodeData();
 
                 triggerHandler.TriggerInteracted((ushort)data.data,con.id,false);
+                Debug.Log("trigger " + (ushort)data.data + " deactivated"); 
 
                 //force update GameMnager
                 gameManager.DetectTriggerChanges();
 
                 TriggerState state = triggerHandler.GetTriggerState((ushort)data.data);
+
+                Debug.Log("sending: " + state);
 
                 //send to clients but not the sender
                 SendToAll(data.tag,Network.Subject.TriggerState,state);
@@ -204,11 +208,15 @@ public class ServerManager : NetworkManager {
     }
 
 	private void OnApplicationQuit() {
-		// Close all connections
-/*		foreach (var con in connections) {
+
+        //System.Diagnostics.Process.GetCurrentProcess().Kill();
+        //System.Environment.Exit(0);
+		
+        //Close all connections
+		foreach (var con in connections) {
             if(con != null)
                 con.Close();
-		}*/
+		}
 
 		// Close server
 		//DarkRiftServer.Close(false);

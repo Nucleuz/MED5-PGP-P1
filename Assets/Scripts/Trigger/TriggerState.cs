@@ -20,4 +20,8 @@ public class TriggerState{
         this.isReadyToBeTriggered = trigger.isReadyToBeTriggered;
         this.canReset             = trigger.canReset;
     }
+
+    public override string ToString(){
+        return "TriggerState(id: " + id + ",triggered: " + isTriggered + ",ready: " + isReadyToBeTriggered + ",canReset: " + canReset + ")";
+    }
 }

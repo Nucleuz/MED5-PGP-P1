@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class InteractableButton : Interactable{
@@ -41,9 +41,8 @@ public class InteractableButton : Interactable{
 	void FixedUpdate () {
 		if(trigger.isReadyToBeTriggered && timerRunning){
 			if(Time.time < lastInteractionTime + activatedLength){
-				trigger.Deactivate();
 				timerRunning = false;
-
+				trigger.Deactivate();
 			}
 		}
 
@@ -66,9 +65,9 @@ public class InteractableButton : Interactable{
 
 	public override void OnRayReceived(int playerIndex, Ray ray, RaycastHit hit, ref LineRenderer lineRenderer,int nextLineVertex){
 		if (trigger.isReadyToBeTriggered && !timerRunning){
-			trigger.Activate();
 			lastInteractionTime = Time.time;
 			timerRunning = true;
+			trigger.Activate();
 		}
 	}
 

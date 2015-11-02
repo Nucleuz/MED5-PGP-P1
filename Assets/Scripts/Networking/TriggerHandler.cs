@@ -161,6 +161,7 @@ using DarkRift;
                 trigger.playersInteracting[1] == trigger.redPlayerRequired &&
                 trigger.playersInteracting[2] == trigger.greenPlayerRequired){
                 
+                Debug.Log("Trigger " + triggerID + " is triggered");
                 trigger.isTriggered = true;
             }else
                 trigger.isTriggered = false;
