@@ -6,36 +6,36 @@
 				<SoundcasterSession Name="Ambience" ID="{E1C38E07-94F5-4265-873E-40FE6CE9A99D}">
 					<ModuleList>
 						<Module>
-							<ObjectRef Name="DeepRumble" ID="{F208F7DC-696B-46BE-A17C-AEC24C1709DD}" WorkUnitID="{36AA1685-24D3-498E-A2C6-91EC6AD0136D}"/>
+							<ObjectRef Name="MAIN AMBIENCE" ID="{AEAEC6F9-FCBD-4F92-9253-05A1EE1CCBE6}" WorkUnitID="{36AA1685-24D3-498E-A2C6-91EC6AD0136D}"/>
 							<Position X="0" Y="0"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="SoftWater1" ID="{9C835D59-9538-4EF2-8135-7C6A0FDD359A}" WorkUnitID="{36AA1685-24D3-498E-A2C6-91EC6AD0136D}"/>
+							<ObjectRef Name="Waterdrops(Environment)" ID="{342A749D-C6A0-42C1-A2E2-3AA3F99E195B}" WorkUnitID="{36AA1685-24D3-498E-A2C6-91EC6AD0136D}"/>
 							<Position X="0" Y="1"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="DeepRumble02" ID="{A30C9BCE-3727-4585-803E-EC224593277A}" WorkUnitID="{36AA1685-24D3-498E-A2C6-91EC6AD0136D}"/>
+							<ObjectRef Name="Waterdrops(Background)" ID="{375C372D-0F55-42CC-A157-0B809FA8419A}" WorkUnitID="{36AA1685-24D3-498E-A2C6-91EC6AD0136D}"/>
 							<Position X="1" Y="0"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Waterfall02" ID="{9DD8C911-B4F6-4A58-9290-D91C676096E0}" WorkUnitID="{36AA1685-24D3-498E-A2C6-91EC6AD0136D}"/>
+							<ObjectRef Name="Pebbles" ID="{EEEF6B8B-48B8-48EE-BA8C-D1E2B4488F09}" WorkUnitID="{36AA1685-24D3-498E-A2C6-91EC6AD0136D}"/>
 							<Position X="1" Y="1"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Mojo03" ID="{33502EE4-B40C-4D2A-84E2-A9B6D79BA1E4}" WorkUnitID="{36AA1685-24D3-498E-A2C6-91EC6AD0136D}"/>
-							<Position X="2" Y="0"/>
-						</Module>
-						<Module>
-							<ObjectRef Name="Waterfall01" ID="{55E6E442-DCCB-4895-AF94-CD05906EB31E}" WorkUnitID="{36AA1685-24D3-498E-A2C6-91EC6AD0136D}"/>
-							<Position X="2" Y="1"/>
-						</Module>
-						<Module>
-							<ObjectRef Name="MojoWithoutEnergy" ID="{26F6EF8F-A4E9-42D8-84BD-3AF2CE234154}" WorkUnitID="{36AA1685-24D3-498E-A2C6-91EC6AD0136D}"/>
+							<ObjectRef Name="Mojo04 (1)" ID="{2A570740-9DD6-4F33-B880-6DA6DFD8272B}" WorkUnitID="{36AA1685-24D3-498E-A2C6-91EC6AD0136D}"/>
 							<Position X="3" Y="0"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="MysticalWater1" ID="{9786B85D-B6E1-42D0-BB76-BB73C4A65FC3}" WorkUnitID="{36AA1685-24D3-498E-A2C6-91EC6AD0136D}"/>
+							<ObjectRef Name="Waterfall04" ID="{FD611285-CA0D-4139-8EF1-C52F36E856B5}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
+							<Position X="3" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="MojoWithoutEnergy" ID="{26F6EF8F-A4E9-42D8-84BD-3AF2CE234154}" WorkUnitID="{36AA1685-24D3-498E-A2C6-91EC6AD0136D}"/>
 							<Position X="4" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Waterfall03" ID="{817A93FB-BFE1-4A25-823E-6D6CE8BA620C}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
+							<Position X="4" Y="1"/>
 						</Module>
 					</ModuleList>
 					<RTPCValueList ShowAll="true">
@@ -81,7 +81,11 @@
 						</RTPCValue>
 					</RTPCValueList>
 					<CurrentStateList ShowAll="true"/>
-					<CurrentSwitchList ShowAll="true"/>
+					<CurrentSwitchList ShowAll="true">
+						<CurrentSwitchRef Name="Off" ID="{85FA9B18-7984-4849-A21D-D576442D4E90}"/>
+						<CurrentSwitchRef Name="Melody1" ID="{04A8C7D6-43CA-4AB6-8699-7F3D3B95AABD}"/>
+						<CurrentSwitchRef Name="Off" ID="{0BCF7D13-4F39-47D5-8E8D-06D9338564AE}"/>
+					</CurrentSwitchList>
 				</SoundcasterSession>
 			</ChildrenList>
 		</WorkUnit>

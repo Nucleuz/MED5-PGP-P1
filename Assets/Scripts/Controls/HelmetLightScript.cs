@@ -16,6 +16,8 @@ public class HelmetLightScript : MonoBehaviour {
     public float intensityFocus = 8;                // Intensity of the spotlight during focus
 
     private Light helmetLight;                      // Object that refers to the spotlight within the scene
+    public Light nonFocusedHelmetLight; 
+
 
     private float startTime = -1f;                        // Used for lerping the focus light angle and intensity
     private float stopTime = -1f;
@@ -41,12 +43,15 @@ public class HelmetLightScript : MonoBehaviour {
         switch (playerIndex){
             case 1:
                 helmetLight.color = new Color(1, 0.2F, 0.2F, 1F); //red
+                nonFocusedHelmetLight.color = new Color(1, 0.2F, 0.2F, 1F); //red
             break;
             case 2:
                 helmetLight.color = new Color(0.2F, 1, 0.2F, 1F); //green
+                nonFocusedHelmetLight.color = new Color(0.2F, 1, 0.2F, 1F); //green
             break;
             case 3:
                 helmetLight.color = new Color(0.2F, 0.2F, 1, 1F); //blue
+                nonFocusedHelmetLight.color = new Color(0.2F, 0.2F, 1, 1F); //blue
             break;
             default:
                 Debug.Log("Invalid playerIndex");

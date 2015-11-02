@@ -4,6 +4,54 @@
 		"selected_items":
 		[
 			[
+				"last",
+				"lastPositionTime"
+			],
+			[
+				"las",
+				"lastPositionTime"
+			],
+			[
+				"interpo",
+				"interpolationLength"
+			],
+			[
+				"int",
+				"interpolationLength"
+			],
+			[
+				"laspt",
+				"lastPositionTime"
+			],
+			[
+				"new",
+				"newPosition"
+			],
+			[
+				"pos",
+				"newPosition"
+			],
+			[
+				"Inter",
+				"interpolatePosition"
+			],
+			[
+				"start",
+				"startPosition"
+			],
+			[
+				"spot",
+				"spotlightAnimationLength"
+			],
+			[
+				"Light",
+				"LightUpdate"
+			],
+			[
+				"other",
+				"otherPlayers"
+			],
+			[
 				"game",
 				"GameObject"
 			],
@@ -72,16 +120,8 @@
 				"audioSource"
 			],
 			[
-				"int",
-				"interactable"
-			],
-			[
 				"ob",
 				"objectHit"
-			],
-			[
-				"las",
-				"lastPosition"
 			],
 			[
 				"send",
@@ -110,10 +150,6 @@
 			[
 				"client",
 				"clientID"
-			],
-			[
-				"new",
-				"newestPos"
 			],
 			[
 				"enem",
@@ -372,34 +408,23 @@
 	"buffers":
 	[
 		{
-			"file": "Assets/Scripts/Networking/Client/ClientManager.cs",
-			"settings":
-			{
-				"buffer_size": 7006,
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "Assets/Scripts/Networking/Client/NetPlayerSync.cs",
 			"settings":
 			{
-				"buffer_size": 3641,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "Assets/Scripts/Networking/Server/ServerManager.cs",
-			"settings":
-			{
-				"buffer_size": 7006,
+				"buffer_size": 6157,
 				"line_ending": "Windows"
 			}
 		}
 	],
 	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
 	"command_palette":
 	{
 		"height": 104.0,
+		"last_filter": "",
 		"selected_items":
 		[
 			[
@@ -459,7 +484,11 @@
 	},
 	"console":
 	{
-		"height": 569.0
+		"height": 569.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
 	},
 	"distraction_free":
 	{
@@ -470,8 +499,26 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/C/Users/PGP1 Desktop 2/Desktop/PGP_Networking/Assets/Scripts"
+	],
 	"file_history":
 	[
+		"/C/Users/PGP1 Desktop 2/Desktop/PGP_Networking/Assets/Scripts/Networking/Network.cs",
+		"/C/Users/PGP1 Desktop 2/Desktop/PGP_Networking/Assets/Scripts/Controls/HelmetLightScript.cs",
+		"/C/Users/PGP1 Desktop 2/Desktop/PGP_Networking/Assets/Scripts/Networking/Client/NetPlayerSync.cs",
+		"/C/Users/PGP1 Desktop 2/Desktop/PGP_Networking/Assets/Scripts/Networking/Client/ClientManager.cs",
+		"/C/Users/PGP1 Desktop 2/Desktop/PGP_Networking/Assets/Scripts/Interactables/Interactable.cs",
+		"/C/Users/PGP1 Desktop 2/Desktop/PGP_Networking/Assets/Scripts/Interactables/ChargeableButtonScript.cs",
+		"/C/Users/PGP1 Desktop 2/Desktop/PGP_Networking/Assets/Scripts/Interactables/ChargeableLightSource.cs",
+		"/C/Users/PGP1 Desktop 2/Desktop/PGP_Networking/Assets/LightBeam/LightShafts.Resources.cs",
+		"/C/Users/PGP1 Desktop 2/Desktop/PGP_Networking/Assets/LightBeam/LightShafts.Utils.cs",
+		"/C/Users/PGP1 Desktop 2/Desktop/PGP_Networking/Assets/LightBeam/LightShafts.cs",
+		"/C/Users/PGP1 Desktop 2/Desktop/PGP_Networking/Assets/Scripts/Networking/Server/ServerManager.cs",
+		"/C/Users/PGP1 Desktop 2/Desktop/PGP_Networking/Assets/Scripts/Interactables/InteractableButton.cs",
+		"/C/Users/PGP1 Desktop 2/Desktop/PGP_Networking/Assets/Scripts/Interactables/Mirror.cs",
+		"/C/Users/PGP1 Desktop 2/Desktop/PGP_Networking/Assets/Scripts/Interactables/SoundCrystal.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Plugins/DarkRift/DarkRift/Plugins/DarkRiftReceiver.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/SoundManager.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/Barricade.cs",
@@ -585,21 +632,7 @@
 		"/home/kaholi/dev/games/unity/MiniJam/Assets/Scripts/CandyProjectile.cs",
 		"/home/kaholi/dev/games/unity/MiniJam/Assets/Scripts/CandyManager.cs",
 		"/home/kaholi/MEGA/AAU/5 Semester/CGP/Homework/lesson 3/Homework3/Assets/IE.cs",
-		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Scripts/Script.cs",
-		"/home/kaholi/MEGA/AAU/5 Semester/CGP/Homework/lesson 2/HW/Assets/Diffuse.shader",
-		"/home/kaholi/dev/games/unity/MiniJam/Assets/Scripts/Pickups/StunBomb.cs",
-		"/home/kaholi/dev/games/unity/MiniJam/Assets/Scripts/Minimap/Minimap.cs",
-		"/home/kaholi/dev/games/unity/SpaceBase/Assets/KolspinMenu/KolspinMenu.cs",
-		"/home/kaholi/dev/games/unity/SpaceBase/Assets/KolspinMenu/KolspinButton.cs",
-		"/home/kaholi/dev/games/unity/MiniJam/Assets/Scripts/PlayerHandler.cs",
-		"/home/kaholi/dev/games/unity/MiniJam/Assets/PlayerHandler.cs",
-		"/home/kaholi/dev/games/unity/MiniJam/Assets/Minimap.cs",
-		"/home/kaholi/dev/games/unity/MiniJam/Assets/Scripts/Candy.cs",
-		"/home/kaholi/MEGA/AAU/5 Semester/CGP/Homework/lesson 1/Homework1/Temp/Compiled-Emissive.shader",
-		"/home/kaholi/MEGA/AAU/5 Semester/CGP/Homework/lesson 1/Homework1/Assets/Emissive.shader",
-		"/home/kaholi/dev/games/unity/SpaceBase/Assets/Scripts/Components/Base/Room_Interior/DroneInterior.cs",
-		"/home/kaholi/dev/games/unity/SpaceBase/Library/ScriptAssemblies/Assembly-CSharp.dll",
-		"/home/kaholi/dev/games/unity/SpaceBase/Library/metadata/50/50d4b87d633404c1c914f043ff8a49f2"
+		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Scripts/Script.cs"
 	],
 	"find":
 	{
@@ -607,7 +640,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 90.0,
 		"where_history":
 		[
 			"",
@@ -620,6 +653,33 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"last",
+			"Position",
+			"interPositionTime",
+			"Position",
+			"lastPosition",
+			"startPosition",
+			"lastPositionTime",
+			"transform",
+			"position",
+			"Position",
+			"position",
+			"Position",
+			"position",
+			"Position",
+			"\n	",
+			"public",
+			"t",
+			"lineRenderer",
+			"LineRenderer",
+			"lineRenderer",
+			"OnRayEnter",
+			"lineRenderer",
+			"LineRenderer",
+			"lineRenderer",
+			"fadeTime",
+			"startTime",
+			"timeSaved",
 			"refRatio",
 			"hL",
 			"Reflect",
@@ -720,34 +780,7 @@
 			"			   ",
 			"\n			   ",
 			"Vertex3",
-			" \n",
-			"s_BoostMaterial",
-			"public",
-			"CGPROGRAM",
-			"\"",
-			"_NewColor",
-			"1",
-			"1,",
-			"0",
-			" 0,",
-			"0",
-			"TRIAL",
-			"Pack",
-			"Avatar",
-			"Trial",
-			"Expansion",
-			"Unlock",
-			"Costume",
-			"Theme",
-			"&nbsp;",
-			"VITA",
-			"VITA\n",
-			"VITA",
-			"PS Vita",
-			"Demo",
-			"demo",
-			"\", \"",
-			"\"]"
+			" \n"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -771,96 +804,35 @@
 	"groups":
 	[
 		{
-			"selected": 1,
-			"sheets":
-			[
-				{
-					"buffer": 0,
-					"file": "Assets/Scripts/Networking/Client/ClientManager.cs",
-					"settings":
-					{
-						"buffer_size": 7006,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6401,
-								6410
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C#/C#.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 56.0,
-						"translation.y": 1197.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "Assets/Scripts/Networking/Client/NetPlayerSync.cs",
-					"settings":
-					{
-						"buffer_size": 3641,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1012,
-								1012
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C#/C#.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 383.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
-			]
-		},
-		{
 			"selected": 0,
 			"sheets":
 			[
 				{
-					"buffer": 2,
-					"file": "Assets/Scripts/Networking/Server/ServerManager.cs",
+					"buffer": 0,
+					"file": "Assets/Scripts/Networking/Client/NetPlayerSync.cs",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7006,
+						"buffer_size": 6157,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								862,
-								862
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C#/C#.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/C#/C#.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 1005.0,
+						"translation.y": 2595.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -883,18 +855,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.5,
 			1.0
 		],
 		"rows":
@@ -916,6 +881,8 @@
 	{
 		"height": 241.0
 	},
+	"pinned_build_system": "",
+	"project": "PGP1.sublime-project",
 	"replace":
 	{
 		"height": 42.0
@@ -924,8 +891,37 @@
 	"select_file":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"netpaly",
+				"Networking\\Client\\NetPlayerSync.cs"
+			],
+			[
+				"netoiw",
+				"Networking\\Network.cs"
+			],
+			[
+				"netwo",
+				"Networking\\Network.cs"
+			],
+			[
+				"net",
+				"Networking\\Network.cs"
+			],
+			[
+				"netplay",
+				"Networking\\Client\\NetPlayerSync.cs"
+			],
+			[
+				"hel",
+				"Controls\\HelmetLightScript.cs"
+			],
+			[
+				"intere",
+				"Interactables\\InteractableButton.cs"
+			],
 			[
 				"netsyn",
 				"Networking/Client/NetPlayerSync.cs"
@@ -936,15 +932,32 @@
 	"select_project":
 	{
 		"height": 500.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
 		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
 	},
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": false,
 	"side_bar_width": 237.0,
-	"status_bar_visible": true
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
 }

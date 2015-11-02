@@ -213,7 +213,7 @@ public class ClientManager : NetworkManager
 
 
         player.position = startRail.transform.position;
-        player.GetComponent<Cart>().CurrentRail = startRail;
+        player.GetComponent<Cart>().currentRail = startRail;
 
         //send it to everyone else
         DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager, Network.Subject.SpawnPlayer, player.position.Serialize());

@@ -86,9 +86,7 @@ public class LevelHandler : MonoBehaviour {
 
         if(loadingIndex == 0){
             //run first time on the server
-            if(NetworkManager.isServer)
-                GetComponent<GameManager>().setNewLevelManager(levelContainer.levelManager);
-
+        
             triggerHandler.process(levelContainer);
         }else{
             //previous and next LevelManager
@@ -126,7 +124,7 @@ public class LevelHandler : MonoBehaviour {
                     pRailConnection.nRail = nRail;
                     pRailConnection.connectToNext = true;
                 }else
-                pRail.NextRail = nRail;
+                pRail.next = nRail;
 
             }
         }

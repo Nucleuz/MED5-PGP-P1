@@ -605,7 +605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTriggered: 0
-  isReadyToBeTriggered: 1
+  isReadyToBeTriggered: 0
   canReset: 0
 --- !u!114 &11466096
 MonoBehaviour:
@@ -618,8 +618,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d63d0d47ad1cb349bf2a62cbb1ed98d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activatedButtonSound: {fileID: 8300000, guid: 90d34dcfb4636894387d9f84327f2bfd,
-    type: 3}
   playerList: 010000
   rend:
   - {fileID: 2321304}
@@ -1728,6 +1726,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_ApplyRootMotion
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: isReadyToBeTriggered
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

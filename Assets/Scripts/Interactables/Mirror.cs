@@ -11,6 +11,10 @@ public class Mirror : Interactable {
 	public int turnAmount = 50; // How much it is turning.
     public InteractableButton ButtonToTrigger; // The target that the mirror has to hit.
 
+    public Cart player;
+    //public Rail railPoint;
+    private LightShafts LS;
+
     [Tooltip("Use empty gameobjects as targets that doesn't need to interact and buttons for targets that needs to interact.")]
     public Transform[] targets;
 
@@ -18,36 +22,35 @@ public class Mirror : Interactable {
 
     public bool movingForward = true;
     public bool isRotating = false;
+    public bool isBeingLitOn;
+
+    //light to reflect 
+    private Light reflectedLight;   
 
 	void Start(){
 		startPoint = transform.eulerAngles.y; // starPoint is the mirrors rotation at the start.
         buttonNumber = 0;
+        reflectedLight = GetComponent<Light>();        //Calls the light component on the mirror.
+        LS = GetComponent<LightShafts>();
     }
     
 	void Update(){
+		//The mirror will reflect only when the player is lighting on the mirror.
+		if(isBeingLitOn == true){
+			reflectedLight.enabled = true;
+			LS.enabled = true;
+		} else if(isBeingLitOn == false){
+			reflectedLight.enabled = false;
+			LS.enabled = false;
+		} 
+		if(isBeingLitOn == true){
+			isBeingLitOn = false;
+		}
+		
+		
         if (trigger != null && trigger.isTriggered && !isRotating) {
             rotateMirror();
-
         }
-
-
-        /*
-		if(trigger != null && trigger.isTriggered) {
-			//Debug.Log(transform.eulerAngles.y);
-			//Check if the rotation is less then or bigger then the goal rotation
-			if(transform.eulerAngles.y < endPoint){
-				turnAmount *= -1;
-			}
-			else if(transform.eulerAngles.y > endPoint){
-				turnAmount *= 1;
-			}
-
-            //Rotate the object in the y-axis.
-            gameObject.transform.Rotate(0, turnAmount * Time.deltaTime, 0, Space.World);
-            //Maybe write code locks the mirror positon when the correct postions is reached.
-
-        }
-        */
     }
 
     private void rotateMirror() {
@@ -76,36 +79,46 @@ public class Mirror : Interactable {
     }
 
     public override void OnRayEnter(int playerIndex, Ray ray, RaycastHit hit){
-        
-        //Ray newRay = new Ray (hit.point, Vector3.Reflect (ray.direction, hit.normal));        //Legacy code. Calculates a realistisc reflection off the mirror
+    	//Used for turning on the relfectance of the mirror.
+        isBeingLitOn = true;
 
-        //Shoots a new raycast to the point of the mirror.
+    	//Set the color of the reflected light to the correct user.
+        switch (playerIndex){
+            case 1:
+                reflectedLight.color = new Color(1, 0.2F, 0.2F, 1F); //red
+            break;
+            case 2:
+                reflectedLight.color = new Color(0.2F, 1, 0.2F, 1F); //green
+            break;
+            case 3:
+                reflectedLight.color = new Color(0.2F, 0.2F, 1, 1F); //blue
+            break;
+            default:
+                Debug.Log("Invalid playerIndex");
+            break;
+        }   
+    
         Ray newRay = new Ray(hit.point, ButtonToTrigger.transform.position - transform.position);
         RaycastHit rayhit;
 
         Vector3 targetDir = ButtonToTrigger.transform.position - transform.position;
         float rotationalAngle = Vector3.Angle(targetDir, transform.forward);
 
-        //Debug.Log(rotationalAngle);
-
         if (rotationalAngle < 5f) {
-
             if (Physics.Raycast(newRay, out rayhit)) {
-            
-		        Debug.DrawRay(hit.point, newRay.direction * 10, Color.cyan, 1f);
-
+            	//turn on the light off the mirror.
+            	//reflectedLight.enabled = true;
+              
                 Interactable interactable = rayhit.transform.GetComponent<Interactable>();
                 if (interactable != null) {
+                    //@Optimize - The mirror is the only one who the ray, hit, lineRenderer, and count
                     interactable.OnRayEnter(playerIndex, newRay, rayhit);
                 }
             }
         }
-	}
-    
-
-    public override void OnRayExit(){
-        
     }
+
+    public override void OnRayExit(){}
 
     IEnumerator rotateTowardsTarget(Quaternion start, Quaternion end, float length) {
         isRotating = true;
@@ -113,7 +126,7 @@ public class Mirror : Interactable {
         float endTime = startTime + length;
 
         while(Time.time < endTime) {
-            trigger.Deactivate(); //@NOTE Hack!
+            trigger.isTriggered = false; // @NOTE hack!
             transform.rotation = Quaternion.Slerp(start,end,(Time.time - startTime) / length);
             yield return null;
         }
