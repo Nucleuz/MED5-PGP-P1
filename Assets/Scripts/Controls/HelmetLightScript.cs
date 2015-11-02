@@ -62,7 +62,7 @@ public class HelmetLightScript : MonoBehaviour {
 
             if(!soundIsPlaying){
                 SoundManager.Instance.PlayEvent("Headlamp_Focus_Active", gameObject);
-                SoundIsPlaying = true;
+                soundIsPlaying = true;
             }
             
 
@@ -88,9 +88,9 @@ public class HelmetLightScript : MonoBehaviour {
                 helmetLightFocused = false;
             }
         } else {
-            if(SoundIsPlaying){
+            if(soundIsPlaying){
                 SoundManager.Instance.PlayEvent("Headlamp_Focus_Stop", gameObject);
-                SoundIsPlaying = false;
+                soundIsPlaying = false;
             }
 
             // Sets timeSaved to false

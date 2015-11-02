@@ -46,6 +46,7 @@ public class Mirror : Interactable {
 			reflectedLight.enabled = false;
 			LS.enabled = false;
 		} 
+
 		if(isBeingLitOn == true){
 			isBeingLitOn = false;
 		}
@@ -53,7 +54,7 @@ public class Mirror : Interactable {
 		
         if (trigger != null && trigger.isTriggered && !isRotating) {
             rotateMirror();
-            if(!soundIsPlaying)
+            if(!soundIsPlaying){
                 SoundManager.Instance.PlayEvent("Mirror_Turning_Active", gameObject);
                 soundIsPlaying = true;
             }
@@ -146,7 +147,7 @@ public class Mirror : Interactable {
         }
         isRotating = false;
         if(soundIsPlaying){
-            SoundManager.Instance.PlayEvent(Mirror_Turning_Stop);
+            SoundManager.Instance.PlayEvent("Mirror_Turning_Stop", gameObject);
             soundIsPlaying = false;
         }
         //trigger.canReset = true;
