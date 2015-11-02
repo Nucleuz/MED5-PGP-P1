@@ -9,12 +9,18 @@ public class GameManager : MonoBehaviour {
 	public int index = 0; // used to count which sequence is currently in play
 	private bool readyForNextSequence = false;
 	private bool isResetting = false;
+
+	//For the light on crystal
+	public bool isLightCrystalLightReset;
 	
 	public LevelManager LM; //Used in order to access the LevelManagerObject in the scene
 	
 	
 	// Use this for initialization
 	void Start () {
+		//For the light on crystal
+		isLightCrystalLightReset = false;
+
 		resetSound = false;
 		LM = GameObject.Find("LevelManagerObject").GetComponent<LevelManager>(); //accessing the LevelManager script on the LevelManagerObject
 		for(int i = 0; i < LM.eventsInSequence[0]; i++){ //makes the first events in the scene triggerable
@@ -68,6 +74,7 @@ public class GameManager : MonoBehaviour {
 					//If they are triggered which they shouldn't be, then we reset the sequence
 					currentNumberOfEventsTriggered = 0;
 					resetSound = true;
+					isLightCrystalLightReset = true;
 					for(int j = 0; j < LM.eventsInSequence[index]; j++){ //goes through all the objects in the sequence and untrigger them
 						StartCoroutine(FailedReset(j));
 						LM.events[j + numberOfTriggeredEvents].isTriggered = false;
@@ -82,6 +89,7 @@ public class GameManager : MonoBehaviour {
 						LM.events[i + numberOfTriggeredEvents].isReadyToBeTriggered = false;
 						currentNumberOfEventsTriggered = 0;
 						resetSound = true;
+						isLightCrystalLightReset = true;
 						for(int j = 0; j < LM.eventsInSequence[index]; j++){ //goes through all the objects in the sequence and untrigger them
 							StartCoroutine(FailedReset(j));
 							LM.events[j + numberOfTriggeredEvents].isTriggered = false;
