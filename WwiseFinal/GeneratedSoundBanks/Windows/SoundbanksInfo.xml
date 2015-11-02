@@ -32,6 +32,8 @@
 				<Event Id="4083559728" Name="ChannelingButtonOnOff"/>
 				<Event Id="3230905820" Name="DoorSlideStart"/>
 				<Event Id="1108313776" Name="DoorSlideStop"/>
+				<Event Id="4112392368" Name="Elevator_Active"/>
+				<Event Id="2818913498" Name="Elevator_Stop"/>
 				<Event Id="2761191377" Name="Headlamp_Focus_Active"/>
 				<Event Id="1471623179" Name="Headlamp_Focus_Stop" MaxAttenuation="0.000000"/>
 				<Event Id="296982171" Name="Mirror_Turning_Active"/>
@@ -225,6 +227,14 @@
 					<ShortName>PlayerCrystal301.wav</ShortName>
 					<Path>SFX\PlayerCrystal301_B940C46E.wem</Path>
 				</File>
+				<File Id="786909846" Language="SFX">
+					<ShortName>OldPrintPressMachinery(looped).wav</ShortName>
+					<Path>SFX\OldPrintPressMachinery(looped)_9E69E797.wem</Path>
+				</File>
+				<File Id="811655087" Language="SFX">
+					<ShortName>LargeBoulderSlide01(looped).wav</ShortName>
+					<Path>SFX\LargeBoulderSlide01(looped)_9E69E797.wem</Path>
+				</File>
 				<File Id="823055302" Language="SFX">
 					<ShortName>IndoorPebbles04.wav</ShortName>
 					<Path>SFX\IndoorPebbles04_9E69E797.wem</Path>
@@ -257,6 +267,10 @@
 					<ShortName>MojoSynth04.wav</ShortName>
 					<Path>SFX\MojoSynth04_9E69E797.wem</Path>
 				</File>
+				<File Id="1023845289" Language="SFX">
+					<ShortName>QuickGiantBoulderImpact04.wav</ShortName>
+					<Path>SFX\QuickGiantBoulderImpact04_4C4B17D4.wem</Path>
+				</File>
 				<File Id="1044601209" Language="SFX">
 					<ShortName>Cave Ambience04.wav</ShortName>
 					<Path>SFX\Cave Ambience04_9E69E797.wem</Path>
@@ -268,6 +282,10 @@
 				<File Id="1059423158" Language="SFX">
 					<ShortName>SwitchRealOn04.wav</ShortName>
 					<Path>SFX\SwitchRealOn04_9E69E797.wem</Path>
+				</File>
+				<File Id="1068891639" Language="SFX">
+					<ShortName>QuickGiantBoulderImpact01.wav</ShortName>
+					<Path>SFX\QuickGiantBoulderImpact01_9E69E797.wem</Path>
 				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>
