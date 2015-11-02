@@ -111,14 +111,20 @@ public class HelmetLightScript : MonoBehaviour {
         if (Physics.Raycast(ray, out hit)) {
 
             Interactable interactable = hit.transform.GetComponent<Interactable>();
+            
+
             if(interactable != null){
                 if(lastObjectHit != null && interactable != lastObjectHit){
                     lastObjectHit.OnRayExit();
+                    lastObjectHit = null;
                 }
                 if (interactable != lastObjectHit){
                     interactable.OnRayEnter(playerIndex,ray, hit);
                     lastObjectHit = interactable;
                 }
+            }else if(lastObjectHit != null){
+                lastObjectHit.OnRayExit();
+                lastObjectHit = null;
             }
         }
     }

@@ -40,6 +40,9 @@ public class NetPlayerSync : MonoBehaviour {
 	//network id for the object
 	public ushort networkID;
 	
+	private IEnumerator positionRoutine;
+	private IEnumerator rotationRoutine;
+
 	// Use this for initialization
 	void Start () {
 		helmet.netPlayer = this;
@@ -93,22 +96,28 @@ public class NetPlayerSync : MonoBehaviour {
                 {
                     Vector3 position = Deserializer.Vector3((byte[])data);
 
-                    StopCoroutine("InterpolatePosition");
+                    if(positionRoutine != null)
+                    	StopCoroutine(positionRoutine);
+                    
                     if(lastPositionTime == -1f)
                     	lastPositionTime = Time.time - .5f;
 
                     float interpolationLength = Time.time - lastPositionTime;
                     
 
-                   	if(interpolationLength > 0f)
-                    	StartCoroutine(InterpolatePosition(position,interpolationLength));
+                   	if(interpolationLength > 0f){
+                   		positionRoutine = InterpolatePosition(position,interpolationLength);
+                    	StartCoroutine(positionRoutine);
+                   	}
                 }break;
 				case Network.Subject.PlayerRotationUpdate:
 				{
                     Quaternion rotation = Deserializer.Quaternion((byte[])data);
-
-                    StopCoroutine("InterpolateRotation");
-                    StartCoroutine(InterpolateRotation(rotation,Time.time - lastRotationTime));
+                    if(rotationRoutine != null)
+                    	StopCoroutine(rotationRoutine);
+                    
+                    rotationRoutine = InterpolateRotation(rotation,Time.time - lastRotationTime);
+                    StartCoroutine(rotationRoutine);
 				}
 				break;
 				case Network.Subject.VoiceChat:
@@ -202,7 +211,6 @@ public class NetPlayerSync : MonoBehaviour {
     	float t = 0f;
     	while(t < 1f){
     		t = (Time.time - lastPositionTime)/interpolationLength;
-    		Debug.Log("interpolating: " + t + " - " + interpolationLength);
     		transform.position = Vector3.Lerp(startPosition,newPosition,t);
     		yield return null;
     	}
