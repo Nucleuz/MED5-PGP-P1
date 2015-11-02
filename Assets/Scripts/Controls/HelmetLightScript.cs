@@ -6,6 +6,8 @@ using System.Collections.Generic;
 [RequireComponent (typeof (LineRenderer))]
 public class HelmetLightScript : MonoBehaviour {
 
+    private bool soundIsPlaying;
+
     public float angleNormal = 45;                  // Angle of the spotlight without focus
     public float angleFocus = 10;                   // Angle of the spotlight during focus
     public float intensityNormal = 1;               // Intensity of the spotlight without focus
@@ -25,6 +27,7 @@ public class HelmetLightScript : MonoBehaviour {
 	public Ray ray;
 
     void Start () {
+        soundIsPlaying = false;
 		lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.SetWidth(0.1f, 0.1f);
 
@@ -57,6 +60,10 @@ public class HelmetLightScript : MonoBehaviour {
         //Checks if the focus button is pressed (Default = space)
         if (Input.GetKey("space") || Input.GetAxis("RightTrigger") > 0.1f || Input.GetAxis("LeftTrigger") > 0.1f) {
 
+            if(!soundIsPlaying){
+                SoundManager.Instance.PlayEvent("Headlamp_Focus_Active", gameObject);
+                soundIsPlaying = true;
+            }
             
 
             // Checks if timeSaved is false.
@@ -81,6 +88,10 @@ public class HelmetLightScript : MonoBehaviour {
                 helmetLightFocused = false;
             }
         } else {
+            if(soundIsPlaying){
+                SoundManager.Instance.PlayEvent("Headlamp_Focus_Stop", gameObject);
+                soundIsPlaying = false;
+            }
 
             // Sets timeSaved to false
             timeSaved = false;

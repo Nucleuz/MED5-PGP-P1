@@ -3,8 +3,26 @@
 	<AudioObjects>
 		<WorkUnit Name="Headlamp" ID="{5B50697D-D4CD-40FC-A2AF-91662BDC1193}" OwnerID="{1BE62AEE-9809-4847-B300-E418C8D744C6}" PersistMode="Nested">
 			<ChildrenList>
-				<ActorMixer Name="Headlamp" ID="{EBA8B0DD-B59C-4D71-BD0E-BBB5E43BE820}" ShortID="898440386">
+				<ActorMixer Name="Headlamp Mixer" ID="{DCA47882-F414-4672-BCE3-65B06F38C0A9}" ShortID="743793409">
+					<PropertyList>
+						<Property Name="PositioningType" Type="int16" Value="1"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-7</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
+						<Reference Name="AttachableMixerInput">
+							<Custom>
+								<Effect Name="Two Big Ears 3Dception (Attached)" ID="{A70F86D8-0D8A-4CA7-994B-0F05FB7B824E}" ShortID="1007057097" PluginName="AttachableMixerInput" CompanyID="265" PluginID="2" PluginType="3">
+									<PropertyList>
+										<Property Name="InputChannel" Type="int32" Value="2"/>
+										<Property Name="Room" Type="bool" Value="True"/>
+									</PropertyList>
+								</Effect>
+							</Custom>
+						</Reference>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
 						</Reference>
@@ -13,7 +31,18 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<SwitchContainer Name="HeadlampOn_Off" ID="{0A6084EE-90AB-4734-8E9C-393F4C048C1C}" ShortID="323979181">
+						<RandomSequenceContainer Name="Headlamp intro + active loop" ID="{4300EB0E-87FC-4A27-99A8-74562D406A2F}" ShortID="451962083">
+							<PropertyList>
+								<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+								<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.5"/>
+								<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+								<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-25</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
@@ -23,17 +52,13 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<RandomSequenceContainer Name="HeadlampOn" ID="{C397DCF0-A0DA-45FF-B1AA-CDDABA32830E}" ShortID="146076120">
+								<RandomSequenceContainer Name="Headlamp active" ID="{89FBE316-CC79-452B-BEAA-54539C728D9E}" ShortID="278499004">
 									<PropertyList>
+										<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
 										<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
-										<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.4"/>
+										<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.5"/>
 										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
-										<Property Name="Volume" Type="Real64">
-											<ValueList>
-												<Value>-10</Value>
-											</ValueList>
-										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -44,10 +69,7 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<Sound Name="HeadlampFocus01" ID="{DDA03AF0-8328-4075-8651-5BF89BE0F5EC}" ShortID="779154436" Type="SoundFX">
-											<PropertyList>
-												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
-											</PropertyList>
+										<Sound Name="ElectricityBox" ID="{98872B1B-F30C-4CCC-A45E-D3D4C1E47C38}" ShortID="95994566" Type="SoundFX">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
@@ -57,48 +79,22 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="HeadlampFocus01" ID="{44995054-24D0-4D28-95DC-E289DF749F9E}" ShortID="868595799">
+												<AudioFileSource Name="ElectricityBox" ID="{EA0F7AE8-C48B-4B9E-9B2E-B6769C2840A7}" ShortID="853830410">
 													<Language>SFX</Language>
-													<AudioFile>HeadlampFocus01.wav</AudioFile>
+													<AudioFile>ElectricityBox.wav</AudioFile>
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="HeadlampFocus01" ID="{44995054-24D0-4D28-95DC-E289DF749F9E}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="NoiseIN01" ID="{9E14D3D6-43FA-4550-AD8F-250811C24EDD}" ShortID="357321102" Type="SoundFX">
-											<PropertyList>
-												<Property Name="Highpass" Type="int16">
-													<ValueList>
-														<Value>20</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="NoiseIN01" ID="{9D01743E-F170-4369-AE1C-580413DDC6DD}" ShortID="844345861">
-													<Language>SFX</Language>
-													<AudioFile>NoiseIN01.wav</AudioFile>
-												</AudioFileSource>
-											</ChildrenList>
-											<ActiveSourceList>
-												<ActiveSource Name="NoiseIN01" ID="{9D01743E-F170-4369-AE1C-580413DDC6DD}" Platform="Linked"/>
+												<ActiveSource Name="ElectricityBox" ID="{EA0F7AE8-C48B-4B9E-9B2E-B6769C2840A7}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
 									<Playlist>
-										<ItemRef Name="NoiseIN01" ID="{9E14D3D6-43FA-4550-AD8F-250811C24EDD}"/>
-										<ItemRef Name="HeadlampFocus01" ID="{DDA03AF0-8328-4075-8651-5BF89BE0F5EC}"/>
+										<ItemRef Name="ElectricityBox" ID="{98872B1B-F30C-4CCC-A45E-D3D4C1E47C38}"/>
+										<ItemRef Name="ElectricityBox" ID="{98872B1B-F30C-4CCC-A45E-D3D4C1E47C38}"/>
 									</Playlist>
 								</RandomSequenceContainer>
-								<Sound Name="NoiseOUT01" ID="{6FB57713-77F8-4A17-8E47-B20CA3304FA3}" ShortID="158180716" Type="SoundFX">
+								<Sound Name="ElectricityBox(intro½sec)" ID="{BE3B1769-190E-4D6F-AA3A-A90DD442825C}" ShortID="913660337" Type="SoundFX">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
@@ -108,43 +104,21 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="NoiseOUT01" ID="{D25F379F-810B-4A87-9846-C19CBD50F2BE}" ShortID="1016616754">
+										<AudioFileSource Name="ElectricityBox(intro½sec)" ID="{B7E73A92-800F-4A47-8D04-89E99FAADF97}" ShortID="417635021">
 											<Language>SFX</Language>
-											<AudioFile>NoiseOUT01.wav</AudioFile>
+											<AudioFile>ElectricityBox(intro½sec).wav</AudioFile>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="NoiseOUT01" ID="{D25F379F-810B-4A87-9846-C19CBD50F2BE}" Platform="Linked"/>
+										<ActiveSource Name="ElectricityBox(intro½sec)" ID="{B7E73A92-800F-4A47-8D04-89E99FAADF97}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
-							<GroupingInfo>
-								<GroupRef Name="HeadLampOn_Off" ID="{2066C19F-19CB-410B-B691-D434D31262D1}"/>
-								<DefaultSwitchRef Name="Off" ID="{0BCF7D13-4F39-47D5-8E8D-06D9338564AE}"/>
-								<GroupingBehaviorList>
-									<GroupingBehavior>
-										<ItemRef Name="NoiseOUT01" ID="{6FB57713-77F8-4A17-8E47-B20CA3304FA3}"/>
-									</GroupingBehavior>
-									<GroupingBehavior>
-										<ItemRef Name="HeadlampOn" ID="{C397DCF0-A0DA-45FF-B1AA-CDDABA32830E}"/>
-									</GroupingBehavior>
-								</GroupingBehaviorList>
-								<GroupingList>
-									<Grouping>
-										<SwitchRef Name="Off" ID="{0BCF7D13-4F39-47D5-8E8D-06D9338564AE}"/>
-										<ItemList>
-											<ItemRef Name="NoiseOUT01" ID="{6FB57713-77F8-4A17-8E47-B20CA3304FA3}"/>
-										</ItemList>
-									</Grouping>
-									<Grouping>
-										<SwitchRef Name="On" ID="{3B8D3E7A-9DC1-41A2-A94A-9753F5CBD851}"/>
-										<ItemList>
-											<ItemRef Name="HeadlampOn" ID="{C397DCF0-A0DA-45FF-B1AA-CDDABA32830E}"/>
-										</ItemList>
-									</Grouping>
-								</GroupingList>
-							</GroupingInfo>
-						</SwitchContainer>
+							<Playlist>
+								<ItemRef Name="ElectricityBox(intro½sec)" ID="{BE3B1769-190E-4D6F-AA3A-A90DD442825C}"/>
+								<ItemRef Name="Headlamp active" ID="{89FBE316-CC79-452B-BEAA-54539C728D9E}"/>
+							</Playlist>
+						</RandomSequenceContainer>
 					</ChildrenList>
 				</ActorMixer>
 			</ChildrenList>
