@@ -8,6 +8,7 @@ public class Mirror : Interactable {
 	public Trigger trigger;
 	public float startPoint; 
 	public float endPoint = 300; // Set this value to the rotation needed to complete the puzzle.
+	public float rotateSpeed = 0.5f;
 	public int turnAmount = 50; // How much it is turning.
     public InteractableButton ButtonToTrigger; // The target that the mirror has to hit.
 
@@ -74,7 +75,7 @@ public class Mirror : Interactable {
         float rotationalAngle = Vector3.Angle(targetDir, transform.forward);
 
         Quaternion end = Quaternion.LookRotation(targetDir, transform.up);                      //End position for the mirror to rotate to
-        StartCoroutine(rotateTowardsTarget(transform.rotation, end, 1f));                       //Starts the coroutine that moves the mirror
+        StartCoroutine(rotateTowardsTarget(transform.rotation, end, rotateSpeed));                       //Starts the coroutine that moves the mirror
         
     }
 
