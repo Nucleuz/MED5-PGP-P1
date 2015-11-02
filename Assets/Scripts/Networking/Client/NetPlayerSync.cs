@@ -32,10 +32,10 @@ public class NetPlayerSync : MonoBehaviour {
 	private Quaternion lastRotation;
 	private Vector3 lastPosition;
 
-	private float minDistanceMoved = .5f;
+	private float minDistanceMoved = .05f;
 
 	private float lastPositionTime = -1f;
-	private float lastRotationTime;
+	private float lastRotationTime = -1f;
 	
 	//network id for the object
 	public ushort networkID;
@@ -100,12 +100,12 @@ public class NetPlayerSync : MonoBehaviour {
                     	StopCoroutine(positionRoutine);
                     
                     if(lastPositionTime == -1f)
-                    	lastPositionTime = Time.time - .5f;
+                    	lastPositionTime = Time.time;
 
                     float interpolationLength = Time.time - lastPositionTime;
                     
 
-                   	if(interpolationLength > 0f){
+                   	if(interpolationLength > 0.05f){
                    		positionRoutine = InterpolatePosition(position,interpolationLength);
                     	StartCoroutine(positionRoutine);
                    	}
@@ -115,9 +115,16 @@ public class NetPlayerSync : MonoBehaviour {
                     Quaternion rotation = Deserializer.Quaternion((byte[])data);
                     if(rotationRoutine != null)
                     	StopCoroutine(rotationRoutine);
+
+                    if(lastPositionTime == -1f)
+                    	lastPositionTime = Time.time;
+                    	
+                    float interpolationLength = Time.time - lastPositionTime;
                     
-                    rotationRoutine = InterpolateRotation(rotation,Time.time - lastRotationTime);
-                    StartCoroutine(rotationRoutine);
+                   	if(interpolationLength > 0.05f){
+	                    rotationRoutine = InterpolateRotation(rotation,Time.time - lastRotationTime);
+	                    StartCoroutine(rotationRoutine);
+	                }
 				}
 				break;
 				case Network.Subject.VoiceChat:
