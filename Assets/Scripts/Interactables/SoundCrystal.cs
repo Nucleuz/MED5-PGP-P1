@@ -12,6 +12,9 @@ public class SoundCrystal : Interactable
 
     private Trigger trigger;
 
+    [Tooltip("First trigger will start the first sound sequence")]
+    public Trigger[] sequenceTriggers;
+
     // Use this for initialization
     void Start()
     {
@@ -22,9 +25,22 @@ public class SoundCrystal : Interactable
 
     void Update()
     {
-        if(!sequenceIsPlaying && trigger.isTriggered){
+        if(seqIndex >= 0 && seqIndex < sequenceTriggers.Length && !sequenceIsPlaying && trigger.isTriggered){
             sequenceRoutine = StartPlayingSequence();
             StartCoroutine(sequenceRoutine);
+        }
+
+        if(seqIndex >= - 1 && seqIndex < sequences.Length - 1 && sequenceTriggers[seqIndex + 1].isTriggered){
+            seqIndex++;
+            Debug.Log("seqIndex: "+ seqIndex);
+            if(sequenceRoutine != null){
+                sequenceIsPlaying = false;
+                StopCoroutine(sequenceRoutine);
+            }
+            if(!sequenceIsPlaying){
+                sequenceRoutine = StartPlayingSequence();
+                StartCoroutine(sequenceRoutine); 
+            }
         }
     }
 
@@ -36,23 +52,12 @@ public class SoundCrystal : Interactable
 
     public override void OnRayExit(){
     }
-
-    public void PlayerHitTriggerZone(){
-        seqIndex++;
-        if(sequenceRoutine != null){
-            sequenceIsPlaying = false;
-            StopCoroutine(sequenceRoutine);
-        }
-        if(!sequenceIsPlaying){
-            sequenceRoutine = StartPlayingSequence();
-            StartCoroutine(sequenceRoutine); 
-        }
-    }
     
     IEnumerator StartPlayingSequence(){
         sequenceIsPlaying = true;
         yield return new WaitForSeconds(2f);
         for(int i = 0; i < sequences[seqIndex].Length; i++){
+            Debug.Log("Sound crystal:" + i);
             switch(sequences[seqIndex][i]){
                 case 0:
                     SoundManager.Instance.PlayEvent("SP_PlayerButton1", gameObject);

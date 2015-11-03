@@ -11,6 +11,7 @@ public class Trigger : MonoBehaviour {
     public ushort triggerID;
 
     //which players are currently interacting
+    [HideInInspector]
     public bool[] playersInteracting = new bool[3];
 
     [HideInInspector]

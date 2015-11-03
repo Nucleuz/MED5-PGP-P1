@@ -128,6 +128,7 @@ using DarkRift;
                     break;
                     case Network.Subject.TriggerState:
                     {
+                        Debug.Log("TriggerState> " + (TriggerState)data);
                         SetTriggerState((TriggerState)data);
                     }
                     break;

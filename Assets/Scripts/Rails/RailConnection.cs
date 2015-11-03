@@ -7,7 +7,7 @@ public class RailConnection : MonoBehaviour {
 
 	public Rail nRail; 	//Reference to the connection points next rail point connection
 	public Rail pRail; 	//Reference to the connection points previous rail point connection
-
+	[HideInInspector]
 	public Rail self; 	//Reference to own rail script (to reduce GetComponent)
 
 	public bool connectToNext = false;

@@ -216,6 +216,7 @@ public class ClientManager : NetworkManager
 
 
         player.position = startRail.transform.position;
+        Vector3 viewDirection = startRail.next.transform.position - startRail.transform.position;
         player.GetComponent<Cart>().currentRail = startRail;
 
         //send it to everyone else

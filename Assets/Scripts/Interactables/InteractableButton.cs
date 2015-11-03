@@ -2,8 +2,12 @@
 using System.Collections;
 
 public class InteractableButton : Interactable{
+	[HideInInspector]
 	Animator buttonAnimator;
+	[HideInInspector]
 	Light buttonLight;
+	
+	[HideInInspector]
 	public ParticleSystem par;
 	public ParticleSystem placeHolder;
 	
@@ -14,6 +18,7 @@ public class InteractableButton : Interactable{
 	float lastInteractionTime = 0;
 	float activatedLength = 2.0f;
 	
+	[HideInInspector]
 	public Trigger trigger;
 
 	public Renderer[] rend;

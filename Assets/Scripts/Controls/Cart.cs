@@ -7,6 +7,8 @@ public class Cart : MonoBehaviour {
     public float movementSpeed = 1;        // Speed of animation (At full speed);
     public bool isMoving;
 
+    private float cheatySpeedMultiplier = 0.8f;
+
     private Vector3 startingPosition;   // Starting Position (In case of reset)
     private Rail startingRail;          // Starting Rail (In case of reset)
     private Animator minecartAnimator;  // Animator pointer for Minecart
@@ -23,12 +25,20 @@ public class Cart : MonoBehaviour {
     }
 
 	void Update(){
+        if(Input.GetKey(KeyCode.LeftShift)){
+            float h = Input.GetAxis("Horizontal");
+            float v = Input.GetAxis("Vertical");
+
+            transform.position += new Vector3(v*cheatySpeedMultiplier,0,-h*cheatySpeedMultiplier);
+            return;
+        }
+
 
         //This is specifically for elevator connection points where the cart has to move with the elevator
         if (currentRail.next == null && currentRail.prev == null){
-					transform.position = currentRail.transform.position + currentRail.transform.up;
-					return;
-				}
+			transform.position = currentRail.transform.position + currentRail.transform.up;
+			return;
+		}
 
         float verticalAxis = Input.GetAxis("Vertical");
         if (Mathf.Abs(verticalAxis) > 0.01f) {
@@ -65,6 +75,7 @@ public class Cart : MonoBehaviour {
 
             // Set new position using the currentStep and move that position just a tad up
             transform.position = Vector3.Lerp(currentRail.transform.position, railMoveTowards.transform.position, Mathf.Abs(currentStep)) + (currentRail.transform.up / 4)*2;
+            transform.rotation = Quaternion.Lerp(currentRail.transform.rotation, railMoveTowards.transform.rotation, Mathf.Abs(currentStep));
 
             // Check if the cart have reached a rail and set that rail to the current rail.
             if (currentStep >= 1)
