@@ -165,9 +165,15 @@ public class ServerManager : NetworkManager {
         }
 	}
 
+    public void ResetTriggers(){
+        //call clients and reset triggers
+    }
+
     public void TriggerChanged(Trigger trigger){
 
         TriggerState state = new TriggerState(trigger);
+        
+        Debug.Log("sending: " + state);
         
         //send to clients but not the sender
         SendToAll(Network.Tag.Trigger,Network.Subject.TriggerState,state);
@@ -191,7 +197,14 @@ public class ServerManager : NetworkManager {
     
     public override void OnLevelLoaded(int levelIndex){
         Debug.Log("Level " + levelIndex + " (name: " + levelHandler.levelOrder[levelIndex] + ") Loaded");
-        levelHandler.loadLevel(levelIndex + 1);
+
+        //set gamemanager if current level
+        if(levelHandler.levelManagerIndex == levelIndex && gameManager.LM == null)
+            gameManager.setNewLevelManager(levelHandler.levelContainers[levelHandler.levelManagerIndex].levelManager);
+
+        //load next level
+        if(levelIndex < levelHandler.levelOrder.Length)
+            levelHandler.loadLevel(levelIndex + 1);
     }
 
     private void SendToAll(byte tag, ushort subject, object data){

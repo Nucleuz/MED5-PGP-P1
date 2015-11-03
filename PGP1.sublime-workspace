@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"levelM",
+				"levelManagerIndex"
+			],
+			[
+				"set",
+				"setNewLevelManager"
+			],
+			[
+				"game",
+				"gamemanager"
+			],
+			[
+				"leve",
+				"levelIndex"
+			],
+			[
 				"time",
 				"lastInteractionTime"
 			],
@@ -32,10 +48,6 @@
 				"TriggerHandler"
 			],
 			[
-				"game",
-				"GameObject"
-			],
-			[
 				"gam",
 				"GameObject"
 			],
@@ -46,10 +58,6 @@
 			[
 				"Level",
 				"LevelManagerObject"
-			],
-			[
-				"leve",
-				"levelOrder"
 			],
 			[
 				"Con",
@@ -392,34 +400,42 @@
 	"buffers":
 	[
 		{
-			"file": "Assets/Scripts/Networking/TriggerHandler.cs",
+			"file": "Assets/Scripts/Interactables/ElevatorScript.cs",
 			"settings":
 			{
-				"buffer_size": 5712,
+				"buffer_size": 4709,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "Assets/Scripts/Networking/Server/ServerManager.cs",
+			"file": "Assets/Scripts/Interactables/InteractableButton.cs",
 			"settings":
 			{
-				"buffer_size": 7367,
+				"buffer_size": 3986,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "Assets/Scripts/Controls/HelmetLightScript.cs",
+			"file": "Assets/Scripts/Interactables/Mirror.cs",
 			"settings":
 			{
-				"buffer_size": 5108,
+				"buffer_size": 5141,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "Assets/Scripts/Trigger/GameManager.cs",
+			"file": "Assets/Plugins/DarkRift/EmbeddedServer/Server.cs",
 			"settings":
 			{
-				"buffer_size": 10174,
+				"buffer_size": 3987,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Interactables/Barricade.cs",
+			"settings":
+			{
+				"buffer_size": 1280,
 				"line_ending": "Unix"
 			}
 		},
@@ -427,15 +443,63 @@
 			"file": "Assets/Scripts/Trigger/Trigger.cs",
 			"settings":
 			{
-				"buffer_size": 1812,
+				"buffer_size": 1834,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "Assets/Scripts/Trigger/TriggerState.cs",
+			"file": "Assets/Scripts/Controls/HelmetLightScript.cs",
 			"settings":
 			{
-				"buffer_size": 938,
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Trigger/LevelManager.cs",
+			"settings":
+			{
+				"buffer_size": 2664,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Sound/SOUND_AnimationKeyComp.cs",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Interactables/LightFade.cs",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Interactables/SoundCrystal.cs",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Networking/Server/ServerManager.cs",
+			"settings":
+			{
+				"buffer_size": 7782,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Trigger/GameManager.cs",
+			"settings":
+			{
+				"buffer_size": 10141,
 				"line_ending": "Unix"
 			}
 		}
@@ -533,30 +597,45 @@
 	],
 	"file_history":
 	[
+		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Networking/LevelHandler.cs",
 		"/home/kaholi/Development/Games/Unity/PGP/Assets/Plugins/DarkRift/EmbeddedServer/Server.cs",
-		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Controls/HelmetLightScript.cs",
+		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Trigger/GameManager.cs",
 		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Interactables/Mirror.cs",
-		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/ProjectSpecific/GoodPracticesExample.cs",
-		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Networking/Client/NetPlayerSync.cs",
-		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Interactables/InteractableButton.cs",
+		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/SoundEmitter.cs",
+		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Interactables/SoundCrystal.cs",
+		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Sound/SOUND_AnimationKeyComp.cs",
+		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Sound/SOUND_GiantDoor.cs",
+		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Sound/SOUND_LegHit.cs",
+		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Sound/Ambience/AMB_CrystalSound.cs",
+		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Sound/Ambience/AMB_Pebbles.cs",
+		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Sound/Ambience/AMB_WaterDrops1.cs",
+		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Sound/Ambience/AMB_WaterDrops2.cs",
+		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Sound/Ambience/AmbientSound.cs",
+		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Sound/Ambience/SOUND_CarCrystal.cs",
+		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Trigger/TriggerState.cs",
 		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Trigger/Trigger.cs",
-		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Networking/Server/ServerManager.cs",
+		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Interactables/InteractableButton.cs",
 		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Networking/TriggerHandler.cs",
+		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Networking/Server/ServerManager.cs",
+		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Controls/HelmetLightScript.cs",
+		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Networking/Client/NetPlayerSync.cs",
+		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Networking/Client/ClientManager.cs",
+		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Interactables/ChargeableButtonScript.cs",
+		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Interactables/ElevatorScript.cs",
+		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Interactables/LightFade.cs",
+		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/DestroySound.cs",
+		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/ProjectSpecific/GoodPracticesExample.cs",
 		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Networking/LevelContainer.cs",
 		"/home/kaholi/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
 		"/home/kaholi/.config/sublime-text-3/Packages/User/ApplySyntax.sublime-settings",
 		"/home/kaholi/.config/sublime-text-3/Packages/ApplySyntax/ApplySyntax.sublime-settings",
 		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Interactables/Interactable.cs",
-		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Networking/Client/ClientManager.cs",
 		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Interactables/ElevatePlane.cs",
 		"/home/kaholi/Dropbox/AAU/5 Semester/CGP/InClass/lesson 7/NormalMapping/Assets/Phong.shader",
 		"/home/kaholi/Dropbox/AAU/5 Semester/CGP/InClass/lesson 7/DiffuseTexture/Assets/Phong.shader",
 		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Rails/RailConnection.cs",
-		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Networking/LevelHandler.cs",
-		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Trigger/GameManager.cs",
 		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Trigger/LevelEndedZone.cs",
 		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Debugging/Console.cs",
-		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Trigger/TriggerState.cs",
 		"/home/kaholi/Development/Games/Unity/PGP/Assets/Scripts/Networking/Network.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Plugins/DarkRift/DarkRift/Plugins/DarkRiftReceiver.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/SoundManager.cs",
@@ -645,22 +724,7 @@
 		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Plugins/DarkRift/EmbeddedServer/ReadMe.txt",
 		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Plugins/DarkRift/PlayerDemo/TagIndex.cs",
 		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Plugins/DarkRift/EmbeddedServer/EmbeddedCubeMove.cs",
-		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Scripts/Networking/ServerManager.cs",
-		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Scripts/Networking/ClientManager.cs",
-		"/home/kaholi/dev/games/unity/MiniJam/Assets/Scripts/VerticalCameraControl.cs",
-		"/home/kaholi/dev/games/unity/MiniJam/Assets/Scripts/Controller.cs",
-		"/home/kaholi/dev/games/unity/MiniJam/Assets/Scripts/Candy/CandyManager.cs",
-		"/home/kaholi/dev/games/unity/MiniJam/Assets/Scripts/RandomTexturePicker.cs",
-		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Scripts/Networking/NetPlayer.cs",
-		"/home/kaholi/MEGA/AAU/5 Semester/CGP/Homework/lesson 4/Homework4/Assets/Controller.cs",
-		"/home/kaholi/.config/sublime-text-3/Packages/WakaTime/WakaTime.sublime-settings",
-		"/home/kaholi/MEGA/AAU/5 Semester/CGP/Homework/lesson 3/Homework3/Assets/Diffuse.shader",
-		"/home/kaholi/dev/games/unity/Network_TEST/Assets/_SimpleMultiplayerKit/Scripts/GameManager/NetworkManager.cs",
-		"/home/kaholi/dev/games/unity/Network_TEST/Assets/_SimpleMultiplayerKit/Scripts/_Loader.cs",
-		"/home/kaholi/dev/games/unity/Network_TEST/Assets/_SimpleMultiplayerKit/Scripts/GameManager/ChatSystem.cs",
-		"/home/kaholi/.config/sublime-text-3/Packages/User/WakaTime.sublime-settings",
-		"/home/kaholi/dev/games/unity/MiniJam/Assets/Scripts/Candy/CandyBag2Increase.cs",
-		"/home/kaholi/dev/games/unity/MiniJam/Assets/Scripts/Candy/CandyBag.cs"
+		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Scripts/Networking/ServerManager.cs"
 	],
 	"find":
 	{
@@ -681,6 +745,15 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"gamemanager",
+			"gameManager.setNewLevelManager",
+			"PlayEvent",
+			"\n.",
+			".PlayEvent",
+			"Instance",
+			"//SoundManager\n.Instance",
+			"SoundManager",
+			"sound",
 			"trigger",
 			"TriggerActivate",
 			"TriggerInteracted",
@@ -799,16 +872,7 @@
 			".z",
 			"cos",
 			";\n",
-			"d.",
-			"texCoord",
-			" sin(_Time.z)/10 + 1",
-			"1",
-			"			   ",
-			"\n			   ",
-			"Vertex3",
-			" \n",
-			"s_BoostMaterial",
-			"public"
+			"d."
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -816,6 +880,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"//SoundManager.Instance\n",
+			"//SoundManager\n",
 			"}\n",
 			"int nextLineVertex",
 			"ref LineRenderer lineRenderer,ref int nextLineVertex",
@@ -826,7 +892,7 @@
 		"reverse": false,
 		"show_context": false,
 		"use_buffer2": false,
-		"whole_word": true,
+		"whole_word": false,
 		"wrap": true
 	},
 	"groups":
@@ -837,19 +903,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "Assets/Scripts/Networking/TriggerHandler.cs",
+					"file": "Assets/Scripts/Interactables/ElevatorScript.cs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5712,
+						"buffer_size": 4709,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4648,
-								4648
+								3125,
+								3125
 							]
 						],
 						"settings":
@@ -860,58 +926,57 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2462.0,
+						"translation.y": 871.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "Assets/Scripts/Networking/Server/ServerManager.cs",
+					"file": "Assets/Scripts/Interactables/InteractableButton.cs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7367,
+						"buffer_size": 3986,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7190,
-								7190
+								1778,
+								1778
 							]
 						],
 						"settings":
 						{
 							"apply_syntax_touched": true,
 							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3461.0,
+						"translation.y": 529.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "Assets/Scripts/Controls/HelmetLightScript.cs",
+					"file": "Assets/Scripts/Interactables/Mirror.cs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5108,
+						"buffer_size": 5141,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								2466,
+								2466
 							]
 						],
 						"settings":
@@ -922,38 +987,37 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1022.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "Assets/Scripts/Trigger/GameManager.cs",
+					"file": "Assets/Plugins/DarkRift/EmbeddedServer/Server.cs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10174,
+						"buffer_size": 3987,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2631,
-								2631
+								3928,
+								3928
 							]
 						],
 						"settings":
 						{
 							"apply_syntax_touched": true,
 							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2448.0,
+						"translation.y": 2516.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -961,11 +1025,160 @@
 				},
 				{
 					"buffer": 4,
+					"file": "Assets/Scripts/Interactables/Barricade.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1280,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								782,
+								782
+							]
+						],
+						"settings":
+						{
+							"apply_syntax_touched": true,
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
 					"file": "Assets/Scripts/Trigger/Trigger.cs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1812,
+						"buffer_size": 1834,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								328,
+								328
+							]
+						],
+						"settings":
+						{
+							"apply_syntax_touched": true,
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "Assets/Scripts/Controls/HelmetLightScript.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"apply_syntax_touched": true,
+							"syntax": "Packages/C#/C#.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "Assets/Scripts/Trigger/LevelManager.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2664,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2573,
+								2573
+							]
+						],
+						"settings":
+						{
+							"apply_syntax_touched": true,
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "Assets/Scripts/Sound/SOUND_AnimationKeyComp.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"apply_syntax_touched": true,
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "Assets/Scripts/Interactables/LightFade.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
 						"regions":
 						{
 						},
@@ -984,33 +1197,33 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 270.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "Assets/Scripts/Trigger/TriggerState.cs",
+					"buffer": 10,
+					"file": "Assets/Scripts/Interactables/SoundCrystal.cs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 938,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								776,
-								776
+								0,
+								0
 							]
 						],
 						"settings":
 						{
 							"apply_syntax_touched": true,
-							"syntax": "Packages/C#/C#.tmLanguage",
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
@@ -1018,7 +1231,69 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "Assets/Scripts/Networking/Server/ServerManager.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7782,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6187,
+								6187
+							]
+						],
+						"settings":
+						{
+							"apply_syntax_touched": true,
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3146.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "Assets/Scripts/Trigger/GameManager.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10141,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2516,
+								2516
+							]
+						],
+						"settings":
+						{
+							"apply_syntax_touched": true,
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 810.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -1081,16 +1356,44 @@
 		"selected_items":
 		[
 			[
-				"hel",
-				"Controls/HelmetLightScript.cs"
+				"game",
+				"Trigger/GameManager.cs"
 			],
 			[
-				"gamem",
-				"Trigger/GameManager.cs"
+				"leve",
+				"Networking/LevelHandler.cs"
+			],
+			[
+				"levelhan",
+				"Networking/LevelHandler.cs"
 			],
 			[
 				"server",
 				"Networking/Server/ServerManager.cs"
+			],
+			[
+				"levelha",
+				"Networking/LevelHandler.cs"
+			],
+			[
+				"hel",
+				"Controls/HelmetLightScript.cs"
+			],
+			[
+				"trigger",
+				"Trigger/Trigger.cs"
+			],
+			[
+				"levelm",
+				"Trigger/LevelManager.cs"
+			],
+			[
+				"gama",
+				"Trigger/GameManager.cs"
+			],
+			[
+				"gamem",
+				"Trigger/GameManager.cs"
 			],
 			[
 				"triggerha",
@@ -1110,10 +1413,6 @@
 			],
 			[
 				"trigg",
-				"Trigger/Trigger.cs"
-			],
-			[
-				"trigger",
 				"Trigger/Trigger.cs"
 			],
 			[

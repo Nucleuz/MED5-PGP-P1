@@ -739,8 +739,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  NextRail: {fileID: 0}
-  PreviousRail: {fileID: 0}
+  next: {fileID: 0}
+  prev: {fileID: 0}
   railPoint: {fileID: 405875589}
 --- !u!23 &405875592
 MeshRenderer:
@@ -955,8 +955,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  NextRail: {fileID: 0}
-  PreviousRail: {fileID: 0}
+  next: {fileID: 0}
+  prev: {fileID: 0}
   railPoint: {fileID: 613858792}
 --- !u!4 &613858794
 Transform:
@@ -2085,8 +2085,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  NextRail: {fileID: 0}
-  PreviousRail: {fileID: 0}
+  next: {fileID: 0}
+  prev: {fileID: 0}
   railPoint: {fileID: 1800081550}
 --- !u!23 &1800081553
 MeshRenderer:
@@ -2320,11 +2320,11 @@ Prefab:
       objectReference: {fileID: 1800081552}
     - target: {fileID: 11415694, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
       propertyPath: redPlayerRequired
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11415694, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
       propertyPath: bluePlayerRequired
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
