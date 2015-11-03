@@ -4,52 +4,68 @@
 		"selected_items":
 		[
 			[
-				"last",
-				"lastPositionTime"
+				"seq",
+				"sequenceIsPlaying"
+			],
+			[
+				"Seq",
+				"SequencePlay"
+			],
+			[
+				"Start",
+				"StartCoroutine"
+			],
+			[
+				"Play",
+				"PlaySequence"
 			],
 			[
 				"las",
-				"lastPositionTime"
-			],
-			[
-				"interpo",
-				"interpolationLength"
-			],
-			[
-				"int",
-				"interpolationLength"
-			],
-			[
-				"laspt",
-				"lastPositionTime"
-			],
-			[
-				"new",
-				"newPosition"
-			],
-			[
-				"pos",
-				"newPosition"
-			],
-			[
-				"Inter",
-				"interpolatePosition"
-			],
-			[
-				"start",
-				"startPosition"
-			],
-			[
-				"spot",
-				"spotlightAnimationLength"
-			],
-			[
-				"Light",
-				"LightUpdate"
+				"lastRotationTime"
 			],
 			[
 				"other",
 				"otherPlayers"
+			],
+			[
+				"netPl",
+				"NetPlayerSync"
+			],
+			[
+				"la",
+				"lastObjectHit"
+			],
+			[
+				"De",
+				"Debug"
+			],
+			[
+				"cam",
+				"camera"
+			],
+			[
+				"ligh",
+				"nonFocusedLightShaft"
+			],
+			[
+				"end",
+				"endAnimationTime"
+			],
+			[
+				"playe",
+				"playerIndex"
+			],
+			[
+				"netW",
+				"networkID"
+			],
+			[
+				"serverLeve",
+				"serverLevelIndex"
+			],
+			[
+				"networ",
+				"networkID"
 			],
 			[
 				"game",
@@ -120,6 +136,10 @@
 				"audioSource"
 			],
 			[
+				"int",
+				"interactable"
+			],
+			[
 				"ob",
 				"objectHit"
 			],
@@ -150,6 +170,10 @@
 			[
 				"client",
 				"clientID"
+			],
+			[
+				"new",
+				"newestPos"
 			],
 			[
 				"enem",
@@ -408,25 +432,68 @@
 	"buffers":
 	[
 		{
+			"file": "Assets/Scripts/Trigger/GameManager.cs",
+			"settings":
+			{
+				"buffer_size": 7972,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Trigger/LevelManager.cs",
+			"settings":
+			{
+				"buffer_size": 2675,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Controls/HelmetLightScript.cs",
+			"settings":
+			{
+				"buffer_size": 5315,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Interactables/SoundCrystal.cs",
+			"settings":
+			{
+				"buffer_size": 2277,
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "Assets/Scripts/Networking/Client/NetPlayerSync.cs",
 			"settings":
 			{
-				"buffer_size": 6157,
+				"buffer_size": 6712,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Trigger/LevelEndedZone.cs",
+			"settings":
+			{
+				"buffer_size": 362,
 				"line_ending": "Windows"
 			}
 		}
 	],
 	"build_system": "",
-	"build_system_choices":
-	[
-	],
-	"build_varint": "",
 	"command_palette":
 	{
 		"height": 104.0,
-		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
 			[
 				"install",
 				"Package Control: Install Package"
@@ -474,21 +541,13 @@
 			[
 				"remove",
 				"Package Control: Remove Package"
-			],
-			[
-				"inst",
-				"Package Control: Install Package"
 			]
 		],
 		"width": 400.0
 	},
 	"console":
 	{
-		"height": 569.0,
-		"history":
-		[
-			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
-		]
+		"height": 569.0
 	},
 	"distraction_free":
 	{
@@ -499,43 +558,49 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
-	"expanded_folders":
-	[
-		"/C/Users/PGP1 Desktop 2/Desktop/PGP_Networking/Assets/Scripts"
-	],
 	"file_history":
 	[
-		"/C/Users/PGP1 Desktop 2/Desktop/PGP_Networking/Assets/Scripts/Networking/Network.cs",
-		"/C/Users/PGP1 Desktop 2/Desktop/PGP_Networking/Assets/Scripts/Controls/HelmetLightScript.cs",
-		"/C/Users/PGP1 Desktop 2/Desktop/PGP_Networking/Assets/Scripts/Networking/Client/NetPlayerSync.cs",
-		"/C/Users/PGP1 Desktop 2/Desktop/PGP_Networking/Assets/Scripts/Networking/Client/ClientManager.cs",
-		"/C/Users/PGP1 Desktop 2/Desktop/PGP_Networking/Assets/Scripts/Interactables/Interactable.cs",
-		"/C/Users/PGP1 Desktop 2/Desktop/PGP_Networking/Assets/Scripts/Interactables/ChargeableButtonScript.cs",
-		"/C/Users/PGP1 Desktop 2/Desktop/PGP_Networking/Assets/Scripts/Interactables/ChargeableLightSource.cs",
-		"/C/Users/PGP1 Desktop 2/Desktop/PGP_Networking/Assets/LightBeam/LightShafts.Resources.cs",
-		"/C/Users/PGP1 Desktop 2/Desktop/PGP_Networking/Assets/LightBeam/LightShafts.Utils.cs",
-		"/C/Users/PGP1 Desktop 2/Desktop/PGP_Networking/Assets/LightBeam/LightShafts.cs",
-		"/C/Users/PGP1 Desktop 2/Desktop/PGP_Networking/Assets/Scripts/Networking/Server/ServerManager.cs",
-		"/C/Users/PGP1 Desktop 2/Desktop/PGP_Networking/Assets/Scripts/Interactables/InteractableButton.cs",
-		"/C/Users/PGP1 Desktop 2/Desktop/PGP_Networking/Assets/Scripts/Interactables/Mirror.cs",
-		"/C/Users/PGP1 Desktop 2/Desktop/PGP_Networking/Assets/Scripts/Interactables/SoundCrystal.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Plugins/DarkRift/DarkRift/Plugins/DarkRiftReceiver.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/SoundTriggerZone.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/SoundManager.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/Barricade.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/LightFade.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Controls/HelmetLightNonFocused.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Controls/Cart.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/InteractableButton.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/Trigger.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Controls/HelmetLightScript.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/Client/ClientManager.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/Interactable.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/TriggerHandler.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/LevelManager.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/Client/NetPlayerSync.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/ChargeableButtonScript.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/ChargeableLightSource.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/Mirror.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/SoundCrystal.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/ElevatorScript.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/LightBeam/LightShafts.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/LightBeam/LightShafts.Resources.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/LevelHandler.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/Server/ServerManager.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/LevelManager.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/GameManager.cs",
+		"/C/Users/Andreas/Desktop/CGP 5th semester/DiffuseTexture/Assets/Phong.shader",
+		"/C/Users/Andreas/Desktop/CGP 5th semester/Homework6/Assets/Xray.shader",
+		"/C/Users/Andreas/Desktop/PGP/PGP1.sublime-project",
+		"/C/Users/Andreas/AppData/Roaming/Sublime Text 2/Packages/User/ApplySyntax.sublime-settings",
+		"/C/Users/Andreas/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Andreas/Desktop/PGP/Assembly-CSharp.csproj",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/AnimationTrigger.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Rails/RailConnection.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/Barricade.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Rails/ConnectAfterAnimation.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Extensions.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/Network.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Wwise/Editor/WwiseWindows/AkWwiseWWUBuilder.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Plugins/DarkRift/DarkRift/Plugins/DarkRiftReceiver.cs",
 		"/C/Users/Andreas/Desktop/UnityReflRefr/Assets/Scripts/PenControllerRefraction.cs",
 		"/C/Users/Andreas/Desktop/UnityReflRefr/Assets/Scripts/PenControllerReflection.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/Client/NetPlayerSync.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Plugins/DarkRift/EmbeddedServer/Server.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/ChargeableButtonScript.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/ElevatePlane.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/Trigger.cs",
-		"/C/Users/Andreas/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/LevelManager_new.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/GameManage_Localr.cs",
 		"/home/kaholi/.config/sublime-text-3/Packages/OmniSharp/Default.sublime-keymap",
@@ -547,11 +612,9 @@
 		"/home/kaholi/MEGA/AAU/5 Semester/CGP/InClass/lesson 6/DiffuseReflection/Assets/SimpleLighting.shader",
 		"/home/kaholi/MEGA/AAU/5 Semester/CGP/Homework/lesson 4/Homework4/Assets/Shooter.shader",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/HeadControl.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/TriggerHandler.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Cart.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/MicrophoneSender.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/ExtensionMethods.cs",
-		"/C/Users/Andreas/Desktop/PGP/PGP1.sublime-project",
 		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Scripts/Extensions.cs",
 		"/home/kaholi/.local/share/unity3d/Trash/Extensions.cs",
 		"/home/kaholi/dev/games/unity/SpaceBase/Assets/Scripts/Extensions.cs",
@@ -624,15 +687,7 @@
 		"/home/kaholi/dev/games/unity/MiniJam/Assets/Scripts/Candy/CandyBag2Increase.cs",
 		"/home/kaholi/dev/games/unity/MiniJam/Assets/Scripts/Candy/CandyBag.cs",
 		"/home/kaholi/dev/games/unity/MiniJam/Assets/Scripts/Monster/MonsterSpawner.cs",
-		"/home/kaholi/dev/games/unity/MiniJam/Assets/Scripts/lollipop.cs",
-		"/home/kaholi/dev/games/unity/MiniJam/Assets/Standard Assets/Characters/ThirdPersonCharacter/Scripts/AICharacterControl.cs",
-		"/home/kaholi/dev/games/unity/MiniJam/Assets/Scripts/Monster/MonsterAI.cs",
-		"/home/kaholi/dev/games/unity/MiniJam/Assets/Scripts/PickupSpawner.cs",
-		"/home/kaholi/dev/games/unity/MiniJam/Assets/Scripts/Player/PlayerPickup.cs",
-		"/home/kaholi/dev/games/unity/MiniJam/Assets/Scripts/CandyProjectile.cs",
-		"/home/kaholi/dev/games/unity/MiniJam/Assets/Scripts/CandyManager.cs",
-		"/home/kaholi/MEGA/AAU/5 Semester/CGP/Homework/lesson 3/Homework3/Assets/IE.cs",
-		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Scripts/Script.cs"
+		"/home/kaholi/dev/games/unity/MiniJam/Assets/Scripts/lollipop.cs"
 	],
 	"find":
 	{
@@ -653,33 +708,45 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"last",
-			"Position",
-			"interPositionTime",
-			"Position",
-			"lastPosition",
-			"startPosition",
+			"int",
+			"}\n",
+			"} ",
+			"currentIn",
+			"isLightCrystalLightReset",
 			"lastPositionTime",
-			"transform",
-			"position",
-			"Position",
-			"position",
-			"Position",
-			"position",
-			"Position",
-			"\n	",
-			"public",
-			"t",
-			"lineRenderer",
-			"LineRenderer",
-			"lineRenderer",
+			"nonFocusedLightShaft",
+			"    	\n",
+			"isTriggered",
 			"OnRayEnter",
-			"lineRenderer",
-			"LineRenderer",
-			"lineRenderer",
-			"fadeTime",
-			"startTime",
-			"timeSaved",
+			"lastHitObject",
+			"OnRayReceived",
+			"objectHit",
+			"Instantiate",
+			"resetTriggers",
+			"reset",
+			"isReadyToBeTriggered",
+			" as Camera",
+			"LightShaft",
+			"objPos",
+			"rC",
+			"\");\n",
+			"Debug.Log",
+			"                    \n",
+			"levelManagerIndex",
+			"loadingIndex",
+			"player",
+			"Player",
+			"player",
+			"Player",
+			"player",
+			"Player",
+			"player",
+			"Player",
+			"player",
+			"Player",
+			"player",
+			"networkID",
+			"    public ushort networkID = 0;\n",
 			"refRatio",
 			"hL",
 			"Reflect",
@@ -768,19 +835,7 @@
 			".y",
 			"1.0",
 			"scroll",
-			"random",
-			"next",
-			".z",
-			"cos",
-			";\n",
-			"d.",
-			"texCoord",
-			" sin(_Time.z)/10 + 1",
-			"1",
-			"			   ",
-			"\n			   ",
-			"Vertex3",
-			" \n"
+			"random"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -788,6 +843,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"OnRayEnter",
 			"}\n",
 			"int nextLineVertex",
 			"ref LineRenderer lineRenderer,ref int nextLineVertex",
@@ -804,16 +860,43 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "Assets/Scripts/Networking/Client/NetPlayerSync.cs",
-					"semi_transient": false,
+					"file": "Assets/Scripts/Trigger/GameManager.cs",
 					"settings":
 					{
-						"buffer_size": 6157,
+						"buffer_size": 7972,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5039,
+								5039
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1026.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Assets/Scripts/Trigger/LevelManager.cs",
+					"settings":
+					{
+						"buffer_size": 2675,
 						"regions":
 						{
 						},
@@ -826,13 +909,121 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/C#/C#.tmLanguage"
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2595.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Assets/Scripts/Controls/HelmetLightScript.cs",
+					"settings":
+					{
+						"buffer_size": 5315,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5315,
+								5315
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "Assets/Scripts/Interactables/SoundCrystal.cs",
+					"settings":
+					{
+						"buffer_size": 2277,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1012,
+								1012
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 378.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "Assets/Scripts/Networking/Client/NetPlayerSync.cs",
+					"settings":
+					{
+						"buffer_size": 6712,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1160,
+								1160
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 492.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "Assets/Scripts/Trigger/LevelEndedZone.cs",
+					"settings":
+					{
+						"buffer_size": 362,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								362
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
 					"type": "text"
 				}
 			]
@@ -881,8 +1072,6 @@
 	{
 		"height": 241.0
 	},
-	"pinned_build_system": "",
-	"project": "PGP1.sublime-project",
 	"replace":
 	{
 		"height": 42.0
@@ -891,36 +1080,91 @@
 	"select_file":
 	{
 		"height": 0.0,
-		"last_filter": "",
 		"selected_items":
 		[
 			[
-				"netpaly",
-				"Networking\\Client\\NetPlayerSync.cs"
+				"zone",
+				"Trigger/LevelEndedZone.cs"
 			],
 			[
-				"netoiw",
-				"Networking\\Network.cs"
+				"soundmaa",
+				"SoundManager.cs"
 			],
 			[
-				"netwo",
-				"Networking\\Network.cs"
+				"helm",
+				"Controls/HelmetLightScript.cs"
+			],
+			[
+				"level",
+				"Trigger/LevelManager.cs"
+			],
+			[
+				"cl",
+				"Networking/Client/ClientManager.cs"
 			],
 			[
 				"net",
-				"Networking\\Network.cs"
+				"Networking/Client/NetPlayerSync.cs"
 			],
 			[
-				"netplay",
-				"Networking\\Client\\NetPlayerSync.cs"
+				"leve",
+				"Trigger/LevelManager.cs"
 			],
 			[
-				"hel",
-				"Controls\\HelmetLightScript.cs"
+				"trigg",
+				"Networking/TriggerHandler.cs"
 			],
 			[
-				"intere",
-				"Interactables\\InteractableButton.cs"
+				"inter",
+				"Interactables/Interactable.cs"
+			],
+			[
+				"cli",
+				"Networking/Client/ClientManager.cs"
+			],
+			[
+				"game",
+				"Trigger/GameManager.cs"
+			],
+			[
+				"tr",
+				"Trigger/Trigger.cs"
+			],
+			[
+				"trig",
+				"Networking/TriggerHandler.cs"
+			],
+			[
+				"server",
+				"Networking/Server/ServerManager.cs"
+			],
+			[
+				"clie",
+				"Networking/Client/ClientManager.cs"
+			],
+			[
+				"netpla",
+				"Networking/Client/NetPlayerSync.cs"
+			],
+			[
+				"clien",
+				"Networking/Client/ClientManager.cs"
+			],
+			[
+				"exte",
+				"Extensions.cs"
+			],
+			[
+				"networ",
+				"Networking/Network.cs"
+			],
+			[
+				"clientma",
+				"Networking/Client/ClientManager.cs"
+			],
+			[
+				"levelhand",
+				"Networking/LevelHandler.cs"
 			],
 			[
 				"netsyn",
@@ -932,32 +1176,19 @@
 	"select_project":
 	{
 		"height": 500.0,
-		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"",
+				"/C/Users/Andreas/Desktop/PGP/PGP.sublime-project"
+			]
 		],
 		"width": 380.0
-	},
-	"select_symbol":
-	{
-		"height": 0.0,
-		"last_filter": "",
-		"selected_items":
-		[
-		],
-		"width": 0.0
-	},
-	"selected_group": 0,
-	"settings":
-	{
 	},
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": false,
+	"side_bar_visible": true,
 	"side_bar_width": 237.0,
-	"status_bar_visible": true,
-	"template_settings":
-	{
-	}
+	"status_bar_visible": true
 }

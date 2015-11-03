@@ -3,44 +3,50 @@ using System.Collections;
 
 public class SoundCrystal : Interactable
 {
-    // Reference to Game Manager, so that SoundCrystal can know when a sequence is done.
-    
-    public Trigger[] buttons;
-
-    public LevelManager LM;
-
     private byte[][] sequences = new byte[2][];
     public  short seqIndex = -1;
     
     public bool sequenceIsPlaying = false;
+
+    private IEnumerator sequenceRoutine;
+
+    private Trigger trigger;
 
     // Use this for initialization
     void Start()
     {
         sequences[0] = new byte[3] {0,2,1};
         sequences[1] = new byte[6] {1,0,1,2,1,2};
+        trigger = GetComponent<Trigger>();
     }
 
     void Update()
     {
+        if(!sequenceIsPlaying && trigger.isTriggered){
+            sequenceRoutine = StartPlayingSequence();
+            StartCoroutine(sequenceRoutine);
+        }
     }
 
     public override void OnRayEnter(int playerIndex, Ray ray, RaycastHit hit){
-        if(!sequenceIsPlaying)
-		    StartCoroutine(StartPlayingSequence());
+        if(!sequenceIsPlaying){
+            trigger.Activate();
+        }
 	}
 
-    public override void OnRayExit(){}
-
-    public void reset(){
-        if(!sequenceIsPlaying)
-        StartCoroutine(StartPlayingSequence());
+    public override void OnRayExit(){
     }
 
     public void PlayerHitTriggerZone(){
         seqIndex++;
-        if(!sequenceIsPlaying)
-        StartCoroutine(StartPlayingSequence()); 
+        if(sequenceRoutine != null){
+            sequenceIsPlaying = false;
+            StopCoroutine(sequenceRoutine);
+        }
+        if(!sequenceIsPlaying){
+            sequenceRoutine = StartPlayingSequence();
+            StartCoroutine(sequenceRoutine); 
+        }
     }
     
     IEnumerator StartPlayingSequence(){
@@ -78,6 +84,8 @@ public class SoundCrystal : Interactable
             }
             yield return new WaitForSeconds(1f);
         }
+        trigger.isTriggered = false;
+        trigger.isReadyToBeTriggered = true;
         sequenceIsPlaying = false;
     }
 }

@@ -42731,6 +42731,7 @@ GameObject:
   - 95: {fileID: 2103256649}
   - 65: {fileID: 2103256648}
   - 114: {fileID: 2103256647}
+  - 114: {fileID: 2103256650}
   m_Layer: 0
   m_Name: SoundCrystal
   m_TagString: Untagged
@@ -42777,8 +42778,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d34a4a44363e042812b588eea9a783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttons: []
-  LM: {fileID: 988404968}
   seqIndex: -1
   sequenceIsPlaying: 0
 --- !u!65 &2103256648
@@ -42812,6 +42811,26 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &2103256650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2103256645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57f8bf624c4748748a66e6f53c5aacba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTriggered: 0
+  isReadyToBeTriggered: 1
+  canReset: 0
+  triggerID: 0
+  playersInteracting: 000000
+  playersRequired: 0
+  bluePlayerRequired: 0
+  redPlayerRequired: 0
+  greenPlayerRequired: 0
 --- !u!4 &2104624967 stripped
 Transform:
   m_PrefabParentObject: {fileID: 413816, guid: 3bf311a25639a401daa6f3a73daa1893, type: 2}

@@ -1185,6 +1185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentRail: {fileID: 0}
   movementSpeed: 10
+  isMoving: 0
 --- !u!95 &498624810
 Animator:
   serializedVersion: 3
@@ -3178,7 +3179,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 11493670, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
       propertyPath: levelOrder.Array.size
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 483922, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
       propertyPath: m_LocalPosition.x
@@ -3218,11 +3219,11 @@ Prefab:
       objectReference: {fileID: 2127616520}
     - target: {fileID: 11493670, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
       propertyPath: levelOrder.Array.data[0]
-      value: Level 1
+      value: SoundLevel
       objectReference: {fileID: 0}
     - target: {fileID: 11493670, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
       propertyPath: levelOrder.Array.data[1]
-      value: Level 2
+      value: SoundLevel
       objectReference: {fileID: 0}
     - target: {fileID: 11493670, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
       propertyPath: levelOrder.Array.data[2]
