@@ -1529,6 +1529,21 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 414840, guid: 678b721c936619549909799cbe87108e, type: 2}
   m_PrefabInternal: {fileID: 364670332}
+<<<<<<< HEAD
+=======
+--- !u!4 &366171803
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 496952, guid: 5f77ee7e2ca8f68408988354554068eb, type: 2}
+  m_PrefabInternal: {fileID: 1369435140}
+  m_GameObject: {fileID: 1765274036}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 876391053}
+  m_RootOrder: 0
+>>>>>>> origin/PreUsabilityTestFixes
 --- !u!1001 &377363396
 Prefab:
   m_ObjectHideFlags: 0
@@ -3478,6 +3493,34 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 414840, guid: 678b721c936619549909799cbe87108e, type: 2}
   m_PrefabInternal: {fileID: 845210237}
+--- !u!1 &876391052
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 1369435140}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 876391053}
+  m_Layer: 0
+  m_Name: Missing Prefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &876391053
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 1369435140}
+  m_GameObject: {fileID: 876391052}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 366171803}
+  m_Father: {fileID: 1511578397}
+  m_RootOrder: 1
 --- !u!1 &911091194
 GameObject:
   m_ObjectHideFlags: 0
@@ -4584,6 +4627,14 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11449746, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
+      propertyPath: currentRail
+      value: 
+      objectReference: {fileID: 482817204}
+    - target: {fileID: 11449746, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
+      propertyPath: movementSpeed
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8145124, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
@@ -4908,7 +4959,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11403774, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
       propertyPath: spawnRailPoint
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11403774, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
       propertyPath: NextRail
@@ -4922,6 +4973,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: .707106829
       objectReference: {fileID: 0}
+    - target: {fileID: 11403774, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
+      propertyPath: next
+      value: 
+      objectReference: {fileID: 46307398}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
   m_IsPrefabParent: 0
@@ -5991,6 +6046,10 @@ Transform:
   m_Children:
   - {fileID: 538719190}
   - {fileID: 1486423390}
+<<<<<<< HEAD
+=======
+  - {fileID: 876391053}
+>>>>>>> origin/PreUsabilityTestFixes
   - {fileID: 381515845}
   m_Father: {fileID: 0}
   m_RootOrder: 12
@@ -6863,6 +6922,21 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 198798816}
   m_Script: {fileID: 11500000, guid: 57f8bf624c4748748a66e6f53c5aacba, type: 3}
+--- !u!1 &1765274036
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 1369435140}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 366171803}
+  m_Layer: 0
+  m_Name: Missing Prefab (Dummy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1001 &1767558034
 Prefab:
   m_ObjectHideFlags: 0
@@ -7587,7 +7661,11 @@ MonoBehaviour:
   rName: railPoint
   spawnRailPoint: 0
   next: {fileID: 0}
+<<<<<<< HEAD
   prev: {fileID: 0}
+=======
+  prev: {fileID: 46307398}
+>>>>>>> origin/PreUsabilityTestFixes
   railPoint: {fileID: 1945624871}
 --- !u!4 &1945624873
 Transform:
@@ -8017,6 +8095,18 @@ Prefab:
     - target: {fileID: 174738, guid: 6b51f68b61740074b921684716c1e935, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11465930, guid: 6b51f68b61740074b921684716c1e935, type: 2}
+      propertyPath: currentRail
+      value: 
+      objectReference: {fileID: 482817204}
+    - target: {fileID: 11465930, guid: 6b51f68b61740074b921684716c1e935, type: 2}
+      propertyPath: movementSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11433986, guid: 6b51f68b61740074b921684716c1e935, type: 2}
+      propertyPath: playerIndex
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b51f68b61740074b921684716c1e935, type: 2}
