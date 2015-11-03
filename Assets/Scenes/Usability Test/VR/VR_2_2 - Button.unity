@@ -8643,7 +8643,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 150028, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11449746, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
       propertyPath: movementSpeed
@@ -8653,6 +8653,10 @@ Prefab:
       propertyPath: m_Range
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 11449746, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
+      propertyPath: currentRail
+      value: 
+      objectReference: {fileID: 482817204}
     m_RemovedComponents:
     - {fileID: 8145124, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
@@ -11692,7 +11696,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 174738, guid: 6b51f68b61740074b921684716c1e935, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 463068, guid: 6b51f68b61740074b921684716c1e935, type: 2}
       propertyPath: m_LocalScale.x
