@@ -595,11 +595,6 @@
 								<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
 								<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 								<Property Name="RandomOrSequence" Type="int16" Value="0"/>
-								<Property Name="Volume" Type="Real64">
-									<ValueList>
-										<Value>5</Value>
-									</ValueList>
-								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -730,11 +725,6 @@
 								<Value>True</Value>
 							</ValueList>
 						</Property>
-						<Property Name="Volume" Type="Real64">
-							<ValueList>
-								<Value>5</Value>
-							</ValueList>
-						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="AttachableMixerInput">
@@ -789,8 +779,43 @@
 								<ActiveSource Name="DoorSlideLoop" ID="{EB10F19B-CFCF-490A-ADDB-CE1E378807DC}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
+						<Sound Name="DoorOpen" ID="{69B73F3B-06AB-400F-B88A-0189D5D5C61B}" ShortID="989976940" Type="SoundFX">
+							<PropertyList>
+								<Property Name="Lowpass" Type="int16">
+									<ValueList>
+										<Value>40</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-5</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="DoorOpen" ID="{1127708B-9BCB-4C0B-A8FD-60C25EC2CFEA}" ShortID="622065201">
+									<PropertyList>
+										<Property Name="FadeOutDuration" Type="Real64" Value="4.67620262390669E-02"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>DoorOpen.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="DoorOpen" ID="{1127708B-9BCB-4C0B-A8FD-60C25EC2CFEA}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
 					</ChildrenList>
 					<Playlist>
+						<ItemRef Name="DoorOpen" ID="{69B73F3B-06AB-400F-B88A-0189D5D5C61B}"/>
 						<ItemRef Name="DoorSlideLoop" ID="{0DE74480-FD3E-445D-AA3C-6C6AE9489464}"/>
 					</Playlist>
 				</RandomSequenceContainer>
@@ -885,13 +910,17 @@
 				</ActorMixer>
 				<ActorMixer Name="Elevator" ID="{B5D3CDA4-54A4-4420-BBD6-E26DCADE27A9}" ShortID="277930161">
 					<PropertyList>
-						<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
 						<Property Name="MaxSoundPerInstance" Type="int16">
 							<ValueList>
 								<Value>1</Value>
 							</ValueList>
 						</Property>
 						<Property Name="PositioningType" Type="int16" Value="1"/>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
 								<Value>-8</Value>
@@ -1642,6 +1671,11 @@
 							</ValueList>
 						</Property>
 						<Property Name="PositioningType" Type="int16" Value="1"/>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="AttachableMixerInput">

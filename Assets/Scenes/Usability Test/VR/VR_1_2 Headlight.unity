@@ -290,8 +290,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  NextRail: {fileID: 1945624872}
-  PreviousRail: {fileID: 482817204}
+  next: {fileID: 0}
+  prev: {fileID: 0}
   railPoint: {fileID: 46307397}
 --- !u!4 &46307399
 Transform:
@@ -1529,10 +1529,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 414840, guid: 678b721c936619549909799cbe87108e, type: 2}
   m_PrefabInternal: {fileID: 364670332}
---- !u!4 &366171803 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 496952, guid: 5f77ee7e2ca8f68408988354554068eb, type: 2}
-  m_PrefabInternal: {fileID: 1369435140}
 --- !u!1001 &377363396
 Prefab:
   m_ObjectHideFlags: 0
@@ -1990,7 +1986,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 447884, guid: aa33ea68a7eb97d4ab27b9e360c4af2b, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aa33ea68a7eb97d4ab27b9e360c4af2b, type: 2}
@@ -2175,6 +2171,52 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 7843837}
   m_Script: {fileID: 11500000, guid: 926d1a3606557c64ea087cece6585945, type: 3}
+--- !u!1001 &538719189
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1511578397}
+    m_Modifications:
+    - target: {fileID: 483166, guid: d1d331912b78f624dbc06b0630c2f3a7, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 44.9924164
+      objectReference: {fileID: 0}
+    - target: {fileID: 483166, guid: d1d331912b78f624dbc06b0630c2f3a7, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 12.7142162
+      objectReference: {fileID: 0}
+    - target: {fileID: 483166, guid: d1d331912b78f624dbc06b0630c2f3a7, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -35.5962753
+      objectReference: {fileID: 0}
+    - target: {fileID: 483166, guid: d1d331912b78f624dbc06b0630c2f3a7, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 483166, guid: d1d331912b78f624dbc06b0630c2f3a7, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 483166, guid: d1d331912b78f624dbc06b0630c2f3a7, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 483166, guid: d1d331912b78f624dbc06b0630c2f3a7, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 483166, guid: d1d331912b78f624dbc06b0630c2f3a7, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: d1d331912b78f624dbc06b0630c2f3a7, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &538719190 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 483166, guid: d1d331912b78f624dbc06b0630c2f3a7, type: 2}
+  m_PrefabInternal: {fileID: 538719189}
 --- !u!1001 &539314060
 Prefab:
   m_ObjectHideFlags: 0
@@ -5191,64 +5233,6 @@ MonoBehaviour:
 Transform:
   m_PrefabParentObject: {fileID: 486060, guid: f91ef7e6e1b981c4598819a88f64b78f, type: 2}
   m_PrefabInternal: {fileID: 1352144717}
---- !u!1001 &1369435140
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1511578397}
-    m_Modifications:
-    - target: {fileID: 496952, guid: 5f77ee7e2ca8f68408988354554068eb, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 5.57056141
-      objectReference: {fileID: 0}
-    - target: {fileID: 496952, guid: 5f77ee7e2ca8f68408988354554068eb, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -6.9044385
-      objectReference: {fileID: 0}
-    - target: {fileID: 496952, guid: 5f77ee7e2ca8f68408988354554068eb, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -4.13818359
-      objectReference: {fileID: 0}
-    - target: {fileID: 496952, guid: 5f77ee7e2ca8f68408988354554068eb, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 496952, guid: 5f77ee7e2ca8f68408988354554068eb, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 496952, guid: 5f77ee7e2ca8f68408988354554068eb, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 496952, guid: 5f77ee7e2ca8f68408988354554068eb, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 496952, guid: 5f77ee7e2ca8f68408988354554068eb, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 445030, guid: 5f77ee7e2ca8f68408988354554068eb, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -41.6199989
-      objectReference: {fileID: 0}
-    - target: {fileID: 428030, guid: 5f77ee7e2ca8f68408988354554068eb, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 47.0900002
-      objectReference: {fileID: 0}
-    - target: {fileID: 428756, guid: 5f77ee7e2ca8f68408988354554068eb, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -45.2900009
-      objectReference: {fileID: 0}
-    - target: {fileID: 428756, guid: 5f77ee7e2ca8f68408988354554068eb, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 24.8199997
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 5f77ee7e2ca8f68408988354554068eb, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &1371232891
 Prefab:
   m_ObjectHideFlags: 0
@@ -6005,8 +5989,8 @@ Transform:
   m_LocalPosition: {x: -5.57056141, y: 6.9044385, z: 4.13818359}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 538719190}
   - {fileID: 1486423390}
-  - {fileID: 366171803}
   - {fileID: 381515845}
   m_Father: {fileID: 0}
   m_RootOrder: 12
@@ -7602,8 +7586,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  NextRail: {fileID: 0}
-  PreviousRail: {fileID: 46307398}
+  next: {fileID: 0}
+  prev: {fileID: 0}
   railPoint: {fileID: 1945624871}
 --- !u!4 &1945624873
 Transform:
