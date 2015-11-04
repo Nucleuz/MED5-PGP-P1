@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using DarkRift;
 
-/*
+    /*
 By KasperHdL
 
 Manager for the client. 
@@ -14,96 +14,213 @@ Then sends a message to every other client so they can spawn this player
 
 
 */
+using VoiceChat;
 
-public class ClientManager : MonoBehaviour {
+public class ClientManager : NetworkManager
+{
 
-	//IP the client will try to connect to 
-	//@TODO - client should be able to change the ip when the client starts up, for easier use
-	public string IP = "127.0.0.1";
+    //IP the client will try to connect to 
+    //@TODO - client should be able to change the ip when the client starts up, for easier use
+    public string IP = "127.0.0.1";
 
-	//debug text
-	//@TODO - create a kind of console instead if this..
-	public Text debugText;
+    public ushort networkID = 0;
 
-	//prefab for the other players
-	public GameObject prefabOtherPlayer;
+    //prefab for the players
+    public bool useVR = false;
+    public GameObject nvrPrefab;
+    public GameObject vrPrefab;
 
-	//the player
-	public Transform player; 
+    [HideInInspector]
+    public Transform player;
 
-	void Start(){
-		//Connect to the server
-		DarkRiftAPI.workInBackground = true;
-		DarkRiftAPI.Connect(IP); //halts until connect or timeout
-		DarkRiftAPI.onDataDetailed += ReceiveData;
+    private NetPlayerSync[] otherPlayers = new NetPlayerSync[2];
 
-		if(DarkRiftAPI.isConnected){
-			//tell everyone else that we have entered so they can tell where they are
-			DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager,Network.Subject.HasJoined,"...");
-		}
+    [HideInInspector]
+    public LevelHandler levelHandler;
+    [HideInInspector]
+    public TriggerHandler triggerHandler;
+
+    private int serverLevelIndex = -1;
+
+    void Start()
+    {
+        levelHandler = GetComponent<LevelHandler>();
+        triggerHandler = GetComponent<TriggerHandler>();
+        //Connect to the server
+        DarkRiftAPI.workInBackground = true;
+        DarkRiftAPI.Connect(IP); //halts until connect or timeout
+        DarkRiftAPI.onDataDetailed += ReceiveData;
+
+        if (DarkRiftAPI.isConnected)
+        {
+            Console.Instance.AddMessage("Is connected to Server");
+            //tell everyone else that we have entered so they can tell where they are
+            DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager, Network.Subject.HasJoined,(ushort) 123);
+        }
+    }
+
+    void OnApplicationQuit()
+    {
+        DarkRiftAPI.Disconnect();
+    }
 
 
-	}
+    void ReceiveData(ushort senderID, byte tag, ushort subject, object data)
+    {
 
-	void OnApplicationQuit(){
-		DarkRiftAPI.Disconnect();
-	}
+        //only handle data if it is for the manager
+        if (tag == Network.Tag.Manager)
+        {
+            switch (subject)
+            {
+                case Network.Subject.ServerSentNetID:
+                    {
+                        networkID = (ushort)data;
+                        Console.Instance.AddMessage("Got network id " + networkID);
+                        DarkRiftAPI.SendMessageToServer(Network.Tag.Manager, Network.Subject.RequestServerLevel,true);
+
+                    }
+                    break;
+
+                case Network.Subject.NewLevelManager:
+                    {
+                        //When the server has loaded a level
+
+                        serverLevelIndex = (int)data;
+                        Console.Instance.AddMessage("Server is at level " + serverLevelIndex);
+
+                        //load the previous, current and next level if available(serverLevelIndex >/< x) and not already loaded(levelcontainer == null)
+                        //previous level
+                        if(serverLevelIndex > 0 && levelHandler.levelContainers[serverLevelIndex - 1] == null)
+                            levelHandler.loadLevel(serverLevelIndex - 1);
+                        //current level
+                        if(levelHandler.levelContainers[serverLevelIndex] == null)
+                            levelHandler.loadLevel(serverLevelIndex);
+                        //next level
+                        if(serverLevelIndex < levelHandler.levelOrder.Length - 1 && levelHandler.levelContainers[serverLevelIndex + 1] == null)
+                            levelHandler.loadLevel(serverLevelIndex + 1);
 
 
-	void ReceiveData(ushort senderID,byte tag, ushort subject, object data){
+                        //if the level is already loaded process it's triggers
+                        if(levelHandler.levelContainers[serverLevelIndex] != null)
+                            triggerHandler.process(levelHandler.levelContainers[serverLevelIndex]);
 
-		//only handle data if it is for the manager
-		if(tag == Network.Tag.Manager){
-			switch(subject){
-				case Network.Subject.ServerSentSpawnPos:{
-					//when the server sends the spawn position
+                    }
+                    break;
+                case Network.Subject.SpawnPlayer: // Spawn OTHER players
+                    {
+                        //spawn other player
+                        Console.Instance.AddMessage("SpawnPlayer sender: " + senderID);
 
-					Write("ServerSentSpawnPos");
-					//set the player position
-					player.gameObject.SetActive(true);
-					player.position = ((SVector3) data).get();
+                        //unpack data
 
-					//pack the information
-					PlayerInfo info = new PlayerInfo();
-					info.position = new SVector3(player.position);
-					info.rotation = new SQuaternion(player.rotation);
+                        //spawn the object
+                        GameObject g = Instantiate(nvrPrefab,Deserializer.Vector3((byte[])data) , Quaternion.identity) as GameObject;
 
-					//send it to everyone else
-					DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager,Network.Subject.SpawnPlayer,info);
-				}break;
-				case Network.Subject.SpawnPlayer:{
-					//spawn other player
-					Write("SpawnPlayer sender: " + senderID);
-					
-					//unpack data
-					PlayerInfo info = (PlayerInfo)data;
+                        //set the network id so it will sync with the player
+                        NetPlayerSync netPlayer = g.GetComponent<NetPlayerSync>();
 
-					//spawn the object
-					GameObject other = Instantiate(prefabOtherPlayer,info.position.get(),info.rotation.get()) as GameObject;
+                        // VoiceChat Components
+                        g.AddComponent<AudioSource>();
+                        netPlayer.SetVoiceChatPlayer(g.AddComponent<VoiceChatPlayer>());
 
-					//set the network id so it will sync with the player
-					other.GetComponent<NetPlayerReceiver>().networkID = senderID;
+                        netPlayer.networkID = senderID;
+                        netPlayer.SetAsReceiver();
 
-				}break;
-				case Network.Subject.HasJoined:{
-					//send player info back when someone has joined
-					Write("HasJoined sender: " + senderID);
+                        if(otherPlayers[0] == null)
+                            otherPlayers[0] = netPlayer;
+                        else
+                            otherPlayers[1] = netPlayer;
 
-					//pack player data
-					PlayerInfo info = new PlayerInfo();
-					info.position = new SVector3(player.position);
-					info.rotation = new SQuaternion(player.rotation);
+                        if(player != null)
+                            netPlayer.AddCameraToLightShaft(player.GetComponent<NetPlayerSync>().cam);
 
-					//send player data to the one who asked
-					DarkRiftAPI.SendMessageToID(senderID,Network.Tag.Manager,Network.Subject.SpawnPlayer,info);
-				}break;
-			}
-		}
-	}
+                    }
+                    break;
+                case Network.Subject.HasJoined:
+                    {
+                        //send player info back when someone has joined
+                        Write("HasJoined sender: " + senderID);
 
-	//for debugging 
-	//@TODO - replace with console
-	void Write(string mess){
-		debugText.text += mess + "\n";
-	}
+                        //send player data to the one who asked
+                        if(player != null){
+                            
+                            DarkRiftAPI.SendMessageToID(senderID, Network.Tag.Manager, Network.Subject.SpawnPlayer,player.position.Serialize());
+                        }
+                    }
+                    break;
+           }
+        }
+    }
+
+    public override void OnLevelCompleted(){
+
+    }
+    
+
+    public override void OnLevelLoaded(int levelIndex)
+    {
+
+        Console.Instance.AddMessage("Level " + levelIndex + " (" + levelHandler.levelOrder[levelIndex] + ") Loaded");
+
+        //try to spawn the player
+        SpawnPlayer();
+
+        //if level that is loaded is the level that the server is on currently process it's triggers
+
+        if(serverLevelIndex == levelIndex)
+            triggerHandler.process(levelHandler.levelContainers[levelIndex]);
+
+    }
+
+    private void SpawnPlayer(){
+        if(player != null || networkID == 0 || serverLevelIndex == -1 || levelHandler.getLevelManager() == null){
+            if(player != null)
+                Console.Instance.AddMessage("Player is already spawned");
+            else
+                Console.Instance.AddMessage("failed .. Trying to spawn player: " + player + " netID: " + networkID + " serverLevel: " + serverLevelIndex + " levelHandler: " + levelHandler.getLevelManager());
+            return;
+        }
+        Console.Instance.AddMessage("Spawning Player");
+        //spawn the object
+
+
+        GameObject g = Instantiate(nvrPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+        player = g.transform;
+        //set the network id so it will sync with the player
+        NetPlayerSync netPlayer = g.GetComponent<NetPlayerSync>();
+
+        netPlayer.networkID = networkID;
+        netPlayer.SetAsSender();
+
+        for(int i = 0;i<otherPlayers.Length;i++){
+            Console.Instance.AddMessage("other player: " + otherPlayers[i]);
+            if(otherPlayers[i] != null)
+               otherPlayers[i].AddCameraToLightShaft(netPlayer.cam);
+        }
+
+
+/*
+        VoiceChatRecorder.Instance.NetworkId = networkID;
+        VoiceChatRecorder.Instance.Device = VoiceChatRecorder.Instance.AvailableDevices[0];
+        VoiceChatRecorder.Instance.StartRecording();
+//         VoiceChatRecorder.Instance.AutoDetectSpeech = true;
+        VoiceChatRecorder.Instance.NewSample += netPlayer.OnNewSample;
+        */
+
+        //place the player on the correct rail!
+
+        Console.Instance.AddMessage("levelManager: " + levelHandler.getLevelManager());
+        Rail startRail = levelHandler.getLevelManager().levelStartRail[networkID - 1];
+        Console.Instance.AddMessage("startrail: " + startRail.transform.position);
+
+
+        player.position = startRail.transform.position;
+        Vector3 viewDirection = startRail.next.transform.position - startRail.transform.position;
+        player.GetComponent<Cart>().currentRail = startRail;
+
+        //send it to everyone else
+        DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager, Network.Subject.SpawnPlayer, player.position.Serialize());
+    }
+
 }

@@ -2,61 +2,48 @@
 using System.Collections;
 
 public class InteractableButton : Interactable{
+	[HideInInspector]
 	Animator buttonAnimator;
+	[HideInInspector]
 	Light buttonLight;
+	
+	[HideInInspector]
 	public ParticleSystem par;
 	public ParticleSystem placeHolder;
 	
 	public bool playedSound;
 	public bool particlesReplaced = false;
 
-	[Tooltip("NEEDS TO BE THE SIZE 3. Check the players that have to hit the button. 0 = red, 1 = green, 2 = blue")]
-	public bool[] playerList;
+	bool timerRunning = false;
+	float lastInteractionTime = 0;
+	float activatedLength = 2.0f;
 	
-	private bool[] playerCheck = new bool[3];
-	
-	private bool arraysFit;
-
-	private float delay;
-	private float timer;
-
+	[HideInInspector]
 	public Trigger trigger;
 
 	public Renderer[] rend;
 	
 	// Use this for initialization
 	void Start () {
-		
-		
-
 		playedSound 	= false;
-		arraysFit 		= false;
-		delay 			= 1.0f;
 	
 		buttonAnimator 	= GetComponent<Animator>();
 		buttonLight 	= GetComponent<Light>();
 		trigger 		= GetComponent<Trigger>();
 		par 			= GetComponent<ParticleSystem>();
-
+		////Was moved here since the sM made it not work!
 		//Set the color of the interactable button both background light and particles to the correct user.
-		setButtonColor(playerList);
-		par.Play ();
-
-
+		setButtonColor(
+			new bool[3]{
+				trigger.redPlayerRequired,
+				trigger.greenPlayerRequired,
+				trigger.bluePlayerRequired
+				});
+		par.Play();
 	}
 	
 	// Update is called once per frame
-	void Update () {
-
-		//This essentially updates the playerCheck arrays, so if one player stops hitting the button he will be removed
-		timer -= Time.deltaTime;							//CountDown
-		if(timer <= 0){										//Check if timer is up
-			timer = delay;									//Reset Timer
-			for(int i = 0; i < playerCheck.Length; i++){	//Reset playerCheck array
-				playerCheck[i] = false;
-			}
-		}
-
+	void FixedUpdate () {
 		if(trigger.isTriggered){
 			buttonAnimator.SetBool("isActivated", true); 	//starts the animation of the button.
 											//starts the particles system.
@@ -73,31 +60,24 @@ public class InteractableButton : Interactable{
 		}
 	}
 
-	public override void OnRayReceived(int playerIndex, Ray ray, RaycastHit hit, ref LineRenderer lineRenderer,int nextLineVertex){
-		if(!playerCheck[playerIndex-1]){
-			playerCheck[playerIndex-1] = true;
-		}
-
-		arraysFit = checkArrays(playerCheck, playerList);
-
-		if (trigger.isReadyToBeTriggered && arraysFit){
-			trigger.isTriggered = true;
+	public override void OnRayEnter(int playerIndex, Ray ray, RaycastHit hit){
+		if (trigger.isReadyToBeTriggered){
+			trigger.Activate();
 			if(!playedSound){
 				SoundManager.Instance.ToggleSwitch("On_Off", "On", gameObject);
 				SoundManager.Instance.PlayEvent("ButtonOnOff", gameObject);
 				playedSound = true;
 			}
 		}
-		
 	}
 
-	public bool checkArrays(bool[] a, bool[] b){
-		for(int i = 0; i < a.Length; i++){
-			if(a[i] != b[i])
-				return false;
+
+    public override void OnRayExit(){
+		if (trigger.isReadyToBeTriggered){
+			trigger.Deactivate();
 		}
-		return true;
-	}
+
+    }
 
 	public void setButtonColor(bool[] a){
 		//a[0] = red, a[1] = green, a[2] = blue

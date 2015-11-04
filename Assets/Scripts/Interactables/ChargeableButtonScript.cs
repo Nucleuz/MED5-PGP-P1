@@ -59,7 +59,8 @@ public class ChargeableButtonScript : Interactable
                 if (energy >= 100){
 
                     // Set isTrigger in Trigger script to true
-                    trigger.isTriggered = true;
+
+                    trigger.Activate();
                     SoundManager.Instance.ToggleSwitch("On_Off", "On", gameObject);
                     SoundManager.Instance.PlayEvent("ChannelingButtonOnOff", gameObject);
                     soundStopped = false;
@@ -91,7 +92,7 @@ public class ChargeableButtonScript : Interactable
             energy = 0;
 
             // Set isTrigger in Trigger script to false
-            trigger.isTriggered = false;
+            trigger.Deactivate();
             if(!soundStopped){
                 SoundManager.Instance.StopEvent("ChannelingButtonOnOff", gameObject);
                 SoundManager.Instance.ToggleSwitch("On_Off", "Off", gameObject);
@@ -102,9 +103,12 @@ public class ChargeableButtonScript : Interactable
         }
     }
     
-	public override void OnRayReceived(int playerIndex, Ray ray, RaycastHit hit,ref LineRenderer lineRenderer,int nextLineVertex){
+	public override void OnRayEnter(int playerIndex, Ray ray, RaycastHit hit){
         if(trigger.isReadyToBeTriggered)
 		  endInteractTime = Time.time + minInteractLength;
-	
 	}
+
+    public override void OnRayExit(){
+        
+    }
 }

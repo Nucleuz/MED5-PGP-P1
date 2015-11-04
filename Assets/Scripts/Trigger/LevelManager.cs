@@ -6,7 +6,8 @@ public class LevelManager : MonoBehaviour {
 	[Tooltip("Interactable gameobjects in the game, should be dragged on in the right order for the eventOrder to work. Because it will be used in eventOrder!!")]
 	public Trigger[] events; 				// Events which are dragged into the levelmanager 	- Should be specified in the unity editor!!
 
-	[Tooltip("Bool used to detect if se is finished. Size must be the same size as 'events'")]
+	//[Tooltip("Bool used to detect if se is finished. Size must be the same size as 'events'")]
+	[HideInInspector]
 	public bool[] triggeredEvents;
 
 	[Tooltip("This contains how many of the gameobjects there is in a specific sequence. You must specifiy the corresponding event size to the number of gameobjects. e.g if you have 6 elements, you must make sure that the total number is also 6 in this array. could be written as the element0 is 2 and element1 is 4. Element0 is the first sequence. Array size is the amount of sequences")]
@@ -22,5 +23,19 @@ public class LevelManager : MonoBehaviour {
 											these numbers should be specified in the unity editor!! */
 	[Tooltip("Array size MUST be the same as amounts of sequences. One object can be triggered after a sequence, drag element into the corresponding array place. e.g if a door wants to be triggered after sequence 3, the door must be dragged onto element2 in the array. Leave other elements in the array empty")]
 	public Trigger[] triggerEvents;			//Used to trigger an object when a sequence is finished
-	public bool[] timedResets;
+	
+
+	[Header("Defining Level start and end")]
+
+	[Tooltip("The 3 rail points where the level starts, Organized Blue, Red, Green")]
+	public Rail[] levelStartRail = new Rail[3]; 
+
+	[Tooltip("The 3 rail points where the level end, Organized Blue, Red, Green")]
+	public Rail[] levelEndRail   = new Rail[3];
+
+	[Tooltip("Direction vector pointing to the next level")]
+    public Vector3 nextLevelDirection;
+	[Tooltip("Direction vector pointing to the previous level")]
+    public Vector3 prevLevelDirection;
+
 }

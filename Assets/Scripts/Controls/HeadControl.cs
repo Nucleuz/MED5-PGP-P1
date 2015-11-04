@@ -2,7 +2,6 @@
 using System.Collections;
 
 /*
-By KasperHdL
 
 simple head control with mouse... for testing
 
@@ -21,17 +20,14 @@ public class HeadControl : MonoBehaviour {
 	private float turnSpeed = 80.0f;
 	public bool controllerConnected = false;
 
-
+	public Camera cam;
 
 	// Update is called once per frame
 	void Update () {
 
 		Vector2 mouse = Input.mousePosition;
-		float h = mouse.x / Camera.main.pixelWidth;
-
-
-		float v = (Camera.main.pixelHeight - mouse.y)/Camera.main.pixelHeight ;
-		//Debug.Log("h: " + h + ", v: " + v);
+		float h = mouse.x / cam.pixelWidth;
+		float v = (cam.pixelHeight - mouse.y)/cam.pixelHeight ;
 
 		//Script used for detecting if controller should be used
 		if(controllerConnected == false) {

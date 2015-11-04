@@ -1,11 +1,42 @@
 ﻿using System;
 using Ionic.Zlib;
 using UnityEngine;
+using System.IO;
 
 namespace VoiceChat
 {
     public static class VoiceChatUtils
     {
+		public static byte[] Serialise(VoiceChatPacket packet) {
+			using(MemoryStream m = new MemoryStream()) {
+				using(BinaryWriter writer = new BinaryWriter(m)) {
+					writer.Write((byte)packet.Compression);
+					writer.Write(packet.Length);
+					writer.Write(packet.Data);
+					writer.Write(packet.NetworkId);
+					writer.Write(packet.PacketId);
+					
+					return m.ToArray();
+				}
+			}
+		}
+		
+		public static VoiceChatPacket Deserialise(byte[] data) {
+			using(MemoryStream m = new MemoryStream(data)) {
+				using(BinaryReader reader = new BinaryReader(m)) {
+					VoiceChatPacket packet = new VoiceChatPacket();
+					
+					packet.Compression 	= (VoiceChatCompression)reader.ReadByte();
+					packet.Length 		= reader.ReadInt32();
+					packet.Data 		= reader.ReadBytes(VoiceChatSettings.Instance.SampleSize);
+					packet.NetworkId 	= reader.ReadInt32();
+					packet.PacketId 	= reader.ReadUInt64();
+					
+					return packet;
+				}
+			}
+		}
+
         static void ToShortArray(this float[] input, short[] output)
         {
             if (output.Length < input.Length)

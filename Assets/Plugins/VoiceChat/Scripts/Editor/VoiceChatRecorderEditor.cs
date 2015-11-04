@@ -6,7 +6,6 @@ using UnityEngine;
 
 namespace VoiceChat
 {
-
     [CustomEditor(typeof(VoiceChatRecorder))]
     public class VoiceChatRecorderEditor : Editor
     {
@@ -59,7 +58,6 @@ namespace VoiceChat
                 DrawDefaultInspector();
             }
         }
-    }
-
+    } 
 }
 #endif

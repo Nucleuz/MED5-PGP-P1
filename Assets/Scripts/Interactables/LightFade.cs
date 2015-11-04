@@ -8,8 +8,7 @@ public class LightFade : MonoBehaviour {
 	//The fade in and out part of this code is retrieved from an online source.  
 
 	//Get the SoundCrystal script.
-	private SoundCrystal Sc;
-    private GameManager gM;
+	public SoundCrystal Sc;
 
     private Light myLight;
     public float maxIntensity = 1f;
@@ -22,14 +21,13 @@ public class LightFade : MonoBehaviour {
     void Start(){
         
      	//Get the SoundCrystal script.
-     	Sc = GameObject.Find("SoundCrystal").GetComponent<SoundCrystal>();
-        gM = GameObject.Find("GameManagerObject").GetComponent<GameManager>();
         myLight = GetComponent<Light>();
         myLight.color = new Color(0.2F, 0.7F, 0.5F, 1F); //Green/Blue
         
     }    
      void Update(){
         //If the button resets, it checks if the sequence is playing if
+        /*
         if(gM.isLightCrystalLightReset == true && Sc.sequenceIsPlaying == false){ //Check if the puzzle resets
             myLight.color = new Color(1, 0.2F, 0.2F, 1F); //red
             myLight.intensity = 1F;
@@ -38,7 +36,7 @@ public class LightFade : MonoBehaviour {
         } else if(gM.resetSound == false){
         //myLight.color = new Color(0.2F, 0.7F, 0.5F, 1F); //Green/Blue
         }
-
+*/
 
      	if(Sc.sequenceIsPlaying == true){
             myLight.color = new Color(0.2F, 0.7F, 0.5F, 1F); //Green/Blue
@@ -54,7 +52,7 @@ public class LightFade : MonoBehaviour {
      	}
      	if(Sc.sequenceIsPlaying == false){
      		//slowly turn of the light.
-     	myLight.intensity -= 0.1F * (Time.deltaTime*4);
+     	  myLight.intensity -= 0.1F * (Time.deltaTime*4);
      	}
     }
 }

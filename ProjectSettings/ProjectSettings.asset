@@ -11,7 +11,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: PGP
+  productName: MED5-PGP-P1
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_ShowUnitySplashScreen: 1
@@ -24,7 +24,7 @@ PlayerSettings:
   m_ActiveColorSpace: 0
   m_MTRendering: 1
   m_MobileMTRendering: 0
-  m_Stereoscopic3D: 1
+  m_Stereoscopic3D: 0
   iosShowActivityIndicatorOnLoading: -1
   androidShowActivityIndicatorOnLoading: -1
   iosAppInBackgroundBehavior: 0
@@ -92,7 +92,7 @@ PlayerSettings:
   metroEnableLowLatencyPresentationAPI: 0
   xboxOneDisableKinectGpuReservation: 0
   virtualRealitySupported: 1
-  productGUID: a3337e90b66fb4343b4f943c9094a3ba
+  productGUID: a9bd90be7d17f45379bc64f22deca346
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 9
   AndroidPreferredInstallLocation: 1
@@ -164,7 +164,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - m_Icon: {fileID: 0}
-      m_Size: 128
+      m_Size: 0
   m_BuildTargetBatching: []
   m_BuildTargetGraphicsAPIs: []
   webPlayerTemplate: APPLICATION:Default
@@ -251,7 +251,7 @@ PlayerSettings:
   ps4ApplicationParam4: 0
   ps4DownloadDataSize: 0
   ps4GarlicHeapSize: 2048
-  ps4Passcode: frAQBc8Wsa1xVPfvJcrgRYwTiizs2trQ
+  ps4Passcode: tHCKSV82Om8oW7K4OlePKjauBHSE3lLw
   ps4pnSessions: 1
   ps4pnPresence: 1
   ps4pnFriends: 1
@@ -281,7 +281,7 @@ PlayerSettings:
   psp2LiveAreaTrialPath: 
   psp2PatchChangeInfoPath: 
   psp2PatchOriginalPackage: 
-  psp2PackagePassword: F69AzBlax3CF3EDNhm3soLBPh71Yexui
+  psp2PackagePassword: 0YET1KTN6bBagTc4FHUXy4R9LsLObhIa
   psp2KeystoneFile: 
   psp2MemoryExpansionMode: 0
   psp2DRMType: 0
@@ -322,7 +322,7 @@ PlayerSettings:
     16: CROSS_PLATFORM_INPUT;MOBILE_INPUT
     17: MOBILE_INPUT
     20: MOBILE_INPUT
-  metroPackageName: PGP
+  metroPackageName: MED5-PGP-P1
   metroPackageLogo: 
   metroPackageLogo140: 
   metroPackageLogo180: 
@@ -333,7 +333,7 @@ PlayerSettings:
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: PGP
+  metroApplicationDescription: MED5-PGP-P1
   metroStoreTileLogo80: 
   metroStoreTileLogo: 
   metroStoreTileLogo140: 
@@ -455,7 +455,6 @@ PlayerSettings:
   - WebGL::audioCompressionFormat
   - WebGL::exceptionSupport
   - WebGL::memorySize
-  - WebPlayer::ScriptingBackend
   - iOS::Architecture
   - iOS::EnableIncrementalBuildSupportForIl2cpp
   - iOS::ScriptingBackend
@@ -467,7 +466,6 @@ PlayerSettings:
   WebGL::audioCompressionFormat: 4
   WebGL::exceptionSupport: 1
   WebGL::memorySize: 256
-  WebPlayer::ScriptingBackend: 0
   iOS::Architecture: 2
   iOS::EnableIncrementalBuildSupportForIl2cpp: 0
   iOS::ScriptingBackend: 1
@@ -481,9 +479,13 @@ PlayerSettings:
   WebGL::useEmbeddedResources: 0
   XboxOne::enus: 1
   stringPropertyNames:
+  - Build_ServiceEnabled::Build_ServiceEnabled
+  - UNet_ServiceEnabled::UNet_ServiceEnabled
   - WebGL::emscriptenArgs
   - WebGL::template
   - additionalIl2CppArgs::additionalIl2CppArgs
+  Build_ServiceEnabled::Build_ServiceEnabled: False
+  UNet_ServiceEnabled::UNet_ServiceEnabled: False
   WebGL::emscriptenArgs: 
   WebGL::template: APPLICATION:Default
   additionalIl2CppArgs::additionalIl2CppArgs: 

@@ -6,7 +6,6 @@ using UnityEngine;
 
 namespace VoiceChat
 {
-
     [CustomEditor(typeof(VoiceChatSettings))]
     public class VoiceChatSettingsEditor : Editor
     {
@@ -28,8 +27,6 @@ namespace VoiceChat
             }
         }
     }
-
     
 }
-
 #endif

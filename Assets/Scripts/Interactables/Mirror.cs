@@ -88,7 +88,7 @@ public class Mirror : Interactable {
         
     }
 
-    public override void OnRayReceived(int playerIndex, Ray ray, RaycastHit hit, ref LineRenderer lineRenderer,int nextLineVertex){
+    public override void OnRayEnter(int playerIndex, Ray ray, RaycastHit hit){
     	//Used for turning on the relfectance of the mirror.
         isBeingLitOn = true;
 
@@ -106,35 +106,29 @@ public class Mirror : Interactable {
             default:
                 Debug.Log("Invalid playerIndex");
             break;
-            }   
-        
-        //Ray newRay = new Ray (hit.point, Vector3.Reflect (ray.direction, hit.normal));        //Legacy code. Calculates a realistisc reflection off the mirror
+        }   
+    
+        Ray newRay = new Ray(hit.point, ButtonToTrigger.transform.position - transform.position);
+        RaycastHit rayhit;
 
-        //Shoots a new raycast to the point of the mirror if they are at the correct rail.
-        //if(player.CurrentRail == railPoint){
-            Ray newRay = new Ray(hit.point, ButtonToTrigger.transform.position - transform.position);
-            RaycastHit rayhit;
+        Vector3 targetDir = ButtonToTrigger.transform.position - transform.position;
+        float rotationalAngle = Vector3.Angle(targetDir, transform.forward);
 
-            Vector3 targetDir = ButtonToTrigger.transform.position - transform.position;
-            float rotationalAngle = Vector3.Angle(targetDir, transform.forward);
-
-            if (rotationalAngle < 5f) {
-                if (Physics.Raycast(newRay, out rayhit)) {
-                	//turn on the light off the mirror.
-                	//reflectedLight.enabled = true;
-                    //Debug.DrawRay(hit.point, newRay.direction * 10, Color.cyan, 1f);
-                    lineRenderer.SetVertexCount(++nextLineVertex);             // resets the number of vertecies of the line renderer to 1
-                    lineRenderer.SetPosition(nextLineVertex - 1, rayhit.point);  // sets the line origin to the 
-
-                    Interactable interactable = rayhit.transform.GetComponent<Interactable>();
-                    if (interactable != null) {
-                        //@Optimize - The mirror is the only one who the ray, hit, lineRenderer, and count
-                        interactable.OnRayReceived(playerIndex, newRay, rayhit, ref lineRenderer, nextLineVertex);
-                    }
+        if (rotationalAngle < 5f) {
+            if (Physics.Raycast(newRay, out rayhit)) {
+            	//turn on the light off the mirror.
+            	//reflectedLight.enabled = true;
+              
+                Interactable interactable = rayhit.transform.GetComponent<Interactable>();
+                if (interactable != null) {
+                    //@Optimize - The mirror is the only one who the ray, hit, lineRenderer, and count
+                    interactable.OnRayEnter(playerIndex, newRay, rayhit);
                 }
             }
         }
-	//}
+    }
+
+    public override void OnRayExit(){}
 
     IEnumerator rotateTowardsTarget(Quaternion start, Quaternion end, float length) {
         isRotating = true;
