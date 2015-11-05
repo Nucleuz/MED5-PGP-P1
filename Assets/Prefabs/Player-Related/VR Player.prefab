@@ -481,6 +481,8 @@ GameObject:
   - 4: {fileID: 406254}
   - 95: {fileID: 9556122}
   - 114: {fileID: 11449746}
+  - 114: {fileID: 11464622}
+  - 114: {fileID: 11470834}
   m_Layer: 0
   m_Name: VR Player
   m_TagString: Untagged
@@ -792,7 +794,6 @@ GameObject:
   - 4: {fileID: 434852}
   - 20: {fileID: 2079844}
   - 114: {fileID: 11458238}
-  - 114: {fileID: 11404172}
   - 114: {fileID: 11440690}
   m_Layer: 0
   m_Name: CenterEyeAnchor
@@ -1051,7 +1052,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 150028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -.0500000007, y: .870000005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 413774}
@@ -1924,7 +1925,7 @@ Light:
     m_Strength: 1
     m_Bias: .0500000007
     m_NormalBias: .400000006
-  m_Cookie: {fileID: 0}
+  m_Cookie: {fileID: 2800000, guid: 74ec4d7da693bc844b5b49735a6849f0, type: 3}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
   m_RenderMode: 0
@@ -1956,7 +1957,7 @@ Light:
     m_Strength: 1
     m_Bias: .0500000007
     m_NormalBias: .400000006
-  m_Cookie: {fileID: 0}
+  m_Cookie: {fileID: 2800000, guid: 4ec45802877ff7b4f990c4170113ab0d, type: 3}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
   m_RenderMode: 0
@@ -1968,18 +1969,6 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
---- !u!114 &11404172
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 189880}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11e7895a362bed940a138aefafcd3409, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  listenerId: 0
 --- !u!114 &11404310
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2015,13 +2004,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3775ac8eb885d44c8f5c8afc133c205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-
   currentRail: {fileID: 0}
-  movementSpeed: 3
-
-  CurrentRail: {fileID: 0}
-  speed: 5
-  animationSpeed: 0
+  movementSpeed: 1
+  isMoving: 0
 --- !u!114 &11458238
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2034,7 +2019,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listenerId: 0
-
+--- !u!114 &11464622
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7082ab1beee6e64c95c15b81d6c402d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  car: {fileID: 11449746}
+  isPlaying: 0
 --- !u!114 &11467030
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2064,6 +2061,22 @@ MonoBehaviour:
   intensityFocus: 8
   playerIndex: 1
   objectHit: {fileID: 0}
+--- !u!114 &11470834
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa31e8300958f0844b232b36fe20d8ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventName: CarLegHit1
+  keyPoints:
+  - .159999996
+  - 2
+  anim: {fileID: 9556122}
 --- !u!114 &11480092
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2089,7 +2102,7 @@ MonoBehaviour:
   m_ShadowmapMode: 0
   m_Cameras:
   - {fileID: 0}
-  m_CurrentCamera: {fileID: 0}
+  m_CurrentCamera: {fileID: 2079844}
   m_Size: {x: 10, y: 10, z: 20}
   m_SpotNear: .00999999978
   m_SpotFar: 1
@@ -2154,7 +2167,7 @@ MonoBehaviour:
   m_ShadowmapMode: 0
   m_Cameras:
   - {fileID: 0}
-  m_CurrentCamera: {fileID: 0}
+  m_CurrentCamera: {fileID: 2079844}
   m_Size: {x: 10, y: 10, z: 20}
   m_SpotNear: .00999999978
   m_SpotFar: 1
