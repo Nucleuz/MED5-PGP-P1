@@ -6,7 +6,7 @@ using DarkRift;
     /*
 By KasperHdL
 
-Manager for the client. 
+Manager for the client.
 
 When started asks the server for a spawn position and asks all client for their information this client can spawn the other players.
 When the server callsback with the server spawn position spawns enables the players and give its position
@@ -19,7 +19,7 @@ using VoiceChat;
 public class ClientManager : NetworkManager
 {
 
-    //IP the client will try to connect to 
+    //IP the client will try to connect to
     //@TODO - client should be able to change the ip when the client starts up, for easier use
     public string IP = "127.0.0.1";
 
@@ -144,7 +144,7 @@ public class ClientManager : NetworkManager
 
                         //send player data to the one who asked
                         if(player != null){
-                            
+
                             DarkRiftAPI.SendMessageToID(senderID, Network.Tag.Manager, Network.Subject.SpawnPlayer,player.position.Serialize());
                         }
                     }
@@ -156,7 +156,7 @@ public class ClientManager : NetworkManager
     public override void OnLevelCompleted(){
 
     }
-    
+
 
     public override void OnLevelLoaded(int levelIndex)
     {
@@ -200,13 +200,11 @@ public class ClientManager : NetworkManager
         }
 
 
-/*
+
         VoiceChatRecorder.Instance.NetworkId = networkID;
         VoiceChatRecorder.Instance.Device = VoiceChatRecorder.Instance.AvailableDevices[0];
         VoiceChatRecorder.Instance.StartRecording();
-//         VoiceChatRecorder.Instance.AutoDetectSpeech = true;
         VoiceChatRecorder.Instance.NewSample += netPlayer.OnNewSample;
-        */
 
         //place the player on the correct rail!
 
