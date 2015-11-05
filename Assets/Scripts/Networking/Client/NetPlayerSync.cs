@@ -269,6 +269,6 @@ public class NetPlayerSync : MonoBehaviour {
     		transform.rotation = Quaternion.Slerp(startRotation,newRotation,t);
     		yield return null;
     	}
-//    	head.rotation = newRotation;
+//    	transform.rotation = newRotation;
     }
 }

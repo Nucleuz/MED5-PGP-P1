@@ -14,7 +14,6 @@ public class Mirror : Interactable {
 	public int turnAmount = 50; // How much it is turning.
     public InteractableButton ButtonToTrigger; // The target that the mirror has to hit.
 
-    public Cart player;
     //public Rail railPoint;
     private LightShafts LS;
 
