@@ -9,10 +9,14 @@ public class HelmetLightScript : MonoBehaviour {
     public float spotlightAnimationLength = .2f;
     [HideInInspector] 
     public float spotlightAnimationTime = 0;
-
+    
+    [HideInInspector] 
     public float angleNormal = 45;                  // Angle of the spotlight without focus
+    [HideInInspector] 
     public float angleFocus = 10;                   // Angle of the spotlight during focus
+    [HideInInspector] 
     public float intensityNormal = 1;               // Intensity of the spotlight without focus
+    [HideInInspector] 
     public float intensityFocus = 8;                // Intensity of the spotlight during focus
 
     private Light helmetLight;                      // Object that refers to the spotlight within the scene
@@ -21,10 +25,10 @@ public class HelmetLightScript : MonoBehaviour {
     private bool soundIsPlaying;
 
 
-    private float startTime = -1f;                        // Used for lerping the focus light angle and intensity
+    private float startTime = -1f;                  // Used for lerping the focus light angle and intensity
     private float stopTime = -1f;
 
-    [Tooltip("1 = blue, 2 = red, 3 = green")]
+    [HideInInspector] 
     public int playerIndex;                         // index for the player.
     
     private Interactable lastObjectHit;

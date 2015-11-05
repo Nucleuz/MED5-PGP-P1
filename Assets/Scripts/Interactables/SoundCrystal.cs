@@ -4,8 +4,11 @@ using System.Collections;
 public class SoundCrystal : Interactable
 {
     private byte[][] sequences = new byte[2][];
+    
+    [HideInInspector]
     public  short seqIndex = -1;
     
+    [HideInInspector]
     public bool sequenceIsPlaying = false;
 
     private IEnumerator sequenceRoutine;
