@@ -27,9 +27,12 @@ public class NetPlayerSync : MonoBehaviour {
 
 	public LightShafts nonFocusedLightShaft;
 	public LightShafts focusedLightShaft;
+
+	public Cart cart;
 	
 	//reference to reduce when it sends data to everyone else
 	private Quaternion lastRotation;
+	private Quaternion lastCart;
 	private Vector3 lastPosition;
 
 	private float minDistanceMoved = .5f;
@@ -37,12 +40,15 @@ public class NetPlayerSync : MonoBehaviour {
 
 	private float lastPositionTime = -1f;
 	private float lastRotationTime = -1f;
+	private float lastCartTime = -1f;
 	
 	//network id for the object
+    [HideInInspector]
 	public ushort networkID;
 	
 	private IEnumerator positionRoutine;
 	private IEnumerator rotationRoutine;
+	private IEnumerator cartRoutine;
 
 	// Use this for initialization
 	void Start () {
@@ -75,6 +81,15 @@ public class NetPlayerSync : MonoBehaviour {
 			
 			//save the sent position and rotation
 			lastRotation = head.rotation;
+		}
+
+		if(Quaternion.Angle(transform.rotation, lastCart) > minAngleMoved){
+
+            //serialize and send information
+			DarkRiftAPI.SendMessageToOthers(Network.Tag.Player, Network.Subject.PlayerCartUpdate, transform.rotation.Serialize());
+			
+			//save the sent position and rotation
+			lastCart = transform.rotation;
 		}
 
 	}
@@ -119,6 +134,17 @@ public class NetPlayerSync : MonoBehaviour {
                     rotationRoutine = InterpolateRotation(rotation,interpolationLength);
                     StartCoroutine(rotationRoutine);
 				}
+				break;	
+				case Network.Subject.PlayerCartUpdate:
+				{
+                    Quaternion rotation = Deserializer.Quaternion((byte[])data);
+                    if(cartRoutine != null)
+                    	StopCoroutine(cartRoutine);
+
+                    float interpolationLength = .1f;
+                    cartRoutine = InterpolateCart(rotation,interpolationLength);
+                    StartCoroutine(cartRoutine);
+				}
 				break;
 				case Network.Subject.VoiceChat:
 				{
@@ -149,7 +175,9 @@ public class NetPlayerSync : MonoBehaviour {
 	//  Getters / Setters
 	public void SetAsSender(){
 		isSender = true;
+		cart.enabled = true;
 		cam.SetActive(true);
+		if(headControl != null)
 		headControl.enabled = true;
 		helmet.SetPlayerIndex(networkID);
 		helmet.enabled = true;
@@ -157,7 +185,9 @@ public class NetPlayerSync : MonoBehaviour {
 	
 	public void SetAsReceiver(){
 		isSender = false;
+		cart.enabled = false;
 		cam.SetActive(false);
+		if(headControl != null)
 		headControl.enabled = false;
 		helmet.SetPlayerIndex(networkID);
 		helmet.enabled = false;
@@ -225,6 +255,18 @@ public class NetPlayerSync : MonoBehaviour {
     	while(t < 1f){
     		t = (Time.time - startTime)/interpolationLength;
     		head.rotation = Quaternion.Slerp(startRotation,newRotation,t);
+    		yield return null;
+    	}
+//    	head.rotation = newRotation;
+    }
+    IEnumerator InterpolateCart(Quaternion newRotation, float interpolationLength){
+    	float startTime = Time.time;
+    	lastCartTime = Time.time;
+    	Quaternion startRotation = transform.rotation;
+    	float t = 0f;
+    	while(t < 1f){
+    		t = (Time.time - startTime)/interpolationLength;
+    		transform.rotation = Quaternion.Slerp(startRotation,newRotation,t);
     		yield return null;
     	}
 //    	head.rotation = newRotation;
