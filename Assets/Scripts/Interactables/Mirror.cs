@@ -95,13 +95,13 @@ public class Mirror : Interactable {
     	//Set the color of the reflected light to the correct user.
         switch (playerIndex){
             case 1:
-                reflectedLight.color = new Color(1, 0.2F, 0.2F, 1F); //red
+                reflectedLight.color = new Color(0.2F, 0.2F, 1, 1F); //blue
             break;
             case 2:
-                reflectedLight.color = new Color(0.2F, 1, 0.2F, 1F); //green
+                reflectedLight.color = new Color(1, 0.2F, 0.2F, 1F); //red
             break;
             case 3:
-                reflectedLight.color = new Color(0.2F, 0.2F, 1, 1F); //blue
+                reflectedLight.color = new Color(0.2F, 1, 0.2F, 1F); //green
             break;
             default:
                 Debug.Log("Invalid playerIndex");

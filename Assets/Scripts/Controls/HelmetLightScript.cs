@@ -38,26 +38,30 @@ public class HelmetLightScript : MonoBehaviour {
     public NetPlayerSync netPlayer;
 
     public void SetPlayerIndex (int networkId) {
+        /*
         switch(networkId){
             case 1: playerIndex = 3;break;
             case 2: playerIndex = 1;break;
             case 3: playerIndex = 2;break;
         }
+        */
+
+        playerIndex = networkId;
 
         helmetLight = GetComponent<Light>();        //Calls the light component on the spotlight  
         //Set the color of the interactable button both background light and particles to the correct user.
         switch (playerIndex){
             case 1:
+                helmetLight.color = new Color(0.2F, 0.2F, 1, 1F); //blue
+                nonFocusedHelmetLight.color = new Color(0.2F, 0.2F, 1, 1F); //blue
+            break;
+            case 2:
                 helmetLight.color = new Color(1, 0.2F, 0.2F, 1F); //red
                 nonFocusedHelmetLight.color = new Color(1, 0.2F, 0.2F, 1F); //red
             break;
-            case 2:
+            case 3:
                 helmetLight.color = new Color(0.2F, 1, 0.2F, 1F); //green
                 nonFocusedHelmetLight.color = new Color(0.2F, 1, 0.2F, 1F); //green
-            break;
-            case 3:
-                helmetLight.color = new Color(0.2F, 0.2F, 1, 1F); //blue
-                nonFocusedHelmetLight.color = new Color(0.2F, 0.2F, 1, 1F); //blue
             break;
             default:
                 Debug.Log("Invalid playerIndex");
