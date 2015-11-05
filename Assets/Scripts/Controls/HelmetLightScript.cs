@@ -113,7 +113,7 @@ public class HelmetLightScript : MonoBehaviour {
                 netPlayer.UpdateHelmetLight(false);
 
                 if(lastObjectHit != null){
-                    lastObjectHit.OnRayExit();
+                    lastObjectHit.OnRayExit(playerIndex);
                     lastObjectHit = null;
                 }
             }else{
@@ -135,7 +135,7 @@ public class HelmetLightScript : MonoBehaviour {
 
             if(interactable != null){
                 if(lastObjectHit != null && interactable != lastObjectHit){
-                    lastObjectHit.OnRayExit();
+                    lastObjectHit.OnRayExit(playerIndex);
                     lastObjectHit = null;
                 }
                 if (interactable != lastObjectHit){
@@ -143,7 +143,7 @@ public class HelmetLightScript : MonoBehaviour {
                     lastObjectHit = interactable;
                 }
             }else if(lastObjectHit != null){
-                lastObjectHit.OnRayExit();
+                lastObjectHit.OnRayExit(playerIndex);
                 lastObjectHit = null;
             }
         }

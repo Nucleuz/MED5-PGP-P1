@@ -128,7 +128,7 @@ public class Mirror : Interactable {
         }
     }
 
-    public override void OnRayExit(){}
+    public override void OnRayExit(int playerIndex){}
 
     IEnumerator rotateTowardsTarget(Quaternion start, Quaternion end, float length) {
         isRotating = true;

@@ -86,9 +86,17 @@ public class InteractableButton : Interactable{
 	}
 
 
-    public override void OnRayExit(){
+    public override void OnRayExit(int playerIndex){
 		if (trigger.isReadyToBeTriggered){
-			trigger.Deactivate();
+			if(trigger.playersRequired){
+				if(playerIndex == 1 && trigger.bluePlayerRequired ||
+                	playerIndex == 2 && trigger.redPlayerRequired ||
+                	playerIndex == 3 && trigger.greenPlayerRequired){
+					trigger.Deactivate();
+				}
+			}else{
+				trigger.Deactivate();
+			}
 		}
 
     }
