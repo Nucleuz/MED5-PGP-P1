@@ -31,7 +31,7 @@ public class LightFade : MonoBehaviour {
      void Update(){
         //If the button resets, it checks if the sequence is playing if
         if(gM.isLightCrystalLightReset == true && Sc.sequenceIsPlaying == false){ //Check if the puzzle resets
-            myLight.color = new Color(1, 0.2F, 0.2F, 1F); //red
+            myLight.color = new Color(1, 0.2f, 0.6f, 1F); //red
             myLight.intensity = 1F;
             //myLight.intensity -= 0.1F * (Time.deltaTime*4);
             gM.isLightCrystalLightReset = false;

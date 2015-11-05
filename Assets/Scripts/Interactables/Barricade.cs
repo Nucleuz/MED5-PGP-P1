@@ -7,7 +7,7 @@ public class Barricade : MonoBehaviour {
 
     public RailConnection rC;
     public Trigger trigger;
-    public float moveSpeed = 500.0f;
+    public float moveSpeed;
     private float t;
 
     public Vector3 startPos;
@@ -20,6 +20,7 @@ public class Barricade : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		moveSpeed = 3000f;
 		soundPlaying = false;
         t = 0;
         startPos = transform.position;
@@ -31,14 +32,14 @@ public class Barricade : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		// ONLY RUNS TO POSITION NEXT SET OF BARRICADES AFTER OPENING FIRST
 		if(!isFirstBarricade){
 			if(!trigger.isTriggered && previousBarricadeHandler.isTriggered){
 				t += Time.time / moveSpeed;
 				transform.position = Vector3.Lerp (endPos, startPos, t);
 				if(!soundPlaying && !isOpened){
-					SoundManager.Instance.PlayEvent("RailwayBlockerMove", gameObject);
+					//SoundManager.Instance.PlayEvent("RailwayBlockerMove", gameObject);
 					soundPlaying = true;
 				}
 			}

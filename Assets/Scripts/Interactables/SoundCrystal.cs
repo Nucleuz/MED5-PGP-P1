@@ -37,7 +37,7 @@ public class SoundCrystal : Interactable
     {
         //Plays the sound when the buttons resets.
         if(gM.resetSound){
-            //SoundManager.Instance.PlayEvent("Wrong", gameObject);
+            SoundManager.Instance.PlayEvent("Wrong", gameObject);
             gM.resetSound = false;
         }
 
