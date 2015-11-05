@@ -84,7 +84,6 @@ public class Mirror : Interactable {
 
         Quaternion end = Quaternion.LookRotation(targetDir, transform.up);                      //End position for the mirror to rotate to
         StartCoroutine(rotateTowardsTarget(transform.rotation, end, rotateSpeed));                       //Starts the coroutine that moves the mirror
-        
     }
 
     public override void OnRayEnter(int playerIndex, Ray ray, RaycastHit hit){
