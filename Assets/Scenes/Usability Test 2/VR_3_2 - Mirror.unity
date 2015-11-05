@@ -2936,30 +2936,18 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 11481816, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
-      propertyPath: m_CurrentCamera
+    - target: {fileID: 11470834, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
+      propertyPath: anim
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 11491730, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
-      propertyPath: m_CurrentCamera
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 11449746, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
-      propertyPath: CurrentRail
-      value: 
-      objectReference: {fileID: 482817204}
-    - target: {fileID: 150028, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1093560122}
     - target: {fileID: 11449746, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
       propertyPath: currentRail
       value: 
       objectReference: {fileID: 482817204}
-    - target: {fileID: 11449746, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
-      propertyPath: movementSpeed
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 11464622, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
+      propertyPath: car
+      value: 
+      objectReference: {fileID: 883347464}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
   m_IsPrefabParent: 0
@@ -3181,7 +3169,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 938937020}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.00999999, y: 5.1500001, z: 12.7399998}
+  m_LocalPosition: {x: -6.13999987, y: 5.1500001, z: 3.82999992}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1215783173}
@@ -4120,6 +4108,11 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 422504, guid: 80193ef02bcd5ad4d9232385f403d328, type: 2}
   m_PrefabInternal: {fileID: 1092031092}
+--- !u!95 &1093560122 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 9556122, guid: 11d72bf00a6a129438880bb429fe9484,
+    type: 2}
+  m_PrefabInternal: {fileID: 883347458}
 --- !u!1 &1114988045
 GameObject:
   m_ObjectHideFlags: 0
@@ -7903,7 +7896,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 174738, guid: 6b51f68b61740074b921684716c1e935, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 463068, guid: 6b51f68b61740074b921684716c1e935, type: 2}
       propertyPath: m_LocalScale.x
@@ -7935,12 +7928,20 @@ Prefab:
       objectReference: {fileID: 1054917435}
     - target: {fileID: 11465930, guid: 6b51f68b61740074b921684716c1e935, type: 2}
       propertyPath: movementSpeed
-      value: 1
+      value: .699999988
       objectReference: {fileID: 0}
     - target: {fileID: 10839436, guid: 6b51f68b61740074b921684716c1e935, type: 2}
       propertyPath: m_Range
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 10842618, guid: 6b51f68b61740074b921684716c1e935, type: 2}
+      propertyPath: m_Cookie
+      value: 
+      objectReference: {fileID: 2800000, guid: 4ec45802877ff7b4f990c4170113ab0d, type: 3}
+    - target: {fileID: 10839436, guid: 6b51f68b61740074b921684716c1e935, type: 2}
+      propertyPath: m_Cookie
+      value: 
+      objectReference: {fileID: 2800000, guid: 74ec4d7da693bc844b5b49735a6849f0, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b51f68b61740074b921684716c1e935, type: 2}
   m_IsPrefabParent: 0
@@ -8048,7 +8049,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2102221604}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.9499998, y: 5.1500001, z: 13.0200005}
+  m_LocalPosition: {x: 12.8699999, y: 5.1500001, z: 11.3400002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1215783173}

@@ -1570,7 +1570,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 443366, guid: d1d331912b78f624dbc06b0630c2f3a7, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 4.9000001
+      value: 11.6000004
       objectReference: {fileID: 0}
     - target: {fileID: 435256, guid: d1d331912b78f624dbc06b0630c2f3a7, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1595,6 +1595,30 @@ Prefab:
     - target: {fileID: 412018, guid: d1d331912b78f624dbc06b0630c2f3a7, type: 2}
       propertyPath: m_LocalPosition.x
       value: 5.30000019
+      objectReference: {fileID: 0}
+    - target: {fileID: 443366, guid: d1d331912b78f624dbc06b0630c2f3a7, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 32.1100006
+      objectReference: {fileID: 0}
+    - target: {fileID: 443366, guid: d1d331912b78f624dbc06b0630c2f3a7, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 8.10000038
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467180, guid: d1d331912b78f624dbc06b0630c2f3a7, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11472198, guid: d1d331912b78f624dbc06b0630c2f3a7, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11412050, guid: d1d331912b78f624dbc06b0630c2f3a7, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442902, guid: d1d331912b78f624dbc06b0630c2f3a7, type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d1d331912b78f624dbc06b0630c2f3a7, type: 2}
@@ -4598,71 +4622,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 406254, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
       propertyPath: m_RootOrder
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 11449746, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
-      propertyPath: CurrentRail
-      value: 
-      objectReference: {fileID: 482817204}
-    - target: {fileID: 2373790, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 150028, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
-      propertyPath: m_IsActive
-      value: 1
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 11449746, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
       propertyPath: currentRail
       value: 
       objectReference: {fileID: 482817204}
-    - target: {fileID: 11449746, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
-      propertyPath: movementSpeed
+    - target: {fileID: 11440690, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8145124, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1152056704 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 189880, guid: 11d72bf00a6a129438880bb429fe9484, type: 2}
-  m_PrefabInternal: {fileID: 1152056703}
---- !u!114 &1152056705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1152056704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11e7895a362bed940a138aefafcd3409, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  listenerId: 0
---- !u!114 &1152056707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1152056704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 937b8818995c45e449c3d131a35ac5d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1152056708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1152056704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11e7895a362bed940a138aefafcd3409, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  listenerId: 0
 --- !u!1001 &1165776219
 Prefab:
   m_ObjectHideFlags: 0
