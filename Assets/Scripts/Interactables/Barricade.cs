@@ -3,83 +3,67 @@ using System.Collections;
 
 public class Barricade : MonoBehaviour {
 
+	private bool soundPlaying;
+
     public RailConnection rC;
     public Trigger trigger;
+    public float moveSpeed;
+    private float t;
 
-    public Transform upNode;
-    public Transform downNode;
-
-    public float animationLength = .5f;
-    private bool animationRunning = false;
-
+    public Vector3 startPos;
+    public GameObject endNode;
+    public Vector3 endPos;
     private bool isOpened = false;
 	public bool isFirstBarricade = false;
 
 	public Trigger previousBarricadeHandler;
-    public Trigger currentBarricadeHandler;
 
 	// Use this for initialization
 	void Start () {
+		moveSpeed = 3000f;
+		soundPlaying = false;
+        t = 0;
+        startPos = transform.position;
+        endPos = endNode.transform.position;
+
 		if(!trigger.isTriggered && !isFirstBarricade){
-			transform.position = downNode.transform.position;
+			transform.position = endPos;
 		}
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		if(animationRunning) return;
-		if(!isFirstBarricade && !trigger.isTriggered && previousBarricadeHandler.isTriggered && !currentBarricadeHandler.isTriggered){
-			StartCoroutine(GoToUpState());
+	void FixedUpdate () {
+		// ONLY RUNS TO POSITION NEXT SET OF BARRICADES AFTER OPENING FIRST
+		if(!isFirstBarricade){
+			if(!trigger.isTriggered && previousBarricadeHandler.isTriggered){
+				t += Time.time / moveSpeed;
+				transform.position = Vector3.Lerp (endPos, startPos, t);
+				if(!soundPlaying && !isOpened){
+					//SoundManager.Instance.PlayEvent("RailwayBlockerMove", gameObject);
+					soundPlaying = true;
+				}
+			}
 		}
-		
-		if(animationRunning) return;
-		if(currentBarricadeHandler.isTriggered && !isOpened){
-            trigger.isTriggered = true;
-            StartCoroutine(GoToDownState());
+
+		if(trigger.isTriggered && !isOpened){
+			t = 0;
+            isOpened = true;
+		}
+
+        if(isOpened && t < 1){
+            t += Time.time / moveSpeed;
+            transform.position = Vector3.Lerp(startPos, endPos, t);
+            if(soundPlaying){
+				SoundManager.Instance.PlayEvent("RailwayBlockerMove", gameObject);
+				soundPlaying = false;
+			}
         }
-	}
 
-	IEnumerator GoToUpState(){
-		animationRunning = true;
-
-		float startTime = Time.time;
-    	Vector3 startPosition = transform.position;
-    	Vector3 endPosition = upNode.position;
-    	
-    	float t = 0f;
-    	while(t < 1f){
-    		t = (Time.time - startTime)/animationLength;
-    		transform.position = Vector3.Lerp(startPosition,endPosition,t);
-    		yield return null;
-    	}
-    	transform.position = endPosition;
-    	animationRunning = false;
-    	isOpened = false;
-
-        rC.connectToNext = false;
-        rC.connectToPrev = false;
-	}
-
-
-	IEnumerator GoToDownState(){
-		animationRunning = true;
-
-		float startTime = Time.time;
-    	Vector3 startPosition = transform.position;
-    	Vector3 endPosition = downNode.position;
-    	
-    	float t = 0f;
-    	while(t < 1f){
-    		t = (Time.time - startTime)/animationLength;
-    		transform.position = Vector3.Lerp(startPosition,endPosition,t);
-    		yield return null;
-    	}
-    	transform.position = endPosition;
-    	animationRunning = false;
-    	isOpened = true;
-
-        rC.connectToNext = true;
-        rC.connectToPrev = true;
+        if(isOpened && t >= 1)
+        {
+            rC.connectToNext = true;
+            rC.connectToPrev = true;
+        }
 	}
 
 

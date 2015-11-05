@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{5C9BCD85-448D-4F45-952B-8F6124C87A93}" SchemaVersion="70" RootDocumentID="{1BE62AEE-9809-4847-B300-E418C8D744C6}">
+	<AudioObjects>
+		<WorkUnit Name="Emitting" ID="{5C9BCD85-448D-4F45-952B-8F6124C87A93}" OwnerID="{02394BAC-4378-4228-A594-ADB64CABA9F6}" PersistMode="Nested">
+			<ChildrenList>
+				<ActorMixer Name="Emitting" ID="{B52B2F98-1368-48AB-94D4-93B0F2092669}" ShortID="84548817">
+					<PropertyList>
+						<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>1</Value>
+							</ValueList>
+						</Property>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+						</Reference>
+						<Reference Name="UserAuxSend0">
+							<ObjectRef Name="AmbienceBus" ID="{8FC1403E-05A4-4BCC-A84E-51488EF5BA6F}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<SwitchContainer Name="EmittingCrystal" ID="{7F4ECF1D-9E01-4F39-B930-A440E77E5D36}" ShortID="797866828">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="SP_Emitting301" ID="{72BD8B25-12DA-48E9-87BE-6B44B6C504FD}" ShortID="905444897" Type="SoundFX">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>12</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+										</Reference>
+										<Reference Name="UserAuxSend0">
+											<ObjectRef Name="AmbienceBus" ID="{8FC1403E-05A4-4BCC-A84E-51488EF5BA6F}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Emitting301" ID="{9AC14AC5-9BFE-4370-AE81-B0F18EC8E2E9}" ShortID="130984368">
+											<Language>SFX</Language>
+											<AudioFile>Emitting301.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Emitting301" ID="{9AC14AC5-9BFE-4370-AE81-B0F18EC8E2E9}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="SP_Emitting302" ID="{A27EF045-1CA4-4D2B-A8A2-7F4EBE74CF77}" ShortID="1037679517" Type="SoundFX">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>12</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+										</Reference>
+										<Reference Name="UserAuxSend0">
+											<ObjectRef Name="AmbienceBus" ID="{8FC1403E-05A4-4BCC-A84E-51488EF5BA6F}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Emitting302" ID="{79850609-6A43-4C4B-90DD-EDBC647A3AF5}" ShortID="901528223">
+											<Language>SFX</Language>
+											<AudioFile>Emitting302.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Emitting302" ID="{79850609-6A43-4C4B-90DD-EDBC647A3AF5}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="SP_Emitting303" ID="{E8E68DA1-0F59-4BC1-9C08-F747FF644A99}" ShortID="937091329" Type="SoundFX">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>12</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{213794B9-8008-4082-A599-9D688195D063}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+										</Reference>
+										<Reference Name="UserAuxSend0">
+											<ObjectRef Name="AmbienceBus" ID="{8FC1403E-05A4-4BCC-A84E-51488EF5BA6F}" WorkUnitID="{88AEA801-E436-458F-9865-10A1788249D3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Emitting303" ID="{ED36782F-B6C4-4818-821C-76E4F532B7EC}" ShortID="340341777">
+											<Language>SFX</Language>
+											<AudioFile>Emitting303.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Emitting303" ID="{ED36782F-B6C4-4818-821C-76E4F532B7EC}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<GroupingInfo>
+								<GroupRef Name="SP_EmittingCrystalMelodies" ID="{3AE91B62-4F20-4AAE-9C69-5E27C11E9FEE}"/>
+								<DefaultSwitchRef Name="NoMelody" ID="{03DB71E8-A943-4EAA-ADB3-B97A2E68A619}"/>
+								<GroupingBehaviorList>
+									<GroupingBehavior>
+										<ItemRef Name="SP_Emitting301" ID="{72BD8B25-12DA-48E9-87BE-6B44B6C504FD}"/>
+									</GroupingBehavior>
+									<GroupingBehavior>
+										<ItemRef Name="SP_Emitting302" ID="{A27EF045-1CA4-4D2B-A8A2-7F4EBE74CF77}"/>
+									</GroupingBehavior>
+									<GroupingBehavior>
+										<ItemRef Name="SP_Emitting303" ID="{E8E68DA1-0F59-4BC1-9C08-F747FF644A99}"/>
+									</GroupingBehavior>
+								</GroupingBehaviorList>
+								<GroupingList>
+									<Grouping>
+										<SwitchRef Name="Melody1" ID="{04A8C7D6-43CA-4AB6-8699-7F3D3B95AABD}"/>
+										<ItemList>
+											<ItemRef Name="SP_Emitting301" ID="{72BD8B25-12DA-48E9-87BE-6B44B6C504FD}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
+										<SwitchRef Name="Melody2" ID="{90EE88DC-101C-4BFC-880C-AC0DA2EFD37A}"/>
+										<ItemList>
+											<ItemRef Name="SP_Emitting302" ID="{A27EF045-1CA4-4D2B-A8A2-7F4EBE74CF77}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
+										<SwitchRef Name="Melody3" ID="{A58FB5EA-D78F-452D-ACC9-1F7306D80E10}"/>
+										<ItemList>
+											<ItemRef Name="SP_Emitting303" ID="{E8E68DA1-0F59-4BC1-9C08-F747FF644A99}"/>
+										</ItemList>
+									</Grouping>
+								</GroupingList>
+							</GroupingInfo>
+						</SwitchContainer>
+					</ChildrenList>
+				</ActorMixer>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>
