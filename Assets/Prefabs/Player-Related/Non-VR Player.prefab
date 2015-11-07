@@ -1903,7 +1903,7 @@ Light:
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 50
+  m_Range: 150
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -1997,6 +1997,7 @@ MonoBehaviour:
   helmet: {fileID: 11454778}
   nonFocusedLightShaft: {fileID: 11477182}
   focusedLightShaft: {fileID: 11448950}
+  cart: {fileID: 11465930}
   networkID: 0
 --- !u!114 &11428396
 MonoBehaviour:
@@ -2136,7 +2137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentRail: {fileID: 0}
-  movementSpeed: 3
+  movementSpeed: 1
   isMoving: 0
 --- !u!114 &11472548
 MonoBehaviour:
@@ -2964,7 +2965,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: movementSpeed
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
