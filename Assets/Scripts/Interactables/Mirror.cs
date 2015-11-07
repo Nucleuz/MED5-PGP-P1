@@ -14,7 +14,6 @@ public class Mirror : Interactable {
 	public int turnAmount = 50; // How much it is turning.
     public InteractableButton ButtonToTrigger; // The target that the mirror has to hit.
 
-    public Cart player;
     //public Rail railPoint;
     private LightShafts LS;
 
@@ -85,7 +84,6 @@ public class Mirror : Interactable {
 
         Quaternion end = Quaternion.LookRotation(targetDir, transform.up);                      //End position for the mirror to rotate to
         StartCoroutine(rotateTowardsTarget(transform.rotation, end, rotateSpeed));                       //Starts the coroutine that moves the mirror
-        
     }
 
     public override void OnRayEnter(int playerIndex, Ray ray, RaycastHit hit){
@@ -95,13 +93,13 @@ public class Mirror : Interactable {
     	//Set the color of the reflected light to the correct user.
         switch (playerIndex){
             case 1:
-                reflectedLight.color = new Color(1, 0.2F, 0.2F, 1F); //red
+                reflectedLight.color = new Color(0.2F, 0.2F, 1, 1F); //blue
             break;
             case 2:
-                reflectedLight.color = new Color(0.2F, 1, 0.2F, 1F); //green
+                reflectedLight.color = new Color(1, 0.2F, 0.2F, 1F); //red
             break;
             case 3:
-                reflectedLight.color = new Color(0.2F, 0.2F, 1, 1F); //blue
+                reflectedLight.color = new Color(0.2F, 1, 0.2F, 1F); //green
             break;
             default:
                 Debug.Log("Invalid playerIndex");
@@ -128,7 +126,7 @@ public class Mirror : Interactable {
         }
     }
 
-    public override void OnRayExit(){}
+    public override void OnRayExit(int playerIndex){}
 
     IEnumerator rotateTowardsTarget(Quaternion start, Quaternion end, float length) {
         isRotating = true;

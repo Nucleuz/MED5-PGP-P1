@@ -108,7 +108,7 @@ public class ChargeableButtonScript : Interactable
 		  endInteractTime = Time.time + minInteractLength;
 	}
 
-    public override void OnRayExit(){
+    public override void OnRayExit(int playerIndex){
         
     }
 }

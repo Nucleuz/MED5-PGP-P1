@@ -3,11 +3,14 @@ using System.Collections;
 using DarkRift;
 
 public class Trigger : MonoBehaviour {
+
+    //@TODO [HideInInspector] 
     public bool isTriggered = false;
     public bool isReadyToBeTriggered = false;
     public bool canReset = false;
     
     //Networking
+    [HideInInspector] 
     public ushort triggerID;
 
     //which players are currently interacting
@@ -27,6 +30,7 @@ public class Trigger : MonoBehaviour {
     }
     public void Activate(){
 		if (!playersRequired) {
+            Debug.Log("debug activated");
 			if (isTriggered)
 				return;
 			isTriggered = true; 
@@ -41,6 +45,7 @@ public class Trigger : MonoBehaviour {
    
     public void Deactivate(){
 		if (!playersRequired) {
+
 			if (!isTriggered)
 				return;
 			isTriggered = false;

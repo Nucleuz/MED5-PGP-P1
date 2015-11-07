@@ -9,8 +9,9 @@ public class InteractableButton : Interactable{
 	
 	[HideInInspector]
 	public ParticleSystem par;
-	public ParticleSystem placeHolder;
-	
+	public ParticleSystem placeHolder; //needs better name!? anyone!
+    
+    [HideInInspector]
 	public bool playedSound;
 	public bool particlesReplaced = false;
 
@@ -62,19 +63,40 @@ public class InteractableButton : Interactable{
 
 	public override void OnRayEnter(int playerIndex, Ray ray, RaycastHit hit){
 		if (trigger.isReadyToBeTriggered){
-			trigger.Activate();
-			if(!playedSound){
-				SoundManager.Instance.ToggleSwitch("On_Off", "On", gameObject);
-				SoundManager.Instance.PlayEvent("ButtonOnOff", gameObject);
-				playedSound = true;
-			}
+			if(trigger.playersRequired){
+				if(playerIndex == 1 && trigger.bluePlayerRequired ||
+                	playerIndex == 2 && trigger.redPlayerRequired ||
+                	playerIndex == 3 && trigger.greenPlayerRequired){
+					trigger.Activate();
+					if(!playedSound){
+						SoundManager.Instance.ToggleSwitch("On_Off", "On", gameObject);
+						SoundManager.Instance.PlayEvent("ButtonOnOff", gameObject);
+						playedSound = true;
+					}
+				}
+			}else{
+				trigger.Activate();
+				if(!playedSound){
+					SoundManager.Instance.ToggleSwitch("On_Off", "On", gameObject);
+					SoundManager.Instance.PlayEvent("ButtonOnOff", gameObject);
+					playedSound = true;
+				}
+			}			
 		}
 	}
 
 
-    public override void OnRayExit(){
+    public override void OnRayExit(int playerIndex){
 		if (trigger.isReadyToBeTriggered){
-			trigger.Deactivate();
+			if(trigger.playersRequired){
+				if(playerIndex == 1 && trigger.bluePlayerRequired ||
+                	playerIndex == 2 && trigger.redPlayerRequired ||
+                	playerIndex == 3 && trigger.greenPlayerRequired){
+					trigger.Deactivate();
+				}
+			}else{
+				trigger.Deactivate();
+			}
 		}
 
     }

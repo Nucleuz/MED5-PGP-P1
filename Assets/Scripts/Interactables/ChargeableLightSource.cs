@@ -137,7 +137,7 @@ public class ChargeableLightSource : Interactable {
 	}
     
 
-    public override void OnRayExit(){
+    public override void OnRayExit(int playerIndex){
         
     }
 }

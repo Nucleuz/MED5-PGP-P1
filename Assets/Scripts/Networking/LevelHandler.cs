@@ -11,7 +11,7 @@ LevelHandler handles loading of scenes and stitching together loaded scenes
 
 
 public class LevelHandler : MonoBehaviour {
-
+    [HideInInspector]
     public LevelContainer[] levelContainers;
     //for quick access
     private LevelContainer currentLevelContainer;
@@ -22,9 +22,11 @@ public class LevelHandler : MonoBehaviour {
 
     //@TODO a better interface for this 
     //@TODO make sure that it is fixed between server and client
-	public string[] levelOrder; 
-	
+	public string[] levelOrder;
+     
+    [HideInInspector]	
     public int levelManagerIndex = 0;
+    [HideInInspector]
     public int loadedLevelIndex = -1;
 
     private float currentRotation;
