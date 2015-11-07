@@ -25,12 +25,12 @@ public class Console : MonoBehaviour {
 	}
 
 	public Text consoleCanvasText;				// Pointer to Canvas Text
-	public Canvas consoleCanvas;				// Pointer to whole Canvas (For Enable/Disable)
+	public GameObject consoleContainer;				// Pointer to whole Canvas (For Enable/Disable)
 	public KeyCode keyToOpen;					// Which key to press to open Console
 	private string userInput = ""; 				// Holds the input from the user
 	private string output;
 	private string currentCommand = ""; 		// Writes the userInput on screen.
-	private bool isActive = false;     			// Controls the visibility of the console.
+	private bool activated = false;     			// Controls the visibility of the console.
 	public bool isServer;						// Active server commands or client commands (True = Server Commands, False = Client Commands)
 	
 	public FPSUpdater fps;
@@ -44,10 +44,11 @@ public class Console : MonoBehaviour {
 	void Update () {
 		//Code which prepares the console.
 		if(Input.GetKeyDown(keyToOpen)){
-			consoleCanvas.enabled = !consoleCanvas.enabled;
+			activated = !activated;
+			consoleContainer.SetActive(activated);
 		}
 		//Printing the userinput/creating command and prepares new user command.
-		if(isActive == true && Input.GetKeyDown(KeyCode.Return)){
+		if(activated == true && Input.GetKeyDown(KeyCode.Return)){
 			currentCommand = userInput;
             ExecuteCommand(currentCommand);
 			userInput = "";
@@ -70,7 +71,7 @@ public class Console : MonoBehaviour {
 			{
 				case "exit":
 					//This makes the console not visible
-					isActive = false;
+					activated = false;
 					//This resets the text in the console.
 					userInput = "";
 					currentCommand = "";

@@ -1011,7 +1011,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11403774, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
       propertyPath: spawnRailPoint
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11403774, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
       propertyPath: NextRail
@@ -1025,6 +1025,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: .707106829
       objectReference: {fileID: 0}
+    - target: {fileID: 11403774, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
+      propertyPath: next
+      value: 
+      objectReference: {fileID: 480370792}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
   m_IsPrefabParent: 0
@@ -1776,7 +1780,7 @@ MonoBehaviour:
   rName: railPoint
   spawnRailPoint: 0
   next: {fileID: 0}
-  prev: {fileID: 0}
+  prev: {fileID: 1207073153}
   railPoint: {fileID: 480370790}
 --- !u!23 &480370793
 MeshRenderer:
@@ -2940,6 +2944,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: .707106829
       objectReference: {fileID: 0}
+    - target: {fileID: 11403774, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
+      propertyPath: next
+      value: 
+      objectReference: {fileID: 1487023357}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8e11523e821032e4b8f8fb66ddd03fad, type: 2}
   m_IsPrefabParent: 0
@@ -3368,7 +3376,7 @@ MonoBehaviour:
   rName: railPoint
   spawnRailPoint: 0
   next: {fileID: 0}
-  prev: {fileID: 0}
+  prev: {fileID: 303708799}
   railPoint: {fileID: 1197089461}
 --- !u!4 &1197089463
 Transform:
@@ -3959,7 +3967,7 @@ MonoBehaviour:
   rName: railPoint
   spawnRailPoint: 0
   next: {fileID: 0}
-  prev: {fileID: 0}
+  prev: {fileID: 1278522157}
   railPoint: {fileID: 1487023356}
 --- !u!4 &1487023358
 Transform:

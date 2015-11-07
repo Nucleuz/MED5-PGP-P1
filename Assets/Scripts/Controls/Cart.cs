@@ -5,6 +5,8 @@ public class Cart : MonoBehaviour {
 
 	public Rail currentRail;            // The railpoint that the cart is currently on
     public float movementSpeed = 1;        // Speed of animation (At full speed);
+    
+    [HideInInspector]
     public bool isMoving;
 
     private float cheatySpeedMultiplier = 0.8f;

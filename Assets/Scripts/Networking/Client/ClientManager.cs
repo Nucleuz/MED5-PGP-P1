@@ -22,7 +22,8 @@ public class ClientManager : NetworkManager
     //IP the client will try to connect to 
     //@TODO - client should be able to change the ip when the client starts up, for easier use
     public string IP = "127.0.0.1";
-
+    
+    [HideInInspector]
     public ushort networkID = 0;
 
     //prefab for the players
@@ -185,7 +186,7 @@ public class ClientManager : NetworkManager
         //spawn the object
 
 
-        GameObject g = Instantiate(nvrPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+        GameObject g = Instantiate((useVR ? vrPrefab : nvrPrefab), Vector3.zero, Quaternion.identity) as GameObject;
         player = g.transform;
         //set the network id so it will sync with the player
         NetPlayerSync netPlayer = g.GetComponent<NetPlayerSync>();
@@ -212,6 +213,7 @@ public class ClientManager : NetworkManager
 
         Console.Instance.AddMessage("levelManager: " + levelHandler.getLevelManager());
         Rail startRail = levelHandler.getLevelManager().levelStartRail[networkID - 1];
+        netPlayer.cart.currentRail = startRail;
         Console.Instance.AddMessage("startrail: " + startRail.transform.position);
 
 

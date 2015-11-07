@@ -14033,12 +14033,16 @@ Prefab:
       objectReference: {fileID: 826788763}
     - target: {fileID: 11425826, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
       propertyPath: bluePlayerRequired
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11452214, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
       propertyPath: currentBarricadeHandler
       value: 
       objectReference: {fileID: 640584796}
+    - target: {fileID: 11425826, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
+      propertyPath: redPlayerRequired
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
   m_IsPrefabParent: 0
@@ -15735,7 +15739,7 @@ MonoBehaviour:
   rName: railPoint
   spawnRailPoint: 0
   next: {fileID: 0}
-  prev: {fileID: 0}
+  prev: {fileID: 1426276959}
   railPoint: {fileID: 796198690}
 --- !u!23 &796198692
 MeshRenderer:
@@ -27527,12 +27531,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11425826, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
       propertyPath: bluePlayerRequired
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11452214, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
       propertyPath: currentBarricadeHandler
       value: 
       objectReference: {fileID: 1540184244}
+    - target: {fileID: 11425826, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
+      propertyPath: redPlayerRequired
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
   m_IsPrefabParent: 0
@@ -33961,12 +33969,16 @@ Prefab:
       objectReference: {fileID: 868731509}
     - target: {fileID: 11425826, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
       propertyPath: bluePlayerRequired
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11452214, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
       propertyPath: currentBarricadeHandler
       value: 
       objectReference: {fileID: 1101460032}
+    - target: {fileID: 11425826, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
+      propertyPath: redPlayerRequired
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
   m_IsPrefabParent: 0
