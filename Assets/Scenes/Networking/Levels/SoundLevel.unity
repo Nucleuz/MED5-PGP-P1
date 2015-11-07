@@ -65,6 +65,7 @@ LightmapSettings:
     m_TextureCompression: 1
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
+    m_ReflectionCompression: 2
   m_LightmapSnapshot: {fileID: 0}
   m_RuntimeCPUUsage: 25
 --- !u!196 &4
@@ -84,9 +85,6 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!127 &5
-LevelGameManager:
-  m_ObjectHideFlags: 0
 --- !u!1 &2007162
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,6 +265,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11415856, guid: 07f36959d944f4bd18cd76ba1afc11d3, type: 2}
       propertyPath: bluePlayerRequired
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11415856, guid: 07f36959d944f4bd18cd76ba1afc11d3, type: 2}
+      propertyPath: redPlayerRequired
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -731,6 +733,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11415856, guid: 07f36959d944f4bd18cd76ba1afc11d3, type: 2}
       propertyPath: bluePlayerRequired
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11415856, guid: 07f36959d944f4bd18cd76ba1afc11d3, type: 2}
+      propertyPath: redPlayerRequired
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2320,6 +2326,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11415856, guid: 07f36959d944f4bd18cd76ba1afc11d3, type: 2}
       propertyPath: bluePlayerRequired
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11415856, guid: 07f36959d944f4bd18cd76ba1afc11d3, type: 2}
+      propertyPath: greenPlayerRequired
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2940,6 +2950,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11415856, guid: 07f36959d944f4bd18cd76ba1afc11d3, type: 2}
       propertyPath: bluePlayerRequired
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11415856, guid: 07f36959d944f4bd18cd76ba1afc11d3, type: 2}
+      propertyPath: greenPlayerRequired
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -6493,6 +6507,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11415856, guid: 07f36959d944f4bd18cd76ba1afc11d3, type: 2}
       propertyPath: bluePlayerRequired
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11415856, guid: 07f36959d944f4bd18cd76ba1afc11d3, type: 2}
+      propertyPath: greenPlayerRequired
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -7009,6 +7027,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11415856, guid: 07f36959d944f4bd18cd76ba1afc11d3, type: 2}
       propertyPath: bluePlayerRequired
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11415856, guid: 07f36959d944f4bd18cd76ba1afc11d3, type: 2}
+      propertyPath: redPlayerRequired
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
