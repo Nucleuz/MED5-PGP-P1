@@ -4545,6 +4545,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11449288, guid: 6f80e2aa1b3d54ab99529bbfc92eb471, type: 2}
+      propertyPath: levelManager
+      value: 
+      objectReference: {fileID: 1694236039}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6f80e2aa1b3d54ab99529bbfc92eb471, type: 2}
   m_IsPrefabParent: 0
@@ -5626,6 +5630,12 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 6adc60944b1774784a5d2f0341e8d8a7, type: 3}
   m_PrefabInternal: {fileID: 1730692249}
+--- !u!114 &1694236039 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11492572, guid: 639ce8ab29167214da59d2876d4ab108,
+    type: 2}
+  m_PrefabInternal: {fileID: 594646673}
+  m_Script: {fileID: 11500000, guid: ea563a57a966cd545941506de9929593, type: 3}
 --- !u!1001 &1704342536
 Prefab:
   m_ObjectHideFlags: 0
