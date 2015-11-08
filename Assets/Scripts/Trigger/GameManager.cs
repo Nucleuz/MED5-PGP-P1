@@ -3,7 +3,7 @@ using System.Collections;
 using System;
 
 public class GameManager : MonoBehaviour {
- 
+
 
 	protected int numberOfTriggeredEvents = 0; //Is used to determine where we should continue from each time a puzzle sequence is finished. is only updated after each sequence is finished
 	protected int currentNumberOfEventsTriggered = 0; //counts up when a single event is triggered, is reset when all events in the sequence is triggered
@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour {
 
     private bool readyForNextSequence = false;
 
-    public ServerManager server;	
+    public ServerManager server;
 
 	// Use this for initialization
 	void Start () {
@@ -23,13 +23,13 @@ public class GameManager : MonoBehaviour {
 		GameObject g = GameObject.Find("LevelManagerObject"); //accessing the LevelManager script on the LevelManagerObject
         levelHandler = GetComponent<LevelHandler>();
 
-            
+
 		if(g != null)
 			LM = g.GetComponent<LevelManager>();
 	}
-	
+
 	// Update is called once per frame
-	
+
 
     public void DetectTriggerChanges(){
         try{
@@ -44,11 +44,11 @@ public class GameManager : MonoBehaviour {
                         currentNumberOfEventsTriggered++; //counts up the events in sequence by 1
                     }
                     resetTriggers(j);
-                } 
+                }
             }
-            else { //Checks if there is a desired order in the sequence. Only checks the objects that should be interacted with in the sequence 
-                for(int i = 0; i < LM.eventOrder[index]; i++){  
-                    if(LM.events[i + numberOfTriggeredEvents + currentNumberOfEventsTriggered].isTriggered == true && LM.events[i + numberOfTriggeredEvents + currentNumberOfEventsTriggered].isReadyToBeTriggered == true){ //Checks if they are triggered 
+            else { //Checks if there is a desired order in the sequence. Only checks the objects that should be interacted with in the sequence
+                for(int i = 0; i < LM.eventOrder[index]; i++){
+                    if(LM.events[i + numberOfTriggeredEvents + currentNumberOfEventsTriggered].isTriggered == true && LM.events[i + numberOfTriggeredEvents + currentNumberOfEventsTriggered].isReadyToBeTriggered == true){ //Checks if they are triggered
                     LM.events[i + numberOfTriggeredEvents + currentNumberOfEventsTriggered].isReadyToBeTriggered = false; //sets the event untriggerable
                     LM.triggeredEvents[i + numberOfTriggeredEvents + currentNumberOfEventsTriggered] = true;
                     server.TriggerChanged(LM.events[i + numberOfTriggeredEvents + currentNumberOfEventsTriggered]);
@@ -77,9 +77,9 @@ public class GameManager : MonoBehaviour {
                         }
                     }
                 }
-            
+
                 //This if statement goes through all objects earlier then the current in the event order and detects if they trigger them, which they shouldn't
-                if(currentNumberOfEventsTriggered > 0){ 
+                if(currentNumberOfEventsTriggered > 0){
                     for(int i = 0; i < currentNumberOfEventsTriggered; i++){ //Checking events earlier in the sequence
                         if(LM.events[i + numberOfTriggeredEvents].isTriggered == true && LM.events[i + numberOfTriggeredEvents].isReadyToBeTriggered == true){
                             LM.events[i + numberOfTriggeredEvents].isReadyToBeTriggered = false;
@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour {
                     }
                 }
             }
-     
+
             //========== Code segment used for detecting if they are finished with a sequence ======================================================================
             //Checks if all of the events in the current sequence are triggered
             for(int i = 0; i < LM.eventsInSequence[index]; i++){
@@ -115,14 +115,14 @@ public class GameManager : MonoBehaviour {
                     numberOfTriggeredEvents += LM.eventsInSequence[index]; //Increase the total number of events by the amount of events that was in the current sequence
                     index++;
                     for(int i = numberOfTriggeredEvents; i < numberOfTriggeredEvents + LM.eventsInSequence[index]; ++i){ //Goes through the next sequence of events
-                        LM.events[i].isReadyToBeTriggered = true; //Makes the next sequence ready to be triggered 
+                        LM.events[i].isReadyToBeTriggered = true; //Makes the next sequence ready to be triggered
                         server.TriggerChanged(LM.events[i]);
                     }
                 }
                 currentNumberOfEventsTriggered = 0; //Resets the amount of objects that was triggered in the current sequence
                 readyForNextSequence = false;
-            }   
-        } 
+            }
+        }
         catch(System.IndexOutOfRangeException e){
             Debug.LogWarning("This was an error -- needs to implement Andreas GameManager Fix");
 			Debug.LogWarning(e);
@@ -133,14 +133,15 @@ public class GameManager : MonoBehaviour {
 	public void setNewLevelManager(LevelManager levelManager){
 		LM = levelManager;
 
-        if(LM == null)return;
-        
-        index = 0;
-        numberOfTriggeredEvents = 0;
-        currentNumberOfEventsTriggered = 0;
+    if(LM == null)return;
 
-		for(int k = 0; k < LM.eventsInSequence[0]; k++){ //makes the first events in the scene triggerable
-			LM.events[k].isReadyToBeTriggered = true;
+    index = 0;
+    numberOfTriggeredEvents = 0;
+    currentNumberOfEventsTriggered = 0;
+		if(LM.eventsInSequence.Length != 0){
+			for(int k = 0; k < LM.eventsInSequence[0]; k++){ //makes the first events in the scene triggerable
+				LM.events[k].isReadyToBeTriggered = true;
+			}
 		}
 	}
 
@@ -167,10 +168,10 @@ public class GameManager : MonoBehaviour {
         server.TriggerChanged(LM.events[resetIndex + numberOfTriggeredEvents]);
     }
 
-    IEnumerator FailedReset(int resetIndex){ //MOVE SOME OF THIS STUFF UP! 
+    IEnumerator FailedReset(int resetIndex){ //MOVE SOME OF THIS STUFF UP!
         yield return new WaitForSeconds(1.5f); //Resets after x seconds
         LM.events[resetIndex + numberOfTriggeredEvents].isReadyToBeTriggered = true;
         server.TriggerChanged(LM.events[resetIndex + numberOfTriggeredEvents]);
 
-    }	
+    }
 }

@@ -54,26 +54,26 @@ public class ServerManager : NetworkManager {
 
 			if(data.subject == Network.Subject.HasJoined){
 				//if a new player has joined
-				
+
 				//save the id of sender
 				senders[playerIndex] = con.id;
                 connections[playerIndex] = con;
 				//set server visuals
 				players[playerIndex].gameObject.SetActive(true);
-			
+
                 playerIndex++;
 
                 Debug.Log("Player joined told to load level " + levelHandler.levelManagerIndex);
 
 				//send back the spawnpos to the client
 				con.SendReply(
-                        Network.Tag.Manager, 
-                        Network.Subject.ServerSentNetID, 
+                        Network.Tag.Manager,
+                        Network.Subject.ServerSentNetID,
                         con.id);
 			}else if(data.subject == Network.Subject.RequestServerLevel){
                 Debug.Log("Player requested the servers level index");
-                con.SendReply(Network.Tag.Manager, 
-                        Network.Subject.NewLevelManager, 
+                con.SendReply(Network.Tag.Manager,
+                        Network.Subject.NewLevelManager,
                         levelHandler.levelManagerIndex);
             }
 		}else if(data.tag == Network.Tag.Player){
@@ -122,7 +122,7 @@ public class ServerManager : NetworkManager {
             if(data.subject == Network.Subject.RequestTriggerIDs){
                 TriggerState[] triggerStates = new TriggerState[triggerHandler.triggers.Count];
                 //populate
-                
+
                 for(int i = 0;i<triggerHandler.triggers.Count;i++){
                     triggerStates[i] = new TriggerState(triggerHandler.triggers[i]);
                 }
@@ -136,13 +136,13 @@ public class ServerManager : NetworkManager {
                 data.DecodeData();
 
                 triggerHandler.TriggerInteracted((ushort)data.data,con.id,true);
-                Debug.Log("trigger " + (ushort)data.data + " activated - state(" + triggerHandler.GetTriggerState((ushort)data.data) + ")"); 
+                Debug.Log("trigger " + (ushort)data.data + " activated - state(" + triggerHandler.GetTriggerState((ushort)data.data) + ")");
 
                 //force update GameMnager
                 gameManager.DetectTriggerChanges();
 
                 TriggerState state = triggerHandler.GetTriggerState((ushort)data.data);
-                
+
                 Debug.Log("sending: " + state);
                 //send to clients but not the sender
                 SendToAll(data.tag,Network.Subject.TriggerState,state);
@@ -150,7 +150,7 @@ public class ServerManager : NetworkManager {
                 data.DecodeData();
 
                 triggerHandler.TriggerInteracted((ushort)data.data,con.id,false);
-                Debug.Log("trigger " + (ushort)data.data + " deactivated"); 
+                Debug.Log("trigger " + (ushort)data.data + " deactivated");
 
                 //force update GameMnager
                 gameManager.DetectTriggerChanges();
@@ -172,9 +172,9 @@ public class ServerManager : NetworkManager {
     public void TriggerChanged(Trigger trigger){
 
         TriggerState state = new TriggerState(trigger);
-        
+
         Debug.Log("sending: " + state);
-        
+
         //send to clients but not the sender
         SendToAll(Network.Tag.Trigger,Network.Subject.TriggerState,state);
     }
@@ -184,6 +184,12 @@ public class ServerManager : NetworkManager {
         Debug.Log("LevelCompleted");
 
         gameManager.setNewLevelManager(null);
+
+        if(levelHandler.levelManagerIndex >= levelHandler.levelContainers.Length){
+            Debug.Log("Last level completed");
+            return;
+        }
+
         LevelContainer lc = levelHandler.levelContainers[levelHandler.levelManagerIndex];
         triggerHandler.process(lc);
         gameManager.setNewLevelManager(lc.levelManager);
@@ -192,9 +198,9 @@ public class ServerManager : NetworkManager {
         SendToAll(Network.Tag.Manager,Network.Subject.NewLevelManager,levelHandler.levelManagerIndex);
 
         Write("Level Completed");
- 
+
     }
-    
+
     public override void OnLevelLoaded(int levelIndex){
         Debug.Log("Level " + levelIndex + " (name: " + levelHandler.levelOrder[levelIndex] + ") Loaded");
 
@@ -224,7 +230,7 @@ public class ServerManager : NetworkManager {
 
         //System.Diagnostics.Process.GetCurrentProcess().Kill();
         //System.Environment.Exit(0);
-		
+
         //Close all connections
 		foreach (var con in connections) {
             if(con != null)
