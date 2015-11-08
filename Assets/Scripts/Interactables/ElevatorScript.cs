@@ -5,7 +5,9 @@ public class ElevatorScript : MonoBehaviour {
 
     private bool soundIsPlaying;
 
-    public RailConnection rC;                                               //rC = railConnection
+    [HideInInspector]
+    public RailConnection rC;  
+    [HideInInspector]                                            //rC = railConnection
     public Rail rP;                                                         //rP = railPoint
     public Trigger trigger;
 
