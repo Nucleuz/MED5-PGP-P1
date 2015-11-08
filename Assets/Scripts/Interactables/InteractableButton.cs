@@ -6,11 +6,11 @@ public class InteractableButton : Interactable{
 	Animator buttonAnimator;
 	[HideInInspector]
 	Light buttonLight;
-	
+
 	[HideInInspector]
 	public ParticleSystem par;
 	public ParticleSystem placeHolder; //needs better name!? anyone!
-    
+
     [HideInInspector]
 	public bool playedSound;
 	public bool particlesReplaced = false;
@@ -18,16 +18,16 @@ public class InteractableButton : Interactable{
 	bool timerRunning = false;
 	float lastInteractionTime = 0;
 	float activatedLength = 2.0f;
-	
+
 	[HideInInspector]
 	public Trigger trigger;
 
 	public Renderer[] rend;
-	
+
 	// Use this for initialization
 	void Start () {
 		playedSound 	= false;
-	
+
 		buttonAnimator 	= GetComponent<Animator>();
 		buttonLight 	= GetComponent<Light>();
 		trigger 		= GetComponent<Trigger>();
@@ -42,7 +42,7 @@ public class InteractableButton : Interactable{
 				});
 		par.Play();
 	}
-	
+
 	// Update is called once per frame
 	void FixedUpdate () {
 		if(trigger.isTriggered){
@@ -55,8 +55,8 @@ public class InteractableButton : Interactable{
 		}
 
 		if(playedSound && !trigger.isTriggered){
-			SoundManager.Instance.ToggleSwitch("On_Off", "Off", gameObject);
-			SoundManager.Instance.PlayEvent("ButtonOnOff", gameObject);
+			//SoundManager.Instance.ToggleSwitch("On_Off", "Off", gameObject);
+			//SoundManager.Instance.PlayEvent("ButtonOnOff", gameObject);
 			playedSound = false;
 		}
 	}
@@ -69,19 +69,19 @@ public class InteractableButton : Interactable{
                 	playerIndex == 3 && trigger.greenPlayerRequired){
 					trigger.Activate();
 					if(!playedSound){
-						SoundManager.Instance.ToggleSwitch("On_Off", "On", gameObject);
-						SoundManager.Instance.PlayEvent("ButtonOnOff", gameObject);
+						//SoundManager.Instance.ToggleSwitch("On_Off", "On", gameObject);
+						//SoundManager.Instance.PlayEvent("ButtonOnOff", gameObject);
 						playedSound = true;
 					}
 				}
 			}else{
 				trigger.Activate();
 				if(!playedSound){
-					SoundManager.Instance.ToggleSwitch("On_Off", "On", gameObject);
-					SoundManager.Instance.PlayEvent("ButtonOnOff", gameObject);
+					//SoundManager.Instance.ToggleSwitch("On_Off", "On", gameObject);
+					//SoundManager.Instance.PlayEvent("ButtonOnOff", gameObject);
 					playedSound = true;
 				}
-			}			
+			}
 		}
 	}
 
@@ -103,13 +103,13 @@ public class InteractableButton : Interactable{
 
 	public void setButtonColor(bool[] a){
 		//a[0] = red, a[1] = green, a[2] = blue
-		if(a[0] && !a[1] && !a[2]){						
-		buttonLight.color = Color.red;						
+		if(a[0] && !a[1] && !a[2]){
+		buttonLight.color = Color.red;
 		par.startColor = Color.red; //Only red player
 			placeHolder.startColor = Color.red;
 		for(int i = 0; i < rend.Length; i++){
 				rend[i].material.color = Color.red;
-		}	
+		}
 
 		} else if(!a[0] && a[1] && !a[2]){					//Only green player
 			buttonLight.color = Color.green;
@@ -150,14 +150,14 @@ public class InteractableButton : Interactable{
 			for(int i = 0; i < rend.Length; i++){
 				rend[i].material.color = Color.cyan;
 			}
-		
+
 		} else if(a[0] && a[1] && a[2]){					//All players
 			buttonLight.color = Color.white;
-			par.startColor = Color.white; 
+			par.startColor = Color.white;
 			placeHolder.startColor = Color.white;
 			for(int i = 0; i < rend.Length; i++){
 				rend[i].material.color = Color.white;
-			}       	
+			}
 		}
 	}
 	void ReplaceParticles(){
