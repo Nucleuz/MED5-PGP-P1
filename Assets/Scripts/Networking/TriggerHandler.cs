@@ -6,14 +6,14 @@ using DarkRift;
 /*
  * By KasperHdL
  *
- * Handles triggers over the net, contains a dictionary of all triggers map to id's 
+ * Handles triggers over the net, contains a dictionary of all triggers map to id's
  *
- * sends trigger info to Other Clients 
+ * sends trigger info to Other Clients
  *
      * (Singleton)
      */
 
-     
+
      public class TriggerHandler : MonoBehaviour{
 
          private static TriggerHandler instance;
@@ -45,7 +45,7 @@ using DarkRift;
              levelHandler = GetComponent<LevelHandler>();
              if(!NetworkManager.isServer)
                  DarkRiftAPI.onDataDetailed += ReceiveData;
-             
+
          }
 
 
@@ -65,7 +65,7 @@ using DarkRift;
              //if client when completed call server and ask for list of ids
              if(NetworkManager.isServer){
                  triggersReady = true;
-                  
+
              }else{
                 Debug.Log(triggers.Count);
                 DarkRiftAPI.SendMessageToServer(
@@ -107,7 +107,7 @@ using DarkRift;
              triggerIDs.Clear();
 
          }
-          
+
         public void ReceiveData(ushort senderID, byte tag, ushort subject, object data){
 
             if(tag == Network.Tag.Trigger){
@@ -116,7 +116,7 @@ using DarkRift;
                     {
 
                         Debug.Log("trigger id's received");
-                        
+
                         TriggerState[] triggerStates = (TriggerState[])data;
                         if(triggerStates.Length == triggers.Count){
                             for(int i = 0;i<triggerStates.Length;i++){
@@ -138,7 +138,7 @@ using DarkRift;
     }
 
     public void SetTriggerState(TriggerState state){
-        int index = FindTriggerIndexFromID(state.id);  
+        int index = FindTriggerIndexFromID(state.id);
         triggers[index].SetState(state);
     }
 
@@ -149,8 +149,8 @@ using DarkRift;
     }
 
     public void TriggerInteracted(ushort triggerID,ushort playerID, bool state){
-        int index = FindTriggerIndexFromID(triggerID);  
-        
+        int index = FindTriggerIndexFromID(triggerID);
+
         Trigger trigger = triggers[index];
 
         if(trigger.playersRequired){
@@ -160,7 +160,7 @@ using DarkRift;
             if(trigger.playersInteracting[0] == trigger.bluePlayerRequired &&
                 trigger.playersInteracting[1] == trigger.redPlayerRequired &&
                 trigger.playersInteracting[2] == trigger.greenPlayerRequired){
-                
+
                 Debug.Log("Trigger " + triggerID + " is triggered");
                 trigger.isTriggered = true;
             }else
