@@ -4,11 +4,12 @@ using System.Collections;
 public class LightFade : MonoBehaviour {
 	//This script is creating a light pulsating from the sound crystals.
 	//When the sound crystal is emitting sound it will start increasing and decreasing the intensity of the light.
-	//When the sound crystal is NOT emitting sound the lights intensity is slowly turned off.
+	//When the sound crystal is NOT emitting sound= the lights intensity is slowly turned off.
 	//The fade in and out part of this code is retrieved from an online source.  
 
 	//Get the SoundCrystal script.
-	public SoundCrystal Sc;
+
+	private SoundCrystal Sc;
 
     private Light myLight;
     public float maxIntensity = 1f;
@@ -22,6 +23,7 @@ public class LightFade : MonoBehaviour {
         
      	//Get the SoundCrystal script.
         myLight = GetComponent<Light>();
+        Sc = transform.parent.GetComponent<SoundCrystal>();
         myLight.color = new Color(0.2F, 0.7F, 0.5F, 1F); //Green/Blue
         
     }    
