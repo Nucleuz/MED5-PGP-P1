@@ -113,7 +113,7 @@ using DarkRift;
 
             if(tag == Network.Tag.Trigger){
                 switch(subject){
-                    case Network.Subject. :
+                    case Network.Subject.ServerSentTriggerIDs:
                     {
 
                         Debug.Log("trigger id's received");
