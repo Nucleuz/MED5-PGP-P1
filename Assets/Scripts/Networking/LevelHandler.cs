@@ -96,19 +96,20 @@ public class LevelHandler : MonoBehaviour {
             LevelManager nLM = levelContainer.levelManager;
 
             //Stich togehter with the levelContainers and set the next as current..
-            Vector3 pNLD = pLM.nextLevelDirection.normalized;
+            Vector3 pLD = pLM.levelEndRail[0].transform.position - pLM.levelEndRail[0].prev.transform.position;
+            Vector3 nLD = nLM.levelStartRail[0].transform.position - nLM.levelStartRail[0].next.transform.position;
         
-            //rotate next level so that pLM.nextLevelDirection is equal to the inverse nLM.prevLevelDirection
-            Console.Instance.AddMessage(pLM.nextLevelDirection + " " + (Mathf.Rad2Deg * levelContainers[loadingIndex - 1].transform.rotation.y ));
-            float a = Vector3.Angle(pLM.nextLevelDirection,nLM.prevLevelDirection) - currentRotation;
+            //rotate next level so that pLD is equal to the inverse nLD
+            Console.Instance.AddMessage(pLD + " " + (Mathf.Rad2Deg * levelContainers[loadingIndex - 1].transform.rotation.y ));
+            float a = Vector3.Angle(pLD,nLD) - currentRotation;
             currentRotation = 180-a;
 
             //rotate new level
             levelContainer.transform.RotateAround(levelContainer.transform.position,Vector3.up,currentRotation);
 
             //levelOffset is the amount of space between levels @TODO should be something meaningful
-            float levelOffset = 2;
-            Vector3 nLevelRailPos = pLM.levelEndRail[0].transform.position + pNLD * levelOffset;
+            float levelOffset = 0.1f;
+            Vector3 nLevelRailPos = pLM.levelEndRail[0].transform.position + pLD * levelOffset;
             Vector3 delta = nLevelRailPos - nLM.levelStartRail[0].transform.position;
             
             //offset the next level so that it is positioned correctly 
