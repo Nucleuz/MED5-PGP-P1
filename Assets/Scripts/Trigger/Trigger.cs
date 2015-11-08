@@ -3,11 +3,14 @@ using System.Collections;
 using DarkRift;
 
 public class Trigger : MonoBehaviour {
-	public bool isTriggered = false;
-	public bool isReadyToBeTriggered = false;
-	public bool canReset = false;
+
+    //@TODO [HideInInspector] 
+    public bool isTriggered = false;
+    public bool isReadyToBeTriggered = false;
+    public bool canReset = false;
     
     //Networking
+    [HideInInspector] 
     public ushort triggerID;
 
     //which players are currently interacting
@@ -26,28 +29,32 @@ public class Trigger : MonoBehaviour {
         playersRequired = bluePlayerRequired || redPlayerRequired || greenPlayerRequired;
     }
     public void Activate(){
-        if(!playersRequired){
-            if(isTriggered) return;
-            isTriggered = true; 
-        }
+		if (!playersRequired) {
+            Debug.Log("debug activated");
+			if (isTriggered)
+				return;
+			isTriggered = true; 
+		}
 
         //Send to Server @TODO to display visuals everyone should get this
         if(!NetworkManager.isServer)
             DarkRiftAPI.SendMessageToServer(Network.Tag.Trigger, Network.Subject.TriggerActivate,triggerID); 
         
-		Console.Instance.AddMessage("Trigger " + triggerID + " Activated");
+        Console.Instance.AddMessage("Trigger " + triggerID + " Activated");
     }
    
     public void Deactivate(){
-        if(!playersRequired){
-            if(!isTriggered) return;
-            isTriggered = false;
-        }
-        
+		if (!playersRequired) {
+
+			if (!isTriggered)
+				return;
+			isTriggered = false;
+		}
+
         if(!NetworkManager.isServer)
             DarkRiftAPI.SendMessageToServer(Network.Tag.Trigger,Network.Subject.TriggerDeactivate, triggerID);
 
-		Console.Instance.AddMessage("Trigger " + triggerID + " Deactivated");
+        Console.Instance.AddMessage("Trigger " + triggerID + " Deactivated");
     }
 
     public void SetState(TriggerState state){
@@ -61,6 +68,5 @@ public class Trigger : MonoBehaviour {
         triggerID = id;
     }
 }
-
 
 

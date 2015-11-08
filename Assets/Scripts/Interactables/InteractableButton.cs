@@ -2,11 +2,16 @@
 using System.Collections;
 
 public class InteractableButton : Interactable{
+	[HideInInspector]
 	Animator buttonAnimator;
+	[HideInInspector]
 	Light buttonLight;
-	public ParticleSystem par;
-	public ParticleSystem placeHolder;
 	
+	[HideInInspector]
+	public ParticleSystem par;
+	public ParticleSystem placeHolder; //needs better name!? anyone!
+    
+    [HideInInspector]
 	public bool playedSound;
 	public bool particlesReplaced = false;
 
@@ -14,6 +19,7 @@ public class InteractableButton : Interactable{
 	float lastInteractionTime = 0;
 	float activatedLength = 2.0f;
 	
+	[HideInInspector]
 	public Trigger trigger;
 
 	public Renderer[] rend;
@@ -49,27 +55,48 @@ public class InteractableButton : Interactable{
 		}
 
 		if(playedSound && !trigger.isTriggered){
-			//SoundManager.Instance.ToggleSwitch("On_Off", "Off", gameObject);
-			//SoundManager.Instance.PlayEvent("ButtonOnOff", gameObject);
+			SoundManager.Instance.ToggleSwitch("On_Off", "Off", gameObject);
+			SoundManager.Instance.PlayEvent("ButtonOnOff", gameObject);
 			playedSound = false;
 		}
 	}
 
 	public override void OnRayEnter(int playerIndex, Ray ray, RaycastHit hit){
 		if (trigger.isReadyToBeTriggered){
-			trigger.Activate();
-			if(!playedSound){
-				//SoundManager.Instance.ToggleSwitch("On_Off", "On", gameObject);
-				//SoundManager.Instance.PlayEvent("ButtonOnOff", gameObject);
-				playedSound = true;
-			}
+			if(trigger.playersRequired){
+				if(playerIndex == 1 && trigger.bluePlayerRequired ||
+                	playerIndex == 2 && trigger.redPlayerRequired ||
+                	playerIndex == 3 && trigger.greenPlayerRequired){
+					trigger.Activate();
+					if(!playedSound){
+						SoundManager.Instance.ToggleSwitch("On_Off", "On", gameObject);
+						SoundManager.Instance.PlayEvent("ButtonOnOff", gameObject);
+						playedSound = true;
+					}
+				}
+			}else{
+				trigger.Activate();
+				if(!playedSound){
+					SoundManager.Instance.ToggleSwitch("On_Off", "On", gameObject);
+					SoundManager.Instance.PlayEvent("ButtonOnOff", gameObject);
+					playedSound = true;
+				}
+			}			
 		}
 	}
 
 
-    public override void OnRayExit(){
+    public override void OnRayExit(int playerIndex){
 		if (trigger.isReadyToBeTriggered){
-			trigger.Deactivate();
+			if(trigger.playersRequired){
+				if(playerIndex == 1 && trigger.bluePlayerRequired ||
+                	playerIndex == 2 && trigger.redPlayerRequired ||
+                	playerIndex == 3 && trigger.greenPlayerRequired){
+					trigger.Deactivate();
+				}
+			}else{
+				trigger.Deactivate();
+			}
 		}
 
     }

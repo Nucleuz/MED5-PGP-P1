@@ -17,11 +17,15 @@ using DarkRift;
      public class TriggerHandler : MonoBehaviour{
 
          private static TriggerHandler instance;
-
+    
+        [HideInInspector]
          public List<Trigger> triggers;
 
          //Server Specific
+        [HideInInspector]
          public List<ushort> triggerIDs;
+        
+        [HideInInspector]
          public bool triggersReady = false;
 
          private ushort triggerIdCount = 1;
@@ -67,7 +71,6 @@ using DarkRift;
                  triggersReady = true;
 
              }else{
-                Debug.Log(triggers.Count);
                 DarkRiftAPI.SendMessageToServer(
                         Network.Tag.Trigger,
                         Network.Subject.RequestTriggerIDs,
@@ -122,7 +125,6 @@ using DarkRift;
                             for(int i = 0;i<triggerStates.Length;i++){
                                 triggers[i].SetState(triggerStates[i]);
                                 triggerIDs.Add(triggerStates[i].id);
-                                Debug.Log(triggerStates[i].id);
                             }
                         }else
                             Debug.Log("Received triggerstates has length: " + triggerStates.Length + " local has : " + triggers.Count);
@@ -130,6 +132,7 @@ using DarkRift;
                     break;
                     case Network.Subject.TriggerState:
                     {
+                        Debug.Log("Received> " + (TriggerState)data);
                         SetTriggerState((TriggerState)data);
                     }
                     break;

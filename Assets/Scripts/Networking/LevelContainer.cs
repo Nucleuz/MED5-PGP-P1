@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 public class LevelContainer : MonoBehaviour {
 
-    //TODO [HideInInspector]
+    [HideInInspector]
 	public bool processed = false;
-    //TODO [HideInInspector]
+    [HideInInspector]
     public bool triggersProcessed = false;
 
 	public LevelManager levelManager;
