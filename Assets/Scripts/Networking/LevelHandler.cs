@@ -97,10 +97,10 @@ public class LevelHandler : MonoBehaviour {
 
             //Stich togehter with the levelContainers and set the next as current..
             Vector3 pLD = pLM.levelEndRail[0].transform.position - pLM.levelEndRail[0].prev.transform.position;
-            Vector3 nLD = nLM.levelStartRail[0].transform.position - nLM.levelStartRail[0].next.transform.position;
+            Vector3 nLD = nLM.levelStartRail[0].next.transform.position - nLM.levelStartRail[0].transform.position;
         
             //rotate next level so that pLD is equal to the inverse nLD
-           // Console.Instance.AddMessage(pLD + " " + (Mathf.Rad2Deg * levelContainers[loadingIndex - 1].transform.rotation.y ));
+            // Console.Instance.AddMessage(pLD + " " + (Mathf.Rad2Deg * levelContainers[loadingIndex - 1].transform.rotation.y ));
             float a = Vector3.Angle(pLD,nLD) - currentRotation;
             currentRotation = 180-a;
 
