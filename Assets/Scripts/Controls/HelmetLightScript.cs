@@ -10,8 +10,8 @@ public class HelmetLightScript : MonoBehaviour {
     [HideInInspector] 
     public float spotlightAnimationTime = 0;
     
-    private float angleNormal = 45;                  // Angle of the spotlight without focus
-    private float angleFocus = 10;                   // Angle of the spotlight during focus
+    private float angleNormal = 20;                  // Angle of the spotlight without focus
+    private float angleFocus = 5;                   // Angle of the spotlight during focus
     private float intensityNormal = 1;               // Intensity of the spotlight without focus
     private float intensityFocus = 1;                // Intensity of the spotlight during focus
 
