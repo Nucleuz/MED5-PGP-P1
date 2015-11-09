@@ -7,11 +7,12 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Waterfall
-  m_Shader: {fileID: 4800000, guid: 6503b26ac62387245a2b9c04b8d544fb, type: 3}
-  m_ShaderKeywords: 
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _ALPHABLEND_ON
   m_LightmapFlags: 5
-  m_CustomRenderQueue: 2000
-  stringTagMap: {}
+  m_CustomRenderQueue: 3000
+  stringTagMap:
+    RenderType: Transparent
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -21,7 +22,7 @@ Material:
         second:
           m_Texture: {fileID: 2800000, guid: 695dca88d8dec1a489eb782c0384d07a, type: 3}
           m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 15.4581261, y: 0}
+          m_Offset: {x: 3.67745709, y: 0}
       data:
         first:
           name: _BumpMap
@@ -82,25 +83,25 @@ Material:
         first:
           name: _Distort
         second:
-          m_Texture: {fileID: 2800000, guid: 74ec4d7da693bc844b5b49735a6849f0, type: 3}
+          m_Texture: {fileID: 2800000, guid: 0ebfaeff4eb7328498165095f9cfc32f, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _LavaTex
         second:
-          m_Texture: {fileID: 2800000, guid: 07c20834694f35f44907dcf9f57a080f, type: 3}
+          m_Texture: {fileID: 2800000, guid: 93a726948508cc14eab67fb1abe2daa8, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
           name: _SrcBlend
-        second: 1
+        second: 5
       data:
         first:
           name: _DstBlend
-        second: 0
+        second: 10
       data:
         first:
           name: _Cutoff
@@ -112,7 +113,7 @@ Material:
       data:
         first:
           name: _ZWrite
-        second: 1
+        second: 0
       data:
         first:
           name: _Glossiness
@@ -136,7 +137,7 @@ Material:
       data:
         first:
           name: _Mode
-        second: 0
+        second: 2
       data:
         first:
           name: _Metallic
@@ -148,7 +149,7 @@ Material:
       data:
         first:
           name: _DistortY
-        second: .660000026
+        second: 2
     m_Colors:
       data:
         first:
@@ -157,4 +158,4 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: .544117689, g: .544117689, b: .544117689, a: .522000015}
