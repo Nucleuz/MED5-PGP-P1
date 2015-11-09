@@ -99,13 +99,25 @@ public class LevelHandler : MonoBehaviour {
             Vector3 pLD = pLM.levelEndRail[0].transform.position - pLM.levelEndRail[0].prev.transform.position;
             Vector3 nLD = nLM.levelStartRail[0].transform.position - nLM.levelStartRail[0].next.transform.position;
 
+
+            nLD.y = 0;
+            nLD.Normalize();
+
+            pLD.y = 0;
+            pLD.Normalize();
+
             //rotate next level so that pLD is equal to the inverse nLD
-            Console.Instance.AddMessage(pLD + " " + (Mathf.Rad2Deg * levelContainers[loadingIndex - 1].transform.rotation.y ));
+            Debug.Log(pLD + " - " + nLD + " " + (Mathf.Rad2Deg * levelContainers[loadingIndex - 1].transform.rotation.y ));
+
             float a = Vector3.Angle(pLD,nLD) - currentRotation;
             currentRotation = 180-a;
 
+
+            Debug.Log("next rot : " + currentRotation);
             //rotate new level
             levelContainer.transform.RotateAround(levelContainer.transform.position,Vector3.up,currentRotation);
+
+            Debug.Log("lc rot: " + (Mathf.Rad2Deg * levelContainer.transform.rotation.y));
 
             //levelOffset is the amount of space between levels @TODO should be something meaningful
             float levelOffset = 0.1f;
