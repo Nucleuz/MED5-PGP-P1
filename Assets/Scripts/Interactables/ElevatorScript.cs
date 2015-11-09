@@ -32,23 +32,22 @@ public class ElevatorScript : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 
-        // Checks if the mouse button is pressed
         if (trigger.isTriggered && !isActivated)
         {
             isActivated = true;
-            endAnimationTime = Time.time + animationLength;
+            endAnimationTime = Time.time;
         }
 
-        if (isActivated)                                                    //Activates after a mousepress
-        {
+        if (isActivated){
 
 
-            float t = (endAnimationTime - Time.time) / animationLength;                   //Calculates the final speed of the object.
+            float t = (Time.time - endAnimationTime) / animationLength;                   //Calculates the final speed of the object.
             
+            Console.Instance.AddMessage("elevator time " + t);
             //Moves the elevator from it's current position to the next active node
-            transform.position = Vector3.MoveTowards(transform.position, nodes[activeNode].position, t);
+            transform.position = Vector3.Lerp(transform.position, nodes[activeNode].position, t);
             if(!soundIsPlaying){
                 SoundManager.Instance.PlayEvent("Elevator_Active", gameObject);
                 soundIsPlaying = true;
@@ -56,8 +55,9 @@ public class ElevatorScript : MonoBehaviour {
             
             
             //Checks if the distance between the elevator and current active node is less than 0.1 and if active node is not larger than array nodes length.
-            if (Vector3.Distance(transform.position, nodes[activeNode].transform.position) < 0.1f && activeNode <= nodes.Length - 1) {
+            if (Vector3.Distance(transform.position, nodes[activeNode].transform.position) < 0.1f && activeNode < nodes.Length) {
                 activeNode++;
+                endAnimationTime = Time.time;
             }
 
             // Checks if we've reached the last node. If true, then we reverse the order of the nodes, set the active node to 0, and deactivate the elevator. 
