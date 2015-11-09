@@ -1915,7 +1915,7 @@ Light:
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 150
+  m_Range: 500
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -1947,7 +1947,7 @@ Light:
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: .439999998
-  m_Range: 50
+  m_Range: 100
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -2062,10 +2062,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spotlightAnimationLength: .200000003
   spotlightAnimationTime: 0
-  angleNormal: 45
-  angleFocus: 8
-  intensityNormal: 1
-  intensityFocus: 8
   nonFocusedHelmetLight: {fileID: 10862366}
   playerIndex: 0
   netPlayer: {fileID: 0}

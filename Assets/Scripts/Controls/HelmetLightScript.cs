@@ -10,14 +10,10 @@ public class HelmetLightScript : MonoBehaviour {
     [HideInInspector] 
     public float spotlightAnimationTime = 0;
     
-    [HideInInspector] 
-    public float angleNormal = 45;                  // Angle of the spotlight without focus
-    [HideInInspector] 
-    public float angleFocus = 10;                   // Angle of the spotlight during focus
-    [HideInInspector] 
-    public float intensityNormal = 1;               // Intensity of the spotlight without focus
-    [HideInInspector] 
-    public float intensityFocus = 8;                // Intensity of the spotlight during focus
+    private float angleNormal = 45;                  // Angle of the spotlight without focus
+    private float angleFocus = 10;                   // Angle of the spotlight during focus
+    private float intensityNormal = 1;               // Intensity of the spotlight without focus
+    private float intensityFocus = 1;                // Intensity of the spotlight during focus
 
     private Light helmetLight;                      // Object that refers to the spotlight within the scene
     public Light nonFocusedHelmetLight; 
@@ -74,7 +70,7 @@ public class HelmetLightScript : MonoBehaviour {
         helmetLight.spotAngle = Mathf.Lerp(angleNormal, angleFocus,t);
 
         // Lerps the intensity from normal to focused intensity.
-        helmetLight.intensity = Mathf.Lerp(intensityNormal, intensityFocus, t);
+        // helmetLight.intensity = Mathf.Lerp(intensityNormal, intensityFocus, t);
 
     }
     

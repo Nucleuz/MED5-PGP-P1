@@ -532,7 +532,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 458290}
   - 108: {fileID: 10842618}
-  - 114: {fileID: 11428396}
   - 114: {fileID: 11477182}
   m_Layer: 0
   m_Name: Spotlight
@@ -1903,7 +1902,7 @@ Light:
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 150
+  m_Range: 500
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -1935,7 +1934,7 @@ Light:
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: .439999998
-  m_Range: 50
+  m_Range: 100
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -1999,18 +1998,6 @@ MonoBehaviour:
   focusedLightShaft: {fileID: 11448950}
   cart: {fileID: 11465930}
   networkID: 0
---- !u!114 &11428396
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 160808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a237e80dd941424da52ca2d295243f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hls: {fileID: 0}
 --- !u!114 &11444098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2118,10 +2105,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spotlightAnimationLength: .200000003
   spotlightAnimationTime: 0
-  angleNormal: 45
-  angleFocus: 10
-  intensityNormal: 1
-  intensityFocus: 8
   nonFocusedHelmetLight: {fileID: 10842618}
   playerIndex: 0
   netPlayer: {fileID: 0}
