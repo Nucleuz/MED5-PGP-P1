@@ -245,6 +245,17 @@
 										</Action>
 									</ChildrenList>
 								</Event>
+								<Event Name="RailwayBlockerCrystal" ID="{2E3CB8C6-5F3D-4F2D-BD3D-BB3D3B2249F1}">
+									<ChildrenList>
+										<Action Name="Play" ID="{E1BD1C3B-B80A-4257-95E6-66C1D8BDD053}" ShortID="517510610" Type="Play" Scope="One" Global="false">
+											<ElementList>
+												<Element ID="{7954075C-2084-49CC-B770-CCD8E5A80446}" Global="false">
+													<ObjectRef Name="RailwayBlockerCrystalLoop" ID="{E4922058-4B64-4508-AB2E-E8921719E7E7}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
+												</Element>
+											</ElementList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
 						</Folder>
 						<Folder Name="Mirrors" ID="{D2934554-0E49-42CE-AC28-EF4B20AC8215}" ShortID="717001720">
