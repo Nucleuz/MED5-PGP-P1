@@ -16,8 +16,8 @@ MonoBehaviour:
   - PhysicalPath: Events\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{F435BC40-F026-475F-8354-F9EAA1C9BD20}'
-    m_lastTimePsrt1: 2026580458
-    m_lastTimePart2: -1999443708
+    m_lastTimePsrt1: 690942641
+    m_lastTimePart2: -1999443698
     List:
     - Name: Ambience_BackgroundDeepWater
       Path: Default Work Unit\Ambience\Ambience_BackgroundDeepWater
@@ -388,6 +388,20 @@ MonoBehaviour:
         ObjectType: 3
       ID: 1401356413
       Guid: d1efd4351c04d14caeef9f51b79a4618
+      maxAttenuation: 0
+    - Name: RailwayBlockerCrystal
+      Path: Default Work Unit\Doors and Mechanisms\Doors etc\RailwayBlockerCrystal
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Doors and Mechanisms
+        ObjectType: 4
+      - ElementName: Doors etc
+        ObjectType: 4
+      - ElementName: RailwayBlockerCrystal
+        ObjectType: 3
+      ID: 1673183774
+      Guid: c6b83c2e3d5f2d4fbd3dbb3d3b2249f1
       maxAttenuation: 0
     - Name: RailwayBlockerMove
       Path: Default Work Unit\Doors and Mechanisms\Doors etc\RailwayBlockerMove
@@ -777,8 +791,8 @@ MonoBehaviour:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{116C8925-F139-4949-97E9-2B14250AD9FB}'
-    m_lastTimePsrt1: 2072520324
-    m_lastTimePart2: -1999443708
+    m_lastTimePsrt1: 691032688
+    m_lastTimePart2: -1999443698
     List:
     - Name: Main
       Path: Default Work Unit\Main
@@ -793,11 +807,10 @@ MonoBehaviour:
   - /WwiseFinal
   - /WwiseFinal/Events
   - /WwiseFinal/Events/Default Work Unit
+  - /WwiseFinal/Events/Default Work Unit/Doors and Mechanisms
+  - /WwiseFinal/Events/Default Work Unit/Doors and Mechanisms/Doors etc
   - /WwiseFinal/SoundBanks
   - /WwiseFinal/SoundBanks/Default Work Unit
-  - /WwiseFinal/Switches
-  - /WwiseFinal/Switches/Default Work Unit
-  - /WwiseFinal/Switches/Default Work Unit/On_Off
   m_lastPopulateTimePsrt1: 0
   m_lastPopulateTimePart2: 0
   autoPopulateEnabled: 1

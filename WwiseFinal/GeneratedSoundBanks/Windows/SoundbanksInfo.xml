@@ -36,7 +36,9 @@
 				<Event Id="1471623179" Name="Headlamp_Focus_Stop" MaxAttenuation="0.000000"/>
 				<Event Id="296982171" Name="Mirror_Turning_Active"/>
 				<Event Id="1401356413" Name="Mirror_Turning_Stop"/>
+				<Event Id="1673183774" Name="RailwayBlockerCrystal"/>
 				<Event Id="3328847735" Name="RailwayBlockerMove"/>
+				<Event Id="483466160" Name="RailwayBlockerStop"/>
 				<Event Id="2104256950" Name="RiverRunning"/>
 				<Event Id="1389759676" Name="SP_EmittingCrystal"/>
 				<Event Id="1067329105" Name="SP_PlayerButton1"/>
@@ -45,10 +47,10 @@
 				<Event Id="1067329108" Name="SP_PlayerButton4"/>
 				<Event Id="1067329109" Name="SP_PlayerButton5"/>
 				<Event Id="1067329110" Name="SP_PlayerButton6"/>
+				<Event Id="106545430" Name="SP_Wrong"/>
 				<Event Id="4059778220" Name="WaterfallHuge"/>
 				<Event Id="2402090994" Name="WaterfallLarge"/>
 				<Event Id="4287948414" Name="WaterfallSmall"/>
-				<Event Id="366552496" Name="Wrong"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
 				<File Id="625245" Language="SFX">
@@ -63,6 +65,10 @@
 					<ShortName>StartUp.wav</ShortName>
 					<Path>SFX\StartUp_9E69E797.wem</Path>
 				</File>
+				<File Id="35573236" Language="SFX">
+					<ShortName>DustStones04.wav</ShortName>
+					<Path>SFX\DustStones04_9E69E797.wem</Path>
+				</File>
 				<File Id="46169572" Language="SFX">
 					<ShortName>HandPoweredDrill(looped).wav</ShortName>
 					<Path>SFX\HandPoweredDrill(looped)_9E69E797.wem</Path>
@@ -74,6 +80,10 @@
 				<File Id="59566495" Language="SFX">
 					<ShortName>Rumble03.wav</ShortName>
 					<Path>SFX\Rumble03_9E69E797.wem</Path>
+				</File>
+				<File Id="73388867" Language="SFX">
+					<ShortName>DustStones.wav</ShortName>
+					<Path>SFX\DustStones_8754CE29.wem</Path>
 				</File>
 				<File Id="83543432" Language="SFX">
 					<ShortName>Cave Ambience05.wav</ShortName>
@@ -97,7 +107,7 @@
 				</File>
 				<File Id="190139503" Language="SFX">
 					<ShortName>DoorClose.wav</ShortName>
-					<Path>SFX\DoorClose_9E69E797.wem</Path>
+					<Path>SFX\DoorClose_19CDD093.wem</Path>
 				</File>
 				<File Id="204065441" Language="SFX">
 					<ShortName>IndoorPebbles02.wav</ShortName>
@@ -139,10 +149,6 @@
 					<ShortName>LegHit02.wav</ShortName>
 					<Path>SFX\LegHit02_9E69E797.wem</Path>
 				</File>
-				<File Id="378898815" Language="SFX">
-					<ShortName>Waterfall01.wav</ShortName>
-					<Path>SFX\Waterfall01_9E69E797.wem</Path>
-				</File>
 				<File Id="400527701" Language="SFX">
 					<ShortName>Waterfall07.wav</ShortName>
 					<Path>SFX\Waterfall07_9E69E797.wem</Path>
@@ -173,7 +179,7 @@
 				</File>
 				<File Id="517330250" Language="SFX">
 					<ShortName>BlockerSlide01.wav</ShortName>
-					<Path>SFX\BlockerSlide01_9E69E797.wem</Path>
+					<Path>SFX\BlockerSlide01_4B8CC0C5.wem</Path>
 				</File>
 				<File Id="544054926" Language="SFX">
 					<ShortName>GentleWaterDrops01.wav</ShortName>
@@ -207,9 +213,21 @@
 					<ShortName>Rumble01.wav</ShortName>
 					<Path>SFX\Rumble01_9E69E797.wem</Path>
 				</File>
+				<File Id="671001978" Language="SFX">
+					<ShortName>DustStones05.wav</ShortName>
+					<Path>SFX\DustStones05_9E69E797.wem</Path>
+				</File>
 				<File Id="674515164" Language="SFX">
 					<ShortName>Waterfall04.wav</ShortName>
 					<Path>SFX\Waterfall04_4B8CC0C5.wem</Path>
+				</File>
+				<File Id="698100279" Language="SFX">
+					<ShortName>DustStones03.wav</ShortName>
+					<Path>SFX\DustStones03_9E69E797.wem</Path>
+				</File>
+				<File Id="701118338" Language="SFX">
+					<ShortName>RailwayBlockerCrystalLoop.wav</ShortName>
+					<Path>SFX\RailwayBlockerCrystalLoop_4B8CC0C5.wem</Path>
 				</File>
 				<File Id="708409794" Language="SFX">
 					<ShortName>ShutDown.wav</ShortName>
@@ -238,6 +256,10 @@
 				<File Id="783517991" Language="SFX">
 					<ShortName>PlayerCrystal301.wav</ShortName>
 					<Path>SFX\PlayerCrystal301_B940C46E.wem</Path>
+				</File>
+				<File Id="814612408" Language="SFX">
+					<ShortName>DustStones02.wav</ShortName>
+					<Path>SFX\DustStones02_9E69E797.wem</Path>
 				</File>
 				<File Id="823055302" Language="SFX">
 					<ShortName>IndoorPebbles04.wav</ShortName>
@@ -286,6 +308,10 @@
 				<File Id="1059423158" Language="SFX">
 					<ShortName>SwitchRealOn04.wav</ShortName>
 					<Path>SFX\SwitchRealOn04_9E69E797.wem</Path>
+				</File>
+				<File Id="1072368297" Language="SFX">
+					<ShortName>WaterThing.wav</ShortName>
+					<Path>SFX\WaterThing_4B8CC0C5.wem</Path>
 				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>
