@@ -16,11 +16,12 @@ public class Cart : MonoBehaviour {
     private Animator minecartAnimator;  // Animator pointer for Minecart
 	private float currentStep;          // How long the player is between two points
 
-	void Start() {
+	public void Init(Rail rail) {
 
         isMoving = false;
-        startingRail = currentRail;
-        startingPosition = transform.position;
+        startingRail = rail;
+        currentRail = rail;
+        startingPosition = rail.transform.position;
 		minecartAnimator = GetComponent<Animator>();
 
         currentStep = 0;
@@ -31,10 +32,11 @@ public class Cart : MonoBehaviour {
             float h = Input.GetAxis("Horizontal");
             float v = Input.GetAxis("Vertical");
 
-            transform.position += new Vector3(v*cheatySpeedMultiplier,0,-h*cheatySpeedMultiplier);
+            transform.position += transform.right*v*cheatySpeedMultiplier + transform.forward*-h*cheatySpeedMultiplier;
             return;
         }
 
+      
 
         //This is specifically for elevator connection points where the cart has to move with the elevator
         if (currentRail.next == null && currentRail.prev == null){
