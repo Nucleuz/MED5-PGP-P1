@@ -9,15 +9,16 @@ public class Rail : MonoBehaviour {
 	public Rail next; 			    //the next rail in line
 	public Rail prev; 		        //the previous rail in line
 	public GameObject railPoint; 	//prefab reference
-    private MeshRenderer mesh;
+    //private MeshRenderer mesh;
 
 	// Use this for initialization
 	void OnEnable () {
 		spawnRailPoint = false;
-        mesh = GetComponent<MeshRenderer>();
+        //mesh = GetComponent<MeshRenderer>();
 	}
 
 	void Update(){
+		/*
         if (Application.isPlaying && mesh.enabled)
             mesh.enabled = false;
 			//Makes sure that application is not running.
@@ -44,18 +45,19 @@ public class Rail : MonoBehaviour {
 				createNewPoint();
 				spawnRailPoint = false;
 			}
+			*/
 
 			//Visual debugging (shows direction vector)
 			if(next != null){
 				Debug.DrawLine(transform.position, next.transform.position, Color.red);
 			}
-		}
+		//}
 	}
-	
+
 	//Find the end of the rail segment
 	//(the one railpoint that has an empty NextRail variable)
 	//Creates new railpoint and set its PreviousRail, and itself as the previous rails NextRail
-	protected void createNewPoint(){
+	/*protected void createNewPoint(){
 		if(next == null){
 			GameObject g = Instantiate(railPoint, new Vector3(transform.position.x+1, transform.position.y, transform.position.z), Quaternion.identity) as GameObject;
 			g.transform.parent = this.transform.parent;
@@ -65,5 +67,5 @@ public class Rail : MonoBehaviour {
 		} else {
 			next.createNewPoint();
 		}
-	}
+	}*/
 }

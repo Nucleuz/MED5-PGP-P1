@@ -32,9 +32,10 @@ public class LevelManager : MonoBehaviour {
 	[Tooltip("The 3 rail points where the level end, Organized Blue, Red, Green")]
 	public Rail[] levelEndRail   = new Rail[3];
 
+	/*
 	[Tooltip("Direction vector pointing to the next level")]
     public Vector3 nextLevelDirection;
 	[Tooltip("Direction vector pointing to the previous level")]
     public Vector3 prevLevelDirection;
-
+	*/
 }
