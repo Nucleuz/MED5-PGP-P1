@@ -260,7 +260,7 @@ GameObject:
   - 120: {fileID: 12034002}
   - 114: {fileID: 11448950}
   - 114: {fileID: 11454778}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spotlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -532,9 +532,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 458290}
   - 108: {fileID: 10842618}
-  - 114: {fileID: 11428396}
   - 114: {fileID: 11477182}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spotlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1999,18 +1998,6 @@ MonoBehaviour:
   focusedLightShaft: {fileID: 11448950}
   cart: {fileID: 11465930}
   networkID: 0
---- !u!114 &11428396
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 160808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a237e80dd941424da52ca2d295243f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hls: {fileID: 0}
 --- !u!114 &11444098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2044,7 +2031,7 @@ MonoBehaviour:
   m_SpotFar: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294967279
   m_ColorFilterMask:
     serializedVersion: 2
     m_Bits: 0
@@ -2113,7 +2100,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 138790}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b237059b33cb5044fa1e95ce53f21fd0, type: 3}
+  m_Script: {fileID: 11500000, guid: 67dcb180c9d96194f85942954896bd80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spotlightAnimationLength: .200000003
@@ -2171,7 +2158,7 @@ MonoBehaviour:
   m_SpotFar: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294967279
   m_ColorFilterMask:
     serializedVersion: 2
     m_Bits: 4294967295
