@@ -103,25 +103,33 @@ public class LevelHandler : MonoBehaviour {
             nLD.y = 0;
             nLD.Normalize();
 
+
             pLD.y = 0;
             pLD.Normalize();
 
             //rotate next level so that pLD is equal to the inverse nLD
-            Debug.Log(pLD + " - " + nLD + " " + (Mathf.Rad2Deg * levelContainers[loadingIndex - 1].transform.rotation.y ));
+            Debug.Log(pLD + " - " + nLD + " " + (Mathf.Rad2Deg * levelContainers[loadingIndex - 1].transform.rotation.y ) + " magnitudes: " + pLD.magnitude + ";" + nLD.magnitude);
 
-            float a = Vector3.Angle(pLD,nLD) - currentRotation;
-            currentRotation = 180-a;
+            float a = Vector3.Angle(pLD,nLD) + (Mathf.Rad2Deg * levelContainers[loadingIndex - 1].transform.rotation.y);
 
+            Vector3 cross = Vector3.Cross(pLD,nLD);
 
-            Debug.Log("next rot : " + currentRotation);
+            if(cross.y > 0)
+            currentRotation = a;
+            else if(cross.y == 0)
+            currentRotation = a-180;
+            else if(cross.y < 0)
+            currentRotation = a-180;
+
+            Debug.Log("a: " + a + " next rot : " + currentRotation + " c: " + cross);
             //rotate new level
-            levelContainer.transform.RotateAround(levelContainer.transform.position,Vector3.up,currentRotation);
+            levelContainer.transform.RotateAround(pLM.levelEndRail[0].transform.position,Vector3.up,currentRotation);
 
             Debug.Log("lc rot: " + (Mathf.Rad2Deg * levelContainer.transform.rotation.y));
 
             //levelOffset is the amount of space between levels @TODO should be something meaningful
             float levelOffset = 0.1f;
-            Vector3 nLevelRailPos = pLM.levelEndRail[0].transform.position + pLD * levelOffset;
+            Vector3 nLevelRailPos = pLM.levelEndRail[0].transform.position + pLD.normalized * levelOffset;
             Vector3 delta = nLevelRailPos - nLM.levelStartRail[0].transform.position;
 
             //offset the next level so that it is positioned correctly
