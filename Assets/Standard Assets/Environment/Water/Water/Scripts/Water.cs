@@ -7,6 +7,10 @@ namespace UnityStandardAssets.Water
     [ExecuteInEditMode] // Make water live-update even when not in play mode
     public class Water : MonoBehaviour
     {
+        void Start(){
+            gameObject.SetActive(false);
+        }
+
         public enum WaterMode
         {
             Simple = 0,
