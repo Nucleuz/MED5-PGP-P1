@@ -269,6 +269,10 @@ Prefab:
       propertyPath: canReset
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11470732, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
+      propertyPath: isReadyToBeTriggered
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
   m_IsPrefabParent: 0
@@ -2737,11 +2741,23 @@ Prefab:
     m_Modifications:
     - target: {fileID: 11492572, guid: 639ce8ab29167214da59d2876d4ab108, type: 2}
       propertyPath: events.Array.size
-      value: 3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11492572, guid: 639ce8ab29167214da59d2876d4ab108, type: 2}
+      propertyPath: eventOrder.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11492572, guid: 639ce8ab29167214da59d2876d4ab108, type: 2}
+      propertyPath: triggerEvents.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11492572, guid: 639ce8ab29167214da59d2876d4ab108, type: 2}
       propertyPath: triggeredEvents.Array.size
-      value: 3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11492572, guid: 639ce8ab29167214da59d2876d4ab108, type: 2}
+      propertyPath: eventsInSequence.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 422748, guid: 639ce8ab29167214da59d2876d4ab108, type: 2}
       propertyPath: m_LocalPosition.x
@@ -2966,6 +2982,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11470732, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
       propertyPath: canReset
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11470732, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
+      propertyPath: isReadyToBeTriggered
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3342,6 +3362,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11470732, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
       propertyPath: canReset
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11470732, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
+      propertyPath: isReadyToBeTriggered
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
