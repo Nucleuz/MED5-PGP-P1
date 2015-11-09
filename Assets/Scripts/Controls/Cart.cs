@@ -35,14 +35,15 @@ public class Cart : MonoBehaviour {
             transform.position += transform.right*v*cheatySpeedMultiplier + transform.forward*-h*cheatySpeedMultiplier;
             return;
         }
+    
 
       
 
         //This is specifically for elevator connection points where the cart has to move with the elevator
         if (currentRail.next == null && currentRail.prev == null){
-			transform.position = currentRail.transform.position + currentRail.transform.up;
-			return;
-		}
+            transform.position = currentRail.transform.position + currentRail.transform.up;
+            return;
+        }
 
         float verticalAxis = Input.GetAxis("Vertical");
         if (Mathf.Abs(verticalAxis) > 0.01f) {
@@ -75,7 +76,7 @@ public class Cart : MonoBehaviour {
             float length = Vector3.Distance(currentRail.transform.position, railMoveTowards.transform.position);
 
             // Set the currentStep (t) to move towards verticalAxis with normalize distance of the two rails, times acceleration and animationSpeed.
-            currentStep += (1 / length) * verticalAxis * movementSpeed * 0.0075f * (Time.deltaTime * 1000);
+            currentStep += (1 / length) * verticalAxis * movementSpeed * 0.0075f * (Time.deltaTime * 1000) * (Input.GetKey(KeyCode.R) ? 10f:1f);
 
             // Set new position using the currentStep and move that position just a tad up
             transform.position = Vector3.Lerp(currentRail.transform.position, railMoveTowards.transform.position, Mathf.Abs(currentStep)) + (currentRail.transform.up / 4)*2;
