@@ -148,6 +148,6 @@ public class Vine : MonoBehaviour {
 		GameObject p = Instantiate(snappingParticles, extraPoint.transform.position, Quaternion.identity) as GameObject;
 		p.transform.parent = transform;
 
-		SoundManager.Instance.PlayEvent("Liana_Break", extraPoint);
+		//SoundManager.Instance.PlayEvent("Liana_Break", extraPoint);
 	}
 }
