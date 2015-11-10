@@ -70,13 +70,15 @@ public class ElevatorScript : MonoBehaviour {
                 } else{
                     goingUp = false;
                 }
-                isActivated = false;
-                trigger.Deactivate();
-                trigger.isReadyToBeTriggered = true;
+
                 if(soundIsPlaying){
                     SoundManager.Instance.PlayEvent("Elevator_Stop", gameObject);
                     soundIsPlaying = false;
                 }
+
+                isActivated = false;
+                trigger.Deactivate();
+                trigger.isReadyToBeTriggered = true;
             } 
 
             // Disconnects when the active nodes is not the first or last one
