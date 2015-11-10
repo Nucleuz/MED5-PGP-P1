@@ -4,8 +4,112 @@
 		"selected_items":
 		[
 			[
+				"game",
+				"gameObject"
+			],
+			[
+				"sta",
+				"startingRail"
+			],
+			[
+				"float",
+				"float4"
+			],
+			[
+				"ref",
+				"reflectionDirecction"
+			],
+			[
+				"no",
+				"normalDir"
+			],
+			[
+				"flo",
+				"float3"
+			],
+			[
+				"net",
+				"networkId"
+			],
+			[
+				"car",
+				"cartRoutine"
+			],
+			[
+				"Tr",
+				"trigger"
+			],
+			[
+				"player",
+				"playerIndex"
+			],
+			[
+				"trigger",
+				"triggerContainer"
+			],
+			[
+				"trig",
+				"triggerContainer"
+			],
+			[
+				"use",
+				"useVR"
+			],
+			[
+				"head",
+				"headControl"
+			],
+			[
+				"ca",
+				"cart"
+			],
+			[
+				"is",
+				"isTriggered"
+			],
+			[
+				"Get",
+				"GetAxis"
+			],
+			[
+				"Trigger",
+				"TriggerState"
+			],
+			[
+				"Tri",
+				"TriggerState"
+			],
+			[
+				"Go",
+				"GoToDownState"
+			],
+			[
+				"ai",
+				"animationStarted"
+			],
+			[
+				"end",
+				"endPosition"
+			],
+			[
 				"seq",
-				"sequenceIsPlaying"
+				"seqIndex"
+			],
+			[
+				"se",
+				"seqIndex"
+			],
+			[
+				"play",
+				"playingSequence"
+			],
+			[
+				"Sta",
+				"StartPlayingSequence"
+			],
+			[
+				"pla",
+				"playingSequence"
 			],
 			[
 				"Seq",
@@ -48,10 +152,6 @@
 				"nonFocusedLightShaft"
 			],
 			[
-				"end",
-				"endAnimationTime"
-			],
-			[
 				"playe",
 				"playerIndex"
 			],
@@ -66,10 +166,6 @@
 			[
 				"networ",
 				"networkID"
-			],
-			[
-				"game",
-				"GameObject"
 			],
 			[
 				"gam",
@@ -108,10 +204,6 @@
 				"debugText"
 			],
 			[
-				"net",
-				"networkID"
-			],
-			[
 				"vert",
 				"verticalRotationOffset"
 			],
@@ -126,10 +218,6 @@
 			[
 				"re",
 				"readyToBeTriggered"
-			],
-			[
-				"is",
-				"isTriggered"
 			],
 			[
 				"audio",
@@ -164,10 +252,6 @@
 				"DarkRiftAPI"
 			],
 			[
-				"play",
-				"PlayerInfo"
-			],
-			[
 				"client",
 				"clientID"
 			],
@@ -178,10 +262,6 @@
 			[
 				"enem",
 				"enemySize"
-			],
-			[
-				"player",
-				"playerPos"
 			],
 			[
 				"shoot",
@@ -432,18 +512,26 @@
 	"buffers":
 	[
 		{
-			"file": "Assets/Scripts/Trigger/GameManager.cs",
+			"file": "Assets/Scripts/Networking/LevelHandler.cs",
 			"settings":
 			{
-				"buffer_size": 7972,
+				"buffer_size": 5743,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "Assets/Scripts/Trigger/LevelManager.cs",
+			"file": "Assets/Scripts/Vine.cs",
 			"settings":
 			{
-				"buffer_size": 2675,
+				"buffer_size": 5466,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Controls/Cart.cs",
+			"settings":
+			{
+				"buffer_size": 4477,
 				"line_ending": "Windows"
 			}
 		},
@@ -451,15 +539,23 @@
 			"file": "Assets/Scripts/Controls/HelmetLightScript.cs",
 			"settings":
 			{
-				"buffer_size": 5315,
+				"buffer_size": 5384,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "Assets/Scripts/Interactables/SoundCrystal.cs",
+			"file": "Assets/Scripts/Interactables/ElevatorScript.cs",
 			"settings":
 			{
-				"buffer_size": 2277,
+				"buffer_size": 4860,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Networking/Client/ClientManager.cs",
+			"settings":
+			{
+				"buffer_size": 8449,
 				"line_ending": "Windows"
 			}
 		},
@@ -467,15 +563,47 @@
 			"file": "Assets/Scripts/Networking/Client/NetPlayerSync.cs",
 			"settings":
 			{
-				"buffer_size": 6712,
+				"buffer_size": 8147,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "Assets/Scripts/Trigger/LevelEndedZone.cs",
+			"file": "Assets/Scripts/Trigger/LevelManager.cs",
 			"settings":
 			{
-				"buffer_size": 362,
+				"buffer_size": 2966,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/Standard Assets/Environment/Water/Water/Scripts/Water.cs",
+			"settings":
+			{
+				"buffer_size": 16616,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Andreas/Desktop/PGP_Server/Assets/Scripts/Rails/RailConnection.cs",
+			"settings":
+			{
+				"buffer_size": 1620,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Networking/TriggerHandler.cs",
+			"settings":
+			{
+				"buffer_size": 5757,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Rails/RailConstructorInterface.cs",
+			"settings":
+			{
+				"buffer_size": 0,
 				"line_ending": "Windows"
 			}
 		}
@@ -560,29 +688,55 @@
 	},
 	"file_history":
 	[
-		"/C/Users/Andreas/Desktop/PGP/Assets/SoundTriggerZone.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/SoundManager.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/LightFade.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Controls/HelmetLightNonFocused.cs",
+		"/C/Users/Andreas/Desktop/PGP_Server/Assets/Scripts/Networking/Client/ClientManager.cs",
+		"/C/Users/Andreas/Desktop/PGP_Server/Assets/Scripts/Vine.cs",
+		"/C/Users/Andreas/Desktop/PGP_Server/Assets/Scripts/Interactables/ElevatorScript.cs",
+		"/C/Users/Andreas/Desktop/PGP_Server/Assets/AMB_RunningWater.cs",
+		"/C/Users/Andreas/Desktop/PGP_Server/Assets/AMB_Lava.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Controls/Cart.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/InteractableButton.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/Trigger.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/Client/NetPlayerSync.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/DeactivateButton.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/LightFade.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Controls/HelmetLightScript.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/Client/ClientManager.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/Interactable.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/Trigger.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/TriggerHandler.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/LevelManager.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/Client/NetPlayerSync.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/ChargeableButtonScript.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/ChargeableLightSource.cs",
+		"/C/Users/Andreas/Desktop/CGP 5th semester/Sky/Assets/ReflectionMapping.shader",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/Mirror.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/SoundCrystal.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/Barricade.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/Network.cs",
+		"/C/Users/Andreas/Desktop/PGP_Server/Assets/Scripts/Networking/LevelHandler.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/InteractableButton.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Debugging/TriggerDebugger.cs",
+		"/C/Users/Andreas/Desktop/PGP_Server/Assets/Scripts/Networking/Server/ServerManager.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Debugging/ClientCommands.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/ChargeableButtonScript.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/ChargeableLightSource.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/LevelManager.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/Interactable.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Editor/LevelManagerHelp.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Debugging/TriggerDebugItem.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/LevelContainer.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Debugging/Console.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/triggerDebugItem.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/TriggerDebugger.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/GameManager.cs",
+		"/C/Users/Andreas/Desktop/PGP_Server/Assets/Scripts/Debugging/NoClip.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/LevelHandler.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/Server/ServerManager.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Rails/RailConnection.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/SoundTriggerZone.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/TriggerState.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Rails/Rail.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/NetworkManager.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/LevelEndedZone.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/SoundTriggerZone.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/SoundManager.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Controls/HelmetLightNonFocused.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/ElevatorScript.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/LightBeam/LightShafts.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/LightBeam/LightShafts.Resources.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/LevelHandler.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/Server/ServerManager.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/GameManager.cs",
 		"/C/Users/Andreas/Desktop/CGP 5th semester/DiffuseTexture/Assets/Phong.shader",
 		"/C/Users/Andreas/Desktop/CGP 5th semester/Homework6/Assets/Xray.shader",
 		"/C/Users/Andreas/Desktop/PGP/PGP1.sublime-project",
@@ -590,11 +744,8 @@
 		"/C/Users/Andreas/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
 		"/C/Users/Andreas/Desktop/PGP/Assembly-CSharp.csproj",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/AnimationTrigger.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Rails/RailConnection.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/Barricade.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Rails/ConnectAfterAnimation.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Extensions.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/Network.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Wwise/Editor/WwiseWindows/AkWwiseWWUBuilder.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Plugins/DarkRift/DarkRift/Plugins/DarkRiftReceiver.cs",
 		"/C/Users/Andreas/Desktop/UnityReflRefr/Assets/Scripts/PenControllerRefraction.cs",
@@ -664,30 +815,7 @@
 		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Plugins/DarkRift/CubeDemo/CubeNetworkManager.cs",
 		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Plugins/DarkRift/CubeDemo/CubeMove.cs",
 		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Plugins/DarkRift/CubeDemo/Readme.txt",
-		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Plugins/DarkRift/DarkRift/Plugins/Readme.txt",
-		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Plugins/DarkRift/DarkRift/Plugins/DarkRiftReceiver.cs",
-		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Plugins/DarkRift/PlayerDemo/Readme.txt",
-		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Plugins/DarkRift/EmbeddedServer/ReadMe.txt",
-		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Plugins/DarkRift/PlayerDemo/TagIndex.cs",
-		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Plugins/DarkRift/EmbeddedServer/EmbeddedCubeMove.cs",
-		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Scripts/Networking/ServerManager.cs",
-		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Scripts/Networking/ClientManager.cs",
-		"/home/kaholi/dev/games/unity/MiniJam/Assets/Scripts/VerticalCameraControl.cs",
-		"/home/kaholi/dev/games/unity/MiniJam/Assets/Scripts/Controller.cs",
-		"/home/kaholi/dev/games/unity/MiniJam/Assets/Scripts/Candy/CandyManager.cs",
-		"/home/kaholi/dev/games/unity/MiniJam/Assets/Scripts/RandomTexturePicker.cs",
-		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Scripts/Networking/NetPlayer.cs",
-		"/home/kaholi/MEGA/AAU/5 Semester/CGP/Homework/lesson 4/Homework4/Assets/Controller.cs",
-		"/home/kaholi/.config/sublime-text-3/Packages/WakaTime/WakaTime.sublime-settings",
-		"/home/kaholi/MEGA/AAU/5 Semester/CGP/Homework/lesson 3/Homework3/Assets/Diffuse.shader",
-		"/home/kaholi/dev/games/unity/Network_TEST/Assets/_SimpleMultiplayerKit/Scripts/GameManager/NetworkManager.cs",
-		"/home/kaholi/dev/games/unity/Network_TEST/Assets/_SimpleMultiplayerKit/Scripts/_Loader.cs",
-		"/home/kaholi/dev/games/unity/Network_TEST/Assets/_SimpleMultiplayerKit/Scripts/GameManager/ChatSystem.cs",
-		"/home/kaholi/.config/sublime-text-3/Packages/User/WakaTime.sublime-settings",
-		"/home/kaholi/dev/games/unity/MiniJam/Assets/Scripts/Candy/CandyBag2Increase.cs",
-		"/home/kaholi/dev/games/unity/MiniJam/Assets/Scripts/Candy/CandyBag.cs",
-		"/home/kaholi/dev/games/unity/MiniJam/Assets/Scripts/Monster/MonsterSpawner.cs",
-		"/home/kaholi/dev/games/unity/MiniJam/Assets/Scripts/lollipop.cs"
+		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Plugins/DarkRift/DarkRift/Plugins/Readme.txt"
 	],
 	"find":
 	{
@@ -708,6 +836,47 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"prev",
+			"prevLevel",
+			"nextLevel",
+			"movementSpeed",
+			"intensityFocus",
+			"public",
+			"Console.Instance.AddMessage",
+			"movementSpeed",
+			"currentRail",
+			"pNLD",
+			"nLM.prevLevelDirection",
+			"pLM.nextLevelDirection",
+			"nNLD",
+			"nLM",
+			"levelEndRail",
+			"level",
+			"cart",
+			"player",
+			"playerIndex",
+			"triggeredEvents",
+			"OnRayExit",
+			"rotationRoutine",
+			"lastCartRotation",
+			"trigger.playersInteracting",
+			"isActive",
+			"activated",
+			"enabled",
+			"consoleContainer",
+			"consoleCanvas",
+			"script",
+			"headControl",
+			"trigger",
+			"animationStarted",
+			"true",
+			"interpolateBarricade",
+			"Pos",
+			"position",
+			"gameObject",
+			"nvrPrefab",
+			"vrPrefab",
+			"playingSequence",
 			"int",
 			"}\n",
 			"} ",
@@ -794,48 +963,7 @@
 			"= 0",
 			" = 0",
 			"\n	[SerializeField]",
-			" = 0",
-			"v",
-			"x",
-			"0",
-			"  ",
-			"(ushort)",
-			"(byte)",
-			"byte",
-			"NetworkTag",
-			"OnDataReceived",
-			"cubes",
-			"GetComponent<Trigger>()",
-			"cubes",
-			"players",
-			"cubes",
-			"));\n",
-			"size",
-			"button",
-			"_",
-			"ward",
-			"_aBtn",
-			"_sBtn",
-			"_wBtn",
-			"float",
-			"float3",
-			"height",
-			"i*1 + 1 ,height,1",
-			"float3",
-			"dwBtn",
-			"Time.z",
-			"float4",
-			"lightPosition",
-			"wordCoord",
-			"input.vertex",
-			"output.pos",
-			"input.vertex",
-			".x",
-			"x",
-			".y",
-			"1.0",
-			"scroll",
-			"random"
+			" = 0"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -860,23 +988,23 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 11,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "Assets/Scripts/Trigger/GameManager.cs",
+					"file": "Assets/Scripts/Networking/LevelHandler.cs",
 					"settings":
 					{
-						"buffer_size": 7972,
+						"buffer_size": 5743,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5039,
-								5039
+								3876,
+								3876
 							]
 						],
 						"settings":
@@ -886,25 +1014,41 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1026.0,
+						"translation.y": 1566.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "Assets/Scripts/Trigger/LevelManager.cs",
+					"file": "Assets/Scripts/Vine.cs",
 					"settings":
 					{
-						"buffer_size": 2675,
+						"buffer_size": 5466,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								247,
+								247
+							],
+							[
+								272,
+								272
+							],
+							[
+								297,
+								297
+							],
+							[
+								327,
+								327
+							],
+							[
+								354,
+								354
 							]
 						],
 						"settings":
@@ -913,25 +1057,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2034.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "Assets/Scripts/Controls/HelmetLightScript.cs",
+					"file": "Assets/Scripts/Controls/Cart.cs",
 					"settings":
 					{
-						"buffer_size": 5315,
+						"buffer_size": 4477,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5315,
-								5315
+								3064,
+								3064
 							]
 						],
 						"settings":
@@ -948,18 +1092,18 @@
 				},
 				{
 					"buffer": 3,
-					"file": "Assets/Scripts/Interactables/SoundCrystal.cs",
+					"file": "Assets/Scripts/Controls/HelmetLightScript.cs",
 					"settings":
 					{
-						"buffer_size": 2277,
+						"buffer_size": 5384,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1012,
-								1012
+								435,
+								435
 							]
 						],
 						"settings":
@@ -969,25 +1113,81 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 378.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "Assets/Scripts/Networking/Client/NetPlayerSync.cs",
+					"file": "Assets/Scripts/Interactables/ElevatorScript.cs",
 					"settings":
 					{
-						"buffer_size": 6712,
+						"buffer_size": 4860,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1160,
-								1160
+								2459,
+								2459
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "Assets/Scripts/Networking/Client/ClientManager.cs",
+					"settings":
+					{
+						"buffer_size": 8449,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7780,
+								7780
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 54.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "Assets/Scripts/Networking/Client/NetPlayerSync.cs",
+					"settings":
+					{
+						"buffer_size": 8147,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								678,
+								682
 							]
 						],
 						"settings":
@@ -995,17 +1195,127 @@
 							"syntax": "Packages/Unity3D/UnityC#.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 492.0,
+						"translation.y": 3294.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "Assets/Scripts/Trigger/LevelEndedZone.cs",
+					"buffer": 7,
+					"file": "Assets/Scripts/Trigger/LevelManager.cs",
 					"settings":
 					{
-						"buffer_size": 362,
+						"buffer_size": 2966,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2963,
+								2963
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 216.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "Assets/Standard Assets/Environment/Water/Water/Scripts/Water.cs",
+					"settings":
+					{
+						"buffer_size": 16616,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								290,
+								290
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "/C/Users/Andreas/Desktop/PGP_Server/Assets/Scripts/Rails/RailConnection.cs",
+					"settings":
+					{
+						"buffer_size": 1620,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								982,
+								986
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "Assets/Scripts/Networking/TriggerHandler.cs",
+					"settings":
+					{
+						"buffer_size": 5757,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4041,
+								4041
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 209.0,
+						"translation.y": 1925.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "Assets/Scripts/Rails/RailConstructorInterface.cs",
+					"settings":
+					{
+						"buffer_size": 0,
 						"regions":
 						{
 						},
@@ -1013,12 +1323,13 @@
 						[
 							[
 								0,
-								362
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Unity3D/UnityC#.tmLanguage"
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1083,6 +1394,142 @@
 		"selected_items":
 		[
 			[
+				"clie",
+				"Networking/Client/ClientManager.cs"
+			],
+			[
+				"level",
+				"Trigger/LevelManager.cs"
+			],
+			[
+				"netplay",
+				"Networking/Client/NetPlayerSync.cs"
+			],
+			[
+				"cart",
+				"Controls/Cart.cs"
+			],
+			[
+				"net",
+				"Networking/Network.cs"
+			],
+			[
+				"tri",
+				"Networking/TriggerHandler.cs"
+			],
+			[
+				"trigg",
+				"Trigger/Trigger.cs"
+			],
+			[
+				"ba",
+				"Interactables/Barricade.cs"
+			],
+			[
+				"barr",
+				"Interactables/Barricade.cs"
+			],
+			[
+				"sound",
+				"Interactables/SoundCrystal.cs"
+			],
+			[
+				"client",
+				"Networking/Client/ClientManager.cs"
+			],
+			[
+				"triggerha",
+				"Networking/TriggerHandler.cs"
+			],
+			[
+				"trig",
+				"Trigger/Trigger.cs"
+			],
+			[
+				"mirr",
+				"Interactables/Mirror.cs"
+			],
+			[
+				"inter",
+				"Interactables/Interactable.cs"
+			],
+			[
+				"leve",
+				"Trigger/LevelManager.cs"
+			],
+			[
+				"helm",
+				"Controls/HelmetLightScript.cs"
+			],
+			[
+				"netw",
+				"Networking/Network.cs"
+			],
+			[
+				"cliem",
+				"Networking/Client/ClientManager.cs"
+			],
+			[
+				"debugtr",
+				"Debugging/TriggerDebugger.cs"
+			],
+			[
+				"hele",
+				"Controls/HelmetLightScript.cs"
+			],
+			[
+				"trigger",
+				"Trigger/Trigger.cs"
+			],
+			[
+				"cons",
+				"Debugging/Console.cs"
+			],
+			[
+				"h",
+				"Controls/HelmetLightScript.cs"
+			],
+			[
+				"soundcr",
+				"Interactables/SoundCrystal.cs"
+			],
+			[
+				"cli",
+				"Networking/Client/ClientManager.cs"
+			],
+			[
+				"serv",
+				"Networking/Server/ServerManager.cs"
+			],
+			[
+				"game",
+				"Trigger/GameManager.cs"
+			],
+			[
+				"b",
+				"Interactables/Barricade.cs"
+			],
+			[
+				"ca",
+				"Controls/Cart.cs"
+			],
+			[
+				"rail",
+				"Rails/Rail.cs"
+			],
+			[
+				"sou",
+				"Trigger/SoundTriggerZone.cs"
+			],
+			[
+				"network",
+				"Networking/NetworkManager.cs"
+			],
+			[
+				"cl",
+				"Networking/Client/ClientManager.cs"
+			],
+			[
 				"zone",
 				"Trigger/LevelEndedZone.cs"
 			],
@@ -1091,56 +1538,12 @@
 				"SoundManager.cs"
 			],
 			[
-				"helm",
-				"Controls/HelmetLightScript.cs"
-			],
-			[
-				"level",
-				"Trigger/LevelManager.cs"
-			],
-			[
-				"cl",
-				"Networking/Client/ClientManager.cs"
-			],
-			[
-				"net",
-				"Networking/Client/NetPlayerSync.cs"
-			],
-			[
-				"leve",
-				"Trigger/LevelManager.cs"
-			],
-			[
-				"trigg",
-				"Networking/TriggerHandler.cs"
-			],
-			[
-				"inter",
-				"Interactables/Interactable.cs"
-			],
-			[
-				"cli",
-				"Networking/Client/ClientManager.cs"
-			],
-			[
-				"game",
-				"Trigger/GameManager.cs"
-			],
-			[
 				"tr",
 				"Trigger/Trigger.cs"
 			],
 			[
-				"trig",
-				"Networking/TriggerHandler.cs"
-			],
-			[
 				"server",
 				"Networking/Server/ServerManager.cs"
-			],
-			[
-				"clie",
-				"Networking/Client/ClientManager.cs"
 			],
 			[
 				"netpla",
