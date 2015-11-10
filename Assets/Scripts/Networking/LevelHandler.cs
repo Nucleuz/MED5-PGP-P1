@@ -105,21 +105,20 @@ public class LevelHandler : MonoBehaviour {
 
 
             pLD.y = 0;
-
             pLD.Normalize();
 
             //rotate next level so that pLD is equal to the inverse nLD
-            Debug.Log(pLD + " - " + nLD + " " + (Mathf.Rad2Deg * levelContainers[loadingIndex - 1].transform.rotation.y ) + " angle: " + Vector3.Angle(pLD,nLD));
+            Debug.Log(pLD + " - " + nLD + " " + " angle: " + Vector3.Angle(pLD,nLD));
 
-            float a = Vector3.Angle(pLD,nLD) - (Mathf.Rad2Deg * levelContainers[loadingIndex - 1].transform.rotation.y);
-
+            float a = Vector3.Angle(pLD,nLD);
             Vector3 cross = Vector3.Cross(pLD,nLD);
 
             currentRotation = 180-a;
 
-            Debug.Log("a: " + a + " next rot : " + currentRotation + " c: " + cross);
+
+            Debug.Log("a: " + a + " next rot : " + currentRotation + " c:" + cross);
             //rotate new level
-            levelContainer.transform.RotateAround(pLM.levelEndRail[0].transform.position,Vector3.up,currentRotation);
+            levelContainer.transform.RotateAround(levelContainer.transform.position,Vector3.up,currentRotation);
 
             Debug.Log("lc rot: " + (Mathf.Rad2Deg * levelContainer.transform.rotation.y));
 
@@ -130,6 +129,28 @@ public class LevelHandler : MonoBehaviour {
 
             //offset the next level so that it is positioned correctly
             levelContainer.transform.position += delta;
+
+
+
+//check
+            pLD = pLM.levelEndRail[0].transform.position - pLM.levelEndRail[0].prev.transform.position;
+            nLD = nLM.levelStartRail[0].transform.position - nLM.levelStartRail[0].next.transform.position;
+
+
+                        nLD.y = 0;
+                        nLD.Normalize();
+
+
+                        pLD.y = 0;
+                        pLD.Normalize();
+
+            Debug.Log("angle after>" + Vector3.Angle(pLD,nLD));
+
+            if(Vector3.Angle(pLD,nLD) != 180)
+              Debug.LogError("Level " + loadingIndex +" not aligned properly");
+
+
+
 
             //set rails
             for(int i = 0;i<3;i++){
