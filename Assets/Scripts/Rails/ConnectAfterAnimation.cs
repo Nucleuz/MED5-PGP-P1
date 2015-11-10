@@ -26,8 +26,12 @@ public class ConnectAfterAnimation : MonoBehaviour {
 
         if (Time.time > timeStamp && isStarted)
         {
-            for(int i = 0;i<railConnections.Length;i++)
+            for(int i = 0;i<railConnections.Length;i++){
+                railConnections[i].connectToNext = true;
+            }
+            for(int i = 0;i<railConnections.Length;i++){
                 railConnections[i].connectToPrev = true;
+            }
         }
     }
 }

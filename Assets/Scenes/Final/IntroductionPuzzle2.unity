@@ -3277,6 +3277,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 331554409}
   - 114: {fileID: 331554410}
+  - 114: {fileID: 331554411}
   m_Layer: 0
   m_Name: StartAttachment
   m_TagString: Untagged
@@ -3309,9 +3310,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  next: {fileID: 1830233781}
+  next: {fileID: 0}
   prev: {fileID: 704005423}
   railPoint: {fileID: 0}
+--- !u!114 &331554411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 331554408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926d1a3606557c64ea087cece6585945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nRail: {fileID: 1830233781}
+  pRail: {fileID: 704005423}
+  self: {fileID: 0}
+  connectToNext: 0
+  connectToPrev: 0
 --- !u!1 &332815569
 GameObject:
   m_ObjectHideFlags: 0
@@ -18975,6 +18992,63 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1805300781}
   m_Mesh: {fileID: 4300000, guid: c27e69b31ba827044a6982bc2e356933, type: 3}
+--- !u!1 &1807262553
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1807262556}
+  - 114: {fileID: 1807262555}
+  - 114: {fileID: 1807262554}
+  m_Layer: 0
+  m_Name: WwiseGlobal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1807262554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1807262553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1adccdce10ac384da0d669fa50d0ae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basePath: Audio\GeneratedSoundBanks
+  language: English(US)
+  defaultPoolSize: 4096
+  lowerPoolSize: 2048
+  streamingPoolSize: 1024
+  memoryCutoffThreshold: .949999988
+--- !u!114 &1807262555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1807262553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0da75c80cd89ba4b82c3e81eda3d189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1807262556
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1807262553}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
 --- !u!1001 &1812731764
 Prefab:
   m_ObjectHideFlags: 0
@@ -19684,6 +19758,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1864543581}
   - 114: {fileID: 1864543582}
+  - 114: {fileID: 1864543583}
   m_Layer: 0
   m_Name: StartAttachment
   m_TagString: Untagged
@@ -19716,9 +19791,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  next: {fileID: 862250329}
+  next: {fileID: 0}
   prev: {fileID: 1526271684}
   railPoint: {fileID: 0}
+--- !u!114 &1864543583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1864543580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926d1a3606557c64ea087cece6585945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nRail: {fileID: 862250329}
+  pRail: {fileID: 1526271684}
+  self: {fileID: 0}
+  connectToNext: 0
+  connectToPrev: 0
 --- !u!1 &1867194466
 GameObject:
   m_ObjectHideFlags: 0
@@ -21736,6 +21827,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 911736610}
     m_Modifications:
+    - target: {fileID: 11405848, guid: f91ef7e6e1b981c4598819a88f64b78f, type: 2}
+      propertyPath: railConnections.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 486060, guid: f91ef7e6e1b981c4598819a88f64b78f, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -21784,6 +21879,18 @@ Prefab:
       propertyPath: isReadyToBeTriggered
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11405848, guid: f91ef7e6e1b981c4598819a88f64b78f, type: 2}
+      propertyPath: railConnections.Array.data[0]
+      value: 
+      objectReference: {fileID: 331554411}
+    - target: {fileID: 11405848, guid: f91ef7e6e1b981c4598819a88f64b78f, type: 2}
+      propertyPath: railConnections.Array.data[1]
+      value: 
+      objectReference: {fileID: 1864543583}
+    - target: {fileID: 11405848, guid: f91ef7e6e1b981c4598819a88f64b78f, type: 2}
+      propertyPath: railConnections.Array.data[2]
+      value: 
+      objectReference: {fileID: 2102063882}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f91ef7e6e1b981c4598819a88f64b78f, type: 2}
   m_IsPrefabParent: 0
@@ -22059,6 +22166,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2102063880}
   - 114: {fileID: 2102063881}
+  - 114: {fileID: 2102063882}
   m_Layer: 0
   m_Name: StartAttachment
   m_TagString: Untagged
@@ -22091,9 +22199,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  next: {fileID: 1732198235}
+  next: {fileID: 0}
   prev: {fileID: 1051807194}
   railPoint: {fileID: 0}
+--- !u!114 &2102063882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2102063879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926d1a3606557c64ea087cece6585945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nRail: {fileID: 1732198235}
+  pRail: {fileID: 1051807194}
+  self: {fileID: 0}
+  connectToNext: 0
+  connectToPrev: 0
 --- !u!1 &2102786979
 GameObject:
   m_ObjectHideFlags: 0
