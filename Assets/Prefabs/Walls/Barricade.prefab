@@ -238,7 +238,6 @@ GameObject:
   - 114: {fileID: 11414100}
   - 198: {fileID: 19870476}
   - 199: {fileID: 19947024}
-  - 114: {fileID: 11442670}
   m_Layer: 0
   m_Name: SoundButton
   m_TagString: Untagged
@@ -633,7 +632,7 @@ GameObject:
   - 33: {fileID: 3351070}
   - 65: {fileID: 6549442}
   - 23: {fileID: 2318580}
-  - 114: {fileID: 11491194}
+  - 114: {fileID: 11436040}
   - 114: {fileID: 11499764}
   m_Layer: 0
   m_Name: RailConnection
@@ -1022,7 +1021,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 189580}
   m_LocalRotation: {x: 0, y: .705025136, z: 0, w: .709182322}
-  m_LocalPosition: {x: -19.0400009, y: 1.25999999, z: -8.23999977}
+  m_LocalPosition: {x: -45.6500015, y: 2.58999991, z: -39.2000008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 494962}
@@ -1713,17 +1712,22 @@ MonoBehaviour:
   bluePlayerRequired: 1
   redPlayerRequired: 0
   greenPlayerRequired: 0
---- !u!114 &11442670
+--- !u!114 &11436040
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 134094}
+  m_GameObject: {fileID: 197564}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c90bf517c2d30424ea92e8d6c9df22e3, type: 3}
+  m_Script: {fileID: 11500000, guid: d1a10bc8a2b78463e9c526c177e96189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rName: railPoint
+  spawnRailPoint: 0
+  next: {fileID: 0}
+  prev: {fileID: 0}
+  railPoint: {fileID: 0}
 --- !u!114 &11452214
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1742,23 +1746,7 @@ MonoBehaviour:
   animationLength: .5
   isFirstBarricade: 1
   previousBarricadeHandler: {fileID: 0}
-  currentBarricadeHandler: {fileID: 0}
---- !u!114 &11491194
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 197564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efa0b44aa476f09449a63a6ecc6211ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rName: railPoint
-  spawnRailPoint: 0
-  next: {fileID: 0}
-  prev: {fileID: 0}
-  railPoint: {fileID: 0}
+  currentBarricadeHandler: {fileID: 11425826}
 --- !u!114 &11499764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1772,7 +1760,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nRail: {fileID: 0}
   pRail: {fileID: 0}
-  self: {fileID: 11491194}
+  self: {fileID: 0}
   connectToNext: 0
   connectToPrev: 0
 --- !u!198 &19870476
