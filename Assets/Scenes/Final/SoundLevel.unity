@@ -11442,7 +11442,7 @@ MonoBehaviour:
   defaultPoolSize: 4096
   lowerPoolSize: 2048
   streamingPoolSize: 1024
-  memoryCutoffThreshold: .949999988
+  memoryCutoffThreshold: .111111112
 --- !u!114 &588275820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15078,6 +15078,10 @@ Prefab:
     - target: {fileID: 11400000, guid: bcae914220acd4907840a029bb9d9aec, type: 2}
       propertyPath: clipPlaneOffset
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: bcae914220acd4907840a029bb9d9aec, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bcae914220acd4907840a029bb9d9aec, type: 2}

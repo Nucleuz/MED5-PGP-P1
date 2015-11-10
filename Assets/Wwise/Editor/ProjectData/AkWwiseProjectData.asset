@@ -16,385 +16,619 @@ MonoBehaviour:
   - PhysicalPath: Events\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{F435BC40-F026-475F-8354-F9EAA1C9BD20}'
-    m_lastTimePsrt1: 2031714449
-    m_lastTimePart2: -1999443918
+    m_lastTimePsrt1: 2005174423
+    m_lastTimePart2: -1999443706
     List:
     - Name: Ambience_BackgroundDeepWater
-      Path: Default Work Unit\Ambience_BackgroundDeepWater
+      Path: Default Work Unit\Ambience\Ambience_BackgroundDeepWater
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Ambience
+        ObjectType: 4
       - ElementName: Ambience_BackgroundDeepWater
         ObjectType: 3
       ID: -592448325
       Guid: 3b458699ab05d0498b14cec02d5afdf7
       maxAttenuation: 0
     - Name: Ambience_Main
-      Path: Default Work Unit\Ambience_Main
+      Path: Default Work Unit\Ambience\Ambience_Main
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Ambience
+        ObjectType: 4
       - ElementName: Ambience_Main
         ObjectType: 3
       ID: 13542051
       Guid: 3e529766f9a67c43a3bc5c6edf8808a1
       maxAttenuation: 0
     - Name: Ambience_Mojo
-      Path: Default Work Unit\Ambience_Mojo
+      Path: Default Work Unit\Ambience\Ambience_Mojo
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Ambience
+        ObjectType: 4
       - ElementName: Ambience_Mojo
         ObjectType: 3
       ID: -35113579
       Guid: 9edcfd12bbac3f42a5b415568c8c9eb8
       maxAttenuation: 0
     - Name: Ambience_Pebbles
-      Path: Default Work Unit\Ambience_Pebbles
+      Path: Default Work Unit\Ambience\Ambience_Pebbles
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Ambience
+        ObjectType: 4
       - ElementName: Ambience_Pebbles
         ObjectType: 3
       ID: 995042587
       Guid: 07e88c4841eb794e8850f6cc8176a6a3
       maxAttenuation: 0
     - Name: Ambience_WaterDrops1
-      Path: Default Work Unit\Ambience_WaterDrops1
+      Path: Default Work Unit\Ambience\Ambience_WaterDrops1
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Ambience
+        ObjectType: 4
       - ElementName: Ambience_WaterDrops1
         ObjectType: 3
       ID: -471484510
       Guid: e7045832cadc714585a50c086bcba738
       maxAttenuation: 0
     - Name: Ambience_WaterDrops2
-      Path: Default Work Unit\Ambience_WaterDrops2
+      Path: Default Work Unit\Ambience\Ambience_WaterDrops2
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Ambience
+        ObjectType: 4
       - ElementName: Ambience_WaterDrops2
         ObjectType: 3
       ID: -471484511
       Guid: da01cb49db66674a88c4f3ecb773cf79
       maxAttenuation: 0
-    - Name: ButtonOnOff
-      Path: Default Work Unit\ButtonOnOff
+    - Name: BFdoor_chain
+      Path: Default Work Unit\Doors and Mechanisms\Doors etc\BFdoor_chain
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Doors and Mechanisms
+        ObjectType: 4
+      - ElementName: Doors etc
+        ObjectType: 4
+      - ElementName: BFdoor_chain
+        ObjectType: 3
+      ID: 182577407
+      Guid: d55461e3eb5bd949848e393f81038693
+      maxAttenuation: 0
+    - Name: ButtonOnOff
+      Path: Default Work Unit\Doors and Mechanisms\Buttons\ButtonOnOff
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Doors and Mechanisms
+        ObjectType: 4
+      - ElementName: Buttons
+        ObjectType: 4
       - ElementName: ButtonOnOff
         ObjectType: 3
       ID: 1973289021
       Guid: f67d4c5ee517844f8e1f433ee60fecdf
       maxAttenuation: 0
     - Name: CarCrystal
-      Path: Default Work Unit\CarCrystal
+      Path: Default Work Unit\Cart\CarCrystal
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Cart
+        ObjectType: 4
       - ElementName: CarCrystal
         ObjectType: 3
       ID: -869445727
       Guid: 186460322dfe61438db1d7d110de79a9
       maxAttenuation: 0
     - Name: CarLegHit1
-      Path: Default Work Unit\CarLegHit1
+      Path: Default Work Unit\Cart\CarLegHit1
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Cart
+        ObjectType: 4
       - ElementName: CarLegHit1
         ObjectType: 3
       ID: 480657863
       Guid: 188f3cbc2ac32d41a4704a537ec361dd
       maxAttenuation: 0
     - Name: CarRings
-      Path: Default Work Unit\CarRings
+      Path: Default Work Unit\Cart\CarRings
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Cart
+        ObjectType: 4
       - ElementName: CarRings
         ObjectType: 3
       ID: 1666923066
       Guid: 91554bb48c39774b9b395ecfe45ba4c5
       maxAttenuation: 0
     - Name: ChannelingButtonOnOff
-      Path: Default Work Unit\ChannelingButtonOnOff
+      Path: Default Work Unit\Doors and Mechanisms\Buttons\ChannelingButtonOnOff
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Doors and Mechanisms
+        ObjectType: 4
+      - ElementName: Buttons
+        ObjectType: 4
       - ElementName: ChannelingButtonOnOff
         ObjectType: 3
       ID: -211407568
       Guid: 2806b654e6fbd645b988301d5f8d8c28
       maxAttenuation: 0
     - Name: Door02
-      Path: Default Work Unit\Door02
+      Path: Default Work Unit\Doors and Mechanisms\Doors etc\Door02
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Doors and Mechanisms
+        ObjectType: 4
+      - ElementName: Doors etc
+        ObjectType: 4
       - ElementName: Door02
         ObjectType: 3
       ID: -936975305
       Guid: ecf5b8ee4dbd574e8ed6770d1814950a
       maxAttenuation: 0
     - Name: DoorSlideStart
-      Path: Default Work Unit\DoorSlideStart
+      Path: Default Work Unit\Doors and Mechanisms\Doors etc\DoorSlideStart
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Doors and Mechanisms
+        ObjectType: 4
+      - ElementName: Doors etc
+        ObjectType: 4
       - ElementName: DoorSlideStart
         ObjectType: 3
       ID: -1064061476
       Guid: 89a28c8e5b7b544780bf76a27d2c9bff
       maxAttenuation: 0
     - Name: DoorSlideStop
-      Path: Default Work Unit\DoorSlideStop
+      Path: Default Work Unit\Doors and Mechanisms\Doors etc\DoorSlideStop
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Doors and Mechanisms
+        ObjectType: 4
+      - ElementName: Doors etc
+        ObjectType: 4
       - ElementName: DoorSlideStop
         ObjectType: 3
       ID: 1108313776
       Guid: e6a66b318dae7c44b7293e04329056e0
       maxAttenuation: 0
     - Name: Elevator_Active
-      Path: Default Work Unit\Elevator_Active
+      Path: Default Work Unit\Doors and Mechanisms\Elevators\Elevator_Active
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Doors and Mechanisms
+        ObjectType: 4
+      - ElementName: Elevators
+        ObjectType: 4
       - ElementName: Elevator_Active
         ObjectType: 3
       ID: -182574928
       Guid: bc54f203ea28c24f9097c918f985be4f
       maxAttenuation: 0
     - Name: Elevator_Stop
-      Path: Default Work Unit\Elevator_Stop
+      Path: Default Work Unit\Doors and Mechanisms\Elevators\Elevator_Stop
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Doors and Mechanisms
+        ObjectType: 4
+      - ElementName: Elevators
+        ObjectType: 4
       - ElementName: Elevator_Stop
         ObjectType: 3
       ID: -1476053798
       Guid: f7db7b451f148b4499c4a90e00704903
       maxAttenuation: 0
     - Name: Headlamp_Focus_Active
-      Path: Default Work Unit\Headlamp_Focus_Active
+      Path: Default Work Unit\Player Equipment\Headlamp_Focus_Active
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Player Equipment
+        ObjectType: 4
       - ElementName: Headlamp_Focus_Active
         ObjectType: 3
       ID: -1533775919
       Guid: 6570036d0d771644a1ccd2fc8e13d33c
       maxAttenuation: 0
     - Name: Headlamp_Focus_Stop
-      Path: Default Work Unit\Headlamp_Focus_Stop
+      Path: Default Work Unit\Player Equipment\Headlamp_Focus_Stop
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Player Equipment
+        ObjectType: 4
       - ElementName: Headlamp_Focus_Stop
         ObjectType: 3
       ID: 1471623179
       Guid: 842fd8d53419df47818a15a2267260a2
       maxAttenuation: 0
     - Name: Lava_Active
-      Path: Default Work Unit\Lava_Active
+      Path: Default Work Unit\Environment Assets\Lava\Lava_Active
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Environment Assets
+        ObjectType: 4
+      - ElementName: Lava
+        ObjectType: 4
       - ElementName: Lava_Active
         ObjectType: 3
       ID: -1152242860
       Guid: 4b4b59df017ffd448e19359290e49905
       maxAttenuation: 0
     - Name: Lava_Stop
-      Path: Default Work Unit\Lava_Stop
+      Path: Default Work Unit\Environment Assets\Lava\Lava_Stop
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Environment Assets
+        ObjectType: 4
+      - ElementName: Lava
+        ObjectType: 4
       - ElementName: Lava_Stop
         ObjectType: 3
       ID: 777918054
       Guid: 4d502014e2a25b408d8b1eb476513dc2
       maxAttenuation: 0
     - Name: Liana_Active
-      Path: Default Work Unit\Liana_Active
+      Path: Default Work Unit\Environment Assets\Plants\Liana_Active
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Environment Assets
+        ObjectType: 4
+      - ElementName: Plants
+        ObjectType: 4
       - ElementName: Liana_Active
         ObjectType: 3
       ID: 1266636787
       Guid: 0d3db0196f534144ae3d9229c8784d27
       maxAttenuation: 0
-    - Name: Liana_Stop
-      Path: Default Work Unit\Liana_Stop
+    - Name: Liana_Break
+      Path: Default Work Unit\Environment Assets\Plants\Liana_Break
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Environment Assets
+        ObjectType: 4
+      - ElementName: Plants
+        ObjectType: 4
+      - ElementName: Liana_Break
+        ObjectType: 3
+      ID: -740565234
+      Guid: 7a4e075bbade4641850261feb44073d5
+      maxAttenuation: 0
+    - Name: Liana_Stop
+      Path: Default Work Unit\Environment Assets\Plants\Liana_Stop
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Environment Assets
+        ObjectType: 4
+      - ElementName: Plants
+        ObjectType: 4
       - ElementName: Liana_Stop
         ObjectType: 3
       ID: -2081929611
       Guid: 23418c58c715844f8a1118e39389b080
       maxAttenuation: 0
-    - Name: Mirror_Turning_Active
-      Path: Default Work Unit\Mirror_Turning_Active
+    - Name: Louder_Lava_Active
+      Path: Default Work Unit\Environment Assets\Lava\Louder_Lava_Active
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Environment Assets
+        ObjectType: 4
+      - ElementName: Lava
+        ObjectType: 4
+      - ElementName: Louder_Lava_Active
+        ObjectType: 3
+      ID: -1960022990
+      Guid: 397318bd99866a42a43d8f29cdb01ec7
+      maxAttenuation: 0
+    - Name: Louder_Lava_Stop
+      Path: Default Work Unit\Environment Assets\Lava\Louder_Lava_Stop
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Environment Assets
+        ObjectType: 4
+      - ElementName: Lava
+        ObjectType: 4
+      - ElementName: Louder_Lava_Stop
+        ObjectType: 3
+      ID: 1979935604
+      Guid: 8cfdcb42e7c8aa45a83aec79c5c4bd40
+      maxAttenuation: 0
+    - Name: Mirror_Turning_Active
+      Path: Default Work Unit\Doors and Mechanisms\Mirrors\Mirror_Turning_Active
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Doors and Mechanisms
+        ObjectType: 4
+      - ElementName: Mirrors
+        ObjectType: 4
       - ElementName: Mirror_Turning_Active
         ObjectType: 3
       ID: 296982171
       Guid: fe23440e0341bb42b68d98c27d795772
       maxAttenuation: 0
     - Name: Mirror_Turning_Stop
-      Path: Default Work Unit\Mirror_Turning_Stop
+      Path: Default Work Unit\Doors and Mechanisms\Mirrors\Mirror_Turning_Stop
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Doors and Mechanisms
+        ObjectType: 4
+      - ElementName: Mirrors
+        ObjectType: 4
       - ElementName: Mirror_Turning_Stop
         ObjectType: 3
       ID: 1401356413
       Guid: d1efd4351c04d14caeef9f51b79a4618
       maxAttenuation: 0
     - Name: RailwayBlockerMove
-      Path: Default Work Unit\RailwayBlockerMove
+      Path: Default Work Unit\Doors and Mechanisms\Doors etc\RailwayBlockerMove
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Doors and Mechanisms
+        ObjectType: 4
+      - ElementName: Doors etc
+        ObjectType: 4
       - ElementName: RailwayBlockerMove
         ObjectType: 3
       ID: -966119561
       Guid: afccbc52483ce64ba297a7a0b6092f0a
       maxAttenuation: 0
-    - Name: RiverRunning
-      Path: Default Work Unit\RiverRunning
+    - Name: RailwayBlockerStop
+      Path: Default Work Unit\Doors and Mechanisms\Doors etc\RailwayBlockerStop
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Doors and Mechanisms
+        ObjectType: 4
+      - ElementName: Doors etc
+        ObjectType: 4
+      - ElementName: RailwayBlockerStop
+        ObjectType: 3
+      ID: 483466160
+      Guid: e2cad973a4fd17448cf26f9634fa9765
+      maxAttenuation: 0
+    - Name: RiverRunning
+      Path: Default Work Unit\Environment Assets\Water\RiverRunning
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Environment Assets
+        ObjectType: 4
+      - ElementName: Water
+        ObjectType: 4
       - ElementName: RiverRunning
         ObjectType: 3
       ID: 2104256950
       Guid: 4494f110cd120d448e1e34936c4c2faf
       maxAttenuation: 0
     - Name: SP_EmittingCrystal
-      Path: Default Work Unit\SP_EmittingCrystal
+      Path: Default Work Unit\Sound Puzzle\SP_EmittingCrystal
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Sound Puzzle
+        ObjectType: 4
       - ElementName: SP_EmittingCrystal
         ObjectType: 3
       ID: 1389759676
       Guid: 60ccb98703ff4942a0d4337eada0c3d1
       maxAttenuation: 0
     - Name: SP_PlayerButton1
-      Path: Default Work Unit\SP_PlayerButton1
+      Path: Default Work Unit\Sound Puzzle\SP_PlayerButton1
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Sound Puzzle
+        ObjectType: 4
       - ElementName: SP_PlayerButton1
         ObjectType: 3
       ID: 1067329105
       Guid: f3a5d18d168656488b48ee948c20ed5a
       maxAttenuation: 0
     - Name: SP_PlayerButton2
-      Path: Default Work Unit\SP_PlayerButton2
+      Path: Default Work Unit\Sound Puzzle\SP_PlayerButton2
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Sound Puzzle
+        ObjectType: 4
       - ElementName: SP_PlayerButton2
         ObjectType: 3
       ID: 1067329106
       Guid: c4be8b74df3b8448bba86629ada6dab4
       maxAttenuation: 0
     - Name: SP_PlayerButton3
-      Path: Default Work Unit\SP_PlayerButton3
+      Path: Default Work Unit\Sound Puzzle\SP_PlayerButton3
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Sound Puzzle
+        ObjectType: 4
       - ElementName: SP_PlayerButton3
         ObjectType: 3
       ID: 1067329107
       Guid: c701245bead9f845a6772415a6cf102c
       maxAttenuation: 0
     - Name: SP_PlayerButton4
-      Path: Default Work Unit\SP_PlayerButton4
+      Path: Default Work Unit\Sound Puzzle\SP_PlayerButton4
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Sound Puzzle
+        ObjectType: 4
       - ElementName: SP_PlayerButton4
         ObjectType: 3
       ID: 1067329108
       Guid: ee5ebdc288b165489b204d8264f271d8
       maxAttenuation: 0
     - Name: SP_PlayerButton5
-      Path: Default Work Unit\SP_PlayerButton5
+      Path: Default Work Unit\Sound Puzzle\SP_PlayerButton5
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Sound Puzzle
+        ObjectType: 4
       - ElementName: SP_PlayerButton5
         ObjectType: 3
       ID: 1067329109
       Guid: 62adfe1f31427347b0f13b41b9aafdf8
       maxAttenuation: 0
     - Name: SP_PlayerButton6
-      Path: Default Work Unit\SP_PlayerButton6
+      Path: Default Work Unit\Sound Puzzle\SP_PlayerButton6
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Sound Puzzle
+        ObjectType: 4
       - ElementName: SP_PlayerButton6
         ObjectType: 3
       ID: 1067329110
       Guid: 04dea25f2786a64187d77ce8004a72c7
       maxAttenuation: 0
-    - Name: WaterfallHuge
-      Path: Default Work Unit\WaterfallHuge
+    - Name: SP_Wrong
+      Path: Default Work Unit\Sound Puzzle\SP_Wrong
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Sound Puzzle
+        ObjectType: 4
+      - ElementName: SP_Wrong
+        ObjectType: 3
+      ID: 106545430
+      Guid: 8c4648c096202347afe9063a9aa76640
+      maxAttenuation: 0
+    - Name: SplashHeavy
+      Path: Default Work Unit\Environment Assets\Water\SplashHeavy
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Environment Assets
+        ObjectType: 4
+      - ElementName: Water
+        ObjectType: 4
+      - ElementName: SplashHeavy
+        ObjectType: 3
+      ID: -1128753923
+      Guid: 5cd88ba27503354cb2d33daac867c47c
+      maxAttenuation: 0
+    - Name: SplashMedium
+      Path: Default Work Unit\Environment Assets\Water\SplashMedium
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Environment Assets
+        ObjectType: 4
+      - ElementName: Water
+        ObjectType: 4
+      - ElementName: SplashMedium
+        ObjectType: 3
+      ID: -2140563283
+      Guid: bcdf5fe4403f6047a7d8faa593b8bc3d
+      maxAttenuation: 0
+    - Name: SplashSmall
+      Path: Default Work Unit\Environment Assets\Water\SplashSmall
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Environment Assets
+        ObjectType: 4
+      - ElementName: Water
+        ObjectType: 4
+      - ElementName: SplashSmall
+        ObjectType: 3
+      ID: -131005659
+      Guid: 471803649a10f94d84f457ceb9812ba1
+      maxAttenuation: 0
+    - Name: StoneDust
+      Path: Default Work Unit\Environment Assets\StoneDust
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Environment Assets
+        ObjectType: 4
+      - ElementName: StoneDust
+        ObjectType: 3
+      ID: 1766332112
+      Guid: 413929c31c2bcf49a779bde231edbc08
+      maxAttenuation: 0
+    - Name: WaterfallHuge
+      Path: Default Work Unit\Environment Assets\Water\WaterfallHuge
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Environment Assets
+        ObjectType: 4
+      - ElementName: Water
+        ObjectType: 4
       - ElementName: WaterfallHuge
         ObjectType: 3
       ID: -235189076
       Guid: 2629bd3e9b33e844b6162f8d833ff2c0
       maxAttenuation: 0
     - Name: WaterfallLarge
-      Path: Default Work Unit\WaterfallLarge
+      Path: Default Work Unit\Environment Assets\Water\WaterfallLarge
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Environment Assets
+        ObjectType: 4
+      - ElementName: Water
+        ObjectType: 4
       - ElementName: WaterfallLarge
         ObjectType: 3
       ID: -1892876302
       Guid: c94bc2eb65777f46afc464df4afdcb73
       maxAttenuation: 0
     - Name: WaterfallSmall
-      Path: Default Work Unit\WaterfallSmall
+      Path: Default Work Unit\Environment Assets\Water\WaterfallSmall
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
+      - ElementName: Environment Assets
+        ObjectType: 4
+      - ElementName: Water
+        ObjectType: 4
       - ElementName: WaterfallSmall
         ObjectType: 3
       ID: -7018882
       Guid: f7a15c05d35d754fa0c1f99a7be644d5
       maxAttenuation: 0
-    - Name: Wrong
-      Path: Default Work Unit\Wrong
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: Wrong
-        ObjectType: 3
-      ID: 366552496
-      Guid: 8c4648c096202347afe9063a9aa76640
-      maxAttenuation: 0
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{88AEA801-E436-458F-9865-10A1788249D3}'
-    m_lastTimePsrt1: 2035973749
-    m_lastTimePart2: -1999443918
+    m_lastTimePsrt1: 620352512
+    m_lastTimePart2: -1999443795
     List:
     - Name: AmbienceBus
       Path: Default Work Unit\Master Audio Bus\AmbienceBus
@@ -433,15 +667,15 @@ MonoBehaviour:
   - PhysicalPath: States\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{AE51883C-3B7E-44A4-8103-D9454D178678}'
-    m_lastTimePsrt1: 2049528290
-    m_lastTimePart2: -1999443918
+    m_lastTimePsrt1: 760352512
+    m_lastTimePart2: -1999443795
     List: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{FC282CBF-8094-4F9E-A1C0-F8921C840242}'
-    m_lastTimePsrt1: 2049533298
-    m_lastTimePart2: -1999443918
+    m_lastTimePsrt1: 760352512
+    m_lastTimePart2: -1999443795
     List:
     - Name: CarOn_Off
       Path: Default Work Unit\CarOn_Off
@@ -543,8 +777,8 @@ MonoBehaviour:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{116C8925-F139-4949-97E9-2B14250AD9FB}'
-    m_lastTimePsrt1: 2049508257
-    m_lastTimePart2: -1999443918
+    m_lastTimePsrt1: 2009081114
+    m_lastTimePart2: -1999443706
     List:
     - Name: Main
       Path: Default Work Unit\Main
@@ -555,7 +789,15 @@ MonoBehaviour:
         ObjectType: 7
       ID: -1133058374
       Guid: dc637beba2bc994ea8ab1ae90106ff0c
-  ExpandedItems: []
+  ExpandedItems:
+  - /WwiseFinal
+  - /WwiseFinal/Events
+  - /WwiseFinal/Events/Default Work Unit
+  - /WwiseFinal/SoundBanks
+  - /WwiseFinal/SoundBanks/Default Work Unit
+  - /WwiseFinal/Switches
+  - /WwiseFinal/Switches/Default Work Unit
+  - /WwiseFinal/Switches/Default Work Unit/On_Off
   m_lastPopulateTimePsrt1: 0
   m_lastPopulateTimePart2: 0
   autoPopulateEnabled: 1

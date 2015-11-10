@@ -6,23 +6,39 @@
 				<SoundcasterSession Name="Ambience" ID="{E1C38E07-94F5-4265-873E-40FE6CE9A99D}">
 					<ModuleList>
 						<Module>
-							<ObjectRef Name="MAIN AMBIENCE" ID="{AEAEC6F9-FCBD-4F92-9253-05A1EE1CCBE6}" WorkUnitID="{36AA1685-24D3-498E-A2C6-91EC6AD0136D}"/>
+							<ObjectRef Name="MAIN AMBIENCE" ID="{AEAEC6F9-FCBD-4F92-9253-05A1EE1CCBE6}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
 							<Position X="0" Y="0"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Waterdrops(Environment)" ID="{342A749D-C6A0-42C1-A2E2-3AA3F99E195B}" WorkUnitID="{36AA1685-24D3-498E-A2C6-91EC6AD0136D}"/>
+							<ObjectRef Name="Waterdrops(Environment)" ID="{342A749D-C6A0-42C1-A2E2-3AA3F99E195B}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
 							<Position X="0" Y="1"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Waterdrops(Background)" ID="{375C372D-0F55-42CC-A157-0B809FA8419A}" WorkUnitID="{36AA1685-24D3-498E-A2C6-91EC6AD0136D}"/>
+							<ObjectRef Name="DoorSlideStart" ID="{8E8CA289-7B5B-4754-80BF-76A27D2C9BFF}" WorkUnitID="{F435BC40-F026-475F-8354-F9EAA1C9BD20}"/>
+							<Position X="0" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="RailwayBlockerMove" ID="{52BCCCAF-3C48-4BE6-A297-A7A0B6092F0A}" WorkUnitID="{F435BC40-F026-475F-8354-F9EAA1C9BD20}"/>
+							<Position X="0" Y="3"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Waterdrops(Background)" ID="{375C372D-0F55-42CC-A157-0B809FA8419A}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
 							<Position X="1" Y="0"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Pebbles" ID="{EEEF6B8B-48B8-48EE-BA8C-D1E2B4488F09}" WorkUnitID="{36AA1685-24D3-498E-A2C6-91EC6AD0136D}"/>
+							<ObjectRef Name="Pebbles" ID="{EEEF6B8B-48B8-48EE-BA8C-D1E2B4488F09}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
 							<Position X="1" Y="1"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Mojo04 (1)" ID="{2A570740-9DD6-4F33-B880-6DA6DFD8272B}" WorkUnitID="{36AA1685-24D3-498E-A2C6-91EC6AD0136D}"/>
+							<ObjectRef Name="DoorSlideStop" ID="{316BA6E6-AE8D-447C-B729-3E04329056E0}" WorkUnitID="{F435BC40-F026-475F-8354-F9EAA1C9BD20}"/>
+							<Position X="1" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="RailwayBlockerStop" ID="{73D9CAE2-FDA4-4417-8CF2-6F9634FA9765}" WorkUnitID="{F435BC40-F026-475F-8354-F9EAA1C9BD20}"/>
+							<Position X="1" Y="3"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Mojo04 (1)" ID="{2A570740-9DD6-4F33-B880-6DA6DFD8272B}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
 							<Position X="3" Y="0"/>
 						</Module>
 						<Module>
@@ -30,7 +46,7 @@
 							<Position X="3" Y="1"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="MojoWithoutEnergy" ID="{26F6EF8F-A4E9-42D8-84BD-3AF2CE234154}" WorkUnitID="{36AA1685-24D3-498E-A2C6-91EC6AD0136D}"/>
+							<ObjectRef Name="MojoWithoutEnergy" ID="{26F6EF8F-A4E9-42D8-84BD-3AF2CE234154}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
 							<Position X="4" Y="0"/>
 						</Module>
 						<Module>
@@ -111,6 +127,10 @@
 							<Position X="0" Y="4"/>
 						</Module>
 						<Module>
+							<ObjectRef Name="Louder_Lava_Active" ID="{BD187339-8699-426A-A43D-8F29CDB01EC7}" WorkUnitID="{F435BC40-F026-475F-8354-F9EAA1C9BD20}"/>
+							<Position X="0" Y="5"/>
+						</Module>
+						<Module>
 							<ObjectRef Name="Headlamp_Focus_Stop" ID="{D5D82F84-1934-47DF-818A-15A2267260A2}" WorkUnitID="{F435BC40-F026-475F-8354-F9EAA1C9BD20}"/>
 							<Position X="1" Y="0"/>
 						</Module>
@@ -125,6 +145,10 @@
 						<Module>
 							<ObjectRef Name="Lava_Stop" ID="{1420504D-A2E2-405B-8D8B-1EB476513DC2}" WorkUnitID="{F435BC40-F026-475F-8354-F9EAA1C9BD20}"/>
 							<Position X="1" Y="4"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Louder_Lava_Stop" ID="{42CBFD8C-C8E7-45AA-A83A-EC79C5C4BD40}" WorkUnitID="{F435BC40-F026-475F-8354-F9EAA1C9BD20}"/>
+							<Position X="1" Y="5"/>
 						</Module>
 						<Module>
 							<ObjectRef Name="Liana_Active" ID="{19B03D0D-536F-4441-AE3D-9229C8784D27}" WorkUnitID="{F435BC40-F026-475F-8354-F9EAA1C9BD20}"/>

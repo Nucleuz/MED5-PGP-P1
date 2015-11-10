@@ -115,8 +115,10 @@ public class ClientManager : NetworkManager
 
 
                         //if the level is already loaded process it's triggers
-                        if(levelHandler.levelContainers[serverLevelIndex] != null)
+                        if(levelHandler.levelContainers[serverLevelIndex] != null){
                             triggerHandler.process(levelHandler.levelContainers[serverLevelIndex]);
+                            OnLevelCompleted();
+                        }
 
                     }
                     break;
@@ -167,7 +169,7 @@ public class ClientManager : NetworkManager
     }
 
     public override void OnLevelCompleted(){
-
+        player.GetComponent<Cart>().SetStartingRail(levelHandler.levelContainers[serverLevelIndex].levelManager.levelStartRail[networkID - 1]);
     }
 
 
@@ -213,23 +215,22 @@ public class ClientManager : NetworkManager
         }
 
 
-
+/*
         VoiceChatRecorder.Instance.NetworkId = networkID;
         VoiceChatRecorder.Instance.Device = VoiceChatRecorder.Instance.AvailableDevices[0];
         VoiceChatRecorder.Instance.StartRecording();
         VoiceChatRecorder.Instance.NewSample += netPlayer.OnNewSample;
-
+*/
         //place the player on the correct rail!
 
         Console.Instance.AddMessage("levelManager: " + levelHandler.getLevelManager());
         Rail startRail = levelHandler.getLevelManager().levelStartRail[networkID - 1];
-        netPlayer.cart.currentRail = startRail;
+        netPlayer.cart.Init(startRail);
         Console.Instance.AddMessage("startrail: " + startRail.transform.position);
 
 
         player.position = startRail.transform.position;
         Vector3 viewDirection = startRail.next.transform.position - startRail.transform.position;
-        player.GetComponent<Cart>().currentRail = startRail;
 
         //send it to everyone else
         DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager, Network.Subject.SpawnPlayer, player.position.Serialize());
