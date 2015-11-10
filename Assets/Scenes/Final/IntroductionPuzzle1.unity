@@ -1265,7 +1265,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  next: {fileID: 1256877559}
+  next: {fileID: 0}
   prev: {fileID: 2114733568}
   railPoint: {fileID: 0}
 --- !u!1 &145363444
@@ -2896,7 +2896,7 @@ MonoBehaviour:
   rName: railPoint
   spawnRailPoint: 0
   next: {fileID: 1919548048}
-  prev: {fileID: 1181586827}
+  prev: {fileID: 0}
   railPoint: {fileID: 0}
 --- !u!1 &295952880
 GameObject:
@@ -3745,6 +3745,12 @@ Prefab:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &358994946 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11499764, guid: 333a9a060967feb4f83dbba165e8c794,
+    type: 2}
+  m_PrefabInternal: {fileID: 358994945}
+  m_Script: {fileID: 11500000, guid: 926d1a3606557c64ea087cece6585945, type: 3}
 --- !u!1 &359002745
 GameObject:
   m_ObjectHideFlags: 0
@@ -8090,7 +8096,7 @@ MonoBehaviour:
   rName: railPoint
   spawnRailPoint: 0
   next: {fileID: 870139006}
-  prev: {fileID: 1432963174}
+  prev: {fileID: 0}
   railPoint: {fileID: 0}
 --- !u!1 &781447901
 GameObject:
@@ -12287,7 +12293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  next: {fileID: 289740575}
+  next: {fileID: 0}
   prev: {fileID: 82206377}
   railPoint: {fileID: 0}
 --- !u!4 &1192558081 stripped
@@ -12777,6 +12783,12 @@ Prefab:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1227520698 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11499764, guid: 333a9a060967feb4f83dbba165e8c794,
+    type: 2}
+  m_PrefabInternal: {fileID: 1227520697}
+  m_Script: {fileID: 11500000, guid: 926d1a3606557c64ea087cece6585945, type: 3}
 --- !u!1 &1227670446
 GameObject:
   m_ObjectHideFlags: 0
@@ -13130,7 +13142,7 @@ MonoBehaviour:
   rName: railPoint
   spawnRailPoint: 0
   next: {fileID: 361486368}
-  prev: {fileID: 145068421}
+  prev: {fileID: 0}
   railPoint: {fileID: 0}
 --- !u!4 &1261209477 stripped
 Transform:
@@ -15238,7 +15250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  next: {fileID: 779981224}
+  next: {fileID: 0}
   prev: {fileID: 734811944}
   railPoint: {fileID: 0}
 --- !u!1001 &1436279245
@@ -23112,6 +23124,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 473829382}
     m_Modifications:
+    - target: {fileID: 11405848, guid: f91ef7e6e1b981c4598819a88f64b78f, type: 2}
+      propertyPath: railConnections.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 486060, guid: f91ef7e6e1b981c4598819a88f64b78f, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -23160,6 +23176,18 @@ Prefab:
       propertyPath: isReadyToBeTriggered
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11405848, guid: f91ef7e6e1b981c4598819a88f64b78f, type: 2}
+      propertyPath: railConnections.Array.data[0]
+      value: 
+      objectReference: {fileID: 2145388470}
+    - target: {fileID: 11405848, guid: f91ef7e6e1b981c4598819a88f64b78f, type: 2}
+      propertyPath: railConnections.Array.data[1]
+      value: 
+      objectReference: {fileID: 1227520698}
+    - target: {fileID: 11405848, guid: f91ef7e6e1b981c4598819a88f64b78f, type: 2}
+      propertyPath: railConnections.Array.data[2]
+      value: 
+      objectReference: {fileID: 358994946}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f91ef7e6e1b981c4598819a88f64b78f, type: 2}
   m_IsPrefabParent: 0
@@ -23760,7 +23788,7 @@ Prefab:
     - target: {fileID: 11499764, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
       propertyPath: pRail
       value: 
-      objectReference: {fileID: 82206377}
+      objectReference: {fileID: 1181586827}
     - target: {fileID: 189580, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
       propertyPath: m_Name
       value: Barricade Blue Start
@@ -23768,3 +23796,9 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &2145388470 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11499764, guid: 333a9a060967feb4f83dbba165e8c794,
+    type: 2}
+  m_PrefabInternal: {fileID: 2145388469}
+  m_Script: {fileID: 11500000, guid: 926d1a3606557c64ea087cece6585945, type: 3}
