@@ -44,14 +44,14 @@ public class Waterfall : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		/*if(pE.isPlaying && !isPlaying){
-			SoundManager.Instance.PlayEvent("WaterFall", gameObject);
+		if(pE.isPlaying && !isPlaying){
+			SoundManager.Instance.PlayEvent("WaterfallLarge", gameObject);
 			isPlaying = true;
 		}
 		
 		if(!pE.isPlaying && isPlaying){
-			SoundManager.Instance.StopEvent("WaterFall", gameObject);
-		}*/
+			SoundManager.Instance.StopEvent("WaterfallLarge", gameObject);
+		}
 
 		if(Input.GetKeyDown(KeyCode.D)){
 			Toggle();

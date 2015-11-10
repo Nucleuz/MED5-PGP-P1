@@ -90,10 +90,10 @@ MonoBehaviour:
   clipPlaneOffset: .0700000003
   reflectLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294967023
   refractLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294967023
 --- !u!1002 &11400001
 EditorExtensionImpl:
   serializedVersion: 6
@@ -103,7 +103,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: reflectLayers.m_Bits
+      value: 4294967023
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: refractLayers.m_Bits
+      value: 4294967023
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100000}

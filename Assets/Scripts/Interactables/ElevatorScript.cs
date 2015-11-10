@@ -17,8 +17,8 @@ public class ElevatorScript : MonoBehaviour {
     public Transform[] nodes;                                               //Array of transform objects that holds the positions the elevator will visit
     private int activeNode;                                                     //Speed of the elevator
 
-    public float animationLength = 1;
-    private float endAnimationTime;                                       //holds the amount of time the lerp has been running
+    public float animationLength;
+    private float animationStartTime;                                       //holds the amount of time the lerp has been running
  
 	// Use this for initialization
 	void Start () {
@@ -32,22 +32,23 @@ public class ElevatorScript : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
 
+        // Checks if the mouse button is pressed
         if (trigger.isTriggered && !isActivated)
         {
             isActivated = true;
-            endAnimationTime = Time.time;
+			animationStartTime = Time.time;
         }
 
-        if (isActivated){
+        if (isActivated)                                                    //Activates after a mousepress
+        {
 
 
-            float t = (Time.time - endAnimationTime) / animationLength;                   //Calculates the final speed of the object.
-            
-            Console.Instance.AddMessage("elevator time " + t);
+			float t = (Time.time - animationStartTime) / animationLength;                   //Calculates the final speed of the object.
+			float smoothstepFactor = t * t * (3 - 2 * t);
             //Moves the elevator from it's current position to the next active node
-            transform.position = Vector3.Lerp(transform.position, nodes[activeNode].position, t);
+            transform.position = Vector3.Lerp(transform.position, nodes[nodes.Length - 1].position, smoothstepFactor);
             if(!soundIsPlaying){
                 SoundManager.Instance.PlayEvent("Elevator_Active", gameObject);
                 soundIsPlaying = true;
@@ -55,9 +56,8 @@ public class ElevatorScript : MonoBehaviour {
             
             
             //Checks if the distance between the elevator and current active node is less than 0.1 and if active node is not larger than array nodes length.
-            if (Vector3.Distance(transform.position, nodes[activeNode].transform.position) < 0.1f && activeNode < nodes.Length) {
+            if (Vector3.Distance(transform.position, nodes[activeNode].transform.position) < 0.1f && activeNode <= nodes.Length - 1) {
                 activeNode++;
-                endAnimationTime = Time.time;
             }
 
             // Checks if we've reached the last node. If true, then we reverse the order of the nodes, set the active node to 0, and deactivate the elevator. 
@@ -70,13 +70,15 @@ public class ElevatorScript : MonoBehaviour {
                 } else{
                     goingUp = false;
                 }
-                isActivated = false;
-                trigger.Deactivate();
-                trigger.isReadyToBeTriggered = true;
+
                 if(soundIsPlaying){
                     SoundManager.Instance.PlayEvent("Elevator_Stop", gameObject);
                     soundIsPlaying = false;
                 }
+
+                isActivated = false;
+                trigger.Deactivate();
+                trigger.isReadyToBeTriggered = true;
             } 
 
             // Disconnects when the active nodes is not the first or last one
