@@ -718,8 +718,8 @@ MonoBehaviour:
   triggerID: 0
   playersInteracting: 000000
   playersRequired: 0
-  bluePlayerRequired: 1
-  redPlayerRequired: 0
+  bluePlayerRequired: 0
+  redPlayerRequired: 1
   greenPlayerRequired: 0
 --- !u!1 &24888231
 GameObject:
@@ -5475,7 +5475,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &134692929
 Transform:
   m_ObjectHideFlags: 0
@@ -5488,7 +5488,7 @@ Transform:
   m_Children:
   - {fileID: 1232335126}
   m_Father: {fileID: 421359219}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!114 &134692930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5519,9 +5519,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 134692928}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: c4d34a4a44363e042812b588eea9a783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seqIndex: -1
+  sequenceIsPlaying: 0
+  sequenceTriggers: []
 --- !u!65 &134692932
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6260,7 +6263,7 @@ Transform:
   m_PrefabParentObject: {fileID: 472034, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 159671571}
-  m_LocalRotation: {x: 0, y: -.00293964148, z: 0, w: .999995708}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -22.3099976, y: -12.0999985, z: 31.4900055}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -9414,7 +9417,7 @@ MonoBehaviour:
   rName: railPoint
   spawnRailPoint: 0
   next: {fileID: 1702920082}
-  prev: {fileID: 1641398356}
+  prev: {fileID: 0}
   railPoint: {fileID: 0}
 --- !u!1 &288050754
 GameObject:
@@ -14799,7 +14802,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 450700649}
   m_Layer: 0
-  m_Name: Red Mirror
+  m_Name: Green Mirror
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14819,7 +14822,7 @@ Transform:
   - {fileID: 282513659}
   - {fileID: 279016758}
   m_Father: {fileID: 919496107}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!1 &451201285
 GameObject:
   m_ObjectHideFlags: 0
@@ -14891,7 +14894,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 451258361}
   m_Layer: 0
-  m_Name: Barricade Green Start
+  m_Name: Barricade Red Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14903,7 +14906,7 @@ Transform:
   m_PrefabParentObject: {fileID: 472034, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 451258360}
-  m_LocalRotation: {x: 0, y: .0718773901, z: 0, w: .997413516}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -11.3999977, y: -21.2999992, z: 27.3300171}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -14912,7 +14915,7 @@ Transform:
   - {fileID: 1820826409}
   - {fileID: 411207091}
   m_Father: {fileID: 1902219138}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!1 &451624369
 GameObject:
   m_ObjectHideFlags: 0
@@ -18882,7 +18885,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 514718650}
   m_Layer: 0
-  m_Name: Barricade Red Start
+  m_Name: Barricade Green Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18894,7 +18897,7 @@ Transform:
   m_PrefabParentObject: {fileID: 472034, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 514718649}
-  m_LocalRotation: {x: 0, y: .0696392357, z: 0, w: .997572243}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -.590003014, y: 3.37999725, z: 30.0500031}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -18903,7 +18906,7 @@ Transform:
   - {fileID: 1263853306}
   - {fileID: 2138153955}
   m_Father: {fileID: 1902219138}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!1 &515491789
 GameObject:
   m_ObjectHideFlags: 0
@@ -19406,7 +19409,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 533219773}
   m_LocalRotation: {x: 0, y: .707064211, z: 0, w: .707149386}
-  m_LocalPosition: {x: 325.635376, y: 35.6784439, z: 154.441986}
+  m_LocalPosition: {x: 308.950775, y: 12.4245796, z: 73.1156464}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 451624370}
@@ -19530,8 +19533,8 @@ Transform:
   - {fileID: 469911011}
   - {fileID: 681518818}
   - {fileID: 392665811}
-  m_Father: {fileID: 1307096914}
-  m_RootOrder: 2
+  m_Father: {fileID: 650124094}
+  m_RootOrder: 1
 --- !u!114 &533219775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22580,6 +22583,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1405719183}
   m_RootOrder: 0
+--- !u!1 &650124093
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 650124094}
+  m_Layer: 0
+  m_Name: Rails
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &650124094
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 650124093}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -137.870773, y: 62.7054176, z: -28.1156464}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1062049736}
+  - {fileID: 533219774}
+  - {fileID: 789799538}
+  m_Father: {fileID: 421359219}
+  m_RootOrder: 0
 --- !u!1 &650890255
 GameObject:
   m_ObjectHideFlags: 0
@@ -25496,7 +25529,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  next: {fileID: 1528591828}
+  next: {fileID: 0}
   prev: {fileID: 969558575}
   railPoint: {fileID: 0}
 --- !u!4 &768108718
@@ -26147,7 +26180,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 789799537}
   m_LocalRotation: {x: 0, y: .707064211, z: 0, w: .707149386}
-  m_LocalPosition: {x: 325.635376, y: 35.6784439, z: 159.441986}
+  m_LocalPosition: {x: 308.950775, y: 12.4245796, z: 78.1156464}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 964794794}
@@ -26272,8 +26305,8 @@ Transform:
   - {fileID: 1005424561}
   - {fileID: 711044182}
   - {fileID: 148971988}
-  m_Father: {fileID: 1307096914}
-  m_RootOrder: 0
+  m_Father: {fileID: 650124094}
+  m_RootOrder: 2
 --- !u!114 &789799539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28848,7 +28881,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 898616291}
   m_Layer: 0
-  m_Name: Green Mirror
+  m_Name: Red Mirror
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28868,7 +28901,7 @@ Transform:
   - {fileID: 1245898078}
   - {fileID: 92157708}
   m_Father: {fileID: 919496107}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!1 &899230631
 GameObject:
   m_ObjectHideFlags: 0
@@ -29551,10 +29584,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1694582945}
-  - {fileID: 450700649}
   - {fileID: 898616291}
+  - {fileID: 450700649}
   m_Father: {fileID: 421359219}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!1 &920727166
 GameObject:
   m_ObjectHideFlags: 0
@@ -32041,7 +32074,7 @@ GameObject:
   - 198: {fileID: 1022014431}
   - 199: {fileID: 1022014430}
   m_Layer: 0
-  m_Name: Red Button
+  m_Name: Green Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32080,9 +32113,9 @@ MonoBehaviour:
   triggerID: 0
   playersInteracting: 000000
   playersRequired: 0
-  bluePlayerRequired: 1
+  bluePlayerRequired: 0
   redPlayerRequired: 0
-  greenPlayerRequired: 0
+  greenPlayerRequired: 1
 --- !u!199 &1022014430
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -34395,7 +34428,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1062049734}
   m_LocalRotation: {x: 0, y: .707064211, z: 0, w: .707149386}
-  m_LocalPosition: {x: 325.635376, y: 35.6784439, z: 149.441986}
+  m_LocalPosition: {x: 308.950775, y: 12.4245796, z: 68.1156464}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1763178329}
@@ -34519,8 +34552,8 @@ Transform:
   - {fileID: 689843541}
   - {fileID: 1775986800}
   - {fileID: 1340620108}
-  m_Father: {fileID: 1307096914}
-  m_RootOrder: 1
+  m_Father: {fileID: 650124094}
+  m_RootOrder: 0
 --- !u!1 &1064327814
 GameObject:
   m_ObjectHideFlags: 0
@@ -35939,7 +35972,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 487042, guid: 8b3ea6ba528dc0f40a52a2ade8fb9d52, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 145628, guid: 8b3ea6ba528dc0f40a52a2ade8fb9d52, type: 2}
       propertyPath: m_Name
@@ -38145,8 +38178,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 926d1a3606557c64ea087cece6585945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nRail: {fileID: 0}
-  pRail: {fileID: 0}
+  nRail: {fileID: 1528591828}
+  pRail: {fileID: 768108717}
   self: {fileID: 1220311192}
   connectToNext: 0
   connectToPrev: 0
@@ -39645,7 +39678,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 11492572, guid: 639ce8ab29167214da59d2876d4ab108, type: 2}
       propertyPath: events.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11492572, guid: 639ce8ab29167214da59d2876d4ab108, type: 2}
       propertyPath: eventOrder.Array.size
@@ -39693,12 +39726,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 422748, guid: 639ce8ab29167214da59d2876d4ab108, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 11492572, guid: 639ce8ab29167214da59d2876d4ab108, type: 2}
       propertyPath: events.Array.data[0]
       value: 
-      objectReference: {fileID: 26459935}
+      objectReference: {fileID: 416398835}
     - target: {fileID: 11492572, guid: 639ce8ab29167214da59d2876d4ab108, type: 2}
       propertyPath: events.Array.data[1]
       value: 
@@ -40754,36 +40787,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1306526581}
   m_Mesh: {fileID: 4300000, guid: c27e69b31ba827044a6982bc2e356933, type: 3}
---- !u!1 &1307096913
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1307096914}
-  m_Layer: 0
-  m_Name: Rails
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1307096914
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1307096913}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -154.555389, y: 39.4515533, z: -109.441978}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 789799538}
-  - {fileID: 1062049736}
-  - {fileID: 533219774}
-  m_Father: {fileID: 421359219}
-  m_RootOrder: 5
 --- !u!1 &1309170802
 GameObject:
   m_ObjectHideFlags: 0
@@ -42888,8 +42891,8 @@ MonoBehaviour:
   triggerID: 0
   playersInteracting: 000000
   playersRequired: 0
-  bluePlayerRequired: 1
-  redPlayerRequired: 0
+  bluePlayerRequired: 0
+  redPlayerRequired: 1
   greenPlayerRequired: 0
 --- !u!1 &1392967170
 GameObject:
@@ -46277,7 +46280,7 @@ MonoBehaviour:
   rName: railPoint
   spawnRailPoint: 0
   next: {fileID: 1666757779}
-  prev: {fileID: 768108717}
+  prev: {fileID: 0}
   railPoint: {fileID: 0}
 --- !u!4 &1528591829
 Transform:
@@ -49783,7 +49786,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  next: {fileID: 286978613}
+  next: {fileID: 0}
   prev: {fileID: 2131730586}
   railPoint: {fileID: 0}
 --- !u!1 &1641902046
@@ -59015,11 +59018,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 159671572}
-  - {fileID: 514718650}
   - {fileID: 451258361}
+  - {fileID: 514718650}
   - {fileID: 1129827271}
   m_Father: {fileID: 421359219}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!1 &1903443435
 GameObject:
   m_ObjectHideFlags: 0
@@ -60524,7 +60527,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 461432, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 11470732, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
+      propertyPath: redPlayerRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11470732, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
+      propertyPath: isReadyToBeTriggered
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
@@ -60723,7 +60734,7 @@ GameObject:
   - 198: {fileID: 1956730948}
   - 199: {fileID: 1956730947}
   m_Layer: 0
-  m_Name: Green Button
+  m_Name: Red Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60762,8 +60773,8 @@ MonoBehaviour:
   triggerID: 0
   playersInteracting: 000000
   playersRequired: 0
-  bluePlayerRequired: 1
-  redPlayerRequired: 0
+  bluePlayerRequired: 0
+  redPlayerRequired: 1
   greenPlayerRequired: 0
 --- !u!199 &1956730947
 ParticleSystemRenderer:
@@ -63420,8 +63431,8 @@ MonoBehaviour:
   triggerID: 0
   playersInteracting: 000000
   playersRequired: 0
-  bluePlayerRequired: 1
-  redPlayerRequired: 0
+  bluePlayerRequired: 0
+  redPlayerRequired: 1
   greenPlayerRequired: 0
 --- !u!1 &2007702258
 GameObject:
@@ -66660,8 +66671,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 926d1a3606557c64ea087cece6585945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nRail: {fileID: 102107817}
-  pRail: {fileID: 1666757779}
+  nRail: {fileID: 286978613}
+  pRail: {fileID: 1641398356}
   self: {fileID: 2113240392}
   connectToNext: 0
   connectToPrev: 0
