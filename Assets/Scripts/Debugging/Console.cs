@@ -48,6 +48,8 @@ public class Console : MonoBehaviour {
 		if(Input.GetKeyDown(keyToOpen)){
 			activated = !activated;
 			consoleContainer.SetActive(activated);
+			inputField.ActivateInputField();
+			inputField.Select();
 		}
 
         if(consoleCanvasText.text != output)
@@ -62,9 +64,12 @@ public class Console : MonoBehaviour {
         if (currentCommand != "")
         {
 			inputField.text = "";
+			inputField.ActivateInputField();
+			inputField.Select();
 
 			if(isWaitingForInput) {
 				clientManagerPtr.ConnectToServer(currentCommand);
+				isWaitingForInput = false;
 				return;
 			}
 			// First check commands which are the same on both Client and Server
