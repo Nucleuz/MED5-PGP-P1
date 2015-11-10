@@ -34,6 +34,11 @@ public class GameManager : MonoBehaviour {
     public void DetectTriggerChanges(){
         try{
             //Checks if the current object is triggered, and if they are ready to be triggered
+						if(LM == null || LM.events.Length == 0){
+							Debug.LogWarning("LM>" + LM + " Events>" + LM.events + " Events Length>" + LM.events.Length);
+							return;
+						}
+
             if(LM.eventOrder[index] == 0){ //Checks if there is a desired order in the sequence, runs if there isn't
                 for(int j = 0; j < LM.eventsInSequence[index]; j++){ //Goes through the events in the sequence
                     //Used in order to not get double values

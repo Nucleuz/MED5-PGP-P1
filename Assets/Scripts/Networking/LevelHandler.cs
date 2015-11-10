@@ -105,21 +105,17 @@ public class LevelHandler : MonoBehaviour {
 
 
             pLD.y = 0;
+
             pLD.Normalize();
 
             //rotate next level so that pLD is equal to the inverse nLD
-            Debug.Log(pLD + " - " + nLD + " " + (Mathf.Rad2Deg * levelContainers[loadingIndex - 1].transform.rotation.y ) + " magnitudes: " + pLD.magnitude + ";" + nLD.magnitude);
+            Debug.Log(pLD + " - " + nLD + " " + (Mathf.Rad2Deg * levelContainers[loadingIndex - 1].transform.rotation.y ) + " angle: " + Vector3.Angle(pLD,nLD));
 
-            float a = Vector3.Angle(pLD,nLD) + (Mathf.Rad2Deg * levelContainers[loadingIndex - 1].transform.rotation.y);
+            float a = Vector3.Angle(pLD,nLD) - (Mathf.Rad2Deg * levelContainers[loadingIndex - 1].transform.rotation.y);
 
             Vector3 cross = Vector3.Cross(pLD,nLD);
 
-            if(cross.y > 0)
-            currentRotation = a;
-            else if(cross.y == 0)
-            currentRotation = a-180;
-            else if(cross.y < 0)
-            currentRotation = a-180;
+            currentRotation = 180-a;
 
             Debug.Log("a: " + a + " next rot : " + currentRotation + " c: " + cross);
             //rotate new level

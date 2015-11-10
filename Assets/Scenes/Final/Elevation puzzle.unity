@@ -65,7 +65,6 @@ LightmapSettings:
     m_TextureCompression: 1
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
-    m_ReflectionCompression: 2
   m_LightmapSnapshot: {fileID: 0}
   m_RuntimeCPUUsage: 25
 --- !u!196 &4
@@ -85,6 +84,9 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!127 &5
+LevelGameManager:
+  m_ObjectHideFlags: 0
 --- !u!1 &2657781
 GameObject:
   m_ObjectHideFlags: 0
@@ -25698,6 +25700,48 @@ MonoBehaviour:
   next: {fileID: 695339618}
   prev: {fileID: 1087219924}
   railPoint: {fileID: 0}
+--- !u!1001 &1297182514
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1345223035}
+    m_Modifications:
+    - target: {fileID: 464848, guid: 159513c094cc6477fb978d2ac3d96525, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -255
+      objectReference: {fileID: 0}
+    - target: {fileID: 464848, guid: 159513c094cc6477fb978d2ac3d96525, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 464848, guid: 159513c094cc6477fb978d2ac3d96525, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 464848, guid: 159513c094cc6477fb978d2ac3d96525, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 464848, guid: 159513c094cc6477fb978d2ac3d96525, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 464848, guid: 159513c094cc6477fb978d2ac3d96525, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 464848, guid: 159513c094cc6477fb978d2ac3d96525, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 464848, guid: 159513c094cc6477fb978d2ac3d96525, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 159513c094cc6477fb978d2ac3d96525, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1299125748
 GameObject:
   m_ObjectHideFlags: 0
