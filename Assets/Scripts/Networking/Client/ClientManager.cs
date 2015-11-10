@@ -22,7 +22,7 @@ public class ClientManager : NetworkManager
     //IP the client will try to connect to
     //@TODO - client should be able to change the ip when the client starts up, for easier use
     public string IP = "127.0.0.1";
-    
+
     [HideInInspector]
     public ushort networkID = 0;
 
@@ -47,14 +47,25 @@ public class ClientManager : NetworkManager
     {
         levelHandler = GetComponent<LevelHandler>();
         triggerHandler = GetComponent<TriggerHandler>();
+
+        ConnectToServer(this.IP);
+    }
+
+    public void ConnectToServer(string ip) {
         //Connect to the server
         DarkRiftAPI.workInBackground = true;
-        DarkRiftAPI.Connect(IP); //halts until connect or timeout
-        DarkRiftAPI.onDataDetailed += ReceiveData;
+        Console.Instance.AddMessage("Connection to " + ip);
+        try {
+            DarkRiftAPI.Connect(ip); //halts until connect or timeout        
+            DarkRiftAPI.onDataDetailed += ReceiveData;
+        } catch(System.Exception e) {
+            Console.Instance.AddMessage("Failed to connect to " + ip);
+            Console.Instance.AddMessage("Error: " + e.Message);
+        }
 
         if (DarkRiftAPI.isConnected)
         {
-            Console.Instance.AddMessage("Is connected to Server");
+            Console.Instance.AddMessage("Connected to " + ip);
             //tell everyone else that we have entered so they can tell where they are
             DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager, Network.Subject.HasJoined,(ushort) 123);
         }
@@ -62,7 +73,8 @@ public class ClientManager : NetworkManager
 
     void OnApplicationQuit()
     {
-        DarkRiftAPI.Disconnect();
+        if (DarkRiftAPI.isConnected)
+            DarkRiftAPI.Disconnect();
     }
 
 
@@ -103,8 +115,10 @@ public class ClientManager : NetworkManager
 
 
                         //if the level is already loaded process it's triggers
-                        if(levelHandler.levelContainers[serverLevelIndex] != null)
+                        if(levelHandler.levelContainers[serverLevelIndex] != null){
                             triggerHandler.process(levelHandler.levelContainers[serverLevelIndex]);
+                            OnLevelCompleted();
+                        }
 
                     }
                     break;
@@ -155,7 +169,7 @@ public class ClientManager : NetworkManager
     }
 
     public override void OnLevelCompleted(){
-
+        player.GetComponent<Cart>().SetStartingRail(levelHandler.levelContainers[serverLevelIndex].levelManager.levelStartRail[networkID - 1]);
     }
 
 
@@ -201,23 +215,22 @@ public class ClientManager : NetworkManager
         }
 
 
-
+/*
         VoiceChatRecorder.Instance.NetworkId = networkID;
         VoiceChatRecorder.Instance.Device = VoiceChatRecorder.Instance.AvailableDevices[0];
         VoiceChatRecorder.Instance.StartRecording();
         VoiceChatRecorder.Instance.NewSample += netPlayer.OnNewSample;
-
+*/
         //place the player on the correct rail!
 
         Console.Instance.AddMessage("levelManager: " + levelHandler.getLevelManager());
         Rail startRail = levelHandler.getLevelManager().levelStartRail[networkID - 1];
-        netPlayer.cart.currentRail = startRail;
+        netPlayer.cart.Init(startRail);
         Console.Instance.AddMessage("startrail: " + startRail.transform.position);
 
 
         player.position = startRail.transform.position;
         Vector3 viewDirection = startRail.next.transform.position - startRail.transform.position;
-        player.GetComponent<Cart>().currentRail = startRail;
 
         //send it to everyone else
         DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager, Network.Subject.SpawnPlayer, player.position.Serialize());

@@ -12,7 +12,7 @@ public class Mirror : Interactable {
 	public float endPoint = 300; // Set this value to the rotation needed to complete the puzzle.
 	public float rotateSpeed = 0.5f;
 	public int turnAmount = 50; // How much it is turning.
-    public InteractableButton ButtonToTrigger; // The target that the mirror has to hit.
+    public Interactable objectToTrigger; // The target that the mirror has to hit.
 
     //public Rail railPoint;
     private LightShafts LS;
@@ -106,10 +106,10 @@ public class Mirror : Interactable {
             break;
         }   
     
-        Ray newRay = new Ray(hit.point, ButtonToTrigger.transform.position - transform.position);
+        Ray newRay = new Ray(hit.point, objectToTrigger.transform.position - transform.position);
         RaycastHit rayhit;
 
-        Vector3 targetDir = ButtonToTrigger.transform.position - transform.position;
+        Vector3 targetDir = objectToTrigger.transform.position - transform.position;
         float rotationalAngle = Vector3.Angle(targetDir, transform.forward);
 
         if (rotationalAngle < 5f) {

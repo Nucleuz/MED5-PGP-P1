@@ -259,8 +259,8 @@ GameObject:
   - 108: {fileID: 10839436}
   - 120: {fileID: 12034002}
   - 114: {fileID: 11448950}
-  - 114: {fileID: 11454778}
-  m_Layer: 8
+  - 114: {fileID: 11459958}
+  m_Layer: 0
   m_Name: Spotlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -533,7 +533,7 @@ GameObject:
   - 4: {fileID: 458290}
   - 108: {fileID: 10842618}
   - 114: {fileID: 11477182}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Spotlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1902,7 +1902,7 @@ Light:
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 150
+  m_Range: 500
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -1911,7 +1911,7 @@ Light:
     m_Strength: 1
     m_Bias: .0500000007
     m_NormalBias: .400000006
-  m_Cookie: {fileID: 0}
+  m_Cookie: {fileID: 2800000, guid: 74ec4d7da693bc844b5b49735a6849f0, type: 3}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
   m_RenderMode: 0
@@ -1934,8 +1934,8 @@ Light:
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: .439999998
-  m_Range: 50
-  m_SpotAngle: 30
+  m_Range: 200
+  m_SpotAngle: 20
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -1943,7 +1943,7 @@ Light:
     m_Strength: 1
     m_Bias: .0500000007
     m_NormalBias: .400000006
-  m_Cookie: {fileID: 0}
+  m_Cookie: {fileID: 2800000, guid: 4ec45802877ff7b4f990c4170113ab0d, type: 3}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
   m_RenderMode: 0
@@ -1993,7 +1993,7 @@ MonoBehaviour:
   head: {fileID: 447438}
   cam: {fileID: 140992}
   headControl: {fileID: 11411392}
-  helmet: {fileID: 11454778}
+  helmet: {fileID: 11459958}
   nonFocusedLightShaft: {fileID: 11477182}
   focusedLightShaft: {fileID: 11448950}
   cart: {fileID: 11465930}
@@ -2031,7 +2031,7 @@ MonoBehaviour:
   m_SpotFar: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967279
+    m_Bits: 4294967295
   m_ColorFilterMask:
     serializedVersion: 2
     m_Bits: 0
@@ -2092,7 +2092,7 @@ MonoBehaviour:
   - .159999996
   - 2
   anim: {fileID: 9505746}
---- !u!114 &11454778
+--- !u!114 &11459958
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2100,15 +2100,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 138790}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67dcb180c9d96194f85942954896bd80, type: 3}
+  m_Script: {fileID: 11500000, guid: b237059b33cb5044fa1e95ce53f21fd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spotlightAnimationLength: .200000003
   spotlightAnimationTime: 0
-  angleNormal: 45
-  angleFocus: 10
-  intensityNormal: 1
-  intensityFocus: 8
   nonFocusedHelmetLight: {fileID: 10842618}
   playerIndex: 0
   netPlayer: {fileID: 0}
@@ -2126,6 +2122,7 @@ MonoBehaviour:
   currentRail: {fileID: 0}
   movementSpeed: 1
   isMoving: 0
+  startingRail: {fileID: 0}
 --- !u!114 &11472548
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2158,7 +2155,7 @@ MonoBehaviour:
   m_SpotFar: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967279
+    m_Bits: 4294967295
   m_ColorFilterMask:
     serializedVersion: 2
     m_Bits: 4294967295
