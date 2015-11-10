@@ -103,8 +103,10 @@ public class ClientManager : NetworkManager
 
 
                         //if the level is already loaded process it's triggers
-                        if(levelHandler.levelContainers[serverLevelIndex] != null)
+                        if(levelHandler.levelContainers[serverLevelIndex] != null){
                             triggerHandler.process(levelHandler.levelContainers[serverLevelIndex]);
+                            OnLevelCompleted();
+                        }
 
                     }
                     break;
@@ -155,7 +157,7 @@ public class ClientManager : NetworkManager
     }
 
     public override void OnLevelCompleted(){
-
+        player.GetComponent<Cart>().SetStartingRail(levelHandler.levelContainers[serverLevelIndex].levelManager.levelStartRail[networkID - 1]);
     }
 
 
