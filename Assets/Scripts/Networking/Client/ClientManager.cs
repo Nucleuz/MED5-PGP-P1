@@ -22,7 +22,7 @@ public class ClientManager : NetworkManager
     //IP the client will try to connect to
     //@TODO - client should be able to change the ip when the client starts up, for easier use
     public string IP = "127.0.0.1";
-    
+
     [HideInInspector]
     public ushort networkID = 0;
 
@@ -47,14 +47,25 @@ public class ClientManager : NetworkManager
     {
         levelHandler = GetComponent<LevelHandler>();
         triggerHandler = GetComponent<TriggerHandler>();
+
+        ConnectToServer(this.IP);
+    }
+
+    public void ConnectToServer(string ip) {
         //Connect to the server
         DarkRiftAPI.workInBackground = true;
-        DarkRiftAPI.Connect(IP); //halts until connect or timeout
-        DarkRiftAPI.onDataDetailed += ReceiveData;
+        Console.Instance.AddMessage("Connection to " + ip);
+        try {
+            DarkRiftAPI.Connect(ip); //halts until connect or timeout        
+            DarkRiftAPI.onDataDetailed += ReceiveData;
+        } catch(System.Exception e) {
+            Console.Instance.AddMessage("Failed to connect to " + ip);
+            Console.Instance.AddMessage("Error: " + e.Message);
+        }
 
         if (DarkRiftAPI.isConnected)
         {
-            Console.Instance.AddMessage("Is connected to Server");
+            Console.Instance.AddMessage("Connected to " + ip);
             //tell everyone else that we have entered so they can tell where they are
             DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager, Network.Subject.HasJoined,(ushort) 123);
         }
@@ -62,7 +73,8 @@ public class ClientManager : NetworkManager
 
     void OnApplicationQuit()
     {
-        DarkRiftAPI.Disconnect();
+        if (DarkRiftAPI.isConnected)
+            DarkRiftAPI.Disconnect();
     }
 
 
