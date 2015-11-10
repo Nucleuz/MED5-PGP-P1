@@ -125,7 +125,7 @@ using DarkRift;
                                 triggerIDs.Add(triggerStates[i].id);
                             }
                         }else
-                            Debug.LogError("Received triggerstates has length: " + triggerStates.Length + " local has : " + triggers.Count + " - Scenes might be different");
+                            Debug.LogError("Received triggerstates server has : " + triggerStates.Length + " triggers, local has : " + triggers.Count + " triggers - Scenes might be different");
                     }
                     break;
                     case Network.Subject.TriggerState:
