@@ -3441,6 +3441,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 339542153}
   - 114: {fileID: 339542154}
+  - 114: {fileID: 339542155}
   m_Layer: 0
   m_Name: StartAttachment
   m_TagString: Untagged
@@ -3473,9 +3474,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  next: {fileID: 975696426}
+  next: {fileID: 0}
   prev: {fileID: 1656234296}
   railPoint: {fileID: 0}
+--- !u!114 &339542155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 339542152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926d1a3606557c64ea087cece6585945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nRail: {fileID: 975696426}
+  pRail: {fileID: 1656234296}
+  self: {fileID: 0}
+  connectToNext: 0
+  connectToPrev: 0
 --- !u!1 &339849569
 GameObject:
   m_ObjectHideFlags: 0
@@ -3745,12 +3762,6 @@ Prefab:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &358994946 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11499764, guid: 333a9a060967feb4f83dbba165e8c794,
-    type: 2}
-  m_PrefabInternal: {fileID: 358994945}
-  m_Script: {fileID: 11500000, guid: 926d1a3606557c64ea087cece6585945, type: 3}
 --- !u!1 &359002745
 GameObject:
   m_ObjectHideFlags: 0
@@ -8229,6 +8240,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 816586985}
   - 114: {fileID: 816586986}
+  - 114: {fileID: 816586987}
   m_Layer: 0
   m_Name: StartAttachment
   m_TagString: Untagged
@@ -8261,9 +8273,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  next: {fileID: 1320378314}
+  next: {fileID: 0}
   prev: {fileID: 450760175}
   railPoint: {fileID: 0}
+--- !u!114 &816586987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 816586984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926d1a3606557c64ea087cece6585945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nRail: {fileID: 1320378314}
+  pRail: {fileID: 450760175}
+  self: {fileID: 0}
+  connectToNext: 0
+  connectToPrev: 0
 --- !u!1 &819541024
 GameObject:
   m_ObjectHideFlags: 0
@@ -12653,12 +12681,6 @@ Prefab:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &1227520698 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11499764, guid: 333a9a060967feb4f83dbba165e8c794,
-    type: 2}
-  m_PrefabInternal: {fileID: 1227520697}
-  m_Script: {fileID: 11500000, guid: 926d1a3606557c64ea087cece6585945, type: 3}
 --- !u!1 &1227670446
 GameObject:
   m_ObjectHideFlags: 0
@@ -15264,6 +15286,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1442351888}
   - 114: {fileID: 1442351889}
+  - 114: {fileID: 1442351890}
   m_Layer: 0
   m_Name: StartAttachment
   m_TagString: Untagged
@@ -15296,9 +15319,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  next: {fileID: 486999476}
+  next: {fileID: 0}
   prev: {fileID: 767116173}
   railPoint: {fileID: 0}
+--- !u!114 &1442351890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1442351887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926d1a3606557c64ea087cece6585945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nRail: {fileID: 486999476}
+  pRail: {fileID: 767116173}
+  self: {fileID: 0}
+  connectToNext: 0
+  connectToPrev: 0
 --- !u!1 &1447573730
 GameObject:
   m_ObjectHideFlags: 0
@@ -23001,15 +23040,15 @@ Prefab:
     - target: {fileID: 11405848, guid: f91ef7e6e1b981c4598819a88f64b78f, type: 2}
       propertyPath: railConnections.Array.data[0]
       value: 
-      objectReference: {fileID: 2145388470}
+      objectReference: {fileID: 339542155}
     - target: {fileID: 11405848, guid: f91ef7e6e1b981c4598819a88f64b78f, type: 2}
       propertyPath: railConnections.Array.data[1]
       value: 
-      objectReference: {fileID: 1227520698}
+      objectReference: {fileID: 1442351890}
     - target: {fileID: 11405848, guid: f91ef7e6e1b981c4598819a88f64b78f, type: 2}
       propertyPath: railConnections.Array.data[2]
       value: 
-      objectReference: {fileID: 358994946}
+      objectReference: {fileID: 816586987}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f91ef7e6e1b981c4598819a88f64b78f, type: 2}
   m_IsPrefabParent: 0
@@ -23618,9 +23657,3 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 333a9a060967feb4f83dbba165e8c794, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &2145388470 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11499764, guid: 333a9a060967feb4f83dbba165e8c794,
-    type: 2}
-  m_PrefabInternal: {fileID: 2145388469}
-  m_Script: {fileID: 11500000, guid: 926d1a3606557c64ea087cece6585945, type: 3}
