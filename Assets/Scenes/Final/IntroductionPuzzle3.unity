@@ -484,6 +484,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 47247028}
   - 114: {fileID: 47247029}
+  - 114: {fileID: 47247030}
   m_Layer: 0
   m_Name: StartAttachment
   m_TagString: Untagged
@@ -516,9 +517,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  next: {fileID: 562331942}
+  next: {fileID: 0}
   prev: {fileID: 602588842}
   railPoint: {fileID: 0}
+--- !u!114 &47247030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 47247027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926d1a3606557c64ea087cece6585945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nRail: {fileID: 562331942}
+  pRail: {fileID: 602588842}
+  self: {fileID: 0}
+  connectToNext: 0
+  connectToPrev: 0
 --- !u!1 &50476555
 GameObject:
   m_ObjectHideFlags: 0
@@ -5208,6 +5225,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 531083198}
   - 114: {fileID: 531083199}
+  - 114: {fileID: 531083200}
   m_Layer: 0
   m_Name: StartAttachment
   m_TagString: Untagged
@@ -5240,9 +5258,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  next: {fileID: 46882378}
+  next: {fileID: 0}
   prev: {fileID: 636471333}
   railPoint: {fileID: 0}
+--- !u!114 &531083200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 531083197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926d1a3606557c64ea087cece6585945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nRail: {fileID: 46882378}
+  pRail: {fileID: 636471333}
+  self: {fileID: 0}
+  connectToNext: 0
+  connectToPrev: 0
 --- !u!1 &536196078
 GameObject:
   m_ObjectHideFlags: 0
@@ -8629,6 +8663,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 896678010}
   - 114: {fileID: 896678011}
+  - 114: {fileID: 896678012}
   m_Layer: 0
   m_Name: StartAttachment
   m_TagString: Untagged
@@ -8661,9 +8696,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rName: railPoint
   spawnRailPoint: 0
-  next: {fileID: 926578227}
+  next: {fileID: 0}
   prev: {fileID: 581520614}
   railPoint: {fileID: 0}
+--- !u!114 &896678012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 896678009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926d1a3606557c64ea087cece6585945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nRail: {fileID: 926578227}
+  pRail: {fileID: 581520614}
+  self: {fileID: 0}
+  connectToNext: 0
+  connectToPrev: 0
 --- !u!1 &899033033
 GameObject:
   m_ObjectHideFlags: 0
@@ -12762,7 +12813,7 @@ Transform:
   - {fileID: 979249381}
   - {fileID: 187834388}
   m_Father: {fileID: 911736610}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!1 &1299092450
 GameObject:
   m_ObjectHideFlags: 0
@@ -21807,6 +21858,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 911736610}
     m_Modifications:
+    - target: {fileID: 11405848, guid: f91ef7e6e1b981c4598819a88f64b78f, type: 2}
+      propertyPath: railConnections.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 486060, guid: f91ef7e6e1b981c4598819a88f64b78f, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -21855,6 +21910,18 @@ Prefab:
       propertyPath: isReadyToBeTriggered
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11405848, guid: f91ef7e6e1b981c4598819a88f64b78f, type: 2}
+      propertyPath: railConnections.Array.data[0]
+      value: 
+      objectReference: {fileID: 896678012}
+    - target: {fileID: 11405848, guid: f91ef7e6e1b981c4598819a88f64b78f, type: 2}
+      propertyPath: railConnections.Array.data[1]
+      value: 
+      objectReference: {fileID: 47247030}
+    - target: {fileID: 11405848, guid: f91ef7e6e1b981c4598819a88f64b78f, type: 2}
+      propertyPath: railConnections.Array.data[2]
+      value: 
+      objectReference: {fileID: 531083200}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f91ef7e6e1b981c4598819a88f64b78f, type: 2}
   m_IsPrefabParent: 0
