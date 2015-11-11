@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour {
 	protected int currentNumberOfEventsTriggered = 0; //counts up when a single event is triggered, is reset when all events in the sequence is triggered
 	public int index = 0; // used to count which sequence is currently in play
 	private bool readyForNextSequence = false;
-	private bool isResetting = false;
 
 	//For the light on crystal
 	public bool isLightCrystalLightReset;

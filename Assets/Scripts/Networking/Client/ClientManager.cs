@@ -230,7 +230,6 @@ public class ClientManager : NetworkManager
 
 
         player.position = startRail.transform.position;
-        Vector3 viewDirection = startRail.next.transform.position - startRail.transform.position;
 
         //send it to everyone else
         DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager, Network.Subject.SpawnPlayer, player.position.Serialize());

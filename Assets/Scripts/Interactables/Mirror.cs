@@ -80,7 +80,6 @@ public class Mirror : Interactable {
 
         //Calculates the angle between the target gameobjects and the mirror
         Vector3 targetDir = targets[buttonNumber].transform.position - transform.position;
-        float rotationalAngle = Vector3.Angle(targetDir, transform.forward);
 
         Quaternion end = Quaternion.LookRotation(targetDir, transform.up);                      //End position for the mirror to rotate to
         StartCoroutine(rotateTowardsTarget(transform.rotation, end, rotateSpeed));                       //Starts the coroutine that moves the mirror

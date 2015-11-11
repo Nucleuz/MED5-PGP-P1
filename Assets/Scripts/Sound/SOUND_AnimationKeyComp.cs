@@ -21,7 +21,6 @@ public class SOUND_AnimationKeyComp : MonoBehaviour {
 
 	//Next keypoint relative to currentPoint
 	private float nextKeyPoint;
-	private float lastKeyPoint;
 
 
 	// Use this for initialization
@@ -29,7 +28,6 @@ public class SOUND_AnimationKeyComp : MonoBehaviour {
 		currentState = anim.GetCurrentAnimatorStateInfo(0);
 		currentPoint = currentState.normalizedTime*currentState.length;
 		nextKeyPoint = FindNextPoint();
-		lastKeyPoint = nextKeyPoint;
 	}
 	
 	// Update is called once per frame
@@ -50,7 +48,6 @@ public class SOUND_AnimationKeyComp : MonoBehaviour {
 					isPlaying = true;
 				}
 			}
-			lastKeyPoint = nextKeyPoint;
 			nextKeyPoint = FindNextPoint();
 		}
 	}

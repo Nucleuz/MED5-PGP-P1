@@ -39,8 +39,6 @@ public class NetPlayerSync : MonoBehaviour {
 	private float minAngleMoved = 2f;
 
 	private float lastPositionTime = -1f;
-	private float lastRotationTime = -1f;
-	private float lastCartTime = -1f;
 	
 	//network id for the object
     [HideInInspector]
@@ -249,7 +247,7 @@ public class NetPlayerSync : MonoBehaviour {
     }
     IEnumerator InterpolateRotation(Quaternion newRotation, float interpolationLength){
     	float startTime = Time.time;
-    	lastRotationTime = Time.time;
+
     	Quaternion startRotation = head.rotation;
     	float t = 0f;
     	while(t < 1f){
@@ -261,7 +259,7 @@ public class NetPlayerSync : MonoBehaviour {
     }
     IEnumerator InterpolateCart(Quaternion newRotation, float interpolationLength){
     	float startTime = Time.time;
-    	lastCartTime = Time.time;
+
     	Quaternion startRotation = transform.rotation;
     	float t = 0f;
     	while(t < 1f){
