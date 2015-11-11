@@ -2223,9 +2223,27 @@ Prefab:
       propertyPath: sequenceTriggers.Array.data[2]
       value: 
       objectReference: {fileID: 1101460032}
+    - target: {fileID: 11486896, guid: f4ec0a1e68dfb984e967a99ccbd56afd, type: 2}
+      propertyPath: Sc
+      value: 
+      objectReference: {fileID: 82632711}
+    - target: {fileID: 489930, guid: f4ec0a1e68dfb984e967a99ccbd56afd, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 484420, guid: f4ec0a1e68dfb984e967a99ccbd56afd, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4ec0a1e68dfb984e967a99ccbd56afd, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &82632711 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11445354, guid: f4ec0a1e68dfb984e967a99ccbd56afd,
+    type: 2}
+  m_PrefabInternal: {fileID: 82632710}
+  m_Script: {fileID: 11500000, guid: c4d34a4a44363e042812b588eea9a783, type: 3}
 --- !u!4 &83328223 stripped
 Transform:
   m_PrefabParentObject: {fileID: 441336, guid: 7c706c5e97a8244a6866b43b19b82f01, type: 2}
@@ -11424,7 +11442,7 @@ MonoBehaviour:
   defaultPoolSize: 4096
   lowerPoolSize: 2048
   streamingPoolSize: 1024
-  memoryCutoffThreshold: .949999988
+  memoryCutoffThreshold: .111111112
 --- !u!114 &588275820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15060,6 +15078,10 @@ Prefab:
     - target: {fileID: 11400000, guid: bcae914220acd4907840a029bb9d9aec, type: 2}
       propertyPath: clipPlaneOffset
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: bcae914220acd4907840a029bb9d9aec, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bcae914220acd4907840a029bb9d9aec, type: 2}

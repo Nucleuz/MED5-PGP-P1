@@ -948,7 +948,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 11493670, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
       propertyPath: levelOrder.Array.size
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 483922, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
       propertyPath: m_LocalPosition.x
@@ -987,24 +987,20 @@ Prefab:
       value: 
       objectReference: {fileID: 2127616520}
     - target: {fileID: 11493670, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
-      propertyPath: levelOrder.Array.data[0]
-      value: SoundLevel
-      objectReference: {fileID: 0}
-    - target: {fileID: 11493670, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
       propertyPath: levelOrder.Array.data[1]
-      value: SoundLevelClient
+      value: MirrorPuzzle
       objectReference: {fileID: 0}
     - target: {fileID: 11493670, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
       propertyPath: levelOrder.Array.data[2]
-      value: Level 2
+      value: Lava inbetween
       objectReference: {fileID: 0}
     - target: {fileID: 11493670, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
       propertyPath: levelOrder.Array.data[4]
-      value: Level 5
+      value: Elevation puzzle
       objectReference: {fileID: 0}
     - target: {fileID: 11467866, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
       propertyPath: IP
-      value: 192.168.1.5
+      value: 192.168.1.7
       objectReference: {fileID: 0}
     - target: {fileID: 11467866, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
       propertyPath: prefabPlayer
@@ -1012,7 +1008,7 @@ Prefab:
       objectReference: {fileID: 174738, guid: b069a51adf9428a4298b4739e68ed3d0, type: 2}
     - target: {fileID: 11493670, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
       propertyPath: levelOrder.Array.data[3]
-      value: Level 5
+      value: Elevation puzzle
       objectReference: {fileID: 0}
     - target: {fileID: 11467866, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
       propertyPath: triggerHandler
@@ -1029,6 +1025,14 @@ Prefab:
     - target: {fileID: 11467866, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
       propertyPath: useVR
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11493670, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
+      propertyPath: levelOrder.Array.data[0]
+      value: IntroductionPuzzle1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11493670, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
+      propertyPath: levelOrder.Array.data[5]
+      value: SoundLevel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}

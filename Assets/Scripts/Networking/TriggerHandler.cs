@@ -18,11 +18,11 @@ using DarkRift;
 
          private static TriggerHandler instance;
     
-        [HideInInspector]
+        //[HideInInspector]
          public List<Trigger> triggers;
 
          //Server Specific
-        [HideInInspector]
+        //[HideInInspector]
          public List<ushort> triggerIDs;
         
         [HideInInspector]
@@ -125,7 +125,7 @@ using DarkRift;
                                 triggerIDs.Add(triggerStates[i].id);
                             }
                         }else
-                            Debug.Log("Received triggerstates has length: " + triggerStates.Length + " local has : " + triggers.Count);
+                            Debug.LogError("Received triggerstates server has : " + triggerStates.Length + " triggers, local has : " + triggers.Count + " triggers - Scenes might be different");
                     }
                     break;
                     case Network.Subject.TriggerState:

@@ -10,7 +10,7 @@ public class Trigger : MonoBehaviour {
     public bool canReset = false;
     
     //Networking
-    [HideInInspector] 
+    //[HideInInspector] 
     public ushort triggerID;
 
     //which players are currently interacting

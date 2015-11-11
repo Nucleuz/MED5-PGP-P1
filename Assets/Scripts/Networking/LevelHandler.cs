@@ -20,11 +20,11 @@ public class LevelHandler : MonoBehaviour {
 
     public NetworkManager manager;
 
-    //@TODO a better interface for this 
+    //@TODO a better interface for this
     //@TODO make sure that it is fixed between server and client
 	public string[] levelOrder;
-     
-    [HideInInspector]	
+
+    [HideInInspector]
     public int levelManagerIndex = 0;
     [HideInInspector]
     public int loadedLevelIndex = -1;
@@ -40,11 +40,11 @@ public class LevelHandler : MonoBehaviour {
 
     void Update(){
         if(NetworkManager.isServer && Input.GetKeyDown(KeyCode.Space)){
-            loadNextLevel(); 
+            loadNextLevel();
         }
 
     }
-	
+
 	IEnumerator LoadAndHandleLevel(){
         int loadingIndex = loadedLevelIndex;
         if(levelOrder.Length == 0){
@@ -54,14 +54,14 @@ public class LevelHandler : MonoBehaviour {
             Debug.LogError("loadedLevelIndex out of bounds");
             return false;
         }
-        
+
 		//@TODO --- Optimize - can be done async which should be faster
 		Application.LoadLevelAdditive(levelOrder[loadingIndex]);
 
         //wait a frame and try to find LevelContainer and repeat until it finds it
         bool foundLC = false;
         while(!foundLC){
-            //waits for one frame 
+            //waits for one frame
             yield return null;
             Console.Instance.AddMessage("looking for object tagged levelContainer");
             //runs when loaded
@@ -72,7 +72,7 @@ public class LevelHandler : MonoBehaviour {
                 if(!lc.processed){
 
                     foundLC = true;
-                    
+
                     processLevelContainer(lc,loadingIndex);
                     lc.processed = true;
                     break;
@@ -88,7 +88,7 @@ public class LevelHandler : MonoBehaviour {
 
         if(loadingIndex == 0){
             //run first time on the server
-        
+
             triggerHandler.process(levelContainer);
         }else{
             //previous and next LevelManager
@@ -96,24 +96,40 @@ public class LevelHandler : MonoBehaviour {
             LevelManager nLM = levelContainer.levelManager;
 
             //Stich togehter with the levelContainers and set the next as current..
-            Vector3 pNLD = pLM.nextLevelDirection.normalized;
-        
-            //rotate next level so that pLM.nextLevelDirection is equal to the inverse nLM.prevLevelDirection
-            Console.Instance.AddMessage(pLM.nextLevelDirection + " " + (Mathf.Rad2Deg * levelContainers[loadingIndex - 1].transform.rotation.y ));
-            float a = Vector3.Angle(pLM.nextLevelDirection,nLM.prevLevelDirection) - currentRotation;
-            currentRotation = 180-a;
+            Vector3 pLD = pLM.levelEndRail[0].transform.position - pLM.levelEndRail[0].prev.transform.position;
+            Vector3 nLD = nLM.levelStartRail[0].transform.position - nLM.levelStartRail[0].next.transform.position;
 
+
+            nLD.y = 0;
+            nLD.Normalize();
+
+
+            pLD.y = 0;
+            pLD.Normalize();
+
+            //rotate next level so that pLD is equal to the inverse nLD
+            Debug.Log(pLD + " - " + nLD + " " + (Mathf.Rad2Deg * levelContainers[loadingIndex - 1].transform.rotation.y ) + " magnitudes: " + pLD.magnitude + ";" + nLD.magnitude);
+
+            float a = Vector3.Angle(pLD,nLD) - (Mathf.Rad2Deg * levelContainers[loadingIndex - 1].transform.rotation.y);
+
+            Vector3 cross = Vector3.Cross(pLD,nLD);
+
+            currentRotation = 180 - a;
+
+            Debug.Log("a: " + a + " next rot : " + currentRotation + " c: " + cross);
             //rotate new level
-            levelContainer.transform.RotateAround(levelContainer.transform.position,Vector3.up,currentRotation);
+            levelContainer.transform.RotateAround(pLM.levelEndRail[0].transform.position,Vector3.up,currentRotation);
+
+            Debug.Log("lc rot: " + (Mathf.Rad2Deg * levelContainer.transform.rotation.y));
 
             //levelOffset is the amount of space between levels @TODO should be something meaningful
-            float levelOffset = 2;
-            Vector3 nLevelRailPos = pLM.levelEndRail[0].transform.position + pNLD * levelOffset;
+            float levelOffset = 0.1f;
+            Vector3 nLevelRailPos = pLM.levelEndRail[0].transform.position + pLD.normalized * levelOffset;
             Vector3 delta = nLevelRailPos - nLM.levelStartRail[0].transform.position;
-            
-            //offset the next level so that it is positioned correctly 
+
+            //offset the next level so that it is positioned correctly
             levelContainer.transform.position += delta;
-            
+
             //set rails
             for(int i = 0;i<3;i++){
                 Rail pRail = pLM.levelEndRail[i];
@@ -133,7 +149,7 @@ public class LevelHandler : MonoBehaviour {
 
         levelContainers[loadingIndex] = levelContainer;
 
-        
+
         //@TODO unloading of scenes
     }
 
@@ -142,7 +158,7 @@ public class LevelHandler : MonoBehaviour {
             loadedLevelIndex++;
             StartCoroutine(LoadAndHandleLevel());
         }
-	} 
+	}
 
     public void loadLevel(int index){
         if(index >= 0 && index < levelContainers.Length){
@@ -160,6 +176,7 @@ public class LevelHandler : MonoBehaviour {
     public void OnLevelCompleted(){
         if(levelManagerIndex+1 <= levelContainers.Length){
             levelManagerIndex++;
+            Debug.Log("lmindex is now " + levelManagerIndex);
 
             manager.OnLevelCompleted();
 
