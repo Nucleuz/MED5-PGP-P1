@@ -21,6 +21,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	2104256950	RiverRunning			\Default Work Unit\Environment Assets\Water\RiverRunning	
 	2402090994	WaterfallLarge			\Default Work Unit\Environment Assets\Water\WaterfallLarge	
 	2761191377	Headlamp_Focus_Active			\Default Work Unit\Player Equipment\Headlamp_Focus_Active	
+	2818913498	Elevator_Stop			\Default Work Unit\Doors and Mechanisms\Elevators\Elevator_Stop	
 	3230905820	DoorSlideStart			\Default Work Unit\Doors and Mechanisms\Doors etc\DoorSlideStart	
 	3328847735	RailwayBlockerMove			\Default Work Unit\Doors and Mechanisms\Doors etc\RailwayBlockerMove	
 	3425521569	CarCrystal			\Default Work Unit\Cart\CarCrystal	
@@ -29,6 +30,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	3823482786	Ambience_WaterDrops1			\Default Work Unit\Ambience\Ambience_WaterDrops1	
 	4059778220	WaterfallHuge			\Default Work Unit\Environment Assets\Water\WaterfallHuge	
 	4083559728	ChannelingButtonOnOff			\Default Work Unit\Doors and Mechanisms\Buttons\ChannelingButtonOnOff	
+	4112392368	Elevator_Active			\Default Work Unit\Doors and Mechanisms\Elevators\Elevator_Active	The elevator is activated. This SFX is placed near the base of the elevator.
 	4259853717	Ambience_Mojo			\Default Work Unit\Ambience\Ambience_Mojo	
 	4287948414	WaterfallSmall			\Default Work Unit\Environment Assets\Water\WaterfallSmall	
 
@@ -58,6 +60,7 @@ Effect plug-ins	ID	Name	Type				Notes
 	226812192	Two Big Ears 3Dception (Attached)	AttachableMixerInput			
 	293203467	Two Big Ears 3Dception (Attached)	AttachableMixerInput			
 	448093333	Two Big Ears 3Dception (Attached)	AttachableMixerInput			
+	453592875	Two Big Ears 3Dception (Attached)	AttachableMixerInput			
 	626663635	Two Big Ears 3Dception (Attached)	AttachableMixerInput			
 	785834110	Two Big Ears 3Dception (Attached)	AttachableMixerInput			
 	825200181	Two Big Ears 3Dception (Attached)	AttachableMixerInput			
@@ -73,7 +76,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	1537082	BlockerImpact01	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\BlockerImpact01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\RailWayBlocker\BlockerImpact01		155064
 	1790046	StartUp	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\StartUp_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Cart\CartMojo\CartOn_Off\StartUp\StartUp		165348
 	35573236	DustStones04	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\DustStones04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment Assets\StoneDust\StoneDust\StoneDustRandom\DustStones04		146296
-	46169572	HandPoweredDrill(looped)	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\HandPoweredDrill(looped)_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\Mirror\Mirror Mechanics\Handpowered Drill\HandPoweredDrill(looped)		896512
+	46169572	HandPoweredDrill(looped)	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\HandPoweredDrill(looped)_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\Elevator\Elevator\Elevator Mechanics\Mechanics\HandPoweredDrill\HandPoweredDrill(looped)		896512
 	51361253	GentleWaterDrops02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\GentleWaterDrops02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\Waterdrops(Background)\Waterdrops\GentleWaterDrops02		2718784
 	59566495	Rumble03	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Rumble03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\MAIN AMBIENCE\Cave And Rumble\Rumble\Rumble03\Rumble03		701464
 	73388867	DustStones	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\DustStones_8754CE29.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment Assets\StoneDust\StoneDust\StoneDustRandom\DustStones		245320
@@ -120,6 +123,8 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	764596330	SP_PlayerButton02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\PlayerCrystal04_04A87E39.wem		\Actor-Mixer Hierarchy\Default Work Unit\SoundPuzzle\PlayerButton\SP_PlayerButton02		162960
 	779480299	Cave Ambience02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Cave Ambience02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\MAIN AMBIENCE\Cave And Rumble\Cave\Cave02\Cave Ambience02		986808
 	783517991	SP_PlayerButton301	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\PlayerCrystal301_B940C46E.wem		\Actor-Mixer Hierarchy\Default Work Unit\SoundPuzzle\PlayerButton\SP_PlayerButton301		162960
+	786909846	OldPrintPressMachinery(looped)	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\OldPrintPressMachinery(looped)_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\Elevator\Elevator\Elevator Mechanics\Mechanics\OldPress\OldPrintPressMachinery(looped)		1536208
+	811655087	LargeBoulderSlide01(looped)	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\LargeBoulderSlide01(looped)_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\Elevator\Elevator\Elevator Active\Active\LargeBoulderSlide01(looped)\LargeBoulderSlide01(looped)		321884
 	814612408	DustStones02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\DustStones02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment Assets\StoneDust\StoneDust\StoneDustRandom\DustStones02		201748
 	823055302	IndoorPebbles04	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\IndoorPebbles04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\Pebbles\Pebbles\IndoorPebbles04		341056
 	851356452	Waterfall03	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Waterfall03_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment Assets\Waterfall\Waterfall03		677816
@@ -130,8 +135,10 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	929123045	Wrong	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Wrong_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SoundPuzzle\Wrong\Wrong		234244
 	936983434	Cave Ambience01	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Cave Ambience01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\MAIN AMBIENCE\Cave And Rumble\Cave\Cave01\Cave Ambience01		1763908
 	945408936	MojoSynth04	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\MojoSynth04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Switches\ChannelingSwitchMixer\ChannelingOnOff\ChannelingSwitch\MojoSynth04		9200068
+	1023845289	QuickGiantBoulderImpact04	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\QuickGiantBoulderImpact04_4C4B17D4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\Elevator\Elevator\Elevator Start\QuickGiantBoulderImpact04		173956
 	1044601209	Cave Ambience04	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Cave Ambience04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\MAIN AMBIENCE\Cave And Rumble\Cave\Cave04\Cave Ambience04		1418356
 	1054996965	Steam02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Steam02_ED4035B8.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\DoorClose\DoorClose\Steam\Steam02		149572
 	1059423158	SwitchRealOn04	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\SwitchRealOn04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Switches\ChannelingSwitchMixer\ChannelingOnOff\ChannelingSwitch\SwitchRealOn04		234480
+	1068891639	QuickGiantBoulderImpact01	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\QuickGiantBoulderImpact01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\Elevator\Elevator\Elevator Stop\QuickGiantBoulderImpact01		176192
 	1072368297	WaterThing	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\WaterThing_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\RailWayBlocker\BlockerMoveAndWater\WaterThing		1366168
 
