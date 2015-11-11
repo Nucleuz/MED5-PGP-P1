@@ -186,6 +186,7 @@ public class NetPlayerSync : MonoBehaviour {
 	public void SetAsReceiver(){
 		isSender = false;
 		cart.enabled = false;
+		cart.minecartAnimator.speed = 0;
 		cam.SetActive(false);
 		if(headControl != null)
 		headControl.enabled = false;

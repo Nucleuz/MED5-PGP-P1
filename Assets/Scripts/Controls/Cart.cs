@@ -13,7 +13,7 @@ public class Cart : MonoBehaviour {
 
     private Vector3 startingPosition;   // Starting Position (In case of reset)
     public Rail startingRail;          // Starting Rail (In case of reset)
-    private Animator minecartAnimator;  // Animator pointer for Minecart
+    public Animator minecartAnimator;  // Animator pointer for Minecart
 	private float currentStep;          // How long the player is between two points
 
 	public void Init(Rail rail) {
