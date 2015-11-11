@@ -186,7 +186,6 @@ public class NetPlayerSync : MonoBehaviour {
 	public void SetAsReceiver(){
 		isSender = false;
 		cart.enabled = false;
-		cart.minecartAnimator.speed = 0;
 		cam.SetActive(false);
 		if(headControl != null)
 		headControl.enabled = false;
@@ -239,13 +238,23 @@ public class NetPlayerSync : MonoBehaviour {
     	float startTime = Time.time;
     	Vector3 startPosition = transform.position;
 
+    	Vector3 lastFrame;
+        cart.minecartAnimator.StartPlayback();
+
     	float t = 0f;
     	while(t < 1f){
     		t = (Time.time - startTime)/interpolationLength;
+            lastFrame = transform.position;
     		transform.position = Vector3.Lerp(startPosition,newPosition,t);
+// (transform.position - lastFrame).magnitude
+            cart.minecartAnimator.speed = 1;
+
     		yield return null;
     	}
     	lastPositionTime = Time.time;
+    	cart.minecartAnimator.speed = 0;
+        cart.minecartAnimator.StopPlayback();
+
     	//transform.position = newPosition;
     }
     IEnumerator InterpolateRotation(Quaternion newRotation, float interpolationLength){

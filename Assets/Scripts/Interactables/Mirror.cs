@@ -39,18 +39,6 @@ public class Mirror : Interactable {
     
 	void Update(){
 		//The mirror will reflect only when the player is lighting on the mirror.
-		if(isBeingLitOn == true){
-			reflectedLight.enabled = true;
-			LS.enabled = true;
-		} else if(isBeingLitOn == false){
-			reflectedLight.enabled = false;
-			LS.enabled = false;
-		} 
-
-		if(isBeingLitOn == true){
-			isBeingLitOn = false;
-		}
-		
 		
         if (trigger != null && trigger.isTriggered && !isRotating) {
             rotateMirror();
@@ -63,7 +51,6 @@ public class Mirror : Interactable {
     }
 
     private void rotateMirror() {
-
         //Checks if the script is moving up the index or down
         if (movingForward)
             buttonNumber++;
@@ -105,28 +92,30 @@ public class Mirror : Interactable {
                 Debug.Log("Invalid playerIndex");
             break;
         }   
+
     
+        Debug.Log("Ray received");
         Ray newRay = new Ray(hit.point, objectToTrigger.transform.position - transform.position);
         RaycastHit rayhit;
 
         Vector3 targetDir = objectToTrigger.transform.position - transform.position;
-        float rotationalAngle = Vector3.Angle(targetDir, transform.forward);
 
-        if (rotationalAngle < 5f) {
-            if (Physics.Raycast(newRay, out rayhit)) {
-            	//turn on the light off the mirror.
-            	//reflectedLight.enabled = true;
-              
-                Interactable interactable = rayhit.transform.GetComponent<Interactable>();
-                if (interactable != null) {
-                    //@Optimize - The mirror is the only one who the ray, hit, lineRenderer, and count
-                    interactable.OnRayEnter(playerIndex, newRay, rayhit);
-                }
+        if (Physics.Raycast(newRay, out rayhit)) {
+        	//turn on the light off the mirror.
+            reflectedLight.enabled = true;
+            LS.enabled = true;
+          
+            Interactable interactable = rayhit.transform.GetComponent<Interactable>();
+            if (interactable != null) {
+                interactable.OnRayEnter(playerIndex, newRay, rayhit);
             }
         }
     }
 
-    public override void OnRayExit(int playerIndex){}
+    public override void OnRayExit(int playerIndex){
+            reflectedLight.enabled = false;
+            LS.enabled = false;
+    }
 
     IEnumerator rotateTowardsTarget(Quaternion start, Quaternion end, float length) {
         isRotating = true;

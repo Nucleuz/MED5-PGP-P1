@@ -85,6 +85,12 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &43461723 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11467866, guid: 9148512b76a384e92a98ff8a3ede02d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1730890974}
+  m_Script: {fileID: 11500000, guid: cb89a6e5fd7e04fca99ab782ef8e8cb1, type: 3}
 --- !u!1 &131260343
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,8 +647,8 @@ MonoBehaviour:
   consoleContainer: {fileID: 479297310}
   keyToOpen: 282
   isServer: 0
-  clientManagerPtr: {fileID: 0}
-  inputField: {fileID: 0}
+  clientManagerPtr: {fileID: 43461723}
+  inputField: {fileID: 131260345}
   fps: {fileID: 982676339}
 --- !u!114 &627378183
 MonoBehaviour:
@@ -950,7 +956,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 11493670, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
       propertyPath: levelOrder.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 483922, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
       propertyPath: m_LocalPosition.x
@@ -990,19 +996,19 @@ Prefab:
       objectReference: {fileID: 2127616520}
     - target: {fileID: 11493670, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
       propertyPath: levelOrder.Array.data[1]
-      value: MirrorPuzzle
+      value: IntroductionPuzzle2
       objectReference: {fileID: 0}
     - target: {fileID: 11493670, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
       propertyPath: levelOrder.Array.data[2]
-      value: Lava inbetween
+      value: IntroductionPuzzle3
       objectReference: {fileID: 0}
     - target: {fileID: 11493670, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
       propertyPath: levelOrder.Array.data[4]
-      value: Elevation puzzle
+      value: Sound Puzzle
       objectReference: {fileID: 0}
     - target: {fileID: 11467866, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
       propertyPath: IP
-      value: 192.168.1.7
+      value: 192.168.1.5
       objectReference: {fileID: 0}
     - target: {fileID: 11467866, guid: 9148512b76a384e92a98ff8a3ede02d3, type: 2}
       propertyPath: prefabPlayer
