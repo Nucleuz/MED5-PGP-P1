@@ -22,7 +22,7 @@ public class LevelHandler : MonoBehaviour {
 
     //@TODO a better interface for this
     //@TODO make sure that it is fixed between server and client
-	public string[] levelOrder;
+    public string[] levelOrder;
 
     [HideInInspector]
     public int levelManagerIndex = 0;
@@ -45,7 +45,7 @@ public class LevelHandler : MonoBehaviour {
 
     }
 
-	IEnumerator LoadAndHandleLevel(){
+    IEnumerator LoadAndHandleLevel(){
         int loadingIndex = loadedLevelIndex;
         if(levelOrder.Length == 0){
             Debug.LogError("No Level Order -- Can't load level");
@@ -55,8 +55,8 @@ public class LevelHandler : MonoBehaviour {
             return false;
         }
 
-		//@TODO --- Optimize - can be done async which should be faster
-		Application.LoadLevelAdditive(levelOrder[loadingIndex]);
+        //@TODO --- Optimize - can be done async which should be faster
+        Application.LoadLevelAdditive(levelOrder[loadingIndex]);
 
         //wait a frame and try to find LevelContainer and repeat until it finds it
         bool foundLC = false;
@@ -110,24 +110,14 @@ public class LevelHandler : MonoBehaviour {
             //rotate next level so that pLD is equal to the inverse nLD
             Debug.Log(pLD + " - " + nLD + " " + (Mathf.Rad2Deg * levelContainers[loadingIndex - 1].transform.rotation.y ) + " magnitudes: " + pLD.magnitude + ";" + nLD.magnitude);
 
-            float a = Vector3.Angle(pLD,nLD) + (Mathf.Rad2Deg * levelContainers[loadingIndex - 1].transform.rotation.y);
-
+            float a = Vector3.Angle(pLD,nLD);
             Vector3 cross = Vector3.Cross(pLD,nLD);
 
-            if(loadingIndex - 1 == 0 || loadingIndex - 1 == 1){
-                a -= 180;
-            }
-
-            if(cross.y > 0)
-            currentRotation = a;
-            else if(cross.y == 0)
-            currentRotation = a-180;
-            else if(cross.y < 0)
-            currentRotation = a-180;
+            currentRotation = 180 - a;
 
             Debug.Log("a: " + a + " next rot : " + currentRotation + " c: " + cross);
             //rotate new level
-            levelContainer.transform.RotateAround(pLM.levelEndRail[0].transform.position,Vector3.up,currentRotation);
+            levelContainer.transform.RotateAround(levelContainer.transform.position,Vector3.up,currentRotation);
 
             Debug.Log("lc rot: " + (Mathf.Rad2Deg * levelContainer.transform.rotation.y));
 
@@ -162,12 +152,12 @@ public class LevelHandler : MonoBehaviour {
         //@TODO unloading of scenes
     }
 
-	public void loadNextLevel(){
+    public void loadNextLevel(){
         if(loadedLevelIndex < levelContainers.Length - 1){
             loadedLevelIndex++;
             StartCoroutine(LoadAndHandleLevel());
         }
-	}
+    }
 
     public void loadLevel(int index){
         if(index >= 0 && index < levelContainers.Length){
