@@ -152,7 +152,7 @@ GameObject:
   - 120: {fileID: 12002340}
   - 114: {fileID: 11470410}
   - 114: {fileID: 11491730}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spotlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -341,7 +341,7 @@ GameObject:
   - 4: {fileID: 487338}
   - 108: {fileID: 10862366}
   - 114: {fileID: 11481816}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spotlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2037,6 +2037,8 @@ MonoBehaviour:
   currentRail: {fileID: 0}
   movementSpeed: 1
   isMoving: 0
+  startingRail: {fileID: 0}
+  minecartAnimator: {fileID: 0}
 --- !u!114 &11458238
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2096,7 +2098,7 @@ MonoBehaviour:
   m_SpotFar: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294967279
   m_ColorFilterMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -2161,7 +2163,7 @@ MonoBehaviour:
   m_SpotFar: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294967279
   m_ColorFilterMask:
     serializedVersion: 2
     m_Bits: 0
