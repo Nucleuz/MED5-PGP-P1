@@ -31,6 +31,7 @@ public class Network{
 		public const ushort SpawnPlayer          = 4;
 		public const ushort PlayerPositionUpdate = 5;
         public const ushort PlayerRotationUpdate = 6;
+        public const ushort PlayerCartUpdate     = 14;
 
         //TriggerSystem
         public const ushort TriggerActivate      = 7;

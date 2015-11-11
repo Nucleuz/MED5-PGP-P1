@@ -9,11 +9,11 @@ public class HelmetLightScript : MonoBehaviour {
     public float spotlightAnimationLength = .2f;
     [HideInInspector] 
     public float spotlightAnimationTime = 0;
-
-    public float angleNormal = 45;                  // Angle of the spotlight without focus
-    public float angleFocus = 10;                   // Angle of the spotlight during focus
-    public float intensityNormal = 1;               // Intensity of the spotlight without focus
-    public float intensityFocus = 8;                // Intensity of the spotlight during focus
+    
+    private float angleNormal = 20;                  // Angle of the spotlight without focus
+    private float angleFocus = 5;                   // Angle of the spotlight during focus
+    private float intensityNormal = 1;               // Intensity of the spotlight without focus
+    private float intensityFocus = 1;                // Intensity of the spotlight during focus
 
     private Light helmetLight;                      // Object that refers to the spotlight within the scene
     public Light nonFocusedHelmetLight; 
@@ -21,10 +21,10 @@ public class HelmetLightScript : MonoBehaviour {
     private bool soundIsPlaying;
 
 
-    private float startTime = -1f;                        // Used for lerping the focus light angle and intensity
+    private float startTime = -1f;                  // Used for lerping the focus light angle and intensity
     private float stopTime = -1f;
 
-    [Tooltip("1 = blue, 2 = red, 3 = green")]
+    [HideInInspector] 
     public int playerIndex;                         // index for the player.
     
     private Interactable lastObjectHit;
@@ -34,26 +34,30 @@ public class HelmetLightScript : MonoBehaviour {
     public NetPlayerSync netPlayer;
 
     public void SetPlayerIndex (int networkId) {
+        /*
         switch(networkId){
             case 1: playerIndex = 3;break;
             case 2: playerIndex = 1;break;
             case 3: playerIndex = 2;break;
         }
+        */
+
+        playerIndex = networkId;
 
         helmetLight = GetComponent<Light>();        //Calls the light component on the spotlight  
         //Set the color of the interactable button both background light and particles to the correct user.
         switch (playerIndex){
             case 1:
+                helmetLight.color = new Color(0.2F, 0.2F, 1, 1F); //blue
+                nonFocusedHelmetLight.color = new Color(0.2F, 0.2F, 1, 1F); //blue
+            break;
+            case 2:
                 helmetLight.color = new Color(1, 0.2F, 0.2F, 1F); //red
                 nonFocusedHelmetLight.color = new Color(1, 0.2F, 0.2F, 1F); //red
             break;
-            case 2:
+            case 3:
                 helmetLight.color = new Color(0.2F, 1, 0.2F, 1F); //green
                 nonFocusedHelmetLight.color = new Color(0.2F, 1, 0.2F, 1F); //green
-            break;
-            case 3:
-                helmetLight.color = new Color(0.2F, 0.2F, 1, 1F); //blue
-                nonFocusedHelmetLight.color = new Color(0.2F, 0.2F, 1, 1F); //blue
             break;
             default:
                 Debug.Log("Invalid playerIndex");
@@ -66,7 +70,7 @@ public class HelmetLightScript : MonoBehaviour {
         helmetLight.spotAngle = Mathf.Lerp(angleNormal, angleFocus,t);
 
         // Lerps the intensity from normal to focused intensity.
-        helmetLight.intensity = Mathf.Lerp(intensityNormal, intensityFocus, t);
+        // helmetLight.intensity = Mathf.Lerp(intensityNormal, intensityFocus, t);
 
     }
     
@@ -109,7 +113,7 @@ public class HelmetLightScript : MonoBehaviour {
                 netPlayer.UpdateHelmetLight(false);
 
                 if(lastObjectHit != null){
-                    lastObjectHit.OnRayExit();
+                    lastObjectHit.OnRayExit(playerIndex);
                     lastObjectHit = null;
                 }
             }else{
@@ -131,7 +135,7 @@ public class HelmetLightScript : MonoBehaviour {
 
             if(interactable != null){
                 if(lastObjectHit != null && interactable != lastObjectHit){
-                    lastObjectHit.OnRayExit();
+                    lastObjectHit.OnRayExit(playerIndex);
                     lastObjectHit = null;
                 }
                 if (interactable != lastObjectHit){
@@ -139,7 +143,7 @@ public class HelmetLightScript : MonoBehaviour {
                     lastObjectHit = interactable;
                 }
             }else if(lastObjectHit != null){
-                lastObjectHit.OnRayExit();
+                lastObjectHit.OnRayExit(playerIndex);
                 lastObjectHit = null;
             }
         }

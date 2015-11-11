@@ -340,7 +340,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 487338}
   - 108: {fileID: 10862366}
-  - 114: {fileID: 11467030}
   - 114: {fileID: 11481816}
   m_Layer: 0
   m_Name: Spotlight
@@ -481,8 +480,7 @@ GameObject:
   - 4: {fileID: 406254}
   - 95: {fileID: 9556122}
   - 114: {fileID: 11449746}
-  - 114: {fileID: 11464622}
-  - 114: {fileID: 11470834}
+  - 114: {fileID: 11407902}
   m_Layer: 0
   m_Name: VR Player
   m_TagString: Untagged
@@ -794,6 +792,7 @@ GameObject:
   - 4: {fileID: 434852}
   - 20: {fileID: 2079844}
   - 114: {fileID: 11458238}
+  - 114: {fileID: 11404172}
   - 114: {fileID: 11440690}
   m_Layer: 0
   m_Name: CenterEyeAnchor
@@ -1052,7 +1051,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 150028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.0500000007, y: .870000005, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 413774}
@@ -1916,7 +1915,7 @@ Light:
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 50
+  m_Range: 500
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -1948,8 +1947,8 @@ Light:
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: .439999998
-  m_Range: 50
-  m_SpotAngle: 30
+  m_Range: 200
+  m_SpotAngle: 20
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -1969,6 +1968,18 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
+--- !u!114 &11404172
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 189880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11e7895a362bed940a138aefafcd3409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listenerId: 0
 --- !u!114 &11404310
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1982,6 +1993,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   usePositionTracking: 1
   resetTrackerOnLoad: 1
+--- !u!114 &11407902
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 055d0bc1875a74acaa52a6811315853f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  head: {fileID: 434852}
+  cam: {fileID: 189880}
+  headControl: {fileID: 0}
+  helmet: {fileID: 11470410}
+  nonFocusedLightShaft: {fileID: 11481816}
+  focusedLightShaft: {fileID: 11491730}
+  cart: {fileID: 11449746}
+  networkID: 0
 --- !u!114 &11440690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2019,31 +2049,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listenerId: 0
---- !u!114 &11464622
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 150028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7082ab1beee6e64c95c15b81d6c402d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  car: {fileID: 11449746}
-  isPlaying: 0
---- !u!114 &11467030
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 139202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a237e80dd941424da52ca2d295243f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hls: {fileID: 11470410}
 --- !u!114 &11470410
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2052,31 +2057,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 117038}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67dcb180c9d96194f85942954896bd80, type: 3}
+  m_Script: {fileID: 11500000, guid: b237059b33cb5044fa1e95ce53f21fd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angleNormal: 45
-  angleFocus: 5
-  intensityNormal: 1
-  intensityFocus: 8
-  playerIndex: 1
-  objectHit: {fileID: 0}
---- !u!114 &11470834
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 150028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa31e8300958f0844b232b36fe20d8ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventName: CarLegHit1
-  keyPoints:
-  - .159999996
-  - 2
-  anim: {fileID: 9556122}
+  spotlightAnimationLength: .200000003
+  spotlightAnimationTime: 0
+  nonFocusedHelmetLight: {fileID: 10862366}
+  playerIndex: 0
+  netPlayer: {fileID: 0}
 --- !u!114 &11480092
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2102,7 +2090,7 @@ MonoBehaviour:
   m_ShadowmapMode: 0
   m_Cameras:
   - {fileID: 0}
-  m_CurrentCamera: {fileID: 2079844}
+  m_CurrentCamera: {fileID: 0}
   m_Size: {x: 10, y: 10, z: 20}
   m_SpotNear: .00999999978
   m_SpotFar: 1
@@ -2167,7 +2155,7 @@ MonoBehaviour:
   m_ShadowmapMode: 0
   m_Cameras:
   - {fileID: 0}
-  m_CurrentCamera: {fileID: 2079844}
+  m_CurrentCamera: {fileID: 0}
   m_Size: {x: 10, y: 10, z: 20}
   m_SpotNear: .00999999978
   m_SpotFar: 1
@@ -2948,7 +2936,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: movementSpeed
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

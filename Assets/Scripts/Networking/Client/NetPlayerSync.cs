@@ -13,23 +13,26 @@ using System.Collections.Generic;
 using VoiceChat.Networking;
 
 public class NetPlayerSync : MonoBehaviour {
-
+	
 	private bool isSender = false; //if false it is receiver
-
+	
 	public Transform head;
-
+	
 	//Reference to components that needs to be turn on and off when switching from sender to receiver
 	public GameObject cam;
 	public HeadControl headControl;
 	private VoiceChatPlayer player;
-
+	
 	public HelmetLightScript helmet;
 
 	public LightShafts nonFocusedLightShaft;
 	public LightShafts focusedLightShaft;
 
+	public Cart cart;
+	
 	//reference to reduce when it sends data to everyone else
 	private Quaternion lastRotation;
+	private Quaternion lastCart;
 	private Vector3 lastPosition;
 
 	private float minDistanceMoved = .5f;
@@ -37,12 +40,15 @@ public class NetPlayerSync : MonoBehaviour {
 
 	private float lastPositionTime = -1f;
 	private float lastRotationTime = -1f;
-
+	private float lastCartTime = -1f;
+	
 	//network id for the object
+    [HideInInspector]
 	public ushort networkID;
-
+	
 	private IEnumerator positionRoutine;
 	private IEnumerator rotationRoutine;
+	private IEnumerator cartRoutine;
 
 	// Use this for initialization
 	void Start () {
@@ -50,14 +56,14 @@ public class NetPlayerSync : MonoBehaviour {
 		DarkRiftAPI.onPlayerDisconnected += PlayerDisconnected;
 		DarkRiftAPI.onDataDetailed += RecieveData;
 	}
-
+	
 	// Update is called once per frame
 	void FixedUpdate () {
 		if(isSender && DarkRiftAPI.isConnected){
 			SendData();
 		}
 	}
-
+	
 	void SendData(){
 		//has the rotation or position changed since last sent message
         if((transform.position - lastPosition).magnitude > minDistanceMoved){
@@ -72,21 +78,30 @@ public class NetPlayerSync : MonoBehaviour {
 
             //serialize and send information
 			DarkRiftAPI.SendMessageToOthers(Network.Tag.Player, Network.Subject.PlayerRotationUpdate, head.rotation.Serialize());
-
+			
 			//save the sent position and rotation
 			lastRotation = head.rotation;
 		}
 
-	}
+		if(Quaternion.Angle(transform.rotation, lastCart) > minAngleMoved){
 
+            //serialize and send information
+			DarkRiftAPI.SendMessageToOthers(Network.Tag.Player, Network.Subject.PlayerCartUpdate, transform.rotation.Serialize());
+			
+			//save the sent position and rotation
+			lastCart = transform.rotation;
+		}
+
+	}
+	
 	// Called once there is a new packet/sample ready
 	public void OnNewSample (VoiceChatPacket packet)
 	{
 		DarkRiftAPI.SendMessageToOthers (Network.Tag.Player, Network.Subject.VoiceChat, VoiceChatUtils.Serialise(packet));	// Send the packet to all other players
 	}
-
+	
 	void RecieveData(ushort senderID, byte tag, ushort subject, object data){
-
+		
 		//check that it is the right sender
 		if(!isSender && senderID == networkID ){
 			//check if it wants to update the player
@@ -97,12 +112,12 @@ public class NetPlayerSync : MonoBehaviour {
 
                     if(positionRoutine != null)
                     	StopCoroutine(positionRoutine);
-
+                    
                     if(lastPositionTime == -1f)
                     	lastPositionTime = Time.time;
 
                     float interpolationLength = .3f;
-
+                    
 
                    	if(interpolationLength > 0f){
                    		positionRoutine = InterpolatePosition(position,interpolationLength);
@@ -118,6 +133,17 @@ public class NetPlayerSync : MonoBehaviour {
                     float interpolationLength = .1f;
                     rotationRoutine = InterpolateRotation(rotation,interpolationLength);
                     StartCoroutine(rotationRoutine);
+				}
+				break;	
+				case Network.Subject.PlayerCartUpdate:
+				{
+                    Quaternion rotation = Deserializer.Quaternion((byte[])data);
+                    if(cartRoutine != null)
+                    	StopCoroutine(cartRoutine);
+
+                    float interpolationLength = .1f;
+                    cartRoutine = InterpolateCart(rotation,interpolationLength);
+                    StartCoroutine(cartRoutine);
 				}
 				break;
 				case Network.Subject.VoiceChat:
@@ -136,28 +162,32 @@ public class NetPlayerSync : MonoBehaviour {
 
 				}break;
 			}
-		}
+		}		
 	}
-
+	
 	//When the player disconnects destroy it
 	void PlayerDisconnected(ushort ID){
         if(!isSender && ID == networkID)
             Destroy(gameObject);
 	}
-
+	
 	//--------------------
 	//  Getters / Setters
 	public void SetAsSender(){
 		isSender = true;
+		cart.enabled = true;
 		cam.SetActive(true);
+		if(headControl != null)
 		headControl.enabled = true;
 		helmet.SetPlayerIndex(networkID);
 		helmet.enabled = true;
 	}
-
+	
 	public void SetAsReceiver(){
 		isSender = false;
+		cart.enabled = false;
 		cam.SetActive(false);
+		if(headControl != null)
 		headControl.enabled = false;
 		helmet.SetPlayerIndex(networkID);
 		helmet.enabled = false;
@@ -228,5 +258,17 @@ public class NetPlayerSync : MonoBehaviour {
     		yield return null;
     	}
 //    	head.rotation = newRotation;
+    }
+    IEnumerator InterpolateCart(Quaternion newRotation, float interpolationLength){
+    	float startTime = Time.time;
+    	lastCartTime = Time.time;
+    	Quaternion startRotation = transform.rotation;
+    	float t = 0f;
+    	while(t < 1f){
+    		t = (Time.time - startTime)/interpolationLength;
+    		transform.rotation = Quaternion.Slerp(startRotation,newRotation,t);
+    		yield return null;
+    	}
+//    	transform.rotation = newRotation;
     }
 }

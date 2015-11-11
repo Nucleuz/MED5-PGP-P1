@@ -5,7 +5,9 @@ public class ElevatorScript : MonoBehaviour {
 
     private bool soundIsPlaying;
 
-    public RailConnection rC;                                               //rC = railConnection
+    [HideInInspector]
+    public RailConnection rC;  
+    [HideInInspector]                                            //rC = railConnection
     public Rail rP;                                                         //rP = railPoint
     public Trigger trigger;
 
@@ -15,8 +17,8 @@ public class ElevatorScript : MonoBehaviour {
     public Transform[] nodes;                                               //Array of transform objects that holds the positions the elevator will visit
     private int activeNode;                                                     //Speed of the elevator
 
-    public float animationLength = 1;
-    private float endAnimationTime;                                       //holds the amount of time the lerp has been running
+    public float animationLength;
+    private float animationStartTime;                                       //holds the amount of time the lerp has been running
  
 	// Use this for initialization
 	void Start () {
@@ -36,17 +38,17 @@ public class ElevatorScript : MonoBehaviour {
         if (trigger.isTriggered && !isActivated)
         {
             isActivated = true;
-            endAnimationTime = Time.time + animationLength;
+			animationStartTime = Time.time;
         }
 
         if (isActivated)                                                    //Activates after a mousepress
         {
 
 
-            float t = (endAnimationTime - Time.time) / animationLength;                   //Calculates the final speed of the object.
-            
+			float t = (Time.time - animationStartTime) / animationLength;                   //Calculates the final speed of the object.
+			float smoothstepFactor = t * t * (3 - 2 * t);
             //Moves the elevator from it's current position to the next active node
-            transform.position = Vector3.MoveTowards(transform.position, nodes[activeNode].position, t);
+            transform.position = Vector3.Lerp(transform.position, nodes[nodes.Length - 1].position, smoothstepFactor);
             if(!soundIsPlaying){
                 SoundManager.Instance.PlayEvent("Elevator_Active", gameObject);
                 soundIsPlaying = true;
@@ -68,13 +70,15 @@ public class ElevatorScript : MonoBehaviour {
                 } else{
                     goingUp = false;
                 }
-                isActivated = false;
-                trigger.Deactivate();
-                trigger.isReadyToBeTriggered = true;
+
                 if(soundIsPlaying){
                     SoundManager.Instance.PlayEvent("Elevator_Stop", gameObject);
                     soundIsPlaying = false;
                 }
+
+                isActivated = false;
+                trigger.Deactivate();
+                trigger.isReadyToBeTriggered = true;
             } 
 
             // Disconnects when the active nodes is not the first or last one
