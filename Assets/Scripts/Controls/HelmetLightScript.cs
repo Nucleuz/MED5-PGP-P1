@@ -12,8 +12,6 @@ public class HelmetLightScript : MonoBehaviour {
     
     private float angleNormal = 20;                  // Angle of the spotlight without focus
     private float angleFocus = 5;                   // Angle of the spotlight during focus
-    private float intensityNormal = 1;               // Intensity of the spotlight without focus
-    private float intensityFocus = 1;                // Intensity of the spotlight during focus
 
     private Light helmetLight;                      // Object that refers to the spotlight within the scene
     public Light nonFocusedHelmetLight; 
@@ -68,10 +66,6 @@ public class HelmetLightScript : MonoBehaviour {
     public void LightUpdate(float t){
         // Lerps the spotlight angle from normal to focused angle.
         helmetLight.spotAngle = Mathf.Lerp(angleNormal, angleFocus,t);
-
-        // Lerps the intensity from normal to focused intensity.
-        // helmetLight.intensity = Mathf.Lerp(intensityNormal, intensityFocus, t);
-
     }
     
     void Update () {
