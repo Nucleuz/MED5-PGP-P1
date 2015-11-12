@@ -48,7 +48,7 @@ public class InteractableButton : Interactable{
 		if(trigger.isTriggered){
 			buttonAnimator.SetBool("isActivated", true); 	//starts the animation of the button.
 											//starts the particles system.
-			ReplaceParticles();
+			PlayPuff();
 		} else {
 			buttonAnimator.SetBool("isActivated", false); 	//stops the animation of the button.
 			if(trigger.isReadyToBeTriggered){
@@ -167,7 +167,7 @@ public class InteractableButton : Interactable{
 			}       	
 		}
 	}
-	void ReplaceParticles(){
+	void PlayPuff(){
 		if (!playedPuff) {
 
 			particleSystem.Stop();
