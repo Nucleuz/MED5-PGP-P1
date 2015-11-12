@@ -2122,7 +2122,7 @@ MonoBehaviour:
   movementSpeed: 1
   isMoving: 0
   startingRail: {fileID: 0}
-  minecartAnimator: {fileID: 0}
+  minecartAnimator: {fileID: 9505746}
 --- !u!114 &11472548
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2914,6 +2914,10 @@ Prefab:
       propertyPath: movementSpeed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: minecartAnimator
+      value: 
+      objectReference: {fileID: 9505746}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 174738}
