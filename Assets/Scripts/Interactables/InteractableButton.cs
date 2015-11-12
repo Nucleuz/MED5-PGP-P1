@@ -61,8 +61,8 @@ public class InteractableButton : Interactable{
 		}
 	}
 
-	public override void OnRayEnter(int playerIndex, Ray ray, RaycastHit hit){
-		if (trigger.isReadyToBeTriggered){
+    public override void OnRayEnter(int playerIndex){
+    	if (trigger.isReadyToBeTriggered){
 			if(trigger.playersRequired){
 				if(playerIndex == 1 && trigger.bluePlayerRequired ||
                 	playerIndex == 2 && trigger.redPlayerRequired ||
@@ -83,6 +83,10 @@ public class InteractableButton : Interactable{
 				}
 			}			
 		}
+    }    
+
+	public override void OnRayEnter(int playerIndex, Ray ray, RaycastHit hit){
+		OnRayEnter(playerIndex);
 	}
 
 

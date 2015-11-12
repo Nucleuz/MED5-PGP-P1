@@ -102,10 +102,14 @@ public class ChargeableButtonScript : Interactable
             trigger.canReset = true;
         }
     }
-    
-	public override void OnRayEnter(int playerIndex, Ray ray, RaycastHit hit){
+
+
+    public override void OnRayEnter(int playerIndex){
         if(trigger.isReadyToBeTriggered)
-		  endInteractTime = Time.time + minInteractLength;
+            endInteractTime = Time.time + minInteractLength;
+    }    
+	public override void OnRayEnter(int playerIndex, Ray ray, RaycastHit hit){
+        OnRayEnter(playerIndex);
 	}
 
     public override void OnRayExit(int playerIndex){
