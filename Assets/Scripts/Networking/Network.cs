@@ -45,6 +45,8 @@ public class Network{
 
         public const ushort PlayerFocus          = 13;
 
+        public const ushort SequenceFailed       = 15;
+
 
     }
 }

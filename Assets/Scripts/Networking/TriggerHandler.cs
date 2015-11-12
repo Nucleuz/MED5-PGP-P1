@@ -134,6 +134,14 @@ using DarkRift;
                         SetTriggerState((TriggerState)data);
                     }
                     break;
+                    case Network.Subject.SequenceFailed:
+                    {
+                        ReceiveSequenceFail obj = levelHandler.getLevelManager().sequenceFail;
+                        if(obj != null){
+                            obj.OnReceive();
+                        }
+                    }
+                    break;
                 }
             }
     }

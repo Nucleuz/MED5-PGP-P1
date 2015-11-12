@@ -22,6 +22,9 @@ public class LevelManager : MonoBehaviour {
 											these numbers should be specified in the unity editor!! */
 	[Tooltip("Array size MUST be the same as amounts of sequences. One object can be triggered after a sequence, drag element into the corresponding array place. e.g if a door wants to be triggered after sequence 3, the door must be dragged onto element2 in the array. Leave other elements in the array empty")]
 	public Trigger[] triggerEvents;			//Used to trigger an object when a sequence is finished
+
+	[Tooltip("Needs tooltip")]
+	public ReceiveSequenceFail sequenceFail;
 	
 
 	[Header("Defining Level start and end")]
