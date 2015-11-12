@@ -87,8 +87,6 @@ public class LevelHandler : MonoBehaviour {
         //check if it should stich them together
 
         if(loadingIndex == 0){
-            //run first time on the server
-
             triggerHandler.process(levelContainer);
         }else{
             //previous and next LevelManager

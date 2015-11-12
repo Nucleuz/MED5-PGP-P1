@@ -1898,6 +1898,10 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11435184, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
+      propertyPath: puffSystem
+      value: 
+      objectReference: {fileID: 138013423}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
   m_IsPrefabParent: 0
@@ -1907,6 +1911,11 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 138013421}
   m_Script: {fileID: 11500000, guid: 57f8bf624c4748748a66e6f53c5aacba, type: 3}
+--- !u!198 &138013423 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 19898226, guid: 0e5145ef01c5869409647d9e97ebad06,
+    type: 2}
+  m_PrefabInternal: {fileID: 138013421}
 --- !u!1 &138904436
 GameObject:
   m_ObjectHideFlags: 0
@@ -11507,7 +11516,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1127398217}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.829676032, y: -2.42000008, z: 50.7000008}
+  m_LocalPosition: {x: -.829676032, y: -2.42000008, z: 46.8600006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1488546963}
@@ -12154,63 +12163,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1181141834}
   m_Mesh: {fileID: 4300000, guid: c27e69b31ba827044a6982bc2e356933, type: 3}
---- !u!1 &1182966461
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1182966464}
-  - 114: {fileID: 1182966463}
-  - 114: {fileID: 1182966462}
-  m_Layer: 0
-  m_Name: WwiseGlobal
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1182966462
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1182966461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1adccdce10ac384da0d669fa50d0ae4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  basePath: Audio\GeneratedSoundBanks
-  language: English(US)
-  defaultPoolSize: 4096
-  lowerPoolSize: 2048
-  streamingPoolSize: 1024
-  memoryCutoffThreshold: .949999988
---- !u!114 &1182966463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1182966461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0da75c80cd89ba4b82c3e81eda3d189, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1182966464
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1182966461}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
 --- !u!1 &1184059771
 GameObject:
   m_ObjectHideFlags: 0
@@ -13807,6 +13759,10 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11435184, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
+      propertyPath: puffSystem
+      value: 
+      objectReference: {fileID: 1377076881}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
   m_IsPrefabParent: 0
@@ -13816,6 +13772,11 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1377076879}
   m_Script: {fileID: 11500000, guid: 57f8bf624c4748748a66e6f53c5aacba, type: 3}
+--- !u!198 &1377076881 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 19898226, guid: 0e5145ef01c5869409647d9e97ebad06,
+    type: 2}
+  m_PrefabInternal: {fileID: 1377076879}
 --- !u!4 &1383942608 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 2a4424f2be585524ebd745265bc91aae, type: 3}
@@ -17450,6 +17411,10 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11435184, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
+      propertyPath: puffSystem
+      value: 
+      objectReference: {fileID: 1612659879}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
   m_IsPrefabParent: 0
@@ -17459,6 +17424,11 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1612659877}
   m_Script: {fileID: 11500000, guid: 57f8bf624c4748748a66e6f53c5aacba, type: 3}
+--- !u!198 &1612659879 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 19898226, guid: 0e5145ef01c5869409647d9e97ebad06,
+    type: 2}
+  m_PrefabInternal: {fileID: 1612659877}
 --- !u!4 &1614272306 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 5ea7f241d46b68943b111c3aa82dafbe, type: 3}
@@ -17969,6 +17939,63 @@ Light:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 6adc60944b1774784a5d2f0341e8d8a7, type: 3}
   m_PrefabInternal: {fileID: 985596798}
+--- !u!1 &1661523021
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1661523024}
+  - 114: {fileID: 1661523023}
+  - 114: {fileID: 1661523022}
+  m_Layer: 0
+  m_Name: WwiseGlobal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1661523022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1661523021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1adccdce10ac384da0d669fa50d0ae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basePath: Audio\GeneratedSoundBanks
+  language: English(US)
+  defaultPoolSize: 4096
+  lowerPoolSize: 2048
+  streamingPoolSize: 1024
+  memoryCutoffThreshold: .949999988
+--- !u!114 &1661523023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1661523021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0da75c80cd89ba4b82c3e81eda3d189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1661523024
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1661523021}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
 --- !u!1 &1661821656
 GameObject:
   m_ObjectHideFlags: 0

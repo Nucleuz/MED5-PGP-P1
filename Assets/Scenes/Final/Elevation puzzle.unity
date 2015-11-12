@@ -5044,6 +5044,10 @@ Prefab:
       propertyPath: isReadyToBeTriggered
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11435184, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
+      propertyPath: puffSystem
+      value: 
+      objectReference: {fileID: 169338511}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
   m_IsPrefabParent: 0
@@ -5057,6 +5061,11 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 169338508}
   m_Script: {fileID: 11500000, guid: 57f8bf624c4748748a66e6f53c5aacba, type: 3}
+--- !u!198 &169338511 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 19898226, guid: 0e5145ef01c5869409647d9e97ebad06,
+    type: 2}
+  m_PrefabInternal: {fileID: 169338508}
 --- !u!1001 &169820551
 Prefab:
   m_ObjectHideFlags: 0
@@ -38582,6 +38591,10 @@ Prefab:
       propertyPath: levelManager
       value: 
       objectReference: {fileID: 1352971314}
+    - target: {fileID: 118766, guid: 6f80e2aa1b3d54ab99529bbfc92eb471, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6f80e2aa1b3d54ab99529bbfc92eb471, type: 2}
   m_IsPrefabParent: 0
@@ -38679,27 +38692,27 @@ Prefab:
     - target: {fileID: 11492572, guid: 639ce8ab29167214da59d2876d4ab108, type: 2}
       propertyPath: levelStartRail.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 576432444}
     - target: {fileID: 11492572, guid: 639ce8ab29167214da59d2876d4ab108, type: 2}
       propertyPath: levelStartRail.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 942944086}
     - target: {fileID: 11492572, guid: 639ce8ab29167214da59d2876d4ab108, type: 2}
       propertyPath: levelStartRail.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1719443562}
     - target: {fileID: 11492572, guid: 639ce8ab29167214da59d2876d4ab108, type: 2}
       propertyPath: levelEndRail.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1697911198}
     - target: {fileID: 11492572, guid: 639ce8ab29167214da59d2876d4ab108, type: 2}
       propertyPath: levelEndRail.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1706059049}
     - target: {fileID: 11492572, guid: 639ce8ab29167214da59d2876d4ab108, type: 2}
       propertyPath: levelEndRail.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1589629086}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 639ce8ab29167214da59d2876d4ab108, type: 2}
   m_IsPrefabParent: 0
@@ -40419,6 +40432,10 @@ Prefab:
       propertyPath: isReadyToBeTriggered
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11435184, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
+      propertyPath: puffSystem
+      value: 
+      objectReference: {fileID: 1426137428}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
   m_IsPrefabParent: 0
@@ -40432,6 +40449,11 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1426137425}
   m_Script: {fileID: 11500000, guid: 57f8bf624c4748748a66e6f53c5aacba, type: 3}
+--- !u!198 &1426137428 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 19898226, guid: 0e5145ef01c5869409647d9e97ebad06,
+    type: 2}
+  m_PrefabInternal: {fileID: 1426137425}
 --- !u!1 &1427870249
 GameObject:
   m_ObjectHideFlags: 0
@@ -43703,6 +43725,10 @@ Prefab:
       propertyPath: isReadyToBeTriggered
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11435184, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
+      propertyPath: puffSystem
+      value: 
+      objectReference: {fileID: 1533335687}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e5145ef01c5869409647d9e97ebad06, type: 2}
   m_IsPrefabParent: 0
@@ -43716,6 +43742,11 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1533335684}
   m_Script: {fileID: 11500000, guid: 57f8bf624c4748748a66e6f53c5aacba, type: 3}
+--- !u!198 &1533335687 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 19898226, guid: 0e5145ef01c5869409647d9e97ebad06,
+    type: 2}
+  m_PrefabInternal: {fileID: 1533335684}
 --- !u!1 &1535008523
 GameObject:
   m_ObjectHideFlags: 0
