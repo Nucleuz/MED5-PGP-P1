@@ -73,7 +73,8 @@ public class GameManager : MonoBehaviour {
                         LM.events[i + numberOfTriggeredEvents].isReadyToBeTriggered = false;
                         //If they are triggered which they shouldn't be, then we reset the sequence
                         currentNumberOfEventsTriggered = 0;
-                        Debug.Log("number of triggered events: " + numberOfTriggeredEvents);
+
+												server.ResetSequence();
                         for(int j = 0; j < LM.eventsInSequence[index]; j++){ //goes through all the objects in the sequence and untrigger them
                             StartCoroutine(FailedReset(j));
                             LM.events[j + numberOfTriggeredEvents].isTriggered = false;
@@ -89,6 +90,8 @@ public class GameManager : MonoBehaviour {
                         if(LM.events[i + numberOfTriggeredEvents].isTriggered == true && LM.events[i + numberOfTriggeredEvents].isReadyToBeTriggered == true){
                             LM.events[i + numberOfTriggeredEvents].isReadyToBeTriggered = false;
                             currentNumberOfEventsTriggered = 0;
+
+														server.ResetSequence();
                             for(int j = 0; j < LM.eventsInSequence[index]; j++){ //goes through all the objects in the sequence and untrigger them
                                 StartCoroutine(FailedReset(j));
                                 LM.events[j + numberOfTriggeredEvents].isTriggered = false;
@@ -130,7 +133,7 @@ public class GameManager : MonoBehaviour {
         }
         catch(System.IndexOutOfRangeException e){
             Debug.LogWarning("This was an error -- needs to implement Andreas GameManager Fix");
-			Debug.LogWarning(e);
+						Debug.LogWarning(e);
         }
 
    }

@@ -10,8 +10,6 @@ Manager for the server. This is a test setup with spawn positions and simple ser
 
 
 */
-
-
 public class ServerManager : NetworkManager {
 
     //for debugging
@@ -165,8 +163,10 @@ public class ServerManager : NetworkManager {
         }
 	}
 
-    public void ResetTriggers(){
+    public void ResetSequence(){
         //call clients and reset triggers
+        SendToAll(Network.Tag.Trigger,Network.Subject.SequenceFailed,0);
+
     }
 
     public void TriggerChanged(Trigger trigger){

@@ -6,8 +6,8 @@ used to categories network messages
 */
 
 public class Network{
-	
-	//used as the receiver 
+
+	//used as the receiver
 	//TODO should then be called receiver..
 	public class Tag{
 		public const byte Manager 	= 1;
@@ -44,6 +44,8 @@ public class Network{
         public const ushort VoiceChat            = 12;
 
         public const ushort PlayerFocus          = 13;
+
+				public const ushort SequenceFailed 			 = 15;
 
 
     }
