@@ -66,7 +66,6 @@ public class Waterfall : MonoBehaviour {
 	IEnumerator toggleFade(){
 		Color tempCol0, tempCol1, tempCol0To, tempCol1To;
 		Vector3 tempScale, tempScaleTo, pETemp, pETempTo;
-		float tempEm;
 
 		if(pE.isPlaying){
 			float t = 0;
