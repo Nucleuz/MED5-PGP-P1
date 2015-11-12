@@ -20,7 +20,8 @@ public class Mirror : Interactable {
     [Tooltip("Use empty gameobjects as targets that doesn't need to interact and buttons for targets that needs to interact.")]
     public Transform[] targets;
 
-    public int buttonNumber;
+    public int currentInteractable;
+    public int correctInteractable;
 
     public bool movingForward = true;
     public bool isRotating = false;
@@ -32,7 +33,7 @@ public class Mirror : Interactable {
 	void Start(){
         soundIsPlaying = false;
 		startPoint = transform.eulerAngles.y; // starPoint is the mirrors rotation at the start.
-        buttonNumber = 0;
+        currentInteractable = 0;
         reflectedLight = GetComponent<Light>();        //Calls the light component on the mirror.
         LS = GetComponent<LightShafts>();
     }
@@ -53,20 +54,20 @@ public class Mirror : Interactable {
     private void rotateMirror() {
         //Checks if the script is moving up the index or down
         if (movingForward)
-            buttonNumber++;
+            currentInteractable++;
         else
-            buttonNumber--;
+            currentInteractable--;
 
-        if (buttonNumber < 0) {
-            buttonNumber = 1;
+        if (currentInteractable < 0) {
+            currentInteractable = 1;
             movingForward = true;
-        } else if (buttonNumber >= targets.Length) {
-            buttonNumber = targets.Length - 2;
+        } else if (currentInteractable >= targets.Length) {
+            currentInteractable = targets.Length - 2;
             movingForward = false;
         }
 
         //Calculates the angle between the target gameobjects and the mirror
-        Vector3 targetDir = targets[buttonNumber].transform.position - transform.position;
+        Vector3 targetDir = targets[currentInteractable].transform.position - transform.position;
         float rotationalAngle = Vector3.Angle(targetDir, transform.forward);
 
         Quaternion end = Quaternion.LookRotation(targetDir, transform.up);                      //End position for the mirror to rotate to
@@ -74,6 +75,9 @@ public class Mirror : Interactable {
     }
 
     public override void OnRayEnter(int playerIndex, Ray ray, RaycastHit hit){
+        //player hitting
+
+
     	//Used for turning on the relfectance of the mirror.
         isBeingLitOn = true;
 
@@ -95,20 +99,48 @@ public class Mirror : Interactable {
 
     
         Debug.Log("Ray received");
-        Ray newRay = new Ray(hit.point, objectToTrigger.transform.position - transform.position);
-        RaycastHit rayhit;
-
-        Vector3 targetDir = objectToTrigger.transform.position - transform.position;
-
-        if (Physics.Raycast(newRay, out rayhit)) {
-        	//turn on the light off the mirror.
+        if(currentInteractable == correctInteractable){
+                reflectedLight.enabled = true;
+                LS.enabled = true;
+                objectToTrigger.OnRayEnter(playerIndex);
+        } else {
             reflectedLight.enabled = true;
             LS.enabled = true;
-          
-            Interactable interactable = rayhit.transform.GetComponent<Interactable>();
-            if (interactable != null) {
-                interactable.OnRayEnter(playerIndex, newRay, rayhit);
-            }
+        }
+
+    }
+
+    public override void OnRayEnter(int playerIndex){
+        //reflecting from mirror
+
+        //Used for turning on the relfectance of the mirror.
+        isBeingLitOn = true;
+
+        //Set the color of the reflected light to the correct user.
+        switch (playerIndex){
+            case 1:
+                reflectedLight.color = new Color(0.2F, 0.2F, 1, 1F); //blue
+            break;
+            case 2:
+                reflectedLight.color = new Color(1, 0.2F, 0.2F, 1F); //red
+            break;
+            case 3:
+                reflectedLight.color = new Color(0.2F, 1, 0.2F, 1F); //green
+            break;
+            default:
+                Debug.Log("Invalid playerIndex");
+            break;
+        }   
+
+    
+        Debug.Log("Ray received");
+        if(currentInteractable == correctInteractable){
+                reflectedLight.enabled = true;
+                LS.enabled = true;
+                objectToTrigger.OnRayEnter(playerIndex);
+        } else {
+            reflectedLight.enabled = true;
+            LS.enabled = true;
         }
     }
 
