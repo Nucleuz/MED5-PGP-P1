@@ -42,7 +42,6 @@ public class LightFade : ReceiveSequenceFail {
         }
 */
         if(isFailed && Sc.sequenceIsPlaying == false){
-            Debug.Log("We actually made piece of shit code work!");
             myLight.color = new Color(1, 0.2f, 0.6f, 1F); //red
             if(myLight.intensity > 0){
                 myLight.intensity -= 0.1F * (Time.deltaTime*4);
