@@ -124,7 +124,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 491112, guid: 24fb40156af6d49d6a86222d9e13ba1f, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 190560, guid: 24fb40156af6d49d6a86222d9e13ba1f, type: 2}
       propertyPath: m_Name
@@ -257,7 +257,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 491112, guid: 24fb40156af6d49d6a86222d9e13ba1f, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 190560, guid: 24fb40156af6d49d6a86222d9e13ba1f, type: 2}
       propertyPath: m_Name
@@ -485,15 +485,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelContainers: []
-  manager: {fileID: 1343243756}
+  manager: {fileID: 0}
   levelOrder:
   - IntroductionPuzzle1
-  - MirrorPuzzle
-  - Lava inbetween
+  - IntroductionPuzzle2
+  - IntroductionPuzzle3
   - Elevation puzzle
-  - MirrorPuzzle
-  - Elevation puzzle
-  - Lava inbetween
+  - Sound Puzzle
   levelManagerIndex: 0
   loadedLevelIndex: -1
 --- !u!4 &1343243758
@@ -540,7 +538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   port: 4296
-  maxConnections: 4
+  maxConnections: 20
   logData: 0
   callEventsFrom: 0
 --- !u!114 &1388316761
@@ -554,6 +552,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 938fc3b809a85ce4980d161b1a387f21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyToSpeed: 32
+  speedUpMultiplier: 3
+  moveSpeed: 30
   controllerConnected: 0
   isActive: 1
 --- !u!124 &1388316762

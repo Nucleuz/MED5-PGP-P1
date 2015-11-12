@@ -22,7 +22,7 @@ public class LevelHandler : MonoBehaviour {
 
     //@TODO a better interface for this
     //@TODO make sure that it is fixed between server and client
-    public string[] levelOrder;
+	public string[] levelOrder;
 
     [HideInInspector]
     public int levelManagerIndex = 0;
@@ -32,10 +32,14 @@ public class LevelHandler : MonoBehaviour {
     private float currentRotation;
 
     void Start(){
+
         levelContainers = new LevelContainer[levelOrder.Length];
         triggerHandler = TriggerHandler.Instance;
-        if(NetworkManager.isServer)
+        if(NetworkManager.isServer){
+            manager = GetComponent<ServerManager>();
             loadNextLevel();
+
+        }
     }
 
     void Update(){
@@ -45,7 +49,7 @@ public class LevelHandler : MonoBehaviour {
 
     }
 
-    IEnumerator LoadAndHandleLevel(){
+	IEnumerator LoadAndHandleLevel(){
         int loadingIndex = loadedLevelIndex;
         if(levelOrder.Length == 0){
             Debug.LogError("No Level Order -- Can't load level");
@@ -55,8 +59,8 @@ public class LevelHandler : MonoBehaviour {
             return false;
         }
 
-        //@TODO --- Optimize - can be done async which should be faster
-        Application.LoadLevelAdditive(levelOrder[loadingIndex]);
+		//@TODO --- Optimize - can be done async which should be faster
+		Application.LoadLevelAdditive(levelOrder[loadingIndex]);
 
         //wait a frame and try to find LevelContainer and repeat until it finds it
         bool foundLC = false;
@@ -108,14 +112,15 @@ public class LevelHandler : MonoBehaviour {
             pLD.Normalize();
 
             //rotate next level so that pLD is equal to the inverse nLD
-            Debug.Log(pLD + " - " + nLD + " " + (Mathf.Rad2Deg * levelContainers[loadingIndex - 1].transform.rotation.y ) + " magnitudes: " + pLD.magnitude + ";" + nLD.magnitude);
+            Debug.Log(pLD + " - " + nLD + " " + " angle: " + Vector3.Angle(pLD,nLD));
 
             float a = Vector3.Angle(pLD,nLD);
             Vector3 cross = Vector3.Cross(pLD,nLD);
 
-            currentRotation = 180 - a;
+            currentRotation = 180-a;
 
-            Debug.Log("a: " + a + " next rot : " + currentRotation + " c: " + cross);
+
+            Debug.Log("a: " + a + " next rot : " + currentRotation + " c:" + cross);
             //rotate new level
             levelContainer.transform.RotateAround(levelContainer.transform.position,Vector3.up,currentRotation);
 
@@ -128,6 +133,28 @@ public class LevelHandler : MonoBehaviour {
 
             //offset the next level so that it is positioned correctly
             levelContainer.transform.position += delta;
+
+
+
+//check
+            pLD = pLM.levelEndRail[0].transform.position - pLM.levelEndRail[0].prev.transform.position;
+            nLD = nLM.levelStartRail[0].transform.position - nLM.levelStartRail[0].next.transform.position;
+
+
+                        nLD.y = 0;
+                        nLD.Normalize();
+
+
+                        pLD.y = 0;
+                        pLD.Normalize();
+
+            Debug.Log("angle after>" + Vector3.Angle(pLD,nLD));
+
+            if(Vector3.Angle(pLD,nLD) != 180)
+              Debug.LogError("Level " + loadingIndex +" not aligned properly");
+
+
+
 
             //set rails
             for(int i = 0;i<3;i++){
@@ -152,12 +179,12 @@ public class LevelHandler : MonoBehaviour {
         //@TODO unloading of scenes
     }
 
-    public void loadNextLevel(){
+	public void loadNextLevel(){
         if(loadedLevelIndex < levelContainers.Length - 1){
             loadedLevelIndex++;
             StartCoroutine(LoadAndHandleLevel());
         }
-    }
+	}
 
     public void loadLevel(int index){
         if(index >= 0 && index < levelContainers.Length){

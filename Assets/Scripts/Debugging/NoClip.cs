@@ -3,9 +3,13 @@ using System.Collections;
 
 public class NoClip : MonoBehaviour {
 
+	public KeyCode keyToSpeed;
+	public float speedUpMultiplier = 3f;
+	public float moveSpeed = 15f;
+
 	float horizontalRotationAmount = 360;
 	float verticalRotationAmount = 180;
-	
+
 	float horizontalRotationOffset = -180;
 	float verticalRotationOffset = -90;
 
@@ -17,7 +21,7 @@ public class NoClip : MonoBehaviour {
 	private Camera cam;
 
 	static NoClip instance;
-	
+
 	public static NoClip Instance
 	{
 		get
@@ -26,7 +30,7 @@ public class NoClip : MonoBehaviour {
 			{
 				instance = FindObjectOfType(typeof(NoClip)) as NoClip;
 			}
-			
+
 			return instance;
 		}
 	}
@@ -38,8 +42,9 @@ public class NoClip : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(isActive == true){ //If the ClipCamera has been activated in the console.
-			transform.Translate(Vector3.forward * Input.GetAxis("Vertical") * Time.deltaTime * 15);
-			transform.Translate(Vector3.right * Input.GetAxis("Horizontal") * Time.deltaTime * 15);
+
+			transform.Translate(Vector3.forward * Input.GetAxis("Vertical") * Time.deltaTime * moveSpeed * (Input.GetKey(keyToSpeed) ? 2f:1f));
+			transform.Translate(Vector3.right * Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed * (Input.GetKey(keyToSpeed) ? 2f:1f));
 
 			Vector2 mouse = Input.mousePosition;
 			float h = mouse.x / cam.pixelWidth;
@@ -61,13 +66,13 @@ public class NoClip : MonoBehaviour {
 				} else if(transform.eulerAngles.x < 280 && transform.eulerAngles.x > 200){
 					transform.rotation = Quaternion.Euler(280, transform.eulerAngles.y, transform.eulerAngles.z);
 				}
-			} 
+			}
 				if(Input.GetKeyDown("c")){
 					controllerConnected = !controllerConnected;
 				}
 			}
 		}
-		
+
 	public void On(){
 		isActive = !isActive;
 	}
