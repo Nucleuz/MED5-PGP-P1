@@ -25,6 +25,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using VR = UnityEngine.VR;
+using UnityEngine.VR;
 
 /// <summary>
 /// Configuration data for Oculus virtual reality.
@@ -120,6 +121,9 @@ public class OVRManager : MonoBehaviour
 
 		OVRPlugin.DismissHSW();
 	}
+	void ReSetVRDevice(){
+        InputTracking.Recenter();
+    }
 
 	/// <summary>
 	/// If true, chromatic de-aberration will be applied, improving the image at the cost of texture bandwidth.
@@ -345,6 +349,10 @@ public class OVRManager : MonoBehaviour
 
 	private void Update()
 	{
+		if(Input.GetKeyDown(KeyCode.V)){
+			ReSetVRDevice();
+		}
+
 		if (!usingPositionTrackingCached || usingPositionTracking != usePositionTracking)
 		{
 			tracker.isEnabled = usePositionTracking;
