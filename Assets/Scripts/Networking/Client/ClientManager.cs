@@ -28,6 +28,7 @@ public class ClientManager : NetworkManager
 
     //prefab for the players
     public bool useVR = false;
+    public GameObject otherPrefab;
     public GameObject nvrPrefab;
     public GameObject vrPrefab;
 
@@ -124,7 +125,7 @@ public class ClientManager : NetworkManager
                         //unpack data
 
                         //spawn the object
-                        GameObject g = Instantiate(nvrPrefab,Deserializer.Vector3((byte[])data) , Quaternion.identity) as GameObject;
+                        GameObject g = Instantiate(otherPrefab,Deserializer.Vector3((byte[])data) , Quaternion.identity) as GameObject;
 
                         //set the network id so it will sync with the player
                         NetPlayerSync netPlayer = g.GetComponent<NetPlayerSync>();
