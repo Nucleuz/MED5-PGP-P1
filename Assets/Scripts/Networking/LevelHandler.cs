@@ -13,6 +13,7 @@ LevelHandler handles loading of scenes and stitching together loaded scenes
 public class LevelHandler : MonoBehaviour {
     [HideInInspector]
     public LevelContainer[] levelContainers;
+    public bool[] isLevelLoading;
     //for quick access
     private LevelContainer currentLevelContainer;
 
@@ -34,6 +35,8 @@ public class LevelHandler : MonoBehaviour {
     void Start(){
         levelContainers = new LevelContainer[levelOrder.Length];
         triggerHandler = TriggerHandler.Instance;
+        isLevelLoading = new bool[levelOrder.Length];
+
         if(NetworkManager.isServer)
             loadNextLevel();
     }
@@ -75,6 +78,7 @@ public class LevelHandler : MonoBehaviour {
 
                     processLevelContainer(lc,loadingIndex);
                     lc.processed = true;
+                    isLevelLoading[loadingIndex] = false; 
                     break;
                 }
             }
@@ -149,16 +153,23 @@ public class LevelHandler : MonoBehaviour {
 
 
         //@TODO unloading of scenes
+
+        if(!NetworkManager.isServer && levelManagerIndex > 1){
+            Destroy(levelContainers[levelManagerIndex-2].gameObject);
+            levelContainers[levelManagerIndex-2] = null;
+        }
     }
 
 	public void loadNextLevel(){
         if(loadedLevelIndex < levelContainers.Length - 1){
             loadedLevelIndex++;
+            isLevelLoading[loadedLevelIndex] = true;
             StartCoroutine(LoadAndHandleLevel());
         }
 	}
 
     public void loadLevel(int index){
+        isLevelLoading[index] = true;
         if(index >= 0 && index < levelContainers.Length){
             loadedLevelIndex = index;
             StartCoroutine(LoadAndHandleLevel());

@@ -48,7 +48,8 @@ public class ClientManager : NetworkManager
         levelHandler = GetComponent<LevelHandler>();
         triggerHandler = GetComponent<TriggerHandler>();
 
-        ConnectToServer(this.IP);
+        if(this.IP != "")
+            ConnectToServer(this.IP);
     }
 
     public void ConnectToServer(string ip) {
@@ -100,17 +101,18 @@ public class ClientManager : NetworkManager
                         //When the server has loaded a level
 
                         serverLevelIndex = (int)data;
+                        levelHandler.levelManagerIndex = serverLevelIndex;
                         Console.Instance.AddMessage("Server is at level " + serverLevelIndex);
 
                         //load the previous, current and next level if available(serverLevelIndex >/< x) and not already loaded(levelcontainer == null)
                         //previous level
-                        if(serverLevelIndex > 0 && levelHandler.levelContainers[serverLevelIndex - 1] == null)
+                        if(serverLevelIndex > 0 && levelHandler.levelContainers[serverLevelIndex - 1] == null && !levelHandler.isLevelLoading[serverLevelIndex - 1])
                             levelHandler.loadLevel(serverLevelIndex - 1);
                         //current level
-                        if(levelHandler.levelContainers[serverLevelIndex] == null)
+                        if(levelHandler.levelContainers[serverLevelIndex] == null && !levelHandler.isLevelLoading[serverLevelIndex])
                             levelHandler.loadLevel(serverLevelIndex);
                         //next level
-                        if(serverLevelIndex < levelHandler.levelOrder.Length - 1 && levelHandler.levelContainers[serverLevelIndex + 1] == null)
+                        if(serverLevelIndex < levelHandler.levelOrder.Length - 1 && levelHandler.levelContainers[serverLevelIndex + 1] == null && !levelHandler.isLevelLoading[serverLevelIndex + 1])
                             levelHandler.loadLevel(serverLevelIndex + 1);
 
 
