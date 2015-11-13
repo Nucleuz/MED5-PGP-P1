@@ -117,6 +117,8 @@ public class ServerManager : NetworkManager {
 			}
         }else if(data.tag == Network.Tag.Trigger){
             //relay to triggerHandler
+            Debug.Log("Trigger Event from " + con.id);
+
             if(data.subject == Network.Subject.RequestTriggerIDs){
                 TriggerState[] triggerStates = new TriggerState[triggerHandler.triggers.Count];
                 //populate
