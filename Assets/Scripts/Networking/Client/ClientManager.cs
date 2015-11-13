@@ -42,7 +42,7 @@ public class ClientManager : NetworkManager
     [HideInInspector]
     public TriggerHandler triggerHandler;
 
-    private int serverLevelIndex = 0;
+    private int serverLevelIndex = -1;
 
     void Start()
     {
@@ -102,18 +102,25 @@ public class ClientManager : NetworkManager
                         //When the server has loaded a level
 
                         serverLevelIndex = (int)data;
-                        levelHandler.levelManagerIndex = serverLevelIndex;
                         Console.Instance.AddMessage("Server is at level " + serverLevelIndex);
 
-                        SpawnPlayer();
-                        //if the level is already loaded process it's triggers
-                        player.GetComponent<Cart>().SetStartingRail(levelHandler.levelContainers[serverLevelIndex].levelManager.levelStartRail[networkID - 1]);
+                        //load the previous, current and next level if available(serverLevelIndex >/< x) and not already loaded(levelcontainer == null)
+                        //previous level
+                        if(serverLevelIndex > 0 && levelHandler.levelContainers[serverLevelIndex - 1] == null)
+                            levelHandler.loadLevel(serverLevelIndex - 1);
+                        //current level
+                        if(levelHandler.levelContainers[serverLevelIndex] == null)
+                            levelHandler.loadLevel(serverLevelIndex);
+                        //next level
+                        if(serverLevelIndex < levelHandler.levelOrder.Length - 1 && levelHandler.levelContainers[serverLevelIndex + 1] == null)
+                            levelHandler.loadLevel(serverLevelIndex + 1);
 
-                          DarkRiftAPI.SendMessageToServer(
-                                Network.Tag.Trigger,
-                                Network.Subject.RequestTriggerIDs,
-                                true
-                            );
+
+                        //if the level is already loaded process it's triggers
+                        if(levelHandler.levelContainers[serverLevelIndex] != null){
+                            triggerHandler.process(levelHandler.levelContainers[serverLevelIndex]);
+                            OnLevelCompleted();
+                        }
 
                     }
                     break;
@@ -125,7 +132,7 @@ public class ClientManager : NetworkManager
                         //unpack data
 
                         //spawn the object
-                        GameObject g = Instantiate(otherPrefab,Deserializer.Vector3((byte[])data) , Quaternion.identity) as GameObject;
+                        GameObject g = Instantiate(nvrPrefab,Deserializer.Vector3((byte[])data) , Quaternion.identity) as GameObject;
 
                         //set the network id so it will sync with the player
                         NetPlayerSync netPlayer = g.GetComponent<NetPlayerSync>();
@@ -167,18 +174,23 @@ public class ClientManager : NetworkManager
     }
 
     public override void OnLevelCompleted(){
+        player.GetComponent<Cart>().SetStartingRail(levelHandler.levelContainers[serverLevelIndex].levelManager.levelStartRail[networkID - 1]);
     }
 
 
     public override void OnLevelLoaded(int levelIndex)
     {
 
+        Console.Instance.AddMessage("Level " + levelIndex + " (" + levelHandler.levelOrder[levelIndex] + ") Loaded");
+
         //try to spawn the player
         SpawnPlayer();
 
         //if level that is loaded is the level that the server is on currently process it's triggers
 
-       
+        if(serverLevelIndex == levelIndex)
+            triggerHandler.process(levelHandler.levelContainers[levelIndex]);
+
     }
 
     private void SpawnPlayer(){
