@@ -59,7 +59,7 @@ using DarkRift;
 
              purgeTriggers();
              //@TODO check perf and mem of checkChild method -- should maybe put it in a coroutine
-             checkChild(levelContainer.transform);
+             //checkChild(levelContainer.transform);
 
              levelContainer.triggersProcessed = true;
 
