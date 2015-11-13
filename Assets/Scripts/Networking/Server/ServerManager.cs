@@ -30,19 +30,32 @@ public class ServerManager : NetworkManager {
 
     private bool[] clientLoadedLevel = new bool[3];
 
+    private float[] levelTimings;
+
+    private string currentDate;
+
 	void Start () {
 
-        gameManager = GetComponent<GameManager>();
-        triggerHandler = GetComponent<TriggerHandler>();
-        levelHandler = GetComponent<LevelHandler>();
-        isServer = true;
-		senders = new ushort[4];
-        connections = new ConnectionService[4];
 
-		//Networking - lets the method OnData be called
-		ConnectionService.onData += OnData;
+      currentDate = System.DateTime.Now.ToString("HHmm");
+      gameManager = GetComponent<GameManager>();
+      triggerHandler = GetComponent<TriggerHandler>();
+      levelHandler = GetComponent<LevelHandler>();
+      isServer = true;
+	      senders = new ushort[4];
+      connections = new ConnectionService[4];
+      currentDate = System.DateTime.Now.ToString("HHmm");
+
+  		//Networking - lets the method OnData be called
+  		ConnectionService.onData += OnData;
+
+      levelTimings = new float[6];
 	}
 
+  void Update(){
+    if(Input.GetKeyDown(KeyCode.K))
+      saveTime();
+  }
     //@TODO cleanup OnData -- change ifs to switches and seperate out longer subject switches to seperate functions
 
 	//Called when we receive data
@@ -184,11 +197,14 @@ public class ServerManager : NetworkManager {
     public override void OnLevelCompleted(){
         //When a Level is Completed get the new Level manager, process triggers and give GM the LM
         Debug.Log("LevelCompleted");
+        levelTimings[levelHandler.levelManagerIndex] = Time.time - levelTimings[levelHandler.levelManagerIndex];
 
         gameManager.setNewLevelManager(null);
 
+        levelTimings[levelHandler.levelManagerIndex + 1] = Time.time;
         if(levelHandler.levelManagerIndex >= levelHandler.levelContainers.Length){
             Debug.Log("Last level completed");
+            saveTime();
             return;
         }
 
@@ -200,6 +216,9 @@ public class ServerManager : NetworkManager {
         SendToAll(Network.Tag.Manager,Network.Subject.NewLevelManager,levelHandler.levelManagerIndex);
 
         Write("Level Completed");
+
+        //write time
+
 
     }
 
@@ -234,12 +253,27 @@ public class ServerManager : NetworkManager {
         //System.Environment.Exit(0);
 
         //Close all connections
-		foreach (var con in connections) {
-            if(con != null)
-                con.Close();
-		}
+    		foreach (var con in connections) {
+                if(con != null)
+                    con.Close();
+    		}
 
-		// Close server
-		//DarkRiftServer.Close(false);
-	}
+    		// Close server
+    		//DarkRiftServer.Close(false);
+  	}
+
+    public void saveTime(){
+        float overallTime = 0;
+        string times = "";
+        for(int i = 0;i<levelTimings.Length;i++){
+          overallTime += levelTimings[i];
+          times += "Timer puzzle#" + i + ": " + levelTimings[i] + "\r\n";
+        }
+        times += "Timer overall: " + overallTime;
+        //Creating a file
+        System.IO.StreamWriter file = new System.IO.StreamWriter("Recording/" +currentDate);
+        //Write the data(times) in a file.
+        file.WriteLine(times);
+        file.Close();
+    }
 }
