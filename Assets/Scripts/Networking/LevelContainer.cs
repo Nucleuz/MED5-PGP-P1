@@ -9,6 +9,7 @@ public class LevelContainer : MonoBehaviour {
 	[ContextMenuItem("Populate", "Populate")] //add extra functionality on the right click context menu
     public bool triggersProcessed = false;
 
+    public Trigger[] populateArray;
     public Trigger[] triggers;
     private List<Trigger> temp;
 
@@ -17,8 +18,10 @@ public class LevelContainer : MonoBehaviour {
 
     //TODO make an editor script that recursively goes through and stores all found triggers in an array (function is already made in TriggerHandler.. )
     void Populate(){
+        if(triggersProcessed)return;
+        temp = new List<Trigger>();
     	checkChild(transform);
-    	triggers = temp.ToArray();
+    	populateArray = temp.ToArray();
     	temp.Clear();
     	triggersProcessed = true;
     }
@@ -39,7 +42,7 @@ public class LevelContainer : MonoBehaviour {
 
 
      //Assign trigger id, add to dictionary and return the id used.
-     public void Assign(Trigger trigger){
+     private void Assign(Trigger trigger){
         temp.Add(trigger);
      }
 

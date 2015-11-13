@@ -41,7 +41,7 @@ public class ClientManager : NetworkManager
     [HideInInspector]
     public TriggerHandler triggerHandler;
 
-    private int serverLevelIndex = -1;
+    private int serverLevelIndex = 0;
 
     void Start()
     {
@@ -104,23 +104,15 @@ public class ClientManager : NetworkManager
                         levelHandler.levelManagerIndex = serverLevelIndex;
                         Console.Instance.AddMessage("Server is at level " + serverLevelIndex);
 
-                        //load the previous, current and next level if available(serverLevelIndex >/< x) and not already loaded(levelcontainer == null)
-                        //previous level
-                        if(serverLevelIndex > 0 && levelHandler.levelContainers[serverLevelIndex - 1] == null && !levelHandler.isLevelLoading[serverLevelIndex - 1])
-                            levelHandler.loadLevel(serverLevelIndex - 1);
-                        //current level
-                        if(levelHandler.levelContainers[serverLevelIndex] == null && !levelHandler.isLevelLoading[serverLevelIndex])
-                            levelHandler.loadLevel(serverLevelIndex);
-                        //next level
-                        if(serverLevelIndex < levelHandler.levelOrder.Length - 1 && levelHandler.levelContainers[serverLevelIndex + 1] == null && !levelHandler.isLevelLoading[serverLevelIndex + 1])
-                            levelHandler.loadLevel(serverLevelIndex + 1);
-
-
+                        SpawnPlayer();
                         //if the level is already loaded process it's triggers
-                        if(levelHandler.levelContainers[serverLevelIndex] != null){
-                            triggerHandler.process(levelHandler.levelContainers[serverLevelIndex]);
-                            OnLevelCompleted();
-                        }
+                        player.GetComponent<Cart>().SetStartingRail(levelHandler.levelContainers[serverLevelIndex].levelManager.levelStartRail[networkID - 1]);
+
+                          DarkRiftAPI.SendMessageToServer(
+                                Network.Tag.Trigger,
+                                Network.Subject.RequestTriggerIDs,
+                                true
+                            );
 
                     }
                     break;
@@ -174,23 +166,18 @@ public class ClientManager : NetworkManager
     }
 
     public override void OnLevelCompleted(){
-        player.GetComponent<Cart>().SetStartingRail(levelHandler.levelContainers[serverLevelIndex].levelManager.levelStartRail[networkID - 1]);
     }
 
 
     public override void OnLevelLoaded(int levelIndex)
     {
 
-        Console.Instance.AddMessage("Level " + levelIndex + " (" + levelHandler.levelOrder[levelIndex] + ") Loaded");
-
         //try to spawn the player
         SpawnPlayer();
 
         //if level that is loaded is the level that the server is on currently process it's triggers
 
-        if(serverLevelIndex == levelIndex)
-            triggerHandler.process(levelHandler.levelContainers[levelIndex]);
-
+       
     }
 
     private void SpawnPlayer(){
@@ -220,13 +207,6 @@ public class ClientManager : NetworkManager
             }
         }
 
-
-/*
-        VoiceChatRecorder.Instance.NetworkId = networkID;
-        VoiceChatRecorder.Instance.Device = VoiceChatRecorder.Instance.AvailableDevices[0];
-        VoiceChatRecorder.Instance.StartRecording();
-        VoiceChatRecorder.Instance.NewSample += netPlayer.OnNewSample;
-*/
         //place the player on the correct rail!
 
         Console.Instance.AddMessage("levelManager: " + levelHandler.getLevelManager());

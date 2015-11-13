@@ -22,8 +22,8 @@ public class TriggerDebugger : MonoBehaviour {
 			activated = !activated;
 
 
-			if(triggerHandler.triggers.Count > 0 && activated){
-				for(int i = 0; i<triggerHandler.triggers.Count;i++){
+			if(triggerHandler.triggers.Length > 0 && activated){
+				for(int i = 0; i<triggerHandler.triggers.Length;i++){
 					Vector3 pos = new Vector3(i * 25,64,0);
 					GameObject g = Instantiate(triggerPrefab,pos,Quaternion.identity) as GameObject;
 					g.transform.SetParent(triggerContainer.transform);
@@ -52,7 +52,7 @@ public class TriggerDebugger : MonoBehaviour {
 		}
 
 		if(activated){
-			for(int i = 0; i<triggerHandler.triggers.Count;i++){
+			for(int i = 0; i<triggerHandler.triggers.Length;i++){
 				Trigger trigger = triggerHandler.triggers[i];
 				triggers[i].id.text = trigger.triggerID.ToString();
 				triggers[i].triggered.color = (trigger.isTriggered ? Color.green : Color.red);
