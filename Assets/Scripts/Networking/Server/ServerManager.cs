@@ -130,7 +130,7 @@ public class ServerManager : NetworkManager {
 			}
         }else if(data.tag == Network.Tag.Trigger){
             //relay to triggerHandler
-            Debug.Log("Trigger Event from " + con.id);
+            Debug.Log("Trigger Event from " + con.id + " subject" + data.subject );
 
             if(data.subject == Network.Subject.RequestTriggerIDs){
                 TriggerState[] triggerStates = new TriggerState[triggerHandler.triggers.Count];

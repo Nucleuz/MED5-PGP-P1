@@ -3,7 +3,6 @@ using System.Collections;
 
 public class LevelEndedZone : MonoBehaviour {
 
-    [HideInInspector]
     public LevelHandler levelHandler;
 
     void OnTriggerEnter(Collider col){

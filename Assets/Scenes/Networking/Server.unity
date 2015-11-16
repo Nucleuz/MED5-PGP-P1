@@ -124,7 +124,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 491112, guid: 24fb40156af6d49d6a86222d9e13ba1f, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 190560, guid: 24fb40156af6d49d6a86222d9e13ba1f, type: 2}
       propertyPath: m_Name
@@ -188,12 +188,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 464848, guid: 159513c094cc6477fb978d2ac3d96525, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 140228, guid: 159513c094cc6477fb978d2ac3d96525, type: 2}
       propertyPath: m_Name
       value: LevelEndedTriggerZone (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 11417078, guid: 159513c094cc6477fb978d2ac3d96525, type: 2}
+      propertyPath: levelHandler
+      value: 
+      objectReference: {fileID: 1343243757}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 159513c094cc6477fb978d2ac3d96525, type: 2}
   m_IsPrefabParent: 0
@@ -239,12 +243,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 464848, guid: 159513c094cc6477fb978d2ac3d96525, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 140228, guid: 159513c094cc6477fb978d2ac3d96525, type: 2}
       propertyPath: m_Name
       value: LevelEndedTriggerZone (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 11417078, guid: 159513c094cc6477fb978d2ac3d96525, type: 2}
+      propertyPath: levelHandler
+      value: 
+      objectReference: {fileID: 1343243757}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 159513c094cc6477fb978d2ac3d96525, type: 2}
   m_IsPrefabParent: 0
@@ -349,8 +357,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 464848, guid: 159513c094cc6477fb978d2ac3d96525, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 11417078, guid: 159513c094cc6477fb978d2ac3d96525, type: 2}
+      propertyPath: levelHandler
+      value: 
+      objectReference: {fileID: 1343243757}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 159513c094cc6477fb978d2ac3d96525, type: 2}
   m_IsPrefabParent: 0
@@ -391,7 +403,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 491112, guid: 24fb40156af6d49d6a86222d9e13ba1f, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 190560, guid: 24fb40156af6d49d6a86222d9e13ba1f, type: 2}
       propertyPath: m_Name
@@ -455,7 +467,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22488866, guid: 6066244b73435423ead19bc5c058b6f6, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 22488866, guid: 6066244b73435423ead19bc5c058b6f6, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -640,7 +652,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 12
 --- !u!1 &1388316759
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,12 +800,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 464848, guid: 159513c094cc6477fb978d2ac3d96525, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 140228, guid: 159513c094cc6477fb978d2ac3d96525, type: 2}
       propertyPath: m_Name
       value: LevelEndedTriggerZone (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 11417078, guid: 159513c094cc6477fb978d2ac3d96525, type: 2}
+      propertyPath: levelHandler
+      value: 
+      objectReference: {fileID: 1343243757}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 159513c094cc6477fb978d2ac3d96525, type: 2}
   m_IsPrefabParent: 0
@@ -1040,6 +1056,10 @@ Prefab:
       propertyPath: m_Name
       value: LevelEndedTriggerZone (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 11417078, guid: 159513c094cc6477fb978d2ac3d96525, type: 2}
+      propertyPath: levelHandler
+      value: 
+      objectReference: {fileID: 1343243757}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 159513c094cc6477fb978d2ac3d96525, type: 2}
   m_IsPrefabParent: 0
@@ -1080,12 +1100,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 464848, guid: 159513c094cc6477fb978d2ac3d96525, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 140228, guid: 159513c094cc6477fb978d2ac3d96525, type: 2}
       propertyPath: m_Name
       value: LevelEndedTriggerZone (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 11417078, guid: 159513c094cc6477fb978d2ac3d96525, type: 2}
+      propertyPath: levelHandler
+      value: 
+      objectReference: {fileID: 1343243757}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 159513c094cc6477fb978d2ac3d96525, type: 2}
   m_IsPrefabParent: 0
