@@ -11,6 +11,7 @@ GameObject:
   - 65: {fileID: 6571130}
   - 114: {fileID: 11417078}
   - 23: {fileID: 2356692}
+  - 33: {fileID: 3325244}
   m_Layer: 2
   m_Name: LevelEndedTriggerZone
   m_TagString: Untagged
@@ -54,6 +55,13 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!33 &3325244
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 140228}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!65 &6571130
 BoxCollider:
   m_ObjectHideFlags: 1
