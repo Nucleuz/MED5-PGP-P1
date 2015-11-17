@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using DarkRift;
+
 
 public class Mirror : Interactable {
 	[HideInInspector]
@@ -14,8 +16,7 @@ public class Mirror : Interactable {
 	public int turnAmount = 50; // How much it is turning.
     public Interactable objectToTrigger; // The target that the mirror has to hit.
 
-    //public Rail railPoint;
-    private LightShafts LS;
+    private ushort networkID;
 
     [Tooltip("Use empty gameobjects as targets that doesn't need to interact and buttons for targets that needs to interact.")]
     public Transform[] targets;
@@ -25,10 +26,14 @@ public class Mirror : Interactable {
 
     public bool movingForward = true;
     public bool isRotating = false;
-    public bool isBeingLitOn;
+    private Trigger reflectingTrigger;
+
+    private bool playerSet = false; 
 
     //light to reflect 
+    private bool[] playersReflecting = new bool[3];
     private Light reflectedLight;   
+    private LightShafts LS;
 
 	void Start(){
         soundIsPlaying = false;
@@ -36,6 +41,9 @@ public class Mirror : Interactable {
         currentInteractable = 0;
         reflectedLight = GetComponent<Light>();        //Calls the light component on the mirror.
         LS = GetComponent<LightShafts>();
+        reflectingTrigger = GetComponent<Trigger>();
+
+        DarkRiftAPI.onDataDetailed += RecieveData;
     }
     
 	void Update(){
@@ -48,7 +56,6 @@ public class Mirror : Interactable {
                 soundIsPlaying = true;
             }
         }
-
     }
 
     private void rotateMirror() {
@@ -74,77 +81,49 @@ public class Mirror : Interactable {
         StartCoroutine(rotateTowardsTarget(transform.rotation, end, rotateSpeed));                       //Starts the coroutine that moves the mirror
     }
 
+
     public override void OnRayEnter(int playerIndex, Ray ray, RaycastHit hit){
         //player hitting
-
-
-    	//Used for turning on the relfectance of the mirror.
-        isBeingLitOn = true;
-
-    	//Set the color of the reflected light to the correct user.
-        switch (playerIndex){
-            case 1:
-                reflectedLight.color = new Color(0.2F, 0.2F, 1, 1F); //blue
-            break;
-            case 2:
-                reflectedLight.color = new Color(1, 0.2F, 0.2F, 1F); //red
-            break;
-            case 3:
-                reflectedLight.color = new Color(0.2F, 1, 0.2F, 1F); //green
-            break;
-            default:
-                Debug.Log("Invalid playerIndex");
-            break;
-        }   
-
-        if(currentInteractable == correctInteractable){
-                reflectedLight.enabled = true;
-                LS.enabled = true;
-                objectToTrigger.OnRayEnter(playerIndex);
-        } else {
-            reflectedLight.enabled = true;
-            LS.enabled = true;
-        }
-
+        DarkRiftAPI.SendMessageToOthers(Network.Tag.Mirror, Network.Subject.MirrorStarted, new ushort[2] {(ushort)playerIndex,reflectingTrigger.triggerID});
+        OnRayEnter(playerIndex);
     }
 
     public override void OnRayEnter(int playerIndex){
+        Debug.Log("Player received from " + playerIndex);
+
         //reflecting from mirror
+        if(!playerSet && ClientManager.player != null){
+            LS.m_Cameras[0] = ClientManager.player.GetComponent<NetPlayerSync>().cam.GetComponent<Camera>();
+            LS.UpdateCameraDepthMode();
+            playerSet = true;
+        }
 
-        //Used for turning on the relfectance of the mirror.
-        isBeingLitOn = true;
-
-        //Set the color of the reflected light to the correct user.
-        switch (playerIndex){
-            case 1:
-                reflectedLight.color = new Color(0.2F, 0.2F, 1, 1F); //blue
-            break;
-            case 2:
-                reflectedLight.color = new Color(1, 0.2F, 0.2F, 1F); //red
-            break;
-            case 3:
-                reflectedLight.color = new Color(0.2F, 1, 0.2F, 1F); //green
-            break;
-            default:
-                Debug.Log("Invalid playerIndex");
-            break;
-        }   
-
+        playersReflecting[playerIndex - 1] = true;
+        setReflectedColor(playersReflecting);
     
-        Debug.Log("Ray received");
+        reflectedLight.enabled = true;
+        LS.enabled = true;
+
         if(currentInteractable == correctInteractable){
-                reflectedLight.enabled = true;
-                LS.enabled = true;
-                objectToTrigger.OnRayEnter(playerIndex);
-        } else {
-            reflectedLight.enabled = true;
-            LS.enabled = true;
+            objectToTrigger.OnRayEnter(playerIndex);
         }
     }
 
     public override void OnRayExit(int playerIndex){
+
+        DarkRiftAPI.SendMessageToOthers(Network.Tag.Mirror, Network.Subject.MirrorEnded, new ushort[2] {(ushort)playerIndex,reflectingTrigger.triggerID});
+        playersReflecting[playerIndex - 1] = false;
+
+        if(playersReflecting[0] || playersReflecting[1] || playersReflecting[2]){
+            setReflectedColor(new bool[3] {playersReflecting[0],playersReflecting[1],playersReflecting[2] });
+        }else{
             reflectedLight.enabled = false;
             LS.enabled = false;
+        }
+
+        if(currentInteractable == correctInteractable)
+            objectToTrigger.OnRayExit(playerIndex);
+
     }
 
     IEnumerator rotateTowardsTarget(Quaternion start, Quaternion end, float length) {
@@ -164,5 +143,45 @@ public class Mirror : Interactable {
         }
         //trigger.canReset = true;
         trigger.isReadyToBeTriggered = true;
+    }
+
+    public void RecieveData(ushort senderID, byte tag, ushort subject, object data){
+        //check that it is the right sender
+        if(tag == Network.Tag.Mirror){
+            ushort[] indices = (ushort[]) data;
+
+            Debug.Log("mirror rec> " + indices[0] + " tid> " + indices[1]);
+
+            if(indices[1] == reflectingTrigger.triggerID){
+                //check if it wants to update the player
+                if(subject == Network.Subject.MirrorStarted){
+                   OnRayEnter(indices[0]);
+                }if(subject == Network.Subject.MirrorEnded){
+                    OnRayExit(indices[0]);
+                }     
+            }
+        }     
+    }
+
+    public void setReflectedColor(bool[] a){
+        //a[0] = red, a[1] = green, a[2] = blue
+        bool    r = a[1],
+                g = a[2],
+                b = a[0];
+
+        if(r && !g && !b)                    
+            reflectedLight.color = Color.red;                         
+        else if(!r && g && !b)
+            reflectedLight.color = Color.green;
+        else if(!r && !g && b)
+            reflectedLight.color = Color.blue;
+        else if(r && !g && b)
+            reflectedLight.color = Color.magenta;
+        else if(r && g && !b)
+            reflectedLight.color = Color.yellow;
+        else if(!r && g && b)
+            reflectedLight.color = Color.cyan;
+        else if(r && g && b)
+            reflectedLight.color = Color.white;                
     }
 }

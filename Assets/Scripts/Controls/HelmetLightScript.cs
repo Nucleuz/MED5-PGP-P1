@@ -136,10 +136,10 @@ public class HelmetLightScript : MonoBehaviour {
                     interactable.OnRayEnter(playerIndex,ray, hit);
                     lastObjectHit = interactable;
                 }
-            }else if(lastObjectHit != null){
-                lastObjectHit.OnRayExit(playerIndex);
-                lastObjectHit = null;
             }
+        }else if(lastObjectHit != null){
+            lastObjectHit.OnRayExit(playerIndex);
+            lastObjectHit = null;
         }
     }
 }

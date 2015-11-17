@@ -13,6 +13,7 @@ public class Network{
 		public const byte Manager 	= 1;
 		public const byte Player 	= 2;
         public const byte Trigger   = 3;
+        public const byte Mirror    = 4;
 	}
 
     //what is the message about
@@ -47,6 +48,8 @@ public class Network{
 
         public const ushort SequenceFailed       = 15;
 
+        public const ushort MirrorStarted        = 16;
+        public const ushort MirrorEnded          = 17;
 
     }
 }

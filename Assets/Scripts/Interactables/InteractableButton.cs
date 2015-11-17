@@ -36,9 +36,9 @@ public class InteractableButton : Interactable{
 		//Set the color of the interactable button both background light and particles to the correct user.
 		setButtonColor(
 			new bool[3]{
+				trigger.bluePlayerRequired,
 				trigger.redPlayerRequired,
-				trigger.greenPlayerRequired,
-				trigger.bluePlayerRequired
+				trigger.greenPlayerRequired
 				});
 		particleSystem.Play();
 	}
@@ -108,9 +108,22 @@ public class InteractableButton : Interactable{
 
     }
 
+	void PlayPuff(){
+		if (!playedPuff) {
+			particleSystem.Stop();
+			puffSystem.loop = false;
+			puffSystem.Play();
+			playedPuff = true;
+		}
+	}
 	public void setButtonColor(bool[] a){
-		//a[0] = red, a[1] = green, a[2] = blue
-		if(a[0] && !a[1] && !a[2]){						
+
+        bool    r = a[1],
+                g = a[2],
+                b = a[0];
+
+
+		if(r && !g && !b){						
 		buttonLight.color = Color.red;						
 		particleSystem.startColor = Color.red; //Only red player
 			puffSystem.startColor = Color.red;
@@ -118,7 +131,7 @@ public class InteractableButton : Interactable{
 				rend[i].material.color = Color.red;
 		}	
 
-		} else if(!a[0] && a[1] && !a[2]){					//Only green player
+		} else if(!r && g && !b){					//Only green player
 			buttonLight.color = Color.green;
 			particleSystem.startColor = Color.green;
 			puffSystem.startColor = Color.green;
@@ -127,7 +140,7 @@ public class InteractableButton : Interactable{
 
 			}
 
-		} else if(!a[0] && !a[1] && a[2]){					//Only blue player
+		} else if(!r && !g && b){					//Only blue player
 			buttonLight.color = Color.blue;
 			particleSystem.startColor = Color.blue;
 			puffSystem.startColor = Color.blue;
@@ -135,7 +148,7 @@ public class InteractableButton : Interactable{
 				rend[i].material.color = Color.blue;
 			}
 
-		} else if(a[0] && !a[1] && a[2]){					//Red and blue player
+		} else if(r && !g && b){					//Red and blue player
 			buttonLight.color = Color.magenta;
 			particleSystem.startColor = Color.magenta;
 			puffSystem.startColor = Color.magenta;
@@ -143,14 +156,14 @@ public class InteractableButton : Interactable{
 				rend[i].material.color = Color.magenta;
 			}
 
-		} else if(a[0] && a[1] && !a[2]){					//Red and green player
+		} else if(r && g && !b){					//Red and green player
 			buttonLight.color = Color.yellow;
 			particleSystem.startColor = Color.yellow;
 			for(int i = 0; i < rend.Length; i++){
 				rend[i].material.color = Color.yellow;
 			}
 
-		} else if(!a[0] && a[1] && a[2]){					//Green and blue
+		} else if(!r && g && b){					//Green and blue
 			buttonLight.color = Color.cyan;
 			particleSystem.startColor = Color.cyan;
 			puffSystem.startColor = Color.cyan;
@@ -158,22 +171,13 @@ public class InteractableButton : Interactable{
 				rend[i].material.color = Color.cyan;
 			}
 		
-		} else if(a[0] && a[1] && a[2]){					//All players
+		} else if(r && g && b){					//All players
 			buttonLight.color = Color.white;
 			particleSystem.startColor = Color.white; 
 			puffSystem.startColor = Color.white;
 			for(int i = 0; i < rend.Length; i++){
 				rend[i].material.color = Color.white;
 			}       	
-		}
-	}
-	void PlayPuff(){
-		if (!playedPuff) {
-
-			particleSystem.Stop();
-			puffSystem.loop = false;
-			puffSystem.Play();
-			playedPuff = true;
 		}
 	}
 }

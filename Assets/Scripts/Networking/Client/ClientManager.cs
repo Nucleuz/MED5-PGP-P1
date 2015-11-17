@@ -33,7 +33,7 @@ public class ClientManager : NetworkManager
     public GameObject vrPrefab;
 
     [HideInInspector]
-    public Transform player;
+    public static Transform player;
 
     private NetPlayerSync[] otherPlayers = new NetPlayerSync[2];
 
@@ -132,7 +132,6 @@ public class ClientManager : NetworkManager
 
                         // VoiceChat Components
                         g.AddComponent<AudioSource>();
-                        netPlayer.SetVoiceChatPlayer(g.AddComponent<VoiceChatPlayer>());
 
                         netPlayer.networkID = senderID;
                         netPlayer.SetAsReceiver();
