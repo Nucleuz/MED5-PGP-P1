@@ -7,6 +7,7 @@ public class ConnectAfterAnimation : MonoBehaviour {
     private Animator anim;
     float timeStamp;
     public bool isStarted;
+    public float connectAfter;
 
     // Use this for initialization
     void Start () {
@@ -20,7 +21,7 @@ public class ConnectAfterAnimation : MonoBehaviour {
 
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Open") && !isStarted)
         {
-            timeStamp = Time.time + anim.GetCurrentAnimatorStateInfo(0).length;
+            timeStamp = Time.time + connectAfter;
             isStarted = true;
         }
 
