@@ -202,7 +202,6 @@ public class LevelHandler : MonoBehaviour {
     public void OnLevelCompleted(){
         if(levelManagerIndex+1 <= levelContainers.Length){
             levelManagerIndex++;
-            Debug.Log("lmindex is now " + levelManagerIndex);
 
             manager.OnLevelCompleted();
 

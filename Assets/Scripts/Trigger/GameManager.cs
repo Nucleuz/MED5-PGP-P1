@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour {
         try{
             //Checks if the current object is triggered, and if they are ready to be triggered
 						if(LM == null || LM.events.Length == 0){
-							Debug.LogWarning("LM>" + LM + " Events>" + LM.events + " Events Length>" + LM.events.Length);
+//							Debug.LogWarning("LM>" + LM + " Events>" + LM.events + " Events Length>" + LM.events.Length);
 							return;
 						}
 

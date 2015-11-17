@@ -50,6 +50,7 @@ public class ServerManager : NetworkManager {
   		ConnectionService.onData += OnData;
 
       levelTimings = new float[6];
+
 	}
 
   void Update(){
@@ -147,9 +148,9 @@ public class ServerManager : NetworkManager {
 
             }else if(data.subject == Network.Subject.TriggerActivate){
                 data.DecodeData();
-
+                Debug.Log("trigger " + (ushort)data.data + " activated");
                 triggerHandler.TriggerInteracted((ushort)data.data,con.id,true);
-                Debug.Log("trigger " + (ushort)data.data + " activated - state(" + triggerHandler.GetTriggerState((ushort)data.data) + ")");
+                Debug.Log("state(" + triggerHandler.GetTriggerState((ushort)data.data) + ")");
 
                 //force update GameMnager
                 gameManager.DetectTriggerChanges();
@@ -161,9 +162,10 @@ public class ServerManager : NetworkManager {
                 SendToAll(data.tag,Network.Subject.TriggerState,state);
             }else if(data.subject == Network.Subject.TriggerDeactivate){
                 data.DecodeData();
+                Debug.Log("trigger " + (ushort)data.data + " activated");
 
                 triggerHandler.TriggerInteracted((ushort)data.data,con.id,false);
-                Debug.Log("trigger " + (ushort)data.data + " deactivated");
+                Debug.Log("state(" + triggerHandler.GetTriggerState((ushort)data.data) + ")");
 
                 //force update GameMnager
                 gameManager.DetectTriggerChanges();
@@ -196,17 +198,18 @@ public class ServerManager : NetworkManager {
 
     public override void OnLevelCompleted(){
         //When a Level is Completed get the new Level manager, process triggers and give GM the LM
-        Debug.Log("LevelCompleted");
-        levelTimings[levelHandler.levelManagerIndex] = Time.time - levelTimings[levelHandler.levelManagerIndex];
+        Debug.Log("LevelCompleted - levelManagerIndex: " + levelHandler.levelManagerIndex);
+
+        levelTimings[levelHandler.levelManagerIndex - 1] = Time.time - levelTimings[levelHandler.levelManagerIndex - 1];
 
         gameManager.setNewLevelManager(null);
 
-        levelTimings[levelHandler.levelManagerIndex + 1] = Time.time;
         if(levelHandler.levelManagerIndex >= levelHandler.levelContainers.Length){
             Debug.Log("Last level completed");
             saveTime();
             return;
-        }
+        }else if(levelHandler.levelManagerIndex < levelHandler.levelContainers.Length)
+          levelTimings[levelHandler.levelManagerIndex] = Time.time;
 
         LevelContainer lc = levelHandler.levelContainers[levelHandler.levelManagerIndex];
         triggerHandler.process(lc);
