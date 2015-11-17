@@ -97,8 +97,6 @@ public class Mirror : Interactable {
             break;
         }   
 
-    
-        Debug.Log("Ray received");
         if(currentInteractable == correctInteractable){
                 reflectedLight.enabled = true;
                 LS.enabled = true;
