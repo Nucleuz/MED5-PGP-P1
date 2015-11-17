@@ -229,8 +229,10 @@ public class AkInitializer : MonoBehaviour
 
         if (in_errorLevel == ErrorLevel.ErrorLevel_Error)
             Debug.LogError(msg);
-        else
-            Debug.Log(msg);
+        else{
+            //Debug.Log(msg);
+        }
+            
     }
 #endif
 
