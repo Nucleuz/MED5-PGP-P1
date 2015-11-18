@@ -59,11 +59,6 @@ public class NetPlayerSync : MonoBehaviour {
 		if(isSender && DarkRiftAPI.isConnected){
 			SendData();
 		}
-
-		if(headControl != null){
-			headControl.controllerOffsetX = transform.rotation.eulerAngles.x;
-		}
-
 		//add rail rotation compensation for vr
 	}
 	
