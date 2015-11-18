@@ -4,6 +4,9 @@ using System.Collections;
 public class AnimationTrigger : MonoBehaviour {
     Animator anim;
     Trigger trigger;
+
+    public OcclusionPortal portal;
+
 	// Use this for initialization
 	void Start () {
         anim = GetComponent<Animator>();
@@ -14,6 +17,7 @@ public class AnimationTrigger : MonoBehaviour {
 	void Update () {
         if (trigger.isTriggered) {
             TriggerAnimation();
+            portal.open = true;     //FIXME Opens portal to Legion
         }
 	}
 

@@ -78,10 +78,10 @@ public class ElevatorScript : MonoBehaviour {
     {
         Gizmos.color = Color.magenta;                                       //Draws the gizmos magenta
  
-        Gizmos.DrawWireCube(upNode.position, new Vector3(0.5f, 0.5f, 0.5f));  //Draws a cube at each node
-        Gizmos.DrawWireCube(downNode.position, new Vector3(0.5f, 0.5f, 0.5f));  //Draws a cube at each node
+//        Gizmos.DrawWireCube(upNode.position, new Vector3(0.5f, 0.5f, 0.5f));  //Draws a cube at each node
+//        Gizmos.DrawWireCube(downNode.position, new Vector3(0.5f, 0.5f, 0.5f));  //Draws a cube at each node
 
-        Gizmos.DrawLine(upNode.position, downNode.position);              //Draws a line between the cubes in the order that they are visited.
+ //       Gizmos.DrawLine(upNode.position, downNode.position);              //Draws a line between the cubes in the order that they are visited.
         
     }
 }
