@@ -166,6 +166,7 @@ public class NetPlayerSync : MonoBehaviour {
 		headControl.enabled = true;
 		helmet.SetPlayerIndex(networkID);
 		helmet.enabled = true;
+		SetColor();
 	}
 	
 	public void SetAsReceiver(){
@@ -176,6 +177,13 @@ public class NetPlayerSync : MonoBehaviour {
 		headControl.enabled = false;
 		helmet.SetPlayerIndex(networkID);
 		helmet.enabled = false;
+		SetColor();
+	}
+
+	public void SetColor(){
+		for(int i = 0; i < coloredObjects.Length; i++){
+			coloredObjects[i].material = coloredObjectsMaterial[networkID - 1];
+		}
 	}
 
     public void AddCameraToLightShaft(GameObject camera){
