@@ -345,6 +345,7 @@ public class OVRManager : MonoBehaviour
 
 	private void Update()
 	{
+
 		if (!usingPositionTrackingCached || usingPositionTracking != usePositionTracking)
 		{
 			tracker.isEnabled = usePositionTracking;

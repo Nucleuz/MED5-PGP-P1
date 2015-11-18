@@ -14,10 +14,6 @@ public class InteractableButton : Interactable{
     [HideInInspector]
 	public bool playedSound;
 	public bool particlesReplaced = false;
-
-	bool timerRunning = false;
-	float lastInteractionTime = 0;
-	float activatedLength = 2.0f;
 	
 	[HideInInspector]
 	public Trigger trigger;

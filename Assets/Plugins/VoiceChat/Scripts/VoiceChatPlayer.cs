@@ -26,7 +26,6 @@ namespace VoiceChat
 
         [SerializeField]
         [Range(1, 32)]
-        int packetBufferSize = 10;
 
         SortedList<ulong, VoiceChatPacket> packetsToPlay = new SortedList<ulong, VoiceChatPacket>();
 
