@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.VR;
 
 public class Cart : MonoBehaviour {
 
@@ -36,6 +37,10 @@ public class Cart : MonoBehaviour {
     }
 
 	void Update(){
+        if(Input.GetKeyDown(KeyCode.V)){
+            ReSetVRDevice();
+        }
+        
         if(Input.GetKey(KeyCode.LeftShift)){
             float h = Input.GetAxis("Horizontal");
             float v = Input.GetAxis("Vertical");
@@ -63,7 +68,6 @@ public class Cart : MonoBehaviour {
             isMoving = false;
         }
     }
-
 
     void Move(float verticalAxis) {
         // Decide which way rail we are moving towards (Towards Next or Previous rail)
@@ -119,5 +123,8 @@ public class Cart : MonoBehaviour {
     public void ResetPosition() {
         transform.position = startingPosition;
         currentRail = startingRail;
+    }
+    void ReSetVRDevice(){
+        InputTracking.Recenter();
     }
 }
