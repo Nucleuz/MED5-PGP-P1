@@ -149,10 +149,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 476576}
   - 108: {fileID: 10822996}
-  - 120: {fileID: 12002340}
   - 114: {fileID: 11470410}
   - 114: {fileID: 11491730}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spotlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -341,7 +340,7 @@ GameObject:
   - 4: {fileID: 487338}
   - 108: {fileID: 10862366}
   - 114: {fileID: 11481816}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spotlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2037,6 +2036,8 @@ MonoBehaviour:
   currentRail: {fileID: 0}
   movementSpeed: 1
   isMoving: 0
+  startingRail: {fileID: 0}
+  minecartAnimator: {fileID: 0}
 --- !u!114 &11458238
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2096,7 +2097,7 @@ MonoBehaviour:
   m_SpotFar: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294967279
   m_ColorFilterMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -2161,7 +2162,7 @@ MonoBehaviour:
   m_SpotFar: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294967279
   m_ColorFilterMask:
     serializedVersion: 2
     m_Bits: 0
@@ -2206,43 +2207,6 @@ MonoBehaviour:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
---- !u!120 &12002340
-LineRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 117038}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 2100000, guid: c42f5a9831e2d3a4f834c78304e9797f, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
-  m_Parameters:
-    startWidth: 1
-    endWidth: 1
-    m_StartColor:
-      serializedVersion: 2
-      rgba: 4294967295
-    m_EndColor:
-      serializedVersion: 2
-      rgba: 4294967295
-  m_UseWorldSpace: 1
 --- !u!137 &13707738
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

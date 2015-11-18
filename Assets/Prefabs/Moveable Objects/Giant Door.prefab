@@ -84,9 +84,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126072}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -1.62920685e-07}
-  m_LocalPosition: {x: -0, y: -.206412733, z: 46.7700005}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalRotation: {x: -9.03117692e-10, y: .999984622, z: -.00554329669, w: -1.62918184e-07}
+  m_LocalPosition: {x: 0, y: 0, z: 109.599998}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 443488}
   - {fileID: 437258}
@@ -182,8 +182,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 802e8b08d51d9bc43a994bbcc12a2c11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  railConnections: []
+  railConnections:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   isStarted: 0
+  connectAfter: 7
 --- !u!114 &11406768
 MonoBehaviour:
   m_ObjectHideFlags: 1

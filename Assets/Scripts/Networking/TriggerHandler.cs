@@ -13,129 +13,77 @@ using DarkRift;
      * (Singleton)
      */
 
-     
-     public class TriggerHandler : MonoBehaviour{
+ 
+ public class TriggerHandler : MonoBehaviour{
 
-         private static TriggerHandler instance;
+     private static TriggerHandler instance;
+
+    //[HideInInspector]
+     public Trigger[] triggers;
+
+     //Server Specific
+    //[HideInInspector]
+     public ushort[] triggerIDs;
     
-        //[HideInInspector]
-         public List<Trigger> triggers;
+    [HideInInspector]
+     public bool triggersReady = false;
 
-         //Server Specific
-        //[HideInInspector]
-         public List<ushort> triggerIDs;
-        
-        [HideInInspector]
-         public bool triggersReady = false;
+     private ushort triggerIdCount = 1;
 
-         private ushort triggerIdCount = 1;
+     //ref
 
-         //ref
+     private LevelHandler levelHandler;
 
-         private LevelHandler levelHandler;
+    public static TriggerHandler Instance{
+        get{
+            if (instance == null)
+                instance = FindObjectOfType(typeof(TriggerHandler)) as TriggerHandler;
+            return instance;
+        }
+    }
 
-        public static TriggerHandler Instance{
-            get{
-                if (instance == null)
-                    instance = FindObjectOfType(typeof(TriggerHandler)) as TriggerHandler;
-                return instance;
+     void Start(){
+         levelHandler = GetComponent<LevelHandler>();
+         if(!NetworkManager.isServer)
+             DarkRiftAPI.onDataDetailed += ReceiveData;
+         
+     }
+      
+    public void ReceiveData(ushort senderID, byte tag, ushort subject, object data){
+
+        if(tag == Network.Tag.Trigger){
+            switch(subject){
+                case Network.Subject.ServerSentTriggerIDs:
+                {
+
+                    Debug.Log("trigger id's received");
+                    triggers = levelHandler.levelContainers[levelHandler.levelManagerIndex].triggers;
+
+                    TriggerState[] triggerStates = (TriggerState[])data;
+                    triggerIDs = new ushort[triggers.Length];
+
+                    for(int i = 0;i<triggerStates.Length;i++){
+                        triggers[i].SetState(triggerStates[i]);
+                        triggerIDs[i] = triggerStates[i].id;
+                    }
+                }
+                break;
+                case Network.Subject.TriggerState:
+                {
+                    Debug.Log("Received> " + (TriggerState)data);
+                    SetTriggerState((TriggerState)data);
+                }
+                break;
+                case Network.Subject.SequenceFailed:
+                {
+                    ReceiveSequenceFail obj = levelHandler.getLevelManager().sequenceFail;
+                    if(obj != null){
+                        obj.OnReceive();
+                    }
+                }
+                break;
             }
         }
-
-         void Start(){
-             triggers = new List<Trigger>();
-             triggerIDs = new List<ushort>();
-
-             levelHandler = GetComponent<LevelHandler>();
-             if(!NetworkManager.isServer)
-                 DarkRiftAPI.onDataDetailed += ReceiveData;
-             
-         }
-
-
-         public void process(LevelContainer levelContainer){
-             //get all triggers in the levelcontainer
-             triggersReady = false;
-
-             purgeTriggers();
-             //@TODO check perf and mem of checkChild method -- should maybe put it in a coroutine
-             checkChild(levelContainer.transform);
-
-             levelContainer.triggersProcessed = true;
-
-             //when completed if server call clients and tell level to load
-             //if client when completed call server and ask for list of ids
-             if(NetworkManager.isServer){
-                 triggersReady = true;
-                  
-             }else{
-                DarkRiftAPI.SendMessageToServer(
-                        Network.Tag.Trigger,
-                        Network.Subject.RequestTriggerIDs,
-                        true
-                        );
-             }
-         }
-
-         private void checkChild(Transform child){
-
-             if(child.GetComponent<Trigger>() != null)
-                 Assign(child.GetComponent<Trigger>());
-             else if(child.GetComponent<LevelEndedZone>() != null)
-                 child.GetComponent<LevelEndedZone>().levelHandler = levelHandler;
-
-
-             foreach(Transform c in child.transform)
-                 checkChild(c);
-
-         }
-
-
-
-         //Assign trigger id, add to dictionary and return the id used.
-         public void Assign(Trigger trigger){
-             if(NetworkManager.isServer){
-                 ushort id = triggerIdCount++;
-                 trigger.triggerID = id;
-                 triggers.Add(trigger);
-                 triggerIDs.Add(id);
-             }else
-                 triggers.Add(trigger);
-         }
-
-         public void purgeTriggers(){
-             triggers.Clear();
-             triggerIDs.Clear();
-
-         }
-          
-        public void ReceiveData(ushort senderID, byte tag, ushort subject, object data){
-
-            if(tag == Network.Tag.Trigger){
-                switch(subject){
-                    case Network.Subject.ServerSentTriggerIDs:
-                    {
-
-                        Debug.Log("trigger id's received");
-                        
-                        TriggerState[] triggerStates = (TriggerState[])data;
-                        if(triggerStates.Length == triggers.Count){
-                            for(int i = 0;i<triggerStates.Length;i++){
-                                triggers[i].SetState(triggerStates[i]);
-                                triggerIDs.Add(triggerStates[i].id);
-                            }
-                        }else
-                            Debug.LogError("Received triggerstates server has : " + triggerStates.Length + " triggers, local has : " + triggers.Count + " triggers - Scenes might be different");
-                    }
-                    break;
-                    case Network.Subject.TriggerState:
-                    {
-                        Debug.Log("Received> " + (TriggerState)data);
-                        SetTriggerState((TriggerState)data);
-                    }
-                    break;
-                }
-            }
     }
 
     public void SetTriggerState(TriggerState state){
@@ -174,7 +122,7 @@ using DarkRift;
     }
 
     private int FindTriggerIndexFromID(ushort id){
-        for(int i = 0;i<triggerIDs.Count;i++){
+        for(int i = 0;i<triggerIDs.Length;i++){
             if(triggerIDs[i] == id)return i;
         }
 

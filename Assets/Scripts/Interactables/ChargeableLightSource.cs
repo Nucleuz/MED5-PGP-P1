@@ -130,10 +130,13 @@ public class ChargeableLightSource : Interactable {
         }
 
 	}
-    public override void OnRayEnter(int playerIndex, Ray ray, RaycastHit hit){
-		this.playerIndex = playerIndex;
+    public override void OnRayEnter(int playerIndex){
+        this.playerIndex = playerIndex;
         endInteractTime = Time.time + minInteractLength;
 
+    }
+    public override void OnRayEnter(int playerIndex, Ray ray, RaycastHit hit){
+		OnRayEnter(playerIndex);
 	}
     
 

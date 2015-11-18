@@ -8,12 +8,16 @@ public class InteractableButton : Interactable{
 	Light buttonLight;
 	
 	[HideInInspector]
-	public ParticleSystem par;
-	public ParticleSystem placeHolder; //needs better name!? anyone!
+	public ParticleSystem particleSystem;
+	public ParticleSystem puffSystem;
     
     [HideInInspector]
 	public bool playedSound;
-	public bool particlesReplaced = false;
+	public bool playedPuff = false;
+
+	bool timerRunning = false;
+	float lastInteractionTime = 0;
+	float activatedLength = 2.0f;
 	
 	[HideInInspector]
 	public Trigger trigger;
@@ -27,16 +31,16 @@ public class InteractableButton : Interactable{
 		buttonAnimator 	= GetComponent<Animator>();
 		buttonLight 	= GetComponent<Light>();
 		trigger 		= GetComponent<Trigger>();
-		par 			= GetComponent<ParticleSystem>();
+		particleSystem 			= GetComponent<ParticleSystem>();
 		////Was moved here since the sM made it not work!
 		//Set the color of the interactable button both background light and particles to the correct user.
 		setButtonColor(
 			new bool[3]{
+				trigger.bluePlayerRequired,
 				trigger.redPlayerRequired,
-				trigger.greenPlayerRequired,
-				trigger.bluePlayerRequired
+				trigger.greenPlayerRequired
 				});
-		par.Play();
+		particleSystem.Play();
 	}
 	
 	// Update is called once per frame
@@ -44,9 +48,12 @@ public class InteractableButton : Interactable{
 		if(trigger.isTriggered){
 			buttonAnimator.SetBool("isActivated", true); 	//starts the animation of the button.
 											//starts the particles system.
-			ReplaceParticles();
+			PlayPuff();
 		} else {
 			buttonAnimator.SetBool("isActivated", false); 	//stops the animation of the button.
+			if(trigger.isReadyToBeTriggered){
+				playedPuff = false;
+			}
 
 		}
 
@@ -57,8 +64,8 @@ public class InteractableButton : Interactable{
 		}
 	}
 
-	public override void OnRayEnter(int playerIndex, Ray ray, RaycastHit hit){
-		if (trigger.isReadyToBeTriggered){
+    public override void OnRayEnter(int playerIndex){
+    	if (trigger.isReadyToBeTriggered){
 			if(trigger.playersRequired){
 				if(playerIndex == 1 && trigger.bluePlayerRequired ||
                 	playerIndex == 2 && trigger.redPlayerRequired ||
@@ -79,6 +86,10 @@ public class InteractableButton : Interactable{
 				}
 			}			
 		}
+    }    
+
+	public override void OnRayEnter(int playerIndex, Ray ray, RaycastHit hit){
+		OnRayEnter(playerIndex);
 	}
 
 
@@ -97,72 +108,76 @@ public class InteractableButton : Interactable{
 
     }
 
+	void PlayPuff(){
+		if (!playedPuff) {
+			particleSystem.Stop();
+			puffSystem.loop = false;
+			puffSystem.Play();
+			playedPuff = true;
+		}
+	}
 	public void setButtonColor(bool[] a){
-		//a[0] = red, a[1] = green, a[2] = blue
-		if(a[0] && !a[1] && !a[2]){						
+
+        bool    r = a[1],
+                g = a[2],
+                b = a[0];
+
+
+		if(r && !g && !b){						
 		buttonLight.color = Color.red;						
-		par.startColor = Color.red; //Only red player
-			placeHolder.startColor = Color.red;
+		particleSystem.startColor = Color.red; //Only red player
+			puffSystem.startColor = Color.red;
 		for(int i = 0; i < rend.Length; i++){
 				rend[i].material.color = Color.red;
 		}	
 
-		} else if(!a[0] && a[1] && !a[2]){					//Only green player
+		} else if(!r && g && !b){					//Only green player
 			buttonLight.color = Color.green;
-			par.startColor = Color.green;
-			placeHolder.startColor = Color.green;
+			particleSystem.startColor = Color.green;
+			puffSystem.startColor = Color.green;
 			for(int i = 0; i < rend.Length; i++){
 				rend[i].material.color = Color.green;
 
 			}
 
-		} else if(!a[0] && !a[1] && a[2]){					//Only blue player
+		} else if(!r && !g && b){					//Only blue player
 			buttonLight.color = Color.blue;
-			par.startColor = Color.blue;
-			placeHolder.startColor = Color.blue;
+			particleSystem.startColor = Color.blue;
+			puffSystem.startColor = Color.blue;
 			for(int i = 0; i < rend.Length; i++){
 				rend[i].material.color = Color.blue;
 			}
 
-		} else if(a[0] && !a[1] && a[2]){					//Red and blue player
+		} else if(r && !g && b){					//Red and blue player
 			buttonLight.color = Color.magenta;
-			par.startColor = Color.magenta;
-			placeHolder.startColor = Color.magenta;
+			particleSystem.startColor = Color.magenta;
+			puffSystem.startColor = Color.magenta;
 			for(int i = 0; i < rend.Length; i++){
 				rend[i].material.color = Color.magenta;
 			}
 
-		} else if(a[0] && a[1] && !a[2]){					//Red and green player
+		} else if(r && g && !b){					//Red and green player
 			buttonLight.color = Color.yellow;
-			par.startColor = Color.yellow;
+			particleSystem.startColor = Color.yellow;
 			for(int i = 0; i < rend.Length; i++){
 				rend[i].material.color = Color.yellow;
 			}
 
-		} else if(!a[0] && a[1] && a[2]){					//Green and blue
+		} else if(!r && g && b){					//Green and blue
 			buttonLight.color = Color.cyan;
-			par.startColor = Color.cyan;
-			placeHolder.startColor = Color.cyan;
+			particleSystem.startColor = Color.cyan;
+			puffSystem.startColor = Color.cyan;
 			for(int i = 0; i < rend.Length; i++){
 				rend[i].material.color = Color.cyan;
 			}
 		
-		} else if(a[0] && a[1] && a[2]){					//All players
+		} else if(r && g && b){					//All players
 			buttonLight.color = Color.white;
-			par.startColor = Color.white; 
-			placeHolder.startColor = Color.white;
+			particleSystem.startColor = Color.white; 
+			puffSystem.startColor = Color.white;
 			for(int i = 0; i < rend.Length; i++){
 				rend[i].material.color = Color.white;
 			}       	
-		}
-	}
-	void ReplaceParticles(){
-		if (!particlesReplaced) {
-
-			par.Stop();
-			placeHolder.loop = false;
-			placeHolder.Play();
-			particlesReplaced = true;
 		}
 	}
 }

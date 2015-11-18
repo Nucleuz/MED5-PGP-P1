@@ -28,11 +28,12 @@ public class ClientManager : NetworkManager
 
     //prefab for the players
     public bool useVR = false;
+    public GameObject otherPrefab;
     public GameObject nvrPrefab;
     public GameObject vrPrefab;
 
     [HideInInspector]
-    public Transform player;
+    public static Transform player;
 
     private NetPlayerSync[] otherPlayers = new NetPlayerSync[2];
 
@@ -41,14 +42,15 @@ public class ClientManager : NetworkManager
     [HideInInspector]
     public TriggerHandler triggerHandler;
 
-    private int serverLevelIndex = -1;
+    private int serverLevelIndex = 0;
 
     void Start()
     {
         levelHandler = GetComponent<LevelHandler>();
         triggerHandler = GetComponent<TriggerHandler>();
 
-        ConnectToServer(this.IP);
+        if(this.IP != "")
+            ConnectToServer(this.IP);
     }
 
     public void ConnectToServer(string ip) {
@@ -100,25 +102,18 @@ public class ClientManager : NetworkManager
                         //When the server has loaded a level
 
                         serverLevelIndex = (int)data;
+                        levelHandler.levelManagerIndex = serverLevelIndex;
                         Console.Instance.AddMessage("Server is at level " + serverLevelIndex);
 
-                        //load the previous, current and next level if available(serverLevelIndex >/< x) and not already loaded(levelcontainer == null)
-                        //previous level
-                        if(serverLevelIndex > 0 && levelHandler.levelContainers[serverLevelIndex - 1] == null)
-                            levelHandler.loadLevel(serverLevelIndex - 1);
-                        //current level
-                        if(levelHandler.levelContainers[serverLevelIndex] == null)
-                            levelHandler.loadLevel(serverLevelIndex);
-                        //next level
-                        if(serverLevelIndex < levelHandler.levelOrder.Length - 1 && levelHandler.levelContainers[serverLevelIndex + 1] == null)
-                            levelHandler.loadLevel(serverLevelIndex + 1);
-
-
+                        SpawnPlayer();
                         //if the level is already loaded process it's triggers
-                        if(levelHandler.levelContainers[serverLevelIndex] != null){
-                            triggerHandler.process(levelHandler.levelContainers[serverLevelIndex]);
-                            OnLevelCompleted();
-                        }
+                        player.GetComponent<Cart>().SetStartingRail(levelHandler.levelContainers[serverLevelIndex].levelManager.levelStartRail[networkID - 1]);
+
+                          DarkRiftAPI.SendMessageToServer(
+                                Network.Tag.Trigger,
+                                Network.Subject.RequestTriggerIDs,
+                                true
+                            );
 
                     }
                     break;
@@ -130,14 +125,13 @@ public class ClientManager : NetworkManager
                         //unpack data
 
                         //spawn the object
-                        GameObject g = Instantiate(nvrPrefab,Deserializer.Vector3((byte[])data) , Quaternion.identity) as GameObject;
+                        GameObject g = Instantiate(otherPrefab,Deserializer.Vector3((byte[])data) , Quaternion.identity) as GameObject;
 
                         //set the network id so it will sync with the player
                         NetPlayerSync netPlayer = g.GetComponent<NetPlayerSync>();
 
                         // VoiceChat Components
                         g.AddComponent<AudioSource>();
-                        netPlayer.SetVoiceChatPlayer(g.AddComponent<VoiceChatPlayer>());
 
                         netPlayer.networkID = senderID;
                         netPlayer.SetAsReceiver();
@@ -147,8 +141,10 @@ public class ClientManager : NetworkManager
                         else
                             otherPlayers[1] = netPlayer;
 
-                        if(player != null)
+                        if(player != null){
                             netPlayer.AddCameraToLightShaft(player.GetComponent<NetPlayerSync>().cam);
+                        }
+                        netPlayer.cart.InitAsReceiver();
 
                     }
                     break;
@@ -165,27 +161,23 @@ public class ClientManager : NetworkManager
                     }
                     break;
            }
+            
         }
     }
 
     public override void OnLevelCompleted(){
-        player.GetComponent<Cart>().SetStartingRail(levelHandler.levelContainers[serverLevelIndex].levelManager.levelStartRail[networkID - 1]);
     }
 
 
     public override void OnLevelLoaded(int levelIndex)
     {
 
-        Console.Instance.AddMessage("Level " + levelIndex + " (" + levelHandler.levelOrder[levelIndex] + ") Loaded");
-
         //try to spawn the player
         SpawnPlayer();
 
         //if level that is loaded is the level that the server is on currently process it's triggers
 
-        if(serverLevelIndex == levelIndex)
-            triggerHandler.process(levelHandler.levelContainers[levelIndex]);
-
+       
     }
 
     private void SpawnPlayer(){
@@ -210,22 +202,16 @@ public class ClientManager : NetworkManager
 
         for(int i = 0;i<otherPlayers.Length;i++){
             Console.Instance.AddMessage("other player: " + otherPlayers[i]);
-            if(otherPlayers[i] != null)
+            if(otherPlayers[i] != null){
                otherPlayers[i].AddCameraToLightShaft(netPlayer.cam);
+            }
         }
 
-
-/*
-        VoiceChatRecorder.Instance.NetworkId = networkID;
-        VoiceChatRecorder.Instance.Device = VoiceChatRecorder.Instance.AvailableDevices[0];
-        VoiceChatRecorder.Instance.StartRecording();
-        VoiceChatRecorder.Instance.NewSample += netPlayer.OnNewSample;
-*/
         //place the player on the correct rail!
 
         Console.Instance.AddMessage("levelManager: " + levelHandler.getLevelManager());
         Rail startRail = levelHandler.getLevelManager().levelStartRail[networkID - 1];
-        netPlayer.cart.Init(startRail);
+        netPlayer.cart.InitAsSender(startRail);
         Console.Instance.AddMessage("startrail: " + startRail.transform.position);
 
 

@@ -2,7 +2,6 @@
 using System.Collections;
 using VoiceChat;
 using VoiceChat.Networking;
-using VoiceChat.Networking.Legacy;
 
 public class MicrophoneSender : MonoBehaviour {
 	private VoiceChatRecorder recorder;

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using DarkRift;
-using VoiceChat;
 
 /*
 By KasperHdL and Jalict
@@ -9,8 +9,6 @@ By KasperHdL and Jalict
 Syncs, toggles between being send only or receive only
 
 */
-using System.Collections.Generic;
-using VoiceChat.Networking;
 
 public class NetPlayerSync : MonoBehaviour {
 	
@@ -21,7 +19,6 @@ public class NetPlayerSync : MonoBehaviour {
 	//Reference to components that needs to be turn on and off when switching from sender to receiver
 	public GameObject cam;
 	public HeadControl headControl;
-	private VoiceChatPlayer player;
 	
 	public HelmetLightScript helmet;
 
@@ -92,12 +89,6 @@ public class NetPlayerSync : MonoBehaviour {
 
 	}
 	
-	// Called once there is a new packet/sample ready
-	public void OnNewSample (VoiceChatPacket packet)
-	{
-		DarkRiftAPI.SendMessageToOthers (Network.Tag.Player, Network.Subject.VoiceChat, VoiceChatUtils.Serialise(packet));	// Send the packet to all other players
-	}
-	
 	void RecieveData(ushort senderID, byte tag, ushort subject, object data){
 		
 		//check that it is the right sender
@@ -144,12 +135,6 @@ public class NetPlayerSync : MonoBehaviour {
                     StartCoroutine(cartRoutine);
 				}
 				break;
-				case Network.Subject.VoiceChat:
-				{
-					VoiceChatPacket packet = VoiceChatUtils.Deserialise((byte[])data);
-					player.OnNewSample(packet); // Queue package to the VoiceChatPlayer
-				}
-				break;
 				case Network.Subject.PlayerFocus:
 				{
 					StopAllCoroutines();
@@ -191,11 +176,6 @@ public class NetPlayerSync : MonoBehaviour {
 		helmet.enabled = false;
 	}
 
-    public void SetVoiceChatPlayer(VoiceChatPlayer player)
-    {
-        this.player = player;
-    }
-
     public void AddCameraToLightShaft(GameObject camera){
 		nonFocusedLightShaft.m_Cameras[0] = camera.GetComponent<Camera>();
 		focusedLightShaft.m_Cameras[0] = camera.GetComponent<Camera>();
@@ -236,13 +216,23 @@ public class NetPlayerSync : MonoBehaviour {
     	float startTime = Time.time;
     	Vector3 startPosition = transform.position;
 
+    	Vector3 lastFrame;
+        cart.minecartAnimator.StartPlayback();
+
     	float t = 0f;
     	while(t < 1f){
     		t = (Time.time - startTime)/interpolationLength;
+            lastFrame = transform.position;
     		transform.position = Vector3.Lerp(startPosition,newPosition,t);
+// (transform.position - lastFrame).magnitude
+            cart.minecartAnimator.speed = 1;
+
     		yield return null;
     	}
     	lastPositionTime = Time.time;
+    	cart.minecartAnimator.speed = 0;
+        cart.minecartAnimator.StopPlayback();
+
     	//transform.position = newPosition;
     }
     IEnumerator InterpolateRotation(Quaternion newRotation, float interpolationLength){

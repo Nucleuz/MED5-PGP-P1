@@ -46,11 +46,13 @@ public class SoundCrystal : Interactable
             }
         }
     }
-
-    public override void OnRayEnter(int playerIndex, Ray ray, RaycastHit hit){
+    public override void OnRayEnter(int playerIndex){
         if(!sequenceIsPlaying){
             trigger.Activate();
         }
+    }
+    public override void OnRayEnter(int playerIndex, Ray ray, RaycastHit hit){
+        OnRayEnter(playerIndex);
 	}
 
     public override void OnRayExit(int playerIndex){
