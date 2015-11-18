@@ -112,6 +112,10 @@ public class Mirror : Interactable {
     public override void OnRayExit(int playerIndex){
 
         DarkRiftAPI.SendMessageToOthers(Network.Tag.Mirror, Network.Subject.MirrorEnded, new ushort[2] {(ushort)playerIndex,reflectingTrigger.triggerID});
+        StopReflecting(playerIndex);
+    }
+
+    private void StopReflecting(int playerIndex){
         playersReflecting[playerIndex - 1] = false;
 
         if(playersReflecting[0] || playersReflecting[1] || playersReflecting[2]){
@@ -123,7 +127,6 @@ public class Mirror : Interactable {
 
         if(currentInteractable == correctInteractable)
             objectToTrigger.OnRayExit(playerIndex);
-
     }
 
     IEnumerator rotateTowardsTarget(Quaternion start, Quaternion end, float length) {
@@ -148,16 +151,18 @@ public class Mirror : Interactable {
     public void RecieveData(ushort senderID, byte tag, ushort subject, object data){
         //check that it is the right sender
         if(tag == Network.Tag.Mirror){
+            //The first in this array is the playerIndex, the second is triggerID of the mirrors trigger
             ushort[] indices = (ushort[]) data;
 
-            Debug.Log("mirror rec> " + indices[0] + " tid> " + indices[1]);
 
             if(indices[1] == reflectingTrigger.triggerID){
                 //check if it wants to update the player
                 if(subject == Network.Subject.MirrorStarted){
+                    Debug.Log("mirrorstart rec> " + indices[0] + " tid> " + indices[1]);
                    OnRayEnter(indices[0]);
                 }if(subject == Network.Subject.MirrorEnded){
-                    OnRayExit(indices[0]);
+                    StopReflecting(indices[0]);
+                    Debug.Log("mirrorEnded rec> " + indices[0] + " tid> " + indices[1]);
                 }     
             }
         }     
