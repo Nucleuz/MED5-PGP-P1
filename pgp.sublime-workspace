@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"Railway",
+				"RailwayBlockerMove"
+			],
+			[
+				"KeyCode",
+				"KeyCode.D	[property]"
+			],
+			[
+				"Application",
+				"Application.isEditor	[property]"
+			],
+			[
 				"fogMode",
 				"fogMode	RenderSettings.*"
 			],
@@ -280,10 +292,6 @@
 				"lastValueOfBoard"
 			],
 			[
-				"KeyCode",
-				"KeyCode.LeftAlt	[property]"
-			],
-			[
 				"keyCode",
 				"keyCode.LeftControl	[property]"
 			],
@@ -472,27 +480,51 @@
 	"buffers":
 	[
 		{
-			"file": "Assets/Shaders/Lava_Flowing_Shader/Scripts/ScrollingUVs_Layers.cs",
+			"file": "Assets/Scripts/Interactables/Barricade.cs",
 			"settings":
 			{
-				"buffer_size": 485,
+				"buffer_size": 3034,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Interactables/ElevatorScript.cs",
+			"settings":
+			{
+				"buffer_size": 4934,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/Scripts/ScrollingUVs_Layers.cs",
+			"settings":
+			{
+				"buffer_size": 779,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/screenshot.cs",
+			"settings":
+			{
+				"buffer_size": 1338,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "Assets/Shaders/Lava_Flowing_Shader/Shaders/Unlit_Lava_Distort.shader",
+			"file": "Assets/Scripts/Controls/Cart.cs",
 			"settings":
 			{
-				"buffer_size": 1633,
-				"line_ending": "Unix"
+				"buffer_size": 4342,
+				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "Assets/Shaders/ColoredUnlitTransparent.shader",
+			"file": "Assets/Scripts/Controls/HelmetLightScript.cs",
 			"settings":
 			{
-				"buffer_size": 433,
-				"line_ending": "Unix"
+				"buffer_size": 5470,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -503,16 +535,24 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 289.0,
-		"last_filter": "unit",
+		"height": 400.0,
+		"last_filter": "u",
 		"selected_items":
 		[
+			[
+				"u",
+				"Set Syntax: Unity Shader"
+			],
 			[
 				"unit",
 				"Set Syntax: Unity Shader"
 			],
 			[
 				"unity",
+				"Set Syntax: Unity Shader"
+			],
+			[
+				"uni",
 				"Set Syntax: Unity Shader"
 			],
 			[
@@ -537,10 +577,6 @@
 			],
 			[
 				"unity c",
-				"Set Syntax: Unity C#"
-			],
-			[
-				"uni",
 				"Set Syntax: Unity C#"
 			],
 			[
@@ -594,14 +630,35 @@
 	],
 	"file_history":
 	[
+		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/screenshot.cs",
+		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Shaders/ReflectiveSurface.shader",
+		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Temp/Compiled-Standard.shader",
+		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Shaders/Unlit_Lava_Distort.shader",
+		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/Interactables/ElevatorScript.cs",
+		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/Interactables/Barricade.cs",
+		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Waterfall.cs",
+		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/Vine.cs",
+		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/SOUND_RailwayBlockerCrystal.cs",
+		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/Sound/SOUND_AnimationKeyComp.cs",
+		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/AMB_RunningWater.cs",
+		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/AMB_Lava.cs",
+		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/AMB_Louder_Lava.cs",
+		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/Interactables/LightFade.cs",
+		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/Interactables/SoundCrystal.cs",
+		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Shaders/ColoredUnlitTransparent.shader",
+		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Shaders/Lava_Flowing_Shader/Scripts/ScrollingUVs_Layers.cs",
+		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Temp/Compiled-Particle Alpha Blend.shader",
+		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Shaders/Lava_Flowing_Shader/Shaders/Unlit_Lava_Distort.shader",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Temp/Compiled-Unlit-Alpha.shader",
+		"/C/Users/itai.yavin/AppData/Local/Temp/Rar$DIa0.562/Xray.shader",
+		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/Rails/Rail.cs",
+		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/CeilingFogLayers.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/Controls/HelmetLightScript.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Standard Assets/Effects/ImageEffects/Shaders/GlobalFog.shader",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Standard Assets/Effects/ImageEffects/Scripts/GlobalFog.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Shaders/Glow.shader",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/Controls/HeadControl.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/Interactables/Mirror.cs",
-		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/Interactables/Barricade.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/Sound/Ambience/AMB_Waterfall.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/Sound/Ambience/AMB_Lava.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/Sound/Ambience/SOUND_CarCrystal.cs",
@@ -610,19 +667,15 @@
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Shaders/DoF.shader",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Wwise/Deployment/API/Generated/Windows/AkSoundEngine_Windows.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/Trigger/GameManager.cs",
-		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/Interactables/ElevatorScript.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/Sound/SOUND_GiantDoor.cs",
-		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/Interactables/SoundCrystal.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/SOUND_Vines.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Wwise/Deployment/Components/AkInitializer.cs",
-		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/Sound/SOUND_AnimationKeyComp.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/SoundManager.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/Controls/Cart.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/LightBeam/LightShafts.Resources.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/SOUND_CarCrystal.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Wwise/Deployment/Components/AkGameObj.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/pgp.sublime-project",
-		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/Rails/Rail.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/Sound/SOUND_LegHit.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1/Assets/Scripts/Sound/Ambience/AmbientSound.cs",
 		"/C/Users/itai.yavin/Documents/DiffuseTexture/Assets/Phong.shader",
@@ -704,24 +757,7 @@
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1.git/Assets/Scripts/Mirror.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1.git/Assets/Scripts/Utilities.cs",
 		"/C/Users/itai.yavin/Documents/MED5-PGP-P1.git/Assets/Scripts/RailHandler.cs",
-		"/C/Users/itai.yavin/Documents/MED5-PGP-P1.git/Assets/Scripts/RailScript.cs",
-		"/C/Users/itai.yavin/Documents/PerlinFun/Assets/Scripts/BoxHandler.cs",
-		"/C/Users/itai.yavin/Documents/MonkeyShader/Assets/Diffuse.shader",
-		"/C/Users/itai.yavin/AppData/Roaming/Sublime Text 3/Packages/User/Package Control.sublime-settings",
-		"/C/Users/itai.yavin/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
-		"/C/Users/itai.yavin/Documents/PerlinFun/Assets/boxHandler.cs",
-		"/C/Users/itai.yavin/Desktop/SpawnEnemyCopy.cs",
-		"/C/Users/itai.yavin/Desktop/EnemyAIScriptOLD.cs",
-		"/C/Users/itai.yavin/Documents/P4/Assets/Scripts/BodyCreator.cs",
-		"/C/Users/itai.yavin/Documents/P4/Assets/Scripts/Body.cs",
-		"/C/Users/itai.yavin/Documents/P4/Assets/Scripts/UI/UIController.cs",
-		"/C/Users/itai.yavin/Documents/P4/Assets/Scripts/GravitySystem.cs",
-		"/C/Users/itai.yavin/Documents/P4/Assets/Scripts/CameraMovement.cs",
-		"/C/Users/itai.yavin/Documents/P4/Assets/Scripts/Spawner.cs",
-		"/C/Users/itai.yavin/Documents/P4/Assets/Scripts/Reset.cs",
-		"/C/Users/itai.yavin/Documents/P4/Assets/Scripts/Settings.cs",
-		"/C/Users/itai.yavin/Documents/P4/Assets/Scripts/UI/InformationHandler.cs",
-		"/C/Users/itai.yavin/Documents/P4/Assets/Scripts/UI/PlanetSwitcher.cs"
+		"/C/Users/itai.yavin/Documents/MED5-PGP-P1.git/Assets/Scripts/RailScript.cs"
 	],
 	"find":
 	{
@@ -737,9 +773,38 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": true,
+		"case_sensitive": false,
 		"find_history":
 		[
+			"resHeight",
+			"resWidth",
+			"soundIsPlaying",
+			"Wrong",
+			"wrong",
+			"SoundManager",
+			"LocalScale",
+			"gameObject",
+			"y",
+			"originalWidth",
+			"originalAlpha",
+			"0",
+			"widthFades",
+			"localScale",
+			"0",
+			"originalAlpha",
+			"originalFade",
+			"localScale",
+			"pE",
+			"_LavaTex",
+			"vertex",
+			"_MainTex",
+			"Tags",
+			"tag",
+			"render_mode",
+			"render mode",
+			"transparent",
+			"_Color",
+			"public",
 			"_MainTex",
 			"_Distort",
 			"_LavaTe",
@@ -838,36 +903,7 @@
 			"refreshDelay",
 			"timeDelay",
 			"addedPlayerID",
-			"receivedPlayerID",
-			"delta",
-			"tr",
-			"changeDirection",
-			"NextRail",
-			"value",
-			"isCharging",
-			"lR",
-			"helmetLightFocused",
-			"mirHit",
-			"hit",
-			"hit.point",
-			"createRailPoint",
-			"[i]",
-			"i",
-			"railSegment",
-			"-2].",
-			"GameObject",
-			".pos",
-			"output",
-			"outPut",
-			"x",
-			"perlinNoise",
-			"perlinPrefab",
-			"boxPrefab",
-			"Renderer",
-			"Material.",
-			"i.j",
-			".",
-			"perlinPrefab[i,j].transform.localScale.z"
+			"receivedPlayerID"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -879,30 +915,115 @@
 		"reverse": false,
 		"show_context": true,
 		"use_buffer2": true,
-		"whole_word": true,
+		"whole_word": false,
 		"wrap": true
 	},
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 5,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "Assets/Shaders/Lava_Flowing_Shader/Scripts/ScrollingUVs_Layers.cs",
+					"file": "Assets/Scripts/Interactables/Barricade.cs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 485,
+						"buffer_size": 3034,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								95,
-								95
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage"
+						},
+						"translation.x": -0.0,
+						"translation.y": 965.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Assets/Scripts/Interactables/ElevatorScript.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4934,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3334,
+								3334
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 700.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Assets/Scripts/ScrollingUVs_Layers.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 779,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								596,
+								596
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 60.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "Assets/screenshot.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1338,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1332,
+								1332
 							]
 						],
 						"settings":
@@ -917,58 +1038,58 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "Assets/Shaders/Lava_Flowing_Shader/Shaders/Unlit_Lava_Distort.shader",
+					"buffer": 4,
+					"file": "Assets/Scripts/Controls/Cart.cs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1633,
+						"buffer_size": 4342,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								459,
-								459
+								1811,
+								1811
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Unity3D Shader Highlighter and Snippets/UnityShader.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 666.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "Assets/Shaders/ColoredUnlitTransparent.shader",
+					"buffer": 5,
+					"file": "Assets/Scripts/Controls/HelmetLightScript.cs",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 433,
+						"buffer_size": 5470,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								260,
-								260
+								2563,
+								2574
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Unity3D Shader Highlighter and Snippets/UnityShader.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 1.0,
-						"translation.y": 0.0,
+						"translation.x": 0.0,
+						"translation.y": 623.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
