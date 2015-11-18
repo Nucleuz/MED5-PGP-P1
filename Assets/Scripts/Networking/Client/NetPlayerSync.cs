@@ -26,6 +26,8 @@ public class NetPlayerSync : MonoBehaviour {
 	public LightShafts focusedLightShaft;
 
 	public Cart cart;
+	public Renderer[] coloredObjects;
+	public Material[] coloredObjectsMaterial;
 	
 	//reference to reduce when it sends data to everyone else
 	private Quaternion lastRotation;
