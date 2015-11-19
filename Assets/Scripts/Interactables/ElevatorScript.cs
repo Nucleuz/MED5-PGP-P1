@@ -42,8 +42,8 @@ public class ElevatorScript : MonoBehaviour {
         Vector3 startPos = transform.position;
         Vector3 endPos = (goingUp ? upNode.position:downNode.position);
 
-        railConnector.connectToNext = false;
-        railConnector.connectToPrev = false;
+        railConnector.DisconnectNext;
+        railConnector.DisconnectPrev;
 
         if(!soundIsPlaying){
             SoundManager.Instance.PlayEvent("Elevator_Active", gameObject);
@@ -65,9 +65,9 @@ public class ElevatorScript : MonoBehaviour {
         }
 
         if(goingUp)
-            railConnector.connectToNext = true;
+            railConnector.ConnectToNext();
         else
-            railConnector.connectToPrev = true;
+            railConnector.ConnectToPrev();
 
         goingUp = !goingUp;
         isActivated = false;
