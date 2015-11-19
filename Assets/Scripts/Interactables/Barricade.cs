@@ -24,6 +24,7 @@ public class Barricade : MonoBehaviour {
 	void Start () {
 		if(!trigger.isTriggered && !isFirstBarricade){
 			transform.position = downNode.transform.position;
+            isOpened = true;
 		}
 
         isPlaying = false;
