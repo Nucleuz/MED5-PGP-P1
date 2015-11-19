@@ -20,6 +20,12 @@ public class HeadControl : MonoBehaviour {
 	private float turnSpeed = 80.0f;
 	public bool controllerConnected = false;
 
+	float controllerRotX = 0;
+	float controllerRotY = 0;
+
+	public float cartOffsetRotX;
+	public float cartOffsetRotY;
+
 	public Camera cam;
 
 	// Update is called once per frame
@@ -36,14 +42,12 @@ public class HeadControl : MonoBehaviour {
 
 		//Controller code. Gets its input via the Unity input manager
 		else if(controllerConnected) {
-			if(transform.eulerAngles.x <= 50.01f || transform.eulerAngles.x > 279.99f) {
-				transform.Rotate(Vector3.up, Input.GetAxis("ViewX") * turnSpeed * Time.deltaTime, Space.World);
-				transform.Rotate(Vector3.right, Input.GetAxis("ViewY") * turnSpeed * Time.deltaTime, Space.Self);
-			} else if(transform.eulerAngles.x > 50 && transform.eulerAngles.x < 100) {
-				transform.rotation = Quaternion.Euler(50, transform.eulerAngles.y, transform.eulerAngles.z);
-			} else if(transform.eulerAngles.x < 280 && transform.eulerAngles.x > 200){
-				transform.rotation = Quaternion.Euler(280, transform.eulerAngles.y, transform.eulerAngles.z);
-		}
+			controllerRotX += (Input.GetAxis("ViewY") * turnSpeed * Time.deltaTime);
+			controllerRotY += (Input.GetAxis("ViewX") * turnSpeed * Time.deltaTime);
+
+			controllerRotX = Mathf.Clamp(controllerRotX,-90,90);
+
+			transform.rotation = Quaternion.Euler(controllerRotX + cartOffsetRotX,controllerRotY + cartOffsetRotY,0);
 		} 
 
 		if(Input.GetKeyDown("c")){

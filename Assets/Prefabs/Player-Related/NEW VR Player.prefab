@@ -696,7 +696,7 @@ GameObject:
   - 114: {fileID: 11407278}
   - 114: {fileID: 11452368}
   m_Layer: 0
-  m_Name: New VR Player
+  m_Name: NEW VR Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2215,7 +2215,6 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
-  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -2694,6 +2693,7 @@ MonoBehaviour:
   nonFocusedLightShaft: {fileID: 11409020}
   focusedLightShaft: {fileID: 11478738}
   cart: {fileID: 11452368}
+  coloredObjects: []
   networkID: 0
 --- !u!114 &11409020
 MonoBehaviour:

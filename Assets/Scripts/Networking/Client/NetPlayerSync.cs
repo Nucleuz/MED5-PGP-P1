@@ -26,6 +26,8 @@ public class NetPlayerSync : MonoBehaviour {
 	public LightShafts focusedLightShaft;
 
 	public Cart cart;
+	public Renderer[] coloredObjects;
+	public Material[] coloredObjectsMaterial;
 	
 	//reference to reduce when it sends data to everyone else
 	private Quaternion lastRotation;
@@ -57,6 +59,8 @@ public class NetPlayerSync : MonoBehaviour {
 		if(isSender && DarkRiftAPI.isConnected){
 			SendData();
 		}
+		//add rail rotation compensation for vr
+		headControl.cartOffsetRotY = transform.rotation.eulerAngles.y;
 	}
 	
 	void SendData(){
@@ -164,6 +168,7 @@ public class NetPlayerSync : MonoBehaviour {
 		headControl.enabled = true;
 		helmet.SetPlayerIndex(networkID);
 		helmet.enabled = true;
+		SetColor();
 	}
 	
 	public void SetAsReceiver(){
@@ -174,6 +179,13 @@ public class NetPlayerSync : MonoBehaviour {
 		headControl.enabled = false;
 		helmet.SetPlayerIndex(networkID);
 		helmet.enabled = false;
+		SetColor();
+	}
+
+	public void SetColor(){
+		for(int i = 0; i < coloredObjects.Length; i++){
+			coloredObjects[i].material = coloredObjectsMaterial[networkID - 1];
+		}
 	}
 
     public void AddCameraToLightShaft(GameObject camera){
