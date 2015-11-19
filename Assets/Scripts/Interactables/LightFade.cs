@@ -43,6 +43,7 @@ public class LightFade : ReceiveSequenceFail {
 */
         if(isFailed && Sc.sequenceIsPlaying == false){
             myLight.color = new Color(1, 0.2f, 0.6f, 1F); //red
+            SoundManager.Instance.PlayEvent("SP_Wrong", gameObject);
             if(myLight.intensity > 0){
                 myLight.intensity -= 0.1F * (Time.deltaTime*4);
             } else if(myLight.intensity <= 0){
