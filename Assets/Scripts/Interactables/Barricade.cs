@@ -32,7 +32,7 @@ public class Barricade : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(animationRunning) return;
-		if(!isFirstBarricade && !trigger.isTriggered && previousBarricadeHandler.isTriggered && !currentBarricadeHandler.isTriggered){
+		if(!isFirstBarricade && !trigger.isTriggered && previousBarricadeHandler.isTriggered && !currentBarricadeHandler.isTriggered && isOpened){
 			StartCoroutine(GoToUpState());
 		}
 		
