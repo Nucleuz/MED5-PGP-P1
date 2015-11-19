@@ -1076,7 +1076,7 @@ Transform:
   m_GameObject: {fileID: 134094}
   m_LocalRotation: {x: 0, y: -.999995708, z: 0, w: .0029394927}
   m_LocalPosition: {x: -.0199999996, y: 1.60381484, z: -.559000015}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 415010}
   - {fileID: 446858}
@@ -1761,8 +1761,6 @@ MonoBehaviour:
   nRail: {fileID: 0}
   pRail: {fileID: 0}
   self: {fileID: 11496686}
-  connectToNext: 0
-  connectToPrev: 0
 --- !u!198 &19870476
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -3927,7 +3925,19 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 189580}

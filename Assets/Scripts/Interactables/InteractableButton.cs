@@ -40,7 +40,7 @@ public class InteractableButton : Interactable{
 				trigger.redPlayerRequired,
 				trigger.greenPlayerRequired
 				});
-		particleSystem.Play();
+		//particleSystem.Play();
 	}
 	
 	// Update is called once per frame
@@ -53,6 +53,7 @@ public class InteractableButton : Interactable{
 			buttonAnimator.SetBool("isActivated", false); 	//stops the animation of the button.
 			if(trigger.isReadyToBeTriggered){
 				playedPuff = false;
+				particleSystem.Stop();
 			}
 
 		}
@@ -110,7 +111,7 @@ public class InteractableButton : Interactable{
 
 	void PlayPuff(){
 		if (!playedPuff) {
-			particleSystem.Stop();
+			particleSystem.Play();
 			puffSystem.loop = false;
 			puffSystem.Play();
 			playedPuff = true;
