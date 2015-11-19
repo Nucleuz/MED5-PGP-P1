@@ -71,8 +71,8 @@ public class Barricade : MonoBehaviour {
             isPlaying = false;
         }
 
-        rC.connectToNext = false;
-        rC.connectToPrev = false;
+        rC.DisconnectNext();
+        rC.DisconnectPrev();
 	}
 
 
@@ -104,8 +104,8 @@ public class Barricade : MonoBehaviour {
             isPlaying = false;
         }
 
-        rC.connectToNext = true;
-        rC.connectToPrev = true;
+        rC.ConnectToNext();
+        rC.ConnectToPrev();
 	}
 
 

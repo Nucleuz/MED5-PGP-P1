@@ -28,10 +28,10 @@ public class ConnectAfterAnimation : MonoBehaviour {
         if (Time.time > timeStamp && isStarted)
         {
             for(int i = 0;i<railConnections.Length;i++){
-                railConnections[i].connectToNext = true;
+                railConnections[i].ConnectToNext();
             }
             for(int i = 0;i<railConnections.Length;i++){
-                railConnections[i].connectToPrev = true;
+                railConnections[i].ConnectToPrev();
             }
         }
     }
