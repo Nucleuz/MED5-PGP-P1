@@ -18,7 +18,8 @@ public class LightFade : ReceiveSequenceFail {
     private float targetIntensity = 1f;
     private float currentIntensity; 
 
-    private bool isFailed = false;   
+    private bool isFailed = false;
+    private bool hasPlayed = false;   
      
      
     void Start(){
@@ -43,11 +44,15 @@ public class LightFade : ReceiveSequenceFail {
 */
         if(isFailed && Sc.sequenceIsPlaying == false){
             myLight.color = new Color(1, 0.2f, 0.6f, 1F); //red
-            SoundManager.Instance.PlayEvent("SP_Wrong", gameObject);
+            if(!hasPlayed){
+                SoundManager.Instance.PlayEvent("SP_Wrong", gameObject);
+                hasPlayed = true;
+            }
             if(myLight.intensity > 0){
                 myLight.intensity -= 0.1F * (Time.deltaTime*4);
             } else if(myLight.intensity <= 0){
                 isFailed = false;
+                hasPlayed = false;;
             }
         }
 
