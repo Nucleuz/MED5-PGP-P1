@@ -56,15 +56,27 @@ using DarkRift;
                 case Network.Subject.ServerSentTriggerIDs:
                 {
 
-                    Debug.Log("trigger id's received");
+                    Debug.Log("trigger IDs received");
                     triggers = levelHandler.levelContainers[levelHandler.levelManagerIndex].triggers;
 
                     TriggerState[] triggerStates = (TriggerState[])data;
                     triggerIDs = new ushort[triggers.Length];
 
                     for(int i = 0;i<triggerStates.Length;i++){
-                        triggers[i].SetState(triggerStates[i]);
-                        triggerIDs[i] = triggerStates[i].id;
+                        triggers[i].SetTriggerState(triggerStates[i]);
+                    }
+                }
+                break;
+                case Network.Subject.ServerSentTriggerStates:
+                {
+
+                    Debug.Log("trigger states received");
+                    triggers = levelHandler.levelContainers[levelHandler.levelManagerIndex].triggers;
+
+                    TriggerState[] triggerStates = (TriggerState[])data;
+
+                    for(int i = 0;i<triggerStates.Length;i++){
+                        triggers[i].SetTriggerState(triggerStates[i]);
                     }
                 }
                 break;
@@ -88,7 +100,7 @@ using DarkRift;
 
     public void SetTriggerState(TriggerState state){
         int index = FindTriggerIndexFromID(state.id);  
-        triggers[index].SetState(state);
+        triggers[index].SetTriggerState(state);
     }
 
     public TriggerState GetTriggerState(ushort triggerID){

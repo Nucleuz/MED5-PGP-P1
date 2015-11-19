@@ -50,29 +50,25 @@ public class Mirror : Interactable {
 		//The mirror will reflect only when the player is lighting on the mirror.
 		
         if (trigger != null && trigger.isTriggered && !isRotating) {
-            rotateMirror();
+            RotateToNext();
             if(!soundIsPlaying){
                 SoundManager.Instance.PlayEvent("Mirror_Turning_Active", gameObject);
                 soundIsPlaying = true;
             }
         }
+
+        if(!trigger.isTriggered && currentInteractable != trigger.state){
+            currentInteractable = trigger.state;
+            RotateToCurrent();
+        }
     }
 
-    private void rotateMirror() {
-        //Checks if the script is moving up the index or down
-        if (movingForward)
-            currentInteractable++;
-        else
-            currentInteractable--;
+    private void RotateToNext(){
+        currentInteractable = (currentInteractable +1) % targets.Length;
+        RotateToCurrent();
+    }
 
-        if (currentInteractable < 0) {
-            currentInteractable = 1;
-            movingForward = true;
-        } else if (currentInteractable >= targets.Length) {
-            currentInteractable = targets.Length - 2;
-            movingForward = false;
-        }
-
+    private void RotateToCurrent() {
         //Calculates the angle between the target gameobjects and the mirror
         Vector3 targetDir = targets[currentInteractable].transform.position - transform.position;
         float rotationalAngle = Vector3.Angle(targetDir, transform.forward);

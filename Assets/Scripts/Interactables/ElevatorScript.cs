@@ -6,18 +6,18 @@ public class ElevatorScript : MonoBehaviour {
     public bool soundIsPlaying;
 
     [HideInInspector]
-    public RailConnection railConnector;  
-    [HideInInspector]                                            //railConnector = railConnection
-    public Rail railPoint;                                                         //railPoint = railPoint
+    public RailConnection railConnector;     //railConnector = railConnection
+    [HideInInspector]                                            
+    public Rail railPoint;                   //railPoint = railPoint
     public Trigger trigger;
 
-    public bool isActivated = false;                                        //Check to see if the object has been activated
+    public bool isActivated = false;         //Check to see if the object has been activated
     public bool goingUp;
 
-    public Transform upNode;                                               //Array of transform objects that holds the positions the elevator will visit
-    public Transform downNode;                                               //Array of transform objects that holds the positions the elevator will visit
+    public Transform upNode;                 //Array of transform objects that holds the positions the elevator will visit
+    public Transform downNode;               //Array of transform objects that holds the positions the elevator will visit
 
-    public float animationLength;                                      //holds the amount of time the lerp has been running
+    public float animationLength;            //holds the amount of time the lerp has been running
  
 	// Use this for initialization
 	void Start () {
@@ -25,13 +25,16 @@ public class ElevatorScript : MonoBehaviour {
 
         railConnector = GetComponent<RailConnection>();
         railPoint = GetComponent<Rail>();
-                                                                          //Sets the visited nodes to zero
+                                            //Sets the visited nodes to zero
 	}
 	
 	// Update is called once per frame
 	void Update () {
         if(trigger.isTriggered && !isActivated){
             StartCoroutine(lerpToPoint());
+        }
+        if((goingUp && trigger.state == 0) || (!goingUp && trigger.state == 1)){
+            lerpToPoint();
         }
 	}
 
@@ -51,7 +54,7 @@ public class ElevatorScript : MonoBehaviour {
         }
         
         float t = 0;
-        while(t<1f){
+        while(t < 1f){
             t = (Time.time - startTime) / animationLength;                   //Calculates the final speed of the object.
             float smoothstepFactor = t * t * (3 - 2 * t);
             //Moves the elevator from it's current position to the next active node

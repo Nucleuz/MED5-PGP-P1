@@ -40,6 +40,7 @@ public class Network{
         public const ushort TriggerState         = 9;
 
         public const ushort ServerSentTriggerIDs = 10;
+        public const ushort ServerSentTriggerStates = 18;
         public const ushort RequestTriggerIDs    = 11;
 
         public const ushort VoiceChat            = 12;

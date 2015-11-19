@@ -26,7 +26,6 @@ public class Barricade : MonoBehaviour {
 			transform.position = downNode.transform.position;
             isOpened = true;
 		}
-
         isPlaying = false;
 	}
 	

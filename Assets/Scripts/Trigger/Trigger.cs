@@ -4,6 +4,8 @@ using DarkRift;
 
 public class Trigger : MonoBehaviour {
 
+    public sbyte state = 0;
+
     //@TODO [HideInInspector] 
     public bool isTriggered = false;
     public bool isReadyToBeTriggered = false;
@@ -57,11 +59,12 @@ public class Trigger : MonoBehaviour {
         Console.Instance.AddMessage("Trigger " + triggerID + " Deactivated");
     }
 
-    public void SetState(TriggerState state){
-        triggerID = state.id;
-        isTriggered = state.isTriggered;
-        isReadyToBeTriggered = state.isReadyToBeTriggered;
-        canReset = state.canReset;
+    public void SetTriggerState(TriggerState triggerState){
+        triggerID               = triggerState.id;
+        state                   = triggerState.state;
+        isTriggered             = triggerState.isTriggered;
+        isReadyToBeTriggered    = triggerState.isReadyToBeTriggered;
+        canReset                = triggerState.canReset;
     }
 
     public void SetTriggerID(ushort id){
