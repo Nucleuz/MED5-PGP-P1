@@ -34,6 +34,10 @@ public class ServerManager : NetworkManager {
 
     private string currentDate;
 
+    public bool updatingStates = true;
+    public float stateUpdateInterval;
+
+
 	void Start () {
 
 
@@ -50,6 +54,8 @@ public class ServerManager : NetworkManager {
   		ConnectionService.onData += OnData;
 
       levelTimings = new float[6];
+
+      StartCoroutine(updateState());
 
 	}
 
@@ -186,6 +192,24 @@ public class ServerManager : NetworkManager {
 
     }
 
+    IEnumerator updateState(){
+      while(updatingStates){
+        TriggerState[] triggerStates = new TriggerState[triggerHandler.triggers.Count];
+        //populate
+
+        for(int i = 0;i<triggerHandler.triggers.Count;i++){
+            triggerStates[i] = new TriggerState(triggerHandler.triggers[i]);
+        }
+
+        SendToAll(
+                Network.Tag.Trigger,
+                Network.Subject.ServerSentTriggerStates,
+                triggerStates);
+
+        yield return new WaitForSeconds(stateUpdateInterval);
+      }
+    }
+
     public void TriggerChanged(Trigger trigger){
 
         TriggerState state = new TriggerState(trigger);
@@ -279,4 +303,7 @@ public class ServerManager : NetworkManager {
         file.WriteLine(times);
         file.Close();
     }
+
+
+
 }

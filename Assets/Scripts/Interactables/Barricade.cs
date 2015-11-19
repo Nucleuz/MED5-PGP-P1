@@ -22,22 +22,23 @@ public class Barricade : MonoBehaviour {
 	void Start () {
 		if(!trigger.isTriggered && !isFirstBarricade){
 			transform.position = downNode.transform.position;
+      isOpened = true;
 		}
-	}
-	
+  }
+
 	// Update is called once per frame
 	void Update () {
 		if(animationRunning) return;
 		if(!isFirstBarricade && !trigger.isTriggered && previousBarricadeHandler.isTriggered && !currentBarricadeHandler.isTriggered){
 			StartCoroutine(GoToUpState());
 		}
-		
+
 		if(animationRunning) return;
 		if(currentBarricadeHandler.isTriggered && !isOpened){
-            trigger.isTriggered = true;
-            StartCoroutine(GoToDownState());
-        }
-	}
+      trigger.isTriggered = true;
+      StartCoroutine(GoToDownState());
+    }
+  }
 
 	IEnumerator GoToUpState(){
 		animationRunning = true;
@@ -45,7 +46,7 @@ public class Barricade : MonoBehaviour {
 		float startTime = Time.time;
     	Vector3 startPosition = transform.position;
     	Vector3 endPosition = upNode.position;
-    	
+
     	float t = 0f;
     	while(t < 1f){
     		t = (Time.time - startTime)/animationLength;
@@ -67,7 +68,7 @@ public class Barricade : MonoBehaviour {
 		float startTime = Time.time;
     	Vector3 startPosition = transform.position;
     	Vector3 endPosition = downNode.position;
-    	
+
     	float t = 0f;
     	while(t < 1f){
     		t = (Time.time - startTime)/animationLength;

@@ -8,7 +8,7 @@ public class Mirror : Interactable {
 
 	public GameObject triggeredPlayer;
 	public Trigger trigger;
-	public float startPoint; 
+	public float startPoint;
 	public float endPoint = 300; // Set this value to the rotation needed to complete the puzzle.
 	public float rotateSpeed = 0.5f;
 	public int turnAmount = 50; // How much it is turning.
@@ -20,66 +20,50 @@ public class Mirror : Interactable {
     [Tooltip("Use empty gameobjects as targets that doesn't need to interact and buttons for targets that needs to interact.")]
     public Transform[] targets;
 
-    public int buttonNumber;
+    public int currentInteractable;
 
     public bool movingForward = true;
     public bool isRotating = false;
     public bool isBeingLitOn;
 
-    //light to reflect 
-    private Light reflectedLight;   
+    //light to reflect
+    private Light reflectedLight;
 
 	void Start(){
-        soundIsPlaying = false;
-		startPoint = transform.eulerAngles.y; // starPoint is the mirrors rotation at the start.
-        buttonNumber = 0;
-        reflectedLight = GetComponent<Light>();        //Calls the light component on the mirror.
-        LS = GetComponent<LightShafts>();
-    }
-    
+      soundIsPlaying = false;
+			startPoint = transform.eulerAngles.y; // starPoint is the mirrors rotation at the start.
+      currentInteractable = 0;
+      reflectedLight = GetComponent<Light>();        //Calls the light component on the mirror.
+      LS = GetComponent<LightShafts>();
+  }
+
 	void Update(){
 		//The mirror will reflect only when the player is lighting on the mirror.
-		if(isBeingLitOn == true){
-			reflectedLight.enabled = true;
-			LS.enabled = true;
-		} else if(isBeingLitOn == false){
-			reflectedLight.enabled = false;
-			LS.enabled = false;
-		} 
 
-		if(isBeingLitOn == true){
-			isBeingLitOn = false;
-		}
-		
-		
-        if (trigger != null && trigger.isTriggered && !isRotating) {
-            rotateMirror();
-            if(!soundIsPlaying){
-                //SoundManager.Instance.PlayEvent("Mirror_Turning_Active", gameObject);
-                soundIsPlaying = true;
-            }
+
+    if (trigger != null && trigger.isTriggered && !isRotating) {
+        RotateToNext();
+        if(!soundIsPlaying){
+            //SoundManager.Instance.PlayEvent("Mirror_Turning_Active", gameObject);
+            soundIsPlaying = true;
         }
-
     }
 
-    private void rotateMirror() {
+		if(!trigger.isTriggered && currentInteractable != trigger.state){
+			currentInteractable = trigger.state;
+			RotateToCurrent();
+		}
 
-        //Checks if the script is moving up the index or down
-        if (movingForward)
-            buttonNumber++;
-        else
-            buttonNumber--;
 
-        if (buttonNumber < 0) {
-            buttonNumber = 1;
-            movingForward = true;
-        } else if (buttonNumber >= targets.Length) {
-            buttonNumber = targets.Length - 2;
-            movingForward = false;
-        }
+  }
 
+		private void RotateToNext(){
+			currentInteractable = (currentInteractable + 1) % targets.Length;
+			RotateToCurrent();
+		}
+    private void RotateToCurrent() {
         //Calculates the angle between the target gameobjects and the mirror
-        Vector3 targetDir = targets[buttonNumber].transform.position - transform.position;
+        Vector3 targetDir = targets[currentInteractable].transform.position - transform.position;
         float rotationalAngle = Vector3.Angle(targetDir, transform.forward);
 
         Quaternion end = Quaternion.LookRotation(targetDir, transform.up);                      //End position for the mirror to rotate to
@@ -104,8 +88,8 @@ public class Mirror : Interactable {
             default:
                 Debug.Log("Invalid playerIndex");
             break;
-        }   
-    
+        }
+
         Ray newRay = new Ray(hit.point, ButtonToTrigger.transform.position - transform.position);
         RaycastHit rayhit;
 
@@ -116,7 +100,7 @@ public class Mirror : Interactable {
             if (Physics.Raycast(newRay, out rayhit)) {
             	//turn on the light off the mirror.
             	//reflectedLight.enabled = true;
-              
+
                 Interactable interactable = rayhit.transform.GetComponent<Interactable>();
                 if (interactable != null) {
                     //@Optimize - The mirror is the only one who the ray, hit, lineRenderer, and count

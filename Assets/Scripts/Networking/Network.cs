@@ -12,7 +12,7 @@ public class Network{
 	public class Tag{
 		public const byte Manager 	= 1;
 		public const byte Player 	= 2;
-        public const byte Trigger   = 3;
+    public const byte Trigger   = 3;
 	}
 
     //what is the message about
@@ -24,12 +24,12 @@ public class Network{
         //NetworkManager
         public const ushort RequestServerLevel   = 0;
         public const ushort NewLevelManager      = 1;
-		public const ushort ServerSentNetID      = 2;
+				public const ushort ServerSentNetID      = 2;
 
         //Player Specific
-		public const ushort HasJoined            = 3;
-		public const ushort SpawnPlayer          = 4;
-		public const ushort PlayerPositionUpdate = 5;
+				public const ushort HasJoined            = 3;
+				public const ushort SpawnPlayer          = 4;
+				public const ushort PlayerPositionUpdate = 5;
         public const ushort PlayerRotationUpdate = 6;
         public const ushort PlayerCartUpdate     = 14;
 
@@ -40,6 +40,7 @@ public class Network{
 
         public const ushort ServerSentTriggerIDs = 10;
         public const ushort RequestTriggerIDs    = 11;
+				public const ushort ServerSentTriggerStates = 18;
 
         public const ushort VoiceChat            = 12;
 

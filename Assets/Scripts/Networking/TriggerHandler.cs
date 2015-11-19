@@ -30,6 +30,7 @@ using DarkRift;
 
          private LevelHandler levelHandler;
 
+
         public static TriggerHandler Instance{
             get{
                 if (instance == null)
@@ -120,7 +121,7 @@ using DarkRift;
                         TriggerState[] triggerStates = (TriggerState[])data;
                         if(triggerStates.Length == triggers.Count){
                             for(int i = 0;i<triggerStates.Length;i++){
-                                triggers[i].SetState(triggerStates[i]);
+                                triggers[i].SetTriggerState(triggerStates[i]);
                                 triggerIDs.Add(triggerStates[i].id);
                                 Debug.Log(triggerStates[i].id);
                             }
@@ -139,7 +140,7 @@ using DarkRift;
 
     public void SetTriggerState(TriggerState state){
         int index = FindTriggerIndexFromID(state.id);
-        triggers[index].SetState(state);
+        triggers[index].SetTriggerState(state);
     }
 
     public TriggerState GetTriggerState(ushort triggerID){
