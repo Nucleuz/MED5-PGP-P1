@@ -26,8 +26,18 @@
 				<Event Id="3823482786" Name="Ambience_WaterDrops1"/>
 				<Event Id="3823482785" Name="Ambience_WaterDrops2"/>
 				<Event Id="1973289021" Name="ButtonOnOff"/>
+				<Event Id="3425521569" Name="CarCrystal"/>
+				<Event Id="480657863" Name="CarLegHit1"/>
+				<Event Id="1666923066" Name="CarRings"/>
 				<Event Id="4083559728" Name="ChannelingButtonOnOff"/>
-				<Event Id="2264822489" Name="DoorSlide1"/>
+				<Event Id="3230905820" Name="DoorSlideStart"/>
+				<Event Id="1108313776" Name="DoorSlideStop"/>
+				<Event Id="2761191377" Name="Headlamp_Focus_Active"/>
+				<Event Id="1471623179" Name="Headlamp_Focus_Stop" MaxAttenuation="0.000000"/>
+				<Event Id="296982171" Name="Mirror_Turning_Active"/>
+				<Event Id="1401356413" Name="Mirror_Turning_Stop"/>
+				<Event Id="3328847735" Name="RailwayBlockerMove"/>
+				<Event Id="2104256950" Name="RiverRunning"/>
 				<Event Id="1389759676" Name="SP_EmittingCrystal"/>
 				<Event Id="1067329105" Name="SP_PlayerButton1"/>
 				<Event Id="1067329106" Name="SP_PlayerButton2"/>
@@ -35,11 +45,27 @@
 				<Event Id="1067329108" Name="SP_PlayerButton4"/>
 				<Event Id="1067329109" Name="SP_PlayerButton5"/>
 				<Event Id="1067329110" Name="SP_PlayerButton6"/>
+				<Event Id="4059778220" Name="WaterfallHuge"/>
+				<Event Id="2402090994" Name="WaterfallLarge"/>
+				<Event Id="4287948414" Name="WaterfallSmall"/>
+				<Event Id="366552496" Name="Wrong"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
 				<File Id="625245" Language="SFX">
 					<ShortName>Mojo04 (1).wav</ShortName>
 					<Path>SFX\Mojo04 (1)_4B8CC0C5.wem</Path>
+				</File>
+				<File Id="1537082" Language="SFX">
+					<ShortName>BlockerImpact01.wav</ShortName>
+					<Path>SFX\BlockerImpact01_9E69E797.wem</Path>
+				</File>
+				<File Id="1790046" Language="SFX">
+					<ShortName>StartUp.wav</ShortName>
+					<Path>SFX\StartUp_9E69E797.wem</Path>
+				</File>
+				<File Id="46169572" Language="SFX">
+					<ShortName>HandPoweredDrill(looped).wav</ShortName>
+					<Path>SFX\HandPoweredDrill(looped)_9E69E797.wem</Path>
 				</File>
 				<File Id="51361253" Language="SFX">
 					<ShortName>GentleWaterDrops02.wav</ShortName>
@@ -61,10 +87,6 @@
 					<ShortName>Emitting301.wav</ShortName>
 					<Path>SFX\Emitting301_9E69E797.wem</Path>
 				</File>
-				<File Id="150787738" Language="SFX">
-					<ShortName>GiantBoulderImpactEdit02.wav</ShortName>
-					<Path>SFX\GiantBoulderImpactEdit02_9E69E797.wem</Path>
-				</File>
 				<File Id="171052429" Language="SFX">
 					<ShortName>Rumble02.wav</ShortName>
 					<Path>SFX\Rumble02_9E69E797.wem</Path>
@@ -73,13 +95,25 @@
 					<ShortName>Cave Ambience03.wav</ShortName>
 					<Path>SFX\Cave Ambience03_9E69E797.wem</Path>
 				</File>
+				<File Id="190139503" Language="SFX">
+					<ShortName>DoorClose.wav</ShortName>
+					<Path>SFX\DoorClose_9E69E797.wem</Path>
+				</File>
 				<File Id="204065441" Language="SFX">
 					<ShortName>IndoorPebbles02.wav</ShortName>
 					<Path>SFX\IndoorPebbles02_9E69E797.wem</Path>
 				</File>
-				<File Id="213929639" Language="SFX">
-					<ShortName>RumbleForDoor.wav</ShortName>
-					<Path>SFX\RumbleForDoor_9E69E797.wem</Path>
+				<File Id="224227694" Language="SFX">
+					<ShortName>Chain2.wav</ShortName>
+					<Path>SFX\Chain2_9E69E797.wem</Path>
+				</File>
+				<File Id="238285289" Language="SFX">
+					<ShortName>Click02.wav</ShortName>
+					<Path>SFX\Click02_9E69E797.wem</Path>
+				</File>
+				<File Id="303978757" Language="SFX">
+					<ShortName>DoorSlideLoop.wav</ShortName>
+					<Path>SFX\DoorSlideLoop_236CB72C.wem</Path>
 				</File>
 				<File Id="335342100" Language="SFX">
 					<ShortName>Steam01.wav</ShortName>
@@ -91,7 +125,7 @@
 				</File>
 				<File Id="347106548" Language="SFX">
 					<ShortName>PlayerCrystal303.wav</ShortName>
-					<Path>SFX\PlayerCrystal303_9E69E797.wem</Path>
+					<Path>SFX\PlayerCrystal303_8B922877.wem</Path>
 				</File>
 				<File Id="351955681" Language="SFX">
 					<ShortName>IndoorPebbles05.wav</ShortName>
@@ -101,17 +135,33 @@
 					<ShortName>SwitchRealOff02.wav</ShortName>
 					<Path>SFX\SwitchRealOff02_9E69E797.wem</Path>
 				</File>
+				<File Id="374094042" Language="SFX">
+					<ShortName>LegHit02.wav</ShortName>
+					<Path>SFX\LegHit02_9E69E797.wem</Path>
+				</File>
 				<File Id="378898815" Language="SFX">
 					<ShortName>Waterfall01.wav</ShortName>
 					<Path>SFX\Waterfall01_9E69E797.wem</Path>
 				</File>
-				<File Id="407031214" Language="SFX">
-					<ShortName>BoulderSlideEdit02.wav</ShortName>
-					<Path>SFX\BoulderSlideEdit02_9E69E797.wem</Path>
+				<File Id="400527701" Language="SFX">
+					<ShortName>Waterfall07.wav</ShortName>
+					<Path>SFX\Waterfall07_9E69E797.wem</Path>
+				</File>
+				<File Id="417635021" Language="SFX">
+					<ShortName>ElectricityBox(intro½sec).wav</ShortName>
+					<Path>SFX\ElectricityBox(intro½sec)_9E69E797.wem</Path>
+				</File>
+				<File Id="449140603" Language="SFX">
+					<ShortName>CartMojoLoop.wav</ShortName>
+					<Path>SFX\CartMojoLoop_4B8CC0C5.wem</Path>
 				</File>
 				<File Id="452530934" Language="SFX">
 					<ShortName>WaterDrop01.wav</ShortName>
 					<Path>SFX\WaterDrop01_9E69E797.wem</Path>
+				</File>
+				<File Id="478387182" Language="SFX">
+					<ShortName>Chain3.wav</ShortName>
+					<Path>SFX\Chain3_9E69E797.wem</Path>
 				</File>
 				<File Id="486361134" Language="SFX">
 					<ShortName>IndoorPebbles01.wav</ShortName>
@@ -121,25 +171,49 @@
 					<ShortName>WaterDrop02.wav</ShortName>
 					<Path>SFX\WaterDrop02_9E69E797.wem</Path>
 				</File>
+				<File Id="517330250" Language="SFX">
+					<ShortName>BlockerSlide01.wav</ShortName>
+					<Path>SFX\BlockerSlide01_9E69E797.wem</Path>
+				</File>
 				<File Id="544054926" Language="SFX">
 					<ShortName>GentleWaterDrops01.wav</ShortName>
 					<Path>SFX\GentleWaterDrops01_9E69E797.wem</Path>
 				</File>
 				<File Id="552757871" Language="SFX">
 					<ShortName>PlayerCrystal01.wav</ShortName>
-					<Path>SFX\PlayerCrystal01_9E69E797.wem</Path>
+					<Path>SFX\PlayerCrystal01_1AF56484.wem</Path>
+				</File>
+				<File Id="561152648" Language="SFX">
+					<ShortName>RunningRiver.wav</ShortName>
+					<Path>SFX\RunningRiver_4B8CC0C5.wem</Path>
 				</File>
 				<File Id="576964155" Language="SFX">
 					<ShortName>WaterDrop04.wav</ShortName>
 					<Path>SFX\WaterDrop04_9E69E797.wem</Path>
 				</File>
+				<File Id="622065201" Language="SFX">
+					<ShortName>DoorOpen.wav</ShortName>
+					<Path>SFX\DoorOpen_488C9287.wem</Path>
+				</File>
 				<File Id="636816213" Language="SFX">
 					<ShortName>PlayerCrystal302.wav</ShortName>
-					<Path>SFX\PlayerCrystal302_9E69E797.wem</Path>
+					<Path>SFX\PlayerCrystal302_2C71C199.wem</Path>
+				</File>
+				<File Id="641578875" Language="SFX">
+					<ShortName>Chain4.wav</ShortName>
+					<Path>SFX\Chain4_9E69E797.wem</Path>
 				</File>
 				<File Id="650515432" Language="SFX">
 					<ShortName>Rumble01.wav</ShortName>
 					<Path>SFX\Rumble01_9E69E797.wem</Path>
+				</File>
+				<File Id="674515164" Language="SFX">
+					<ShortName>Waterfall04.wav</ShortName>
+					<Path>SFX\Waterfall04_4B8CC0C5.wem</Path>
+				</File>
+				<File Id="708409794" Language="SFX">
+					<ShortName>ShutDown.wav</ShortName>
+					<Path>SFX\ShutDown_9E69E797.wem</Path>
 				</File>
 				<File Id="713371685" Language="SFX">
 					<ShortName>IndoorPebbles03.wav</ShortName>
@@ -155,7 +229,7 @@
 				</File>
 				<File Id="764596330" Language="SFX">
 					<ShortName>PlayerCrystal04.wav</ShortName>
-					<Path>SFX\PlayerCrystal04_9E69E797.wem</Path>
+					<Path>SFX\PlayerCrystal04_04A87E39.wem</Path>
 				</File>
 				<File Id="779480299" Language="SFX">
 					<ShortName>Cave Ambience02.wav</ShortName>
@@ -163,15 +237,23 @@
 				</File>
 				<File Id="783517991" Language="SFX">
 					<ShortName>PlayerCrystal301.wav</ShortName>
-					<Path>SFX\PlayerCrystal301_9E69E797.wem</Path>
-				</File>
-				<File Id="807397003" Language="SFX">
-					<ShortName>LargeBoulderSlideEdit02.wav</ShortName>
-					<Path>SFX\LargeBoulderSlideEdit02_9E69E797.wem</Path>
+					<Path>SFX\PlayerCrystal301_B940C46E.wem</Path>
 				</File>
 				<File Id="823055302" Language="SFX">
 					<ShortName>IndoorPebbles04.wav</ShortName>
 					<Path>SFX\IndoorPebbles04_9E69E797.wem</Path>
+				</File>
+				<File Id="851356452" Language="SFX">
+					<ShortName>Waterfall03.wav</ShortName>
+					<Path>SFX\Waterfall03_4B8CC0C5.wem</Path>
+				</File>
+				<File Id="853830410" Language="SFX">
+					<ShortName>ElectricityBox.wav</ShortName>
+					<Path>SFX\ElectricityBox_9E69E797.wem</Path>
+				</File>
+				<File Id="854137208" Language="SFX">
+					<ShortName>Chain1.wav</ShortName>
+					<Path>SFX\Chain1_9E69E797.wem</Path>
 				</File>
 				<File Id="901528223" Language="SFX">
 					<ShortName>Emitting302.wav</ShortName>
@@ -179,7 +261,11 @@
 				</File>
 				<File Id="909824755" Language="SFX">
 					<ShortName>PlayerCrystal05.wav</ShortName>
-					<Path>SFX\PlayerCrystal05_9E69E797.wem</Path>
+					<Path>SFX\PlayerCrystal05_90C210C9.wem</Path>
+				</File>
+				<File Id="929123045" Language="SFX">
+					<ShortName>Wrong.wav</ShortName>
+					<Path>SFX\Wrong_9E69E797.wem</Path>
 				</File>
 				<File Id="936983434" Language="SFX">
 					<ShortName>Cave Ambience01.wav</ShortName>
