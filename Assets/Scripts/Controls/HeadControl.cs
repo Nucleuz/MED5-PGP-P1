@@ -23,7 +23,8 @@ public class HeadControl : MonoBehaviour {
 	float controllerRotX = 0;
 	float controllerRotY = 0;
 
-	public float controllerOffsetX;
+	public float cartOffsetRotX;
+	public float cartOffsetRotY;
 
 	public Camera cam;
 
@@ -46,7 +47,7 @@ public class HeadControl : MonoBehaviour {
 
 			controllerRotX = Mathf.Clamp(controllerRotX,-90,90);
 
-			transform.rotation = Quaternion.Euler(controllerRotX - controllerOffsetX,controllerRotY,0);
+			transform.rotation = Quaternion.Euler(controllerRotX + cartOffsetRotX,controllerRotY + cartOffsetRotY,0);
 		} 
 
 		if(Input.GetKeyDown("c")){
