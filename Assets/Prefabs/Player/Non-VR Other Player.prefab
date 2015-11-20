@@ -2746,9 +2746,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055d0bc1875a74acaa52a6811315853f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  head: {fileID: 486478}
+  head: {fileID: 428280}
   cam: {fileID: 134652}
   headControl: {fileID: 11494992}
+  vrHeadControl: {fileID: 0}
   helmet: {fileID: 11417042}
   nonFocusedLightShaft: {fileID: 11409432}
   focusedLightShaft: {fileID: 11474136}
@@ -2899,7 +2900,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 010d42ff0b6f44c93bf918d1e009457d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controllerConnected: 1
+  controlState: 1
   cartOffsetRotX: 0
   cartOffsetRotY: 0
   cam: {fileID: 2057690}
