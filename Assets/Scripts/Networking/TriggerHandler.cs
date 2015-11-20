@@ -64,13 +64,14 @@ using DarkRift;
 
                     for(int i = 0;i<triggerStates.Length;i++){
                         triggers[i].SetTriggerState(triggerStates[i]);
+                        triggerIDs[i] = triggers[i].triggerID;
                     }
                 }
                 break;
                 case Network.Subject.ServerSentTriggerStates:
                 {
 
-                    Debug.Log("trigger states received");
+                    // Debug.Log("trigger states received");
                     triggers = levelHandler.levelContainers[levelHandler.levelManagerIndex].triggers;
 
                     TriggerState[] triggerStates = (TriggerState[])data;

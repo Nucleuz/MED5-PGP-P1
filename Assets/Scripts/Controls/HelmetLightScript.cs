@@ -121,6 +121,7 @@ public class HelmetLightScript : MonoBehaviour {
     public void initRay(){
       // Make a ray from the transforms pos and forward
         ray = new Ray(transform.position, transform.forward);
+        Debug.DrawRay(transform.position, transform.forward);
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit)) {
