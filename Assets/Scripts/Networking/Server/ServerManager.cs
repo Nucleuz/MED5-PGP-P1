@@ -173,7 +173,7 @@ public class ServerManager : NetworkManager {
                 triggerHandler.TriggerInteracted((ushort)data.data,con.id,false);
                 Debug.Log("state(" + triggerHandler.GetTriggerState((ushort)data.data) + ")");
 
-                //force update GameMnager
+                //force update GameManager
                 gameManager.DetectTriggerChanges();
 
                 TriggerState state = triggerHandler.GetTriggerState((ushort)data.data);
@@ -182,6 +182,12 @@ public class ServerManager : NetworkManager {
 
                 //send to clients but not the sender
                 SendToAll(data.tag,Network.Subject.TriggerState,state);
+            }else if(data.subject == Network.Subject.PlayerSentTriggerState){
+              data.DecodeData();
+
+              triggerHandler.SetTriggerState((TriggerState)data.data);
+              //force update GameMnager
+              gameManager.DetectTriggerChanges();
             }
         }
 	}

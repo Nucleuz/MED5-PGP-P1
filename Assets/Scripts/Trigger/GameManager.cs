@@ -4,6 +4,7 @@ using System;
 
 public class GameManager : MonoBehaviour {
 
+	public static GameManager _instance;
 
 	protected int numberOfTriggeredEvents = 0; //Is used to determine where we should continue from each time a puzzle sequence is finished. is only updated after each sequence is finished
 	protected int currentNumberOfEventsTriggered = 0; //counts up when a single event is triggered, is reset when all events in the sequence is triggered
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		_instance = this;
         server = GetComponent<ServerManager>();
 		GameObject g = GameObject.Find("LevelManagerObject"); //accessing the LevelManager script on the LevelManagerObject
         levelHandler = GetComponent<LevelHandler>();
@@ -29,7 +31,6 @@ public class GameManager : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-
 
     public void DetectTriggerChanges(){
         try{
