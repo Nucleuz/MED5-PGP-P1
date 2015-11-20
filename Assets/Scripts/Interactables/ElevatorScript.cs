@@ -12,7 +12,7 @@ public class ElevatorScript : MonoBehaviour {
     public Trigger trigger;
 
     public bool isActivated = false;         //Check to see if the object has been activated
-    public int currentState = 0;
+    public int currentState = 1;
 
     public Transform upNode;                 //Array of transform objects that holds the positions the elevator will visit
     public Transform downNode;               //Array of transform objects that holds the positions the elevator will visit
@@ -73,7 +73,7 @@ public class ElevatorScript : MonoBehaviour {
             soundIsPlaying = false;
         }
 
-        if(currentState == 1)
+        if(currentState == 0)
             railConnector.ConnectToNext();
         else
             railConnector.ConnectToPrev();

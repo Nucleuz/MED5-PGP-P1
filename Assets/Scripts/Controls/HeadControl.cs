@@ -33,7 +33,11 @@ public class HeadControl : MonoBehaviour {
 	public float cartOffsetRotX;
 	public float cartOffsetRotY;
 
-	public Camera cam;
+	private Camera cam;
+
+	void Start(){
+		cam = GetComponent<Camera>();
+	}
 
 	// Update is called once per frame
 	void Update () {		
