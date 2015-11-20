@@ -4,6 +4,8 @@ using DarkRift;
 
 public class Trigger : MonoBehaviour {
 
+    public float lockStateEnd = 0f;
+    public float lockStateLength = 2f;
     public sbyte state = 0;
 
     //@TODO [HideInInspector] 
@@ -69,6 +71,12 @@ public class Trigger : MonoBehaviour {
 
     public void SetTriggerID(ushort id){
         triggerID = id;
+    }
+
+    public void SendState(sbyte state){
+        this.state = state;
+        lockStateEnd = Time.time + lockStateLength;
+        DarkRiftAPI.SendMessageToServer(Network.Tag.Trigger,Network.Subject.PlayerSentTriggerState, new TriggerState(this));
     }
 }
 

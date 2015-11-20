@@ -38,6 +38,7 @@ public class Network{
         public const ushort TriggerActivate      = 7;
         public const ushort TriggerDeactivate    = 8;
         public const ushort TriggerState         = 9;
+        public const ushort PlayerSentTriggerState = 19;
 
         public const ushort ServerSentTriggerIDs = 10;
         public const ushort ServerSentTriggerStates = 18;

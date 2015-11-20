@@ -44,6 +44,7 @@ public class Mirror : Interactable {
         reflectingTrigger = GetComponent<Trigger>();
 
         DarkRiftAPI.onDataDetailed += RecieveData;
+        RotateToCurrent();
     }
     
 	void Update(){
@@ -57,14 +58,17 @@ public class Mirror : Interactable {
             }
         }
 
-        if(!trigger.isTriggered && currentInteractable != trigger.state){
+        if(trigger.lockStateEnd < Time.time && !trigger.isTriggered && currentInteractable != trigger.state){
             currentInteractable = trigger.state;
             RotateToCurrent();
         }
     }
 
     private void RotateToNext(){
-        currentInteractable = (currentInteractable +1) % targets.Length;
+        currentInteractable = ++currentInteractable % targets.Length;
+        
+        trigger.SendState((sbyte)currentInteractable);
+
         RotateToCurrent();
     }
 
@@ -121,7 +125,7 @@ public class Mirror : Interactable {
             LS.enabled = false;
         }
 
-        if(currentInteractable == correctInteractable)
+        if(currentInteractable == correctInteractable && !isRotating)
             objectToTrigger.OnRayExit(playerIndex);
     }
 
@@ -131,7 +135,6 @@ public class Mirror : Interactable {
         float endTime = startTime + length;
 
         while(Time.time < endTime) {
-            trigger.isTriggered = false; // @NOTE hack!
             transform.rotation = Quaternion.Slerp(start,end,(Time.time - startTime) / length);
             yield return null;
         }
@@ -142,6 +145,8 @@ public class Mirror : Interactable {
         }
         //trigger.canReset = true;
         trigger.isReadyToBeTriggered = true;
+
+        
     }
 
     public void RecieveData(ushort senderID, byte tag, ushort subject, object data){

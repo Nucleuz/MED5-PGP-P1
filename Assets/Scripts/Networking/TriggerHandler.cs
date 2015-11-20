@@ -66,11 +66,12 @@ using DarkRift;
                         triggers[i].SetTriggerState(triggerStates[i]);
                         triggerIDs[i] = triggers[i].triggerID;
                     }
+                    triggersReady = true;
                 }
                 break;
                 case Network.Subject.ServerSentTriggerStates:
                 {
-
+                    if(!triggersReady)return;
                     // Debug.Log("trigger states received");
                     triggers = levelHandler.levelContainers[levelHandler.levelManagerIndex].triggers;
 

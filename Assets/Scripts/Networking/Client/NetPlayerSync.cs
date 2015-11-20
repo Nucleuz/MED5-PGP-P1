@@ -67,8 +67,6 @@ public class NetPlayerSync : MonoBehaviour {
 		else if(vrHeadControl != null){
 			vrHeadControl.cartOffsetRotY = transform.rotation.eulerAngles.y;
 		}
-
-
 	}
 	
 	void SendData(){
