@@ -7,6 +7,8 @@ public class ElevatorScript : MonoBehaviour {
 
     [HideInInspector]
     public RailConnection railConnector;     //railConnector = railConnection
+    public RailConnection endRailConnector;
+    
     [HideInInspector]                                            
     public Rail railPoint;                   //railPoint = railPoint
     public Trigger trigger;
@@ -25,7 +27,9 @@ public class ElevatorScript : MonoBehaviour {
 
         railConnector = GetComponent<RailConnection>();
         railPoint = GetComponent<Rail>();
-                                            //Sets the visited nodes to zero
+        
+        railConnector.ConnectToNext();
+        endRailConnector.ConnectToPrev();
 	}
 	
 	// Update is called once per frame
@@ -48,11 +52,17 @@ public class ElevatorScript : MonoBehaviour {
         float startTime = Time.time;
         isActivated = true;
         
+        Vector3 endUpNode = new Vector3(endRailConnector.transform.position.x, upNode.transform.position.y, endRailConnector.transform.position.z);
+        Vector3 endDownNode = new Vector3(endRailConnector.transform.position.x, downNode.transform.position.y, endRailConnector.transform.position.z);
+
         Vector3 startPos = transform.position;
         Vector3 endPos = (currentState == 0 ? upNode.position:downNode.position);
 
-        railConnector.DisconnectNext();
+        Vector3 endStartPos = endRailConnector.transform.position;
+        Vector3 endEndPos = (currentState == 0 ? endUpNode.position:endDownNode.position);
+
         railConnector.DisconnectPrev();
+        endRailConnector.DisconnectNext();
 
         if(!soundIsPlaying){
             SoundManager.Instance.PlayEvent("Elevator_Active", gameObject);
@@ -65,6 +75,7 @@ public class ElevatorScript : MonoBehaviour {
             float smoothstepFactor = t * t * (3 - 2 * t);
             //Moves the elevator from it's current position to the next active node
             transform.position = Vector3.Lerp(startPos, endPos, smoothstepFactor);
+            endRailConnector.transform.position = transform.position = Vector3.Lerp(endStartPos, endEndPos, smoothstepFactor);
             yield return null;
         }      
 
@@ -74,7 +85,7 @@ public class ElevatorScript : MonoBehaviour {
         }
 
         if(currentState == 0)
-            railConnector.ConnectToNext();
+            endRailConnector.ConnectToNext();
         else
             railConnector.ConnectToPrev();
 
