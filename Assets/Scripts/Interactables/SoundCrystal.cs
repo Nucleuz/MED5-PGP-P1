@@ -58,9 +58,14 @@ public class SoundCrystal : Interactable
     public override void OnRayExit(int playerIndex){
     }
     
+    IEnumerator StartDelayedSequence(){
+        yield return new WaitForSeconds(2f);
+        sequenceRoutine = StartPlayingSequence();
+        StartCoroutine(sequenceRoutine); 
+    }
+
     IEnumerator StartPlayingSequence(){
         sequenceIsPlaying = true;
-        yield return new WaitForSeconds(2f);
         for(int i = 0; i < sequences[seqIndex].Length; i++){
             Debug.Log("Sound crystal:" + i);
             switch(sequences[seqIndex][i]){

@@ -212,6 +212,7 @@ public class ClientManager : NetworkManager
         Console.Instance.AddMessage("levelManager: " + levelHandler.getLevelManager());
         Rail startRail = levelHandler.getLevelManager().levelStartRail[networkID - 1];
         netPlayer.cart.InitAsSender(startRail);
+        netPlayer.cart.currentRail = startRail;
         Console.Instance.AddMessage("startrail: " + startRail.transform.position);
 
 

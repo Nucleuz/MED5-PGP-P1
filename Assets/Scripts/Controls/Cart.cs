@@ -48,15 +48,6 @@ public class Cart : MonoBehaviour {
             transform.position += transform.right*v*cheatySpeedMultiplier + transform.forward*-h*cheatySpeedMultiplier;
             return;
         }
-    
-
-      
-
-        //This is specifically for elevator connection points where the cart has to move with the elevator
-        if (currentRail.next == null && currentRail.prev == null){
-            transform.position = currentRail.transform.position + currentRail.transform.up;
-            return;
-        }
 
         float verticalAxis = Input.GetAxis("Vertical");
         if (Mathf.Abs(verticalAxis) > 0.01f) {
@@ -66,6 +57,13 @@ public class Cart : MonoBehaviour {
             minecartAnimator.speed = 0;
             minecartAnimator.StopPlayback();
             isMoving = false;
+        }
+
+        //This is specifically for elevator connection points where the cart has to move with the elevator
+        if(currentRail.isElevatorPoint){
+            if ((currentRail.prev == null && currentRail.next.next == null) || (currentRail.prev.prev == null && currentRail.next == null)){
+                transform.position = new Vector3(transform.position.x, currentRail.transform.position.y + 1,transform.position.z);
+            }
         }
     }
 

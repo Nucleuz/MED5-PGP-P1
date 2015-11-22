@@ -5,10 +5,6 @@ public class SoundEmitter : MonoBehaviour {
 	public int melodyIndex;
 
 	public void Play(){
-		StartCoroutine("playMelody");
-	}
-	IEnumerator playMelody(){
-		yield return new WaitForSeconds(1);
 		Debug.Log("playing sound " + melodyIndex);
 		switch(melodyIndex){
 			case 0:
