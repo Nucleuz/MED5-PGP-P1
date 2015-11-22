@@ -28,8 +28,8 @@ public class ElevatorScript : MonoBehaviour {
         railConnector = GetComponent<RailConnection>();
         railPoint = GetComponent<Rail>();
         
-        railConnector.ConnectToNext();
-        endRailConnector.ConnectToPrev();
+        //railConnector.ConnectToNext();
+        //endRailConnector.ConnectToPrev();
 	}
 	
 	// Update is called once per frame
@@ -59,7 +59,7 @@ public class ElevatorScript : MonoBehaviour {
         Vector3 endPos = (currentState == 0 ? upNode.position:downNode.position);
 
         Vector3 endStartPos = endRailConnector.transform.position;
-        Vector3 endEndPos = (currentState == 0 ? endUpNode.position:endDownNode.position);
+        Vector3 endEndPos = (currentState == 0 ? endUpNode:endDownNode);
 
         railConnector.DisconnectPrev();
         endRailConnector.DisconnectNext();
@@ -75,7 +75,7 @@ public class ElevatorScript : MonoBehaviour {
             float smoothstepFactor = t * t * (3 - 2 * t);
             //Moves the elevator from it's current position to the next active node
             transform.position = Vector3.Lerp(startPos, endPos, smoothstepFactor);
-            endRailConnector.transform.position = transform.position = Vector3.Lerp(endStartPos, endEndPos, smoothstepFactor);
+            endRailConnector.transform.position = Vector3.Lerp(endStartPos, endEndPos, smoothstepFactor);
             yield return null;
         }      
 
