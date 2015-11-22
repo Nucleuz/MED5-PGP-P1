@@ -114,7 +114,6 @@ public class NetPlayerSync : MonoBehaviour {
                     	lastPositionTime = Time.time;
 
                     float interpolationLength = .3f;
-                    
 
                    	if(interpolationLength > 0f){
                    		positionRoutine = InterpolatePosition(position,interpolationLength);
