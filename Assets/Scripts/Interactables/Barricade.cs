@@ -24,15 +24,15 @@ public class Barricade : MonoBehaviour {
 	void Start () {
 		if(!trigger.isTriggered && !isFirstBarricade){
 			transform.position = downNode.transform.position;
+            isOpened = true;
 		}
-
         isPlaying = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if(animationRunning) return;
-		if(!isFirstBarricade && !trigger.isTriggered && previousBarricadeHandler.isTriggered && !currentBarricadeHandler.isTriggered){
+		if(!isFirstBarricade && !trigger.isTriggered && previousBarricadeHandler.isTriggered && !currentBarricadeHandler.isTriggered && isOpened){
 			StartCoroutine(GoToUpState());
 		}
 		

@@ -13,6 +13,7 @@ public class InteractableButton : Interactable{
     
     [HideInInspector]
 	public bool playedSound;
+	private SoundEmitter soundEmitter;
 	public bool playedPuff = false;
 
 	bool timerRunning = false;
@@ -27,6 +28,8 @@ public class InteractableButton : Interactable{
 	// Use this for initialization
 	void Start () {
 		playedSound 	= false;
+
+		soundEmitter = GetComponent<SoundEmitter>();
 	
 		buttonAnimator 	= GetComponent<Animator>();
 		buttonLight 	= GetComponent<Light>();
@@ -40,7 +43,7 @@ public class InteractableButton : Interactable{
 				trigger.redPlayerRequired,
 				trigger.greenPlayerRequired
 				});
-		particleSystem.Play();
+		//particleSystem.Play();
 	}
 	
 	// Update is called once per frame
@@ -53,6 +56,7 @@ public class InteractableButton : Interactable{
 			buttonAnimator.SetBool("isActivated", false); 	//stops the animation of the button.
 			if(trigger.isReadyToBeTriggered){
 				playedPuff = false;
+				particleSystem.Stop();
 			}
 
 		}
@@ -74,6 +78,9 @@ public class InteractableButton : Interactable{
 					if(!playedSound){
 						SoundManager.Instance.ToggleSwitch("On_Off", "On", gameObject);
 						SoundManager.Instance.PlayEvent("ButtonOnOff", gameObject);
+						if(soundEmitter != null)
+							soundEmitter.Play();
+
 						playedSound = true;
 					}
 				}
@@ -82,6 +89,9 @@ public class InteractableButton : Interactable{
 				if(!playedSound){
 					SoundManager.Instance.ToggleSwitch("On_Off", "On", gameObject);
 					SoundManager.Instance.PlayEvent("ButtonOnOff", gameObject);
+					if(soundEmitter != null)
+						soundEmitter.Play();
+
 					playedSound = true;
 				}
 			}			
@@ -110,7 +120,7 @@ public class InteractableButton : Interactable{
 
 	void PlayPuff(){
 		if (!playedPuff) {
-			particleSystem.Stop();
+			particleSystem.Play();
 			puffSystem.loop = false;
 			puffSystem.Play();
 			playedPuff = true;

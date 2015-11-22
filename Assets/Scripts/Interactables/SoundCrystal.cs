@@ -22,7 +22,7 @@ public class SoundCrystal : Interactable
     void Start()
     {
         sequences[0] = new byte[3] {0,2,1};
-        sequences[1] = new byte[6] {1,0,1,2,1,2};
+        sequences[1] = new byte[6] {1,0,1,2,0,2};
         trigger = GetComponent<Trigger>();
     }
 

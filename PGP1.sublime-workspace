@@ -4,6 +4,78 @@
 		"selected_items":
 		[
 			[
+				"tr",
+				"trigger"
+			],
+			[
+				"trig",
+				"trigger"
+			],
+			[
+				"is",
+				"isTriggered"
+			],
+			[
+				"tri",
+				"trigger"
+			],
+			[
+				"pl",
+				"Play"
+			],
+			[
+				"pa",
+				"particleSystem"
+			],
+			[
+				"ca",
+				"cartOffsetRotY"
+			],
+			[
+				"controll",
+				"controllerOffsetX"
+			],
+			[
+				"contro",
+				"controllerRotX"
+			],
+			[
+				"set",
+				"SetColor"
+			],
+			[
+				"colo",
+				"coloredObjectsMaterial"
+			],
+			[
+				"Sop",
+				"StopReflecting"
+			],
+			[
+				"trigger",
+				"triggerID"
+			],
+			[
+				"play",
+				"playerIndex"
+			],
+			[
+				"player",
+				"playerIndex"
+			],
+			[
+				"refle",
+				"reflectedLight"
+			],
+			[
+				"refl",
+				"reflectingTrigger"
+			],
+			[
+				"playe",
+				"playerSet"
+			],
+			[
 				"leve",
 				"levelManagerIndex"
 			],
@@ -18,10 +90,6 @@
 			[
 				"in",
 				"intensity"
-			],
-			[
-				"is",
-				"isFailed"
 			],
 			[
 				"se",
@@ -116,28 +184,12 @@
 				"trigger"
 			],
 			[
-				"player",
-				"playerIndex"
-			],
-			[
-				"trigger",
-				"triggerContainer"
-			],
-			[
-				"trig",
-				"triggerContainer"
-			],
-			[
 				"use",
 				"useVR"
 			],
 			[
 				"head",
 				"headControl"
-			],
-			[
-				"ca",
-				"cart"
 			],
 			[
 				"Get",
@@ -166,10 +218,6 @@
 			[
 				"seq",
 				"seqIndex"
-			],
-			[
-				"play",
-				"playingSequence"
 			],
 			[
 				"Sta",
@@ -218,10 +266,6 @@
 			[
 				"ligh",
 				"nonFocusedLightShaft"
-			],
-			[
-				"playe",
-				"playerIndex"
 			],
 			[
 				"netW",
@@ -470,76 +514,40 @@
 			[
 				"open",
 				"open_position"
-			],
-			[
-				"coll",
-				"collapse_point"
-			],
-			[
-				"st",
-				"start_time"
-			],
-			[
-				"ed",
-				"end_text_color"
-			],
-			[
-				"Circ",
-				"CircularButton"
-			],
-			[
-				"Flag",
-				"Flag_Type"
-			],
-			[
-				"spots_",
-				"spots_horizontal"
-			],
-			[
-				"drone",
-				"interior_drone"
-			],
-			[
-				"RaycastHi",
-				"RaycastHit2D	[class]"
-			],
-			[
-				"Instantiate",
-				"Instantiate	Object.*(original)"
-			],
-			[
-				"mousePo",
-				"mousePosition"
-			],
-			[
-				"Lerp",
-				"Lerp	Mathf.*(from, to, t)"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
+			"file": "Assets/Scripts/Networking/Network.cs",
+			"settings":
+			{
+				"buffer_size": 1579,
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "Assets/Scripts/Networking/Client/ClientManager.cs",
 			"settings":
 			{
-				"buffer_size": 7926,
+				"buffer_size": 7844,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "Assets/Scripts/Rails/Rail.cs",
+			"file": "Assets/Scripts/Interactables/InteractableButton.cs",
 			"settings":
 			{
-				"buffer_size": 548,
+				"buffer_size": 5278,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "Assets/Scripts/Networking/LevelHandler.cs",
+			"file": "Assets/Scripts/Trigger/Trigger.cs",
 			"settings":
 			{
-				"buffer_size": 1027,
+				"buffer_size": 2069,
 				"line_ending": "Windows"
 			}
 		},
@@ -547,23 +555,39 @@
 			"file": "Assets/Scripts/Networking/TriggerHandler.cs",
 			"settings":
 			{
-				"buffer_size": 3771,
+				"buffer_size": 4236,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "Assets/Scripts/Networking/LevelContainer.cs",
+			"file": "Assets/Scripts/Interactables/ElevatorScript.cs",
 			"settings":
 			{
-				"buffer_size": 1392,
+				"buffer_size": 3149,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "Assets/Scripts/Debugging/TriggerDebugger.cs",
+			"file": "Assets/Scripts/Interactables/Mirror.cs",
 			"settings":
 			{
-				"buffer_size": 1907,
+				"buffer_size": 6900,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Trigger/TriggerState.cs",
+			"settings":
+			{
+				"buffer_size": 1082,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Assets/Scripts/Interactables/Barricade.cs",
+			"settings":
+			{
+				"buffer_size": 3054,
 				"line_ending": "Windows"
 			}
 		}
@@ -648,30 +672,42 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/SoundEmitter.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Controls/HeadControl.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Controls/Cart.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/LevelContainer.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/Client/NetPlayerSync.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/Barricade.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Controls/HelmetLightScript.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/Mirror.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Wwise/Deployment/Components/AkTerminator.cs",
+		"/C/Users/Andreas/Desktop/PGPNetworking/Assets/Scripts/Controls/HeadControl.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/AnimationTrigger.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Rails/ConnectAfterAnimation.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Wwise/Deployment/Components/AkInitializer.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Rails/RailConnection.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/ElevatorScript.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/Trigger.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/Server/ServerManager.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/NetworkManager.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/Network.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/Client/ClientManager.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Rails/Rail.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Wwise/Deployment/Components/AkGameObj.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Sound/SOUND_GiantDoor.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/LevelHandler.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/TriggerHandler.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Debugging/TriggerDebugger.cs",
+		"/C/Users/Andreas/Desktop/PGP/Assets/Wwise/Deployment/Components/AkTerminator.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Standard Assets/Environment/Water/Water/Scripts/Water.cs",
 		"/C/Users/Andreas/Desktop/PGP_Server/Assets/Scripts/Networking/LevelHandler.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/InteractableButton.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/SoundCrystal.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/LevelManager.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/ReceiveSequenceFail.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/Network.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/TriggerHandler.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/LevelHandler.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Controls/Cart.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/ElevatorScript.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/LevelContainer.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/ProjectSpecific/GoodPracticesExample.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Debugging/Console.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/LightFade.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Rails/RailConnection.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Controls/HelmetLightScript.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/ChargeableButtonScript.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/Client/NetPlayerSync.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/Client/ClientManager.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Water Scripts/WaterBase.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/Interactable.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/ChargeableLightSource.cs",
@@ -689,21 +725,15 @@
 		"/C/Users/Andreas/Desktop/PGP_Server/Assets/AMB_RunningWater.cs",
 		"/C/Users/Andreas/Desktop/PGP_Server/Assets/AMB_Lava.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/DeactivateButton.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/Trigger.cs",
 		"/C/Users/Andreas/Desktop/CGP 5th semester/Sky/Assets/ReflectionMapping.shader",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Interactables/Barricade.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Debugging/TriggerDebugger.cs",
 		"/C/Users/Andreas/Desktop/PGP_Server/Assets/Scripts/Networking/Server/ServerManager.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Editor/LevelManagerHelp.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Debugging/TriggerDebugItem.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/triggerDebugItem.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/TriggerDebugger.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/GameManager.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/Server/ServerManager.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/SoundTriggerZone.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/TriggerState.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Rails/Rail.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Networking/NetworkManager.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/LevelEndedZone.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/SoundTriggerZone.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/SoundManager.cs",
@@ -716,8 +746,6 @@
 		"/C/Users/Andreas/AppData/Roaming/Sublime Text 2/Packages/User/ApplySyntax.sublime-settings",
 		"/C/Users/Andreas/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
 		"/C/Users/Andreas/Desktop/PGP/Assembly-CSharp.csproj",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Trigger/AnimationTrigger.cs",
-		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Rails/ConnectAfterAnimation.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Scripts/Extensions.cs",
 		"/C/Users/Andreas/Desktop/PGP/Assets/Wwise/Editor/WwiseWindows/AkWwiseWWUBuilder.cs",
 		"/C/Users/Andreas/Desktop/UnityReflRefr/Assets/Scripts/PenControllerRefraction.cs",
@@ -771,11 +799,7 @@
 		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Scripts/Interactables/Interactable.cs",
 		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Scripts/Interactables/SoundGemScript.cs",
 		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Scripts/Interactables/InteractableButton.cs",
-		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Scripts/Trigger/Trigger.cs",
-		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Scripts/Interactables/RaycastReceiver.cs",
-		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Scripts/Interactables/IRaycastEvents.cs",
-		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Plugins/DarkRift/CustomSerialisationDemo/Readme.txt",
-		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Plugins/DarkRift/CustomSerialisationDemo/CSCubeNetworkManager.cs"
+		"/home/kaholi/dev/games/unity/MED5-PGP-P1/Assets/Scripts/Trigger/Trigger.cs"
 	],
 	"find":
 	{
@@ -796,6 +820,42 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"state",
+			"rotateMirror",
+			"playedSound",
+			"buttonLight",
+			"particleSystem",
+			"controllerOffsetX",
+			"Head",
+			"head",
+			"public",
+			"float",
+			"Self",
+			"networkID",
+			"Voice",
+			"voice",
+			"Voice",
+			"data",
+			"a[2]",
+			"a[1]",
+			"a[0]",
+			"a[2]",
+			"a[1]",
+			"a[0]",
+			"//",
+			"}",
+			"{",
+			"buttonLight",
+			"particleSystem",
+			"puffSystem",
+			"VoiceChat",
+			"reflectingTrigger",
+			"isBeingLitOn",
+			"trigger",
+			"connectToNext",
+			"goingUp",
+			"helmet",
+			"netPlayer",
 			"nvrPrefab",
 			"otherPrefab",
 			"nvrPrefab",
@@ -887,43 +947,7 @@
 			"lastCartRotation",
 			"trigger.playersInteracting",
 			"isActive",
-			"activated",
-			"enabled",
-			"consoleContainer",
-			"consoleCanvas",
-			"script",
-			"headControl",
-			"trigger",
-			"animationStarted",
-			"true",
-			"interpolateBarricade",
-			"Pos",
-			"position",
-			"gameObject",
-			"nvrPrefab",
-			"vrPrefab",
-			"playingSequence",
-			"int",
-			"}\n",
-			"} ",
-			"currentIn",
-			"isLightCrystalLightReset",
-			"lastPositionTime",
-			"nonFocusedLightShaft",
-			"    	\n",
-			"isTriggered",
-			"OnRayEnter",
-			"lastHitObject",
-			"OnRayReceived",
-			"objectHit",
-			"Instantiate",
-			"resetTriggers",
-			"reset",
-			"isReadyToBeTriggered",
-			" as Camera",
-			"LightShaft",
-			"objPos",
-			"rC"
+			"activated"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -942,168 +966,85 @@
 		"reverse": false,
 		"show_context": false,
 		"use_buffer2": false,
-		"whole_word": true,
+		"whole_word": false,
 		"wrap": true
 	},
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 4,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "Assets/Scripts/Networking/Client/ClientManager.cs",
+					"file": "Assets/Scripts/Networking/Network.cs",
 					"settings":
 					{
-						"buffer_size": 7926,
+						"buffer_size": 1579,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6790,
-								6799
+								1234,
+								1234
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"syntax": "Packages/C#/C#.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3163.0,
+						"translation.y": 324.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "Assets/Scripts/Rails/Rail.cs",
+					"file": "Assets/Scripts/Networking/Client/ClientManager.cs",
 					"settings":
 					{
-						"buffer_size": 548,
+						"buffer_size": 7844,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								545,
-								545
+								802,
+								802
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2043.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "Assets/Scripts/Networking/LevelHandler.cs",
+					"file": "Assets/Scripts/Interactables/InteractableButton.cs",
 					"settings":
 					{
-						"buffer_size": 1027,
+						"buffer_size": 5278,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								234,
-								249
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 162.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "Assets/Scripts/Networking/TriggerHandler.cs",
-					"settings":
-					{
-						"buffer_size": 3771,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2423,
-								278
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "Assets/Scripts/Networking/LevelContainer.cs",
-					"settings":
-					{
-						"buffer_size": 1392,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								79,
-								79
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "Assets/Scripts/Debugging/TriggerDebugger.cs",
-					"settings":
-					{
-						"buffer_size": 1907,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1338,
-								1338
+								2613,
+								2613
 							]
 						],
 						"settings":
@@ -1112,7 +1053,175 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 432.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "Assets/Scripts/Trigger/Trigger.cs",
+					"settings":
+					{
+						"buffer_size": 2069,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1655,
+								1655
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 648.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "Assets/Scripts/Networking/TriggerHandler.cs",
+					"settings":
+					{
+						"buffer_size": 4236,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3006,
+								3014
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1464.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "Assets/Scripts/Interactables/ElevatorScript.cs",
+					"settings":
+					{
+						"buffer_size": 3149,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1341,
+								1341
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 270.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "Assets/Scripts/Interactables/Mirror.cs",
+					"settings":
+					{
+						"buffer_size": 6900,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1885,
+								1885
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 216.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "Assets/Scripts/Trigger/TriggerState.cs",
+					"settings":
+					{
+						"buffer_size": 1082,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								956,
+								956
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "Assets/Scripts/Interactables/Barricade.cs",
+					"settings":
+					{
+						"buffer_size": 3054,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								662,
+								662
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1174,6 +1283,90 @@
 		"selected_items":
 		[
 			[
+				"trig",
+				"Networking/TriggerHandler.cs"
+			],
+			[
+				"netw",
+				"Networking/Network.cs"
+			],
+			[
+				"eleva",
+				"Interactables/ElevatorScript.cs"
+			],
+			[
+				"barr",
+				"Interactables/Barricade.cs"
+			],
+			[
+				"mirr",
+				"Interactables/Mirror.cs"
+			],
+			[
+				"trigg",
+				"Networking/TriggerHandler.cs"
+			],
+			[
+				"inter",
+				"Interactables/InteractableButton.cs"
+			],
+			[
+				"h",
+				"Controls/HelmetLightScript.cs"
+			],
+			[
+				"hea",
+				"Controls/HeadControl.cs"
+			],
+			[
+				"hel",
+				"Controls/HelmetLightScript.cs"
+			],
+			[
+				"trigger",
+				"Networking/TriggerHandler.cs"
+			],
+			[
+				"server",
+				"Networking/Server/ServerManager.cs"
+			],
+			[
+				"iinter",
+				"Interactables/InteractableButton.cs"
+			],
+			[
+				"net",
+				"Networking/Network.cs"
+			],
+			[
+				"network",
+				"Networking/NetworkManager.cs"
+			],
+			[
+				"networ",
+				"Networking/Network.cs"
+			],
+			[
+				"",
+				"Networking/Client/NetPlayerSync.cs"
+			],
+			[
+				"helm",
+				"Controls/HelmetLightScript.cs"
+			],
+			[
+				"netpl",
+				"Networking/Client/NetPlayerSync.cs"
+			],
+			[
+				"clie",
+				"Networking/Client/ClientManager.cs"
+			],
+			[
+				"conn",
+				"Rails/ConnectAfterAnimation.cs"
+			],
+			[
 				"triggerhandl",
 				"Networking/TriggerHandler.cs"
 			],
@@ -1188,10 +1381,6 @@
 			[
 				"goo",
 				"ProjectSpecific/GoodPracticesExample.cs"
-			],
-			[
-				"clie",
-				"Networking/Client/ClientManager.cs"
 			],
 			[
 				"triggerh",
@@ -1218,10 +1407,6 @@
 				"Rails/RailConnection.cs"
 			],
 			[
-				"eleva",
-				"Interactables/ElevatorScript.cs"
-			],
-			[
 				"level",
 				"Networking/LevelHandler.cs"
 			],
@@ -1234,14 +1419,6 @@
 				"Networking/LevelHandler.cs"
 			],
 			[
-				"trigger",
-				"Networking/TriggerHandler.cs"
-			],
-			[
-				"networ",
-				"Networking/Network.cs"
-			],
-			[
 				"clien",
 				"Networking/Client/ClientManager.cs"
 			],
@@ -1252,10 +1429,6 @@
 			[
 				"sound",
 				"Interactables/SoundCrystal.cs"
-			],
-			[
-				"inter",
-				"Interactables/InteractableButton.cs"
 			],
 			[
 				"chag",
@@ -1274,10 +1447,6 @@
 				"Water Scripts/Water.cs"
 			],
 			[
-				"net",
-				"Networking/Client/NetPlayerSync.cs"
-			],
-			[
 				"consol",
 				"Debugging/Console.cs"
 			],
@@ -1288,10 +1457,6 @@
 			[
 				"levelha",
 				"Networking/LevelHandler.cs"
-			],
-			[
-				"",
-				"Controls/Cart.cs"
 			],
 			[
 				"cart",
@@ -1306,15 +1471,7 @@
 				"Networking/TriggerHandler.cs"
 			],
 			[
-				"trigg",
-				"Trigger/Trigger.cs"
-			],
-			[
 				"ba",
-				"Interactables/Barricade.cs"
-			],
-			[
-				"barr",
 				"Interactables/Barricade.cs"
 			],
 			[
@@ -1322,24 +1479,8 @@
 				"Networking/TriggerHandler.cs"
 			],
 			[
-				"trig",
-				"Trigger/Trigger.cs"
-			],
-			[
-				"mirr",
-				"Interactables/Mirror.cs"
-			],
-			[
 				"leve",
 				"Trigger/LevelManager.cs"
-			],
-			[
-				"helm",
-				"Controls/HelmetLightScript.cs"
-			],
-			[
-				"netw",
-				"Networking/Network.cs"
 			],
 			[
 				"cliem",
@@ -1356,10 +1497,6 @@
 			[
 				"cons",
 				"Debugging/Console.cs"
-			],
-			[
-				"h",
-				"Controls/HelmetLightScript.cs"
 			],
 			[
 				"soundcr",
@@ -1394,10 +1531,6 @@
 				"Trigger/SoundTriggerZone.cs"
 			],
 			[
-				"network",
-				"Networking/NetworkManager.cs"
-			],
-			[
 				"cl",
 				"Networking/Client/ClientManager.cs"
 			],
@@ -1412,10 +1545,6 @@
 			[
 				"tr",
 				"Trigger/Trigger.cs"
-			],
-			[
-				"server",
-				"Networking/Server/ServerManager.cs"
 			],
 			[
 				"netpla",
@@ -1455,7 +1584,7 @@
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": true,
+	"side_bar_visible": false,
 	"side_bar_width": 237.0,
 	"status_bar_visible": true
 }

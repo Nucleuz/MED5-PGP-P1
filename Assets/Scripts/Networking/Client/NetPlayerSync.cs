@@ -18,7 +18,9 @@ public class NetPlayerSync : MonoBehaviour {
 	
 	//Reference to components that needs to be turn on and off when switching from sender to receiver
 	public GameObject cam;
+
 	public HeadControl headControl;
+	public VrHeadControl vrHeadControl;
 	
 	public HelmetLightScript helmet;
 
@@ -60,7 +62,11 @@ public class NetPlayerSync : MonoBehaviour {
 			SendData();
 		}
 		//add rail rotation compensation for vr
-		headControl.cartOffsetRotY = transform.rotation.eulerAngles.y;
+		if(headControl != null)
+			headControl.cartOffsetRotY = transform.rotation.eulerAngles.y;
+		else if(vrHeadControl != null){
+			vrHeadControl.cartOffsetRotY = transform.rotation.eulerAngles.y;
+		}
 	}
 	
 	void SendData(){

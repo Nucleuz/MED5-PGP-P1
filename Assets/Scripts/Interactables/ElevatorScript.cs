@@ -6,18 +6,18 @@ public class ElevatorScript : MonoBehaviour {
     public bool soundIsPlaying;
 
     [HideInInspector]
-    public RailConnection railConnector;  
-    [HideInInspector]                                            //railConnector = railConnection
-    public Rail railPoint;                                                         //railPoint = railPoint
+    public RailConnection railConnector;     //railConnector = railConnection
+    [HideInInspector]                                            
+    public Rail railPoint;                   //railPoint = railPoint
     public Trigger trigger;
 
-    public bool isActivated = false;                                        //Check to see if the object has been activated
-    public bool goingUp;
+    public bool isActivated = false;         //Check to see if the object has been activated
+    public int currentState = 1;
 
-    public Transform upNode;                                               //Array of transform objects that holds the positions the elevator will visit
-    public Transform downNode;                                               //Array of transform objects that holds the positions the elevator will visit
+    public Transform upNode;                 //Array of transform objects that holds the positions the elevator will visit
+    public Transform downNode;               //Array of transform objects that holds the positions the elevator will visit
 
-    public float animationLength;                                      //holds the amount of time the lerp has been running
+    public float animationLength;            //holds the amount of time the lerp has been running
  
 	// Use this for initialization
 	void Start () {
@@ -25,13 +25,22 @@ public class ElevatorScript : MonoBehaviour {
 
         railConnector = GetComponent<RailConnection>();
         railPoint = GetComponent<Rail>();
-                                                                          //Sets the visited nodes to zero
+                                            //Sets the visited nodes to zero
 	}
 	
 	// Update is called once per frame
 	void Update () {
         if(trigger.isTriggered && !isActivated){
+            currentState = ++currentState % 2;
+        
+            trigger.SendState((sbyte)currentState);
             StartCoroutine(lerpToPoint());
+        }
+
+        if(trigger.lockStateEnd < Time.time && currentState != trigger.state){
+            currentState = trigger.state;
+            StartCoroutine(lerpToPoint());
+
         }
 	}
 
@@ -40,10 +49,10 @@ public class ElevatorScript : MonoBehaviour {
         isActivated = true;
         
         Vector3 startPos = transform.position;
-        Vector3 endPos = (goingUp ? upNode.position:downNode.position);
+        Vector3 endPos = (currentState == 0 ? upNode.position:downNode.position);
 
-        railConnector.DisconnectNext;
-        railConnector.DisconnectPrev;
+        railConnector.DisconnectNext();
+        railConnector.DisconnectPrev();
 
         if(!soundIsPlaying){
             SoundManager.Instance.PlayEvent("Elevator_Active", gameObject);
@@ -51,7 +60,7 @@ public class ElevatorScript : MonoBehaviour {
         }
         
         float t = 0;
-        while(t<1f){
+        while(t < 1f){
             t = (Time.time - startTime) / animationLength;                   //Calculates the final speed of the object.
             float smoothstepFactor = t * t * (3 - 2 * t);
             //Moves the elevator from it's current position to the next active node
@@ -64,24 +73,12 @@ public class ElevatorScript : MonoBehaviour {
             soundIsPlaying = false;
         }
 
-        if(goingUp)
+        if(currentState == 0)
             railConnector.ConnectToNext();
         else
             railConnector.ConnectToPrev();
 
-        goingUp = !goingUp;
         isActivated = false;
 
-    }
-
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.magenta;                                       //Draws the gizmos magenta
- 
-//        Gizmos.DrawWireCube(upNode.position, new Vector3(0.5f, 0.5f, 0.5f));  //Draws a cube at each node
-//        Gizmos.DrawWireCube(downNode.position, new Vector3(0.5f, 0.5f, 0.5f));  //Draws a cube at each node
-
- //       Gizmos.DrawLine(upNode.position, downNode.position);              //Draws a line between the cubes in the order that they are visited.
-        
     }
 }

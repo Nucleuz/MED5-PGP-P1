@@ -127,22 +127,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &117708
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 439342}
-  - 114: {fileID: 11414710}
-  m_Layer: 0
-  m_Name: Head
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &118760
 GameObject:
   m_ObjectHideFlags: 1
@@ -548,6 +532,7 @@ GameObject:
   - 114: {fileID: 11435874}
   - 114: {fileID: 11483356}
   - 114: {fileID: 11494088}
+  - 114: {fileID: 11445476}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1274,7 +1259,7 @@ Transform:
   m_LocalPosition: {x: .0565948486, y: 2.27399969, z: .536956787}
   m_LocalScale: {x: 1.20000005, y: 1.20000005, z: 1.20000005}
   m_Children:
-  - {fileID: 439342}
+  - {fileID: 436878}
   m_Father: {fileID: 461602}
   m_RootOrder: 0
 --- !u!4 &413384
@@ -1505,11 +1490,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 160456}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: -1.62920685e-07}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 439342}
+  m_LocalScale: {x: .200000003, y: .200000003, z: .200000003}
+  m_Children:
+  - {fileID: 458678}
+  m_Father: {fileID: 409894}
   m_RootOrder: 0
 --- !u!4 &437348
 Transform:
@@ -1523,20 +1509,6 @@ Transform:
   m_Children:
   - {fileID: 414264}
   m_Father: {fileID: 461490}
-  m_RootOrder: 0
---- !u!4 &439342
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 117708}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -1.62920685e-07}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: .200000003, y: .200000003, z: .200000003}
-  m_Children:
-  - {fileID: 436878}
-  - {fileID: 458678}
-  m_Father: {fileID: 409894}
   m_RootOrder: 0
 --- !u!4 &439838
 Transform:
@@ -1719,12 +1691,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 188334}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .31099999, y: .522000015, z: .303000003}
+  m_LocalPosition: {x: .311000943, y: .521999598, z: .303014278}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 450028}
-  m_Father: {fileID: 439342}
-  m_RootOrder: 1
+  m_Father: {fileID: 436878}
+  m_RootOrder: 0
 --- !u!4 &461260
 Transform:
   m_ObjectHideFlags: 1
@@ -2641,9 +2613,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055d0bc1875a74acaa52a6811315853f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  head: {fileID: 439342}
+  head: {fileID: 436878}
   cam: {fileID: 160456}
-  headControl: {fileID: 11414710}
+  headControl: {fileID: 11445476}
+  vrHeadControl: {fileID: 0}
   helmet: {fileID: 11441698}
   nonFocusedLightShaft: {fileID: 11433674}
   focusedLightShaft: {fileID: 11489762}
@@ -2694,21 +2667,6 @@ MonoBehaviour:
   isMoving: 0
   startingRail: {fileID: 0}
   minecartAnimator: {fileID: 0}
---- !u!114 &11414710
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 117708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 010d42ff0b6f44c93bf918d1e009457d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controllerConnected: 1
-  cartOffsetRotX: 0
-  cartOffsetRotY: 0
-  cam: {fileID: 2010480}
 --- !u!114 &11433674
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2802,6 +2760,20 @@ MonoBehaviour:
   nonFocusedHelmetLight: {fileID: 10849832}
   playerIndex: 0
   netPlayer: {fileID: 0}
+--- !u!114 &11445476
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 010d42ff0b6f44c93bf918d1e009457d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controlState: 1
+  cartOffsetRotX: 0
+  cartOffsetRotY: 0
 --- !u!114 &11482030
 MonoBehaviour:
   m_ObjectHideFlags: 1
