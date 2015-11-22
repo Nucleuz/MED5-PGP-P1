@@ -5,9 +5,6 @@ public class SoundEmitter : MonoBehaviour {
 	public int melodyIndex;
 
 	public void Play(){
-		StartCoroutine("playMelody");
-	}
-	IEnumerator playMelody(){
 		Debug.Log("playing sound " + melodyIndex);
 		switch(melodyIndex){
 			case 0:
@@ -38,6 +35,5 @@ public class SoundEmitter : MonoBehaviour {
 				Debug.Log("Melody index out of bounds");
 			break;
 		}
-		yield return null;
 	}
 }
