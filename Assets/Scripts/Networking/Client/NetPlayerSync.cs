@@ -62,6 +62,7 @@ public class NetPlayerSync : MonoBehaviour {
 		}
 		//add rail rotation compensation for vr
 		headControl.cartOffsetRotY = transform.rotation.eulerAngles.y;
+		//headControl.cartOffsetRotX = transform.rotation.eulerAngles.x;
 	}
 	
 	void SendData(){

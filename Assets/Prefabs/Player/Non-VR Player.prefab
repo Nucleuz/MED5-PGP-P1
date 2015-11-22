@@ -532,7 +532,6 @@ GameObject:
   - 114: {fileID: 11435874}
   - 114: {fileID: 11483356}
   - 114: {fileID: 11494088}
-  - 114: {fileID: 11445476}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1074,6 +1073,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 409894}
+  - 114: {fileID: 11403878}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -1255,7 +1255,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 194408}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -1.63912773e-07}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: .0565948486, y: 2.27399969, z: .536956787}
   m_LocalScale: {x: 1.20000005, y: 1.20000005, z: 1.20000005}
   m_Children:
@@ -2615,7 +2615,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   head: {fileID: 436878}
   cam: {fileID: 2010480}
-  headControl: {fileID: 11445476}
+  headControl: {fileID: 11403878}
   helmet: {fileID: 11441698}
   nonFocusedLightShaft: {fileID: 11433674}
   focusedLightShaft: {fileID: 11489762}
@@ -2634,6 +2634,21 @@ MonoBehaviour:
   - {fileID: 2100000, guid: ebd51f192cb77e943a55c17a3e7845aa, type: 2}
   - {fileID: 2100000, guid: d872d6358e0fd6c46946fc6f774b43ce, type: 2}
   networkID: 0
+--- !u!114 &11403878
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 010d42ff0b6f44c93bf918d1e009457d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controlState: 1
+  cartOffsetRotX: 0
+  cartOffsetRotY: 0
+  cam: {fileID: 2010480}
 --- !u!114 &11407560
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2759,20 +2774,6 @@ MonoBehaviour:
   nonFocusedHelmetLight: {fileID: 10849832}
   playerIndex: 0
   netPlayer: {fileID: 0}
---- !u!114 &11445476
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 160456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 010d42ff0b6f44c93bf918d1e009457d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controlState: 1
-  cartOffsetRotX: 0
-  cartOffsetRotY: 0
 --- !u!114 &11482030
 MonoBehaviour:
   m_ObjectHideFlags: 1

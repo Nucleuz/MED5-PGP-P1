@@ -34,7 +34,6 @@ public class Cart : MonoBehaviour {
 
     public void SetStartingRail(Rail rail){
         startingRail = rail;
-        currentRail=rail;
     }
 
 	void Update(){
