@@ -53,7 +53,7 @@ public class Cart : MonoBehaviour {
       
 
         //This is specifically for elevator connection points where the cart has to move with the elevator
-        if (currentRail.next == null && currentRail.prev == null){
+        if (currentRail.prev == null && currentRail.next.next == null){
             transform.position = currentRail.transform.position + currentRail.transform.up;
             return;
         }
