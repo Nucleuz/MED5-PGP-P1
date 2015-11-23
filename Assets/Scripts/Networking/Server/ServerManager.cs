@@ -62,6 +62,11 @@ public class ServerManager : NetworkManager {
   void Update(){
     if(Input.GetKeyDown(KeyCode.K))
       saveTime();
+    if(Input.GetKeyDown(KeyCode.M)){
+      updatingStates = !updatingStates;
+      StartCoroutine(updateState());
+    }
+
   }
     //@TODO cleanup OnData -- change ifs to switches and seperate out longer subject switches to seperate functions
 
@@ -161,11 +166,13 @@ public class ServerManager : NetworkManager {
                 //force update GameMnager
                 gameManager.DetectTriggerChanges();
 
+
                 TriggerState state = triggerHandler.GetTriggerState((ushort)data.data);
 
                 Debug.Log("sending: " + state);
                 //send to clients but not the sender
-                SendToAll(data.tag,Network.Subject.TriggerState,state);
+                if(state != null)
+                  SendToAll(data.tag,Network.Subject.TriggerState,state);
             }else if(data.subject == Network.Subject.TriggerDeactivate){
                 data.DecodeData();
                 Debug.Log("trigger " + (ushort)data.data + " activated");
@@ -181,7 +188,8 @@ public class ServerManager : NetworkManager {
                 Debug.Log("sending: " + state);
 
                 //send to clients but not the sender
-                SendToAll(data.tag,Network.Subject.TriggerState,state);
+                if(state != null)
+                  SendToAll(data.tag,Network.Subject.TriggerState,state);
             }else if(data.subject == Network.Subject.PlayerSentTriggerState){
               data.DecodeData();
 
@@ -230,6 +238,9 @@ public class ServerManager : NetworkManager {
         //When a Level is Completed get the new Level manager, process triggers and give GM the LM
         Debug.Log("LevelCompleted - levelManagerIndex: " + levelHandler.levelManagerIndex);
 
+
+
+
         levelTimings[levelHandler.levelManagerIndex - 1] = Time.time - levelTimings[levelHandler.levelManagerIndex - 1];
 
         gameManager.setNewLevelManager(null);
@@ -241,6 +252,10 @@ public class ServerManager : NetworkManager {
         }else if(levelHandler.levelManagerIndex < levelHandler.levelContainers.Length)
           levelTimings[levelHandler.levelManagerIndex] = Time.time;
 
+        if(levelHandler.levelManagerIndex == 4 || levelHandler.levelManagerIndex == 5){
+          updatingStates = false;
+        }
+
         LevelContainer lc = levelHandler.levelContainers[levelHandler.levelManagerIndex];
         triggerHandler.process(lc);
         gameManager.setNewLevelManager(lc.levelManager);
@@ -249,6 +264,11 @@ public class ServerManager : NetworkManager {
         SendToAll(Network.Tag.Manager,Network.Subject.NewLevelManager,levelHandler.levelManagerIndex);
 
         Write("Level Completed");
+
+        if(levelHandler.levelManagerIndex == 3 || levelHandler.levelManagerIndex == 4){
+          updatingStates = true;
+          StartCoroutine(updateState());
+        }
 
         //write time
 

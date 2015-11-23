@@ -145,8 +145,9 @@ using DarkRift;
 
     public TriggerState GetTriggerState(ushort triggerID){
         int index = FindTriggerIndexFromID(triggerID);
-        return new TriggerState(triggers[index]);
-
+        if(index != -1)
+          return new TriggerState(triggers[index]);
+        return null;
     }
 
     public void TriggerInteracted(ushort triggerID,ushort playerID, bool state){
@@ -179,7 +180,7 @@ using DarkRift;
             if(triggerIDs[i] == id)return i;
         }
 
-        Debug.LogError("Could not find Index from ID " + id);
+        //Debug.LogError("Could not find Index from ID " + id);
         return -1;
     }
 }
