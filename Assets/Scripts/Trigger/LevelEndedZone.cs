@@ -3,6 +3,7 @@ using System.Collections;
 
 public class LevelEndedZone : MonoBehaviour {
 
+  [ContextMenuItem("Complete Level", "Complete")] //add extra functionality on the right click context menu
     public LevelHandler levelHandler;
 
     void OnTriggerEnter(Collider col){
@@ -11,6 +12,11 @@ public class LevelEndedZone : MonoBehaviour {
             Destroy(gameObject);
         }
 
+    }
+
+    void Complete(){
+      levelHandler.OnLevelCompleted();
+      Destroy(gameObject);
     }
 
 }
