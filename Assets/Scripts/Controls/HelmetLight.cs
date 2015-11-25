@@ -123,13 +123,13 @@ public class HelmetLight : MonoBehaviour {
         //Set the color of the interactable button both background light and particles to the correct user.
         switch (playerIndex){
             case 1: // Blue
-                color = new Color(0.2F, 0.2F, 1, 0.1F);
+                color = new Color(0F, 0F, 1, 1F);
             break;
             case 2: // Red
-                color = new Color(1, 0.2F, 0.2F, 0.1F);
+                color = new Color(1, 0F, 0F, 1F);
             break;
             case 3: // Green
-                color = new Color(0.2F, 1, 0.2F, 0.1F);
+                color = new Color(0F, 1, 0F, 1F);
             break;
             default:
                 Debug.Log("Invalid playerIndex");
@@ -143,8 +143,8 @@ public class HelmetLight : MonoBehaviour {
             beamQuads[i] = transform.GetChild(i).GetComponent<Renderer>();
             transform.GetChild(i).gameObject.SetActive(true);
         }
-        halo.gameObject.SetActive(true);
 
+        halo.gameObject.SetActive(true);
         Color color = new Color();
 
         //Set the color of the interactable button both background light and particles to the correct user.

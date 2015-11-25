@@ -204,6 +204,8 @@ public class ClientManager : NetworkManager
 
         //send it to everyone else
         DarkRiftAPI.SendMessageToOthers(Network.Tag.Manager, Network.Subject.SpawnPlayer, player.position.Serialize());
+
+        CanvasFade.Instance.ToGame(3f);
     }
 
 }

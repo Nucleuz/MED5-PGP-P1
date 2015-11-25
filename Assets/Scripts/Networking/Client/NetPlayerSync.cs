@@ -72,6 +72,7 @@ public class NetPlayerSync : MonoBehaviour {
 	}
 
 	void Update(){
+
 		if(!isSender){
 			cart.minecartAnimator.speed = (transform.position - aniSpeedLastPos).magnitude * aniSpeedMultiplier;
 			aniSpeedLastPos = transform.position;
