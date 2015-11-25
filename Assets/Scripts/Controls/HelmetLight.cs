@@ -9,12 +9,14 @@ public class HelmetLight : MonoBehaviour {
     [HideInInspector] public int playerIndex;                         // index for the player.
     [HideInInspector] public NetPlayerSync netPlayer;
 
-    private float angleNormal = 20;         // Angle of the spotlight without focus
+    public Light halo;
+
+    private float angleNormal = 12.5f;         // Angle of the spotlight without focus
     private float angleFocus = 5;           // Angle of the spotlight during focus
     private float startTime = -1f;          // Used for lerping the focus li
     private float stopTime = -1f;
     private Light mainLight;                // Reference to light
-    private MeshRenderer[] beamQuads;           // Refrence to MeshRenderer planes
+    private Renderer[] beamQuads;           // Refrence to Renderer planes
     private Interactable lastObjectHit;
     private bool soundIsPlaying;
     private Ray ray;
@@ -22,53 +24,20 @@ public class HelmetLight : MonoBehaviour {
 
     public void SetPlayerIndex (int networkId) {
         playerIndex = networkId;
-        mainLight = GetComponent<Light>();
-        for(int i = 0; i < transform.childCount - 1; i++) {
-            beamQuads[i] = transform.GetChild(i).GetComponent<MeshRenderer>();
-        }
-        matForBeam = new Material(beamQuads[0].material);
-
-        //Set the color of the interactable button both background light and particles to the correct user.
-        switch (playerIndex){
-            case 1: // Blue
-            ((Behaviour) transform.FindChild("Halo Blue").GetComponent("Halo")).enabled = true;
-            for(int i = 0; i < transform.childCount - 1; i++) {
-                beamQuads[i].material.color = new Color(0.2F, 0.2F, 1, 0.1F);
-            }
-            mainLight.color = new Color(0.2F, 0.2F, 1, 0.1F);
-            break;
-            case 2: // Red
-            ((Behaviour) transform.FindChild("Halo Red").GetComponent("Halo")).enabled = true;
-            for(int i = 0; i < transform.childCount - 1; i++) {
-                beamQuads[i].material.color = new Color(1, 0.2F, 0.2F, 0.1F);
-            }
-            mainLight.color = new Color(1, 0.2F, 0.2F, 0.1F);
-            break;
-            case 3: // Green
-            ((Behaviour) transform.FindChild("Halo Green").GetComponent("Halo")).enabled = true;
-            for(int i = 0; i < transform.childCount - 1; i++) {
-                beamQuads[i].material.color = new Color(0.2F, 1, 0.2F, 0.1F);
-            }
-            mainLight.color = new Color(0.2F, 1, 0.2F, 0.1F);
-            break;
-            default:
-                Debug.Log("Invalid playerIndex");
-            break;
-        }
-        
-        if(hideBeams) {
-            ((Behaviour) transform.FindChild("Halo Green").GetComponent("Halo")).enabled = false;
-            ((Behaviour) transform.FindChild("Halo Blue").GetComponent("Halo")).enabled = false;
-            ((Behaviour) transform.FindChild("Halo Red").GetComponent("Halo")).enabled = false;
-            for(int i = 0; i < transform.childCount - 1; i++) {
-                beamQuads[i].enabled = false;
-            }
-        }
+        mainLight = GetComponent<Light>();   
     }
 
     public void LightUpdate(float t){
-        // Lerps the spotlight angle from normal to focused angle.
-        //helmetLight.spotAngle = Mathf.Lerp(angleNormal, angleFocus,t);
+        //Lerps the spotlight angle from normal to focused angle.
+        float angle = Mathf.Lerp(angleNormal, angleFocus,t);
+        float haloSize = Mathf.Lerp(6, 2.2f,t);
+        mainLight.spotAngle = angle;
+        if(beamQuads != null){
+            halo.range = haloSize;
+            for(int i = 0; i < beamQuads.Length; i++) {
+                beamQuads[i].transform.localScale = new Vector3(beamQuads[i].transform.localScale.x, angle, beamQuads[i].transform.localScale.z);
+            }
+        }
     }
 
     void Update () {
@@ -145,5 +114,58 @@ public class HelmetLight : MonoBehaviour {
             lastObjectHit.OnRayExit(playerIndex);
             lastObjectHit = null;
         }
+    }
+
+    public void SetAsSender(){
+
+        Color color = new Color();
+
+        //Set the color of the interactable button both background light and particles to the correct user.
+        switch (playerIndex){
+            case 1: // Blue
+                color = new Color(0.2F, 0.2F, 1, 0.1F);
+            break;
+            case 2: // Red
+                color = new Color(1, 0.2F, 0.2F, 0.1F);
+            break;
+            case 3: // Green
+                color = new Color(0.2F, 1, 0.2F, 0.1F);
+            break;
+            default:
+                Debug.Log("Invalid playerIndex");
+            break;
+        }
+        mainLight.color = color;
+    }
+    public void SetAsReceiver(){
+        beamQuads = new Renderer[4];
+        for(int i = 0; i < beamQuads.Length; i++) {
+            beamQuads[i] = transform.GetChild(i).GetComponent<Renderer>();
+            transform.GetChild(i).gameObject.SetActive(true);
+        }
+        halo.gameObject.SetActive(true);
+
+        Color color = new Color();
+
+        //Set the color of the interactable button both background light and particles to the correct user.
+        switch (playerIndex){
+            case 1: // Blue
+                color = new Color(0.2F, 0.2F, 1, 0.1F);
+            break;
+            case 2: // Red
+                color = new Color(1, 0.2F, 0.2F, 0.1F);
+            break;
+            case 3: // Green
+                color = new Color(0.2F, 1, 0.2F, 0.1F);
+            break;
+            default:
+                Debug.Log("Invalid playerIndex");
+            break;
+        }
+        for(int i = 0; i < beamQuads.Length; i++){
+            beamQuads[i].material.SetColor("_TintColor", color);
+        }
+        mainLight.color = color;
+        halo.color = color;
     }
 }

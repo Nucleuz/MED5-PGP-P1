@@ -180,20 +180,23 @@ public class NetPlayerSync : MonoBehaviour {
 	public void SetAsSender(){
 		isSender = true;
 		cart.enabled = true;
+        cart.SetAsSender();
 		cam.enabled = true;
 		headControl.enabled = true;
 		helmet.SetPlayerIndex(networkID);
+		helmet.SetAsSender();
 		helmet.enabled = true;
-		helmet.hideBeams = true;
 		SetColor();
 	}
 	
 	public void SetAsReceiver(){
 		isSender = false;
 		cart.enabled = false;
+		cart.SetAsReceiver();
 		cam.enabled = false;
 		headControl.enabled = false;
 		helmet.SetPlayerIndex(networkID);
+		helmet.SetAsReceiver();
 		helmet.enabled = false;
 		SetColor();
 	}

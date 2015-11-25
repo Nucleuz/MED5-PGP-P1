@@ -14,7 +14,7 @@ public class HeadControl : MonoBehaviour {
 	float horizontalRotationAmount = 360;
 	float verticalRotationAmount = 180;
 	
-	float horizontalRotationOffset = -180;
+	float horizontalRotationOffset = 0;
 	float verticalRotationOffset = -90;
 
 	private float turnSpeed = 80.0f;
@@ -45,14 +45,14 @@ public class HeadControl : MonoBehaviour {
 			case ControlState.DEBUG:
 				Vector2 mouse = Input.mousePosition;
 				float h = mouse.x / cam.pixelWidth;
-				float v = (cam.pixelHeight - mouse.y)/cam.pixelHeight ;
+				float v = mouse.y / cam.pixelHeight;
 
 				//Script used for detecting if controller should be used
 				transform.rotation = Quaternion.Euler(v * verticalRotationAmount + verticalRotationOffset,h * horizontalRotationAmount + horizontalRotationOffset,0);
 
 			break;
 			case ControlState.NVR:
-				controllerRotX += (Input.GetAxis("ViewY") * turnSpeed * Time.deltaTime);
+				controllerRotX -= (Input.GetAxis("ViewY") * turnSpeed * Time.deltaTime);
 				controllerRotY += (Input.GetAxis("ViewX") * turnSpeed * Time.deltaTime);
 
 				controllerRotX = Mathf.Clamp(controllerRotX,-90,90);
