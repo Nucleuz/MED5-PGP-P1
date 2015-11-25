@@ -6,6 +6,7 @@ public class SoundEmitter : MonoBehaviour {
 
 	public void Play(){
 		Debug.Log("playing sound " + melodyIndex);
+		
 		switch(melodyIndex){
 			case 0:
 				SoundManager.Instance.PlayEvent("SP_PlayerButton1", gameObject);
@@ -35,5 +36,6 @@ public class SoundEmitter : MonoBehaviour {
 				Debug.Log("Melody index out of bounds");
 			break;
 		}
+		
 	}
 }
