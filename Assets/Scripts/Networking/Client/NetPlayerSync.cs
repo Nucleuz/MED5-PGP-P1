@@ -21,10 +21,7 @@ public class NetPlayerSync : MonoBehaviour {
 
 	public HeadControl headControl;
 	
-	public HelmetLightScript helmet;
-
-	public LightShafts nonFocusedLightShaft;
-	public LightShafts focusedLightShaft;
+	public HelmetLight helmet;
 
 	public Cart cart;
 	public Renderer[] coloredObjects;
@@ -34,6 +31,8 @@ public class NetPlayerSync : MonoBehaviour {
 	private Quaternion lastRotation;
 	private Quaternion lastCart;
 	private Vector3 lastPosition;
+
+	private Vector3 aniSpeedLastPos;
 
 	private float minDistanceMoved = .5f;
 	private float minAngleMoved = 2f;
@@ -48,11 +47,17 @@ public class NetPlayerSync : MonoBehaviour {
 	private IEnumerator rotationRoutine;
 	private IEnumerator cartRoutine;
 
+	public float aniSpeedMultiplier = 30f;
+
 	// Use this for initialization
 	void Start () {
 		helmet.netPlayer = this;
 		DarkRiftAPI.onPlayerDisconnected += PlayerDisconnected;
 		DarkRiftAPI.onDataDetailed += RecieveData;
+		
+		aniSpeedLastPos = transform.position;
+		cart.minecartAnimator.StartPlayback();
+
 	}
 	
 	// Update is called once per frame
@@ -63,6 +68,14 @@ public class NetPlayerSync : MonoBehaviour {
 		//add rail rotation compensation for vr
 		headControl.cartOffsetRotY = transform.rotation.eulerAngles.y;
 		//headControl.cartOffsetRotX = transform.rotation.eulerAngles.x;
+		
+	}
+
+	void Update(){
+		if(!isSender){
+			cart.minecartAnimator.speed = (transform.position - aniSpeedLastPos).magnitude * aniSpeedMultiplier;
+			aniSpeedLastPos = transform.position;
+		}
 	}
 	
 	void SendData(){
@@ -171,6 +184,7 @@ public class NetPlayerSync : MonoBehaviour {
 		headControl.enabled = true;
 		helmet.SetPlayerIndex(networkID);
 		helmet.enabled = true;
+		helmet.hideBeams = true;
 		SetColor();
 	}
 	
@@ -189,14 +203,6 @@ public class NetPlayerSync : MonoBehaviour {
 			coloredObjects[i].material = coloredObjectsMaterial[networkID - 1];
 		}
 	}
-
-    public void AddCameraToLightShaft(Camera camera){
-		nonFocusedLightShaft.m_Cameras[0] = camera;
-		focusedLightShaft.m_Cameras[0] = camera;
-
-		nonFocusedLightShaft.UpdateCameraDepthMode();
-		focusedLightShaft.UpdateCameraDepthMode();
-    }
 
     public void UpdateHelmetLight(bool isFocusing){
 		DarkRiftAPI.SendMessageToOthers(Network.Tag.Player, Network.Subject.PlayerFocus,isFocusing);
@@ -231,8 +237,6 @@ public class NetPlayerSync : MonoBehaviour {
     	Vector3 startPosition = transform.position;
 
     	Vector3 lastFrame;
-        cart.minecartAnimator.StartPlayback();
-		cart.minecartAnimator.speed = 1;
 
     	float t = 0f;
     	while(t < 1f){
@@ -244,8 +248,6 @@ public class NetPlayerSync : MonoBehaviour {
     		yield return null;
     	}
     	lastPositionTime = Time.time;
-    	cart.minecartAnimator.speed = 0;
-        cart.minecartAnimator.StopPlayback();
 
     	//transform.position = newPosition;
     }

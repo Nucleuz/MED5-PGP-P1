@@ -566,7 +566,6 @@ GameObject:
   - 114: {fileID: 11435874}
   - 114: {fileID: 11483356}
   - 114: {fileID: 11494088}
-  - 114: {fileID: 11445476}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1155,6 +1154,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 409894}
+  - 114: {fileID: 11427624}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -2882,12 +2882,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   head: {fileID: 436878}
-  cam: {fileID: 160456}
-  headControl: {fileID: 11445476}
-  vrHeadControl: {fileID: 0}
-  helmet: {fileID: 0}
-  nonFocusedLightShaft: {fileID: 0}
-  focusedLightShaft: {fileID: 0}
+  cam: {fileID: 2010480}
+  headControl: {fileID: 11427624}
+  helmet: {fileID: 11453862}
   cart: {fileID: 11410244}
   coloredObjects:
   - {fileID: 13784962}
@@ -2897,12 +2894,12 @@ MonoBehaviour:
   - {fileID: 13792384}
   - {fileID: 13780982}
   - {fileID: 13799734}
-  - {fileID: 2314588}
   coloredObjectsMaterial:
   - {fileID: 2100000, guid: febdc5e567872e049b76fb59ad60d0a8, type: 2}
   - {fileID: 2100000, guid: ebd51f192cb77e943a55c17a3e7845aa, type: 2}
   - {fileID: 2100000, guid: d872d6358e0fd6c46946fc6f774b43ce, type: 2}
   networkID: 0
+  aniSpeedMultiplier: 30
 --- !u!114 &11407560
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2935,6 +2932,22 @@ MonoBehaviour:
   isMoving: 0
   startingRail: {fileID: 0}
   minecartAnimator: {fileID: 0}
+  railMoveTowards: {fileID: 0}
+--- !u!114 &11427624
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 010d42ff0b6f44c93bf918d1e009457d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controlState: 2
+  cartOffsetRotX: 0
+  cartOffsetRotY: 0
+  cam: {fileID: 2010480}
 --- !u!114 &11435874
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2947,20 +2960,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listenerId: 0
---- !u!114 &11445476
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 160456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 010d42ff0b6f44c93bf918d1e009457d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controlState: 1
-  cartOffsetRotX: 0
-  cartOffsetRotY: 0
 --- !u!114 &11453862
 MonoBehaviour:
   m_ObjectHideFlags: 1

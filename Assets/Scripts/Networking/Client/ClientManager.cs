@@ -141,9 +141,6 @@ public class ClientManager : NetworkManager
                         else
                             otherPlayers[1] = netPlayer;
 
-                        if(player != null){
-                            netPlayer.AddCameraToLightShaft(player.GetComponent<NetPlayerSync>().cam);
-                        }
                         netPlayer.cart.InitAsReceiver();
 
                     }
@@ -200,15 +197,7 @@ public class ClientManager : NetworkManager
         netPlayer.networkID = networkID;
         netPlayer.SetAsSender();
 
-        for(int i = 0;i<otherPlayers.Length;i++){
-            Console.Instance.AddMessage("other player: " + otherPlayers[i]);
-            if(otherPlayers[i] != null){
-               otherPlayers[i].AddCameraToLightShaft(netPlayer.cam);
-            }
-        }
-
         //place the player on the correct rail!
-
         Console.Instance.AddMessage("levelManager: " + levelHandler.getLevelManager());
         Rail startRail = levelHandler.getLevelManager().levelStartRail[networkID - 1];
         netPlayer.cart.InitAsSender(startRail);
