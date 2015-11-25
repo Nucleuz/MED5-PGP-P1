@@ -51,6 +51,9 @@ public class ElevatorScript : MonoBehaviour {
     IEnumerator lerpToPoint(){
         float startTime = Time.time;
         isActivated = true;
+
+        railConnector.self.isElevatorPoint = true;
+        endRailConnector.self.isElevatorPoint = true;
         
         Vector3 endUpNode = new Vector3(endRailConnector.transform.position.x, upNode.transform.position.y, endRailConnector.transform.position.z);
         Vector3 endDownNode = new Vector3(endRailConnector.transform.position.x, downNode.transform.position.y, endRailConnector.transform.position.z);
@@ -90,6 +93,8 @@ public class ElevatorScript : MonoBehaviour {
             railConnector.ConnectToPrev();
 
         isActivated = false;
+        railConnector.self.isElevatorPoint = false;
+        endRailConnector.self.isElevatorPoint = false;
 
     }
 }

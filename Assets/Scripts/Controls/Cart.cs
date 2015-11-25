@@ -17,6 +17,8 @@ public class Cart : MonoBehaviour {
     public Animator minecartAnimator;  // Animator pointer for Minecart
 	private float currentStep;          // How long the player is between two points
 
+    public Rail railMoveTowards;
+
     public void InitAsSender(Rail rail) {
 
         isMoving = false;
@@ -49,6 +51,13 @@ public class Cart : MonoBehaviour {
             return;
         }
 
+        //This is specifically for elevator connection points where the cart has to move with the elevator
+        if(currentRail.isElevatorPoint){
+            if ((currentRail.prev == null && currentRail.next.next == null) || (currentRail.prev.prev == null && currentRail.next == null)){
+                transform.position = new Vector3(transform.position.x, currentRail.transform.position.y + 1,transform.position.z);
+                return;
+            }
+        }
         float verticalAxis = Input.GetAxis("Vertical");
         if (Mathf.Abs(verticalAxis) > 0.01f) {
             minecartAnimator.StartPlayback();
@@ -59,29 +68,23 @@ public class Cart : MonoBehaviour {
             isMoving = false;
         }
 
-        //This is specifically for elevator connection points where the cart has to move with the elevator
-        if(currentRail.isElevatorPoint){
-            if ((currentRail.prev == null && currentRail.next.next == null) || (currentRail.prev.prev == null && currentRail.next == null)){
-                transform.position = new Vector3(transform.position.x, currentRail.transform.position.y + 1,transform.position.z);
-            }
-        }
     }
 
     void Move(float verticalAxis) {
         // Decide which way rail we are moving towards (Towards Next or Previous rail)
-        Rail railMoveTowards = null;    // Hopefully not null afterwards
-        if (currentStep > 0)
-            railMoveTowards = currentRail.next;
-        else if (currentStep < 0)
-            railMoveTowards = currentRail.prev;
-        else if (currentStep == 0 && verticalAxis > 0)
-            railMoveTowards = currentRail.next;
-        else if (currentStep == 0 && verticalAxis < 0)
-            railMoveTowards = currentRail.prev;
-        else
-            Debug.LogError("Movement went terrible wrong, this should not be possible!");
+        railMoveTowards = null;    // Hopefully not null afterwards
 
+        if (currentStep > 0  && currentRail.next != null)
+            railMoveTowards = currentRail.next;
+        else if (currentStep < 0  && currentRail.prev != null)
+            railMoveTowards = currentRail.prev;
+        else if (currentStep <= 0 && verticalAxis > 0 && currentRail.next != null)
+            railMoveTowards = currentRail.next;
+        else if (currentStep >= 0 && verticalAxis < 0 && currentRail.prev != null)
+            railMoveTowards = currentRail.prev;
+       
         if(railMoveTowards != null) {
+
             // Find distance between Current Rail and the Next Rail for Normalize amount of movement
             float length = Vector3.Distance(currentRail.transform.position, railMoveTowards.transform.position);
 
@@ -112,7 +115,7 @@ public class Cart : MonoBehaviour {
             //TODO Might be some issue with last rail point, haven't tested yet!
 
             // Set minecart animation speed
-            minecartAnimator.speed = (movementSpeed) * verticalAxis;
+            minecartAnimator.speed = (movementSpeed) * verticalAxis * 2;
 
             isMoving = true;
         }
