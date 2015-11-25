@@ -19,17 +19,15 @@ public class Cart : MonoBehaviour {
 
     public Rail railMoveTowards;
 
-    public void InitAsSender(Rail rail) {
+    public void SetAsSender() {
 
         isMoving = false;
-        startingRail = rail;
-        currentRail = rail;
-        startingPosition = rail.transform.position;
+        startingPosition = startingRail.transform.position;
         minecartAnimator = GetComponent<Animator>();
 
         currentStep = 0;
     }
-	public void InitAsReceiver() {
+	public void SetAsReceiver() {
 		minecartAnimator = GetComponent<Animator>();
         minecartAnimator.speed = 0;
     }

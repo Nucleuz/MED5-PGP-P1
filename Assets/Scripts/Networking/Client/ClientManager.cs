@@ -140,9 +140,6 @@ public class ClientManager : NetworkManager
                             otherPlayers[0] = netPlayer;
                         else
                             otherPlayers[1] = netPlayer;
-
-                        netPlayer.cart.InitAsReceiver();
-
                     }
                     break;
                 case Network.Subject.HasJoined:
@@ -152,7 +149,6 @@ public class ClientManager : NetworkManager
 
                         //send player data to the one who asked
                         if(player != null){
-
                             DarkRiftAPI.SendMessageToID(senderID, Network.Tag.Manager, Network.Subject.SpawnPlayer,player.position.Serialize());
                         }
                     }
@@ -194,15 +190,16 @@ public class ClientManager : NetworkManager
         //set the network id so it will sync with the player
         NetPlayerSync netPlayer = g.GetComponent<NetPlayerSync>();
 
+        Rail startRail = levelHandler.getLevelManager().levelStartRail[networkID - 1];
+        netPlayer.cart.startingRail = startRail;
+        netPlayer.cart.currentRail = startRail;
+
         netPlayer.networkID = networkID;
         netPlayer.SetAsSender();
 
         //place the player on the correct rail!
         Console.Instance.AddMessage("levelManager: " + levelHandler.getLevelManager());
-        Rail startRail = levelHandler.getLevelManager().levelStartRail[networkID - 1];
-        netPlayer.cart.InitAsSender(startRail);
-        netPlayer.cart.currentRail = startRail;
-        Console.Instance.AddMessage("startrail: " + startRail.transform.position);
+
 
 
         player.position = startRail.transform.position;
