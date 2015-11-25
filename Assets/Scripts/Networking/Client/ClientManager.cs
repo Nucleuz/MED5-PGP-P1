@@ -27,10 +27,8 @@ public class ClientManager : NetworkManager
     public ushort networkID = 0;
 
     //prefab for the players
-    public bool useVR = false;
     public GameObject otherPrefab;
     public GameObject nvrPrefab;
-    public GameObject vrPrefab;
 
     [HideInInspector]
     public static Transform player;
@@ -185,7 +183,7 @@ public class ClientManager : NetworkManager
         //spawn the object
 
 
-        GameObject g = Instantiate((useVR ? vrPrefab : nvrPrefab), Vector3.zero, Quaternion.identity) as GameObject;
+        GameObject g = Instantiate(nvrPrefab, Vector3.zero, Quaternion.identity) as GameObject;
         player = g.transform;
         //set the network id so it will sync with the player
         NetPlayerSync netPlayer = g.GetComponent<NetPlayerSync>();
