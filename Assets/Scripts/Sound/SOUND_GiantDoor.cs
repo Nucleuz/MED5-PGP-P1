@@ -17,16 +17,16 @@ public class SOUND_GiantDoor : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (anim.GetCurrentAnimatorStateInfo(0).IsName("Open") && !isStarted && !hasPlayed)
+		if (!isStarted && !hasPlayed && anim.GetCurrentAnimatorStateInfo(0).IsName("Open"))
         {
         	hasPlayed = true;
         	isStarted = true;
         	SoundManager.Instance.PlayEvent("DoorSlideStart", gameObject);
         	timeStamp = Time.time + anim.GetCurrentAnimatorStateInfo(0).length;
-        	Debug.Log("timeStamp: " +timeStamp + " time: " + Time.time);
         }
 
-        if(timeStamp < Time.time && isStarted){
+        if(isStarted && timeStamp < Time.time){
+        	SoundManager.Instance.StopEvent("DoorSlideStart", gameObject);
         	SoundManager.Instance.PlayEvent("DoorSlideStop", gameObject);
         	isStarted = false;
         }
