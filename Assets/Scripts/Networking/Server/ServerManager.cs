@@ -202,6 +202,14 @@ public class ServerManager : NetworkManager {
 
     }
 
+    public void stopPushingStates(){
+      updatingStates = false;
+    }
+    public void startPushingStates(){
+      updatingStates = true;
+      StartCoroutine(updateState());
+    }
+
     IEnumerator updateState(){
       while(updatingStates){
         TriggerState[] triggerStates = new TriggerState[triggerHandler.triggers.Count];
@@ -246,9 +254,7 @@ public class ServerManager : NetworkManager {
         }else if(levelHandler.levelManagerIndex < levelHandler.levelContainers.Length)
           levelTimings[levelHandler.levelManagerIndex] = Time.time;
 
-        if(levelHandler.levelManagerIndex == 4 || levelHandler.levelManagerIndex == 5){
-          updatingStates = false;
-        }
+
 
         LevelContainer lc = levelHandler.levelContainers[levelHandler.levelManagerIndex];
         triggerHandler.process(lc);
@@ -256,11 +262,6 @@ public class ServerManager : NetworkManager {
 
         //tell client to set the next level manager
         SendToAll(Network.Tag.Manager,Network.Subject.NewLevelManager,levelHandler.levelManagerIndex);
-
-        if(levelHandler.levelManagerIndex == 3 || levelHandler.levelManagerIndex == 4){
-          updatingStates = true;
-          StartCoroutine(updateState());
-        }
 
         //write time
 
