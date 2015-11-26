@@ -16,8 +16,8 @@ MonoBehaviour:
   - PhysicalPath: Events\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{F435BC40-F026-475F-8354-F9EAA1C9BD20}'
-    m_lastTimePsrt1: 764182711
-    m_lastTimePart2: -1999442107
+    m_lastTimePsrt1: -173844900
+    m_lastTimePart2: -1999440306
     List:
     - Name: Ambience_BackgroundDeepWater
       Path: Default Work Unit\Ambience\Ambience_BackgroundDeepWater
@@ -91,8 +91,8 @@ MonoBehaviour:
       ID: -471484511
       Guid: da01cb49db66674a88c4f3ecb773cf79
       maxAttenuation: 0
-    - Name: BFdoor_chain
-      Path: Default Work Unit\Doors and Mechanisms\Doors etc\BFdoor_chain
+    - Name: BFdoor_Start
+      Path: Default Work Unit\Doors and Mechanisms\Doors etc\BFDoor\BFdoor_Start
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
@@ -100,10 +100,28 @@ MonoBehaviour:
         ObjectType: 4
       - ElementName: Doors etc
         ObjectType: 4
-      - ElementName: BFdoor_chain
+      - ElementName: BFDoor
+        ObjectType: 4
+      - ElementName: BFdoor_Start
         ObjectType: 3
-      ID: 182577407
+      ID: 2142118936
       Guid: d55461e3eb5bd949848e393f81038693
+      maxAttenuation: 0
+    - Name: BFdoor_Stop
+      Path: Default Work Unit\Doors and Mechanisms\Doors etc\BFDoor\BFdoor_Stop
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Doors and Mechanisms
+        ObjectType: 4
+      - ElementName: Doors etc
+        ObjectType: 4
+      - ElementName: BFDoor
+        ObjectType: 4
+      - ElementName: BFdoor_Stop
+        ObjectType: 3
+      ID: 669830308
+      Guid: 3b3499795c426c4fb3a1d212edd256bc
       maxAttenuation: 0
     - Name: ButtonOnOff
       Path: Default Work Unit\Doors and Mechanisms\Buttons\ButtonOnOff
@@ -239,6 +257,22 @@ MonoBehaviour:
       ID: -1476053798
       Guid: f7db7b451f148b4499c4a90e00704903
       maxAttenuation: 0
+    - Name: FootSlide
+      Path: Default Work Unit\Doors and Mechanisms\Doors etc\BFDoor\FootSlide
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Doors and Mechanisms
+        ObjectType: 4
+      - ElementName: Doors etc
+        ObjectType: 4
+      - ElementName: BFDoor
+        ObjectType: 4
+      - ElementName: FootSlide
+        ObjectType: 3
+      ID: 282188232
+      Guid: b385f286285b30458a4f917f0f56d628
+      maxAttenuation: 0
     - Name: Headlamp_Focus_Active
       Path: Default Work Unit\Player Equipment\Headlamp_Focus_Active
       PathAndIcons:
@@ -262,6 +296,30 @@ MonoBehaviour:
         ObjectType: 3
       ID: 1471623179
       Guid: 842fd8d53419df47818a15a2267260a2
+      maxAttenuation: 0
+    - Name: Heartbeat
+      Path: Default Work Unit\HeartOfNicklantis\Heartbeat
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: HeartOfNicklantis
+        ObjectType: 4
+      - ElementName: Heartbeat
+        ObjectType: 3
+      ID: -2115480809
+      Guid: 69c5fd1ceb79524aa108f4390f6c7f71
+      maxAttenuation: 0
+    - Name: HeartMojo
+      Path: Default Work Unit\HeartOfNicklantis\HeartMojo
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: HeartOfNicklantis
+        ObjectType: 4
+      - ElementName: HeartMojo
+        ObjectType: 3
+      ID: -516266926
+      Guid: 3aadbbfe3967a2409ebd586e19c8d708
       maxAttenuation: 0
     - Name: Lava_Active
       Path: Default Work Unit\Environment Assets\Lava\Lava_Active
@@ -595,6 +653,18 @@ MonoBehaviour:
       ID: 1766332112
       Guid: 413929c31c2bcf49a779bde231edbc08
       maxAttenuation: 0
+    - Name: VoiceOver_Intro
+      Path: Default Work Unit\VoiceOver\VoiceOver_Intro
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: VoiceOver
+        ObjectType: 4
+      - ElementName: VoiceOver_Intro
+        ObjectType: 3
+      ID: 1679017388
+      Guid: f4f5c68cf268094b972463173f5146ab
+      maxAttenuation: 0
     - Name: WaterfallHuge
       Path: Default Work Unit\Environment Assets\Water\WaterfallHuge
       PathAndIcons:
@@ -641,8 +711,8 @@ MonoBehaviour:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{88AEA801-E436-458F-9865-10A1788249D3}'
-    m_lastTimePsrt1: 771963830
-    m_lastTimePart2: -1999442107
+    m_lastTimePsrt1: -443159552
+    m_lastTimePart2: -1999440387
     List:
     - Name: AmbienceBus
       Path: Default Work Unit\Master Audio Bus\AmbienceBus
@@ -681,15 +751,15 @@ MonoBehaviour:
   - PhysicalPath: States\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{AE51883C-3B7E-44A4-8103-D9454D178678}'
-    m_lastTimePsrt1: 865581240
-    m_lastTimePart2: -1999442107
+    m_lastTimePsrt1: -643159552
+    m_lastTimePart2: -1999440387
     List: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{FC282CBF-8094-4F9E-A1C0-F8921C840242}'
-    m_lastTimePsrt1: 865611308
-    m_lastTimePart2: -1999442107
+    m_lastTimePsrt1: -663159552
+    m_lastTimePart2: -1999440387
     List:
     - Name: CarOn_Off
       Path: Default Work Unit\CarOn_Off
@@ -791,8 +861,8 @@ MonoBehaviour:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{116C8925-F139-4949-97E9-2B14250AD9FB}'
-    m_lastTimePsrt1: -1084267228
-    m_lastTimePart2: -1999441100
+    m_lastTimePsrt1: -172572095
+    m_lastTimePart2: -1999440306
     List:
     - Name: Main
       Path: Default Work Unit\Main
