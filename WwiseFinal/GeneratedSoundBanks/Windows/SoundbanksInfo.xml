@@ -19,17 +19,16 @@
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<IncludedEvents>
-				<Event Id="13542051" Name="Ambience_Main"/>
-				<Event Id="4259853717" Name="Ambience_Mojo"/>
-				<Event Id="995042587" Name="Ambience_Pebbles"/>
-				<Event Id="3823482786" Name="Ambience_WaterDrops1"/>
-				<Event Id="3823482785" Name="Ambience_WaterDrops2"/>
+				<Event Id="13542051" Name="Ambience_Main" MaxAttenuation="100.000000"/>
+				<Event Id="4259853717" Name="Ambience_Mojo" MaxAttenuation="100.000000"/>
+				<Event Id="995042587" Name="Ambience_Pebbles" MaxAttenuation="100.000000"/>
+				<Event Id="3823482786" Name="Ambience_WaterDrops1" MaxAttenuation="100.000000"/>
+				<Event Id="3823482785" Name="Ambience_WaterDrops2" MaxAttenuation="100.000000"/>
 				<Event Id="2142118936" Name="BFdoor_Start"/>
 				<Event Id="669830308" Name="BFdoor_Stop" MaxAttenuation="0.000000"/>
 				<Event Id="1973289021" Name="ButtonOnOff"/>
 				<Event Id="3425521569" Name="CarCrystal"/>
 				<Event Id="480657863" Name="CarLegHit1"/>
-				<Event Id="3357991991" Name="Door02" MaxAttenuation="0.000000"/>
 				<Event Id="3230905820" Name="DoorSlideStart"/>
 				<Event Id="1108313776" Name="DoorSlideStop"/>
 				<Event Id="4112392368" Name="Elevator_Active"/>

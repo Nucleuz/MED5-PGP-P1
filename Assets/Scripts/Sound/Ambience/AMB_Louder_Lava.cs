@@ -4,7 +4,7 @@ using System.Collections;
 public class AMB_Louder_Lava : MonoBehaviour {
 
 	// Use this for initialization
-	void Start () {
+	void OnEnable () {
 		SoundManager.Instance.PlayEvent("Louder_Lava_Active", gameObject);
 	}
 	

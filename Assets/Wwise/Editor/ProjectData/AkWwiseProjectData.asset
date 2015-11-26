@@ -16,21 +16,9 @@ MonoBehaviour:
   - PhysicalPath: Events\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{F435BC40-F026-475F-8354-F9EAA1C9BD20}'
-    m_lastTimePsrt1: -173844900
-    m_lastTimePart2: -1999440306
+    m_lastTimePsrt1: 1701664979
+    m_lastTimePart2: -1999440274
     List:
-    - Name: Ambience_BackgroundDeepWater
-      Path: Default Work Unit\Ambience\Ambience_BackgroundDeepWater
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: Ambience
-        ObjectType: 4
-      - ElementName: Ambience_BackgroundDeepWater
-        ObjectType: 3
-      ID: -592448325
-      Guid: 3b458699ab05d0498b14cec02d5afdf7
-      maxAttenuation: 0
     - Name: Ambience_Main
       Path: Default Work Unit\Ambience\Ambience_Main
       PathAndIcons:
@@ -42,7 +30,7 @@ MonoBehaviour:
         ObjectType: 3
       ID: 13542051
       Guid: 3e529766f9a67c43a3bc5c6edf8808a1
-      maxAttenuation: 0
+      maxAttenuation: 100
     - Name: Ambience_Mojo
       Path: Default Work Unit\Ambience\Ambience_Mojo
       PathAndIcons:
@@ -54,7 +42,7 @@ MonoBehaviour:
         ObjectType: 3
       ID: -35113579
       Guid: 9edcfd12bbac3f42a5b415568c8c9eb8
-      maxAttenuation: 0
+      maxAttenuation: 100
     - Name: Ambience_Pebbles
       Path: Default Work Unit\Ambience\Ambience_Pebbles
       PathAndIcons:
@@ -66,7 +54,7 @@ MonoBehaviour:
         ObjectType: 3
       ID: 995042587
       Guid: 07e88c4841eb794e8850f6cc8176a6a3
-      maxAttenuation: 0
+      maxAttenuation: 100
     - Name: Ambience_WaterDrops1
       Path: Default Work Unit\Ambience\Ambience_WaterDrops1
       PathAndIcons:
@@ -78,7 +66,7 @@ MonoBehaviour:
         ObjectType: 3
       ID: -471484510
       Guid: e7045832cadc714585a50c086bcba738
-      maxAttenuation: 0
+      maxAttenuation: 100
     - Name: Ambience_WaterDrops2
       Path: Default Work Unit\Ambience\Ambience_WaterDrops2
       PathAndIcons:
@@ -90,7 +78,7 @@ MonoBehaviour:
         ObjectType: 3
       ID: -471484511
       Guid: da01cb49db66674a88c4f3ecb773cf79
-      maxAttenuation: 0
+      maxAttenuation: 100
     - Name: BFdoor_Start
       Path: Default Work Unit\Doors and Mechanisms\Doors etc\BFDoor\BFdoor_Start
       PathAndIcons:
@@ -186,20 +174,6 @@ MonoBehaviour:
         ObjectType: 3
       ID: -211407568
       Guid: 2806b654e6fbd645b988301d5f8d8c28
-      maxAttenuation: 0
-    - Name: Door02
-      Path: Default Work Unit\Doors and Mechanisms\Doors etc\Door02
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: Doors and Mechanisms
-        ObjectType: 4
-      - ElementName: Doors etc
-        ObjectType: 4
-      - ElementName: Door02
-        ObjectType: 3
-      ID: -936975305
-      Guid: ecf5b8ee4dbd574e8ed6770d1814950a
       maxAttenuation: 0
     - Name: DoorSlideStart
       Path: Default Work Unit\Doors and Mechanisms\Doors etc\DoorSlideStart
@@ -861,8 +835,8 @@ MonoBehaviour:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{116C8925-F139-4949-97E9-2B14250AD9FB}'
-    m_lastTimePsrt1: -172572095
-    m_lastTimePart2: -1999440306
+    m_lastTimePsrt1: -1546185938
+    m_lastTimePart2: -1999440274
     List:
     - Name: Main
       Path: Default Work Unit\Main
@@ -877,10 +851,22 @@ MonoBehaviour:
   - /WwiseFinal
   - /WwiseFinal/Events
   - /WwiseFinal/Events/Default Work Unit
+  - /WwiseFinal/Events/Default Work Unit/Ambience
+  - /WwiseFinal/Events/Default Work Unit/Cart
   - /WwiseFinal/Events/Default Work Unit/Doors and Mechanisms
+  - /WwiseFinal/Events/Default Work Unit/Doors and Mechanisms/Buttons
   - /WwiseFinal/Events/Default Work Unit/Doors and Mechanisms/Doors etc
-  - /WwiseFinal/SoundBanks
-  - /WwiseFinal/SoundBanks/Default Work Unit
+  - /WwiseFinal/Events/Default Work Unit/Doors and Mechanisms/Doors etc/BFDoor
+  - /WwiseFinal/Events/Default Work Unit/Doors and Mechanisms/Elevators
+  - /WwiseFinal/Events/Default Work Unit/Doors and Mechanisms/Mirrors
+  - /WwiseFinal/Events/Default Work Unit/Environment Assets
+  - /WwiseFinal/Events/Default Work Unit/Environment Assets/Lava
+  - /WwiseFinal/Events/Default Work Unit/Environment Assets/Plants
+  - /WwiseFinal/Events/Default Work Unit/Environment Assets/Water
+  - /WwiseFinal/Events/Default Work Unit/HeartOfNicklantis
+  - /WwiseFinal/Events/Default Work Unit/Player Equipment
+  - /WwiseFinal/Events/Default Work Unit/Sound Puzzle
+  - /WwiseFinal/Events/Default Work Unit/VoiceOver
   m_lastPopulateTimePsrt1: 0
   m_lastPopulateTimePart2: 0
   autoPopulateEnabled: 1

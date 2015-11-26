@@ -4,7 +4,7 @@ using System.Collections;
 public class AMB_RunningWater : MonoBehaviour {
 
 	// Use this for initialization
-	void Start () {
+	void OnEnable () {
 		SoundManager.Instance.PlayEvent("RiverRunning", gameObject);
 	}
 	

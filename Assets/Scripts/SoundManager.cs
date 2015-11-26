@@ -93,5 +93,4 @@ public class SoundManager: MonoBehaviour {
 			Debug.Log("Object " + i + ": " + objectList[i].name);
 		}
 		Debug.Log("END OF LIST");
-	}
-}
+	}}

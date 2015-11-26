@@ -129,17 +129,6 @@
 						</Folder>
 						<Folder Name="Doors etc" ID="{2CEAD77C-A1A5-47E3-A5D7-E2665631BBED}" ShortID="716892938">
 							<ChildrenList>
-								<Event Name="Door02" ID="{EEB8F5EC-BD4D-4E57-8ED6-770D1814950A}">
-									<ChildrenList>
-										<Action Name="Play" ID="{B2409670-6D5C-4EA5-BA81-4A44EE0125A7}" ShortID="366435761" Type="Play" Scope="One" Global="false">
-											<ElementList>
-												<Element ID="{FC66DC3C-D9DA-4E9E-A69A-1E454252EF43}" Global="false">
-													<ObjectRef Name="Door02" ID="{56B08C6C-14E0-4999-8877-000DE0426D1A}" WorkUnitID="{1BE62AEE-9809-4847-B300-E418C8D744C6}"/>
-												</Element>
-											</ElementList>
-										</Action>
-									</ChildrenList>
-								</Event>
 								<Event Name="DoorSlideStop" ID="{316BA6E6-AE8D-447C-B729-3E04329056E0}">
 									<ChildrenList>
 										<Action Name="Stop" ID="{3D368F00-8305-4227-8236-F82999B4DED8}" ShortID="5083838" Type="Stop" Scope="One" Global="false">
