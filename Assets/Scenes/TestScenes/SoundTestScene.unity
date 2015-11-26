@@ -777,19 +777,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventNames:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - FootSlide
+  - BFDoorStart
+  - BFDoor_Stop
+  - FootSlide
+  - BFdoor_Start
+  - BFdoor_Stop
   keyPoints:
   - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  - 10
+  - 20
+  - 21
+  - 31
+  - 41
   anim: {fileID: 1861122055}
 --- !u!95 &1861122055 stripped
 Animator:
@@ -868,7 +868,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 673a79b2d8adab44b9a2fe016990f056, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: 673a79b2d8adab44b9a2fe016990f056, type: 3}
       propertyPath: m_Controller
