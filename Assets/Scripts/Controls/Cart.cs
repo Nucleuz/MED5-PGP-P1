@@ -26,6 +26,8 @@ public class Cart : MonoBehaviour {
         minecartAnimator = GetComponent<Animator>();
 
         currentStep = 0;
+
+        this.enabled = false;
     }
 	public void SetAsReceiver() {
 		minecartAnimator = GetComponent<Animator>();
