@@ -22,6 +22,7 @@ public class HelmetLight : MonoBehaviour {
     private Ray ray;
     private Material matForBeam;
 
+
     public void SetPlayerIndex (int networkId) {
         playerIndex = networkId;
         mainLight = GetComponent<Light>();   
@@ -39,8 +40,21 @@ public class HelmetLight : MonoBehaviour {
             }
         }
     }
+	void UpdateLightShaft(){
+		RaycastHit hit;
+		if (Physics.Raycast (new Ray (transform.position, transform.forward), out hit)) {
+			for (int i  = 0; i < beamQuads.Length; i++){
+				beamQuads[i].transform.localScale = new Vector3(Mathf.Abs(Vector3.Distance(transform.position,hit.point)), beamQuads[i].transform.localScale.y, beamQuads[i].transform.localScale.z);
+				beamQuads[i].transform.localPosition = new Vector3(beamQuads[i].transform.localPosition.x,beamQuads[i].transform.localPosition.y,beamQuads[i].transform.localScale.x / 2);
+				halo.transform.position = hit.point;
+			}
+		}
+	
+	}
 
     void Update () {
+		UpdateLightShaft ();
+
         //Checks if the focus button is pressed (Default = space)
         if (Input.GetKey("space") || Input.GetAxis("RightTrigger") > 0.1f || Input.GetAxis("LeftTrigger") > 0.1f) {
 
