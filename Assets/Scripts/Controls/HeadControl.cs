@@ -28,15 +28,15 @@ public class HeadControl : MonoBehaviour {
 	public ControlState controlState = ControlState.NVR;
 
 	float controllerRotX = 0;
-	float controllerRotY = 0;
+	float controllerRotY = 180;
 
 	public float cartOffsetRotX;
 	public float cartOffsetRotY;
 
-	private Camera cam;
+	public Camera cam;
 
 	void Start(){
-		cam = GetComponent<Camera>();
+		Console.Instance.AddMessage("ControlState: " + controlState);
 	}
 
 	// Update is called once per frame
@@ -49,6 +49,7 @@ public class HeadControl : MonoBehaviour {
 
 				//Script used for detecting if controller should be used
 				transform.rotation = Quaternion.Euler(v * verticalRotationAmount + verticalRotationOffset,h * horizontalRotationAmount + horizontalRotationOffset,0);
+
 			break;
 			case ControlState.NVR:
 				controllerRotX += (Input.GetAxis("ViewY") * turnSpeed * Time.deltaTime);
@@ -56,17 +57,18 @@ public class HeadControl : MonoBehaviour {
 
 				controllerRotX = Mathf.Clamp(controllerRotX,-90,90);
 
-				transform.rotation = Quaternion.Euler(controllerRotX + cartOffsetRotX,controllerRotY + cartOffsetRotY,0);
+				transform.rotation = Quaternion.Euler(controllerRotX,controllerRotY + cartOffsetRotY,0);
 			break;
 			case ControlState.VR:
-
+				transform.rotation = Quaternion.Euler(0,cartOffsetRotY - 180,0);
 			break;
 		}
 
 		if(Input.GetKeyDown("c")){
 			if((int)++controlState % 3 == 0)
 				controlState = ControlState.DEBUG;
-
+				Console.Instance.AddMessage("ControlState: " + controlState);
+				Debug.Log("ControlState: " + controlState);
 		}
 
 

@@ -17,10 +17,9 @@ public class NetPlayerSync : MonoBehaviour {
 	public Transform head;
 	
 	//Reference to components that needs to be turn on and off when switching from sender to receiver
-	public GameObject cam;
+	public Camera cam;
 
 	public HeadControl headControl;
-	public VrHeadControl vrHeadControl;
 	
 	public HelmetLightScript helmet;
 
@@ -62,11 +61,8 @@ public class NetPlayerSync : MonoBehaviour {
 			SendData();
 		}
 		//add rail rotation compensation for vr
-		if(headControl != null)
-			headControl.cartOffsetRotY = transform.rotation.eulerAngles.y;
-		else if(vrHeadControl != null){
-			vrHeadControl.cartOffsetRotY = transform.rotation.eulerAngles.y;
-		}
+		headControl.cartOffsetRotY = transform.rotation.eulerAngles.y;
+		//headControl.cartOffsetRotX = transform.rotation.eulerAngles.x;
 	}
 	
 	void SendData(){
@@ -111,12 +107,14 @@ public class NetPlayerSync : MonoBehaviour {
 
                     if(positionRoutine != null)
                     	StopCoroutine(positionRoutine);
+
+    				cart.minecartAnimator.speed = 0;
+        			cart.minecartAnimator.StopPlayback();		
                     
                     if(lastPositionTime == -1f)
                     	lastPositionTime = Time.time;
 
                     float interpolationLength = .3f;
-                    
 
                    	if(interpolationLength > 0f){
                    		positionRoutine = InterpolatePosition(position,interpolationLength);
@@ -169,8 +167,7 @@ public class NetPlayerSync : MonoBehaviour {
 	public void SetAsSender(){
 		isSender = true;
 		cart.enabled = true;
-		cam.SetActive(true);
-		if(headControl != null)
+		cam.enabled = true;
 		headControl.enabled = true;
 		helmet.SetPlayerIndex(networkID);
 		helmet.enabled = true;
@@ -180,8 +177,7 @@ public class NetPlayerSync : MonoBehaviour {
 	public void SetAsReceiver(){
 		isSender = false;
 		cart.enabled = false;
-		cam.SetActive(false);
-		if(headControl != null)
+		cam.enabled = false;
 		headControl.enabled = false;
 		helmet.SetPlayerIndex(networkID);
 		helmet.enabled = false;
@@ -194,9 +190,9 @@ public class NetPlayerSync : MonoBehaviour {
 		}
 	}
 
-    public void AddCameraToLightShaft(GameObject camera){
-		nonFocusedLightShaft.m_Cameras[0] = camera.GetComponent<Camera>();
-		focusedLightShaft.m_Cameras[0] = camera.GetComponent<Camera>();
+    public void AddCameraToLightShaft(Camera camera){
+		nonFocusedLightShaft.m_Cameras[0] = camera;
+		focusedLightShaft.m_Cameras[0] = camera;
 
 		nonFocusedLightShaft.UpdateCameraDepthMode();
 		focusedLightShaft.UpdateCameraDepthMode();
@@ -236,6 +232,7 @@ public class NetPlayerSync : MonoBehaviour {
 
     	Vector3 lastFrame;
         cart.minecartAnimator.StartPlayback();
+		cart.minecartAnimator.speed = 1;
 
     	float t = 0f;
     	while(t < 1f){
@@ -243,7 +240,6 @@ public class NetPlayerSync : MonoBehaviour {
             lastFrame = transform.position;
     		transform.position = Vector3.Lerp(startPosition,newPosition,t);
 // (transform.position - lastFrame).magnitude
-            cart.minecartAnimator.speed = 1;
 
     		yield return null;
     	}
