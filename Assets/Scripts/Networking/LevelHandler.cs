@@ -17,19 +17,16 @@ public class LevelHandler : MonoBehaviour {
 
     private TriggerHandler triggerHandler;
 
-    private NetworkManager manager;
+    public NetworkManager manager;
 
     [HideInInspector]
     public int levelManagerIndex = 0;
-    [HideInInspector]
-    public int loadedLevelIndex = -1;
 
-    void Start(){
+    void Awake(){
 
         triggerHandler = TriggerHandler.Instance;
-        if(NetworkManager.isServer){
-            manager = GetComponent<ServerManager>();
-        }
+        currentLevelContainer = levelContainers[0];
+        manager = GetComponent<ServerManager>();
     }
 
     public LevelManager getLevelManager(){

@@ -53,6 +53,9 @@ public class ServerManager : NetworkManager {
 
       levelTimings = new float[6];
 
+      triggerHandler.process(levelHandler.levelContainers[0]);
+      gameManager.setNewLevelManager(levelHandler.getLevelManager());
+
 	}
 
   void Update(){
