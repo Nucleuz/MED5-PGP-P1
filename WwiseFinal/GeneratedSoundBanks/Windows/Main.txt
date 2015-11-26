@@ -6,6 +6,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	480657863	CarLegHit1			\Default Work Unit\Cart\CarLegHit1	
 	483466160	RailwayBlockerStop			\Default Work Unit\Doors and Mechanisms\Doors etc\RailwayBlockerStop	
 	669830308	BFdoor_Stop			\Default Work Unit\Doors and Mechanisms\Doors etc\BFDoor\BFdoor_Stop	
+	777918054	Lava_Stop			\Default Work Unit\Environment Assets\Lava\Lava_Stop	
 	995042587	Ambience_Pebbles			\Default Work Unit\Ambience\Ambience_Pebbles	
 	1067329105	SP_PlayerButton1			\Default Work Unit\Sound Puzzle\SP_PlayerButton1	
 	1067329106	SP_PlayerButton2			\Default Work Unit\Sound Puzzle\SP_PlayerButton2	
@@ -14,29 +15,33 @@ Event	ID	Name			Wwise Object Path	Notes
 	1067329109	SP_PlayerButton5			\Default Work Unit\Sound Puzzle\SP_PlayerButton5	
 	1067329110	SP_PlayerButton6			\Default Work Unit\Sound Puzzle\SP_PlayerButton6	
 	1108313776	DoorSlideStop			\Default Work Unit\Doors and Mechanisms\Doors etc\DoorSlideStop	
+	1266636787	Liana_Active			\Default Work Unit\Environment Assets\Plants\Liana_Active	
 	1389759676	SP_EmittingCrystal			\Default Work Unit\Sound Puzzle\SP_EmittingCrystal	
 	1401356413	Mirror_Turning_Stop			\Default Work Unit\Doors and Mechanisms\Mirrors\Mirror_Turning_Stop	
 	1471623179	Headlamp_Focus_Stop			\Default Work Unit\Player Equipment\Headlamp_Focus_Stop	
 	1673183774	RailwayBlockerCrystal			\Default Work Unit\Doors and Mechanisms\Doors etc\RailwayBlockerCrystal	
 	1679017388	VoiceOver_Intro			\Default Work Unit\VoiceOver\VoiceOver_Intro	
+	1766332112	StoneDust			\Default Work Unit\Environment Assets\StoneDust	
 	1973289021	ButtonOnOff			\Default Work Unit\Doors and Mechanisms\Buttons\ButtonOnOff	
+	1979935604	Louder_Lava_Stop			\Default Work Unit\Environment Assets\Lava\Louder_Lava_Stop	
 	2104256950	RiverRunning			\Default Work Unit\Environment Assets\Water\RiverRunning	
 	2142118936	BFdoor_Start			\Default Work Unit\Doors and Mechanisms\Doors etc\BFDoor\BFdoor_Start	
 	2179486487	Heartbeat			\Default Work Unit\HeartOfNicklantis\Heartbeat	
-	2402090994	WaterfallLarge			\Default Work Unit\Environment Assets\Water\WaterfallLarge	
+	2213037685	Liana_Stop			\Default Work Unit\Environment Assets\Plants\Liana_Stop	
+	2334944306	Louder_Lava_Active			\Default Work Unit\Environment Assets\Lava\Louder_Lava_Active	
 	2761191377	Headlamp_Focus_Active			\Default Work Unit\Player Equipment\Headlamp_Focus_Active	
 	2818913498	Elevator_Stop			\Default Work Unit\Doors and Mechanisms\Elevators\Elevator_Stop	
+	3142724436	Lava_Active			\Default Work Unit\Environment Assets\Lava\Lava_Active	
 	3230905820	DoorSlideStart			\Default Work Unit\Doors and Mechanisms\Doors etc\DoorSlideStart	
 	3328847735	RailwayBlockerMove			\Default Work Unit\Doors and Mechanisms\Doors etc\RailwayBlockerMove	
+	3357991991	Door02			\Default Work Unit\Doors and Mechanisms\Doors etc\Door02	
 	3425521569	CarCrystal			\Default Work Unit\Cart\CarCrystal	
+	3554402062	Liana_Break			\Default Work Unit\Environment Assets\Plants\Liana_Break	Play this SFW 0.7 seconds before the liana actually breaks for best effect.
 	3778700370	HeartMojo			\Default Work Unit\HeartOfNicklantis\HeartMojo	
 	3823482785	Ambience_WaterDrops2			\Default Work Unit\Ambience\Ambience_WaterDrops2	
 	3823482786	Ambience_WaterDrops1			\Default Work Unit\Ambience\Ambience_WaterDrops1	
-	4059778220	WaterfallHuge			\Default Work Unit\Environment Assets\Water\WaterfallHuge	
-	4083559728	ChannelingButtonOnOff			\Default Work Unit\Doors and Mechanisms\Buttons\ChannelingButtonOnOff	
 	4112392368	Elevator_Active			\Default Work Unit\Doors and Mechanisms\Elevators\Elevator_Active	The elevator is activated. This SFX is placed near the base of the elevator.
 	4259853717	Ambience_Mojo			\Default Work Unit\Ambience\Ambience_Mojo	
-	4287948414	WaterfallSmall			\Default Work Unit\Environment Assets\Water\WaterfallSmall	
 
 Switch Group	ID	Name			Wwise Object Path	Notes
 	1449453084	CarOn_Off			\Default Work Unit\CarOn_Off	
@@ -65,91 +70,104 @@ Effect plug-ins	ID	Name	Type				Notes
 	156450563	Two Big Ears 3Dception (Attached)	AttachableMixerInput			
 	226812192	Two Big Ears 3Dception (Attached)	AttachableMixerInput			
 	293203467	Two Big Ears 3Dception (Attached)	AttachableMixerInput			
+	340683566	Two Big Ears 3Dception (Attached)	AttachableMixerInput			
+	429415265	Two Big Ears 3Dception (Attached)	AttachableMixerInput			
 	448093333	Two Big Ears 3Dception (Attached)	AttachableMixerInput			
 	453592875	Two Big Ears 3Dception (Attached)	AttachableMixerInput			
 	825200181	Two Big Ears 3Dception (Attached)	AttachableMixerInput			
 	841351062	Two Big Ears 3Dception (Attached)	AttachableMixerInput			
 	844577349	Two Big Ears 3Dception (Attached)	AttachableMixerInput			
-	904437999	Two Big Ears 3Dception (Attached)	AttachableMixerInput			
 	944805839	Two Big Ears 3Dception (Attached)	AttachableMixerInput			
 	1007057097	Two Big Ears 3Dception (Attached)	AttachableMixerInput			
 	1037020736	Two Big Ears 3Dception (Attached)	AttachableMixerInput			
 	2513915904	Hall_Large	Wwise RoomVerb			
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	625245	Mojo04 (1)	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Mojo04 (1)_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\Mojo04 (1)		0
+	625245	Mojo04 (1)	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Mojo04 (1)_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\Mojo04 (1)		1701172
 	1537082	BlockerImpact01	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\BlockerImpact01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\RailWayBlocker\BlockerImpact01		155064
-	1790046	StartUp	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\StartUp_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Cart\CartMojo\CartOn_Off\StartUp\StartUp		0
-	35573236	DustStones04	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\DustStones04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment Assets\StoneDust\StoneDust\StoneDustRandom\DustStones04		0
-	46169572	HandPoweredDrill(looped)	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\HandPoweredDrill(looped)_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\Elevator\Elevator\Elevator Mechanics\Mechanics\HandPoweredDrill\HandPoweredDrill(looped)		0
-	51361253	GentleWaterDrops02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\GentleWaterDrops02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\Waterdrops(Background)\Waterdrops\GentleWaterDrops02		0
-	59566495	Rumble03	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Rumble03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\MAIN AMBIENCE\Cave And Rumble\Rumble\Rumble03\Rumble03		0
+	1790046	StartUp	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\StartUp_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Cart\CartMojo\CartOn_Off\StartUp\StartUp		165348
+	35573236	DustStones04	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\DustStones04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment Assets\StoneDust\StoneDust\StoneDustRandom\DustStones04		146296
+	46169572	HandPoweredDrill(looped)	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\HandPoweredDrill(looped)_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\Elevator\Elevator\Elevator Mechanics\Mechanics\HandPoweredDrill\HandPoweredDrill(looped)		896512
+	51361253	GentleWaterDrops02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\GentleWaterDrops02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\Waterdrops(Background)\Waterdrops\GentleWaterDrops02		2718784
+	54221924	Branch02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Branch02_B820042A.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment Assets\Liana\Liana Break\Branch\Branch02		201592
+	59566495	Rumble03	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Rumble03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\MAIN AMBIENCE\Cave And Rumble\Rumble\Rumble03\Rumble03		701464
 	62855427	ChainLoop	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\ChainLoop_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\BFDoor\ChainLoop		637324
-	73388867	DustStones	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\DustStones_8754CE29.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment Assets\StoneDust\StoneDust\StoneDustRandom\DustStones		0
+	73388867	DustStones	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\DustStones_8754CE29.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment Assets\StoneDust\StoneDust\StoneDustRandom\DustStones		245320
 	83543432	Cave Ambience05	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Cave Ambience05_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\MAIN AMBIENCE\Cave And Rumble\Cave\Cave05\Cave Ambience05		1413064
-	89547930	IndoorPebbles06	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\IndoorPebbles06_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\Pebbles\Pebbles\IndoorPebbles06		0
-	130984368	SP_Emitting301	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Emitting301_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SoundPuzzle\Emitting\Emitting\EmittingCrystal\SP_Emitting301		0
-	171052429	Rumble02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Rumble02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\MAIN AMBIENCE\Cave And Rumble\Rumble\Rumble02\Rumble02		0
+	89547930	IndoorPebbles06	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\IndoorPebbles06_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\Pebbles\Pebbles\IndoorPebbles06		152128
+	98874913	Celery03	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Celery03_590B9D80.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment Assets\Liana\Liana Break\Celery\Celery03		78184
+	130984368	SP_Emitting301	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Emitting301_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SoundPuzzle\Emitting\Emitting\EmittingCrystal\SP_Emitting301		488620
+	171052429	Rumble02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Rumble02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\MAIN AMBIENCE\Cave And Rumble\Rumble\Rumble02\Rumble02		732972
 	179771646	Cave Ambience03	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Cave Ambience03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\MAIN AMBIENCE\Cave And Rumble\Cave\Cave03\Cave Ambience03		1120048
-	190139503	DoorClose	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\DoorClose_19CDD093.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\DoorClose\DoorClose\DoorClose		0
-	204065441	IndoorPebbles02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\IndoorPebbles02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\Pebbles\Pebbles\IndoorPebbles02		0
+	190139503	DoorClose	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\DoorClose_19CDD093.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\DoorClose\DoorClose\DoorClose		398296
+	204065441	IndoorPebbles02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\IndoorPebbles02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\Pebbles\Pebbles\IndoorPebbles02		221248
 	238285289	Click02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Click02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\Mirror\Mirror Mechanics\Click02		88292
+	253578165	BoilingWaterForPasta	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\BoilingWaterForPasta_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment Assets\Lava\Lava\BoilingWaterForPasta		398520
 	269708919	BFdoorSlideLoop	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\BFdoorSlideLoop_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\BFDoor\BFDoorLift\BFdoorSlideLoop		478772
-	289174657	Heart04	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Heart04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\HeartOfNicklantis\HeartOfNicklantis\Heartbeat\Heart04		0
-	303978757	DoorSlideLoop	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\DoorSlideLoop_236CB72C.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\DoorSlideSlide\DoorSlideLoop		0
-	335342100	Steam01	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Steam01_97E5D50C.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\DoorClose\DoorClose\Steam\Steam01		0
-	340341777	SP_Emitting303	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Emitting303_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SoundPuzzle\Emitting\Emitting\EmittingCrystal\SP_Emitting303		0
-	347106548	SP_PlayerButton303	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\PlayerCrystal303_8B922877.wem		\Actor-Mixer Hierarchy\Default Work Unit\SoundPuzzle\PlayerButton\SP_PlayerButton303		0
-	351955681	IndoorPebbles05	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\IndoorPebbles05_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\Pebbles\Pebbles\IndoorPebbles05		0
-	356831244	SwitchRealOff02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\SwitchRealOff02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Switches\ButtonOn-Off\ButtonOnOff\SwitchRealOff02		0
+	271527928	RopeCreak03	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\RopeCreak03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment Assets\Liana\Liana\Rope\RopeCreak03		260832
+	289174657	Heart04	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Heart04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\HeartOfNicklantis\HeartOfNicklantis\Heartbeat\Heart04		201064
+	303978757	DoorSlideLoop	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\DoorSlideLoop_236CB72C.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\DoorSlideSlide\DoorSlideLoop		481764
+	321706669	Steam02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Steam02_B42FD30F.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment Assets\Lava\Lava Steam\Steam02		381008
+	335342100	Steam01	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Steam01_97E5D50C.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\DoorClose\DoorClose\Steam\Steam01		344920
+	340341777	SP_Emitting303	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Emitting303_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SoundPuzzle\Emitting\Emitting\EmittingCrystal\SP_Emitting303		895696
+	347106548	SP_PlayerButton303	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\PlayerCrystal303_8B922877.wem		\Actor-Mixer Hierarchy\Default Work Unit\SoundPuzzle\PlayerButton\SP_PlayerButton303		162960
+	351955681	IndoorPebbles05	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\IndoorPebbles05_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\Pebbles\Pebbles\IndoorPebbles05		364096
+	356831244	SwitchRealOff02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\SwitchRealOff02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Switches\ButtonOn-Off\ButtonOnOff\SwitchRealOff02		204016
 	363769237	BFdoorRumble	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\BFdoorRumble_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\BFDoor\BFDoorLift\BFdoorRumble		1023016
-	374094042	LegHit02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\LegHit02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Cart\CartLegHit\LegHit02		0
-	400527701	Waterfall07	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Waterfall07_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment Assets\Waterfall\Waterfall07		0
-	417635021	ElectricityBox(intro½sec)	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\ElectricityBox(intro½sec)_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Equipment\Headlamp Mixer\Headlamp intro + active loop\ElectricityBox(intro½sec)		0
+	374094042	LegHit02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\LegHit02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Cart\CartLegHit\LegHit02		73048
+	390200961	Branch04	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Branch04_502D175A.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment Assets\Liana\Liana Break\Branch\Branch04		106836
+	417635021	ElectricityBox(intro½sec)	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\ElectricityBox(intro½sec)_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Equipment\Headlamp Mixer\Headlamp intro + active loop\ElectricityBox(intro½sec)		158344
+	435176003	Branch01	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Branch01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment Assets\Liana\Liana Break\Branch\Branch01		313408
 	449140603	CartMojoLoop	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\CartMojoLoop_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\Cart\CartMojo\CartOn_Off\StartUp\CartMojoLoop		1609140
-	452530934	WaterDrop01	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\WaterDrop01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\Waterdrops(Environment)\Single Waterdrops\WaterDrop01		0
-	486361134	IndoorPebbles01	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\IndoorPebbles01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\Pebbles\Pebbles\IndoorPebbles01		0
-	511403425	WaterDrop02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\WaterDrop02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\Waterdrops(Environment)\Single Waterdrops\WaterDrop02		0
+	452530934	WaterDrop01	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\WaterDrop01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\Waterdrops(Environment)\Single Waterdrops\WaterDrop01		152748
+	486361134	IndoorPebbles01	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\IndoorPebbles01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\Pebbles\Pebbles\IndoorPebbles01		322624
+	511403425	WaterDrop02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\WaterDrop02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\Waterdrops(Environment)\Single Waterdrops\WaterDrop02		174560
 	517330250	BlockerSlide01	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\BlockerSlide01_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\RailWayBlocker\BlockerMoveAndWater\BlockerSlide01		1269872
-	544054926	GentleWaterDrops01	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\GentleWaterDrops01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\Waterdrops(Background)\Waterdrops\GentleWaterDrops01		0
-	552757871	SP_PlayerButton01	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\PlayerCrystal01_1AF56484.wem		\Actor-Mixer Hierarchy\Default Work Unit\SoundPuzzle\PlayerButton\SP_PlayerButton01		0
-	561152648	RunningRiver	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\RunningRiver_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment Assets\WaterRunning\RunningRiver		0
-	576964155	WaterDrop04	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\WaterDrop04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\Waterdrops(Environment)\Single Waterdrops\WaterDrop04		0
-	578760387	ManSlideLoop	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\ManSlideLoop_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\BFDoor\ManSlideLoop		0
-	622065201	DoorOpen	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\DoorOpen_488C9287.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\DoorSlideSlide\DoorOpen		0
-	636816213	SP_PlayerButton302	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\PlayerCrystal302_2C71C199.wem		\Actor-Mixer Hierarchy\Default Work Unit\SoundPuzzle\PlayerButton\SP_PlayerButton302		0
-	650515432	Rumble01	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Rumble01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\MAIN AMBIENCE\Cave And Rumble\Rumble\Rumble01\Rumble01		0
-	671001978	DustStones05	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\DustStones05_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment Assets\StoneDust\StoneDust\StoneDustRandom\DustStones05		0
-	674515164	Waterfall04	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Waterfall04_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment Assets\Waterfall\Waterfall04		0
-	698100279	DustStones03	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\DustStones03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment Assets\StoneDust\StoneDust\StoneDustRandom\DustStones03		0
-	701118338	RailwayBlockerCrystalLoop	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\RailwayBlockerCrystalLoop_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\RailWayBlocker\RailwayBlockerCrystalLoop		0
-	708409794	ShutDown	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\ShutDown_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Cart\CartMojo\CartOn_Off\ShutDown		0
-	713371685	IndoorPebbles03	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\IndoorPebbles03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\Pebbles\Pebbles\IndoorPebbles03		0
-	717597880	Heart01	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Heart01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\HeartOfNicklantis\HeartOfNicklantis\Heartbeat\Heart01		0
-	740809654	WaterDrop03	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\WaterDrop03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\Waterdrops(Environment)\Single Waterdrops\WaterDrop03		0
-	764596330	SP_PlayerButton02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\PlayerCrystal04_04A87E39.wem		\Actor-Mixer Hierarchy\Default Work Unit\SoundPuzzle\PlayerButton\SP_PlayerButton02		0
+	544054926	GentleWaterDrops01	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\GentleWaterDrops01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\Waterdrops(Background)\Waterdrops\GentleWaterDrops01		3170368
+	552757871	SP_PlayerButton01	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\PlayerCrystal01_1AF56484.wem		\Actor-Mixer Hierarchy\Default Work Unit\SoundPuzzle\PlayerButton\SP_PlayerButton01		162960
+	561152648	RunningRiver	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\RunningRiver_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment Assets\WaterRunning\RunningRiver		2305740
+	576964155	WaterDrop04	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\WaterDrop04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\Waterdrops(Environment)\Single Waterdrops\WaterDrop04		116394
+	578760387	ManSlideLoop	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\ManSlideLoop_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\BFDoor\ManSlideLoop		721316
+	607211545	Branch03	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Branch03_4D1070CF.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment Assets\Liana\Liana Break\Branch\Branch03		146336
+	622065201	DoorOpen	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\DoorOpen_488C9287.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\DoorSlideSlide\DoorOpen		336016
+	625070888	RopeCreak02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\RopeCreak02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment Assets\Liana\Liana\Rope\RopeCreak02		204964
+	636816213	SP_PlayerButton302	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\PlayerCrystal302_2C71C199.wem		\Actor-Mixer Hierarchy\Default Work Unit\SoundPuzzle\PlayerButton\SP_PlayerButton302		162960
+	650515432	Rumble01	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Rumble01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\MAIN AMBIENCE\Cave And Rumble\Rumble\Rumble01\Rumble01		722472
+	662749805	Steam01	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Steam01_E75FD72E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment Assets\Lava\Lava Steam\Steam01		526372
+	671001978	DustStones05	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\DustStones05_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment Assets\StoneDust\StoneDust\StoneDustRandom\DustStones05		310292
+	698100279	DustStones03	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\DustStones03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment Assets\StoneDust\StoneDust\StoneDustRandom\DustStones03		137944
+	701118338	RailwayBlockerCrystalLoop	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\RailwayBlockerCrystalLoop_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\RailWayBlocker\RailwayBlockerCrystalLoop		588100
+	708409794	ShutDown	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\ShutDown_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Cart\CartMojo\CartOn_Off\ShutDown		98676
+	713371685	IndoorPebbles03	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\IndoorPebbles03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\Pebbles\Pebbles\IndoorPebbles03		285760
+	717597880	Heart01	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Heart01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\HeartOfNicklantis\HeartOfNicklantis\Heartbeat\Heart01		295984
+	736933106	Lava02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Lava02_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment Assets\Lava\Lava02		3552108
+	740809654	WaterDrop03	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\WaterDrop03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\Waterdrops(Environment)\Single Waterdrops\WaterDrop03		181830
+	764596330	SP_PlayerButton02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\PlayerCrystal04_04A87E39.wem		\Actor-Mixer Hierarchy\Default Work Unit\SoundPuzzle\PlayerButton\SP_PlayerButton02		162960
 	779480299	Cave Ambience02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Cave Ambience02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\MAIN AMBIENCE\Cave And Rumble\Cave\Cave02\Cave Ambience02		986808
-	781590046	Heart03	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Heart03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\HeartOfNicklantis\HeartOfNicklantis\Heartbeat\Heart03		0
-	783517991	SP_PlayerButton301	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\PlayerCrystal301_B940C46E.wem		\Actor-Mixer Hierarchy\Default Work Unit\SoundPuzzle\PlayerButton\SP_PlayerButton301		0
-	786909846	OldPrintPressMachinery(looped)	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\OldPrintPressMachinery(looped)_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\Elevator\Elevator\Elevator Mechanics\Mechanics\OldPress\OldPrintPressMachinery(looped)		0
-	811655087	LargeBoulderSlide01(looped)	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\LargeBoulderSlide01(looped)_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\Elevator\Elevator\Elevator Active\Active\LargeBoulderSlide01(looped)\LargeBoulderSlide01(looped)		0
-	814612408	DustStones02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\DustStones02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment Assets\StoneDust\StoneDust\StoneDustRandom\DustStones02		0
-	816633271	Voice_OverFull2	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Voice_OverFull2_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\VoiceOver\VoiceOver\Voice_OverFull2		0
-	823055302	IndoorPebbles04	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\IndoorPebbles04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\Pebbles\Pebbles\IndoorPebbles04		0
-	851356452	Waterfall03	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Waterfall03_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment Assets\Waterfall\Waterfall03		0
-	853830410	ElectricityBox	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\ElectricityBox_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Equipment\Headlamp Mixer\Headlamp intro + active loop\Headlamp active\ElectricityBox		0
-	901528223	SP_Emitting302	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Emitting302_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SoundPuzzle\Emitting\Emitting\EmittingCrystal\SP_Emitting302		0
-	909824755	SP_PlayerButton03	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\PlayerCrystal05_90C210C9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SoundPuzzle\PlayerButton\SP_PlayerButton03		0
-	929123045	Wrong	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Wrong_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SoundPuzzle\Wrong\Wrong		0
+	779953411	RopeCreak01	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\RopeCreak01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment Assets\Liana\Liana\Rope\RopeCreak01		421952
+	781590046	Heart03	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Heart03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\HeartOfNicklantis\HeartOfNicklantis\Heartbeat\Heart03		228984
+	783517991	SP_PlayerButton301	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\PlayerCrystal301_B940C46E.wem		\Actor-Mixer Hierarchy\Default Work Unit\SoundPuzzle\PlayerButton\SP_PlayerButton301		162960
+	786909846	OldPrintPressMachinery(looped)	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\OldPrintPressMachinery(looped)_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\Elevator\Elevator\Elevator Mechanics\Mechanics\OldPress\OldPrintPressMachinery(looped)		1536208
+	811655087	LargeBoulderSlide01(looped)	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\LargeBoulderSlide01(looped)_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\Elevator\Elevator\Elevator Active\Active\LargeBoulderSlide01(looped)\LargeBoulderSlide01(looped)		321884
+	814612408	DustStones02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\DustStones02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment Assets\StoneDust\StoneDust\StoneDustRandom\DustStones02		201748
+	816633271	Voice_OverFull2	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Voice_OverFull2_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\VoiceOver\VoiceOver\Voice_OverFull2		4707200
+	823055302	IndoorPebbles04	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\IndoorPebbles04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\Pebbles\Pebbles\IndoorPebbles04		341056
+	853830410	ElectricityBox	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\ElectricityBox_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Equipment\Headlamp Mixer\Headlamp intro + active loop\Headlamp active\ElectricityBox		868416
+	901528223	SP_Emitting302	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Emitting302_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SoundPuzzle\Emitting\Emitting\EmittingCrystal\SP_Emitting302		895696
+	909824755	SP_PlayerButton03	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\PlayerCrystal05_90C210C9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SoundPuzzle\PlayerButton\SP_PlayerButton03		162960
+	929123045	Wrong	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Wrong_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SoundPuzzle\Wrong\Wrong		234244
 	936983434	Cave Ambience01	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Cave Ambience01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\MAIN AMBIENCE\Cave And Rumble\Cave\Cave01\Cave Ambience01		1763908
-	941571376	HeartMojo	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\HeartMojo_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\HeartOfNicklantis\HeartOfNicklantis\HeartMojo		0
-	1023845289	QuickGiantBoulderImpact04	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\QuickGiantBoulderImpact04_4C4B17D4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\Elevator\Elevator\Elevator Start\QuickGiantBoulderImpact04		0
+	941571376	HeartMojo	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\HeartMojo_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\HeartOfNicklantis\HeartOfNicklantis\HeartMojo		2145500
+	944572273	RopeCreak04	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\RopeCreak04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment Assets\Liana\Liana\Rope\RopeCreak04		105852
+	951229298	Celery01	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Celery01_0019AD48.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment Assets\Liana\Liana Break\Celery\Celery01		47976
+	1023845289	QuickGiantBoulderImpact04	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\QuickGiantBoulderImpact04_4C4B17D4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\Elevator\Elevator\Elevator Start\QuickGiantBoulderImpact04		173956
+	1033980825	Celery04	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Celery04_B85198EC.wem		\Actor-Mixer Hierarchy\Default Work Unit\Environment Assets\Liana\Liana Break\Celery\Celery04		103960
 	1044601209	Cave Ambience04	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Cave Ambience04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience Mixer\MAIN AMBIENCE\Cave And Rumble\Cave\Cave04\Cave Ambience04		1418356
-	1054996965	Steam02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Steam02_ED4035B8.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\DoorClose\DoorClose\Steam\Steam02		0
+	1054996965	Steam02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Steam02_ED4035B8.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\DoorClose\DoorClose\Steam\Steam02		149572
 	1056926787	BFdoorSlideLoop02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\BFdoorSlideLoop02_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\BFDoor\BFDoorLift\BFdoorSlideLoop02		594284
-	1059423158	SwitchRealOn04	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\SwitchRealOn04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Switches\ButtonOn-Off\ButtonOnOff\SwitchRealOn04		0
-	1061367959	FootSlide01	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\FootSlide01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\BFDoor\FootSlide01		0
-	1068891639	QuickGiantBoulderImpact01	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\QuickGiantBoulderImpact01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\Elevator\Elevator\Elevator Stop\QuickGiantBoulderImpact01		0
-	1072368297	WaterThing	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\WaterThing_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\RailWayBlocker\BlockerMoveAndWater\WaterThing		0
-	1072792516	Heart02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Heart02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\HeartOfNicklantis\HeartOfNicklantis\Heartbeat\Heart02		0
+	1059423158	SwitchRealOn04	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\SwitchRealOn04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Switches\ButtonOn-Off\ButtonOnOff\SwitchRealOn04		234480
+	1061367959	FootSlide01	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\FootSlide01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\BFDoor\FootSlide01		1343040
+	1068891639	QuickGiantBoulderImpact01	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\QuickGiantBoulderImpact01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\Elevator\Elevator\Elevator Stop\QuickGiantBoulderImpact01		176192
+	1072368297	WaterThing	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\WaterThing_4B8CC0C5.wem		\Actor-Mixer Hierarchy\Default Work Unit\Doors And Mechanisms\RailWayBlocker\BlockerMoveAndWater\WaterThing		1366168
+	1072792516	Heart02	C:\Users\itai.yavin\Documents\MED5-PGP-P1\WwiseFinal\.cache\Windows\SFX\Heart02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\HeartOfNicklantis\HeartOfNicklantis\Heartbeat\Heart02		262480
 
