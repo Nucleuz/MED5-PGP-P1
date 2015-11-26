@@ -26,6 +26,8 @@ public class Mirror : Interactable {
 
     public bool movingForward = true;
     public bool isRotating = false;
+    private bool isBeingLitOn = false;
+    private int currentPlayerIndex;
     private Trigger reflectingTrigger;
 
     private bool playerSet = false; 
@@ -89,6 +91,8 @@ public class Mirror : Interactable {
     }
 
     public override void OnRayEnter(int playerIndex){
+        isBeingLitOn = true;
+        currentPlayerIndex = playerIndex;
         Debug.Log("Player received from " + playerIndex);
 
         //reflecting from mirror
@@ -113,6 +117,8 @@ public class Mirror : Interactable {
 
         DarkRiftAPI.SendMessageToOthers(Network.Tag.Mirror, Network.Subject.MirrorEnded, new ushort[2] {(ushort)playerIndex,reflectingTrigger.triggerID});
         StopReflecting(playerIndex);
+        isBeingLitOn = false;
+        currentPlayerIndex = -1;
     }
 
     private void StopReflecting(int playerIndex){
@@ -146,7 +152,9 @@ public class Mirror : Interactable {
         //trigger.canReset = true;
         trigger.isReadyToBeTriggered = true;
 
-        
+        if(isBeingLitOn && currentInteractable == correctInteractable){
+            objectToTrigger.OnRayEnter(currentPlayerIndex);
+        }
     }
 
     public void RecieveData(ushort senderID, byte tag, ushort subject, object data){
