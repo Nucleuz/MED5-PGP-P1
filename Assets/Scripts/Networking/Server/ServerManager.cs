@@ -12,9 +12,6 @@ Manager for the server. This is a test setup with spawn positions and simple ser
 */
 public class ServerManager : NetworkManager {
 
-    //for debugging
-    public Text debug;
-
 	//index for the next player to join, NOTE: cycles with the spawnPos Length
 	public int playerIndex;
 
@@ -22,24 +19,25 @@ public class ServerManager : NetworkManager {
 	public Transform[] players;
 	//id of each sender
 	public ushort[] senders;
-    public ConnectionService[] connections;
+  public ConnectionService[] connections;
 
-    public GameManager gameManager;
-    public LevelHandler levelHandler;
-    public TriggerHandler triggerHandler;
+  [HideInInspector]
+  public GameManager gameManager;
+  [HideInInspector]
+  public LevelHandler levelHandler;
+  [HideInInspector]
+  public TriggerHandler triggerHandler;
 
-    private bool[] clientLoadedLevel = new bool[3];
+  private bool[] clientLoadedLevel = new bool[3];
 
-    private float[] levelTimings;
+  private float[] levelTimings;
 
-    private string currentDate;
+  private string currentDate;
 
-    public bool updatingStates = true;
-    public float stateUpdateInterval;
-
+  public bool updatingStates = false;
+  public float stateUpdateInterval;
 
 	void Start () {
-
 
       currentDate = System.DateTime.Now.ToString("HHmm");
       gameManager = GetComponent<GameManager>();
@@ -54,8 +52,6 @@ public class ServerManager : NetworkManager {
   		ConnectionService.onData += OnData;
 
       levelTimings = new float[6];
-
-      StartCoroutine(updateState());
 
 	}
 
@@ -239,8 +235,6 @@ public class ServerManager : NetworkManager {
         Debug.Log("LevelCompleted - levelManagerIndex: " + levelHandler.levelManagerIndex);
 
 
-
-
         levelTimings[levelHandler.levelManagerIndex - 1] = Time.time - levelTimings[levelHandler.levelManagerIndex - 1];
 
         gameManager.setNewLevelManager(null);
@@ -263,8 +257,6 @@ public class ServerManager : NetworkManager {
         //tell client to set the next level manager
         SendToAll(Network.Tag.Manager,Network.Subject.NewLevelManager,levelHandler.levelManagerIndex);
 
-        Write("Level Completed");
-
         if(levelHandler.levelManagerIndex == 3 || levelHandler.levelManagerIndex == 4){
           updatingStates = true;
           StartCoroutine(updateState());
@@ -273,18 +265,6 @@ public class ServerManager : NetworkManager {
         //write time
 
 
-    }
-
-    public override void OnLevelLoaded(int levelIndex){
-        Debug.Log("Level " + levelIndex + " (name: " + levelHandler.levelOrder[levelIndex] + ") Loaded");
-
-        //set gamemanager if current level
-        if(levelHandler.levelManagerIndex == levelIndex && gameManager.LM == null)
-            gameManager.setNewLevelManager(levelHandler.levelContainers[levelHandler.levelManagerIndex].levelManager);
-
-        //load next level
-        if(levelIndex < levelHandler.levelOrder.Length)
-            levelHandler.loadLevel(levelIndex + 1);
     }
 
     private void SendToAll(byte tag, ushort subject, object data){
