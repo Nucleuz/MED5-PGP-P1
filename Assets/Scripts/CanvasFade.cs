@@ -28,29 +28,29 @@ public class CanvasFade : MonoBehaviour {
 	}
 
 	public void ToBlack(float length){
-		StartCoroutine(fadeIn(black,length));
+		StartCoroutine(FadeIn(black,length));
 	}
 	public void ToWhite(float length){
-		StartCoroutine(fadeIn(white,length));
+		StartCoroutine(FadeIn(white,length));
 	}
 	public void ToBlackTitle(float length){
-		StartCoroutine(fadeIn(blackTitle,length));
+		StartCoroutine(FadeIn(blackTitle,length));
 	}
 	public void ToWhiteTitle(float length){
-		StartCoroutine(fadeIn(whiteTitle,length));
+		StartCoroutine(FadeIn(whiteTitle,length));
 	}
 
 	public void ToGame(float length){
 		if(fadedIn){
-			StartCoroutine(fadeOut(length));
+			StartCoroutine(FadeOut(length));
 			fadedIn = false;
     		lastImage = null;
 		}
 	}
 
-	IEnumerator fadeIn(Image image, float length){
+	IEnumerator FadeIn(Image image, float length){
 		if(fadedIn){
-			StartCoroutine(fadeOut(length));
+			StartCoroutine(FadeOut(length));
 		}
 		
 		lastImage = image;
@@ -73,7 +73,7 @@ public class CanvasFade : MonoBehaviour {
 
     	fadedIn = true;
 	}
-	IEnumerator fadeOut(float length){
+	IEnumerator FadeOut(float length){
 		
 		Image image = lastImage;
 
