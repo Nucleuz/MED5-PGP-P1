@@ -11,10 +11,9 @@ public class CanvasFade : MonoBehaviour {
 	public Image black;
 	public Image white;
 	public Image blackTitle;
-	public Image whiteTitle;
 
-	public Image lastImage;
-	public bool fadedIn = false;
+	private Image lastImage;
+	private bool fadedIn = false;
 
 	public static CanvasFade Instance;
 
@@ -35,9 +34,6 @@ public class CanvasFade : MonoBehaviour {
 	}
 	public void ToBlackTitle(float length){
 		StartCoroutine(FadeIn(blackTitle,length));
-	}
-	public void ToWhiteTitle(float length){
-		StartCoroutine(FadeIn(whiteTitle,length));
 	}
 
 	public void ToGame(float length){
