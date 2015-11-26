@@ -776,14 +776,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f57d553853802f41bc35ff11e902d91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventNames: []
-  keyPoints: []
+  eventNames:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  keyPoints:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   anim: {fileID: 1861122055}
 --- !u!95 &1861122055 stripped
 Animator:
   m_PrefabParentObject: {fileID: 9500000, guid: 673a79b2d8adab44b9a2fe016990f056,
     type: 3}
   m_PrefabInternal: {fileID: 1918376433}
+--- !u!114 &1861122057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1861122053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57f8bf624c4748748a66e6f53c5aacba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lockStateEnd: 0
+  lockStateLength: 2
+  state: 0
+  isTriggered: 0
+  isReadyToBeTriggered: 0
+  canReset: 0
+  triggerID: 0
+  playersInteracting: 000000
+  playersRequired: 0
+  bluePlayerRequired: 0
+  redPlayerRequired: 0
+  greenPlayerRequired: 0
+--- !u!114 &1861122058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1861122053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af0459dedbe03c2468a8dc7e5e5e3025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portal: {fileID: 0}
 --- !u!1001 &1918376433
 Prefab:
   m_ObjectHideFlags: 0
